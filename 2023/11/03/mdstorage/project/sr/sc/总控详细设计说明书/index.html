@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>总控详细设计说明书.md | xiaoy_website</title><meta name="author" content="xiaoy"><meta name="copyright" content="xiaoy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="引言1.1 编写目的本文档的编写目的是详细阐述总控系统的软件架构、数据结构、接口设计、以及具体模块的实现细节。它旨在为项目开发团队提供清晰、详尽的设计细节，确保编码工作能够按照既定的设计方案高效执行，并为后期的维护和升级提供文档支持。 同时，此文档也是向项目利益相关者传达如何从技术层面满足业务需求的桥梁。此外，若项目规模较为简单或层次不多，本文档中的详细设计内容可以与概要设计说明书合并编写，以避免">
+<meta property="og:type" content="article">
+<meta property="og:title" content="总控详细设计说明书.md">
+<meta property="og:url" content="https://abrance.github.io/project/2023/11/03/mdstorage/project/sr/sc/%E6%80%BB%E6%8E%A7%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6/index.html">
+<meta property="og:site_name" content="xiaoy_website">
+<meta property="og:description" content="引言1.1 编写目的本文档的编写目的是详细阐述总控系统的软件架构、数据结构、接口设计、以及具体模块的实现细节。它旨在为项目开发团队提供清晰、详尽的设计细节，确保编码工作能够按照既定的设计方案高效执行，并为后期的维护和升级提供文档支持。 同时，此文档也是向项目利益相关者传达如何从技术层面满足业务需求的桥梁。此外，若项目规模较为简单或层次不多，本文档中的详细设计内容可以与概要设计说明书合并编写，以避免">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-11-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-23T14:23:35.494Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/project/img/favicon.png"><link rel="canonical" href="https://abrance.github.io/project/2023/11/03/mdstorage/project/sr/sc/%E6%80%BB%E6%8E%A7%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/project/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/project/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '总控详细设计说明书.md',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-23 22:23:35'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/project/" title="xiaoy_website"><span class="site-name">xiaoy_website</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">总控详细设计说明书.md</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-11-02T16:00:00.000Z" title="Created 2023-11-03 00:00:00">2023-11-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-23T14:23:35.494Z" title="Updated 2024-07-23 22:23:35">2024-07-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="总控详细设计说明书.md"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><h3 id="1-1-编写目的"><a href="#1-1-编写目的" class="headerlink" title="1.1 编写目的"></a>1.1 编写目的</h3><p>本文档的编写目的是详细阐述总控系统的软件架构、数据结构、接口设计、以及具体模块的实现细节。它旨在为项目开发团队提供清晰、详尽的设计细节，确保编码工作能够按照既定的设计方案高效执行，并为后期的维护和升级提供文档支持。</p>
+<p>同时，此文档也是向项目利益相关者传达如何从技术层面满足业务需求的桥梁。此外，若项目规模较为简单或层次不多，本文档中的详细设计内容可以与概要设计说明书合并编写，以避免不必要的重复和冗余。</p>
+<h3 id="1-2-背景"><a href="#1-2-背景" class="headerlink" title="1.2 背景"></a>1.2 背景</h3><p>A. 待开发软件系统名称：石犀总控系统。</p>
+<p>B. 系统基本概念：石犀总控系统是一种企业级的流量集中管理和控制软件，并用于监控和管理计算资源、网络、存储。系统设计为 on-premise 部署模型，可能会成为 Iaas 服务模型，为终端用户提供一个简洁的操作界面和强大的后台引擎，实现资源的高效分配和自动化管理。</p>
+<p>C. 开发项目组名称：石犀研发组。</p>
+<h3 id="1-3-参考资料"><a href="#1-3-参考资料" class="headerlink" title="1.3 参考资料"></a>1.3 参考资料</h3><ol>
+<li>《云原生安全：攻防实践与体系构建》 刘文懋</li>
+</ol>
+<h3 id="1-4-术语定义及说明"><a href="#1-4-术语定义及说明" class="headerlink" title="1.4 术语定义及说明"></a>1.4 术语定义及说明</h3><ul>
+<li><p><strong>总控系统 (StoneRhino Control System)</strong>: 该系统是本项目开发的核心软件组件，它负责统筹管理各种引擎和插件的操作，确保系统整体运行的效率和安全性。</p>
+</li>
+<li><p><strong>流量引擎 (Traffic Engine)</strong>: 流量引擎主要负责网络流量的路由和转发。它处理入站和出站的数据流量，根据预定义的规则和策略，确保数据包正确快速地达到目的地。</p>
+</li>
+<li><p><strong>边车引擎 (Sidecar Engine)</strong>: 边车引擎负责在微服务架构中收集链路追踪信息。它通常作为每个服务实例的附属部分运行，提供对网络通信的透明监控和控制，以及故障排除和性能分析的能力。</p>
+</li>
+<li><p><strong>路由引擎 (Routing Engine)</strong>: 路由引擎提供软件路由器功能，它决定数据包的最优路径，处理网络地址转换和流量管理。它允许在不同网络和子网间进行高效的数据传输。</p>
+</li>
+<li><p><strong>插件 (Plugin)</strong>: 插件是一种软件组件，设计为在不需要修改主体程序代码的情况下增加新的功能。它们在总控系统中扮演重要角色，使得系统可以通过添加插件来扩展新的功能或提升现有功能的性能。</p>
+</li>
+<li><p><strong>授权 (Authorization)</strong>: 授权是指在系统中实施的一种安全机制，它确保只有被授权的个体可以执行特定操作或访问特定资源。在总控系统中，授权过程是验证用户或系统是否具备执行某个请求操作的权限的过程。</p>
+</li>
+</ul>
+<h2 id="2-设计概述"><a href="#2-设计概述" class="headerlink" title="2 设计概述"></a>2 设计概述</h2><h3 id="2-1-任务和目标"><a href="#2-1-任务和目标" class="headerlink" title="2.1 任务和目标"></a>2.1 任务和目标</h3><p>本详细设计说明书的主要任务是确保总控系统的设计符合项目的业务需求和性能指标，同时满足系统的扩展性、可维护性和安全性需求。设计的最终目标是提供一个详细的系统实现蓝图，包括数据结构、模块构造、接口设计以及数据流和控制流等方面的设计细节。</p>
+<h4 id="2-1-1-需求概述"><a href="#2-1-1-需求概述" class="headerlink" title="2.1.1 需求概述"></a>2.1.1 需求概述</h4><p>所开发的总控系统旨在提供一个高效、安全且可靠的网络流量控制和服务监控解决方案。主要业务需求包括但不限于：</p>
+<ul>
+<li>网络流量的智能路由和负载均衡</li>
+<li>微服务架构中的服务发现与链路追踪</li>
+<li>系统级别的性能监控与日志管理</li>
+<li>高度可配置的授权与安全机制</li>
+</ul>
+<p>系统性能需求包括：</p>
+<ul>
+<li>高吞吐量和低延迟的数据处理能力</li>
+<li>稳定的服务响应时间，即使在负载峰值时也要保持性能</li>
+<li>高可用性和故障转移能力</li>
+</ul>
+<h4 id="2-1-2-运行环境概述"><a href="#2-1-2-运行环境概述" class="headerlink" title="2.1.2 运行环境概述"></a>2.1.2 运行环境概述</h4><p>总控系统将支持跨平台部署，运行环境需求如下：</p>
+<ul>
+<li><strong>操作系统</strong>: 支持主流操作系统 Ubuntu 等</li>
+</ul>
+<p>系统配置要求将根据性能测试结果进一步定义。</p>
+<h4 id="2-1-3-条件与限制"><a href="#2-1-3-条件与限制" class="headerlink" title="2.1.3 条件与限制"></a>2.1.3 条件与限制</h4><p>系统设计受到以下条件和限制的约束：</p>
+<ul>
+<li>必须遵守相关的数据保护和隐私法规</li>
+<li>系统的扩展性和可维护性不应受限于特定的硬件或平台</li>
+<li>性能优化不得牺牲系统的安全性和稳定性</li>
+<li>系统必须能够快速适应不断变化的业务需求</li>
+<li>项目进度上必须符合预定的里程碑和交付日期</li>
+</ul>
+<h4 id="2-1-4-详细设计方法和工具"><a href="#2-1-4-详细设计方法和工具" class="headerlink" title="2.1.4 详细设计方法和工具"></a>2.1.4 详细设计方法和工具</h4><p>详细设计将采用面向对象的设计方法，并利用UML（统一建模语言）进行数据建模和流程描述。选用的CASE（计算机辅助软件工程）工具包括但不限于Visual Paradigm，以支持各种UML图表的创建，如类图、序列图和活动图等。数据流程图和业务流程图将使用BPMN（业务流程模型和符号）标准进行描述。所有设计工作将严格遵循业界标准和最佳实践。</p>
+<p>设计团队将使用版本控制系统 Git 来管理源代码，确保设计开发过程的协同和追溯性。此外，设计阶段还将采用静态代码分析和持续集成工具，以提高代码质量和设计实现的一致性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    subgraph 总控系统逻辑架构图</span><br><span class="line">        A[客户端] --访问/控制--&gt; B[总控]</span><br><span class="line">        B --&gt; C[流量引擎/API网关]</span><br><span class="line">        M[用户] --请求流量--&gt; C[流量引擎/API网关]</span><br><span class="line">        B --&gt; P[路由引擎]</span><br><span class="line">        B --&gt; Q[边车引擎]</span><br><span class="line">        B --&gt; D[插件]</span><br><span class="line">        B --&gt; E[可视化模块]</span><br><span class="line">        C --&gt; F[高可用集群]</span><br><span class="line">        E --&gt; I[引擎/插件流量数据可观测性]</span><br><span class="line">        F --&gt; E</span><br><span class="line">        subgraph 高可用服务集群</span><br><span class="line">            F --&gt; J[应用服务1]</span><br><span class="line">            F --&gt; N[应用服务2]</span><br><span class="line">            F --&gt; O[应用服务3]</span><br><span class="line"></span><br><span class="line">        end</span><br><span class="line">        J --&gt;|返回|M</span><br><span class="line">    end</span><br><span class="line">    subgraph 可视化平台</span><br><span class="line">        I --&gt; K[数据分析和报告]</span><br><span class="line">        D --&gt; L[其他服务接口]</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    classDef default fill:#f9f,stroke:#333,stroke-width:4px;</span><br><span class="line">    classDef engine fill:#ccf,stroke:#f66,stroke-width:2px,stroke-dasharray: 5, 5;</span><br><span class="line">    classDef cluster fill:#ffc,stroke:#333,stroke-width:2px;</span><br><span class="line">    classDef module fill:#cfc,stroke:#333,stroke-width:2px;</span><br><span class="line">    classDef database fill:#cfc,stroke:#333,stroke-width:2px;</span><br><span class="line">    classDef services fill:#ff9,stroke:#333,stroke-width:2px;</span><br><span class="line">    classDef visualization fill:#fa9,stroke:#333,stroke-width:2px;</span><br><span class="line">    </span><br><span class="line">    class A,B default;</span><br><span class="line">    class C,D engine;</span><br><span class="line">    class F cluster;</span><br><span class="line">    class E module;</span><br><span class="line">    class J,K,L,N,O services;</span><br><span class="line">    class I visualization;</span><br><span class="line">    </span><br><span class="line">    style J stroke:#333,stroke-width:2px,stroke-dasharray: 3, 3</span><br><span class="line">    style N stroke:#333,stroke-width:2px,stroke-dasharray: 3, 3</span><br><span class="line">    style O stroke:#333,stroke-width:2px,stroke-dasharray: 3, 3</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 总控逻辑架构图</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">graph LR</span><br><span class="line">    subgraph 总控</span><br><span class="line">    	direction TB</span><br><span class="line">		subgraph 用户接口层</span><br><span class="line">			direction TB</span><br><span class="line">			DataSV[数据可视]</span><br><span class="line">			APIAsset[API可视]</span><br><span class="line">			SysInfo[系统信息]</span><br><span class="line">			SEInfo[引擎信息]</span><br><span class="line">			ObjectInfo[对象信息]</span><br><span class="line">			UserInfo[用户信息]</span><br><span class="line">		end</span><br><span class="line">		</span><br><span class="line">		subgraph 业务层</span><br><span class="line">			direction LR</span><br><span class="line">			API[API]</span><br><span class="line">			</span><br><span class="line">			subgraph SCDashboard[SC]</span><br><span class="line">				Auth[授权管理]</span><br><span class="line">				User[用户管理]</span><br><span class="line">				Object[对象管理]</span><br><span class="line">				System[系统管理]</span><br><span class="line">				SVClient[可视化]</span><br><span class="line">				</span><br><span class="line">				subgraph 引擎管理</span><br><span class="line">					SEInstallerClient[引擎安装]</span><br><span class="line">					服务搭建</span><br><span class="line">				end</span><br><span class="line">			end</span><br><span class="line">			</span><br><span class="line">			subgraph SVServer[SV]</span><br><span class="line">				数据可视</span><br><span class="line">				API可视</span><br><span class="line">				业务可视</span><br><span class="line">				插件可视</span><br><span class="line">			end</span><br><span class="line">			</span><br><span class="line">			subgraph Install-Manage</span><br><span class="line">				SEInstall[流量引擎安装]</span><br><span class="line">				SidecarSE[边车引擎在线、离线安装]</span><br><span class="line">				路由引擎安装</span><br><span class="line">				引擎节点管理</span><br><span class="line">			end			</span><br><span class="line">		end</span><br><span class="line"></span><br><span class="line">		subgraph 数据层</span><br><span class="line">			Redis[(Redis)]</span><br><span class="line">			SCEtcd[(Etcd)]</span><br><span class="line">			NSQ([NSQ])</span><br><span class="line">			MySQL[(MySQL)]</span><br><span class="line">			MongoDB[(MongoDB)]</span><br><span class="line">			FS(((FS)))</span><br><span class="line">		end</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	subgraph 引擎</span><br><span class="line">        </span><br><span class="line">        subgraph SEAppLayer[业务层]</span><br><span class="line">        	direction TB</span><br><span class="line">        	subgraph SE-M_cluster</span><br><span class="line">        		subgraph SE-M</span><br><span class="line">        			Webserver</span><br><span class="line">        			adminDam</span><br><span class="line">        			adminHA</span><br><span class="line">        			adminKA</span><br><span class="line">        			semGRL[global-rate-limit]</span><br><span class="line">        			kube-ApiServer</span><br><span class="line">        			semInstallAgent[Install-Agent]</span><br><span class="line">        			semNexus[Nexus]</span><br><span class="line">        		end</span><br><span class="line">        	end</span><br><span class="line">        	</span><br><span class="line">        	subgraph SE-S_cluster</span><br><span class="line">        		subgraph SE-S</span><br><span class="line">        			dataHA:::Yellow</span><br><span class="line">        			dataKA</span><br><span class="line">        			sesInstallAgent[Install-Agent]</span><br><span class="line">        			sesNexus[Nexus]        			</span><br><span class="line">        		end</span><br><span class="line">        	end</span><br><span class="line">        	</span><br><span class="line">        	subgraph SE-W_cluster</span><br><span class="line">        		subgraph SE-W</span><br><span class="line">        			sewWorkDam[workDam]</span><br><span class="line">        			dataWorker</span><br><span class="line">        			Polycube</span><br><span class="line">        			Envoy</span><br><span class="line">        			sewGRL[global-rate-limit]</span><br><span class="line">        			sewInstallAgent[Install-Agent]</span><br><span class="line">        			sewNexus[Nexus]        			</span><br><span class="line">        		end</span><br><span class="line">        	end        	</span><br><span class="line">        end</span><br><span class="line">        </span><br><span class="line">        subgraph SEDataLayer[数据层]</span><br><span class="line">        	SEEtcd[(ETCD)]</span><br><span class="line">        	SEFS(((FS)))</span><br><span class="line">        end        </span><br><span class="line">    end </span><br><span class="line">    </span><br><span class="line">    服务搭建 --&gt; Webserver</span><br><span class="line">    API &lt;====&gt; SCDashboard</span><br><span class="line">    API &lt;====&gt; 用户接口层</span><br><span class="line">    SVClient -.-&gt; SVServer</span><br><span class="line">    SEInstallerClient -.-&gt; Install-Manage</span><br><span class="line">    Install-Manage &lt;--&gt; semInstallAgent &amp; sesInstallAgent &amp; sewInstallAgent</span><br><span class="line">    Envoy --&gt; sewWorkDam --&gt; 数据可视</span><br><span class="line">    业务可视 --&gt; Envoy</span><br><span class="line"></span><br><span class="line">    linkStyle 1,2 stroke:blue,stroke-width:8px,color:black;</span><br><span class="line">    linkStyle 5,6,7 stroke:red,stroke-width:8px,color:black;    </span><br><span class="line"></span><br><span class="line">	style SEDataLayer fill:#FFEBB5</span><br><span class="line">	classDef Yellow fill:#f96</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="3-系统详细需求分析"><a href="#3-系统详细需求分析" class="headerlink" title="3 系统详细需求分析"></a>3 系统详细需求分析</h2><p>主要对系统级的需求进行分析。首先应对需求分析提出的企业需求进一步确认，并对由于情况变化而带来的需求变化进行较为详细的分析。</p>
+<p>3.1 详细需求分析<br>包括：<br>详细功能需求分析<br>详细性能需求分析<br>详细资源需求分析<br>详细系统运行环境及限制条件分析</p>
+<p>3.2 详细系统运行环境及限制条件分析接口需求分析<br>包括：<br>系统接口需求分析<br>现有硬、软件资源接口需求分析<br>引进硬、软件资源接口需求分析</p>
+<h2 id="4-总体方案确认"><a href="#4-总体方案确认" class="headerlink" title="4 总体方案确认"></a>4 总体方案确认</h2><p>着重解决系统总体结构确认及界面划分问题。 </p>
+<p>4.1 系统总体结构确认<br>对系统组成、逻辑结构及层次进行确认，对应用系统、支撑系统及各自实现的功能进行确认，细化集成设计及系统工作流程，特别要注意因软件的引进造成的系统本身结构和公司其他系统的结构变化。包括：<br>●系统组成、逻辑结构及层次确认<br>●应用系统结构确认<br>●支撑系统结构确认<br>●系统集成确认<br>●系统工作流程确认</p>
+<p>4.2 系统详细界面划分</p>
+<p>4.2.1 应用系统与支撑系统的详细界面划分<br>应用系统与支撑系统之间的界面包括系统主服务器与其他服务器的服务范围及访问方式，网络及数据库对应用系统的支撑方式，全局数据的管理与存取方式等。</p>
+<p>4.2.2 系统内部详细界面划分<br>系统各功能之间的界面包括覆盖范围，模块间功能调用涉及到的系统模块及方法，全局数据格式，系统性能要求等。</p>
+<h2 id="5-系统详细设计"><a href="#5-系统详细设计" class="headerlink" title="5 系统详细设计"></a>5 系统详细设计</h2><p>5.1 系统结构设计及子系统划分<br>对系统的组成及逻辑结构进行设计前确认。<br>划分系统功能模块或子系统（如果有或者有必要，特别是大型的软件系统）。</p>
+<p>5.2 系统功能模块详细设计<br>按结构化设计方法，在系统功能逐层分解的基础上，对系统各功能模块或子系统进行设计。此为详细设计的主要部分之一。<br>用层次图描述系统的总体结构、功能分解及各个模块之间的相互调用关系和信息交互，用IPO图或其他方法描述各模块完成的功能。 以上建议采用HIPO图进行功能分解与模块描述，更高的要求建议采用IDEF0方法进行功能模型设计。<br>详细设计应用系统的各个构成模块完成的功能及其相互之间的关系，用IPO或结构图描述各模块的组成结构、算法、模块间的接口关系，以及需求、功能和模块三者之间的交叉参照关系。<br>每个模块的描述说明可参照以下格式：<br>模块编号：<br>模块名称：<br>输入：<br>处理：<br>算法描述：<br>输出：<br>其中处理和算法描述部分主要采用伪码或具体的程序语言完成。<br>对详细设计更高的要求建议用IDEF0图进行各功能模块的设计。<br>如果对软件需进行二次开发（包括功能扩展、功能改造、用户界面改造等），则相应的设计工作应该设立子课题完成。</p>
+<p>5.3 系统界面详细设计<br>系统界面说明应用系统软件的各种接口。整个系统的其他接口（如系统硬件接口、通讯接口等）在相应的部分说明。</p>
+<p>5.3.1 外部界面设计<br>根据系统界面划分进行系统外部界面设计，对系统的所有外部接口（包括功能和数据接口）进行设计。</p>
+<p>5.3.2 内部界面设计<br>设计系统内部各功能模块间的调用关系和数据接口。</p>
+<p>5.3.3 用户界面设计<br>规定人机界面的内容、界面风格、调用方式等，包括所谓的表单设计、报表设计和用户需要的打印输出等设计。此部分内容可能比较多。</p>
+<h2 id="6-数据库系统设计"><a href="#6-数据库系统设计" class="headerlink" title="6 数据库系统设计"></a>6 数据库系统设计</h2><p>此数据库设计可单独成册，尤其对大型的数据库应用系统，即有一个单独的《数据库设计说明书》。</p>
+<p>6.1 设计要求</p>
+<p>6.2 信息模型设计<br>确定系统信息的类型（实体或视图），确定系统信息实体的属性、关键字及实体之间的联系，详细描述数据库和结构设计，数据元素及属性定义，数据关系模式，数据约束和限制。</p>
+<p>6.3 数据库设计</p>
+<p>6.3.1 设计依据<br>说明数据被访问的频度和流量，最大数据存储量，数据增长量，存储时间等数据库设计依据。</p>
+<p>6.3.2 数据库选型</p>
+<p>6.3.3 数据库种类及特点<br>说明系统内应用的数据库种类、各自的特点、数量及如何实现互联，数据如何传递。</p>
+<p>6.3.4 数据库逻辑结构<br>说明数据库概念模式向逻辑模式转换所采用的方法论及工具，完成数据库概念模式向逻辑模式的转换。详细列出所使用的数据结构中每个数据项、记录和文件的标识、定义、长度及它们之间的相互关系。此节内容为数据库设计的主要部分。</p>
+<p>6.3.5 物理结构设计<br>列出所使用的数据结构中每个数据项的存储要求、访问方法、存取单位和存取物理关系等。建立系统程序员视图，包括：<br>●数据在内存中的安排，包括对索引区、缓冲区的设计；<br>●所使用的外存设备及外存空间的组织，包括索引区、数据块的组织与划分；<br>●访问数据的方式方法。</p>
+<p>6.3.6 数据库安全<br>说明数据的共享方式，如何保证数据的安全性及保密性。</p>
+<p>6.3.7 数据字典<br>编写详细的数据字典。 对数据库设计中涉及到的各种项目，如数据项、记录、系、文卷模式、子模式等一般要建立起数据字典，以说明它们的标识符、同义名及有关信息。</p>
+<h2 id="7-信息编码设计"><a href="#7-信息编码设计" class="headerlink" title="7 信息编码设计"></a>7 信息编码设计</h2><p>7.1 代码结构设计<br>确认信息分类编码总体方案，进行分类代码结构设计。</p>
+<p>7.2 代码编写<br>按代码结构编写信息代码</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project">xiaoy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project/2023/11/03/mdstorage/project/sr/sc/%E6%80%BB%E6%8E%A7%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6/">https://abrance.github.io/project/2023/11/03/mdstorage/project/sr/sc/%E6%80%BB%E6%8E%A7%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/project/2023/11/03/mdstorage/project/sr/%E9%A3%8E%E9%99%A9%E6%B8%85%E5%8D%95/" title="风险清单.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">风险清单.md</div></div></a></div><div class="next-post pull-right"><a href="/project/2023/11/02/mdstorage/arch/%E6%A1%A3%E6%A1%88/" title="档案.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">档案.md</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/project/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">xiaoy</div><div class="author-info__description">小歪星球</div></div><div class="card-info-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%BC%96%E5%86%99%E7%9B%AE%E7%9A%84"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 编写目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E8%83%8C%E6%99%AF"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E6%9C%AF%E8%AF%AD%E5%AE%9A%E4%B9%89%E5%8F%8A%E8%AF%B4%E6%98%8E"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 术语定义及说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">2 设计概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%BB%BB%E5%8A%A1%E5%92%8C%E7%9B%AE%E6%A0%87"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 任务和目标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E9%9C%80%E6%B1%82%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 需求概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 运行环境概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-%E6%9D%A1%E4%BB%B6%E4%B8%8E%E9%99%90%E5%88%B6"><span class="toc-number">2.1.3.</span> <span class="toc-text">2.1.3 条件与限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-4-%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95%E5%92%8C%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.4.</span> <span class="toc-text">2.1.4 详细设计方法和工具</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">3 系统详细需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%80%BB%E4%BD%93%E6%96%B9%E6%A1%88%E7%A1%AE%E8%AE%A4"><span class="toc-number">4.</span> <span class="toc-text">4 总体方案确认</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1"><span class="toc-number">5.</span> <span class="toc-text">5 系统详细设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">6.</span> <span class="toc-text">6 数据库系统设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%BF%A1%E6%81%AF%E7%BC%96%E7%A0%81%E8%AE%BE%E8%AE%A1"><span class="toc-number">7.</span> <span class="toc-text">7 信息编码设计</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88LOL%E6%AF%94%E8%B5%9B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E2%80%9C%E5%81%87%E4%BA%86%E2%80%9D/" title="为什么LOL比赛越来越“假了”.md">为什么LOL比赛越来越“假了”.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E7%94%B7%E7%94%9F%E5%AE%81%E5%8F%AF%E6%89%93%E6%B8%B8%E6%88%8F%E4%B9%9F%E4%B8%8D%E6%84%BF%E8%BF%BD%E5%A5%B3%E7%94%9F/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E4%BA%BA%E9%80%89%E6%8B%A9%E7%9B%B4%E6%92%AD/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%BB%8A%E6%97%A5%E8%AF%9D%E9%A2%98%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/" title="NAS访问.md">NAS访问.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By xiaoy</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/project/js/utils.js?v=4.13.0"></script><script src="/project/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

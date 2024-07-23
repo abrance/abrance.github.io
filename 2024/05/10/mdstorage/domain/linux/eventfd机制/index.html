@@ -1,0 +1,290 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>eventfd机制.md | xiaoy_website</title><meta name="author" content="xiaoy"><meta name="copyright" content="xiaoy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux fd 系列 — eventfd 是什么？一切皆文件，但 fd 区分类型？Linux 一切皆文件，但这个文件 fd 也是有类型的，绝大部分人都知道“文件 fd”，知道 socket fd，甚至知道 pipe fd，可能都不知道fd 还有这么一种叫做 eventfd 的类型。 eventfd 是什么的？不妨拆开来看，event fd ，也就是事件 fd 类型。故名思义，就是专门用于事件通知">
+<meta property="og:type" content="article">
+<meta property="og:title" content="eventfd机制.md">
+<meta property="og:url" content="https://abrance.github.io/project/2024/05/10/mdstorage/domain/linux/eventfd%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="xiaoy_website">
+<meta property="og:description" content="Linux fd 系列 — eventfd 是什么？一切皆文件，但 fd 区分类型？Linux 一切皆文件，但这个文件 fd 也是有类型的，绝大部分人都知道“文件 fd”，知道 socket fd，甚至知道 pipe fd，可能都不知道fd 还有这么一种叫做 eventfd 的类型。 eventfd 是什么的？不妨拆开来看，event fd ，也就是事件 fd 类型。故名思义，就是专门用于事件通知">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-05-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-23T14:23:35.486Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/project/img/favicon.png"><link rel="canonical" href="https://abrance.github.io/project/2024/05/10/mdstorage/domain/linux/eventfd%E6%9C%BA%E5%88%B6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/project/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/project/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'eventfd机制.md',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-23 22:23:35'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/project/" title="xiaoy_website"><span class="site-name">xiaoy_website</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">eventfd机制.md</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-05-09T16:00:00.000Z" title="Created 2024-05-10 00:00:00">2024-05-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-23T14:23:35.486Z" title="Updated 2024-07-23 22:23:35">2024-07-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="eventfd机制.md"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux-fd-系列-—-eventfd-是什么？"><a href="#Linux-fd-系列-—-eventfd-是什么？" class="headerlink" title="Linux fd 系列 — eventfd 是什么？"></a>Linux fd 系列 — eventfd 是什么？</h1><h2 id="一切皆文件，但-fd-区分类型？"><a href="#一切皆文件，但-fd-区分类型？" class="headerlink" title="一切皆文件，但 fd 区分类型？"></a><strong>一切皆文件，但 fd 区分类型？</strong></h2><p>Linux 一切皆文件，但这个文件 fd 也是有类型的，绝大部分人都知道“文件 fd”，知道 socket fd，甚至知道 pipe fd，可能都不知道<br>fd 还有这么一种叫做 <code>eventfd</code> 的类型。</p>
+<h2 id="eventfd-是什么的？"><a href="#eventfd-是什么的？" class="headerlink" title="eventfd 是什么的？"></a><strong>eventfd 是什么的？</strong></h2><p>不妨拆开来看，event fd ，也就是事件 fd 类型。故名思义，就是专门用于事件通知的文件描述符（ fd ）。很多人可能没怎么用，但是用过的人都说：香<br>！</p>
+<p>哪个版本引入的？</p>
+<p>Linux 2.6.22</p>
+<p>代码位于：<code>fs/eventfd.c</code></p>
+<p>“事件传递”就是通信嘛。eventfd 不仅可以用于进程间的通信，还能用于用户态和内核态的通信。</p>
+<p>思考一个小问题：我们知道“文件”里是保存东西的，eventfd 既然对应了一个“文件”，那么这个“文件”的内容是什么呢？</p>
+<p><strong>划重点：eventfd 是一个计数相关的fd</strong> 。计数不为零是有<strong>可读事件</strong> 发生，<code>read</code> 之后计数会清零，<code>write</code> 则会递增计数器。</p>
+<p>这个怎么理解？</p>
+<p>在之前自制文件系统系列中提到过：文件系统的“文件”是抽象的概念，你看到的一切知识文件系统想让你看到的东西。比如 hellofs<br>中我们没写过任何数据，也会返回 “hello world” 的内容。这个仅仅 hook 到 read&#x2F;write 调用，然后根据逻辑返回数据而已。</p>
+<p>eventfd 也是如此，eventfd 实现了 read&#x2F;write 的调用，在调用里面实现了一套计数器的逻辑。write 仅仅是加计数，read<br>是读计数，并且清零。</p>
+<p>长什么样子呢？笔者找了个进程来观摩下。</p>
+<pre><code>root@ubuntu:~# ll /proc/14168/fd
+lrwx------ 1 root root 64 Jul 10 22:12 3 -&gt; anon_inode:[eventfd]
+</code></pre>
+<p>在 Linux 的 <code>/proc</code> 下每个进程都会有个目录，目录名为进程 ID 号，在这个目录能看到使用的资源信息，其中有个 fd<br>目录，就是进程打开的所有文件。看出猫腻了不？有个叫做 <code>[eventfd]</code> 的 fd 句柄。</p>
+<h2 id="怎么使用它呢？"><a href="#怎么使用它呢？" class="headerlink" title="怎么使用它呢？"></a><strong>怎么使用它呢？</strong></h2><h3 id="句柄创建"><a href="#句柄创建" class="headerlink" title="句柄创建"></a><strong>句柄创建</strong></h3><pre><code>#include &lt;sys/eventfd.h&gt;
+int eventfd(unsigned int initval, int flags);
+</code></pre>
+<p>举个栗子：</p>
+<pre><code>efd = eventfd(0, 0);
+if (efd == -1)
+    handle_error(&quot;eventfd&quot;);
+</code></pre>
+<p>这样就创建出了一个 eventfd 类型的 fd 啦。会在你的 <code>/proc/$&#123;pid&#125;/fd/</code> 目录中有一个 eventfd 类型的句柄。</p>
+<h3 id="eventfd-api-调用？"><a href="#eventfd-api-调用？" class="headerlink" title="eventfd api 调用？"></a><strong>eventfd api 调用？</strong></h3><p>eventfd new 出来之后，总结来说，可以对它做四个事情：</p>
+<ol>
+<li>可以读这个 fd；</li>
+<li>可以写这个 fd；</li>
+<li>可以监听这个 fd；</li>
+<li>可以关闭这个 fd；</li>
+</ol>
+<p>我怎么知道这个知识点的？</p>
+<p>因为在 Linux 内核代码中，我看到了呀。eventfd 就实现了这几个调用。</p>
+<pre><code>static const struct file_operations eventfd_fops = &#123;
+#ifdef CONFIG_PROC_FS
+    .show_fdinfo = eventfd_show_fdinfo,
+#endif
+    .release = eventfd_release,
+    .poll  = eventfd_poll,
+    .read  = eventfd_read,
+    .write  = eventfd_write,
+    .llseek  = noop_llseek,
+&#125;;
+</code></pre>
+<p>很明显就能看到以上实现的几个调用就是 eventfd 全部的内容所在。</p>
+<h3 id="读写-fd"><a href="#读写-fd" class="headerlink" title="读写 fd"></a><strong>读写 fd</strong></h3><p>简单看下 eventfd 的读写究竟做了什么？</p>
+<p>eventfd 对应的文件内容是一个 8 字节的数字，这个数字是 read&#x2F;write 操作维护的计数。</p>
+<p>首先，write 的时候，累加计数，read 的时候读取计数，并且清零。</p>
+<pre><code>uint64_t u;
+ssize_t n;
+
+// 写 eventfd，内部 buffer 必须是 8 字节大小；
+n = write(efd, &amp;u, sizeof(uint64_t));
+
+// 读 eventfd
+n = read(efd, &amp;u, sizeof(uint64_t));
+</code></pre>
+<p>读写也就是 read&#x2F;write，读写这个 fd 很容易理解，但是请注意了，只能 8 个字节。这个读写的内容其实是计数。</p>
+<p>举个栗子：如下，我们连续写 3 次</p>
+<pre><code>// 写 3 次
+write(efd, &amp;u /* u = 1 */ , 8)
+write(efd, &amp;u /* u = 2 */ , 8)
+write(efd, &amp;u /* u = 3 */ , 8)
+</code></pre>
+<p>你猜猜读的时候，是多少？</p>
+<pre><code>read(ebd, &amp;x, 8)
+</code></pre>
+<p>读到的值是 6（因为 1+2+3），理解了吧。</p>
+<p><img src="https://pic3.zhimg.com/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.gif"></p>
+<p><img src="/project/./eventfd_files/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.jpg" alt="动图封面"></p>
+<p>小结：</p>
+<ol>
+<li>写的时候，写进去一个 8 字节的整数，eventfd 实现的逻辑是累计计数；</li>
+<li>读的时候，读到总计数，并且会清零；</li>
+<li>实现在 <code>eventfd_write</code> 和 <code>eventfd_read</code> 函数中；</li>
+</ol>
+<h3 id="监听-fd"><a href="#监听-fd" class="headerlink" title="监听 fd"></a><strong>监听 fd</strong></h3><p>在 <strong><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/write">深入理解 Linux Epoll 池</a></strong> 提到过，不是所有的 fd<br>类型都可用 epoll 池来监听事件的，只有实现了 <code>file_operation-&gt;poll</code> 的调用的“文件” fd 才能被 epoll<br>管理。eventfd 刚好就实现了这个接口。</p>
+<p>eventfd 是专门用来传递事件的 fd ，而 epoll 池则是专门用来管理事件的池子，它们两结合就妙了。</p>
+<p>我们知道 epoll 监听的是<strong>可读可写事件</strong> 。那么你想过 eventfd 的可读可写事件是啥吗？</p>
+<p>“<strong>可读可写事件</strong> ”这是个有趣的问题，我们可以去发散下，对比思考下 socket fd，文件 fd：</p>
+<ul>
+<li>socket fd：可以写入发送数据，那么触发可写事件，网卡数据来了，可以读，触发可读事件；</li>
+<li>文件 fd：文件 fd 的可读可写事件就更有意思了，因为文件一直是可写的，所以一直都触发可写事件，文件里的数据也一直是可读的，所以一直触发可读事件。这个也是为什么类似 ext4 这种文件不实现 poll 接口的原因。<strong>因为文件 fd 一直是可读可写的，poll 监听没有任何意义；</strong></li>
+</ul>
+<p>回到最初问题：eventfd 呢？它的可读可写事件是什么？</p>
+<p>我们之前说过，eventfd 实现的是计数的功能。所以 eventfd 计数不为 0 ，那么 fd 是可读的。</p>
+<p>由于 eventfd 一直可写（可以一直累计计数），所以一直有可写事件。</p>
+<p>所以，这里有个什么隐藏知识点呢？</p>
+<p><strong>eventfd 如果用 epoll 监听事件，那么都是监听读事件，因为监听写事件无意义。</strong></p>
+<h3 id="关闭-fd"><a href="#关闭-fd" class="headerlink" title="关闭 fd"></a><strong>关闭 fd</strong></h3><p>关闭这个很容里理解，就是不需要这个 fd 了，主动调用一把 Close ，当没有人使用的时候，内核会释放这个 fd 的资源。</p>
+<h3 id="fd-的阻塞属性"><a href="#fd-的阻塞属性" class="headerlink" title="fd 的阻塞属性"></a><strong>fd 的阻塞属性</strong></h3><p>我们知道读写 fd 的时候，可能会遇到阻塞，对于 socket fd 来说，没有数据的时候来读，则会阻塞。写 buffer 满了的时候来写，则会阻塞。</p>
+<p>那么对于 eventfd 呢？它的阻塞有可能是怎么样的？</p>
+<p>read eventfd 的时候，<strong>如果计数器的值为 0，就会阻塞</strong> （这种就等同于没“文件”内容）。</p>
+<p>这种可以设置 fd 的属性为非阻塞类型，这样读的时候，如果计数器为 0 ，返回 EAGAIN 即可，这样就不会阻塞整个系统。</p>
+<h2 id="通常的用途"><a href="#通常的用途" class="headerlink" title="通常的用途"></a><strong>通常的用途</strong></h2><p>单独的 eventfd 看似平平无奇，但其实有非常重要的应用。下面列举几个小例子：</p>
+<h3 id="磁盘的异步-IO（-libaio-）"><a href="#磁盘的异步-IO（-libaio-）" class="headerlink" title="磁盘的异步 IO（ libaio ）"></a><strong>磁盘的异步 IO（ libaio ）</strong></h3><p>我们之前说过，类似于 ext4 这种文件系统的文件 fd ，其实是不能用 epoll 来管理的，网络 fd 才可以。因为磁盘文件一直可读可写。</p>
+<p>难道文件就自绝于此吗？用不了事件机制吗？只能同步 IO 吗？</p>
+<p>非也。Linux 内核提供了一个叫做 libaio 的机制，能够同时提交多个 io 请求给内核（这种批量递交能提高优化的概率，大量IO堆积到设备的队列中时,<br>内核可以发挥 IO 调度算法的优势,比如合并 IO 等）。</p>
+<p>aio 请求完成之后，走异步的事件通知。这个事件通知的原理就是把一个 eventfd 和这个 aio 的上下文绑定起来。aio 完成，就会往 eventfd<br>里面写计数，从而触发可读事件。</p>
+<h3 id="kvm-的-ioeventfd-机制"><a href="#kvm-的-ioeventfd-机制" class="headerlink" title="kvm 的 ioeventfd 机制"></a><strong>kvm 的 ioeventfd 机制</strong></h3><p>QEMU 可以将 VM 特定地址关联一个 eventfd，对进行监听，当Guest 进行 IO 操作 exit 到 kvm 后，kvm 可以判断本次exit<br>是否发生在这段特定地址中，如果是则会通过使用 eventfd 进行事件通知，进行 IO 操作，这种方式对比能节省一些时间。</p>
+<h3 id="还有什么朴实的用法？"><a href="#还有什么朴实的用法？" class="headerlink" title="还有什么朴实的用法？"></a><strong>还有什么朴实的用法？</strong></h3><p>最简单的例子，一个消费者和多个生产者，这种就可以借助 eventfd 优雅的完成事件通知。</p>
+<p>生产者：</p>
+<p>是多个线程，会把请求投递到一个 list 中，然后唤醒生产者。</p>
+<pre><code>producer:
+    // 投递请求到链表
+    list_add( global_list, request )
+    // 唤醒消费者处理
+    write(eventfd, &amp;cnt /* 1 */ , 8)
+</code></pre>
+<p>消费者：</p>
+<p>是一个线程，后台 loop 处理。使用 epoll 监听 eventfd 的可读事件，这样能做到一旦有请求入队，消费者就立马唤醒处理。</p>
+<pre><code>consumer 
+    // 添加 eventfd 到监听池
+    epoll_ctl(ep, EPOLL_CTL_ADD, eventfd, &amp;ee);
+
+loop:
+    // 等待唤醒
+    epoll_wait(ep, ... );
+    
+    // 读取新添加到列表里的元素个数，并且进行处理；
+    n = read(eventfd, ... )
+    // 遍历链表处理
+    for each global_list:
+        // do something
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><ol>
+<li>Linux 一切皆文件，但 fd 各有不同；</li>
+<li>eventfd 实现了 read&#x2F;write 的接口，本质是一个计数器的实现；</li>
+<li>eventfd 实现了 poll 接口，所以可以和 epoll 双剑合璧，实现事件的通知管理；</li>
+<li>eventfd 可以和 libaio &amp; epoll 一起，实现 Linux 下的纯异步 IO；</li>
+<li>eventfd 监听可读事件才有意义；</li>
+<li>ext4 这种文件 fd 一直可读可写，所以实现 poll 毫无意义。eventfd 一直可写，所以监听可写毫无意义；</li>
+<li>eventfd 可以结合业务，做一个事件通知的通信机制，非常巧妙；</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project">xiaoy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project/2024/05/10/mdstorage/domain/linux/eventfd%E6%9C%BA%E5%88%B6/">https://abrance.github.io/project/2024/05/10/mdstorage/domain/linux/eventfd%E6%9C%BA%E5%88%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/project/2024/05/11/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc-go%E5%AE%A2%E6%88%B7%E7%AB%AF/" title="grpc-go客户端.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">grpc-go客户端.md</div></div></a></div><div class="next-post pull-right"><a href="/project/2024/05/10/mdstorage/domain/network/epoll%E6%9C%BA%E5%88%B6/" title="epoll机制.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">epoll机制.md</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/project/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">xiaoy</div><div class="author-info__description">小歪星球</div></div><div class="card-info-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-fd-%E7%B3%BB%E5%88%97-%E2%80%94-eventfd-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">Linux fd 系列 — eventfd 是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%88%87%E7%9A%86%E6%96%87%E4%BB%B6%EF%BC%8C%E4%BD%86-fd-%E5%8C%BA%E5%88%86%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">一切皆文件，但 fd 区分类型？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#eventfd-%E6%98%AF%E4%BB%80%E4%B9%88%E7%9A%84%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">eventfd 是什么的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8%E5%AE%83%E5%91%A2%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">怎么使用它呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A5%E6%9F%84%E5%88%9B%E5%BB%BA"><span class="toc-number">1.3.1.</span> <span class="toc-text">句柄创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eventfd-api-%E8%B0%83%E7%94%A8%EF%BC%9F"><span class="toc-number">1.3.2.</span> <span class="toc-text">eventfd api 调用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%86%99-fd"><span class="toc-number">1.3.3.</span> <span class="toc-text">读写 fd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E5%90%AC-fd"><span class="toc-number">1.3.4.</span> <span class="toc-text">监听 fd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD-fd"><span class="toc-number">1.3.5.</span> <span class="toc-text">关闭 fd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fd-%E7%9A%84%E9%98%BB%E5%A1%9E%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.6.</span> <span class="toc-text">fd 的阻塞属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E5%B8%B8%E7%9A%84%E7%94%A8%E9%80%94"><span class="toc-number">1.4.</span> <span class="toc-text">通常的用途</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E7%9A%84%E5%BC%82%E6%AD%A5-IO%EF%BC%88-libaio-%EF%BC%89"><span class="toc-number">1.4.1.</span> <span class="toc-text">磁盘的异步 IO（ libaio ）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kvm-%E7%9A%84-ioeventfd-%E6%9C%BA%E5%88%B6"><span class="toc-number">1.4.2.</span> <span class="toc-text">kvm 的 ioeventfd 机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E6%9C%89%E4%BB%80%E4%B9%88%E6%9C%B4%E5%AE%9E%E7%9A%84%E7%94%A8%E6%B3%95%EF%BC%9F"><span class="toc-number">1.4.3.</span> <span class="toc-text">还有什么朴实的用法？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88LOL%E6%AF%94%E8%B5%9B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E2%80%9C%E5%81%87%E4%BA%86%E2%80%9D/" title="为什么LOL比赛越来越“假了”.md">为什么LOL比赛越来越“假了”.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E7%94%B7%E7%94%9F%E5%AE%81%E5%8F%AF%E6%89%93%E6%B8%B8%E6%88%8F%E4%B9%9F%E4%B8%8D%E6%84%BF%E8%BF%BD%E5%A5%B3%E7%94%9F/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E4%BA%BA%E9%80%89%E6%8B%A9%E7%9B%B4%E6%92%AD/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%BB%8A%E6%97%A5%E8%AF%9D%E9%A2%98%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/" title="NAS访问.md">NAS访问.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By xiaoy</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/project/js/utils.js?v=4.13.0"></script><script src="/project/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

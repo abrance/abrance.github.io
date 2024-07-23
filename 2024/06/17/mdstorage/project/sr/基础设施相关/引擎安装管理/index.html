@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>引擎安装管理.md | xiaoy_website</title><meta name="author" content="xiaoy"><meta name="copyright" content="xiaoy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="引擎节点管理模块文档背景引擎节点管理的需求最早可追溯到v1.0.x版本，当时是希望实现任意数量的节点管理构成一个集群，但是因为实现过程中遇到了一些无法解决的问题，故以一种很多限制的形式流传了下来。限制有不少，其中最大的限制是：管理节点必须为奇数，且引擎一旦安装成功，管理节点无法以任何一种形式变更数量、机器、IP地址等。管理节点的数量变更需求每个版本都会有人提起，现如今又正式提出了，故对现状和历史状">
+<meta property="og:type" content="article">
+<meta property="og:title" content="引擎安装管理.md">
+<meta property="og:url" content="https://abrance.github.io/project/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="xiaoy_website">
+<meta property="og:description" content="引擎节点管理模块文档背景引擎节点管理的需求最早可追溯到v1.0.x版本，当时是希望实现任意数量的节点管理构成一个集群，但是因为实现过程中遇到了一些无法解决的问题，故以一种很多限制的形式流传了下来。限制有不少，其中最大的限制是：管理节点必须为奇数，且引擎一旦安装成功，管理节点无法以任何一种形式变更数量、机器、IP地址等。管理节点的数量变更需求每个版本都会有人提起，现如今又正式提出了，故对现状和历史状">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-06-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-23T14:23:35.494Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/project/img/favicon.png"><link rel="canonical" href="https://abrance.github.io/project/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/project/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/project/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '引擎安装管理.md',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-23 22:23:35'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/project/" title="xiaoy_website"><span class="site-name">xiaoy_website</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">引擎安装管理.md</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-06-16T16:00:00.000Z" title="Created 2024-06-17 00:00:00">2024-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-23T14:23:35.494Z" title="Updated 2024-07-23 22:23:35">2024-07-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="引擎安装管理.md"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="引擎节点管理模块文档"><a href="#引擎节点管理模块文档" class="headerlink" title="引擎节点管理模块文档"></a>引擎节点管理模块文档</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>引擎节点管理的需求最早可追溯到v1.0.x版本，当时是希望实现任意数量的节点管理构成一个集群，但是因为实现过程中遇到了一些无法解决的问题，故以一种很多限制的形式流传了下来。<br>限制有不少，其中最大的限制是：管理节点必须为奇数，且引擎一旦安装成功，管理节点无法以任何一种形式变更数量、机器、IP地址等。<br>管理节点的数量变更需求每个版本都会有人提起，现如今又正式提出了，故对现状和历史状态进行一次梳理，以便看清前路。</p>
+<h2 id="名词旧解释"><a href="#名词旧解释" class="headerlink" title="名词旧解释"></a>名词旧解释</h2><ul>
+<li>引擎节点: 一般用来概括称呼管理节点、工作节点、调度节点，不同的类型的节点区别主要是运行的组件不同</li>
+<li>节点添加：为一个全新的OS安装工作节点或调度节点的组件；或者为一个当前引擎其他节点添加工作节点或者调度节点的组件。</li>
+<li>agent: 是installer-sr-server的一部分，它是一个运行在引擎节点的服务，下文中，会将其称呼为installer-sr-agent</li>
+</ul>
+<h2 id="名词新解释"><a href="#名词新解释" class="headerlink" title="名词新解释"></a>名词新解释</h2><ul>
+<li>引擎节点：指一个机器，或者说一个OS上装了石犀引擎的情况下。和旧版的区别在于其不可分&#x2F;不可共享性。</li>
+<li>节点添加：为一个全新的OS安装引擎组件。</li>
+<li>agent：是一个类似边车引擎的东西，属于镜像引擎的需求一部分，下文中，会将其称呼为sr-agent</li>
+</ul>
+<h2 id="演变历史"><a href="#演变历史" class="headerlink" title="演变历史"></a>演变历史</h2><p>目前installer-sr-server能追溯的最早代码位于release-v2.0.2分支，其核心功能是引擎组件的安装。对于节点添加的支持，仅支持工作节点的添加。其添加的实现非常简单，和安装是一致的。也就是说，为某个OS添加工作节点的实现为安装所有引擎组件（含非工作节点组件），通过设置systemd的enabled属性来控制是否运行某些组件。<br>后续版本添加了调度节点的节点添加，但是实现上和工作节点添加差异并不大。</p>
+<p>在1.5版本中，对安装逻辑做了一次重构, 在去掉了installer-sr-agent之后，虽然安装的逻辑发生了较多的变化，但是从节点管理这部分逻辑来看，并没有本质变化。都是和引擎安装复用同一个函数，根据节点类型筛选出需要安装的组件列表，依次执行他们的安装脚本。</p>
+<h3 id="整体设计演变"><a href="#整体设计演变" class="headerlink" title="整体设计演变"></a>整体设计演变</h3><h4 id="原设计伪代码描述"><a href="#原设计伪代码描述" class="headerlink" title="原设计伪代码描述"></a>原设计伪代码描述</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// installer-sr-manager</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Service)</span></span>Install(req InstallReqParam)&#123;</span><br><span class="line">    dbGlobalParam := dosomething(req)</span><br><span class="line">    s.db.Save(dbGlobalParam)</span><br><span class="line"></span><br><span class="line">    dbGlobalParam = s.db.Query(req.EngineID)</span><br><span class="line">    http.PostRequest(install-sr-agent.ip:port, dbGlobalParam)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// installer-sr-agent</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Service)</span></span> Install(req GlobalParam) &#123;</span><br><span class="line">    <span class="comment">// download files from manager</span></span><br><span class="line">    http.GetRequest(installer-sr-manager.ip:port/download, req.PackageVersion)</span><br><span class="line">    s.SaveLocalFile(packagePath,md5)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// parse install config </span></span><br><span class="line">    installConfig := s.ParseConfig(req,enginePackage)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> _, elem := <span class="keyword">range</span> installConfig.ComponentList &#123;</span><br><span class="line">        elem.Install()</span><br><span class="line">        <span class="keyword">if</span> elem.Start &#123;</span><br><span class="line">            systemctlStart(elem)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> elem.Boot &#123;</span><br><span class="line">            systemctlEnable(elem)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        s.SaveLocalFile(elem,installed)</span><br><span class="line">        http.PostRequest(installer-sr-manager.ip:port/report, Progress++)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-5设计伪代码描述"><a href="#1-5设计伪代码描述" class="headerlink" title="1.5设计伪代码描述"></a>1.5设计伪代码描述</h4><p>1.5的版本里面，进度相关的表已经名存实亡，进度和取消由另外的机制来实现。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// installer-sr-manager</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Service)</span></span>Install(req InstallReqParam)&#123;</span><br><span class="line">    dbGlobalParam := dosomething(req)</span><br><span class="line">    s.db.Save(dbGlobalParam)</span><br><span class="line"></span><br><span class="line">    dbGlobalParam = s.db.Query(req.EngineID)</span><br><span class="line"></span><br><span class="line">    sshClient := sshv2.NewClientWithPwd(req)</span><br><span class="line">    sshClient.Upload(req.enginePackage)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, elem := <span class="keyword">range</span> installConfig.ComponentList &#123;</span><br><span class="line">        <span class="comment">// elem.Install() </span></span><br><span class="line">        grpc.PostRequest(webserver.Cmd, <span class="string">&quot;mv $elem /opt/$elem&quot;</span>)</span><br><span class="line">        grpc.PostRequest(webserver.Cmd, <span class="string">&quot;/opt/$elem/scripts/install.sh&quot;</span>)</span><br><span class="line">        s.db.Save(elem)</span><br><span class="line">        progress++</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// webserver</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Service)</span></span> Cmd(req CmdParam) &#123;</span><br><span class="line">    cmd := exec.Command(req.Name,req.Args...)</span><br><span class="line">    cmd.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="依赖问题"><a href="#依赖问题" class="headerlink" title="依赖问题"></a>依赖问题</h2><p>对于将引擎的组件按照类型分割成3部分，并且允许独立安装的做法，最需要考虑的问题是节点与节点间的依赖、组件与组件间的依赖问题。<br>工作节点安装时，其实可以认为是独立的，它不需要依赖管理节点或者调度节点的信息。<br>但是工作节点要想正常工作，那么调度节点就需要知道有哪些工作节点。为了解决信息同步的问题，SX-HA模块从最早开始就介入了节点管理模块，节点的变更的实现对SX-HA模块有较强的依赖，可以认为节点管理是SX-HA和installer-sr-server共同实现的。</p>
+<p>SX-HA主要负责的部分其实是通过k8s+etcd来实现一个动态更新节点列表，并且动态下发配置，并将其称为节点发现模块。它的理念是：SX-HA模块运行时，往公共的注册中心注册自身的节点信息，通过注册中心来保持节点信息的一致性。通过watch机制，来感知注册中心信息的变化，然后更新自身节点的一些配置。<br>在之前的版本实现中，SX-HA还接管了etcd的启动配置生成，这是因为当时也对管理节点的添加删除做了一些尝试，但是以失败告终。</p>
+<h2 id="节点新增"><a href="#节点新增" class="headerlink" title="节点新增"></a>节点新增</h2><p>1.5版本，节点新增支持调度节点新增和工作节点新增。<br>假设有以下引擎</p>
+<table>
+<thead>
+<tr>
+<th>所属引擎</th>
+<th>IP</th>
+<th>角色组合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>1.1.1.1</td>
+<td>M</td>
+</tr>
+<tr>
+<td>A</td>
+<td>1.1.1.2</td>
+<td>MS</td>
+</tr>
+<tr>
+<td>A</td>
+<td>1.1.1.3</td>
+<td>MW</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1.1.1.100</td>
+<td>MSW</td>
+</tr>
+</tbody></table>
+<p>它在manager的节点表中，记录如下</p>
+<table>
+<thead>
+<tr>
+<th>所属引擎</th>
+<th>IP</th>
+<th>角色枚举</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>1.1.1.1</td>
+<td>M</td>
+</tr>
+<tr>
+<td>A</td>
+<td>1.1.1.2</td>
+<td>M</td>
+</tr>
+<tr>
+<td>A</td>
+<td>1.1.1.2</td>
+<td>S</td>
+</tr>
+<tr>
+<td>A</td>
+<td>1.1.1.3</td>
+<td>M</td>
+</tr>
+<tr>
+<td>A</td>
+<td>1.1.1.3</td>
+<td>W</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1.1.1.100</td>
+<td>M</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1.1.1.100</td>
+<td>S</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1.1.1.100</td>
+<td>W</td>
+</tr>
+</tbody></table>
+<p>对于引擎A，它可以通过&lt;节点添加&gt;接口来添加一个1.1.1.1 W（或者S）<br>过程为：<br>在节点表中，添加一条记录<br>| A | 1.1.1.1 | W |<br>然后将每个工作节点的组件都执行一次安装脚本（引擎包会重新传一遍过去）<br>添加完毕后，会调用SX-HA的结构通知一下，后续流程应该是SX-HA模块在处理。</p>
+<h2 id="节点删除"><a href="#节点删除" class="headerlink" title="节点删除"></a>节点删除</h2><p>节点删除并没有什么特别的设计，同样是执行对应组件的脚本，然后通知SX-HA</p>
+<h2 id="节点替换"><a href="#节点替换" class="headerlink" title="节点替换"></a>节点替换</h2><p>调度节点是没有替换的，只有工作节点支持替换</p>
+<p>替换的流程是先在新的节点执行节点添加逻辑，然后在旧的节点执行节点删除逻辑。</p>
+<h2 id="1-6迭代思路"><a href="#1-6迭代思路" class="headerlink" title="1.6迭代思路"></a>1.6迭代思路</h2><p>首先是节点表的定义和需求匹配度已经不够了，要么重新定义一张表，要么修改原有字段的含义，各有各的做法。不过我认为原来的表定义字段存在一些意义不明的字段，直接重设计可以省去理解上的时间。<br>管理节点的添加、删除应该是主要的障碍，目前没有研究过这方面。调度节点1.5没有支持替换，原因可能只有原开发（贺泽）知道</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project">xiaoy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/">https://abrance.github.io/project/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/project/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="installer目录结构.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">installer目录结构.md</div></div></a></div><div class="next-post pull-right"><a href="/project/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" title="生命周期管理方案.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">生命周期管理方案.md</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/project/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">xiaoy</div><div class="author-info__description">小歪星球</div></div><div class="card-info-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E8%8A%82%E7%82%B9%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E6%96%87%E6%A1%A3"><span class="toc-number">1.</span> <span class="toc-text">引擎节点管理模块文档</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E6%97%A7%E8%A7%A3%E9%87%8A"><span class="toc-number">1.2.</span> <span class="toc-text">名词旧解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E6%96%B0%E8%A7%A3%E9%87%8A"><span class="toc-number">1.3.</span> <span class="toc-text">名词新解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E5%8F%98%E5%8E%86%E5%8F%B2"><span class="toc-number">1.4.</span> <span class="toc-text">演变历史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E8%AE%BE%E8%AE%A1%E6%BC%94%E5%8F%98"><span class="toc-number">1.4.1.</span> <span class="toc-text">整体设计演变</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E8%AE%BE%E8%AE%A1%E4%BC%AA%E4%BB%A3%E7%A0%81%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">原设计伪代码描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5%E8%AE%BE%E8%AE%A1%E4%BC%AA%E4%BB%A3%E7%A0%81%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">1.5设计伪代码描述</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.</span> <span class="toc-text">依赖问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E6%96%B0%E5%A2%9E"><span class="toc-number">1.6.</span> <span class="toc-text">节点新增</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E5%88%A0%E9%99%A4"><span class="toc-number">1.7.</span> <span class="toc-text">节点删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E6%9B%BF%E6%8D%A2"><span class="toc-number">1.8.</span> <span class="toc-text">节点替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6%E8%BF%AD%E4%BB%A3%E6%80%9D%E8%B7%AF"><span class="toc-number">1.9.</span> <span class="toc-text">1.6迭代思路</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88LOL%E6%AF%94%E8%B5%9B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E2%80%9C%E5%81%87%E4%BA%86%E2%80%9D/" title="为什么LOL比赛越来越“假了”.md">为什么LOL比赛越来越“假了”.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E7%94%B7%E7%94%9F%E5%AE%81%E5%8F%AF%E6%89%93%E6%B8%B8%E6%88%8F%E4%B9%9F%E4%B8%8D%E6%84%BF%E8%BF%BD%E5%A5%B3%E7%94%9F/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E4%BA%BA%E9%80%89%E6%8B%A9%E7%9B%B4%E6%92%AD/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%BB%8A%E6%97%A5%E8%AF%9D%E9%A2%98%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/" title="NAS访问.md">NAS访问.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By xiaoy</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/project/js/utils.js?v=4.13.0"></script><script src="/project/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

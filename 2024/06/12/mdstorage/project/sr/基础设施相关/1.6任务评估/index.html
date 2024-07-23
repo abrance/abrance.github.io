@@ -1,0 +1,484 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>1.6任务评估 | xiaoy_website</title><meta name="author" content="xiaoy"><meta name="copyright" content="xiaoy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="概述总控 (P2)总控安装相关需求安装脚本中加入IP设置的交互：文档+编码 工时评估：2.4d  打总控包时需要将安装脚本挪到安装包的第一层目录下 工时评估：0.34d  需要调整安装脚本的默认工作目录 工时评估：0.34d  安装的残留清除：文档+编码 工时评估：2.4d  在总控安装时需要将上次残留的总控给清除干净，并进行安装 工时评估：2.2d  环境检测时将内存、CPU核心数、磁盘存储空间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.6任务评估">
+<meta property="og:url" content="https://abrance.github.io/project/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/index.html">
+<meta property="og:site_name" content="xiaoy_website">
+<meta property="og:description" content="概述总控 (P2)总控安装相关需求安装脚本中加入IP设置的交互：文档+编码 工时评估：2.4d  打总控包时需要将安装脚本挪到安装包的第一层目录下 工时评估：0.34d  需要调整安装脚本的默认工作目录 工时评估：0.34d  安装的残留清除：文档+编码 工时评估：2.4d  在总控安装时需要将上次残留的总控给清除干净，并进行安装 工时评估：2.2d  环境检测时将内存、CPU核心数、磁盘存储空间">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-06-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-23T14:23:35.494Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="sr">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/project/img/favicon.png"><link rel="canonical" href="https://abrance.github.io/project/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/project/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/project/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '1.6任务评估',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-23 22:23:35'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/project/" title="xiaoy_website"><span class="site-name">xiaoy_website</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">1.6任务评估</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-06-11T16:00:00.000Z" title="Created 2024-06-12 00:00:00">2024-06-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-23T14:23:35.494Z" title="Updated 2024-07-23 22:23:35">2024-07-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="1.6任务评估"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="总控-P2"><a href="#总控-P2" class="headerlink" title="总控 (P2)"></a>总控 (P2)</h2><h3 id="总控安装相关需求"><a href="#总控安装相关需求" class="headerlink" title="总控安装相关需求"></a>总控安装相关需求</h3><h4 id="安装脚本中加入IP设置的交互：文档-编码"><a href="#安装脚本中加入IP设置的交互：文档-编码" class="headerlink" title="安装脚本中加入IP设置的交互：文档+编码"></a>安装脚本中加入IP设置的交互：文档+编码</h4><ul>
+<li><strong>工时评估</strong>：2.4d</li>
+</ul>
+<h4 id="打总控包时需要将安装脚本挪到安装包的第一层目录下"><a href="#打总控包时需要将安装脚本挪到安装包的第一层目录下" class="headerlink" title="打总控包时需要将安装脚本挪到安装包的第一层目录下"></a>打总控包时需要将安装脚本挪到安装包的第一层目录下</h4><ul>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h4 id="需要调整安装脚本的默认工作目录"><a href="#需要调整安装脚本的默认工作目录" class="headerlink" title="需要调整安装脚本的默认工作目录"></a>需要调整安装脚本的默认工作目录</h4><ul>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h4 id="安装的残留清除：文档-编码"><a href="#安装的残留清除：文档-编码" class="headerlink" title="安装的残留清除：文档+编码"></a>安装的残留清除：文档+编码</h4><ul>
+<li><strong>工时评估</strong>：2.4d</li>
+</ul>
+<h4 id="在总控安装时需要将上次残留的总控给清除干净，并进行安装"><a href="#在总控安装时需要将上次残留的总控给清除干净，并进行安装" class="headerlink" title="在总控安装时需要将上次残留的总控给清除干净，并进行安装"></a>在总控安装时需要将上次残留的总控给清除干净，并进行安装</h4><ul>
+<li><strong>工时评估</strong>：2.2d</li>
+</ul>
+<h4 id="环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件"><a href="#环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件" class="headerlink" title="环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件"></a>环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件</h4><ul>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h4 id="总控数据初始化调整：纯执行"><a href="#总控数据初始化调整：纯执行" class="headerlink" title="总控数据初始化调整：纯执行"></a>总控数据初始化调整：纯执行</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h3 id="总控卸载相关的需求"><a href="#总控卸载相关的需求" class="headerlink" title="总控卸载相关的需求"></a>总控卸载相关的需求</h3><h4 id="打包时将总控的卸载脚本的调整到第一层目录"><a href="#打包时将总控的卸载脚本的调整到第一层目录" class="headerlink" title="打包时将总控的卸载脚本的调整到第一层目录"></a>打包时将总控的卸载脚本的调整到第一层目录</h4><ul>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h4 id="卸载脚本需要调整默认的工作目录位置"><a href="#卸载脚本需要调整默认的工作目录位置" class="headerlink" title="卸载脚本需要调整默认的工作目录位置"></a>卸载脚本需要调整默认的工作目录位置</h4><ul>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h3 id="总控升级相关的需求"><a href="#总控升级相关的需求" class="headerlink" title="总控升级相关的需求"></a>总控升级相关的需求</h3><h4 id="总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）"><a href="#总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）" class="headerlink" title="总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）"></a>总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）</h4><ul>
+<li><strong>工时评估</strong>：5.6d</li>
+</ul>
+<h4 id="在总控数据初始化的时候插件包数据初始化的代码需要做相关调整"><a href="#在总控数据初始化的时候插件包数据初始化的代码需要做相关调整" class="headerlink" title="在总控数据初始化的时候插件包数据初始化的代码需要做相关调整"></a>在总控数据初始化的时候插件包数据初始化的代码需要做相关调整</h4><ul>
+<li><strong>工时评估</strong>：2.2d</li>
+</ul>
+<h4 id="在总控升级包导入的时候需要对插件包导入逻辑做相关的调整"><a href="#在总控升级包导入的时候需要对插件包导入逻辑做相关的调整" class="headerlink" title="在总控升级包导入的时候需要对插件包导入逻辑做相关的调整"></a>在总控升级包导入的时候需要对插件包导入逻辑做相关的调整</h4><ul>
+<li><strong>工时评估</strong>：4.2d</li>
+</ul>
+<h4 id="增加对插件增量包导入的支持"><a href="#增加对插件增量包导入的支持" class="headerlink" title="增加对插件增量包导入的支持"></a>增加对插件增量包导入的支持</h4><ul>
+<li><strong>工时评估</strong>：1.4d</li>
+</ul>
+<h4 id="新增升级管理模块：升级包导入"><a href="#新增升级管理模块：升级包导入" class="headerlink" title="新增升级管理模块：升级包导入"></a>新增升级管理模块：升级包导入</h4><ul>
+<li><strong>工时评估</strong>：4.2d</li>
+<li><strong>细节</strong>：<ul>
+<li>在升级包导入时需要拆分、校验、与记录各个升级单位的数据，如：总控、流量引擎、某个插件。</li>
+<li>需要展示升级包导入状态。</li>
+<li>各个升级单位的版本识别。</li>
+</ul>
+</li>
+</ul>
+<h4 id="新增升级管理模块：展示每个升级单位的版本日志（插件升级，由-sc-调用插件管理程序实现）"><a href="#新增升级管理模块：展示每个升级单位的版本日志（插件升级，由-sc-调用插件管理程序实现）" class="headerlink" title="新增升级管理模块：展示每个升级单位的版本日志（插件升级，由 sc 调用插件管理程序实现）"></a>新增升级管理模块：展示每个升级单位的版本日志（插件升级，由 sc 调用插件管理程序实现）</h4><ul>
+<li><strong>工时评估</strong>：1.4d</li>
+</ul>
+<h4 id="新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）"><a href="#新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）" class="headerlink" title="新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）"></a>新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）</h4><h4 id="新增升级管理模块：聚合已安装-绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表"><a href="#新增升级管理模块：聚合已安装-绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表" class="headerlink" title="新增升级管理模块：聚合已安装&#x2F;绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表"></a>新增升级管理模块：聚合已安装&#x2F;绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表</h4><ul>
+<li><strong>工时评估</strong>：3.2d</li>
+</ul>
+<h4 id="新增升级管理模块：升级状态与进度的展示"><a href="#新增升级管理模块：升级状态与进度的展示" class="headerlink" title="新增升级管理模块：升级状态与进度的展示"></a>新增升级管理模块：升级状态与进度的展示</h4><ul>
+<li><strong>工时评估</strong>：1.4d</li>
+</ul>
+<h4 id="总控升级核心功能：总控各个组件的升级调度逻辑"><a href="#总控升级核心功能：总控各个组件的升级调度逻辑" class="headerlink" title="总控升级核心功能：总控各个组件的升级调度逻辑"></a>总控升级核心功能：总控各个组件的升级调度逻辑</h4><ul>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h4 id="总控升级核心功能：升级进度的反馈逻辑"><a href="#总控升级核心功能：升级进度的反馈逻辑" class="headerlink" title="总控升级核心功能：升级进度的反馈逻辑"></a>总控升级核心功能：升级进度的反馈逻辑</h4><ul>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h4 id="总控升级核心功能：升级失败信息的反馈"><a href="#总控升级核心功能：升级失败信息的反馈" class="headerlink" title="总控升级核心功能：升级失败信息的反馈"></a>总控升级核心功能：升级失败信息的反馈</h4><ul>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h4 id="总控升级核心功能：升级失败的回滚调度"><a href="#总控升级核心功能：升级失败的回滚调度" class="headerlink" title="总控升级核心功能：升级失败的回滚调度"></a>总控升级核心功能：升级失败的回滚调度</h4><ul>
+<li><strong>工时评估</strong>：2.2d</li>
+</ul>
+<h4 id="总控升级核心功能：升级成功的确认调度"><a href="#总控升级核心功能：升级成功的确认调度" class="headerlink" title="总控升级核心功能：升级成功的确认调度"></a>总控升级核心功能：升级成功的确认调度</h4><ul>
+<li><strong>工时评估</strong>：2.2d</li>
+</ul>
+<h2 id="流量引擎-P1"><a href="#流量引擎-P1" class="headerlink" title="流量引擎 (P1)"></a>流量引擎 (P1)</h2><h3 id="引擎安装界面相关"><a href="#引擎安装界面相关" class="headerlink" title="引擎安装界面相关"></a>引擎安装界面相关</h3><h4 id="引擎安装界面新增授权状态过滤选项"><a href="#引擎安装界面新增授权状态过滤选项" class="headerlink" title="引擎安装界面新增授权状态过滤选项"></a>引擎安装界面新增授权状态过滤选项</h4><ul>
+<li><strong>分析</strong>：这个需要 installer 这边查询授权接口，聚合查询。</li>
+<li><strong>关键词</strong>：总控联调、前后端联调</li>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h4 id="引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点"><a href="#引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点" class="headerlink" title="引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点"></a>引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点</h4><ul>
+<li><strong>分析</strong>：这里设计前端修改较大，后端改动不多。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：0.4d</li>
+</ul>
+<h4 id="引擎安装、卸载失败原因后端记录、展示"><a href="#引擎安装、卸载失败原因后端记录、展示" class="headerlink" title="引擎安装、卸载失败原因后端记录、展示"></a>引擎安装、卸载失败原因后端记录、展示</h4><ul>
+<li><strong>分析</strong>：需要加一张引擎生命周期操作表，记录某引擎下的操作，失败原因，时间等信息，便于查询展示。</li>
+<li><strong>关键词</strong>：表结构设计、前后端联调、引擎联调</li>
+<li><strong>工时评估</strong>：1.3d</li>
+</ul>
+<h4 id="已到期、未到期引擎工作节点展示"><a href="#已到期、未到期引擎工作节点展示" class="headerlink" title="已到期、未到期引擎工作节点展示"></a>已到期、未到期引擎工作节点展示</h4><ul>
+<li><strong>分析</strong>：installer 各个工作节点查询授权，聚合展示。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h3 id="节点新增"><a href="#节点新增" class="headerlink" title="节点新增"></a>节点新增</h3><h4 id="节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段"><a href="#节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段" class="headerlink" title="节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段"></a>节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段</h4><ul>
+<li><strong>分析</strong>：新增检测项目。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：1.3d</li>
+</ul>
+<h4 id="允许管理节点扩容，技术调研"><a href="#允许管理节点扩容，技术调研" class="headerlink" title="允许管理节点扩容，技术调研"></a>允许管理节点扩容，技术调研</h4><ul>
+<li><strong>分析</strong>：需要做技术调研，测试，查看相关代码。</li>
+<li><strong>关键词</strong>：技术难点</li>
+<li><strong>工时评估</strong>：3d (做不到)</li>
+</ul>
+<h4 id="管理节点扩容，实现"><a href="#管理节点扩容，实现" class="headerlink" title="管理节点扩容，实现"></a>管理节点扩容，实现</h4><ul>
+<li><strong>分析</strong>：实现管理节点新增。</li>
+<li><strong>关键词</strong>：引擎配合</li>
+<li><strong>工时评估</strong>：3d (做不到)</li>
+</ul>
+<h3 id="引擎安装资源检测"><a href="#引擎安装资源检测" class="headerlink" title="引擎安装资源检测"></a>引擎安装资源检测</h3><h4 id="硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更"><a href="#硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更" class="headerlink" title="硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更"></a>硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更</h4><ul>
+<li><strong>分析</strong>：检测逻辑变更，展示逻辑变更。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：2.6d</li>
+</ul>
+<h4 id="程序冲突检测，冲突则不符合"><a href="#程序冲突检测，冲突则不符合" class="headerlink" title="程序冲突检测，冲突则不符合"></a>程序冲突检测，冲突则不符合</h4><ul>
+<li><strong>分析</strong>：统一程序冲突检测定义逻辑，出相应文档。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：1.3d</li>
+</ul>
+<h4 id="多节点安装并行执行"><a href="#多节点安装并行执行" class="headerlink" title="多节点安装并行执行"></a>多节点安装并行执行</h4><ul>
+<li><strong>分析</strong>：已实现。</li>
+<li><strong>工时评估</strong>：0</li>
+</ul>
+<h4 id="多节点安装，安装失败的引擎节点触发清理操作，卸载干净"><a href="#多节点安装，安装失败的引擎节点触发清理操作，卸载干净" class="headerlink" title="多节点安装，安装失败的引擎节点触发清理操作，卸载干净"></a>多节点安装，安装失败的引擎节点触发清理操作，卸载干净</h4><ul>
+<li><strong>分析</strong>：触发卸载操作，难点在可靠性的保证，当作一个新脚本实现，<code>uninstall --force</code>。</li>
+<li><strong>关键词</strong>：引擎联调、技术方案</li>
+<li><strong>工时评估</strong>：4.2d</li>
+</ul>
+<h4 id="多账户引擎安装操作时，提示引擎正在安装中"><a href="#多账户引擎安装操作时，提示引擎正在安装中" class="headerlink" title="多账户引擎安装操作时，提示引擎正在安装中"></a>多账户引擎安装操作时，提示引擎正在安装中</h4><ul>
+<li><strong>分析</strong>：当重入时，返回相应异常信息。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：1.4d</li>
+</ul>
+<h4 id="引擎编辑页名称重复校验"><a href="#引擎编辑页名称重复校验" class="headerlink" title="引擎编辑页名称重复校验"></a>引擎编辑页名称重复校验</h4><ul>
+<li><strong>分析</strong>：接口处做重复校验。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：0.4d</li>
+</ul>
+<h4 id="引擎安装详情优化"><a href="#引擎安装详情优化" class="headerlink" title="引擎安装详情优化"></a>引擎安装详情优化</h4><ul>
+<li><strong>分析</strong>：前端去掉了一些字段，增加了跳转。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h3 id="卸载优化"><a href="#卸载优化" class="headerlink" title="卸载优化"></a>卸载优化</h3><h4 id="引擎离线时可以强制卸载，（删除对此节点授权）"><a href="#引擎离线时可以强制卸载，（删除对此节点授权）" class="headerlink" title="引擎离线时可以强制卸载，（删除对此节点授权）"></a>引擎离线时可以强制卸载，（删除对此节点授权）</h4><ul>
+<li><strong>分析</strong>：技术难点在于当引擎恢复后，是否影响引擎和总控的工作，需要将所有引擎与总控的通信机制整理出来后，修改机制，当没有获得总控认可，流量不被处理。</li>
+<li><strong>关键词</strong>：前后端联调、技术难点、技术方案</li>
+<li><strong>工时评估</strong>：6.8d</li>
+</ul>
+<h4 id="新增引擎节点离线卸载脚本（执行后该节点会释放资源）"><a href="#新增引擎节点离线卸载脚本（执行后该节点会释放资源）" class="headerlink" title="新增引擎节点离线卸载脚本（执行后该节点会释放资源）"></a>新增引擎节点离线卸载脚本（执行后该节点会释放资源）</h4><ul>
+<li><strong>分析</strong>：每个组件实现节点卸载脚本，卸载脚本执行节点卸载。</li>
+<li><strong>关键词</strong>：引擎联调</li>
+<li><strong>工时评估</strong>：2.6d</li>
+</ul>
+<h4 id="界面卸载交互确认密码"><a href="#界面卸载交互确认密码" class="headerlink" title="界面卸载交互确认密码"></a>界面卸载交互确认密码</h4><ul>
+<li><strong>分析</strong>：确认密码接口。</li>
+<li><strong>关键词</strong>：前后端联调、总控联调</li>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h2 id="边车引擎-P1"><a href="#边车引擎-P1" class="headerlink" title="边车引擎 (P1)"></a>边车引擎 (P1)</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="边车引擎安装列表优化"><a href="#边车引擎安装列表优化" class="headerlink" title="边车引擎安装列表优化"></a>边车引擎安装列表优化</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="安装弹窗优化"><a href="#安装弹窗优化" class="headerlink" title="安装弹窗优化"></a>安装弹窗优化</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="安装详情页优化"><a href="#安装详情页优化" class="headerlink" title="安装详情页优化"></a>安装详情页优化</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="编辑页面优化"><a href="#编辑页面优化" class="headerlink" title="编辑页面优化"></a>编辑页面优化</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="边车引擎资源检测前优化"><a href="#边车引擎资源检测前优化" class="headerlink" title="边车引擎资源检测前优化"></a>边车引擎资源检测前优化</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="安装失败回滚"><a href="#安装失败回滚" class="headerlink" title="安装失败回滚"></a>安装失败回滚</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><h4 id="提供后台强制卸载脚本"><a href="#提供后台强制卸载脚本" class="headerlink" title="提供后台强制卸载脚本"></a>提供后台强制卸载脚本</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="新增强制卸载功能"><a href="#新增强制卸载功能" class="headerlink" title="新增强制卸载功能"></a>新增强制卸载功能</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><h4 id="边车升级包导入"><a href="#边车升级包导入" class="headerlink" title="边车升级包导入"></a>边车升级包导入</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="边车正常升级功能（需要C-组配合提供polycube和envoy升级脚本）"><a href="#边车正常升级功能（需要C-组配合提供polycube和envoy升级脚本）" class="headerlink" title="边车正常升级功能（需要C++组配合提供polycube和envoy升级脚本）"></a>边车正常升级功能（需要C++组配合提供polycube和envoy升级脚本）</h4><ul>
+<li><strong>工时评估</strong>：3d</li>
+</ul>
+<h4 id="升级失败回滚"><a href="#升级失败回滚" class="headerlink" title="升级失败回滚"></a>升级失败回滚</h4><ul>
+<li><strong>工时评估</strong>：3d</li>
+<li><strong>细节</strong>：实现方案或许可以在升级前把<code>/opt</code>目录下的组件先备份，升级失败后恢复相应目录，重启相关组件进程；升级成功则把备份数据删掉。</li>
+</ul>
+<h2 id="镜像引擎-P2"><a href="#镜像引擎-P2" class="headerlink" title="镜像引擎 (P2)"></a>镜像引擎 (P2)</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><h4 id="引擎授权状态查询（暂定调总控接口后聚合）"><a href="#引擎授权状态查询（暂定调总控接口后聚合）" class="headerlink" title="引擎授权状态查询（暂定调总控接口后聚合）"></a>引擎授权状态查询（暂定调总控接口后聚合）</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="名称重复校验（只对已安装的检测）"><a href="#名称重复校验（只对已安装的检测）" class="headerlink" title="名称重复校验（只对已安装的检测）"></a>名称重复校验（只对已安装的检测）</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="名称限制在63长度以下"><a href="#名称限制在63长度以下" class="headerlink" title="名称限制在63长度以下"></a>名称限制在63长度以下</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）"><a href="#安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）" class="headerlink" title="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）"></a>安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）</h4><ul>
+<li><strong>工时评估</strong>：3d</li>
+</ul>
+<h4 id="多账号安装时要加锁"><a href="#多账号安装时要加锁" class="headerlink" title="多账号安装时要加锁"></a>多账号安装时要加锁</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="相关日志要做记录（中间件或统一一种记录方式）"><a href="#相关日志要做记录（中间件或统一一种记录方式）" class="headerlink" title="相关日志要做记录（中间件或统一一种记录方式）"></a>相关日志要做记录（中间件或统一一种记录方式）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）"><a href="#离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）" class="headerlink" title="离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）"></a>离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="离线安装：系统资源可用性检测，判断是否满足安装要求"><a href="#离线安装：系统资源可用性检测，判断是否满足安装要求" class="headerlink" title="离线安装：系统资源可用性检测，判断是否满足安装要求"></a>离线安装：系统资源可用性检测，判断是否满足安装要求</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="离线安装：卸载残留检测"><a href="#离线安装：卸载残留检测" class="headerlink" title="离线安装：卸载残留检测"></a>离线安装：卸载残留检测</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="离线安装：安装包下载接口（新增接口）"><a href="#离线安装：安装包下载接口（新增接口）" class="headerlink" title="离线安装：安装包下载接口（新增接口）"></a>离线安装：安装包下载接口（新增接口）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="离线安装：失败重试-回滚（大概率也会失败，次数和形式待定，是否需要交互）"><a href="#离线安装：失败重试-回滚（大概率也会失败，次数和形式待定，是否需要交互）" class="headerlink" title="离线安装：失败重试&#x2F;回滚（大概率也会失败，次数和形式待定，是否需要交互）"></a>离线安装：失败重试&#x2F;回滚（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）"><a href="#离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）" class="headerlink" title="离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）"></a>离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h3 id="卸载-1"><a href="#卸载-1" class="headerlink" title="卸载"></a>卸载</h3><h4 id="强制卸载，清除相关注册信息"><a href="#强制卸载，清除相关注册信息" class="headerlink" title="强制卸载，清除相关注册信息"></a>强制卸载，清除相关注册信息</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="被强制卸载的引擎若再次重连则不做处理"><a href="#被强制卸载的引擎若再次重连则不做处理" class="headerlink" title="被强制卸载的引擎若再次重连则不做处理"></a>被强制卸载的引擎若再次重连则不做处理</h4><ul>
+<li><strong>工时评估</strong>：5d</li>
+</ul>
+<h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-1"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-1" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"><a href="#失败重试（大概率也会失败，次数和形式待定，是否需要交互）" class="headerlink" title="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"></a>失败重试（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h3 id="升级-1"><a href="#升级-1" class="headerlink" title="升级"></a>升级</h3><h4 id="升级包导入、取消导入（需新增接口，或共用接口）"><a href="#升级包导入、取消导入（需新增接口，或共用接口）" class="headerlink" title="升级包导入、取消导入（需新增接口，或共用接口）"></a>升级包导入、取消导入（需新增接口，或共用接口）</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="changelog（生成方式、内容和存放位置待定）"><a href="#changelog（生成方式、内容和存放位置待定）" class="headerlink" title="changelog（生成方式、内容和存放位置待定）"></a>changelog（生成方式、内容和存放位置待定）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）"><a href="#升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）" class="headerlink" title="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）"></a>升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="多账号升级时要加锁"><a href="#多账号升级时要加锁" class="headerlink" title="多账号升级时要加锁"></a>多账号升级时要加锁</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="卸载升级中的引擎时要报错"><a href="#卸载升级中的引擎时要报错" class="headerlink" title="卸载升级中的引擎时要报错"></a>卸载升级中的引擎时要报错</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="升级时禁止对相关agent操作"><a href="#升级时禁止对相关agent操作" class="headerlink" title="升级时禁止对相关agent操作"></a>升级时禁止对相关agent操作</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="升级包要做依赖记录（需约定记录方式）"><a href="#升级包要做依赖记录（需约定记录方式）" class="headerlink" title="升级包要做依赖记录（需约定记录方式）"></a>升级包要做依赖记录（需约定记录方式）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）"><a href="#升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）" class="headerlink" title="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）"></a>升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h2 id="流量-Agent-P2"><a href="#流量-Agent-P2" class="headerlink" title="流量 Agent (P2)"></a>流量 Agent (P2)</h2><h3 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h3><h4 id="Agent授权状态查询（暂定调总控接口后聚合）"><a href="#Agent授权状态查询（暂定调总控接口后聚合）" class="headerlink" title="Agent授权状态查询（暂定调总控接口后聚合）"></a>Agent授权状态查询（暂定调总控接口后聚合）</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="名称重复校验（只对已安装的检测）-1"><a href="#名称重复校验（只对已安装的检测）-1" class="headerlink" title="名称重复校验（只对已安装的检测）"></a>名称重复校验（只对已安装的检测）</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="名称限制在63长度以下-1"><a href="#名称限制在63长度以下-1" class="headerlink" title="名称限制在63长度以下"></a>名称限制在63长度以下</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-2"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-2" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）-1"><a href="#安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）-1" class="headerlink" title="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）"></a>安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）</h4><ul>
+<li><strong>工时评估</strong>：3d</li>
+</ul>
+<h4 id="多账号安装时要加锁-1"><a href="#多账号安装时要加锁-1" class="headerlink" title="多账号安装时要加锁"></a>多账号安装时要加锁</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="相关日志要做记录（中间件或统一一种记录方式）（给总控做）"><a href="#相关日志要做记录（中间件或统一一种记录方式）（给总控做）" class="headerlink" title="相关日志要做记录（中间件或统一一种记录方式）（给总控做）"></a>相关日志要做记录（中间件或统一一种记录方式）（给总控做）</h4><h4 id="组件要加版本号并记录（信息存放位置及内容不确定）"><a href="#组件要加版本号并记录（信息存放位置及内容不确定）" class="headerlink" title="组件要加版本号并记录（信息存放位置及内容不确定）"></a>组件要加版本号并记录（信息存放位置及内容不确定）</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h3 id="卸载-2"><a href="#卸载-2" class="headerlink" title="卸载"></a>卸载</h3><h4 id="强制卸载，清除相关注册信息-1"><a href="#强制卸载，清除相关注册信息-1" class="headerlink" title="强制卸载，清除相关注册信息"></a>强制卸载，清除相关注册信息</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="被强制卸载的Agent若再次重连则不做处理（需要C-组处理）"><a href="#被强制卸载的Agent若再次重连则不做处理（需要C-组处理）" class="headerlink" title="被强制卸载的Agent若再次重连则不做处理（需要C++组处理）"></a>被强制卸载的Agent若再次重连则不做处理（需要C++组处理）</h4><h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-3"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-3" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="失败重试（大概率也会失败，次数和形式待定，是否需要交互）-1"><a href="#失败重试（大概率也会失败，次数和形式待定，是否需要交互）-1" class="headerlink" title="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"></a>失败重试（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h3 id="卸载-3"><a href="#卸载-3" class="headerlink" title="卸载"></a>卸载</h3><h4 id="强制卸载，清除相关注册信息-2"><a href="#强制卸载，清除相关注册信息-2" class="headerlink" title="强制卸载，清除相关注册信息"></a>强制卸载，清除相关注册信息</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="被强制卸载的Agent若再次重连则不做处理（需要C-组处理）-1"><a href="#被强制卸载的Agent若再次重连则不做处理（需要C-组处理）-1" class="headerlink" title="被强制卸载的Agent若再次重连则不做处理（需要C++组处理）"></a>被强制卸载的Agent若再次重连则不做处理（需要C++组处理）</h4><h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-4"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-4" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="失败重试（大概率也会失败，次数和形式待定，是否需要交互）-2"><a href="#失败重试（大概率也会失败，次数和形式待定，是否需要交互）-2" class="headerlink" title="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"></a>失败重试（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h3 id="升级-2"><a href="#升级-2" class="headerlink" title="升级"></a>升级</h3><h4 id="升级包导入、取消导入（需新增接口，或共用接口）-1"><a href="#升级包导入、取消导入（需新增接口，或共用接口）-1" class="headerlink" title="升级包导入、取消导入（需新增接口，或共用接口）"></a>升级包导入、取消导入（需新增接口，或共用接口）</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="changelog（生成方式、内容和存放位置待定）-1"><a href="#changelog（生成方式、内容和存放位置待定）-1" class="headerlink" title="changelog（生成方式、内容和存放位置待定）"></a>changelog（生成方式、内容和存放位置待定）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）-1"><a href="#升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）-1" class="headerlink" title="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）"></a>升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="多账号升级时要加锁-1"><a href="#多账号升级时要加锁-1" class="headerlink" title="多账号升级时要加锁"></a>多账号升级时要加锁</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="卸载升级中的引擎时要报错-1"><a href="#卸载升级中的引擎时要报错-1" class="headerlink" title="卸载升级中的引擎时要报错"></a>卸载升级中的引擎时要报错</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="升级时禁止编辑挂起等等操作"><a href="#升级时禁止编辑挂起等等操作" class="headerlink" title="升级时禁止编辑挂起等等操作"></a>升级时禁止编辑挂起等等操作</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="升级包要做依赖记录（需约定记录方式）-1"><a href="#升级包要做依赖记录（需约定记录方式）-1" class="headerlink" title="升级包要做依赖记录（需约定记录方式）"></a>升级包要做依赖记录（需约定记录方式）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）-1"><a href="#升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）-1" class="headerlink" title="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）"></a>升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project">xiaoy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/">https://abrance.github.io/project/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/project/tags/sr/">sr</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/project/2024/06/16/mdstorage/project/life/%E8%B4%A2%E5%8A%A1%E6%80%BB%E7%BB%93%E5%A4%A7%E4%BC%9A-6.16/" title="财务总结大会-6.16.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">财务总结大会-6.16.md</div></div></a></div><div class="next-post pull-right"><a href="/project/2024/06/07/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/sr%E5%AE%89%E8%A3%85/" title="sr安装.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">sr安装.md</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/project/2024/04/07/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E7%AE%A1%E7%90%86%E9%9D%A2HA%E6%94%B9%E9%80%A0%E7%AD%94%E7%96%91/" title="管理面HA改造答疑.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-07</div><div class="title">管理面HA改造答疑.md</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/project/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">xiaoy</div><div class="author-info__description">小歪星球</div></div><div class="card-info-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7-P2"><span class="toc-number">1.1.</span> <span class="toc-text">总控 (P2)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E5%AE%89%E8%A3%85%E7%9B%B8%E5%85%B3%E9%9C%80%E6%B1%82"><span class="toc-number">1.1.1.</span> <span class="toc-text">总控安装相关需求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%8A%A0%E5%85%A5IP%E8%AE%BE%E7%BD%AE%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%9A%E6%96%87%E6%A1%A3-%E7%BC%96%E7%A0%81"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">安装脚本中加入IP设置的交互：文档+编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E6%80%BB%E6%8E%A7%E5%8C%85%E6%97%B6%E9%9C%80%E8%A6%81%E5%B0%86%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E6%8C%AA%E5%88%B0%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AC%AC%E4%B8%80%E5%B1%82%E7%9B%AE%E5%BD%95%E4%B8%8B"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">打总控包时需要将安装脚本挪到安装包的第一层目录下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E8%B0%83%E6%95%B4%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E7%9A%84%E9%BB%98%E8%AE%A4%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">需要调整安装脚本的默认工作目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%9A%84%E6%AE%8B%E7%95%99%E6%B8%85%E9%99%A4%EF%BC%9A%E6%96%87%E6%A1%A3-%E7%BC%96%E7%A0%81"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">安装的残留清除：文档+编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%80%BB%E6%8E%A7%E5%AE%89%E8%A3%85%E6%97%B6%E9%9C%80%E8%A6%81%E5%B0%86%E4%B8%8A%E6%AC%A1%E6%AE%8B%E7%95%99%E7%9A%84%E6%80%BB%E6%8E%A7%E7%BB%99%E6%B8%85%E9%99%A4%E5%B9%B2%E5%87%80%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">在总控安装时需要将上次残留的总控给清除干净，并进行安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%A3%80%E6%B5%8B%E6%97%B6%E5%B0%86%E5%86%85%E5%AD%98%E3%80%81CPU%E6%A0%B8%E5%BF%83%E6%95%B0%E3%80%81%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E8%B5%84%E6%BA%90%E6%A0%A1%E9%AA%8C%E8%B0%83%E6%95%B4%E4%B8%BA%E9%9D%9E%E7%A1%AC%E6%80%A7%E8%A6%81%E6%B1%82%E7%9A%84%E5%AE%89%E8%A3%85%E6%A3%80%E6%B5%8B%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E6%95%B0%E6%8D%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E8%B0%83%E6%95%B4%EF%BC%9A%E7%BA%AF%E6%89%A7%E8%A1%8C"><span class="toc-number">1.1.1.7.</span> <span class="toc-text">总控数据初始化调整：纯执行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E5%8D%B8%E8%BD%BD%E7%9B%B8%E5%85%B3%E7%9A%84%E9%9C%80%E6%B1%82"><span class="toc-number">1.1.2.</span> <span class="toc-text">总控卸载相关的需求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E6%97%B6%E5%B0%86%E6%80%BB%E6%8E%A7%E7%9A%84%E5%8D%B8%E8%BD%BD%E8%84%9A%E6%9C%AC%E7%9A%84%E8%B0%83%E6%95%B4%E5%88%B0%E7%AC%AC%E4%B8%80%E5%B1%82%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">打包时将总控的卸载脚本的调整到第一层目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E8%84%9A%E6%9C%AC%E9%9C%80%E8%A6%81%E8%B0%83%E6%95%B4%E9%BB%98%E8%AE%A4%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">卸载脚本需要调整默认的工作目录位置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E5%8D%87%E7%BA%A7%E7%9B%B8%E5%85%B3%E7%9A%84%E9%9C%80%E6%B1%82"><span class="toc-number">1.1.3.</span> <span class="toc-text">总控升级相关的需求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E5%8C%85%E3%80%81%E6%8F%92%E4%BB%B6%E5%8C%85%E7%9A%84%E6%89%93%E5%8C%85%E6%8B%86%E5%88%86%EF%BC%9A%E7%BA%AF%E6%89%A7%E8%A1%8C%EF%BC%88%E9%9C%80%E8%A6%81%E5%89%8D%E7%BD%AE%E5%AE%8C%E6%88%90%E2%80%94-%E7%BB%84%E4%BB%B6%E4%B8%8E%E7%BB%93%E6%9E%84%E4%B8%8E%E5%AE%9A%E4%B9%89%EF%BC%89"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%80%BB%E6%8E%A7%E6%95%B0%E6%8D%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E6%97%B6%E5%80%99%E6%8F%92%E4%BB%B6%E5%8C%85%E6%95%B0%E6%8D%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E4%BB%A3%E7%A0%81%E9%9C%80%E8%A6%81%E5%81%9A%E7%9B%B8%E5%85%B3%E8%B0%83%E6%95%B4"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">在总控数据初始化的时候插件包数据初始化的代码需要做相关调整</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%80%BB%E6%8E%A7%E5%8D%87%E7%BA%A7%E5%8C%85%E5%AF%BC%E5%85%A5%E7%9A%84%E6%97%B6%E5%80%99%E9%9C%80%E8%A6%81%E5%AF%B9%E6%8F%92%E4%BB%B6%E5%8C%85%E5%AF%BC%E5%85%A5%E9%80%BB%E8%BE%91%E5%81%9A%E7%9B%B8%E5%85%B3%E7%9A%84%E8%B0%83%E6%95%B4"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">在总控升级包导入的时候需要对插件包导入逻辑做相关的调整</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%AF%B9%E6%8F%92%E4%BB%B6%E5%A2%9E%E9%87%8F%E5%8C%85%E5%AF%BC%E5%85%A5%E7%9A%84%E6%94%AF%E6%8C%81"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">增加对插件增量包导入的支持</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%8D%87%E7%BA%A7%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%EF%BC%9A%E5%8D%87%E7%BA%A7%E5%8C%85%E5%AF%BC%E5%85%A5"><span class="toc-number">1.1.3.5.</span> <span class="toc-text">新增升级管理模块：升级包导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%8D%87%E7%BA%A7%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%EF%BC%9A%E5%B1%95%E7%A4%BA%E6%AF%8F%E4%B8%AA%E5%8D%87%E7%BA%A7%E5%8D%95%E4%BD%8D%E7%9A%84%E7%89%88%E6%9C%AC%E6%97%A5%E5%BF%97%EF%BC%88%E6%8F%92%E4%BB%B6%E5%8D%87%E7%BA%A7%EF%BC%8C%E7%94%B1-sc-%E8%B0%83%E7%94%A8%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0%EF%BC%89"><span class="toc-number">1.1.3.6.</span> <span class="toc-text">新增升级管理模块：展示每个升级单位的版本日志（插件升级，由 sc 调用插件管理程序实现）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%8D%87%E7%BA%A7%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%EF%BC%9A%E5%90%84%E4%B8%AA%E5%8D%87%E7%BA%A7%E5%8D%95%E4%BD%8D%E7%9A%84%E7%89%88%E6%9C%AC%E6%97%A5%E5%BF%97%E7%BB%B4%E6%8A%A4%EF%BC%88%E6%96%87%E6%A1%88%E7%94%B1%E4%BA%A7%E5%93%81%E7%BB%B4%E6%8A%A4%EF%BC%8C%E5%86%99%E5%88%B0%E5%8C%85%E4%B8%AD%EF%BC%8C%E5%AF%BC%E5%85%A5%E5%8C%85%E6%97%B6%E5%86%99%E5%85%A5%E4%B8%80%E5%BC%A0%E8%A1%A8%E4%B8%AD%E7%BB%B4%E6%8A%A4%EF%BC%89"><span class="toc-number">1.1.3.7.</span> <span class="toc-text">新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%8D%87%E7%BA%A7%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%EF%BC%9A%E8%81%9A%E5%90%88%E5%B7%B2%E5%AE%89%E8%A3%85-%E7%BB%91%E5%AE%9A%E7%9A%84%E6%B5%81%E9%87%8F%E5%BC%95%E6%93%8E%E3%80%81%E8%BE%B9%E8%BD%A6%E5%BC%95%E6%93%8E%E3%80%81%E9%95%9C%E5%83%8F%E5%BC%95%E6%93%8E%E3%80%81%E6%8F%92%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%B1%95%E7%A4%BA%E5%8D%87%E7%BA%A7%E5%88%97%E8%A1%A8"><span class="toc-number">1.1.3.8.</span> <span class="toc-text">新增升级管理模块：聚合已安装&#x2F;绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%8D%87%E7%BA%A7%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%EF%BC%9A%E5%8D%87%E7%BA%A7%E7%8A%B6%E6%80%81%E4%B8%8E%E8%BF%9B%E5%BA%A6%E7%9A%84%E5%B1%95%E7%A4%BA"><span class="toc-number">1.1.3.9.</span> <span class="toc-text">新增升级管理模块：升级状态与进度的展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E5%8D%87%E7%BA%A7%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%EF%BC%9A%E6%80%BB%E6%8E%A7%E5%90%84%E4%B8%AA%E7%BB%84%E4%BB%B6%E7%9A%84%E5%8D%87%E7%BA%A7%E8%B0%83%E5%BA%A6%E9%80%BB%E8%BE%91"><span class="toc-number">1.1.3.10.</span> <span class="toc-text">总控升级核心功能：总控各个组件的升级调度逻辑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E5%8D%87%E7%BA%A7%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%EF%BC%9A%E5%8D%87%E7%BA%A7%E8%BF%9B%E5%BA%A6%E7%9A%84%E5%8F%8D%E9%A6%88%E9%80%BB%E8%BE%91"><span class="toc-number">1.1.3.11.</span> <span class="toc-text">总控升级核心功能：升级进度的反馈逻辑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E5%8D%87%E7%BA%A7%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%EF%BC%9A%E5%8D%87%E7%BA%A7%E5%A4%B1%E8%B4%A5%E4%BF%A1%E6%81%AF%E7%9A%84%E5%8F%8D%E9%A6%88"><span class="toc-number">1.1.3.12.</span> <span class="toc-text">总控升级核心功能：升级失败信息的反馈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E5%8D%87%E7%BA%A7%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%EF%BC%9A%E5%8D%87%E7%BA%A7%E5%A4%B1%E8%B4%A5%E7%9A%84%E5%9B%9E%E6%BB%9A%E8%B0%83%E5%BA%A6"><span class="toc-number">1.1.3.13.</span> <span class="toc-text">总控升级核心功能：升级失败的回滚调度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7%E5%8D%87%E7%BA%A7%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%EF%BC%9A%E5%8D%87%E7%BA%A7%E6%88%90%E5%8A%9F%E7%9A%84%E7%A1%AE%E8%AE%A4%E8%B0%83%E5%BA%A6"><span class="toc-number">1.1.3.14.</span> <span class="toc-text">总控升级核心功能：升级成功的确认调度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E5%BC%95%E6%93%8E-P1"><span class="toc-number">1.2.</span> <span class="toc-text">流量引擎 (P1)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%95%8C%E9%9D%A2%E7%9B%B8%E5%85%B3"><span class="toc-number">1.2.1.</span> <span class="toc-text">引擎安装界面相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%95%8C%E9%9D%A2%E6%96%B0%E5%A2%9E%E6%8E%88%E6%9D%83%E7%8A%B6%E6%80%81%E8%BF%87%E6%BB%A4%E9%80%89%E9%A1%B9"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">引擎安装界面新增授权状态过滤选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%95%8C%E9%9D%A2%E6%96%B0%E5%A2%9E%E5%8F%AF%E7%94%A8%E8%8A%82%E7%82%B9%E3%80%81%E8%B0%83%E5%87%BA%E5%BE%85%E5%AE%89%E8%A3%85%E5%B7%A5%E4%BD%9C%E8%8A%82%E7%82%B9%E3%80%81%E5%B7%B2%E5%AE%89%E8%A3%85%E5%B7%A5%E4%BD%9C%E8%8A%82%E7%82%B9"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E3%80%81%E5%8D%B8%E8%BD%BD%E5%A4%B1%E8%B4%A5%E5%8E%9F%E5%9B%A0%E5%90%8E%E7%AB%AF%E8%AE%B0%E5%BD%95%E3%80%81%E5%B1%95%E7%A4%BA"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">引擎安装、卸载失败原因后端记录、展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%B2%E5%88%B0%E6%9C%9F%E3%80%81%E6%9C%AA%E5%88%B0%E6%9C%9F%E5%BC%95%E6%93%8E%E5%B7%A5%E4%BD%9C%E8%8A%82%E7%82%B9%E5%B1%95%E7%A4%BA"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">已到期、未到期引擎工作节点展示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E6%96%B0%E5%A2%9E"><span class="toc-number">1.2.2.</span> <span class="toc-text">节点新增</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E6%89%A9%E5%AE%B9%E6%96%B0%E5%A2%9E%E6%A0%A1%E9%AA%8C%E9%80%BB%E8%BE%91%EF%BC%9A%E7%AE%A1%E7%90%86%E8%8A%82%E7%82%B9%E5%8F%AA%E8%83%BD%E6%98%AF%E6%8A%80%E6%9C%AF%EF%BC%8C%E8%8A%82%E7%82%B9%E5%90%8D%E7%A7%B0%E4%B8%8D%E5%85%81%E8%AE%B8%E9%87%8D%E5%A4%8D%EF%BC%8C%E4%B8%9A%E5%8A%A1%E5%8F%A3%E7%BD%91%E5%8D%A1%E4%B8%8D%E4%B8%8E%E6%80%BB%E6%8E%A7%E5%90%8C%E7%BD%91%E6%AE%B5"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%81%E8%AE%B8%E7%AE%A1%E7%90%86%E8%8A%82%E7%82%B9%E6%89%A9%E5%AE%B9%EF%BC%8C%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">允许管理节点扩容，技术调研</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E8%8A%82%E7%82%B9%E6%89%A9%E5%AE%B9%EF%BC%8C%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">管理节点扩容，实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E8%B5%84%E6%BA%90%E6%A3%80%E6%B5%8B"><span class="toc-number">1.2.3.</span> <span class="toc-text">引擎安装资源检测</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%A3%80%E6%B5%8B%E6%98%AF%E5%90%A6%E6%BB%A1%E8%B6%B3%E5%9F%BA%E7%A1%80%E8%A6%81%E6%B1%82%EF%BC%8C%E5%8E%BB%E6%8E%89%E6%A0%87%E5%87%86%E8%A6%81%E6%B1%82%EF%BC%8C%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA%E9%80%BB%E8%BE%91%E5%8F%98%E6%9B%B4"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%86%B2%E7%AA%81%E6%A3%80%E6%B5%8B%EF%BC%8C%E5%86%B2%E7%AA%81%E5%88%99%E4%B8%8D%E7%AC%A6%E5%90%88"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">程序冲突检测，冲突则不符合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%E5%B9%B6%E8%A1%8C%E6%89%A7%E8%A1%8C"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">多节点安装并行执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%EF%BC%8C%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5%E7%9A%84%E5%BC%95%E6%93%8E%E8%8A%82%E7%82%B9%E8%A7%A6%E5%8F%91%E6%B8%85%E7%90%86%E6%93%8D%E4%BD%9C%EF%BC%8C%E5%8D%B8%E8%BD%BD%E5%B9%B2%E5%87%80"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">多节点安装，安装失败的引擎节点触发清理操作，卸载干净</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%B4%A6%E6%88%B7%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E6%93%8D%E4%BD%9C%E6%97%B6%EF%BC%8C%E6%8F%90%E7%A4%BA%E5%BC%95%E6%93%8E%E6%AD%A3%E5%9C%A8%E5%AE%89%E8%A3%85%E4%B8%AD"><span class="toc-number">1.2.3.5.</span> <span class="toc-text">多账户引擎安装操作时，提示引擎正在安装中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E7%BC%96%E8%BE%91%E9%A1%B5%E5%90%8D%E7%A7%B0%E9%87%8D%E5%A4%8D%E6%A0%A1%E9%AA%8C"><span class="toc-number">1.2.3.6.</span> <span class="toc-text">引擎编辑页名称重复校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E8%AF%A6%E6%83%85%E4%BC%98%E5%8C%96"><span class="toc-number">1.2.3.7.</span> <span class="toc-text">引擎安装详情优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E4%BC%98%E5%8C%96"><span class="toc-number">1.2.4.</span> <span class="toc-text">卸载优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E7%A6%BB%E7%BA%BF%E6%97%B6%E5%8F%AF%E4%BB%A5%E5%BC%BA%E5%88%B6%E5%8D%B8%E8%BD%BD%EF%BC%8C%EF%BC%88%E5%88%A0%E9%99%A4%E5%AF%B9%E6%AD%A4%E8%8A%82%E7%82%B9%E6%8E%88%E6%9D%83%EF%BC%89"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">引擎离线时可以强制卸载，（删除对此节点授权）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%BC%95%E6%93%8E%E8%8A%82%E7%82%B9%E7%A6%BB%E7%BA%BF%E5%8D%B8%E8%BD%BD%E8%84%9A%E6%9C%AC%EF%BC%88%E6%89%A7%E8%A1%8C%E5%90%8E%E8%AF%A5%E8%8A%82%E7%82%B9%E4%BC%9A%E9%87%8A%E6%94%BE%E8%B5%84%E6%BA%90%EF%BC%89"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">新增引擎节点离线卸载脚本（执行后该节点会释放资源）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%95%8C%E9%9D%A2%E5%8D%B8%E8%BD%BD%E4%BA%A4%E4%BA%92%E7%A1%AE%E8%AE%A4%E5%AF%86%E7%A0%81"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">界面卸载交互确认密码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%B9%E8%BD%A6%E5%BC%95%E6%93%8E-P1"><span class="toc-number">1.3.</span> <span class="toc-text">边车引擎 (P1)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%B9%E8%BD%A6%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E5%88%97%E8%A1%A8%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">边车引擎安装列表优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%BC%B9%E7%AA%97%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">安装弹窗优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%AF%A6%E6%83%85%E9%A1%B5%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">安装详情页优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E9%A1%B5%E9%9D%A2%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">编辑页面优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%B9%E8%BD%A6%E5%BC%95%E6%93%8E%E8%B5%84%E6%BA%90%E6%A3%80%E6%B5%8B%E5%89%8D%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">边车引擎资源检测前优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5%E5%9B%9E%E6%BB%9A"><span class="toc-number">1.3.1.6.</span> <span class="toc-text">安装失败回滚</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD"><span class="toc-number">1.3.2.</span> <span class="toc-text">卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E4%BE%9B%E5%90%8E%E5%8F%B0%E5%BC%BA%E5%88%B6%E5%8D%B8%E8%BD%BD%E8%84%9A%E6%9C%AC"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">提供后台强制卸载脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%BC%BA%E5%88%B6%E5%8D%B8%E8%BD%BD%E5%8A%9F%E8%83%BD"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">新增强制卸载功能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7"><span class="toc-number">1.3.3.</span> <span class="toc-text">升级</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%B9%E8%BD%A6%E5%8D%87%E7%BA%A7%E5%8C%85%E5%AF%BC%E5%85%A5"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">边车升级包导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%B9%E8%BD%A6%E6%AD%A3%E5%B8%B8%E5%8D%87%E7%BA%A7%E5%8A%9F%E8%83%BD%EF%BC%88%E9%9C%80%E8%A6%81C-%E7%BB%84%E9%85%8D%E5%90%88%E6%8F%90%E4%BE%9Bpolycube%E5%92%8Cenvoy%E5%8D%87%E7%BA%A7%E8%84%9A%E6%9C%AC%EF%BC%89"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">边车正常升级功能（需要C++组配合提供polycube和envoy升级脚本）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%A4%B1%E8%B4%A5%E5%9B%9E%E6%BB%9A"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">升级失败回滚</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E5%BC%95%E6%93%8E-P2"><span class="toc-number">1.4.</span> <span class="toc-text">镜像引擎 (P2)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E6%8E%88%E6%9D%83%E7%8A%B6%E6%80%81%E6%9F%A5%E8%AF%A2%EF%BC%88%E6%9A%82%E5%AE%9A%E8%B0%83%E6%80%BB%E6%8E%A7%E6%8E%A5%E5%8F%A3%E5%90%8E%E8%81%9A%E5%90%88%EF%BC%89"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">引擎授权状态查询（暂定调总控接口后聚合）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8D%E7%A7%B0%E9%87%8D%E5%A4%8D%E6%A0%A1%E9%AA%8C%EF%BC%88%E5%8F%AA%E5%AF%B9%E5%B7%B2%E5%AE%89%E8%A3%85%E7%9A%84%E6%A3%80%E6%B5%8B%EF%BC%89"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">名称重复校验（只对已安装的检测）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8D%E7%A7%B0%E9%99%90%E5%88%B6%E5%9C%A863%E9%95%BF%E5%BA%A6%E4%BB%A5%E4%B8%8B"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">名称限制在63长度以下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%82%B9%E5%87%BB%E5%8F%96%E6%B6%88%E5%AE%89%E8%A3%85%EF%BC%88%E9%80%9F%E5%BA%A6%E5%BE%88%E5%BF%AB%EF%BC%8C%E5%8F%AF%E8%83%BD%E8%BF%98%E6%B2%A1%E7%82%B9%E5%87%BB%E5%B0%B1%E5%AE%89%E8%A3%85%E5%AE%8C%E4%BA%86%EF%BC%89%EF%BC%88%E9%9C%80%E6%96%B0%E5%A2%9E%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%8F%AF%E6%96%B0%E5%A2%9E%E4%B8%80%E4%B8%AA%E7%8A%B6%E6%80%81%EF%BC%89"><span class="toc-number">1.4.1.4.</span> <span class="toc-text">安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%B4%A6%E5%8F%B7%E5%AE%89%E8%A3%85%E6%97%B6%E8%A6%81%E5%8A%A0%E9%94%81"><span class="toc-number">1.4.1.5.</span> <span class="toc-text">多账号安装时要加锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%97%A5%E5%BF%97%E8%A6%81%E5%81%9A%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%88%96%E7%BB%9F%E4%B8%80%E4%B8%80%E7%A7%8D%E8%AE%B0%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="toc-number">1.4.1.6.</span> <span class="toc-text">相关日志要做记录（中间件或统一一种记录方式）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E5%BA%A6%E6%9D%A1%EF%BC%88%E4%B8%8E%E5%89%8D%E7%AB%AF%E7%BA%A6%E5%AE%9A%E6%88%96%E8%87%AA%E8%A1%8C%E8%AE%A1%E7%AE%97%EF%BC%88%E5%8F%AF%E8%83%BD%E8%A6%81%E4%BF%AE%E6%94%B9%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5%EF%BC%89%EF%BC%89"><span class="toc-number">1.4.1.7.</span> <span class="toc-text">进度条（与前端约定或自行计算（可能要修改返回字段））</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%EF%BC%9A%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94%E7%9A%84%E5%AE%89%E8%A3%85%E5%8C%85%EF%BC%88%E6%8B%86%E5%8C%85%E5%86%8D%E4%BF%AE%E6%94%B9%E5%86%8D%E6%89%93%E5%8C%85%EF%BC%8CCPU%E5%92%8C%E7%A3%81%E7%9B%98%E6%80%A7%E8%83%BD%E5%B7%AE%E6%97%B6%E4%BC%9A%E5%BD%B1%E5%93%8D%E6%95%88%E7%8E%87%EF%BC%8C%E9%9C%80%E6%96%B0%E5%A2%9E%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">1.4.1.8.</span> <span class="toc-text">离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%EF%BC%9A%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90%E5%8F%AF%E7%94%A8%E6%80%A7%E6%A3%80%E6%B5%8B%EF%BC%8C%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%BB%A1%E8%B6%B3%E5%AE%89%E8%A3%85%E8%A6%81%E6%B1%82"><span class="toc-number">1.4.1.9.</span> <span class="toc-text">离线安装：系统资源可用性检测，判断是否满足安装要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%EF%BC%9A%E5%8D%B8%E8%BD%BD%E6%AE%8B%E7%95%99%E6%A3%80%E6%B5%8B"><span class="toc-number">1.4.1.10.</span> <span class="toc-text">离线安装：卸载残留检测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%EF%BC%9A%E5%AE%89%E8%A3%85%E5%8C%85%E4%B8%8B%E8%BD%BD%E6%8E%A5%E5%8F%A3%EF%BC%88%E6%96%B0%E5%A2%9E%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">1.4.1.11.</span> <span class="toc-text">离线安装：安装包下载接口（新增接口）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%EF%BC%9A%E5%A4%B1%E8%B4%A5%E9%87%8D%E8%AF%95-%E5%9B%9E%E6%BB%9A%EF%BC%88%E5%A4%A7%E6%A6%82%E7%8E%87%E4%B9%9F%E4%BC%9A%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%AC%A1%E6%95%B0%E5%92%8C%E5%BD%A2%E5%BC%8F%E5%BE%85%E5%AE%9A%EF%BC%8C%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E4%BA%A4%E4%BA%92%EF%BC%89"><span class="toc-number">1.4.1.12.</span> <span class="toc-text">离线安装：失败重试&#x2F;回滚（大概率也会失败，次数和形式待定，是否需要交互）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%EF%BC%9A%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%91%E6%80%BB%E6%8E%A7%EF%BC%88installer%EF%BC%89%E6%B3%A8%E5%86%8C%EF%BC%88%E6%88%90%E5%8A%9F%E5%A4%B1%E8%B4%A5%E9%83%BD%E9%9C%80%E8%A6%81%EF%BC%9B%E9%9C%80%E6%80%BB%E6%8E%A7%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%B3%A8%E5%86%8C%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">1.4.1.13.</span> <span class="toc-text">离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD-1"><span class="toc-number">1.4.2.</span> <span class="toc-text">卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E5%8D%B8%E8%BD%BD%EF%BC%8C%E6%B8%85%E9%99%A4%E7%9B%B8%E5%85%B3%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">强制卸载，清除相关注册信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A2%AB%E5%BC%BA%E5%88%B6%E5%8D%B8%E8%BD%BD%E7%9A%84%E5%BC%95%E6%93%8E%E8%8B%A5%E5%86%8D%E6%AC%A1%E9%87%8D%E8%BF%9E%E5%88%99%E4%B8%8D%E5%81%9A%E5%A4%84%E7%90%86"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">被强制卸载的引擎若再次重连则不做处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E5%BA%A6%E6%9D%A1%EF%BC%88%E4%B8%8E%E5%89%8D%E7%AB%AF%E7%BA%A6%E5%AE%9A%E6%88%96%E8%87%AA%E8%A1%8C%E8%AE%A1%E7%AE%97%EF%BC%88%E5%8F%AF%E8%83%BD%E8%A6%81%E4%BF%AE%E6%94%B9%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5%EF%BC%89%EF%BC%89-1"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">进度条（与前端约定或自行计算（可能要修改返回字段））</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%B1%E8%B4%A5%E9%87%8D%E8%AF%95%EF%BC%88%E5%A4%A7%E6%A6%82%E7%8E%87%E4%B9%9F%E4%BC%9A%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%AC%A1%E6%95%B0%E5%92%8C%E5%BD%A2%E5%BC%8F%E5%BE%85%E5%AE%9A%EF%BC%8C%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E4%BA%A4%E4%BA%92%EF%BC%89"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">失败重试（大概率也会失败，次数和形式待定，是否需要交互）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7-1"><span class="toc-number">1.4.3.</span> <span class="toc-text">升级</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%8C%85%E5%AF%BC%E5%85%A5%E3%80%81%E5%8F%96%E6%B6%88%E5%AF%BC%E5%85%A5%EF%BC%88%E9%9C%80%E6%96%B0%E5%A2%9E%E6%8E%A5%E5%8F%A3%EF%BC%8C%E6%88%96%E5%85%B1%E7%94%A8%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">升级包导入、取消导入（需新增接口，或共用接口）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#changelog%EF%BC%88%E7%94%9F%E6%88%90%E6%96%B9%E5%BC%8F%E3%80%81%E5%86%85%E5%AE%B9%E5%92%8C%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE%E5%BE%85%E5%AE%9A%EF%BC%89"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">changelog（生成方式、内容和存放位置待定）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%8C%85%E5%90%88%E6%B3%95%E6%80%A7%E3%80%81%E7%89%88%E6%9C%AC%E3%80%81%E4%BE%9D%E8%B5%96%E6%A0%A1%E9%AA%8C%EF%BC%88%E9%9C%80%E7%BA%A6%E5%AE%9A%E5%8C%85%E7%BB%93%E6%9E%84%E5%92%8C%E5%86%85%E5%AE%B9%E5%92%8C%E6%A3%80%E6%B5%8B%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="toc-number">1.4.3.3.</span> <span class="toc-text">升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%B4%A6%E5%8F%B7%E5%8D%87%E7%BA%A7%E6%97%B6%E8%A6%81%E5%8A%A0%E9%94%81"><span class="toc-number">1.4.3.4.</span> <span class="toc-text">多账号升级时要加锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E5%8D%87%E7%BA%A7%E4%B8%AD%E7%9A%84%E5%BC%95%E6%93%8E%E6%97%B6%E8%A6%81%E6%8A%A5%E9%94%99"><span class="toc-number">1.4.3.5.</span> <span class="toc-text">卸载升级中的引擎时要报错</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E6%97%B6%E7%A6%81%E6%AD%A2%E5%AF%B9%E7%9B%B8%E5%85%B3agent%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.3.6.</span> <span class="toc-text">升级时禁止对相关agent操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%8C%85%E8%A6%81%E5%81%9A%E4%BE%9D%E8%B5%96%E8%AE%B0%E5%BD%95%EF%BC%88%E9%9C%80%E7%BA%A6%E5%AE%9A%E8%AE%B0%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="toc-number">1.4.3.7.</span> <span class="toc-text">升级包要做依赖记录（需约定记录方式）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%A4%B1%E8%B4%A5%E5%9B%9E%E6%BB%9A%EF%BC%88%E5%A4%A7%E6%A6%82%E7%8E%87%E4%B9%9F%E4%BC%9A%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%AC%A1%E6%95%B0%E5%92%8C%E5%BD%A2%E5%BC%8F%E5%BE%85%E5%AE%9A%EF%BC%8C%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E4%BA%A4%E4%BA%92%EF%BC%89"><span class="toc-number">1.4.3.8.</span> <span class="toc-text">升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E9%87%8F-Agent-P2"><span class="toc-number">1.5.</span> <span class="toc-text">流量 Agent (P2)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-2"><span class="toc-number">1.5.1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Agent%E6%8E%88%E6%9D%83%E7%8A%B6%E6%80%81%E6%9F%A5%E8%AF%A2%EF%BC%88%E6%9A%82%E5%AE%9A%E8%B0%83%E6%80%BB%E6%8E%A7%E6%8E%A5%E5%8F%A3%E5%90%8E%E8%81%9A%E5%90%88%EF%BC%89"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">Agent授权状态查询（暂定调总控接口后聚合）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8D%E7%A7%B0%E9%87%8D%E5%A4%8D%E6%A0%A1%E9%AA%8C%EF%BC%88%E5%8F%AA%E5%AF%B9%E5%B7%B2%E5%AE%89%E8%A3%85%E7%9A%84%E6%A3%80%E6%B5%8B%EF%BC%89-1"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">名称重复校验（只对已安装的检测）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8D%E7%A7%B0%E9%99%90%E5%88%B6%E5%9C%A863%E9%95%BF%E5%BA%A6%E4%BB%A5%E4%B8%8B-1"><span class="toc-number">1.5.1.3.</span> <span class="toc-text">名称限制在63长度以下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E5%BA%A6%E6%9D%A1%EF%BC%88%E4%B8%8E%E5%89%8D%E7%AB%AF%E7%BA%A6%E5%AE%9A%E6%88%96%E8%87%AA%E8%A1%8C%E8%AE%A1%E7%AE%97%EF%BC%88%E5%8F%AF%E8%83%BD%E8%A6%81%E4%BF%AE%E6%94%B9%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5%EF%BC%89%EF%BC%89-2"><span class="toc-number">1.5.1.4.</span> <span class="toc-text">进度条（与前端约定或自行计算（可能要修改返回字段））</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%82%B9%E5%87%BB%E5%8F%96%E6%B6%88%E5%AE%89%E8%A3%85%EF%BC%88%E9%80%9F%E5%BA%A6%E5%BE%88%E5%BF%AB%EF%BC%8C%E5%8F%AF%E8%83%BD%E8%BF%98%E6%B2%A1%E7%82%B9%E5%87%BB%E5%B0%B1%E5%AE%89%E8%A3%85%E5%AE%8C%E4%BA%86%EF%BC%89%EF%BC%88%E9%9C%80%E6%96%B0%E5%A2%9E%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%8F%AF%E6%96%B0%E5%A2%9E%E4%B8%80%E4%B8%AA%E7%8A%B6%E6%80%81%EF%BC%89-1"><span class="toc-number">1.5.1.5.</span> <span class="toc-text">安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%B4%A6%E5%8F%B7%E5%AE%89%E8%A3%85%E6%97%B6%E8%A6%81%E5%8A%A0%E9%94%81-1"><span class="toc-number">1.5.1.6.</span> <span class="toc-text">多账号安装时要加锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%97%A5%E5%BF%97%E8%A6%81%E5%81%9A%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%88%96%E7%BB%9F%E4%B8%80%E4%B8%80%E7%A7%8D%E8%AE%B0%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%89%EF%BC%88%E7%BB%99%E6%80%BB%E6%8E%A7%E5%81%9A%EF%BC%89"><span class="toc-number">1.5.1.7.</span> <span class="toc-text">相关日志要做记录（中间件或统一一种记录方式）（给总控做）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E8%A6%81%E5%8A%A0%E7%89%88%E6%9C%AC%E5%8F%B7%E5%B9%B6%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BF%A1%E6%81%AF%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE%E5%8F%8A%E5%86%85%E5%AE%B9%E4%B8%8D%E7%A1%AE%E5%AE%9A%EF%BC%89"><span class="toc-number">1.5.1.8.</span> <span class="toc-text">组件要加版本号并记录（信息存放位置及内容不确定）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD-2"><span class="toc-number">1.5.2.</span> <span class="toc-text">卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E5%8D%B8%E8%BD%BD%EF%BC%8C%E6%B8%85%E9%99%A4%E7%9B%B8%E5%85%B3%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF-1"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">强制卸载，清除相关注册信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A2%AB%E5%BC%BA%E5%88%B6%E5%8D%B8%E8%BD%BD%E7%9A%84Agent%E8%8B%A5%E5%86%8D%E6%AC%A1%E9%87%8D%E8%BF%9E%E5%88%99%E4%B8%8D%E5%81%9A%E5%A4%84%E7%90%86%EF%BC%88%E9%9C%80%E8%A6%81C-%E7%BB%84%E5%A4%84%E7%90%86%EF%BC%89"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">被强制卸载的Agent若再次重连则不做处理（需要C++组处理）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E5%BA%A6%E6%9D%A1%EF%BC%88%E4%B8%8E%E5%89%8D%E7%AB%AF%E7%BA%A6%E5%AE%9A%E6%88%96%E8%87%AA%E8%A1%8C%E8%AE%A1%E7%AE%97%EF%BC%88%E5%8F%AF%E8%83%BD%E8%A6%81%E4%BF%AE%E6%94%B9%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5%EF%BC%89%EF%BC%89-3"><span class="toc-number">1.5.2.3.</span> <span class="toc-text">进度条（与前端约定或自行计算（可能要修改返回字段））</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%B1%E8%B4%A5%E9%87%8D%E8%AF%95%EF%BC%88%E5%A4%A7%E6%A6%82%E7%8E%87%E4%B9%9F%E4%BC%9A%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%AC%A1%E6%95%B0%E5%92%8C%E5%BD%A2%E5%BC%8F%E5%BE%85%E5%AE%9A%EF%BC%8C%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E4%BA%A4%E4%BA%92%EF%BC%89-1"><span class="toc-number">1.5.2.4.</span> <span class="toc-text">失败重试（大概率也会失败，次数和形式待定，是否需要交互）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD-3"><span class="toc-number">1.5.3.</span> <span class="toc-text">卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E5%8D%B8%E8%BD%BD%EF%BC%8C%E6%B8%85%E9%99%A4%E7%9B%B8%E5%85%B3%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF-2"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">强制卸载，清除相关注册信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A2%AB%E5%BC%BA%E5%88%B6%E5%8D%B8%E8%BD%BD%E7%9A%84Agent%E8%8B%A5%E5%86%8D%E6%AC%A1%E9%87%8D%E8%BF%9E%E5%88%99%E4%B8%8D%E5%81%9A%E5%A4%84%E7%90%86%EF%BC%88%E9%9C%80%E8%A6%81C-%E7%BB%84%E5%A4%84%E7%90%86%EF%BC%89-1"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">被强制卸载的Agent若再次重连则不做处理（需要C++组处理）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E5%BA%A6%E6%9D%A1%EF%BC%88%E4%B8%8E%E5%89%8D%E7%AB%AF%E7%BA%A6%E5%AE%9A%E6%88%96%E8%87%AA%E8%A1%8C%E8%AE%A1%E7%AE%97%EF%BC%88%E5%8F%AF%E8%83%BD%E8%A6%81%E4%BF%AE%E6%94%B9%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5%EF%BC%89%EF%BC%89-4"><span class="toc-number">1.5.3.3.</span> <span class="toc-text">进度条（与前端约定或自行计算（可能要修改返回字段））</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%B1%E8%B4%A5%E9%87%8D%E8%AF%95%EF%BC%88%E5%A4%A7%E6%A6%82%E7%8E%87%E4%B9%9F%E4%BC%9A%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%AC%A1%E6%95%B0%E5%92%8C%E5%BD%A2%E5%BC%8F%E5%BE%85%E5%AE%9A%EF%BC%8C%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E4%BA%A4%E4%BA%92%EF%BC%89-2"><span class="toc-number">1.5.3.4.</span> <span class="toc-text">失败重试（大概率也会失败，次数和形式待定，是否需要交互）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7-2"><span class="toc-number">1.5.4.</span> <span class="toc-text">升级</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%8C%85%E5%AF%BC%E5%85%A5%E3%80%81%E5%8F%96%E6%B6%88%E5%AF%BC%E5%85%A5%EF%BC%88%E9%9C%80%E6%96%B0%E5%A2%9E%E6%8E%A5%E5%8F%A3%EF%BC%8C%E6%88%96%E5%85%B1%E7%94%A8%E6%8E%A5%E5%8F%A3%EF%BC%89-1"><span class="toc-number">1.5.4.1.</span> <span class="toc-text">升级包导入、取消导入（需新增接口，或共用接口）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#changelog%EF%BC%88%E7%94%9F%E6%88%90%E6%96%B9%E5%BC%8F%E3%80%81%E5%86%85%E5%AE%B9%E5%92%8C%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE%E5%BE%85%E5%AE%9A%EF%BC%89-1"><span class="toc-number">1.5.4.2.</span> <span class="toc-text">changelog（生成方式、内容和存放位置待定）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%8C%85%E5%90%88%E6%B3%95%E6%80%A7%E3%80%81%E7%89%88%E6%9C%AC%E3%80%81%E4%BE%9D%E8%B5%96%E6%A0%A1%E9%AA%8C%EF%BC%88%E9%9C%80%E7%BA%A6%E5%AE%9A%E5%8C%85%E7%BB%93%E6%9E%84%E5%92%8C%E5%86%85%E5%AE%B9%E5%92%8C%E6%A3%80%E6%B5%8B%E6%96%B9%E5%BC%8F%EF%BC%89-1"><span class="toc-number">1.5.4.3.</span> <span class="toc-text">升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%B4%A6%E5%8F%B7%E5%8D%87%E7%BA%A7%E6%97%B6%E8%A6%81%E5%8A%A0%E9%94%81-1"><span class="toc-number">1.5.4.4.</span> <span class="toc-text">多账号升级时要加锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E5%8D%87%E7%BA%A7%E4%B8%AD%E7%9A%84%E5%BC%95%E6%93%8E%E6%97%B6%E8%A6%81%E6%8A%A5%E9%94%99-1"><span class="toc-number">1.5.4.5.</span> <span class="toc-text">卸载升级中的引擎时要报错</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E6%97%B6%E7%A6%81%E6%AD%A2%E7%BC%96%E8%BE%91%E6%8C%82%E8%B5%B7%E7%AD%89%E7%AD%89%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.4.6.</span> <span class="toc-text">升级时禁止编辑挂起等等操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%8C%85%E8%A6%81%E5%81%9A%E4%BE%9D%E8%B5%96%E8%AE%B0%E5%BD%95%EF%BC%88%E9%9C%80%E7%BA%A6%E5%AE%9A%E8%AE%B0%E5%BD%95%E6%96%B9%E5%BC%8F%EF%BC%89-1"><span class="toc-number">1.5.4.7.</span> <span class="toc-text">升级包要做依赖记录（需约定记录方式）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%A4%B1%E8%B4%A5%E5%9B%9E%E6%BB%9A%EF%BC%88%E5%A4%A7%E6%A6%82%E7%8E%87%E4%B9%9F%E4%BC%9A%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%AC%A1%E6%95%B0%E5%92%8C%E5%BD%A2%E5%BC%8F%E5%BE%85%E5%AE%9A%EF%BC%8C%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E4%BA%A4%E4%BA%92%EF%BC%89-1"><span class="toc-number">1.5.4.8.</span> <span class="toc-text">升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88LOL%E6%AF%94%E8%B5%9B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E2%80%9C%E5%81%87%E4%BA%86%E2%80%9D/" title="为什么LOL比赛越来越“假了”.md">为什么LOL比赛越来越“假了”.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E7%94%B7%E7%94%9F%E5%AE%81%E5%8F%AF%E6%89%93%E6%B8%B8%E6%88%8F%E4%B9%9F%E4%B8%8D%E6%84%BF%E8%BF%BD%E5%A5%B3%E7%94%9F/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E4%BA%BA%E9%80%89%E6%8B%A9%E7%9B%B4%E6%92%AD/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%BB%8A%E6%97%A5%E8%AF%9D%E9%A2%98%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/" title="NAS访问.md">NAS访问.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By xiaoy</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/project/js/utils.js?v=4.13.0"></script><script src="/project/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

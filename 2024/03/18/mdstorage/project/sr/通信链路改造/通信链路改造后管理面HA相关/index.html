@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>通信链路改造后管理面HA相关.md | xiaoy_website</title><meta name="author" content="xiaoy"><meta name="copyright" content="xiaoy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="逻辑架构引擎集群内信息同步Host 机制使用 &#x2F;etc&#x2F;hosts 对集群 host 进行维护 （安装时由引擎安装所填充） 12345127.0.0.1 localhost192.168.0.1 ouryun_m_node_1 ouryun_m 192.168.0.2 ouryun_m_node_2 ouryun_m 192.168.0.3 ouryun_m_node_3 ouryun_m   k">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通信链路改造后管理面HA相关.md">
+<meta property="og:url" content="https://abrance.github.io/project/2024/03/18/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0%E5%90%8E%E7%AE%A1%E7%90%86%E9%9D%A2HA%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:site_name" content="xiaoy_website">
+<meta property="og:description" content="逻辑架构引擎集群内信息同步Host 机制使用 &#x2F;etc&#x2F;hosts 对集群 host 进行维护 （安装时由引擎安装所填充） 12345127.0.0.1 localhost192.168.0.1 ouryun_m_node_1 ouryun_m 192.168.0.2 ouryun_m_node_2 ouryun_m 192.168.0.3 ouryun_m_node_3 ouryun_m   k">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-03-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-23T14:23:35.494Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="通信链路">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/project/img/favicon.png"><link rel="canonical" href="https://abrance.github.io/project/2024/03/18/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0%E5%90%8E%E7%AE%A1%E7%90%86%E9%9D%A2HA%E7%9B%B8%E5%85%B3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/project/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/project/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '通信链路改造后管理面HA相关.md',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-23 22:23:35'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/project/" title="xiaoy_website"><span class="site-name">xiaoy_website</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">通信链路改造后管理面HA相关.md</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-03-17T16:00:00.000Z" title="Created 2024-03-18 00:00:00">2024-03-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-23T14:23:35.494Z" title="Updated 2024-07-23 22:23:35">2024-07-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="通信链路改造后管理面HA相关.md"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="逻辑架构"><a href="#逻辑架构" class="headerlink" title="逻辑架构"></a>逻辑架构</h2><h3 id="引擎集群内信息同步"><a href="#引擎集群内信息同步" class="headerlink" title="引擎集群内信息同步"></a>引擎集群内信息同步</h3><h4 id="Host-机制"><a href="#Host-机制" class="headerlink" title="Host 机制"></a>Host 机制</h4><p>使用 <code>/etc/hosts</code> 对集群 host 进行维护</p>
+<p>（安装时由引擎安装所填充）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 localhost</span><br><span class="line"></span><br><span class="line">192.168.0.1 ouryun_m_node_1 ouryun_m </span><br><span class="line">192.168.0.2 ouryun_m_node_2 ouryun_m </span><br><span class="line">192.168.0.3 ouryun_m_node_3 ouryun_m </span><br></pre></td></tr></table></figure>
+
+<p>kubernetes 的客户端会依据 ouryun_m 自动找到 Apiserver 服务端</p>
+<h4 id="Etcd-集群机制"><a href="#Etcd-集群机制" class="headerlink" title="Etcd 集群机制"></a>Etcd 集群机制</h4><ul>
+<li>etcd 通过 Hostname 进行集群组建</li>
+<li>组建好的 etcd 集群会内部通信，保证集群内部数据一致性</li>
+</ul>
+<h4 id="Apiserver-机制"><a href="#Apiserver-机制" class="headerlink" title="Apiserver 机制"></a>Apiserver 机制</h4><ul>
+<li>Apiserver 连接本地的 etcd，利用 etcd 的数据一致性保证 Apiserver 之间的数据一致</li>
+<li>向引擎所有节点的组件提供服务，并提供认证鉴权</li>
+<li>Apiserver 签发证书时不需要关注自己的 ip ，而是为多个 hostname 申请即可，提高了灵活性和可维护性（为后续引擎修改 ip 做铺垫）</li>
+</ul>
+<h4 id="引擎集群内部组件通过-Apiserver-进行组件间信息同步（operator-开发模型）"><a href="#引擎集群内部组件通过-Apiserver-进行组件间信息同步（operator-开发模型）" class="headerlink" title="引擎集群内部组件通过 Apiserver 进行组件间信息同步（operator 开发模型）"></a>引擎集群内部组件通过 Apiserver 进行组件间信息同步（operator 开发模型）</h4><p>Apiserver 的客户端 client-go 已提供通过 hostname 进行集群的服务发现机制，确保了客户端总是可以找到提供特定服务的 Apiserver。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 通信链路改造后管理面HA相关</span><br><span class="line">---</span><br><span class="line">graph TB</span><br><span class="line">    subgraph Sc[总控]</span><br><span class="line">		sc_core[sc core]</span><br><span class="line">		sc[sc]</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">	subgraph Se</span><br><span class="line">    	subgraph M_Group[管理面集群]</span><br><span class="line">    		subgraph M_Node1[管理节点]</span><br><span class="line">    		    webserver1[webserver]</span><br><span class="line">    		    apiserver1[Apiserver]</span><br><span class="line">    		    etcd1[Etcd]</span><br><span class="line">    		    webserver1 --&gt;|127.0.0.1| apiserver1 --&gt;|127.0.0.1| etcd1</span><br><span class="line">    		end</span><br><span class="line">    		subgraph M_Node2[管理节点]</span><br><span class="line">    			webserver2[webserver]</span><br><span class="line">    			apiserver2[Apiserver]</span><br><span class="line">    			etcd2[Etcd]</span><br><span class="line">    			webserver2 --&gt;|127.0.0.1| apiserver2 --&gt;|127.0.0.1| etcd2</span><br><span class="line">    		end</span><br><span class="line">    		subgraph M_Node3[管理节点]</span><br><span class="line">    			webserver3[webserver]</span><br><span class="line">    			apiserver3[Apiserver]</span><br><span class="line">    			etcd3[Etcd]</span><br><span class="line">    			webserver3 --&gt;|127.0.0.1| apiserver3 --&gt;|127.0.0.1| etcd3</span><br><span class="line">    		end</span><br><span class="line">    		</span><br><span class="line">    		etcd1 &amp; etcd2 &lt;--&gt; etcd3</span><br><span class="line">    		etcd2 &lt;---&gt; etcd1</span><br><span class="line">    	end</span><br><span class="line">    	subgraph S_Group[调度节点集群]</span><br><span class="line">    		webserver4[webserver]</span><br><span class="line">    		webserver5[webserver]</span><br><span class="line">    	end</span><br><span class="line">    	subgraph W_Group[工作节点集群]</span><br><span class="line">    		webserver6[webserver]</span><br><span class="line">    		webserver7[webserver]</span><br><span class="line">    		webserver8[webserver]</span><br><span class="line">    	end</span><br><span class="line">		webserver4 &amp; webserver5 &amp; webserver6 &amp; webserver7 &amp; webserver8 ---&gt;|host: ouryun_m| apiserver1</span><br><span class="line">%%		webserver4 --&gt; webserver1</span><br><span class="line">		</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	sc &lt;--&gt;sc_core</span><br><span class="line">	webserver1 &amp; webserver2 &amp; webserver3 &amp; webserver4 &amp; webserver5 &amp; webserver6 &amp; webserver7 &amp; webserver8 ====&gt;|channel| sc_core</span><br><span class="line">	</span><br><span class="line">	style Sc fill:#87CEFA</span><br><span class="line">	style Se fill:#708090</span><br><span class="line">	</span><br><span class="line">    linkStyle 9,10,11,12,13 stroke:#FFA07A,stroke-width:2px,color:green;</span><br><span class="line">    linkStyle 6,7,8 stroke:#FFD700,stroke-width:3px,color:green;</span><br><span class="line">    linkStyle 1,3,5 stroke:#32CD32,stroke-width:2px,color:yellow;</span><br><span class="line">	linkStyle 14,15,16,17,18,19,20,21,22 stroke:#FF6347,stroke-width:8px,color:green;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="总控-引擎通信"><a href="#总控-引擎通信" class="headerlink" title="总控-引擎通信"></a>总控-引擎通信</h3><h4 id="总控-管理面通信"><a href="#总控-管理面通信" class="headerlink" title="总控-管理面通信"></a>总控-管理面通信</h4><h5 id="webserver-服务注册机制"><a href="#webserver-服务注册机制" class="headerlink" title="webserver 服务注册机制"></a>webserver 服务注册机制</h5><p>webserver 启动时会向 sc-core 注册本组件信息，其中包括本节点角色(M)、引擎序列号、引擎节点ID 等信息</p>
+<h5 id="sc-core-负载均衡机制"><a href="#sc-core-负载均衡机制" class="headerlink" title="sc-core 负载均衡机制"></a>sc-core 负载均衡机制</h5><p>sc-core 在转发总控到引擎管理面流量时，指定对应引擎和节点角色，可以通过已注册的引擎的 webserver 负载均衡一个可用的引擎管理面中的 webserver 进行处理。</p>
+<h4 id="总控-任意节点-webserver-通信"><a href="#总控-任意节点-webserver-通信" class="headerlink" title="总控-任意节点 webserver 通信"></a>总控-任意节点 webserver 通信</h4><p>sc-core 在转发总控到任意引擎节点时，指定对应引擎和节点ID，可以通过注册信息，转发到指定节点的 webserver 中进行处理。</p>
+<h2 id="物理架构"><a href="#物理架构" class="headerlink" title="物理架构"></a>物理架构</h2><h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><h3 id="引擎-webserver-sc-core-注册流程"><a href="#引擎-webserver-sc-core-注册流程" class="headerlink" title="引擎 webserver -&gt; sc-core 注册流程"></a>引擎 webserver -&gt; sc-core 注册流程</h3><h3 id="引擎安装-webserver-流程"><a href="#引擎安装-webserver-流程" class="headerlink" title="引擎安装 webserver 流程"></a>引擎安装 webserver 流程</h3><ul>
+<li>修改 hosts</li>
+<li>安装 webserver</li>
+<li>配置启动参数</li>
+<li>apiserver、etcd 安装逻辑</li>
+</ul>
+<h3 id="sc-向管理面-webserver-通信"><a href="#sc-向管理面-webserver-通信" class="headerlink" title="sc 向管理面 webserver 通信"></a>sc 向管理面 webserver 通信</h3><h3 id="调度节点、工作节点组件访问管理面组件"><a href="#调度节点、工作节点组件访问管理面组件" class="headerlink" title="调度节点、工作节点组件访问管理面组件"></a>调度节点、工作节点组件访问管理面组件</h3><h2 id="异常场景"><a href="#异常场景" class="headerlink" title="异常场景"></a>异常场景</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project">xiaoy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project/2024/03/18/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0%E5%90%8E%E7%AE%A1%E7%90%86%E9%9D%A2HA%E7%9B%B8%E5%85%B3/">https://abrance.github.io/project/2024/03/18/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0%E5%90%8E%E7%AE%A1%E7%90%86%E9%9D%A2HA%E7%9B%B8%E5%85%B3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/project/tags/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF/">通信链路</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/project/2024/03/19/mdstorage/domain/k8s/etcd%E5%92%8Capiserver%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86/" title="etcd和apiserver生命周期管理.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">etcd和apiserver生命周期管理.md</div></div></a></div><div class="next-post pull-right"><a href="/project/2024/03/16/mdstorage/project/life/%E8%B4%A2%E5%8A%A1%E6%80%BB%E7%BB%93%E5%A4%A7%E4%BC%9A-3.16/" title="财务总结大会-3.16.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">财务总结大会-3.16.md</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/project/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">xiaoy</div><div class="author-info__description">小歪星球</div></div><div class="card-info-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">逻辑架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E9%9B%86%E7%BE%A4%E5%86%85%E4%BF%A1%E6%81%AF%E5%90%8C%E6%AD%A5"><span class="toc-number">1.1.</span> <span class="toc-text">引擎集群内信息同步</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Host-%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">Host 机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Etcd-%E9%9B%86%E7%BE%A4%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.2.</span> <span class="toc-text">Etcd 集群机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Apiserver-%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.3.</span> <span class="toc-text">Apiserver 机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E9%9B%86%E7%BE%A4%E5%86%85%E9%83%A8%E7%BB%84%E4%BB%B6%E9%80%9A%E8%BF%87-Apiserver-%E8%BF%9B%E8%A1%8C%E7%BB%84%E4%BB%B6%E9%97%B4%E4%BF%A1%E6%81%AF%E5%90%8C%E6%AD%A5%EF%BC%88operator-%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="toc-number">1.1.4.</span> <span class="toc-text">引擎集群内部组件通过 Apiserver 进行组件间信息同步（operator 开发模型）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7-%E5%BC%95%E6%93%8E%E9%80%9A%E4%BF%A1"><span class="toc-number">1.2.</span> <span class="toc-text">总控-引擎通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7-%E7%AE%A1%E7%90%86%E9%9D%A2%E9%80%9A%E4%BF%A1"><span class="toc-number">1.2.1.</span> <span class="toc-text">总控-管理面通信</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#webserver-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">webserver 服务注册机制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#sc-core-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">sc-core 负载均衡机制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E6%8E%A7-%E4%BB%BB%E6%84%8F%E8%8A%82%E7%82%B9-webserver-%E9%80%9A%E4%BF%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">总控-任意节点 webserver 通信</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E6%9E%B6%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">物理架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E6%93%8E-webserver-sc-core-%E6%B3%A8%E5%86%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">引擎 webserver -&gt; sc-core 注册流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85-webserver-%E6%B5%81%E7%A8%8B"><span class="toc-number">3.2.</span> <span class="toc-text">引擎安装 webserver 流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sc-%E5%90%91%E7%AE%A1%E7%90%86%E9%9D%A2-webserver-%E9%80%9A%E4%BF%A1"><span class="toc-number">3.3.</span> <span class="toc-text">sc 向管理面 webserver 通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E8%8A%82%E7%82%B9%E3%80%81%E5%B7%A5%E4%BD%9C%E8%8A%82%E7%82%B9%E7%BB%84%E4%BB%B6%E8%AE%BF%E9%97%AE%E7%AE%A1%E7%90%86%E9%9D%A2%E7%BB%84%E4%BB%B6"><span class="toc-number">3.4.</span> <span class="toc-text">调度节点、工作节点组件访问管理面组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%9C%BA%E6%99%AF"><span class="toc-number">4.</span> <span class="toc-text">异常场景</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88LOL%E6%AF%94%E8%B5%9B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E2%80%9C%E5%81%87%E4%BA%86%E2%80%9D/" title="为什么LOL比赛越来越“假了”.md">为什么LOL比赛越来越“假了”.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E7%94%B7%E7%94%9F%E5%AE%81%E5%8F%AF%E6%89%93%E6%B8%B8%E6%88%8F%E4%B9%9F%E4%B8%8D%E6%84%BF%E8%BF%BD%E5%A5%B3%E7%94%9F/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E4%BA%BA%E9%80%89%E6%8B%A9%E7%9B%B4%E6%92%AD/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%BB%8A%E6%97%A5%E8%AF%9D%E9%A2%98%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/" title="NAS访问.md">NAS访问.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By xiaoy</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/project/js/utils.js?v=4.13.0"></script><script src="/project/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

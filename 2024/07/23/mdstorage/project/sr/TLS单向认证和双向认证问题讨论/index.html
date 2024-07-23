@@ -1,0 +1,268 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>TLS单向认证和双向认证问题.md | xiaoy_website</title><meta name="author" content="xiaoy"><meta name="copyright" content="xiaoy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2023&#x2F;11&#x2F;20 与技术部王林对话 主题商城和总控之间有授权同步等 API 访问，通信机制上使用什么协议实现，https 单向认证还是双向认证？ 重点 技术部认为自建 CA 维护成本高 双向 TLS 认证过重，安全性不需要那么强，因为里面的信息对黑客来说价值并不大 使用软件的算法进行身份认证等协商工作，而不是证书 技术部认为在总控软件下面的硬件是受信的 （有单向认证到双向认">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TLS单向认证和双向认证问题.md">
+<meta property="og:url" content="https://abrance.github.io/project/2024/07/23/mdstorage/project/sr/TLS%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98%E8%AE%A8%E8%AE%BA/index.html">
+<meta property="og:site_name" content="xiaoy_website">
+<meta property="og:description" content="2023&#x2F;11&#x2F;20 与技术部王林对话 主题商城和总控之间有授权同步等 API 访问，通信机制上使用什么协议实现，https 单向认证还是双向认证？ 重点 技术部认为自建 CA 维护成本高 双向 TLS 认证过重，安全性不需要那么强，因为里面的信息对黑客来说价值并不大 使用软件的算法进行身份认证等协商工作，而不是证书 技术部认为在总控软件下面的硬件是受信的 （有单向认证到双向认">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-07-23T14:23:35.490Z">
+<meta property="article:modified_time" content="2024-07-23T14:23:35.490Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="security network">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/project/img/favicon.png"><link rel="canonical" href="https://abrance.github.io/project/2024/07/23/mdstorage/project/sr/TLS%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98%E8%AE%A8%E8%AE%BA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/project/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/project/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'TLS单向认证和双向认证问题.md',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-23 22:23:35'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/project/" title="xiaoy_website"><span class="site-name">xiaoy_website</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">TLS单向认证和双向认证问题.md</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-23T14:23:35.490Z" title="Created 2024-07-23 22:23:35">2024-07-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-23T14:23:35.490Z" title="Updated 2024-07-23 22:23:35">2024-07-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="TLS单向认证和双向认证问题.md"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>2023&#x2F;11&#x2F;20 与技术部王林对话</strong></p>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>商城和总控之间有授权同步等 API 访问，通信机制上使用什么协议实现，https 单向认证还是双向认证？</p>
+<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><ul>
+<li>技术部认为自建 CA 维护成本高</li>
+<li>双向 TLS 认证过重，安全性不需要那么强，因为里面的信息对黑客来说价值并不大</li>
+<li>使用软件的算法进行身份认证等协商工作，而不是证书</li>
+<li>技术部认为在总控软件下面的硬件是受信的</li>
+<li>（有单向认证到双向认证会面临兼容性问题）</li>
+</ul>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>后续采用 TLS 单向认证即可，商城这边需要总控方面提供什么信息，后面通过软件算法协商即可。</p>
+<h2 id="可能的争议点"><a href="#可能的争议点" class="headerlink" title="可能的争议点"></a>可能的争议点</h2><p>下面结合石犀软件部署场景进行分析。目前总控部署模式为客户本地部署，客户拥有机器 root 权限，并且有绝对的网络优势位置，威胁场景：客户知道如何采用中间人攻击，并想要获取商城与总控通信时的信息。</p>
+<h3 id="问题点"><a href="#问题点" class="headerlink" title="问题点"></a>问题点</h3><ul>
+<li><p>商城提供给总控的 API 是否涉密？</p>
+</li>
+<li><p>商城提供给总控的 API 泄露后是否会导致严重后果？</p>
+</li>
+</ul>
+<h3 id="论点"><a href="#论点" class="headerlink" title="论点"></a>论点</h3><p>TLS 单向认证在石犀软件部署场景下不能抵抗住中间人攻击。而 TLS 双向认证是可以抵抗的。</p>
+<p>TLS 双向认证降级为单向认证实现简单，而单向认证想要升级双向认证不好做兼容。</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ol>
+<li><p><strong>TLS 双向认证</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>增强的安全性</strong>：不仅服务器需要提供有效的证书来证明其身份，客户端也需要做同样的事情，从而增加了安全性。</li>
+<li><strong>减少中间人攻击的风险</strong>：因为双方都需要验证身份，这大大降低了中间人攻击的可能性。</li>
+<li><strong>身份确认</strong>：可以确保与预期的客户端进行通信，对于高安全要求的应用尤其重要。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>部署复杂</strong>：需要为每个客户端生成和管理证书，这可能会导致部署和维护上的复杂性。</li>
+<li><strong>性能开销</strong>：双向认证可能会带来额外的性能开销，尤其是在高并发环境中。</li>
+<li><strong>管理成本</strong>：证书的续期、撤销和更新可能导致额外的管理成本。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>TLS 单向认证</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>简单易部署</strong>：只需要服务器有证书，客户端不需要，简化了部署过程。</li>
+<li><strong>安全</strong>：客户端可以验证服务器的身份，确保与预期的服务器通信。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>安全性较低</strong>：只能验证服务器的身份，无法验证客户端的身份，可能会面临其他安全风险。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>基于 API 密钥的认证</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>部署简单</strong>：通常只需生成一个 API 密钥并在请求中发送。</li>
+<li><strong>跨平台</strong>：API 密钥可以在多种平台和语言中使用，不受特定的协议或库的限制。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>较低的安全性</strong>：如果密钥被泄露，任何人都可以使用该密钥。</li>
+<li><strong>无状态验证</strong>：无法验证请求来源的身份，只能验证请求是否包含有效的 API 密钥。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>基于 token 的认证（如 JWT）</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>状态无关</strong>：服务器不需要存储任何关于客户端的会话信息。</li>
+<li><strong>灵活性</strong>：Token 可以包含多种信息，并且可以轻松地跨多个服务进行验证。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>安全风险</strong>：如果 Token 被截获，攻击者可以冒充用户。</li>
+<li><strong>生命周期管理</strong>：需要一个机制来撤销或刷新 Token。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="TLS-单向认证威胁模型"><a href="#TLS-单向认证威胁模型" class="headerlink" title="TLS 单向认证威胁模型"></a>TLS 单向认证威胁模型</h3><h4 id="重点-1"><a href="#重点-1" class="headerlink" title="重点"></a>重点</h4><p>TLS 单向认证主要威胁来自于一个假设，客户拿到了其中一台总控，并试图采用中间人攻击思路来对 商城给总控提供的 API。</p>
+<h4 id="攻击步骤"><a href="#攻击步骤" class="headerlink" title="攻击步骤"></a>攻击步骤</h4><ol>
+<li><p>在拥有客户端主机的 root 权限的情况下，黑客可以部署特定的应用程序来拦截客户端和服务器之间的通信，并伪装成服务端与客户端建立连接。</p>
+<h3 id="步骤-1-拦截网络流量"><a href="#步骤-1-拦截网络流量" class="headerlink" title="步骤 1: 拦截网络流量"></a>步骤 1: 拦截网络流量</h3><ol>
+<li><strong>安装网络监控工具</strong>：使用像 Wireshark Tcpdump 这样的网络监控工具来捕获和分析经过该主机的网络流量。</li>
+<li><strong>配置端口镜像</strong>：如果可能，配置网络设备进行端口镜像（也称为 SPAN），将目标服务器的流量复制到监控的端口。</li>
+</ol>
+<h3 id="步骤-2-伪装成服务器"><a href="#步骤-2-伪装成服务器" class="headerlink" title="步骤 2: 伪装成服务器"></a>步骤 2: 伪装成服务器</h3><ol>
+<li><strong>DNS 欺骗</strong>：通过修改本地 DNS 设置或使用像 DNSChef 这样的工具，将目标服务器的域名解析到一个由黑客控制的 IP 地址上。</li>
+<li><strong>建立伪造服务器</strong>：使用像 Apache、Nginx 或自定义服务器软件，在黑客控制的机器上设置一个伪造的服务器。</li>
+</ol>
+<h3 id="步骤-3-中间人攻击"><a href="#步骤-3-中间人攻击" class="headerlink" title="步骤 3: 中间人攻击"></a>步骤 3: 中间人攻击</h3><ol>
+<li><strong>TLS 拦截代理</strong>：设置一个 TLS 拦截代理（如 mitmproxy），用于解密和重新加密传输的数据。</li>
+<li><strong>生成和使用证书</strong>：使用自签名证书或通过某种方式获取的合法证书来伪装成目标服务器。</li>
+<li><strong>转发请求</strong>：接收来自客户端的请求，解密数据，可以选择性地修改，然后将其加密并转发到真正的服务器。</li>
+</ol>
+<h3 id="步骤-4-伪装和响应客户端"><a href="#步骤-4-伪装和响应客户端" class="headerlink" title="步骤 4: 伪装和响应客户端"></a>步骤 4: 伪装和响应客户端</h3><ol>
+<li><strong>接收服务器响应</strong>：接收来自服务器的响应，解密数据。</li>
+<li><strong>响应客户端</strong>：将响应数据加密并发送回客户端。客户端会认为数据是直接来自目标服务器。</li>
+</ol>
+<h3 id="步骤-5-维护连接"><a href="#步骤-5-维护连接" class="headerlink" title="步骤 5: 维护连接"></a>步骤 5: 维护连接</h3><ol>
+<li><strong>会话管理</strong>：维护与客户端和服务器的会话状态，确保持续的通信。</li>
+<li><strong>数据记录</strong>：可选地记录经过的数据，以供后续分析。</li>
+</ol>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project">xiaoy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://abrance.github.io/project/2024/07/23/mdstorage/project/sr/TLS%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98%E8%AE%A8%E8%AE%BA/">https://abrance.github.io/project/2024/07/23/mdstorage/project/sr/TLS%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98%E8%AE%A8%E8%AE%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/project/tags/security-network/">security network</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/project/2024/07/23/mdstorage/project/life/%E8%B4%A2%E5%8A%A1%E6%80%BB%E7%BB%93%E5%A4%A7%E4%BC%9A-12.16/" title="财务总结大会-12.16"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">财务总结大会-12.16</div></div></a></div><div class="next-post pull-right"><a href="/project/2024/07/23/mdstorage/project/sr/%E7%AB%AF%E5%8F%A3%E8%A7%84%E5%88%92/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/project/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">xiaoy</div><div class="author-info__description">小歪星球</div></div><div class="card-info-data site-data is-center"><a href="/project/archives/"><div class="headline">Articles</div><div class="length-num">223</div></a><a href="/project/tags/"><div class="headline">Tags</div><div class="length-num">149</div></a><a href="/project/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">重点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">3.</span> <span class="toc-text">结论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BA%89%E8%AE%AE%E7%82%B9"><span class="toc-number"></span> <span class="toc-text">可能的争议点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">问题点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BA%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">论点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-number"></span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TLS-%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%A8%81%E8%83%81%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">TLS 单向认证威胁模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E7%82%B9-1"><span class="toc-number">1.1.</span> <span class="toc-text">重点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.2.</span> <span class="toc-text">攻击步骤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-1-%E6%8B%A6%E6%88%AA%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">步骤 1: 拦截网络流量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-2-%E4%BC%AA%E8%A3%85%E6%88%90%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">步骤 2: 伪装成服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-3-%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB"><span class="toc-number">4.</span> <span class="toc-text">步骤 3: 中间人攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-4-%E4%BC%AA%E8%A3%85%E5%92%8C%E5%93%8D%E5%BA%94%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">5.</span> <span class="toc-text">步骤 4: 伪装和响应客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-5-%E7%BB%B4%E6%8A%A4%E8%BF%9E%E6%8E%A5"><span class="toc-number">6.</span> <span class="toc-text">步骤 5: 维护连接</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88LOL%E6%AF%94%E8%B5%9B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E2%80%9C%E5%81%87%E4%BA%86%E2%80%9D/" title="为什么LOL比赛越来越“假了”.md">为什么LOL比赛越来越“假了”.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E7%94%B7%E7%94%9F%E5%AE%81%E5%8F%AF%E6%89%93%E6%B8%B8%E6%88%8F%E4%B9%9F%E4%B8%8D%E6%84%BF%E8%BF%BD%E5%A5%B3%E7%94%9F/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E4%BA%BA%E9%80%89%E6%8B%A9%E7%9B%B4%E6%92%AD/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%BB%8A%E6%97%A5%E8%AF%9D%E9%A2%98%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="Untitled">Untitled</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/project/2024/07/23/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/" title="NAS访问.md">NAS访问.md</a><time datetime="2024-07-23T14:23:35.494Z" title="Created 2024-07-23 22:23:35">2024-07-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By xiaoy</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/project/js/utils.js?v=4.13.0"></script><script src="/project/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
