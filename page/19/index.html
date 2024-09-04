@@ -227,6 +227,90 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/04/mdstorage/domain/vsc/git%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
+          git使用问题.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/04/mdstorage/domain/vsc/git%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          pushkex_exchange_identification文档标题： 解决通过 SSH 连接 GitHub 时的连接问题 目的： 本文档旨在提供一个清晰的指南，用于解决在通过 SSH 连接到 GitHub 时遇到的连接问题，特别是当出现 “kex_exchange_identification: Connection closed by remote host” 错误时。  问题描述：  很可
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-04 00:00" pubdate>
+              2024-01-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/github/">#github</a>
+            
+              <a href="/tags/git/">#git</a>
+            
+              <a href="/tags/gitlab-%E9%97%AE%E9%A2%98/">#gitlab 问题</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/04/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E8%B5%84%E6%96%99/" target="_self">
+          grpc服务调用资料.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/04/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E8%B5%84%E6%96%99/" target="_self">
+        <div>
+          Service 中 rpc 服务在grpc-go中，当客户端调用ChatService的Chat1或Chat2服务时，以下是连接建立的过程：  客户端初始化：客户端创建一个gRPC连接到服务器。这通常是在客户端应用的启动阶段完成的，例如通过grpc.Dial。  服务调用时机：客户端在需要时调用Chat1或Chat2服务。这是根据客户端应用的业务逻辑决定的，可能是用户发起的动作或其他触发条件。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-04 00:00" pubdate>
+              2024-01-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/grpc/">#grpc</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/12/28/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/MDNS/" target="_self">
           MDNS.md
         </a>
@@ -269,15 +353,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" target="_self">
-          Makefile的函数使用.md
+        <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" target="_self">
+          Makefile指定cpu架构选项.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/mdstorage/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/mdstorage/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" target="_self">
         <div>
-          wildcard使通配符生效场景 在Makefile规则中，通配符会被自动展开。但在变量的定义和函数引用时，通配符将失效。 $(wildcard &lt;PATTERN…&gt;) patsubstpatsubst函数返回被替换过后的字符串。 $(patsubst  ,,) define1234567891011define fun1	@echo &quot;My name is $(0)&quo
+          思路Makefile 构建，使用环境变量来控制编译选项 设置环境变量：在命令行上或在用户的环境配置文件中设置环境变量，如 ARCH=arm 或 ARCH=x86。 在 Makefile 中使用条件语句：Makefile 使用 ifeq、ifdef 等条件语句根据环境变量的值选择不同的编译器选项、链接器选项和其他设置。  ARCH 可选值 aarch64：代表 ARM 架构的 64 位版本（ARMv
         </div>
       </a>
 
@@ -311,15 +395,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" target="_self">
-          Makefile指定cpu架构选项.md
+        <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" target="_self">
+          Makefile的函数使用.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/mdstorage/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/mdstorage/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" target="_self">
         <div>
-          思路Makefile 构建，使用环境变量来控制编译选项 设置环境变量：在命令行上或在用户的环境配置文件中设置环境变量，如 ARCH=arm 或 ARCH=x86。 在 Makefile 中使用条件语句：Makefile 使用 ifeq、ifdef 等条件语句根据环境变量的值选择不同的编译器选项、链接器选项和其他设置。  ARCH 可选值 aarch64：代表 ARM 架构的 64 位版本（ARMv
+          wildcard使通配符生效场景 在Makefile规则中，通配符会被自动展开。但在变量的定义和函数引用时，通配符将失效。 $(wildcard &lt;PATTERN…&gt;) patsubstpatsubst函数返回被替换过后的字符串。 $(patsubst  ,,) define1234567891011define fun1	@echo &quot;My name is $(0)&quo
         </div>
       </a>
 
@@ -549,91 +633,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/18/mdstorage/project/sr/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF-12.18/" target="_self">
-          一周看板-12.18.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/18/mdstorage/project/sr/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF-12.18/" target="_self">
-        <div>
-          123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102#
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-18 00:00" pubdate>
-              2023-12-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%9C%8B%E6%9D%BF/">#看板</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/15/mdstorage/project/sr/%E7%9F%B3%E7%8A%80%E5%AE%A2%E6%88%B7%E7%8E%AF%E5%A2%83%E9%81%AD%E7%97%85%E6%AF%92%E6%94%BB%E5%87%BB%E6%8E%92%E6%9F%A5%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/" target="_self">
-          石犀客户环境遭病毒攻击排查解决记录.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/15/mdstorage/project/sr/%E7%9F%B3%E7%8A%80%E5%AE%A2%E6%88%B7%E7%8E%AF%E5%A2%83%E9%81%AD%E7%97%85%E6%AF%92%E6%94%BB%E5%87%BB%E6%8E%92%E6%9F%A5%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/" target="_self">
-        <div>
-          石犀客户环境遭病毒攻击排查解决记录现象检测到机器频繁访问外网 10w 次  问题排查top ps 排查一般进程会排到比较前，如果没排查到，也有可能是 top 程序被黑客替换，新装一个系统资源检测工具试试。 这一步可以查到异常进程 pid 和进程启动用户  ps -efl | grep $pid  显示是 kworker  查看用户登录历史和进程环境变量last 查看用户登录历史 cat &#x2F
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-15 00:00" pubdate>
-              2023-12-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">#问题排查</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/18/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="page-number" href="/page/18/#board">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/#board">20</a><a class="page-number" href="/page/21/#board">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/#board">26</a><a class="extend next" rel="next" href="/page/20/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/18/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="page-number" href="/page/18/#board">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/#board">20</a><a class="page-number" href="/page/21/#board">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/#board">27</a><a class="extend next" rel="next" href="/page/20/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
