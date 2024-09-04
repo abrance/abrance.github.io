@@ -1,0 +1,663 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概述dockerfile 用于构建 docker 镜像 使用1234docker build -t $name .docker build -t $name:$tagname .      技巧RUN 尽量使用 &amp;&amp; \ 表示多行语句，使用 &amp;&amp; 连接命令，如果前一个命令成功执行（返回 0），则执行下一个命令。这是确保每个命令依赖于前一个命令成功完成的常用方法  C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dockerfile.md">
+<meta property="og:url" content="https://abrance.github.io/2024/04/18/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/dockerfile/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="概述dockerfile 用于构建 docker 镜像 使用1234docker build -t $name .docker build -t $name:$tagname .      技巧RUN 尽量使用 &amp;&amp; \ 表示多行语句，使用 &amp;&amp; 连接命令，如果前一个命令成功执行（返回 0），则执行下一个命令。这是确保每个命令依赖于前一个命令成功完成的常用方法  C">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-04T03:27:12.671Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="docker dockerfile">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>dockerfile.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="dockerfile.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-18 00:00" pubdate>
+          2024年4月18日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          721 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">dockerfile.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>dockerfile 用于构建 docker 镜像</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker build -t <span class="hljs-variable">$name</span> .<br><br>docker build -t <span class="hljs-variable">$name</span>:<span class="hljs-variable">$tagname</span> .<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h3 id="RUN"><a href="#RUN" class="headerlink" title="RUN"></a>RUN</h3><ul>
+<li>尽量使用 &amp;&amp; \ 表示多行语句，使用 <code>&amp;&amp;</code> 连接命令，如果前一个命令成功执行（返回 0），则执行下一个命令。这是确保每个命令依赖于前一个命令成功完成的常用方法</li>
+</ul>
+<h3 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h3><ul>
+<li>CMD [“.&#x2F;server”]       这是它的 json 数组写法，意味着不使用 shell 进行执行，则不可以使用 cd 等命令</li>
+<li>CMD cd build&#x2F;sc&#x2F; &amp;&amp; .&#x2F;server     这是使用 sh -c 执行的写法</li>
+</ul>
+<h2 id="构建服务示例"><a href="#构建服务示例" class="headerlink" title="构建服务示例"></a>构建服务示例</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-comment"># 使用官方 Golang 镜像</span><br><span class="hljs-keyword">FROM</span> golang:latest<br><br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /sc-core</span><br><span class="hljs-comment"># 将你的源代码复制到容器中</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> . /sc-core</span><br><span class="hljs-comment"># 拷贝凭证文件到 Docker 容器中</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> .git-credentials /root/.git-credentials</span><br><br><span class="hljs-comment"># 运行 go mod tidy 来清理依赖项</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> git config --global credential.helper <span class="hljs-string">&#x27;store --file=/root/.git-credentials&#x27;</span> &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOPRIVATE=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GONOSUMDB=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GONOPROXY=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOINSECURE=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOPROXY=<span class="hljs-string">&quot;https://goproxy.cn|https://goproxy.io|direct&quot;</span> &amp;&amp; \</span><br><span class="language-bash">    go mod tidy -x</span><br><br><span class="hljs-comment"># 构建应用</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> make release</span><br><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">20111</span><br><br><span class="hljs-comment"># 指定容器启动时执行的命令</span><br><span class="hljs-keyword">CMD</span><span class="language-bash"> <span class="hljs-built_in">cd</span> build/sc-core &amp;&amp; ./bin/server</span><br><br></code></pre></td></tr></table></figure>
+
+<h2 id="构建测试示例"><a href="#构建测试示例" class="headerlink" title="构建测试示例"></a>构建测试示例</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">```<br><br><br><span class="hljs-comment">## docker 使用 systemd</span><br><br>```Docker<br><span class="hljs-keyword">FROM</span> ubuntu:<span class="hljs-number">22.04</span><br><br><span class="hljs-keyword">ENV</span> DEBIAN_FRONTEND noninteractive<br><span class="hljs-keyword">ENV</span> LC_ALL C.UTF-<span class="hljs-number">8</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">rm</span> /bin/sh &amp;&amp; <span class="hljs-built_in">ln</span> -s /bin/bash /bin/sh</span><br><span class="hljs-keyword">ENV</span> HTTP_PROXY=<span class="hljs-string">&quot;&quot;</span><br><span class="hljs-keyword">ENV</span> HTTPS_PROXY=<span class="hljs-string">&quot;&quot;</span><br><br><span class="hljs-keyword">RUN</span><span class="language-bash"> sed -i <span class="hljs-string">&#x27;s@archive.ubuntu.com@mirrors.tuna.tsinghua.edu.cn@g&#x27;</span> /etc/apt/sources.list &amp;&amp; \</span><br><span class="language-bash">    sed -i <span class="hljs-string">&#x27;s@security.ubuntu.com@mirrors.tuna.tsinghua.edu.cn@g&#x27;</span> /etc/apt/sources.list</span><br><br><span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> 1 2 3 4 5; <span class="hljs-keyword">do</span> \</span><br><span class="language-bash">      apt-get update &amp;&amp; \</span><br><span class="language-bash">      apt-get -y install \</span><br><span class="language-bash">      g++ \</span><br><span class="language-bash">      libtext-iconv-perl \</span><br><span class="language-bash">      default-logind \</span><br><span class="language-bash">      build-essential \</span><br><span class="language-bash">      gcc \</span><br><span class="language-bash">      apt-utils \</span><br><span class="language-bash">      pkg-config \</span><br><span class="language-bash">      software-properties-common \</span><br><span class="language-bash">      apt-transport-https \</span><br><span class="language-bash">      libssl-dev \</span><br><span class="language-bash">      <span class="hljs-built_in">sudo</span> \</span><br><span class="language-bash">      bash \</span><br><span class="language-bash">      curl \</span><br><span class="language-bash">      wget \</span><br><span class="language-bash">      tar \</span><br><span class="language-bash">      git \</span><br><span class="language-bash">      netcat \</span><br><span class="language-bash">      libaspell-dev \</span><br><span class="language-bash">      libhunspell-dev \</span><br><span class="language-bash">      hunspell-en-us \</span><br><span class="language-bash">      aspell-en \</span><br><span class="language-bash">      shellcheck \</span><br><span class="language-bash">      systemd \</span><br><span class="language-bash">      python3 \</span><br><span class="language-bash">      dbus \</span><br><span class="language-bash">      openssh-server \</span><br><span class="language-bash">      iproute2 \</span><br><span class="language-bash">      iputils-ping --fix-missing &amp;&amp; \</span><br><span class="language-bash">      <span class="hljs-built_in">break</span> || <span class="hljs-built_in">sleep</span> 30; \</span><br><span class="language-bash">    <span class="hljs-keyword">done</span> &amp;&amp; \</span><br><span class="language-bash">    apt-get -y update &amp;&amp; \</span><br><span class="language-bash">    apt-get -y autoremove &amp;&amp; \</span><br><span class="language-bash">    apt-get -y autoclean</span><br><br><span class="hljs-keyword">RUN</span><span class="language-bash"> apt-get install -y python2</span><br><br><span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">rm</span> -f /lib/systemd/system/multi-user.target.wants/* \</span><br><span class="language-bash">        /etc/systemd/system/*.wants/* \</span><br><span class="language-bash">        /lib/systemd/system/local-fs.target.wants/* \</span><br><span class="language-bash">        /lib/systemd/system/sockets.target.wants/*udev* \</span><br><span class="language-bash">        /lib/systemd/system/sockets.target.wants/*initctl* \</span><br><span class="language-bash">        /lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup* \</span><br><span class="language-bash">        /lib/systemd/system/systemd-tmpfiles-clean.service \</span><br><span class="language-bash">        /lib/systemd/system/systemd-tmpfiles-setup-dev.service \</span><br><span class="language-bash">        /lib/systemd/system/systemd-tmpfiles-setup.service \</span><br><span class="language-bash">        /lib/systemd/system/systemd-update-utmp*</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> wget --http-user=team --password=xdmybl http://119.91.145.27:12800/repo/lib/systemctl.py -O /bin/systemctl</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">chmod</span> a+x /bin/systemctl</span><br><br><br><span class="hljs-comment"># 修复 systemd 服务文件中的 ExecStart 路径</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-keyword">for</span> service_file <span class="hljs-keyword">in</span> /lib/systemd/system/*.service; <span class="hljs-keyword">do</span> \</span><br><span class="language-bash">        <span class="hljs-keyword">if</span> [ -f <span class="hljs-string">&quot;<span class="hljs-variable">$service_file</span>&quot;</span> ]; <span class="hljs-keyword">then</span> \</span><br><span class="language-bash">            sed -i <span class="hljs-string">&#x27;s|^ExecStart=system|ExecStart=/bin/system|g&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$service_file</span>&quot;</span>; \</span><br><span class="language-bash">            sed -i <span class="hljs-string">&#x27;s|^ExecStart=journalctl|ExecStart=/bin/journalctl|g&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$service_file</span>&quot;</span>; \</span><br><span class="language-bash">            sed -i <span class="hljs-string">&#x27;s|^ExecStart=bootctl|ExecStart=/bin/bootctl|g&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$service_file</span>&quot;</span>; \</span><br><span class="language-bash">            sed -i <span class="hljs-string">&#x27;s|^ExecStop=journalctl|ExecStop=/bin/journalctl|g&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$service_file</span>&quot;</span>; \</span><br><span class="language-bash">            <span class="hljs-keyword">if</span> ! grep -q <span class="hljs-string">&#x27;\[Service\]&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$service_file</span>&quot;</span>; <span class="hljs-keyword">then</span> \</span><br><span class="language-bash">                <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Removing <span class="hljs-variable">$service_file</span> due to missing [Service] section&quot;</span>; \</span><br><span class="language-bash">                <span class="hljs-built_in">rm</span> <span class="hljs-string">&quot;<span class="hljs-variable">$service_file</span>&quot;</span>; \</span><br><span class="language-bash">            <span class="hljs-keyword">fi</span>; \</span><br><span class="language-bash">        <span class="hljs-keyword">fi</span>; \</span><br><span class="language-bash">    <span class="hljs-keyword">done</span></span><br><br><span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">mkdir</span> /var/run/sshd &amp;&amp; \</span><br><span class="language-bash">    <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;root:root&#x27;</span> | chpasswd &amp;&amp; \</span><br><span class="language-bash">    sed -i <span class="hljs-string">&#x27;s/#PermitRootLogin prohibit-password/PermitRootLogin yes/&#x27;</span> /etc/ssh/sshd_config &amp;&amp; \</span><br><span class="language-bash">    sed -i <span class="hljs-string">&#x27;s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g&#x27;</span> /etc/pam.d/sshd &amp;&amp; \</span><br><span class="language-bash">    <span class="hljs-built_in">mkdir</span> -p /root/.ssh &amp;&amp; <span class="hljs-built_in">chmod</span> 700 /root/.ssh</span><br><br><span class="hljs-comment"># 暴露 SSH 服务端口</span><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">22</span><br><br><span class="hljs-keyword">STOPSIGNAL</span> SIGRTMIN+<span class="hljs-number">3</span><br><br><span class="hljs-keyword">VOLUME</span><span class="language-bash"> [ <span class="hljs-string">&quot;/sys/fs/cgroup&quot;</span> ]</span><br><br><span class="hljs-keyword">CMD</span><span class="language-bash"> [<span class="hljs-string">&quot;/lib/systemd/systemd&quot;</span>]</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="docker-使用-systemd-问题"><a href="#docker-使用-systemd-问题" class="headerlink" title="docker 使用 systemd 问题"></a>docker 使用 systemd 问题</h3><p><a target="_blank" rel="noopener" href="https://serverfault.com/questions/1053187/systemd-fails-to-run-in-a-docker-container-when-using-cgroupv2-cgroupns-priva">https://serverfault.com/questions/1053187/systemd-fails-to-run-in-a-docker-container-when-using-cgroupv2-cgroupns-priva</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/docker-dockerfile/" class="print-no-link">#docker dockerfile</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>dockerfile.md</div>
+      <div>https://abrance.github.io/2024/04/18/mdstorage/domain/虚拟化/dockerfile/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/18/mdstorage/domain/linux/find/" title="find.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">find.md</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/17/mdstorage/domain/vsc/git%E6%8A%80%E5%B7%A7/" title="git技巧.md">
+                        <span class="hidden-mobile">git技巧.md</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

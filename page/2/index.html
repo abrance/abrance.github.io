@@ -1,0 +1,735 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Xiaoy">
+<meta property="og:url" content="https://abrance.github.io/page/2/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/domain/linux/Ubuntu_wifi%E8%BF%9E%E4%B8%8D%E4%B8%8A/" target="_self">
+          Ubuntu_wifi连不上.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/domain/linux/Ubuntu_wifi%E8%BF%9E%E4%B8%8D%E4%B8%8A/" target="_self">
+        <div>
+          reset systemd-resolved123# 尝试修改 dns 配置，解决问题sudo nano /etc/systemd/resolved.confsystemctl restart systemd-resolved
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ubuntu/">#ubuntu</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/domain/linux/export/" target="_self">
+          export.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/domain/linux/export/" target="_self">
+        <div>
+          export -f 的作用在 Bash 中，export -f 用于将当前 shell 中定义的函数导出到子 shell 中，使子 shell 也能够访问和执行该函数。通常，export 命令用于导出环境变量，而 export -f 则专门用于导出函数。 语法1export -f function_name   function_name：要导出的函数名称。  示例假设我们在当前 shell 中定
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/domain/linux/%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B/" target="_self">
+          僵尸进程.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/domain/linux/%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B/" target="_self">
+        <div>
+          概述僵尸进程：在 Unix/Linux 系统中，当一个进程终止时，它的父进程还没有通过调用 wait() 系统调用读取其退出状态，那么这个进程就会成为僵尸进程。僵尸进程本身已经停止运行，但仍然在进程表中占据一个条目，以便父进程能够读取其退出状态。 &lt;defunct&gt;：在 ps 的输出中，&lt;defunct&gt; 表示该进程已经终止，但是它的父进程还没有读取并处理它的退出状态。此时
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/domain/%E5%AE%89%E5%85%A8/%E6%8E%88%E6%9D%83%E6%96%B9%E6%A1%88/" target="_self">
+          授权方案.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/domain/%E5%AE%89%E5%85%A8/%E6%8E%88%E6%9D%83%E6%96%B9%E6%A1%88/" target="_self">
+        <div>
+          授权方案(定义威胁模型)概念方案一 二 覆盖用户使用石犀系统时 可连广域网和不可连广域网 的情况, 一 二 都有各自的优缺点, 二者结合起来可以 SAC 石犀授权中心, 根据网络授权机制实现的授权服务,目前用于, 实现总控引擎插件的授权 SAC_DATA 石犀授权中心数据, SAC_DATA 包含此用户帐户下网络授权方面的资产数据(总控 引擎 插件过期时间,绑定关系等),当 SC 需要授权数据,将
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/domain/%E6%8B%9B%E8%81%98/Golang%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88JD/" target="_self">
+          Golang研发工程师JD.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/domain/%E6%8B%9B%E8%81%98/Golang%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88JD/" target="_self">
+        <div>
+          研发JD职位：Golang资深研发工程师 主要职责：  使用Go语言进行高效、可靠的软件开发。 设计、开发并维护复杂的软件系统和架构。 与团队成员合作，共同解决复杂的技术问题。 对数据库的使用和维护负责，确保性能和稳定性。 参与代码审查，确保代码质量和遵守最佳实践。 持续优化应用程序的性能，提高系统的可扩展性和可靠性。 编写清晰、可维护的代码，并对软件进行全面测试。  必备技能和资格：  具有4年
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JD-Golang/">#JD Golang</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/domain/%E6%8B%9B%E8%81%98/%E7%AE%80%E5%8E%86%E5%8F%82%E8%80%83/" target="_self">
+          简历参考.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/domain/%E6%8B%9B%E8%81%98/%E7%AE%80%E5%8E%86%E5%8F%82%E8%80%83/" target="_self">
+        <div>
+          xxx⼀、基本信息 &amp; 求职意向电话 &#x2F; 微信: xxxxxxxxx 邮箱: xxxxxxx 年龄: xx 岁⼯作年限: 6年 毕业院校: xxxx⼤学（2013.09 - 2017.06）意向职位: 开发⼯程师 到岗时间: 可随时到岗⼆、⼯作经验1、深圳市xxx科技有限公司（⾹港上市公司：00909.HK） xxx是国内地产数字化解决⽅案服务商的⻰头企业，深耕 SAAS 和 E
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95-%E7%AE%80%E5%8E%86/">#面试 简历</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E5%A4%A7%E7%BA%B2/" target="_self">
+          噩梦年记事大纲.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E5%A4%A7%E7%BA%B2/" target="_self">
+        <div>
+          构思主题与情节： 确定您想要探讨的中心主题。 构思大致的情节框架，包括故事的开端、发展、高潮、和结局。   人物创造与发展： 设计主要和次要人物，为他们制定背景故事、性格特点和动机。 考虑人物之间的关系以及这些关系如何推动故事发展。   世界建构： 如果故事背景非现实世界，需要详细描绘故事的设定，包括地理、政治、经济、文化等方面。 即使故事设定在现实世界，也要研究相关的背景信息，让故事环境真实可
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B0%8F%E8%AF%B4/">#小说</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E8%8D%89%E7%A8%BF/" target="_self">
+          噩梦年记事草稿.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E8%8D%89%E7%A8%BF/" target="_self">
+        <div>
+          第一章 小镇的夕阳    “吉尔伯特，开门！”　　在日光的偏移中，老旧的铁门随着访客拍门的动作而发出有节奏的声响。　　在亚楠镇居民的眼里，这样的行为往往是不受欢迎的，毫无礼节的敲门配合着大声的呼喊往往会让人们想起那些糟糕的夜晚。　　但是，当路过的人们看到那访客身上的衣服时，便又将满嘴的埋怨与不满吞回了肚子里，更何况他正在直呼吉尔伯特的名字。　　“大概是教会里的猎人吧。”　　人们这么想着，随后便纷纷
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B0%8F%E8%AF%B4/">#小说</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/project/sr/golang%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/grpc-Tutorial/" target="_self">
+          grpc-Tutorial.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/project/sr/golang%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/grpc-Tutorial/" target="_self">
+        <div>
+          gRPC 教程本教程针对希望学习如何使用 gRPC 构建和部署高效、可扩展的微服务的开发者。通过阅读本教程，了解 gRPC 的基本概念、如何在 Go 语言中实现 gRPC 服务，以及如何进行客户端和服务器之间的通信。寻找一个高性能、跨语言、开放源代码的远程过程调用 (RPC) 框架，gRPC 是一个理想的选择。 教程概览在本教程中，学习如何：  设计和定义 gRPC 服务 在 Go 语言中实现 g
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/grpc-golang/">#grpc golang</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/03/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/" target="_self">
+          NAS访问.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/03/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/" target="_self">
+        <div>
+          ssh访问先用普通账户登陆xiaoy/$faker. 切换rootroot/$faker.
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-03 10:15" pubdate>
+              2024-09-03
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/nas/">#nas</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/#board">27</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

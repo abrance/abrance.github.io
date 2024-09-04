@@ -1,0 +1,914 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大纲项目概述现状分析目标困难点技术方案异常场景1. 网络异常 原因：客户端A&#x2F;B或sc-core网络不稳定，导致消息传输失败。 解决方案：实现重试机制和超时控制，确保消息能够在网络恢复后成功传输。  2. 客户端注册失败 原因：客户端信息错误、sc-core服务不可用或达到连接数上限。 解决方案：检查客户端信息的正确性，确保sc-core服务运行正常，并考虑扩展服务能力以支持更多客户端。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通信链路改造sc、webserver链路改造设计.md">
+<meta property="og:url" content="https://abrance.github.io/2024/02/29/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0sc%E3%80%81webserver%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="大纲项目概述现状分析目标困难点技术方案异常场景1. 网络异常 原因：客户端A&#x2F;B或sc-core网络不稳定，导致消息传输失败。 解决方案：实现重试机制和超时控制，确保消息能够在网络恢复后成功传输。  2. 客户端注册失败 原因：客户端信息错误、sc-core服务不可用或达到连接数上限。 解决方案：检查客户端信息的正确性，确保sc-core服务运行正常，并考虑扩展服务能力以支持更多客户端。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0%E5%A4%9A%E8%8A%82%E7%82%B9%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91.png">
+<meta property="article:published_time" content="2024-02-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-04T03:27:12.679Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="通信链路改造">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0%E5%A4%9A%E8%8A%82%E7%82%B9%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91.png">
+  
+  
+  
+  <title>通信链路改造sc、webserver链路改造设计.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="通信链路改造sc、webserver链路改造设计.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-29 00:00" pubdate>
+          2024年2月29日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">通信链路改造sc、webserver链路改造设计.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><h2 id="项目概述"><a href="#项目概述" class="headerlink" title="项目概述"></a>项目概述</h2><h3 id="现状分析"><a href="#现状分析" class="headerlink" title="现状分析"></a>现状分析</h3><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><h3 id="困难点"><a href="#困难点" class="headerlink" title="困难点"></a>困难点</h3><h2 id="技术方案"><a href="#技术方案" class="headerlink" title="技术方案"></a>技术方案</h2><h2 id="异常场景"><a href="#异常场景" class="headerlink" title="异常场景"></a>异常场景</h2><h3 id="1-网络异常"><a href="#1-网络异常" class="headerlink" title="1. 网络异常"></a>1. 网络异常</h3><ul>
+<li><strong>原因</strong>：客户端A&#x2F;B或sc-core网络不稳定，导致消息传输失败。</li>
+<li><strong>解决方案</strong>：实现重试机制和超时控制，确保消息能够在网络恢复后成功传输。</li>
+</ul>
+<h3 id="2-客户端注册失败"><a href="#2-客户端注册失败" class="headerlink" title="2. 客户端注册失败"></a>2. 客户端注册失败</h3><ul>
+<li><strong>原因</strong>：客户端信息错误、sc-core服务不可用或达到连接数上限。</li>
+<li><strong>解决方案</strong>：检查客户端信息的正确性，确保sc-core服务运行正常，并考虑扩展服务能力以支持更多客户端。</li>
+</ul>
+<h3 id="3-消息转发失败"><a href="#3-消息转发失败" class="headerlink" title="3. 消息转发失败"></a>3. 消息转发失败</h3><ul>
+<li><strong>原因</strong>：目标客户端不在线、sc-core内部错误或消息格式不兼容。</li>
+<li><strong>解决方案</strong>：在sc-core中实现客户端在线状态检测，对内部错误进行异常捕获处理，并确保消息格式的统一和兼容性。</li>
+</ul>
+<h3 id="4-响应超时"><a href="#4-响应超时" class="headerlink" title="4. 响应超时"></a>4. 响应超时</h3><ul>
+<li><strong>原因</strong>：B处理请求耗时过长或sc-core到B的网络延迟。</li>
+<li><strong>解决方案</strong>：优化B处理逻辑的性能，提高响应速度，并在A端实现超时重试机制。</li>
+</ul>
+<h3 id="5-数据一致性问题"><a href="#5-数据一致性问题" class="headerlink" title="5. 数据一致性问题"></a>5. 数据一致性问题</h3><ul>
+<li><strong>原因</strong>：在分布式环境下，客户端状态更新可能不同步。</li>
+<li><strong>解决方案</strong>：实现客户端心跳机制，定期同步客户端状态，确保sc-core持有的客户端信息准确。</li>
+</ul>
+<h3 id="6-安全性问题"><a href="#6-安全性问题" class="headerlink" title="6. 安全性问题"></a>6. 安全性问题</h3><ul>
+<li><strong>原因</strong>：传输数据未加密，存在被截获的风险。</li>
+<li><strong>解决方案</strong>：使用TLS加密gRPC通信，确保数据传输的安全性。</li>
+</ul>
+<h3 id="7-资源竞争和泄漏"><a href="#7-资源竞争和泄漏" class="headerlink" title="7. 资源竞争和泄漏"></a>7. 资源竞争和泄漏</h3><ul>
+<li><strong>原因</strong>：并发处理不当导致的资源竞争或未正确释放资源导致的内存泄漏。</li>
+<li><strong>解决方案</strong>：使用锁或其他并发控制机制管理资源访问，确保goroutine安全；及时释放不再使用的资源，避免内存泄漏。</li>
+</ul>
+<h3 id="8-服务降级与熔断"><a href="#8-服务降级与熔断" class="headerlink" title="8. 服务降级与熔断"></a>8. 服务降级与熔断</h3><ul>
+<li><strong>原因</strong>：sc-core负载过高，无法处理更多请求。</li>
+<li><strong>解决方案</strong>：实现服务降级策略，在系统负载过高时，暂时拒绝非关键请求；使用熔断机制，防止系统完全不可用。</li>
+</ul>
+<h3 id="9-服务发现问题"><a href="#9-服务发现问题" class="headerlink" title="9. 服务发现问题"></a>9. 服务发现问题</h3><ul>
+<li><strong>原因</strong>：客户端或服务端在动态环境下IP变化，导致无法正常通信。</li>
+<li><strong>解决方案</strong>：引入服务注册与发现机制，客户端和服务端动态注册自己的地址信息，保证通信地址的实时更新。</li>
+</ul>
+<h1 id="项目概述-1"><a href="#项目概述-1" class="headerlink" title="项目概述"></a>项目概述</h1><h2 id="现状分析-1"><a href="#现状分析-1" class="headerlink" title="现状分析"></a>现状分析</h2><h3 id="总控、引擎、插件跨节点通信链路"><a href="#总控、引擎、插件跨节点通信链路" class="headerlink" title="总控、引擎、插件跨节点通信链路"></a>总控、引擎、插件跨节点通信链路</h3><pre><code class=" mermaid">graph LR
+	subgraph Sc[总控]
+		sc
+		sv[可视化 sv]
+		installer-manager[引擎安装 manager]
+	end
+	
+	subgraph Se[流量引擎]
+        subgraph Sem[流量引擎 管理节点]
+            installer-agent[引擎安装 agent]
+            webserver[Webserver]
+            admin_dam[admin Dam]
+            apiserver[Apiserver]
+            admin_ha[admin HA]
+			nexus_m[Nexus]
+			global_plugin_server[global-plugin-server]
+        end
+
+        subgraph Sew[流量引擎 工作节点]
+            data_dam[data Dam]
+            nexus_w[Nexus]
+            envoy[Envoy]
+        end
+        
+        subgraph Ses[流量引擎 调度节点]
+        	nexus_s[Nexus]
+        	data_ha[Data HA]
+        end
+	end
+	
+	installer-manager --&gt;|vip/nodeIP:8099|installer-agent
+	installer-manager --&gt;|vip:6898|admin_ha
+	sv --&gt;|vip:1234|admin_dam
+	sv --&gt;|vip:8899|admin_dam
+	sv --&gt;|vip:8299|webserver
+	sc --&gt;|vip:8229|webserver	
+	
+	installer-agent --&gt;|nodeIP:8098|installer-manager
+	data_dam --&gt;|nodeIp:4150|sv
+	
+	data_ha --&gt;|nodeIp:6443| apiserver
+	webserver --&gt;|nodeIp:9001|data_dam
+	webserver --&gt;|nodeIp:8000| nexus_m &amp; nexus_s &amp; nexus_w
+	envoy --&gt;|vip:7878 7978| global_plugin_server
+	
+	%%installer-agent --&gt;|vip:6443|apiserver
+
+</code></pre>
+
+
+
+<p>结论： 可以看出来现有的通信链路有两个不符合设计要求的点 1. 通信建立连接方向为总控端到引擎端  2. 通信链路不规则，各个组件缺乏管制，随意建立链接。</p>
+<p>缺点很明显，1 会导致与实际客户部署场景不吻合 2 会导致后期运维困难、系统维护困难、系统开发成本提高等。</p>
+<h2 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h2><h3 id="改造后总控引擎通信链路（不算引擎内部）"><a href="#改造后总控引擎通信链路（不算引擎内部）" class="headerlink" title="改造后总控引擎通信链路（不算引擎内部）"></a>改造后总控引擎通信链路（不算引擎内部）</h3><pre><code class=" mermaid">graph LR
+	subgraph Sc[总控]
+		sc[sc]
+		core[core *:20111]
+		sv[可视化 sv]
+		installer-manager[引擎安装 manager]
+	end
+	
+	subgraph Se[流量引擎]
+        subgraph Sem[流量引擎 管理节点]
+            %%installer-agent[引擎安装 agent]
+            webserver[Webserver]
+            admin_dam[admin Dam]
+            apiserver[Apiserver]
+            admin_ha[admin HA]
+			nexus_m[Nexus]
+			global_plugin_server[global-plugin-server]
+        end
+
+        subgraph Sew[流量引擎 工作节点]
+            data_dam[data Dam]
+            nexus_w[Nexus]
+            envoy[Envoy]
+        end
+        
+        subgraph Ses[流量引擎 调度节点]
+        	nexus_s[Nexus]
+        end
+	end
+	
+	%%installer-manager --&gt;|vip/nodeIP:8099|installer-agent
+	%%installer-manager --&gt;|vip:6898|admin_ha
+	%%sv --&gt;|vip:1234|admin_dam
+	%%sv --&gt;|vip:8899|admin_dam
+	%%sv --&gt;|vip:8299|webserver
+	%%sc --&gt;|vip:8229|webserver	
+	sc --&gt; core
+	webserver --&gt; core
+
+	sv --&gt; core
+	%%admin_dam ---&gt; webserver
+	admin_dam ---&gt; |*:29120| sv
+	
+	installer-manager --&gt; core
+	%%admin_ha ---&gt; webserver
+	%%installer-agent ---&gt; core
+	
+	installer-manager --&gt;|nodeIp:22 |Se
+	%%installer-agent --&gt;|nodeIP:8098|installer-manager
+	%%data_dam --&gt;|nodeIp:4150|sv
+	%%data_dam --&gt;|nodeIp:9001|webserver
+	%%webserver --&gt;|nodeIp:8000| nexus_m &amp; nexus_s &amp; nexus_w
+	%%envoy --&gt;|vip:7878 7978| global_plugin_server
+	%%installer-agent --&gt;|vip:6443|apiserver
+</code></pre>
+
+
+
+<h3 id="改造后总控引擎通信链路（算引擎内部）"><a href="#改造后总控引擎通信链路（算引擎内部）" class="headerlink" title="改造后总控引擎通信链路（算引擎内部）"></a>改造后总控引擎通信链路（算引擎内部）</h3><pre><code class=" mermaid">graph LR
+	subgraph Sc[总控]
+		sc[sc]
+		core[core *:20111]
+		sv[可视化 sv]
+		installer-manager[引擎安装 manager]
+	end
+	
+	subgraph Se[流量引擎]
+        subgraph Sem[流量引擎 管理节点]
+            %%installer-agent[引擎安装 agent]
+            webserver[Webserver]
+            admin_dam[admin Dam]
+            apiserver[Apiserver]
+            admin_ha[admin HA]
+			nexus_m[Nexus]
+			global_plugin_server[global-plugin-server]
+        end
+
+        subgraph Sew[流量引擎 工作节点]
+            data_dam[data Dam]
+            nexus_w[Nexus]
+            envoy[Envoy]
+        end
+        
+        subgraph Ses[流量引擎 调度节点]
+        	nexus_s[Nexus]
+        	data_ha[Data HA]
+        end
+	end
+	
+	%%installer-manager --&gt;|vip/nodeIP:8099|installer-agent
+	%%installer-manager --&gt;|vip:6898|admin_ha
+	%%sv --&gt;|vip:1234|admin_dam
+	%%sv --&gt;|vip:8899|admin_dam
+	%%sv --&gt;|vip:8299|webserver
+	%%sc --&gt;|vip:8229|webserver	
+	sc --&gt; core
+	webserver --&gt; core
+
+	sv --&gt; core
+	admin_dam ---&gt;|*:29120| sv
+	
+	installer-manager --&gt; core
+	admin_ha ---&gt; webserver
+	%%installer-agent ---&gt; core
+	data_ha --&gt;|nodeIp:6443| apiserver
+	%%installer-agent --&gt;|nodeIP:8098|installer-manager
+	%%data_dam --&gt;|nodeIp:4150|sv
+	%%data_dam --&gt;|nodeIp:9001|webserver
+	webserver --&gt;|nodeIp:8000| nexus_m &amp; nexus_s &amp; nexus_w
+	envoy --&gt;|vip:7878 7978| global_plugin_server
+	installer-manager --&gt;|nodeIp:22 |Se
+	%%installer-agent --&gt;|vip:6443|apiserver
+    linkStyle 0,1 stroke-width:8px;    
+</code></pre>
+
+
+
+<h2 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h2><h3 id="建立连接反转"><a href="#建立连接反转" class="headerlink" title="建立连接反转"></a>建立连接反转</h3><p>（本次改动不涉及 可视化数据传输的流，这是考虑到可视化的数据流过大，经过一次转发消耗的资源比较大）</p>
+<p>在 core 参与的框架中，完成组件之间通信有两步：</p>
+<ol>
+<li>与 core 建立通信</li>
+<li>发送&#x2F;接收、处理请求</li>
+</ol>
+<p>图表标识</p>
+<ul>
+<li>红线表示需要完成 1 2 步编码</li>
+<li>紫线表示不需要实现</li>
+<li>橙色表示需要实现 2 步</li>
+</ul>
+<h4 id="sc-到-webserver"><a href="#sc-到-webserver" class="headerlink" title="sc 到 webserver"></a>sc 到 webserver</h4><pre><code class=" mermaid">graph LR
+	subgraph Sc[总控]
+        subgraph ScApi[总控API]
+            client[SCClient]
+
+            subgraph Client
+                conn_ctx[引擎连接管理]
+                gw_obj[引擎服务搭建]
+                node_ctx[引擎节点管理]
+                auth_ctx[引擎授权管理]
+                ha_ctx[调度策略管理]
+            end
+
+        end
+        subgraph Core
+            core_conn_ctx[各组件连接上下文管理]
+
+            subgraph Stream
+                Agent
+            end
+        end
+	end
+	
+	subgraph Se
+		router[Webserver]
+		subgraph Router
+		
+            gw[网关、虚拟服务对象等接口]
+            node_manage[引擎节点状态接口]
+            auth_manage[引擎授权管理接口]
+            ha_manage[调度策略管理接口]
+		end
+	end 
+	
+	router --&gt; Agent
+	client --&gt; Agent
+	router --&gt; Router
+	client --&gt; Client &amp; core_conn_ctx
+	
+    linkStyle 0,1,2,3,4 stroke:red,stroke-width:8px,color:black;    
+	
+</code></pre>
+
+
+
+<h2 id="多管理面节点主备切换场景–方案改造后流程图"><a href="#多管理面节点主备切换场景–方案改造后流程图" class="headerlink" title="多管理面节点主备切换场景–方案改造后流程图"></a>多管理面节点主备切换场景–方案改造后流程图</h2><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0%E5%A4%9A%E8%8A%82%E7%82%B9%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91.png" srcset="/img/loading.gif" lazyload alt="通信链路改造多节点主备切换程序逻辑"> </p>
+<h3 id="主备切换场景–异常情况"><a href="#主备切换场景–异常情况" class="headerlink" title="主备切换场景–异常情况"></a>主备切换场景–异常情况</h3><ul>
+<li>HA 出现问题，主节点状态异常后未能及时完成主备切换操作</li>
+<li>HA –&gt; webserver 这条链路出现问题，不能及时通知 webserver 主备切换信息，导致引擎失联，会在界面中显现</li>
+<li>webserver –&gt; sc-core 被告之主备切换后未能主动连接 sc-core ，或是链路出现问题，同样表现为引擎失联</li>
+<li>sc-core 不能正确处理 webserver 断线、新 webserver 重连场景，导致引擎链路出现问题，可能表现为引擎失联</li>
+</ul>
+<h2 id="通信链路规整"><a href="#通信链路规整" class="headerlink" title="通信链路规整"></a>通信链路规整</h2><p>todo</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/" class="print-no-link">#通信链路改造</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>通信链路改造sc、webserver链路改造设计.md</div>
+      <div>https://abrance.github.io/2024/02/29/mdstorage/project/sr/通信链路改造/通信链路改造sc、webserver链路改造设计/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/02/29/mdstorage/domain/C%E8%AF%AD%E8%A8%80/%E8%BF%90%E8%A1%8C%E6%97%B6%E7%B3%BB%E7%BB%9F%E8%AF%AD%E8%A8%80/" title="运行时系统语言.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">运行时系统语言.md</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/02/28/mdstorage/project/cToRust/cToRust/" title="cToRust.md">
+                        <span class="hidden-mobile">cToRust.md</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

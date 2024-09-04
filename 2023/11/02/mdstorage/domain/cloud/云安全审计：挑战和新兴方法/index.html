@@ -1,0 +1,818 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="标题和源头:  明确每条资讯的标题和来源，这将帮助您快速识别资讯的主题和信任度。   日期和作者:  记录资讯的发布日期和作者，以了解资讯的时效性和作者的背景。   摘要:  创建一个简短的摘要，概述资讯的主要内容和观点。这将帮助您快速回顾资讯的核心信息。   关键点和数据:  列举资讯中的关键点和重要数据。使用列表或者子标题来组织这些信息，以便于阅读和查找。   图表和图片:  如果资讯中包含">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云安全审计：挑战和新兴方法.md">
+<meta property="og:url" content="https://abrance.github.io/2023/11/02/mdstorage/domain/cloud/%E4%BA%91%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1%EF%BC%9A%E6%8C%91%E6%88%98%E5%92%8C%E6%96%B0%E5%85%B4%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="标题和源头:  明确每条资讯的标题和来源，这将帮助您快速识别资讯的主题和信任度。   日期和作者:  记录资讯的发布日期和作者，以了解资讯的时效性和作者的背景。   摘要:  创建一个简短的摘要，概述资讯的主要内容和观点。这将帮助您快速回顾资讯的核心信息。   关键点和数据:  列举资讯中的关键点和重要数据。使用列表或者子标题来组织这些信息，以便于阅读和查找。   图表和图片:  如果资讯中包含">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-04T03:27:12.655Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="cloud security">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>云安全审计：挑战和新兴方法.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="云安全审计：挑战和新兴方法.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-02 00:00" pubdate>
+          2023年11月2日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">云安全审计：挑战和新兴方法.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <ol>
+<li><p><strong>标题和源头</strong>:</p>
+<ul>
+<li>明确每条资讯的标题和来源，这将帮助您快速识别资讯的主题和信任度。</li>
+</ul>
+</li>
+<li><p><strong>日期和作者</strong>:</p>
+<ul>
+<li>记录资讯的发布日期和作者，以了解资讯的时效性和作者的背景。</li>
+</ul>
+</li>
+<li><p><strong>摘要</strong>:</p>
+<ul>
+<li>创建一个简短的摘要，概述资讯的主要内容和观点。这将帮助您快速回顾资讯的核心信息。</li>
+</ul>
+</li>
+<li><p><strong>关键点和数据</strong>:</p>
+<ul>
+<li>列举资讯中的关键点和重要数据。使用列表或者子标题来组织这些信息，以便于阅读和查找。</li>
+</ul>
+</li>
+<li><p><strong>图表和图片</strong>:</p>
+<ul>
+<li>如果资讯中包含了有用的图表或图片，考虑将它们保存并插入到您的资讯摘要中。</li>
+</ul>
+</li>
+<li><p><strong>个人评价和思考</strong>:</p>
+<ul>
+<li>记录您对资讯的看法和思考，包括它如何影响您的项目或职责，以及您可能采取的任何后续行动。</li>
+</ul>
+</li>
+<li><p><strong>相关链接和参考资料</strong>:</p>
+<ul>
+<li>提供资讯原文的链接，以及任何相关的背景资料或参考资料的链接。</li>
+</ul>
+</li>
+<li><p><strong>标签和分类</strong>:</p>
+<ul>
+<li>使用标签和分类来组织您的资讯摘要，以便于后期按照主题或类型进行搜索和查找。</li>
+</ul>
+</li>
+<li><p><strong>后续行动和提醒</strong>:</p>
+<ul>
+<li>如果资讯内容需要您采取某些后续行动，记录这些行动并设置提醒，以确保您不会忘记。</li>
+</ul>
+</li>
+<li><p><strong>保存和归档</strong>:</p>
+<ul>
+<li>保存您的资讯摘要到适当的文件夹或数字笔记应用程序中，并按照 PARA 方法的分类标准进行归类。</li>
+</ul>
+</li>
+</ol>
+<h3 id="标题和源头"><a href="#标题和源头" class="headerlink" title="标题和源头"></a>标题和源头</h3><ul>
+<li>InfoQ<a target="_blank" rel="noopener" href="https://www.infoq.com/articles/cloud-security-auditing-challenges-and-emerging-approaches/">资讯</a></li>
+<li>云安全审计：挑战和新兴方法</li>
+<li>Cloud Security Auditing: Challenges and Emerging Approaches</li>
+</ul>
+<h3 id="日期和作者"><a href="#日期和作者" class="headerlink" title="日期和作者"></a>日期和作者</h3><ul>
+<li>2023&#x2F;11&#x2F;2</li>
+<li><a target="_blank" rel="noopener" href="https://www.infoq.com/profile/John-Kissell/">John Kissell</a> Jungwoo Ryoo</li>
+</ul>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><ul>
+<li>云计算是一种模型，用于实现对可配置计算资源（例如，网络、服务器、存储、应用程序和服务）的共享池的无处不在、方便、按需的网络访问，这些资源可以通过最少的管理工作或服务提供商交互快速配置和发布。1 从本质上讲，云计算可以被描述为使用通过网络提供的计算资源（包括硬件和软件），需要用户和提供商之间的最少交互。</li>
+<li>云中通常实现三种服务模型：软件即服务 （SaaS）、平台即服务 （PaaS） 和基础架构即服务 （IaaS）。在每一种服务类型中，安全性都是一个重大挑战。安全审核为各种组织提供了清晰且可识别的资源访问跟踪。</li>
+<li>传统的 IT 审计通常分为两大类：内部审计和外部审计。内部审计是指由组织自己的员工完成的工作，涉及非常具体的组织流程，主要关注优化和风险管理。外部审计从外部视角了解组织满足各种法律法规要求的能力。组织使用传统的 IT 审计来评估诸如授权用户的可用性以及数据存储和传输的完整性和机密性等问题。</li>
+<li>当组织的 IT 资源迁移到云时会发生什么？由于云计算允许跨大型域的多个用户，因此它暴露了新的安全问题，例如特定于云的信任问题。这些威胁给安全审计带来了新的挑战，但云倡导者正在应对这些威胁。例如，<a target="_blank" rel="noopener" href="http://www.cloudsecurityalliance.org/">云安全联盟</a> （CSA） 等组织正在敦促标准化云的可靠性、完整性和可用性审计。</li>
+<li>在本文中，我们将重点介绍将云安全审计与传统 IT 安全审计实践区分开来的挑战。这些挑战说明了在现有或新兴的安全审计标准中对云安全审计的特殊规定的重要性。</li>
+</ul>
+<h3 id="关键点和数据"><a href="#关键点和数据" class="headerlink" title="关键点和数据"></a>关键点和数据</h3><ul>
+<li><h4 id="挑战点"><a href="#挑战点" class="headerlink" title="挑战点"></a>挑战点</h4><p>云基础架构是服务组织、云服务提供商 （CSP） 和最终用户之间不断进行三方协商的结果，以确保生产力，同时保持合理的安全性。CSP 应保护数据免受安全威胁，同时允许客户端通过 Internet 服务访问任何地方。此外，客户组织必须验证云计算企业是否有助于实现其业务目标、目的和未来需求。</p>
+<ul>
+<li>云安全审计必须解决传统 IT 安全审计中通常无法处理的独特问题。最直接和最明显的挑战在于审计师获得足够的云计算知识。有效的云安全审计师必须熟悉云计算术语，并具备云系统构成和交付方法的工作知识。这些知识可确保审计人员关注在云安全审计过程中可能更重要的安全因素，包括<ul>
+<li>透明度;</li>
+<li>加密;</li>
+<li>主机托管;</li>
+<li>以及规模、范围和复杂性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="透明度"><a href="#透明度" class="headerlink" title="透明度"></a>透明度</h4><p>透明度使组织能够更轻松地识别潜在的安全风险和威胁</p>
+<ul>
+<li>一个好的云安全审计会质疑 CSP 是否在安全控制和最终用户访问之间提供了坚实的 <strong>平衡</strong>。<ul>
+<li>员工可能需要在家中或出差时访问云。CSP 是否允许此类访问，是否可以阻止其他人冒充合法用户？</li>
+<li>更重要的是，CSP 是否愿意对其访问控制机制保持透明？</li>
+</ul>
+</li>
+<li>需要披露的细节<ul>
+<li>客户端需要知道谁在处理数据，知道数据在系统上的确切位置。</li>
+<li>数据隐私、数据安全、匿名、电信容量、责任、可靠性和政府监控的透明度</li>
+<li>关键企业系统的未报告后门可能会对组织造成毁灭性的损害</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h4><p>客户端可以在将其所有数据发送到云提供商之前在内部加密，但这种方法会带来系统管理员滥用其权限的风险。将加密留给 CSP 也不是万无一失的：其存储系统的漏洞也可能意味着其加密和解密工具的漏洞。</p>
+<ul>
+<li><p>传统 IT 基础设施问题</p>
+<p>数据加密和数据访问哪个更重要？如果整个数据池都是静态加密的，组织如何在不解密所有数据的情况下快速有效地查询数据？由于其繁重的计算要求，加密可能并不总是最有效的解决方案。只有在不经常访问敏感数据（例如，存档的工资单信息）的情况下，静态加密才成为可行的选择。</p>
+</li>
+<li><p>云基础架构问题</p>
+<ul>
+<li>静态数据是否应该加密？默认情况下，CSP 通常提供加密（例如 Amazon 的简单存储服务 （S3），这可能会导致双重加密（一次由 CSU 加密，一次由 CSP 加密）。相比之下，亚马逊的弹性计算云服务默认不提供加密，由客户自行决定。第三方服务（如 <a target="_blank" rel="noopener" href="http://www.ciphercloud.com/">CipherCloud</a>）允许客户端在将数据发送到 CSP 之前对数据进行加密。传输中的数据通常使用安全套接字层等技术进行加密。假设 CSU 仅依赖 CSP 进行加密，它必须允许 CSP 控制其加密和解密机制，并有权访问其存储的所有数据（例如 S3）。</li>
+<li>这不是一种安全的做法，因为如果云的一部分受到损害，所有加密数据也可能受到损害。因此，更希望在 CSP 无法触及的地方进行加密和解密。但是，加密和解密云存储数据是否值得在云之外使用额外的计算资源？可能，但完全同态加密方面较新的创新允许加密查询搜索加密文本，而无需搜索引擎解密。4 这种类型的加密有可能解决传统 IT 和云基础设施中静态加密数据的安全问题</li>
+<li>努力达到隐私的平衡：审计师希望对他们的查询保密，而被审计组织希望保护其所有加密数据的隐私。审计员可以访问组织的数据以完成他们的工作; 他们有权访问，但不能复制或删除任何内容。</li>
+<li>CSP 可能不愿意或无法披露某些加密信息，即使在审核情况下也是如此。为了帮助缓解这一特定于云的问题，支付卡行业 （PCI） 数据安全标准 （DSS） 云特别兴趣小组 （SIG） 强烈建议加密密钥和加密算法信息“独立于云服务进行存储和管理”。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="主机托管"><a href="#主机托管" class="headerlink" title="主机托管"></a>主机托管</h4><p>云计算的核心优势是多个用户组织可以共享一个服务组织的物理系统。虽然这是一种很好的降低成本的方法，但共享技术基础设施也会导致同样严重的安全问题。至关重要的是，CSP 必须防止用户系统获得对物理硬件的管理访问权限，以防止滥用服务和访问其他客户的数据。</p>
+<ul>
+<li><p>IaaS 经常遇到此问题; 为了解决这个问题，CSP 求助于将虚拟机 （VM） 与物理计算硬件隔离开来的虚拟机管理程序。目前使用的虚拟机管理程序示例包括 Xen（开源），VMWare（专有），Microsoft 的虚拟服务器，基于内核的虚拟机（KVM），IBM 的 PowerVM 以及许多其他包含 Intel 和 AMD 架构的虚拟机。安全审计问题就是由这种情况引起的：在云系统中组织或建立虚拟机管理程序的方法有无数种，每种方法都有自己的优点、缺点和优先级。</p>
+</li>
+<li><p>CSP 不仅要平衡虚拟机管理程序和托管系统的业务需求，还要平衡安全问题。尽管显然需要对托管的结构和安全性进行标准化，但尚无官方标准。甚至 PCI DSS 也没有列出有关这些不断发展的问题的专门标准。但是，PCI DSS Cloud SIG 为多租户制定了一些建议。5 它提供了三个示例云分段环境：用于每个客户端的持卡人数据的传统独立服务器、专用于每个客户端及其持卡人数据的虚拟化服务器，以及在单独的逻辑分区和单独的数据库管理映像中运行的应用程序，这些应用程序不共享磁盘存储等资源。</p>
+</li>
+<li><p>考虑到云-虚拟机管理程序的众多组合和不同程度的云采用，对云系统的 PCI DSS 式评估必须包括对所有 CSP 的单独检查。为了强调适当的托管安全性的重要性，PCI DSS Cloud SIG 发布了以下关于多租户的声明：“如果没有充分的分段，共享基础设施的所有客户端以及 CSP 都需要被验证为 PCI-DSS 合规性，以便确保任何一个客户端符合环境的合规性。</p>
+</li>
+</ul>
+</li>
+<li><h4 id="规模、范围和复杂性"><a href="#规模、范围和复杂性" class="headerlink" title="规模、范围和复杂性"></a>规模、范围和复杂性</h4><ol>
+<li><p><strong>规模增加</strong>：</p>
+<ul>
+<li>由于一台物理机上通常托管多个虚拟机，导致需要审核的主机数量大大增加，可能使 IT 人员和审计人员感到压力很大。</li>
+<li>通过标准化（例如，使用经过安全验证的主虚拟机映像），可以使审计过程变得更为顺畅和快速，尽管云计算元素的规模较大。</li>
+</ul>
+</li>
+<li><p><strong>审计范围变化</strong>：</p>
+<ul>
+<li>云计算引入了新的技术类型，例如虚拟机管理程序、虚拟交换机和虚拟防火墙，这些都需要被包括在审计的范围内。</li>
+<li>共置问题可能导致虚拟机之间的隔离漏洞，使得 CSU 对其虚拟机与其他组织（包括竞争对手）的虚拟机相邻感到不安。</li>
+</ul>
+</li>
+<li><p><strong>系统复杂性增加</strong>：</p>
+<ul>
+<li>由于规模和范围的增加，系统的复杂性也随之增加，需要分配比传统 IT 审计更多的时间和资源来应对这种复杂性。</li>
+</ul>
+</li>
+<li><p><strong>多地区数据中心的合规性挑战</strong>：</p>
+<ul>
+<li>CSP 能够将组织的数据和信息存储在位于多个国家&#x2F;地区的数据中心，每个国家&#x2F;地区都有不同的法律和法规，这对云安全审计员来说是一个挑战。</li>
+<li>客户组织的合规性要求不再受 CSU 物理位置的约束，审计人员需要确定 CSP 存储 CSU 数据和信息的位置，同时考虑由于多租户环境导致的托管增加了物理数据和信息存储位置的重要性。</li>
+</ul>
+</li>
+</ol>
+<p>通过以上分析，可以看出云计算环境相比传统 IT 环境在审计方面带来了更多的挑战和考量，需要更多的资源和技术来确保安全和合规。</p>
+</li>
+<li><h4 id="需要考虑的领域"><a href="#需要考虑的领域" class="headerlink" title="需要考虑的领域"></a>需要考虑的领域</h4><p>云计算提供了大量可以在任何地方访问的服务。但是，不同领域的某些业务领域会有各自不同的需求。数据类型也可能因域而异，为确保数据安全而强制执行的法律和法规要求也可能有所不同。因此，一刀切的审计可能无法满足专业审计应有的所有需求。领域定制审计是理想的解决方案。</p>
+<ul>
+<li><p>医疗</p>
+<p>医疗领域拥有高度敏感和机密的信息，但必须允许审计员、患者、药房和其他机构（如医院）访问。无论是在法律上还是在道德上，复杂的身份验证方法对于医疗云都尤为重要。任何违规行为都可能给医疗机构及其患者造成巨大损失。</p>
+<p>从法律上讲，医疗领域被要求达到非常高的标准，一旦发生违规，将面临巨额的补偿和惩罚性成本。</p>
+</li>
+<li><p>银行</p>
+<p>银行拥有大量与用户全天候从各种设备访问服务相关的流量。银行不仅必须不断更新信息，还必须确保这些信息的安全，并可供所有想要访问的客户使用。</p>
+<p>尽管完美的安全性是不可能的，但安全系统必须能够抵御和响应违规行为，尤其是当数十亿美元和大量银行账户面临风险时。相对较大的银行云面临的一个大问题是确保客户信息不会被盗或出售。我们认为，保障措施需要是双重的。首先，存储在云中的数据应该被加密。其次，对它的访问应受到网上银行客户端设置的权限的限制。</p>
+<p>对在本地（或银行总部）存储数据的银行进行传统的 IT 审计通常不需要担心其他银行会访问数据。但是，当多个银行机构使用相同的云基础设施时，存在额外的风险，包括竞争对手无意中访问银行数据的可能性。此外，一家银行的安全漏洞可能会导致其他银行的账户被破坏。</p>
+</li>
+<li><p>政府</p>
+<p>审计的三个关键领域是操作可见性、变更控制流程和事件响应。运营可见性要求 CSP 向机构提交自动数据馈送以及系统性能的定期证据和年度报告。更改控制过程限制了 CSP 进行可能影响 FedRAMP 要求的策略更改的能力。最后，事件响应处理云系统中可能出现的新风险或漏洞，并在发生违规时保护政府信息免遭泄露。例如，如果攻击危及政府计算机并导致军事机密泄露，事件响应团队应立即阻止信息泄露并防止任何进一步的损害。</p>
+</li>
+</ul>
+</li>
+<li><h4 id="新兴方法"><a href="#新兴方法" class="headerlink" title="新兴方法"></a>新兴方法</h4><ul>
+<li><p>关于云安全审计标准化的三个主要思想流派。</p>
+<ul>
+<li>一种信念是，我们根本不需要新的标准。由于大多数传统的 IT 审计标准在设计上都是技术中立的，因此现有标准仍然具有相关性。审计师负责自行开发他们在云计算方面的专业知识，并通过简单地这样做来获得见解。</li>
+<li>另一派思想是保持众所周知的 IT 安全审计标准的技术中立性，但用特定于云的信息来补充它们，例如，在进行典型的云安全审计时要寻找或避免什么。</li>
+<li>最后，一些受访者希望开发一个全新的标准，专门用于云安全审计。</li>
+</ul>
+<p>在我们看来，补充方法是一个很好的折衷方案</p>
+<p>ISO 27000 系列是使用最广泛的 IT 安全审计标准之一，但是，对于使用云的组织，ISO 27001 和 ISO 27002 只能提供有限的支持。在撰写本文时，ISO 正在开发一种新的特定于云的安全标准——ISO&#x2F;国际电工委员会 （IEC） 27017——来解决这个问题</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="图表和图片"><a href="#图表和图片" class="headerlink" title="图表和图片"></a>图表和图片</h3><h3 id="个人评价和思考"><a href="#个人评价和思考" class="headerlink" title="个人评价和思考"></a>个人评价和思考</h3><p>这篇资讯明确对云计算等概念进行准确的描述，这些是理解这篇资讯内容的前提; 对论题进行了清晰的描述，这是理解的思路; 对各重点难点关键点既有整体性概述，也有独立的讨论，做到了面面俱到。里面的事例非常典型，对安全方面的理解很深，一针见血地提出问题的本质。最后对解决问题也进行了概要描述，虽然不充足，但也提供了一个解决问题的思路和方向。</p>
+<h3 id="相关链接和参考资料"><a href="#相关链接和参考资料" class="headerlink" title="相关链接和参考资料"></a>相关链接和参考资料</h3><h3 id="标签和分类"><a href="#标签和分类" class="headerlink" title="标签和分类"></a>标签和分类</h3><h3 id="后续行动和提醒"><a href="#后续行动和提醒" class="headerlink" title="后续行动和提醒"></a>后续行动和提醒</h3>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/cloud-security/" class="print-no-link">#cloud security</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>云安全审计：挑战和新兴方法.md</div>
+      <div>https://abrance.github.io/2023/11/02/mdstorage/domain/cloud/云安全审计：挑战和新兴方法/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年11月2日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/11/02/mdstorage/project/sr/%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E7%BB%8F%E7%90%86%E6%89%93%E5%8C%85%E4%BA%BA%E5%91%98%E9%83%A8%E7%BD%B2%E4%BA%BA%E5%91%98%E8%BD%AC%E6%B5%8B%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/" title="开发项目经理打包人员部署人员转测流程规范.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">开发项目经理打包人员部署人员转测流程规范.md</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/02/mdstorage/domain/knownledge/%E6%8A%80%E6%9C%AF%E8%B5%84%E8%AE%AF%E6%91%98%E8%A6%81%E8%8E%B7%E5%8F%96/" title="技术资讯摘要获取.md">
+                        <span class="hidden-mobile">技术资讯摘要获取.md</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

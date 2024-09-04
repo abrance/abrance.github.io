@@ -1,0 +1,672 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概述简短介绍本文将深入探讨MDNS（Multicast DNS）技术，它是一种在小型网络上实现设备名称解析到IP地址的机制。本文的目的是为读者提供一个全面的MDNS知识框架，包括其工作原理、实际应用和最佳实践。 主题和目的概述我们将首先概述MDNS的基本概念，然后详细讲解其背后的技术原理，以及如何在实际环境中应用MDNS。最后，本文将提供一些最佳实践和性能优化的建议。 算法原理相关技术的涉及的算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MDNS.md">
+<meta property="og:url" content="https://abrance.github.io/2023/12/28/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/MDNS/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="概述简短介绍本文将深入探讨MDNS（Multicast DNS）技术，它是一种在小型网络上实现设备名称解析到IP地址的机制。本文的目的是为读者提供一个全面的MDNS知识框架，包括其工作原理、实际应用和最佳实践。 主题和目的概述我们将首先概述MDNS的基本概念，然后详细讲解其背后的技术原理，以及如何在实际环境中应用MDNS。最后，本文将提供一些最佳实践和性能优化的建议。 算法原理相关技术的涉及的算法">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-04T03:27:12.659Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="DNS 多播 设备发现">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>MDNS.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="MDNS.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-28 00:00" pubdate>
+          2023年12月28日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          861 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">MDNS.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h4 id="简短介绍"><a href="#简短介绍" class="headerlink" title="简短介绍"></a>简短介绍</h4><p>本文将深入探讨MDNS（Multicast DNS）技术，它是一种在小型网络上实现设备名称解析到IP地址的机制。本文的目的是为读者提供一个全面的MDNS知识框架，包括其工作原理、实际应用和最佳实践。</p>
+<h4 id="主题和目的概述"><a href="#主题和目的概述" class="headerlink" title="主题和目的概述"></a>主题和目的概述</h4><p>我们将首先概述MDNS的基本概念，然后详细讲解其背后的技术原理，以及如何在实际环境中应用MDNS。最后，本文将提供一些最佳实践和性能优化的建议。</p>
+<h3 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h3><h4 id="相关技术的涉及的算法历史演进概述"><a href="#相关技术的涉及的算法历史演进概述" class="headerlink" title="相关技术的涉及的算法历史演进概述"></a>相关技术的涉及的算法历史演进概述</h4><p>MDNS起源于传统的DNS（Domain Name System），用于解决小型网络（如家庭或小型办公室）中设备发现和名称解析的需求。与传统DNS不同，MDNS不依赖于中央DNS服务器，而是使用多播查询在本地网络上进行通信。</p>
+<h4 id="适用场景概述"><a href="#适用场景概述" class="headerlink" title="适用场景概述"></a>适用场景概述</h4><p>MDNS适用于设备数量相对较少、缺乏专用DNS服务器的网络环境。它在IoT设备、家庭自动化、小型办公网络中尤为常见。</p>
+<h3 id="详细内容"><a href="#详细内容" class="headerlink" title="详细内容"></a>详细内容</h3><h4 id="核心技术概念的详细解释"><a href="#核心技术概念的详细解释" class="headerlink" title="核心技术概念的详细解释"></a>核心技术概念的详细解释</h4><p>MDNS利用UDP协议在224.0.0.251地址和5353端口上进行多播。当一个设备需要解析另一个设备的名称时，它会在局域网上发送一个多播查询。所有网络上的设备都会监听这个查询，如果某个设备识别出查询中的名称与其相匹配，它会响应其IP地址。</p>
+<h4 id="逐步指南或操作步骤"><a href="#逐步指南或操作步骤" class="headerlink" title="逐步指南或操作步骤"></a>逐步指南或操作步骤</h4><ul>
+<li><strong>步骤1</strong>：在网络上的设备启动时，它会通过MDNS协议广播自己的名字。</li>
+<li><strong>步骤2</strong>：当需要找到特定设备的IP地址时，发送一个多播请求。</li>
+<li><strong>步骤3</strong>：接收到请求的设备检查名称是否匹配，如果匹配则响应其IP地址。</li>
+</ul>
+<h3 id="实际示例"><a href="#实际示例" class="headerlink" title="实际示例"></a>实际示例</h3><h4 id="代码示例或案例研究"><a href="#代码示例或案例研究" class="headerlink" title="代码示例或案例研究"></a>代码示例或案例研究</h4><p>以Python编写的简单MDNS查询示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 伪代码，用于演示MDNS查询</span><br><span class="hljs-keyword">import</span> mdns<br><br><span class="hljs-comment"># 查询网络上的设备名称</span><br>response = mdns.query(<span class="hljs-string">&#x27;device-name.local&#x27;</span>)<br><span class="hljs-built_in">print</span>(response)<br></code></pre></td></tr></table></figure>
+
+<h4 id="实际应用场景描述"><a href="#实际应用场景描述" class="headerlink" title="实际应用场景描述"></a>实际应用场景描述</h4><p>在家庭自动化系统中，MDNS可用于自动发现和连接智能家居设备，如智能灯泡或温控器。</p>
+<h3 id="最佳实践和建议"><a href="#最佳实践和建议" class="headerlink" title="最佳实践和建议"></a>最佳实践和建议</h3><h4 id="实用技巧和技术最佳实践"><a href="#实用技巧和技术最佳实践" class="headerlink" title="实用技巧和技术最佳实践"></a>实用技巧和技术最佳实践</h4><ul>
+<li>保持设备名称的唯一性和一致性。</li>
+<li>在网络负载较重时，优化MDNS的查询频率。</li>
+</ul>
+<h4 id="性能优化建议"><a href="#性能优化建议" class="headerlink" title="性能优化建议"></a>性能优化建议</h4><ul>
+<li>使用缓存机制减少网络上的查询次数。</li>
+<li>在适当的情况下，考虑使用静态IP地址以减少对MDNS的依赖。</li>
+</ul>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><h4 id="文章的主要观点总结"><a href="#文章的主要观点总结" class="headerlink" title="文章的主要观点总结"></a>文章的主要观点总结</h4><p>MDNS是一种适用于小型网络的有效设备发现和名称解析技术。通过广播和监听多播查询，它允许设备在没有中央DNS服务器的情况下彼此发现和交互。</p>
+<h4 id="对读者的最后建议"><a href="#对读者的最后建议" class="headerlink" title="对读者的最后建议"></a>对读者的最后建议</h4><p>掌握MDNS的工作原理和最佳实践对于管理小型网络环境非常有用。它不仅简化了设备配置，还为资源有限</p>
+<p>的环境提供了有效的解决方案。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>[1] “MDNS Explained,” [Online]. Available: <a target="_blank" rel="noopener" href="https://www.example-mdns.com/">https://www.example-mdns.com</a></li>
+<li>[2] “Networking Basics: MDNS,” [Online]. Available: <a target="_blank" rel="noopener" href="https://www.networkingbasics.com/mdns">https://www.networkingbasics.com/mdns</a></li>
+<li>[3] Python MDNS Library Documentation, [Online]. Available: <a target="_blank" rel="noopener" href="https://www.python-mdns.org/">https://www.python-mdns.org</a></li>
+<li>[4] “Home Automation using MDNS,” [Online]. Available: <a target="_blank" rel="noopener" href="https://www.homeautomation-mdns.com/">https://www.homeautomation-mdns.com</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/DNS-%E5%A4%9A%E6%92%AD-%E8%AE%BE%E5%A4%87%E5%8F%91%E7%8E%B0/" class="print-no-link">#DNS 多播 设备发现</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MDNS.md</div>
+      <div>https://abrance.github.io/2023/12/28/mdstorage/domain/network/协议/MDNS/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年12月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/04/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E8%B5%84%E6%96%99/" title="grpc服务调用资料.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">grpc服务调用资料.md</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" title="Makefile指定cpu架构选项.md">
+                        <span class="hidden-mobile">Makefile指定cpu架构选项.md</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
