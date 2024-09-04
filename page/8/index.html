@@ -227,79 +227,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/05/16/mdstorage/domain/network/iproute2%E7%9B%91%E6%8E%A7%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" target="_self">
-          iproute2监控网络配置.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/16/mdstorage/domain/network/iproute2%E7%9B%91%E6%8E%A7%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" target="_self">
-        <div>
-          概述iproute2 命令可以监控系统网络配置，link addr route 等 示例要通过外部命令获取 netlink.RouteUpdate 的调用和相关信息，可以使用 ip monitor 命令。这个命令可以监控并显示网络路由、地址和链路的变更，这与 netlink.RouteUpdate 类似。 使用 ip monitor 命令ip monitor 命令可以监控网络路由、地址和链路的变化
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-16 00:00" pubdate>
-              2024-05-16
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/network/">#network</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/05/16/mdstorage/domain/network/%E5%BC%B1%E7%BD%91%E6%B5%8B%E8%AF%95/" target="_self">
-          弱网测试.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/16/mdstorage/domain/network/%E5%BC%B1%E7%BD%91%E6%B5%8B%E8%AF%95/" target="_self">
-        <div>
-          概述 示例1234567891011121314151617181920212223NIC=docker0PORT=20111DELAY=100msLOSS=50%# 标记流量sudo iptables -t mangle -A OUTPUT -p tcp --dport $&#123;PORT&#125; -j MARK --set-mark 1# 添加根 qdiscsudo tc qdisc
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-16 00:00" pubdate>
-              2024-05-16
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/2024/05/11/mdstorage/domain/golang/golang%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/" target="_self">
           golang高性能编程.md
         </a>
@@ -586,11 +513,91 @@
     </article>
   </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/05/07/mdstorage/domain/linux/%E6%9C%89%E7%BA%BF%E8%BF%9E%E6%8E%A5%E4%B8%A4%E5%8F%B0ubuntu/" target="_self">
+          有线连接两台ubuntu.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/07/mdstorage/domain/linux/%E6%9C%89%E7%BA%BF%E8%BF%9E%E6%8E%A5%E4%B8%A4%E5%8F%B0ubuntu/" target="_self">
+        <div>
+          概述通过网线连接两台物理机使相连 步骤 网线连接 设置机器A 设置机器B  机器设置 设置 -&gt; 网络 -&gt; 选择网卡 mac -&gt; ipv4 选择手动，不需要设置网关
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-05-07 00:00" pubdate>
+              2024-05-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/network-ubuntu/">#network ubuntu</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/05/07/mdstorage/domain/network/%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/" target="_self">
+          网络扫描工具.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/07/mdstorage/domain/network/%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/" target="_self">
+        <div>
+          概述工具fping1234# apt install fping# 扫描局域网 192.168.1.1/24 存活的主机fping -a -g 192.168.1.1/24
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-05-07 00:00" pubdate>
+              2024-05-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/network-scan/">#network scan</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/#board">27</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/#board">26</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

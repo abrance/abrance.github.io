@@ -227,86 +227,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/04/30/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker%20network/" target="_self">
-          docker network.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/30/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker%20network/" target="_self">
-        <div>
-          概述使用macvlandocker network create 命令用于在 Docker 中创建新的网络，支持不同的网络驱动模式。macvlan 是其中一种网络驱动，它允许你将容器配置为看起来就像是物理网络上的一个独立设备，每个容器都有自己的 MAC 地址。使用 macvlan 网络驱动可以使容器直接与外部网络交互，而不是通过 Docker 主机的端口映射。 123456789101112doc
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-30 00:00" pubdate>
-              2024-04-30
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/docker-network/">#docker network</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/30/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc/" target="_self">
-          grpc.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/30/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc/" target="_self">
-        <div>
-          概述Golang grpc实现原理和 proxy 实现原理 grpc-go 服务端使用介绍及源码分析 protoc安装1234567# 下载并安装# https://link.zhihu.com/?target=https%3A//github.com/google/protobuf/releasesgo install google.golang.org/protobuf/cmd/protoc-
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-30 00:00" pubdate>
-              2024-04-30
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/grpc-rpc-golang/">#grpc rpc golang</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/2024/04/29/mdstorage/domain/golang/gopackage/" target="_self">
           gopackage.md
         </a>
@@ -621,11 +541,91 @@
     </article>
   </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/19/mdstorage/project/sr/%E7%BB%84%E4%BB%B6/sc-core/" target="_self">
+          sc-core.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/19/mdstorage/project/sr/%E7%BB%84%E4%BB%B6/sc-core/" target="_self">
+        <div>
+          概述sc-core 是 sc 的通信组件，提供：  建立总控-引擎连接通道 通过通道发送信息  的能力，它是一个 grpc server ，需要建立通道的组件都是 grpc client。 设计目标问题 部署问题：防火墙策略开放不合理；将之前 总控-&gt;引擎 这种开放策略改为 引擎-&gt;总控。原因详见通信链路相关机制讲解 链路繁杂问题：之前组件负责人各自进行开发，没有站在系统角度考虑问题，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-19 00:00" pubdate>
+              2024-04-19
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/sc-sc-core-sr/">#sc sc-core sr</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/18/mdstorage/domain/linux/find/" target="_self">
+          find.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/18/mdstorage/domain/linux/find/" target="_self">
+        <div>
+          find 概述linux 下查找文件的工具 示例根据日期查找文件12# 找到 /usr/lib/x86_64-linux-gnu/ 下 昨天到现在 这段时间被find /usr/lib/x86_64-linux-gnu/ -type f -newermt &quot;yesterday&quot; -ls
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-18 00:00" pubdate>
+              2024-04-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/find-linux/">#find linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/9/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/#board">11</a><a class="page-number" href="/page/12/#board">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/#board">27</a><a class="extend next" rel="next" href="/page/11/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/9/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/#board">11</a><a class="page-number" href="/page/12/#board">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/#board">26</a><a class="extend next" rel="next" href="/page/11/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
