@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="en" data-default-color-scheme=auto>
 
 
 
@@ -25,9 +25,9 @@
 <meta property="og:url" content="https://abrance.github.io/2024/08/15/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker-golang%E8%AE%BE%E7%BD%AEmodcache%E5%8A%A0%E5%BF%AB%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6/index.html">
 <meta property="og:site_name" content="Xiaoy">
 <meta property="og:description" content="概述如果每次只提供源码进行 docker build 一个 golang 项目, 那么每次都会拉取依赖仓库, 所以希望能充分利用缓存机制来减少 docker build 的时间. 实践实例go.Dockerfile 1234567891011121314151617181920212223242526FROM golang:1.22.3ARG HTTP_PROXYARG HTTPS_PROXYEN">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-08-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-06T07:50:56.608Z">
+<meta property="article:modified_time" content="2024-09-06T07:55:32.096Z">
 <meta property="article:author" content="xiaoy">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -117,7 +117,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -129,7 +129,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
+                <span>Archives</span>
               </a>
             </li>
           
@@ -141,7 +141,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
+                <span>Categories</span>
               </a>
             </li>
           
@@ -153,7 +153,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
+                <span>Tags</span>
               </a>
             </li>
           
@@ -165,7 +165,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
+                <span>About</span>
               </a>
             </li>
           
@@ -211,7 +211,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2024-08-15 00:00" pubdate>
-          2024年8月15日 凌晨
+          August 15, 2024 am
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          480 字
+          480 words
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          5 分钟
+          5 mins
         
       </span>
     
@@ -286,7 +286,7 @@
 <li>mkdir temp</li>
 <li>docker cp cache_extractor:&#x2F;go&#x2F;pkg&#x2F;mod .&#x2F;temp&#x2F;</li>
 </ul>
-<p>执行完后 &#x2F;temp 下就会出现 mod, 这时的 mod 目录约 300MB+, 注意会有 open &#x2F;xxxx&#x2F;temp&#x2F;mod&#x2F;cel.dev&#x2F;<a href="mailto:&#x65;&#x78;&#x70;&#x72;&#64;&#x76;&#48;&#46;&#49;&#53;&#46;&#48;">&#x65;&#x78;&#x70;&#x72;&#64;&#x76;&#48;&#46;&#49;&#53;&#46;&#48;</a>&#x2F;.bazelversion: permission denied 的警告字符的目录或者文件,会报文件权限不够,如果用 sudo 执行, 则可以拷贝出来, 会发现这时的 temp 磁盘占用大很多 1GB+ .</p>
+<p>执行完后 &#x2F;temp 下就会出现 mod, 这时的 mod 目录约 300MB+, 注意会有 open &#x2F;xxxx&#x2F;temp&#x2F;mod&#x2F;cel.dev&#x2F;<a href="mailto:&#101;&#120;&#x70;&#114;&#64;&#118;&#48;&#46;&#49;&#x35;&#x2e;&#48;">&#101;&#120;&#x70;&#114;&#64;&#118;&#48;&#46;&#49;&#x35;&#x2e;&#48;</a>&#x2F;.bazelversion: permission denied 的警告字符的目录或者文件,会报文件权限不够,如果用 sudo 执行, 则可以拷贝出来, 会发现这时的 temp 磁盘占用大很多 1GB+ .</p>
 <p>构建Dockerfile:<br>Dockerfile</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-keyword">FROM</span> srmysql<br><br><span class="hljs-keyword">ARG</span> HTTP_PROXY<br><span class="hljs-keyword">ARG</span> HTTPS_PROXY<br><br><span class="hljs-keyword">ENV</span> PROJECT_NAME=installer<br><span class="hljs-keyword">ENV</span> SC_IP=<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span><br><span class="hljs-keyword">ENV</span> GOMODCACHE=/go/pkg/mod<br><br><span class="hljs-keyword">RUN</span><span class="language-bash"> apt update &amp;&amp; apt-get -y install gettext</span><br><br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span></span><br><br><span class="hljs-keyword">COPY</span><span class="language-bash"> . /<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span></span><br><br><span class="hljs-keyword">COPY</span><span class="language-bash"> temp/mod /go/pkg/mod</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> go mod download</span><br><br><span class="hljs-comment"># 拷贝凭证文件到 Docker 容器中, 这里要确保 .git-credentials 存在</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> git config --global credential.helper <span class="hljs-string">&#x27;store --file=/$&#123;PROJECT_NAME&#125;/.git-credentials&#x27;</span> &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOPRIVATE=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GONOSUMDB=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GONOPROXY=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOINSECURE=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOPROXY=<span class="hljs-string">&quot;https://goproxy.cn|https://goproxy.io|direct&quot;</span> &amp;&amp; \</span><br><span class="language-bash">    go install github.com/go-delve/delve/cmd/dlv@latest &amp;&amp; \</span><br><span class="language-bash">    go mod tidy -x</span><br><br><span class="hljs-comment"># 构建应用</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> make release</span><br><span class="hljs-comment"># 指定容器启动时执行的命令</span><br><br><span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">mkdir</span> -p /opt/public/ &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;SCIP=172.17.0.200&quot;</span> | <span class="hljs-built_in">tee</span> -a /opt/public/.env</span><br><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">8098</span><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">2345</span><br><br><span class="hljs-keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="hljs-string">&quot;/lib/systemd/systemd&quot;</span>]</span><br><br></code></pre></td></tr></table></figure>
 
@@ -346,26 +346,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
+          <div>Author</div>
           <div>xiaoy</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2024年8月15日</div>
+          <div>Posted on</div>
+          <div>August 15, 2024</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>许可协议</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
@@ -388,7 +388,7 @@
                       <a href="/2024/08/15/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%B8%80%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%9B%88%E5%88%A9%E7%9A%84%E6%A6%82%E8%A6%81%E5%88%86%E6%9E%90/" title="一个软件实现盈利的概要分析.md">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">一个软件实现盈利的概要分析.md</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -397,7 +397,7 @@
                     
                       <a href="/2024/08/07/mdstorage/project/%E5%AE%9D%E8%B4%B5%E7%BB%8F%E9%AA%8C/strace%E6%8E%92%E6%9F%A5%E5%BC%82%E6%AD%A5shell%E6%89%A7%E8%A1%8C%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" title="strace排查异步shell执行失败问题.md">
                         <span class="hidden-mobile">strace排查异步shell执行失败问题.md</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -418,7 +418,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>目录</span>
+    <span>Table of Contents</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -489,7 +489,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -497,7 +497,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -675,7 +675,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>
