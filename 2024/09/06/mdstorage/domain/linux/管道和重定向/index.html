@@ -19,13 +19,15 @@
   <meta name="author" content="xiaoy">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="使用 &lt;&lt;&lt;（Here String）重定向的条件解析在 Bash 中，&lt;&lt;&lt; 是一种 Here String 重定向操作符，用于将字符串作为标准输入传递给命令。在某些情况下，&lt;&lt;&lt; 是处理字符串数据时的简洁方式，但并非所有命令都支持这种用法。本篇文章将详细解析哪些命令能够接受 &lt;&lt;&lt; 形式的重定向以及它的适用场景。 1. &amp;">
+<meta property="og:type" content="article">
 <meta property="og:title" content="管道和重定向.md">
 <meta property="og:url" content="https://abrance.github.io/2024/09/06/mdstorage/domain/linux/%E7%AE%A1%E9%81%93%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91/index.html">
 <meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="使用 &lt;&lt;&lt;（Here String）重定向的条件解析在 Bash 中，&lt;&lt;&lt; 是一种 Here String 重定向操作符，用于将字符串作为标准输入传递给命令。在某些情况下，&lt;&lt;&lt; 是处理字符串数据时的简洁方式，但并非所有命令都支持这种用法。本篇文章将详细解析哪些命令能够接受 &lt;&lt;&lt; 形式的重定向以及它的适用场景。 1. &amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-06T03:20:29.648Z">
+<meta property="article:modified_time" content="2024-09-06T07:14:51.931Z">
 <meta property="article:author" content="xiaoy">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.2k 字
         
       </span>
     
@@ -232,7 +234,7 @@
         
         
         
-          1 分钟
+          10 分钟
         
       </span>
     
@@ -274,13 +276,118 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="使用"><a href="#使用" class="headerlink" title="使用 &lt;&lt;&lt;（Here String）重定向的条件解析"></a>使用 <code>&lt;&lt;&lt;</code>（Here String）重定向的条件解析</h1><p>在 Bash 中，<code>&lt;&lt;&lt;</code> 是一种 <strong>Here String</strong> 重定向操作符，用于将字符串作为标准输入传递给命令。在某些情况下，<code>&lt;&lt;&lt;</code> 是处理字符串数据时的简洁方式，但并非所有命令都支持这种用法。本篇文章将详细解析哪些命令能够接受 <code>&lt;&lt;&lt;</code> 形式的重定向以及它的适用场景。</p>
+<h2 id="1"><a href="#1" class="headerlink" title="1. &lt;&lt;&lt;（Here String）的简介"></a>1. <code>&lt;&lt;&lt;</code>（Here String）的简介</h2><p><code>&lt;&lt;&lt;</code> 是 Bash 中的一种重定向符号，用来将一个字符串作为标准输入传递给命令。它的基本语法是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">command</span> &lt;&lt;&lt; <span class="hljs-string">&quot;your string&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>与 <code>&lt;&lt;</code>（Here Document）不同，<code>&lt;&lt;&lt;</code> 只传递单行字符串作为标准输入，而 <code>&lt;&lt;</code> 通常用于传递多行输入。</p>
+<h2 id="2-什么样的命令可以使用"><a href="#2-什么样的命令可以使用" class="headerlink" title="2. 什么样的命令可以使用 &lt;&lt;&lt;"></a>2. 什么样的命令可以使用 <code>&lt;&lt;&lt;</code></h2><p>只有那些<strong>支持从标准输入读取数据</strong>的命令才能使用 <code>&lt;&lt;&lt;</code> 来传递输入。这些命令通常能够处理管道 (<code>|</code>) 或直接读取标准输入 (<code>stdin</code>) 的数据。</p>
+<h3 id="常见支持"><a href="#常见支持" class="headerlink" title="常见支持 &lt;&lt;&lt; 的命令"></a>常见支持 <code>&lt;&lt;&lt;</code> 的命令</h3><ul>
+<li><p>**<code>cat</code>**：读取并显示标准输入的内容。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &lt;&lt;&lt; <span class="hljs-string">&quot;Hello, World!&quot;</span><br></code></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><span class="hljs-built_in">Hello,</span> World!<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>**<code>grep</code>**：从标准输入中搜索特定的模式。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&quot;test&quot;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;This is a test&quot;</span><br></code></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">This <span class="hljs-keyword">is</span> a test<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>**<code>awk</code>**：文本处理工具，可以从标准输入中读取数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;&#123;print $1&#125;&#x27;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;Hello Bash&quot;</span><br></code></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">Hello</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>**<code>sed</code>**：流编辑器，可以从标准输入中进行文本替换。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sed <span class="hljs-string">&#x27;s/Bash/World/&#x27;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;Hello Bash&quot;</span><br></code></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">Hello World</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>**<code>sort</code>**：对标准输入的内容进行排序。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sort</span> &lt;&lt;&lt; <span class="hljs-string">&quot;banana apple orange&quot;</span><br></code></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">apple</span><br><span class="hljs-attribute">banana</span><br><span class="hljs-attribute">orange</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>**<code>read</code>**：从标准输入中读取内容并赋值给变量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">read</span> var &lt;&lt;&lt; <span class="hljs-string">&quot;Hello World&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$var</span><br></code></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">Hello World</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-什么样的命令不支持"><a href="#3-什么样的命令不支持" class="headerlink" title="3. 什么样的命令不支持 &lt;&lt;&lt;"></a>3. 什么样的命令不支持 <code>&lt;&lt;&lt;</code></h2><p>并非所有命令都能够处理 <code>&lt;&lt;&lt;</code> 形式的重定向。以下是一些不能使用 <code>&lt;&lt;&lt;</code> 重定向的场景。</p>
+<h3 id="1-只能处理文件的命令"><a href="#1-只能处理文件的命令" class="headerlink" title="1. 只能处理文件的命令"></a>1. 只能处理文件的命令</h3><p>某些命令只能操作文件，它们不接受标准输入，因此无法使用 <code>&lt;&lt;&lt;</code>。</p>
+<ul>
+<li><p>**<code>cp</code>**：只能复制文件，不能从标准输入中读取数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> &lt;&lt;&lt; <span class="hljs-string">&quot;data&quot;</span> /some/destination  <span class="hljs-comment"># 会导致错误</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>**<code>mv</code>**：只能移动文件，不支持从标准输入获取输入。</p>
+</li>
+<li><p>**<code>rm</code>**：只能删除文件，无法处理标准输入。</p>
+</li>
+</ul>
+<h3 id="2-需要交互式输入的命令"><a href="#2-需要交互式输入的命令" class="headerlink" title="2. 需要交互式输入的命令"></a>2. 需要交互式输入的命令</h3><p>交互式命令（如文本编辑器）不能使用 <code>&lt;&lt;&lt;</code>，因为它们依赖用户输入进行操作。</p>
+<ul>
+<li><p><strong><code>vim</code></strong> 或 **<code>nano</code>**：这些编辑器需要用户手动操作，而不能通过标准输入提供数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim &lt;&lt;&lt; <span class="hljs-string">&quot;Hello&quot;</span>  <span class="hljs-comment"># 不会工作</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-强制要求文件路径作为输入的命令"><a href="#3-强制要求文件路径作为输入的命令" class="headerlink" title="3. 强制要求文件路径作为输入的命令"></a>3. 强制要求文件路径作为输入的命令</h3><p>一些命令强制要求文件路径作为参数，不能通过标准输入传递信息。</p>
+<ul>
+<li>**<code>ls</code>**：用于列出目录内容，不能从标准输入读取目录名称。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> &lt;&lt;&lt; <span class="hljs-string">&quot;some_directory&quot;</span>  <span class="hljs-comment"># 会导致错误</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="4-管道-vs"><a href="#4-管道-vs" class="headerlink" title="4. 管道 vs. &lt;&lt;&lt; 重定向"></a>4. 管道 vs. <code>&lt;&lt;&lt;</code> 重定向</h2><p><code>&lt;&lt;&lt;</code> 通常适用于传递单行字符串作为标准输入，而管道 (<code>|</code>) 则用于将一个命令的输出作为另一个命令的输入。如果你需要处理更复杂的输入或者是多行输出，管道更为合适。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;This is a test&quot;</span> | grep <span class="hljs-string">&quot;test&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>与：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&quot;test&quot;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;This is a test&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>结果是相同的，但使用场景不同。</p>
+<h2 id="5"><a href="#5" class="headerlink" title="5. &lt;&lt;&lt; 的适用场景"></a>5. <code>&lt;&lt;&lt;</code> 的适用场景</h2><ul>
+<li><strong>简化单行输入</strong>：当你有一个简单的单行字符串需要作为输入时，使用 <code>&lt;&lt;&lt;</code> 非常方便。</li>
+<li><strong>快速调试</strong>：<code>&lt;&lt;&lt;</code> 可以快速将字符串传递给命令，便于调试和测试脚本。</li>
+<li>**结合 <code>read</code>**：特别适合与 <code>read</code> 一起使用，轻松将字符串内容赋值给变量。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">IFS=<span class="hljs-string">&#x27;,&#x27;</span> <span class="hljs-built_in">read</span> -r -a array &lt;&lt;&lt; <span class="hljs-string">&quot;one,two,three&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;array[@]&#125;</span><br><span class="hljs-comment"># 输出: one two three</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a>6. 总结</h2><p>能够接受 <code>&lt;&lt;&lt;</code>（Here String）形式重定向的命令需要具备以下条件：</p>
+<ol>
+<li><strong>支持从标准输入读取数据</strong>：工具必须允许从 <code>stdin</code> 中读取数据，而不是只能接受文件路径作为参数。</li>
+<li><strong>不是交互式工具</strong>：诸如 <code>vim</code>、<code>nano</code> 这类交互式工具无法使用 <code>&lt;&lt;&lt;</code> 来进行输入。</li>
+<li><strong>适合单行输入的场景</strong>：<code>&lt;&lt;&lt;</code> 最适合单行字符串传递给命令，而对于多行数据或文件流，管道或文件重定向更合适。</li>
+</ol>
+
                 
               </div>
             
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
     <div class="post-meta">
