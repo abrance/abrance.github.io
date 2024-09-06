@@ -227,6 +227,72 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/08/15/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker-golang%E8%AE%BE%E7%BD%AEmodcache%E5%8A%A0%E5%BF%AB%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6/" target="_self">
+          docker-golang设置modcache加快编译速度.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/15/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker-golang%E8%AE%BE%E7%BD%AEmodcache%E5%8A%A0%E5%BF%AB%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6/" target="_self">
+        <div>
+          概述如果每次只提供源码进行 docker build 一个 golang 项目, 那么每次都会拉取依赖仓库, 所以希望能充分利用缓存机制来减少 docker build 的时间. 实践实例go.Dockerfile 1234567891011121314151617181920212223242526FROM golang:1.22.3ARG HTTP_PROXYARG HTTPS_PROXYEN
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-15 00:00" pubdate>
+              2024-08-15
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/07/mdstorage/project/%E5%AE%9D%E8%B4%B5%E7%BB%8F%E9%AA%8C/strace%E6%8E%92%E6%9F%A5%E5%BC%82%E6%AD%A5shell%E6%89%A7%E8%A1%8C%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" target="_self">
+          strace排查异步shell执行失败问题.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/07/mdstorage/project/%E5%AE%9D%E8%B4%B5%E7%BB%8F%E9%AA%8C/strace%E6%8E%92%E6%9F%A5%E5%BC%82%E6%AD%A5shell%E6%89%A7%E8%A1%8C%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          概述经过 golang 中实现 执行命令的方法  123456789101112131415161718192021222324252627282930func (c *Client) Output(name string, arg ...string) ([]byte, error) &#123;	session, err := c.sshClient.NewSession()	if err !
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-07 00:00" pubdate>
+              2024-08-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/08/05/mdstorage/domain/db/Mysql%E5%AE%89%E8%A3%85/" target="_self">
           Mysql安装.md
         </a>
@@ -260,15 +326,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E6%9C%BA%E5%88%B6/" target="_self">
-          installer机制.md
+        <a href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%20db%E6%95%B4%E7%90%86/" target="_self">
+          installer db整理.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E6%9C%BA%E5%88%B6/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%20db%E6%95%B4%E7%90%86/" target="_self">
         <div>
-          概述记录 installer 相关的机制，有的需要整理，有些需要改正的会渐渐改正 机制安装、卸载、进度条，异步任务处理机制使用 redis 分布式锁机制sc 侧使用 redis 逻辑pkg&#x2F;empower&#x2F;redis_lock&#x2F;lock.go:26外部使用的接口 TryLock UnLock ，其他的没有使用到 installer 侧使用 redis 逻辑manage
+          概述整理 installer-sr-server 使用的数据库逻辑 数据库managerclassDiagram direction LR class card_ip_mask &#123;    varchar(32) engine_serial  /* 引擎序列号 */    varchar(16) node_ip  /* 节点ip */    text ip_masks    datetim
         </div>
       </a>
 
@@ -293,15 +359,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%20db%E6%95%B4%E7%90%86/" target="_self">
-          installer db整理.md
+        <a href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E6%9C%BA%E5%88%B6/" target="_self">
+          installer机制.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%20db%E6%95%B4%E7%90%86/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E6%9C%BA%E5%88%B6/" target="_self">
         <div>
-          概述整理 installer-sr-server 使用的数据库逻辑 数据库managerclassDiagram direction LR class card_ip_mask &#123;    varchar(32) engine_serial  /* 引擎序列号 */    varchar(16) node_ip  /* 节点ip */    text ip_masks    datetim
+          概述记录 installer 相关的机制，有的需要整理，有些需要改正的会渐渐改正 机制安装、卸载、进度条，异步任务处理机制使用 redis 分布式锁机制sc 侧使用 redis 逻辑pkg&#x2F;empower&#x2F;redis_lock&#x2F;lock.go:26外部使用的接口 TryLock UnLock ，其他的没有使用到 installer 侧使用 redis 逻辑manage
         </div>
       </a>
 
@@ -476,72 +542,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2024-06-17 00:00" pubdate>
               2024-06-17
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" target="_self">
-          生命周期管理方案.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" target="_self">
-        <div>
-          引擎生命周期管理方案整理1. 生命周期管理框架和组件依赖的常量、变量的约定配置文件（config.env）： 配置文件用于管理节点初始化时的常量和变量，所有组件的生命周期脚本均从该配置文件中读取必要的参数。 示例配置文件内容： 1234567891011121314Version=1 LogPath=/opt/private/log# MetaInfoVIRD=211Mode=1GS=f8fb61
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-17 00:00" pubdate>
-              2024-06-17
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/" target="_self">
-          1.6任务评估
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/" target="_self">
-        <div>
-          概述总控 (P2)总控安装相关需求安装脚本中加入IP设置的交互：文档+编码 工时评估：2.4d  打总控包时需要将安装脚本挪到安装包的第一层目录下 工时评估：0.34d  需要调整安装脚本的默认工作目录 工时评估：0.34d  安装的残留清除：文档+编码 工时评估：2.4d  在总控安装时需要将上次残留的总控给清除干净，并进行安装 工时评估：2.2d  环境检测时将内存、CPU核心数、磁盘存储空间
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-12 00:00" pubdate>
-              2024-06-12
             </time>
           </div>
         
