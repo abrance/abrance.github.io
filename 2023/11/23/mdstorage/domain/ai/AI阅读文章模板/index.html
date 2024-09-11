@@ -1,214 +1,284 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>AI阅读文章模板 | Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在技术和管理领域，文章类型可以多样化，以下是一些常见的类型：  观点文章：分享个人观点、经验和见解。 教程：提供技能或操作的具体指导。 案例研究：深入分析特定项目或情况。 技术博客：分享技术知识、经验或趋势。 行业报告：提供行业分析、数据和预测。 研究论文：呈现科学研究和实验结果。 访谈：专家或业内人士的问答形式的内容。 新闻报道：报导最新的行业动态和事件。 白皮书：提供深入的技术或政策分析。 产">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI阅读文章模板">
+<meta property="og:url" content="https://abrance.github.io/2023/11/23/mdstorage/domain/ai/AI%E9%98%85%E8%AF%BB%E6%96%87%E7%AB%A0%E6%A8%A1%E6%9D%BF/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="在技术和管理领域，文章类型可以多样化，以下是一些常见的类型：  观点文章：分享个人观点、经验和见解。 教程：提供技能或操作的具体指导。 案例研究：深入分析特定项目或情况。 技术博客：分享技术知识、经验或趋势。 行业报告：提供行业分析、数据和预测。 研究论文：呈现科学研究和实验结果。 访谈：专家或业内人士的问答形式的内容。 新闻报道：报导最新的行业动态和事件。 白皮书：提供深入的技术或政策分析。 产">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-11-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-11T02:55:43.721Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="知识管理">
+<meta property="article:tag" content="阅读">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>AI阅读文章模板 - Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
 
 
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
 
-<link rel="stylesheet" href="/css/main.css" />
-
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
 
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>AI阅读文章模板</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/23
-        </span>
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/" style="color: #03a9f4">
-                    知识管理
-                </a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/%E9%98%85%E8%AF%BB/" style="color: #ffa2c4">
-                    阅读
-                </a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/AI/" style="color: #ff7d73">
-                    AI
-                </a>
-            </span>
-            
-        </span>
-        
-    </div>
+
+<body>
+  
+
+  <header>
     
-    <div class="content" v-pre>
-        <p>在技术和管理领域，文章类型可以多样化，以下是一些常见的类型：</p>
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AI阅读文章模板"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-23 00:00" pubdate>
+          November 23, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">AI阅读文章模板</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在技术和管理领域，文章类型可以多样化，以下是一些常见的类型：</p>
 <ol>
 <li><strong>观点文章</strong>：分享个人观点、经验和见解。</li>
 <li><strong>教程</strong>：提供技能或操作的具体指导。</li>
@@ -271,41 +341,10 @@
 </ul>
 <p>这个模板旨在帮助深入分析和归纳文章的主要内容，同时也鼓励批判性思考和个人反思。</p>
 <p>提示词</p>
-<pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章链接，分析后以下面的观点文章范文格式输出内容，必要时引入类比，可视化，实例。
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章链接，分析后以下面的观点文章范文格式输出内容，必要时引入类比，可视化，实例。<br><br>**文章概述**<br>- 文章标题<br>- 作者<br>- 发布日期<br>- 链接地址<br>- 文章主题简介<br><br>**主要观点**<br>- 观点一：[详述]<br>- 观点二：[详述]<br>- ...<br><br>**支持论据**<br>- 观点一的支持论据：[详述]<br>- 观点二的支持论据：[详述]<br>- ...<br><br>**逻辑连贯性分析**<br>- 论点间的逻辑关系<br>- 文章整体结构分析<br><br>**不同视角考量**<br>- 其他可能的观点或反驳<br>- 行业或领域内不同专家的意见<br><br>**结论与实践意义**<br>- 作者的主要结论<br>- 对行业/读者的实际意义<br><br>**个人观点与反思**<br>- 个人对文章的看法<br>- 文章对个人或工作的启发<br></code></pre></td></tr></table></figure>
 
-**文章概述**
-- 文章标题
-- 作者
-- 发布日期
-- 链接地址
-- 文章主题简介
 
-**主要观点**
-- 观点一：[详述]
-- 观点二：[详述]
-- ...
 
-**支持论据**
-- 观点一的支持论据：[详述]
-- 观点二的支持论据：[详述]
-- ...
-
-**逻辑连贯性分析**
-- 论点间的逻辑关系
-- 文章整体结构分析
-
-**不同视角考量**
-- 其他可能的观点或反驳
-- 行业或领域内不同专家的意见
-
-**结论与实践意义**
-- 作者的主要结论
-- 对行业/读者的实际意义
-
-**个人观点与反思**
-- 个人对文章的看法
-- 文章对个人或工作的启发
-</code></pre>
 <h3 id="技术架构文档"><a href="#技术架构文档" class="headerlink" title="技术架构文档"></a>技术架构文档</h3><p>基于上述对《可视化技术架构分析设计》文章内容的分析，一个合适的文档模板可以包含以下几个部分：</p>
 <h3 id="1-文档标题"><a href="#1-文档标题" class="headerlink" title="1. 文档标题"></a>1. 文档标题</h3><ul>
 <li>文档名称</li>
@@ -366,67 +405,10 @@
 <li>批准日期和签名</li>
 </ul>
 <p>提示词</p>
-<pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面的技术架构文档范文格式输出内容，必要时引入类比，可视化，实例。
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面的技术架构文档范文格式输出内容，必要时引入类比，可视化，实例。<br><br><span class="hljs-params">###</span> 1. 文档标题<br>- 文档名称<br>- 编写日期<br>- 作者/团队名称<br>- 链接地址<br><br><span class="hljs-params">###</span> 2. 摘要<br>- 简要概述文档目的和主要内容<br><br><span class="hljs-params">###</span> 3. 系统概述<br>- 系统目标和背景<br>- 主要功能和用户<br><br><span class="hljs-params">###</span> 4. 数据流程和架构<br>- 数据收集和输入<br>- 数据处理流程（清洗、转换、汇总）<br>- 数据存储解决方案<br>- 数据展示和可视化方法<br><br><span class="hljs-params">###</span> 5. 性能和效率分析<br>- 系统当前性能评估（瓶颈识别）<br>- 效率问题和挑战<br>- 可能的改进方案<br><br><span class="hljs-params">###</span> 6. 技术堆栈和工具<br>- 使用的技术和工具<br>- 技术选型的原因和优势<br>- 技术限制和潜在风险<br><br><span class="hljs-params">###</span> 7. 安全性和可扩展性<br>- 当前的安全措施<br>- 数据保护策略<br>- 系统的可扩展性和未来发展规划<br><br><span class="hljs-params">###</span> 8. 用户体验和界面设计<br>- 界面设计概述<br>- 可视化效果和用户交互<br>- 用户反馈和使用情况分析<br><br><span class="hljs-params">###</span> 9. 问题和挑战<br>- 当前面临的主要问题<br>- 潜在的技术或业务挑战<br><br><span class="hljs-params">###</span> 10. 改进方案和发展规划<br>- 针对识别问题的改进措施<br>- 短期和长期的发展规划<br>- 预期的成果和影响<br><br><span class="hljs-params">###</span> 11. 结论<br>- 对整个项目的总结和展望<br><br><span class="hljs-params">###</span> 12. 附录<br>- 参考文献<br>- 图表和额外数据<br><br><span class="hljs-params">###</span> 13. 审核和批准<br>- 文档的审阅人员<br>- 批准日期和签名<br></code></pre></td></tr></table></figure>
 
-### 1. 文档标题
-- 文档名称
-- 编写日期
-- 作者/团队名称
-- 链接地址
 
-### 2. 摘要
-- 简要概述文档目的和主要内容
 
-### 3. 系统概述
-- 系统目标和背景
-- 主要功能和用户
-
-### 4. 数据流程和架构
-- 数据收集和输入
-- 数据处理流程（清洗、转换、汇总）
-- 数据存储解决方案
-- 数据展示和可视化方法
-
-### 5. 性能和效率分析
-- 系统当前性能评估（瓶颈识别）
-- 效率问题和挑战
-- 可能的改进方案
-
-### 6. 技术堆栈和工具
-- 使用的技术和工具
-- 技术选型的原因和优势
-- 技术限制和潜在风险
-
-### 7. 安全性和可扩展性
-- 当前的安全措施
-- 数据保护策略
-- 系统的可扩展性和未来发展规划
-
-### 8. 用户体验和界面设计
-- 界面设计概述
-- 可视化效果和用户交互
-- 用户反馈和使用情况分析
-
-### 9. 问题和挑战
-- 当前面临的主要问题
-- 潜在的技术或业务挑战
-
-### 10. 改进方案和发展规划
-- 针对识别问题的改进措施
-- 短期和长期的发展规划
-- 预期的成果和影响
-
-### 11. 结论
-- 对整个项目的总结和展望
-
-### 12. 附录
-- 参考文献
-- 图表和额外数据
-
-### 13. 审核和批准
-- 文档的审阅人员
-- 批准日期和签名
-</code></pre>
 <h3 id="技术教程"><a href="#技术教程" class="headerlink" title="技术教程"></a>技术教程</h3><p>为了归纳和总结技术教程类文章的内容，你可以使用以下模板：</p>
 <p><strong>文章概述</strong></p>
 <ul>
@@ -461,197 +443,28 @@
 <li>提供实践建议或后续步骤</li>
 </ul>
 <p>这种模板有助于确保你的总结既全面又有组织，易于理解。</p>
-<pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。<br><br>**文章概述**<br>- 标题：文章的标题<br>- 作者：编写教程的作者<br>- 发布日期：文章的发布时间<br>- 链接地址：文章链接或其获取方式<br>- 摘要：简短描述文章的主要内容和目的<br><br>**技术背景与原理**<br>- 介绍所涉及的技术背景<br>- 解释文章中使用的关键技术或概念<br><br>**详细步骤**<br>- 逐步指南：清晰列出完成任务所需的步骤<br>- 截图和示例：提供截图或代码示例以辅助解释<br><br>**问题解决与常见问题**<br>- 讨论可能遇到的问题及其解决方案<br>- 列出常见问题和解答<br><br>**附加资源**<br>- 提供进一步阅读的链接或推荐资源<br>- 相关工具或软件的链接<br><br>**总结**<br>- 总结文章的主要教训或结论<br>- 提供实践建议或后续步骤<br></code></pre></td></tr></table></figure>
 
-**文章概述**
-- 标题：文章的标题
-- 作者：编写教程的作者
-- 发布日期：文章的发布时间
-- 链接地址：文章链接或其获取方式
-- 摘要：简短描述文章的主要内容和目的
 
-**技术背景与原理**
-- 介绍所涉及的技术背景
-- 解释文章中使用的关键技术或概念
 
-**详细步骤**
-- 逐步指南：清晰列出完成任务所需的步骤
-- 截图和示例：提供截图或代码示例以辅助解释
+<h3 id="行业报告"><a href="#行业报告" class="headerlink" title="行业报告"></a>行业报告</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。<br>---<br><br>**文档标题**: [企业级产品研发管理全流程分析报告]<br><br>**作者**: [作者姓名]<br><br>**日期**: [撰写日期]<br><br>---<br><br><span class="hljs-params">###</span> 一、引言<br>- **背景简介**: 简要介绍企业产品研发管理的重要性和背景。<br>- **文章目的**: 阐述本文档的目的和预期读者。<br><br>---<br><br><span class="hljs-params">###</span> 二、流程和体系结构<br>- **流程概述**: 描述产品研发管理的整体流程。<br>- **体系结构**: 详细介绍产品研发管理的体系结构，包括关键组成部分和它们之间的关系。<br><br>---<br><br><span class="hljs-params">###</span> 三、战略和市场管理<br>- **产品战略**: 分析文章中提到的产品战略制定方法和案例。<br>- **市场管理**: 探讨市场管理的实践和策略，以及其对产品成功的影响。<br><br>---<br><br><span class="hljs-params">###</span> 四、技术和产品开发<br>- **技术创新**: 讨论技术开发的趋势、挑战和机遇。<br>- **产品开发流程**: 分析产品开发的关键阶段和最佳实践。<br><br>---<br><br><span class="hljs-params">###</span> 五、案例研究<br>- **成功案例**: 描述一至两个相关行业的成功案例，分析其成功的关键因素。<br>- **教训和启示**: 提取案例中的关键教训和对未来的启示。<br><br>---<br><br><span class="hljs-params">###</span> 六、挑战与机遇<br>- **当前挑战**: 讨论当前面临的主要挑战和难题。<br>- **未来机遇**: 探索未来可能的发展机遇和趋势。<br><br>---<br><br><span class="hljs-params">###</span> 七、结论<br>- **主要发现**: 总结文章的主要发现和观点。<br>- **建议和策略**: 提出基于分析的建议和策略。<br><br>---<br><br><span class="hljs-params">###</span> 八、参考文献<br>- **引用来源**: 列出所有参考的文献和资源。<br><br>---<br><br><span class="hljs-params">###</span> 九、附录<br>- **额外信息**: 如有必要，提供额外的图表、数据或详细信息。<br></code></pre></td></tr></table></figure>
 
-**问题解决与常见问题**
-- 讨论可能遇到的问题及其解决方案
-- 列出常见问题和解答
 
-**附加资源**
-- 提供进一步阅读的链接或推荐资源
-- 相关工具或软件的链接
 
-**总结**
-- 总结文章的主要教训或结论
-- 提供实践建议或后续步骤
-</code></pre>
-<h3 id="行业报告"><a href="#行业报告" class="headerlink" title="行业报告"></a>行业报告</h3><pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。
----
+<h3 id="项目规划和管理"><a href="#项目规划和管理" class="headerlink" title="项目规划和管理"></a>项目规划和管理</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。<br><br>**项目概述**<br>- 项目名称<br>- 背景和目标<br>- 预期成果<br><br>**资源规划**<br>- 人力资源需求<br>- 物资和财务预算<br>- 关键资源分配<br><br>**时间线与里程碑**<br>- 总体时间表<br>- 关键里程碑和截止日期<br><br>**风险评估**<br>- 潜在风险列表<br>- 风险应对策略<br><br>**团队组织与角色**<br>- 团队结构图<br>- 成员职责和角色<br><br>**实施策略**<br>- 执行步骤<br>- 方法和工具<br><br>**监控与评估机制**<br>- 进度监控计划<br>- 评估标准和方法<br><br>**案例研究/实例**<br>- 相关案例分析<br>- 学习点和启示<br><br>**附录**<br>- 参考文献<br>- 相关文档链接<br><br>**总结**<br>- 项目的关键要点<br>- 后续步骤和建议<br></code></pre></td></tr></table></figure>
 
-**文档标题**: [企业级产品研发管理全流程分析报告]
 
-**作者**: [作者姓名]
 
-**日期**: [撰写日期]
 
----
 
-### 一、引言
-- **背景简介**: 简要介绍企业产品研发管理的重要性和背景。
-- **文章目的**: 阐述本文档的目的和预期读者。
+<h3 id="技术博客"><a href="#技术博客" class="headerlink" title="技术博客"></a>技术博客</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。<br><br>**概述**<br>- 文章的简短介绍<br>- 主题和目的概述<br><br>**算法原理**<br>- 相关技术的涉及的算法历史演进概述<br>- 适用场景概述<br><br>**详细内容**<br>- 核心技术概念的详细解释<br>- 逐步指南或操作步骤<br><br>**实际示例**<br>- 代码示例或案例研究<br>- 实际应用场景描述<br><br>**最佳实践和建议**<br>- 实用技巧和技术最佳实践<br>- 性能优化建议<br><br>**结论**<br>- 文章的主要观点总结<br>- 对读者的最后建议<br><br>**参考资料**<br>- 相关文献或资源链接<br><br></code></pre></td></tr></table></figure>
 
----
 
-### 二、流程和体系结构
-- **流程概述**: 描述产品研发管理的整体流程。
-- **体系结构**: 详细介绍产品研发管理的体系结构，包括关键组成部分和它们之间的关系。
 
----
+<h3 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs text">### 文章内容归纳总结模板<br><br>#### 文章标题：<br>- [文章标题]<br><br>#### 领域：<br>- 软件架构/IT系统设计<br><br>#### 主题：<br>- 康威定律与组织结构对软件架构的影响<br><br>#### 主要观点：<br>1. **康威定律简介**：系统的设计结构反映了组织的沟通结构。<br>2. **组织与架构的关系**：通过优化沟通方式影响架构设计。<br>3. **微服务与单体架构**：架构演进的实例与实践经验。<br>4. **反馈与迭代**：通过反馈回路不断优化架构。<br><br>#### 关注点：<br>- 组织结构如何影响架构决策<br>- 实践中的成功案例和教训<br>- 架构演进中的关键挑战<br><br>#### 类比与实例：<br>- 使用实际组织与系统结构的案例，类比公司不同部门间的沟通如何影响项目设计。<br><br>#### 总结：<br>通过理解康威定律，架构师可以更好地设计符合组织特点的架构，并推动架构和组织结构的同步优化。<br><br></code></pre></td></tr></table></figure>
 
-### 三、战略和市场管理
-- **产品战略**: 分析文章中提到的产品战略制定方法和案例。
-- **市场管理**: 探讨市场管理的实践和策略，以及其对产品成功的影响。
 
----
 
-### 四、技术和产品开发
-- **技术创新**: 讨论技术开发的趋势、挑战和机遇。
-- **产品开发流程**: 分析产品开发的关键阶段和最佳实践。
-
----
-
-### 五、案例研究
-- **成功案例**: 描述一至两个相关行业的成功案例，分析其成功的关键因素。
-- **教训和启示**: 提取案例中的关键教训和对未来的启示。
-
----
-
-### 六、挑战与机遇
-- **当前挑战**: 讨论当前面临的主要挑战和难题。
-- **未来机遇**: 探索未来可能的发展机遇和趋势。
-
----
-
-### 七、结论
-- **主要发现**: 总结文章的主要发现和观点。
-- **建议和策略**: 提出基于分析的建议和策略。
-
----
-
-### 八、参考文献
-- **引用来源**: 列出所有参考的文献和资源。
-
----
-
-### 九、附录
-- **额外信息**: 如有必要，提供额外的图表、数据或详细信息。
-</code></pre>
-<h3 id="项目规划和管理"><a href="#项目规划和管理" class="headerlink" title="项目规划和管理"></a>项目规划和管理</h3><pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。
-
-**项目概述**
-- 项目名称
-- 背景和目标
-- 预期成果
-
-**资源规划**
-- 人力资源需求
-- 物资和财务预算
-- 关键资源分配
-
-**时间线与里程碑**
-- 总体时间表
-- 关键里程碑和截止日期
-
-**风险评估**
-- 潜在风险列表
-- 风险应对策略
-
-**团队组织与角色**
-- 团队结构图
-- 成员职责和角色
-
-**实施策略**
-- 执行步骤
-- 方法和工具
-
-**监控与评估机制**
-- 进度监控计划
-- 评估标准和方法
-
-**案例研究/实例**
-- 相关案例分析
-- 学习点和启示
-
-**附录**
-- 参考文献
-- 相关文档链接
-
-**总结**
-- 项目的关键要点
-- 后续步骤和建议
-</code></pre>
-<h3 id="技术博客"><a href="#技术博客" class="headerlink" title="技术博客"></a>技术博客</h3><pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。
-
-**概述**
-- 文章的简短介绍
-- 主题和目的概述
-
-**算法原理**
-- 相关技术的涉及的算法历史演进概述
-- 适用场景概述
-
-**详细内容**
-- 核心技术概念的详细解释
-- 逐步指南或操作步骤
-
-**实际示例**
-- 代码示例或案例研究
-- 实际应用场景描述
-
-**最佳实践和建议**
-- 实用技巧和技术最佳实践
-- 性能优化建议
-
-**结论**
-- 文章的主要观点总结
-- 对读者的最后建议
-
-**参考资料**
-- 相关文献或资源链接
-</code></pre>
-<h3 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h3><pre><code class="text">### 文章内容归纳总结模板
-
-#### 文章标题：
-- [文章标题]
-
-#### 领域：
-- 软件架构/IT系统设计
-
-#### 主题：
-- 康威定律与组织结构对软件架构的影响
-
-#### 主要观点：
-1. **康威定律简介**：系统的设计结构反映了组织的沟通结构。
-2. **组织与架构的关系**：通过优化沟通方式影响架构设计。
-3. **微服务与单体架构**：架构演进的实例与实践经验。
-4. **反馈与迭代**：通过反馈回路不断优化架构。
-
-#### 关注点：
-- 组织结构如何影响架构决策
-- 实践中的成功案例和教训
-- 架构演进中的关键挑战
-
-#### 类比与实例：
-- 使用实际组织与系统结构的案例，类比公司不同部门间的沟通如何影响项目设计。
-
-#### 总结：
-通过理解康威定律，架构师可以更好地设计符合组织特点的架构，并推动架构和组织结构的同步优化。
-</code></pre>
 <h2 id="提示词"><a href="#提示词" class="headerlink" title="提示词"></a>提示词</h2><p>提示词 1：</p>
 <p>你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章&#x2F;链接，告诉我这篇文章属于什么主题类型的文章，是什么领域的，分析这类文章重点要关注哪些部分。必要时引入类比，可视化，实例。</p>
 <p>提示词 2：</p>
@@ -661,50 +474,397 @@
 <p>提示词 4：</p>
 <p>告诉我xxx这种主题类型的文章，分析在编写或阅读这类文章重点要关注哪些部分。必要时引入类比，可视化，实例</p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/ai/" class="category-chain-item">ai</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
-    
-    
-    
-    
-    
-    
-    
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/" class="print-no-link">#知识管理</a>
+      
+        <a href="/tags/%E9%98%85%E8%AF%BB/" class="print-no-link">#阅读</a>
+      
+        <a href="/tags/AI/" class="print-no-link">#AI</a>
+      
+    </div>
+  
 </div>
 
-            <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
-        </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
 
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AI阅读文章模板</div>
+      <div>https://abrance.github.io/2023/11/23/mdstorage/domain/ai/AI阅读文章模板/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
         </div>
-        
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 23, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/11/24/mdstorage/resource/vpn/cfwTUN%E6%A8%A1%E5%BC%8F/" title="cfwTUN模式.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">cfwTUN模式.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/23/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%AE%A1%E7%90%86%E7%9A%84%E7%9F%9B%E7%9B%BE/" title="技术与管理的矛盾.md">
+                        <span class="hidden-mobile">技术与管理的矛盾.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
             </div>
-        </transition>
-        
+
+            
+          </article>
+        </div>
+      </div>
     </div>
-    <script src="/js/main.js"></script>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
     
-    
-
-
-
 
     
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

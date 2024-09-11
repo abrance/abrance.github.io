@@ -1,214 +1,284 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>mermaid流程图写作文档.md | Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概念Mermaid 是一个强大的、基于文本的图表绘制工具，它允许用户通过简单的文本描述来生成复杂的图表。这种方式使得图表的创建和维护变得更加容易和高效，尤其是在需要将图表版本控制或与文档集成时。Mermaid 减少了使用传统图形编辑工具的需要，使非设计师也能快速绘制出看起来专业的图表。 主要特点 易于学习和使用： Mermaid 的语法简单直观，用户可以通过学习几个基本的语法规则来快速开始绘图。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mermaid流程图写作文档.md">
+<meta property="og:url" content="https://abrance.github.io/2024/03/07/mdstorage/domain/%E6%96%87%E6%A1%A3/mermaid%E6%B5%81%E7%A8%8B%E5%9B%BE%E5%86%99%E4%BD%9C%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="概念Mermaid 是一个强大的、基于文本的图表绘制工具，它允许用户通过简单的文本描述来生成复杂的图表。这种方式使得图表的创建和维护变得更加容易和高效，尤其是在需要将图表版本控制或与文档集成时。Mermaid 减少了使用传统图形编辑工具的需要，使非设计师也能快速绘制出看起来专业的图表。 主要特点 易于学习和使用： Mermaid 的语法简单直观，用户可以通过学习几个基本的语法规则来快速开始绘图。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-11T02:55:43.725Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="markdown">
+<meta property="article:tag" content="mermaid">
+<meta property="article:tag" content="typora">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>mermaid流程图写作文档.md - Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
 
 
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
 
-<link rel="stylesheet" href="/css/main.css" />
-
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
 
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>mermaid流程图写作文档.md</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/3/7
-        </span>
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/tags/markdown/" style="color: #00bcd4">
-                    markdown
-                </a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/mermaid/" style="color: #ff7d73">
-                    mermaid
-                </a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/typora/" style="color: #ffa2c4">
-                    typora
-                </a>
-            </span>
-            
-        </span>
-        
-    </div>
+
+<body>
+  
+
+  <header>
     
-    <div class="content" v-pre>
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Mermaid 是一个强大的、基于文本的图表绘制工具，它允许用户通过简单的文本描述来生成复杂的图表。这种方式使得图表的创建和维护变得更加容易和高效，尤其是在需要将图表版本控制或与文档集成时。Mermaid 减少了使用传统图形编辑工具的需要，使非设计师也能快速绘制出看起来专业的图表。</p>
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="mermaid流程图写作文档.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-07 00:00" pubdate>
+          March 7, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">mermaid流程图写作文档.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Mermaid 是一个强大的、基于文本的图表绘制工具，它允许用户通过简单的文本描述来生成复杂的图表。这种方式使得图表的创建和维护变得更加容易和高效，尤其是在需要将图表版本控制或与文档集成时。Mermaid 减少了使用传统图形编辑工具的需要，使非设计师也能快速绘制出看起来专业的图表。</p>
 <h3 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h3><ul>
 <li><strong>易于学习和使用：</strong> Mermaid 的语法简单直观，用户可以通过学习几个基本的语法规则来快速开始绘图。</li>
 <li><strong>文本到图形：</strong> 通过编写和解析文本描述，Mermaid 自动生成图表。这使得图表易于在版本控制系统中管理，并可以像代码一样被审查。</li>
@@ -216,18 +286,15 @@
 <li><strong>集成方便：</strong> 它可以被集成到多种平台和工具中，例如 Markdown 编辑器、Confluence、GitHub、GitLab 等，很多支持 Markdown 的平台已经内置了对 Mermaid 的支持。</li>
 </ul>
 <h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><p>Mermaid 的语法主要由图表声明（定义图表的类型和方向）、节点定义（定义图表中的元素）和连接符（定义节点之间的关系）组成。下面是一个简单的流程图示例的 Mermaid 代码：</p>
-<pre><code class="text">graph LR
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">graph LR<br>    A[Start] --&gt; B&#123;Decision&#125;<br>    B --&gt;|Yes| C[Do Something]<br>    B --&gt;|No| D[Do Something Else]<br>    C --&gt; D[End]<br></code></pre></td></tr></table></figure>
+
+<pre><code class=" mermaid">graph LR
     A[Start] --&gt; B&#123;Decision&#125;
     B --&gt;|Yes| C[Do Something]
     B --&gt;|No| D[Do Something Else]
     C --&gt; D[End]
 </code></pre>
-<pre><code class="mermaid">graph LR
-    A[Start] --&gt; B&#123;Decision&#125;
-    B --&gt;|Yes| C[Do Something]
-    B --&gt;|No| D[Do Something Else]
-    C --&gt; D[End]
-</code></pre>
+
 <p>这段代码描述了一个包含开始节点、决策节点和操作节点的简单流程，并指定了它们之间的关系。</p>
 <h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>Mermaid 非常适合软件开发、项目管理、系统设计和文档编写等领域，特别是在需要快速创建和更新图表以说明复杂过程和系统的场合。</p>
 <h3 id="怎么开始"><a href="#怎么开始" class="headerlink" title="怎么开始"></a>怎么开始</h3><p>要开始使用 Mermaid，你可以：</p>
@@ -242,96 +309,55 @@
 <li><a target="_blank" rel="noopener" href="https://mermaid.live/"><strong>mermaid在线</strong></a></li>
 <li><code>https://mermaid.nodejs.cn/syntax/block.html</code></li>
 </ul>
-<h2 id="mermaid-常用工具库代码风格参考"><a href="#mermaid-常用工具库代码风格参考" class="headerlink" title="mermaid 常用工具库代码风格参考"></a>mermaid 常用工具库代码风格参考</h2><pre><code class="text">---
+<h2 id="mermaid-常用工具库代码风格参考"><a href="#mermaid-常用工具库代码风格参考" class="headerlink" title="mermaid 常用工具库代码风格参考"></a>mermaid 常用工具库代码风格参考</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs text">---<br>title: mermaid 常用工具库代码风格参考<br>---<br>graph TB<br>	a[A]<br>	b[B]<br>	c[C]<br>	subgraph MySubGraphTitle<br>		comp_a:::Orange<br>		comp_a ---&gt; comp_b[B]<br>		comp_b ----&gt; comp_c<br>		comp_c ---&gt; comp_d<br>		comp_d -- D转E --&gt; comp_e<br>	end<br>	<br>	subgraph Layer1<br>		l_a<br>	end<br>	<br>	subgraph Layer2<br>		test_no_border:::NoBorder<br>	end<br><br><br>    linkStyle 1 stroke:blue,stroke-width:1px,color:black,stroke-dasharray: 5, 5;<br>    linkStyle 3 stroke:red,stroke-width:4px,color:green;<br><br>	%% stroke 为边框或线条 stroke: , stroke-width: 宽度 stroke-dasharray: 虚线<br>	%% fill 为填充结点的颜色<br>	%% color 为结点中文字颜色<br>	<br>	%% fill: <br><br>    style a stroke:#f66,stroke-width:2px;<br>    style b stroke:#66f,stroke-width:4px;<br><br>	style Layer1 fill:#FFEBB5<br>	classDef Orange fill:#f96<br><br>	%% 颜色 transparent 透明<br>	classDef NoBorder fill:transparent, stroke:transparent;<br>	<br>	%% 样式测试区<br>	%%classDef Orange fill:#f96<br></code></pre></td></tr></table></figure>
+
+<pre><code class=" mermaid">---
 title: mermaid 常用工具库代码风格参考
 ---
 graph TB
-    a[A]
-    b[B]
-    c[C]
-    subgraph MySubGraphTitle
-        comp_a:::Orange
-        comp_a ---&gt; comp_b[B]
-        comp_b ----&gt; comp_c
-        comp_c ---&gt; comp_d
-        comp_d -- D转E --&gt; comp_e
-    end
-    
-    subgraph Layer1
-        l_a
-    end
-    
-    subgraph Layer2
-        test_no_border:::NoBorder
-    end
+	a[A]
+	b[B]
+	c[C]
+	subgraph MySubGraphTitle
+		comp_a:::Orange
+		comp_a ---&gt; comp_b[B]
+		comp_b ----&gt; comp_c
+		comp_c ---&gt; comp_d
+		comp_d -- D转E --&gt; comp_e
+	end
+	
+	subgraph Layer1
+		l_a
+	end
+	
+	subgraph Layer2
+		test_no_border:::NoBorder
+	end
 
 
     linkStyle 1 stroke:blue,stroke-width:1px,color:black,stroke-dasharray: 5, 5;
     linkStyle 3 stroke:red,stroke-width:4px,color:green;
 
-    %% stroke 为边框或线条 stroke: , stroke-width: 宽度 stroke-dasharray: 虚线
-    %% fill 为填充结点的颜色
-    %% color 为结点中文字颜色
-    
-    %% fill: 
+	%% stroke 为边框或线条 stroke: , stroke-width: 宽度 stroke-dasharray: 虚线
+	%% fill 为填充结点的颜色
+	%% color 为结点中文字颜色
+	
+	%% fill: 
 
     style a stroke:#f66,stroke-width:2px;
     style b stroke:#66f,stroke-width:4px;
 
-    style Layer1 fill:#FFEBB5
-    classDef Orange fill:#f96
+	style Layer1 fill:#FFEBB5
+	classDef Orange fill:#f96
 
-    %% 颜色 transparent 透明
-    classDef NoBorder fill:transparent, stroke:transparent;
-    
-    %% 样式测试区
-    %%classDef Orange fill:#f96
+	%% 颜色 transparent 透明
+	classDef NoBorder fill:transparent, stroke:transparent;
+	
+	%% 样式测试区
+	%%classDef Orange fill:#f96
 </code></pre>
-<pre><code class="mermaid">---
-title: mermaid 常用工具库代码风格参考
----
-graph TB
-    a[A]
-    b[B]
-    c[C]
-    subgraph MySubGraphTitle
-        comp_a:::Orange
-        comp_a ---&gt; comp_b[B]
-        comp_b ----&gt; comp_c
-        comp_c ---&gt; comp_d
-        comp_d -- D转E --&gt; comp_e
-    end
-    
-    subgraph Layer1
-        l_a
-    end
-    
-    subgraph Layer2
-        test_no_border:::NoBorder
-    end
 
 
-    linkStyle 1 stroke:blue,stroke-width:1px,color:black,stroke-dasharray: 5, 5;
-    linkStyle 3 stroke:red,stroke-width:4px,color:green;
-
-    %% stroke 为边框或线条 stroke: , stroke-width: 宽度 stroke-dasharray: 虚线
-    %% fill 为填充结点的颜色
-    %% color 为结点中文字颜色
-    
-    %% fill: 
-
-    style a stroke:#f66,stroke-width:2px;
-    style b stroke:#66f,stroke-width:4px;
-
-    style Layer1 fill:#FFEBB5
-    classDef Orange fill:#f96
-
-    %% 颜色 transparent 透明
-    classDef NoBorder fill:transparent, stroke:transparent;
-    
-    %% 样式测试区
-    %%classDef Orange fill:#f96
-</code></pre>
 <h3 id="常用颜色方案"><a href="#常用颜色方案" class="headerlink" title="常用颜色方案"></a>常用颜色方案</h3><ul>
 <li><p>基础色：</p>
 <p> 提供足够对比度，适用于大多数背景和用途。</p>
@@ -352,50 +378,397 @@ graph TB
 <li>粉色：<code>#FFC0CB</code>（粉红），温柔且亲切，用于温和强调。</li>
 </ul>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
-    
-    
-    
-    
-    
-    
-    
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/markdown/" class="print-no-link">#markdown</a>
+      
+        <a href="/tags/mermaid/" class="print-no-link">#mermaid</a>
+      
+        <a href="/tags/typora/" class="print-no-link">#typora</a>
+      
+    </div>
+  
 </div>
 
-            <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
-        </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
 
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>mermaid流程图写作文档.md</div>
+      <div>https://abrance.github.io/2024/03/07/mdstorage/domain/文档/mermaid流程图写作文档/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
         </div>
-        
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 7, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/07/mdstorage/domain/%E6%8B%9B%E8%81%98/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B8%85%E5%8D%95/" title="面试题清单.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">面试题清单.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/07/mdstorage/project/cToRust/rust%E7%9A%84AST/" title="rust的AST.md">
+                        <span class="hidden-mobile">rust的AST.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
             </div>
-        </transition>
-        
+
+            
+          </article>
+        </div>
+      </div>
     </div>
-    <script src="/js/main.js"></script>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
     
-    
-
-
-
 
     
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

@@ -1,1244 +1,997 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Xiaoy">
+<meta property="og:url" content="https://abrance.github.io/page/27/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
 
 
-<script src="/js/lib/home.js"></script>
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
+
+
 <body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
         
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
         
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
         
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
         
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
         
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
+          
         </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
                 
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/background.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>Xiaoy</h1>
-                <h3>xiaoy blog</h3>
-                <h5></h5>
-            </div>
-        </span>
-    </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/2023/11/02/mdstorage/domain/cloud/enterprise_organization/AWS%E7%BB%BC%E8%BF%B0/">
-        <h2 class="post-title">AWS综述.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/2
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="what"><a href="#what" class="headerlink" title="what"></a>what</h2><p>Amazon Web Services（AWS）是Amazon的子公司，提供了一个广泛且不断发展的云计算平台。以下是关于AWS的详细介绍：</p>
-<ol>
-<li><p><strong>概述</strong>：</p>
-<ul>
-<li>AWS是全球最全面且广泛采用的云服务平台，提供超过200种完全功能的服务，这些服务来自全球的数据中心。数百万客户，包括快速成长的创业公司、大型企业和主要政府机构，都在使用AWS以降低成本、提高敏捷性并加速创新【100†(aws.amazon.com)】。</li>
-<li>AWS提供按需、按实际使用付费的云计算平台和API，服务对象包括个人、公司和政府【101†(Wikipedia)】。</li>
-<li>AWS的云计算平台包括基础设施即服务(IaaS)、平台即服务(PaaS)和软件即服务(SaaS)等多种云服务【102†(TechTarget)】。</li>
-</ul>
-</li>
-<li><p><strong>服务</strong>：</p>
-<ul>
-<li>AWS提供了一系列全球云产品，包括计算、存储、数据库、网络和内容交付、分析、机器学习、安全、身份和合规等，这些服务帮助组织更快地移动、降低IT成本并实现扩展【103†(aws.amazon.com)】。</li>
-</ul>
-</li>
-<li><p><strong>历史</strong>：</p>
-<ul>
-<li>AWS始于2006年，最初提供IT基础设施服务，现在被公认为云计算。云计算的一大好处是可以用低变动成本替换前期的资本基础设施费用，这些变动成本随着业务规模的变化而变化。通过云，企业无需提前几周或几个月计划和采购服务器及其他IT基础设施，而是可以在几分钟内立即启动数百或数千台服务器，从而更快地交付结果【107†(docs.aws.amazon.com)】。</li>
-</ul>
-</li>
-<li><p><strong>全球影响</strong>：</p>
-<ul>
-<li>如今，AWS在全球190个国家为数十万家企业提供高度可靠、可扩展和低成本的云基础设施平台【107†(docs.aws.amazon.com)】。</li>
-</ul>
-</li>
-</ol>
-<p>AWS通过其丰富的云服务和全球影响力，为各种规模的企业和组织提供了快速创新和发展的可能性。通过AWS，用户可以以更低的成本、更高的效率和更大的灵活性来运行和扩展他们的应用和服务。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/11/02/mdstorage/domain/cloud/enterprise_organization/AWS%E7%BB%BC%E8%BF%B0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/02/mdstorage/domain/cloud/enterprise_organization/CloudSecurityAlliance/">
-        <h2 class="post-title">CloudSecurityAlliance.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/2
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="what"><a href="#what" class="headerlink" title="what"></a>what</h2><p>Cloud Security Alliance (CSA) 是一个全球领先的非营利组织，专注于定义和提升对云计算环境安全最佳实践的认识。以下是关于CSA的一些详细信息：</p>
-<ol>
-<li><p><strong>组织目标和活动</strong>：</p>
-<ul>
-<li>CSA的主要目标是确保云计算环境的安全。它通过定义最佳实践和提高相关认识来实现这一目标【85†(CSA官网)】。</li>
-<li>CSA提供了各种资源和培训，包括云安全认证、最新的云安全研究、以及与STAR（安全信任保证和风险管理）合规性的改进方法【92†(CSA官网)】。</li>
-</ul>
-</li>
-<li><p><strong>会员和全球影响</strong>：</p>
-<ul>
-<li>CSA拥有大约60名全职和合同员工，以及数千名活跃的志愿者，他们参与研究、工作组和各地的章节活动【86†(维基百科)】。</li>
-</ul>
-</li>
-<li><p><strong>教育和认证</strong>：</p>
-<ul>
-<li>CSA提供的教育和认证项目包括云安全知识证书（CCSK）、云审计知识证书（CCAK）和STAR注册等，旨在提高组织的安全和合规性，同时也为行业和国家提供了构建自己的云保证生态系统的工具和指南【92†(CSA官网)】。</li>
-</ul>
-</li>
-<li><p><strong>研究和战略倡议</strong>：</p>
-<ul>
-<li>CSA通过其研究组和战略倡议探讨了包括云保证、核心云、未来云等多个方面的主题，涉及零信任、量子安全、人工智能等创新技术和策略，旨在帮助组织应对当前的云安全挑战，并为未来的云和网络安全塑造未来【92†(CSA官网)】。</li>
-</ul>
-</li>
-<li><p><strong>合作和合作关系</strong>：</p>
-<ul>
-<li>CSA与行业实践者、协会、政府以及其企业和个人会员合作，推动云计算安全最佳实践的研究，同时利用云技术保护其他形式的计算【88†(TechTarget)】。</li>
-</ul>
-</li>
-</ol>
-<p>通过以上信息，可以看出CSA是一个致力于通过教育、认证和研究来提高云安全意识和实践的重要组织。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/security/" style="color: #00bcd4">security</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/cloud/" style="color: #ff7d73">cloud</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/organization/" style="color: #00a596">organization</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/02/mdstorage/domain/cloud/enterprise_organization/CloudSecurityAlliance/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/01/mdstorage/domain/cloud/Iaas%E7%BB%BC%E8%BF%B0/">
-        <h2 class="post-title">Iaas综述.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/1
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="what"><a href="#what" class="headerlink" title="what"></a>what</h1><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>IaaS（基础设施即服务）的背景和发展与云计算技术的崛起密切相关。下面是 IaaS 背景的一些重要方面：</p>
-<ol>
-<li><p><strong>云计算的崛起</strong>：</p>
-<ul>
-<li>云计算技术的出现为 IaaS 提供了基础。在 2000 年代初，随着虚拟化技术的发展和互联网的普及，云计算开始成为可能。它允许企业和个人通过网络访问计算资源，而无需购买和维护物理硬件。</li>
-</ul>
-</li>
-<li><p><strong>虚拟化技术</strong>：</p>
-<ul>
-<li>虚拟化技术是 IaaS 的核心组成部分。它允许在单个物理服务器上运行多个虚拟机，每个虚拟机都有自己的操作系统和应用程序。虚拟化降低了计算资源的成本，并增加了资源利用率。</li>
-</ul>
-</li>
-<li><p><strong>早期的云服务提供商</strong>：</p>
-<ul>
-<li>早期的云服务提供商（如 Amazon Web Services 和 Google Cloud Platform）开始提供 IaaS 服务，使企业能够按需租用计算资源。这减少了企业的资本支出，并提供了更大的灵活性。</li>
-</ul>
-</li>
-<li><p><strong>标准化和开源运动</strong>：</p>
-<ul>
-<li>云计算标准的制定和开源云计算项目（如 OpenStack）的发展为 IaaS 的发展提供了推动力。标准化使得云服务提供商能够提供兼容和可交互操作的服务，而开源项目为企业提供了构建和管理自己的 IaaS 平台的工具。</li>
-</ul>
-</li>
-<li><p><strong>企业的云迁移和数字化转型</strong>：</p>
-<ul>
-<li>众多企业开始寻求通过云计算实现数字化转型。IaaS 成为许多企业的首选，因为它提供了对基础设施的高度控制，并能够容易地集成现有的系统和应用程序。</li>
-</ul>
-</li>
-<li><p><strong>法规和合规要求</strong>：</p>
-<ul>
-<li>随着数据隐私和安全法规的增加，IaaS 提供商开始加强安全和合规控制，以满足客户的需求。同时，IaaS 也帮助企业更容易地满足各种法律和行业标准的要求。</li>
-</ul>
-</li>
-<li><p><strong>持续的技术创新</strong>：</p>
-<ul>
-<li>随着技术的不断发展，例如容器化和服务网格，IaaS 也在不断创新，提供更多高级功能和更好的性能，以满足现代企业的需求。</li>
-</ul>
-</li>
-</ol>
-<p>IaaS 的发展反映了云计算技术的持续进步和企业数字化转型的需求。它为企业提供了一个灵活、可扩展和可管理的基础设施平台，使他们能够快速适应市场变化和业务需求。</p>
-<h2 id="知识基石"><a href="#知识基石" class="headerlink" title="知识基石"></a>知识基石</h2><p>成为 IaaS（基础设施即服务）领域的专家需要具备广泛和深入的知识和技能。以下是一些核心的知识领域和建议：</p>
-<ol>
-<li><p><strong>虚拟化技术</strong>：</p>
-<ul>
-<li>熟悉虚拟化技术的原理和实践，包括服务器虚拟化、网络虚拟化和存储虚拟化。</li>
-<li>熟悉主流的虚拟化平台和工具，如 VMware, Microsoft Hyper-V 和 KVM。</li>
-</ul>
-</li>
-<li><p><strong>云计算基础</strong>：</p>
-<ul>
-<li>了解云计算的基本概念、架构和服务模型（IaaS、PaaS 和 SaaS）。</li>
-<li>了解云计算的部署模型，如公有云、私有云和混合云。</li>
-</ul>
-</li>
-<li><p><strong>网络和安全</strong>：</p>
-<ul>
-<li>熟悉网络基础设施和协议，包括 IP 地址、子网、路由和负载均衡。</li>
-<li>了解网络安全的基本原则和实践，包括防火墙、VPN、身份验证和授权。</li>
-</ul>
-</li>
-<li><p><strong>存储技术</strong>：</p>
-<ul>
-<li>熟悉不同类型的存储技术和架构，包括块存储、文件存储和对象存储。</li>
-<li>了解存储性能优化、数据备份和恢复的基本方法。</li>
-</ul>
-</li>
-<li><p><strong>操作系统和中间件</strong>：</p>
-<ul>
-<li>熟悉常见的操作系统（如 Linux 和 Windows）及其管理。</li>
-<li>了解常见的中间件组件和服务，如数据库、消息队列和应用服务器。</li>
-</ul>
-</li>
-<li><p><strong>自动化和编程</strong>：</p>
-<ul>
-<li>熟悉基本的编程和脚本语言，如 Python 和 Shell。</li>
-<li>了解基本的自动化工具和框架，如 Ansible、Terraform 和 Kubernetes。</li>
-</ul>
-</li>
-<li><p><strong>监控和优化</strong>：</p>
-<ul>
-<li>熟悉常见的监控工具和方法，以及如何分析和优化系统性能。</li>
-<li>了解如何诊断和解决常见的性能和可靠性问题。</li>
-</ul>
-</li>
-<li><p><strong>架构设计和最佳实践</strong>：</p>
-<ul>
-<li>了解如何设计和优化 IaaS 架构，以满足不同的性能、可靠性和安全要求。</li>
-<li>熟悉云计算和 IaaS 领域的最佳实践和推荐指南。</li>
-</ul>
-</li>
-<li><p><strong>持续学习和实践</strong>：</p>
-<ul>
-<li>保持对新技术和行业趋势的关注，并不断学习和实践。</li>
-<li>获取相关的认证和培训，如 AWS Certified Solutions Architect 或 Google Cloud Certified Professional Cloud Architect。</li>
-</ul>
-</li>
-<li><p><strong>项目管理和沟通技巧</strong>：</p>
-<ul>
-<li>熟悉基本的项目管理和沟通技巧，以便能够有效地与团队和客户合作。</li>
-<li>了解如何解释和传达复杂的技术概念和解决方案。</li>
-</ul>
-</li>
-</ol>
-<p>通过学习上述知识和技能，积累实际经验，并参与相关的项目和社区活动，你将能够逐渐成为 IaaS 领域的专家。同时，保持对新技术和行业动态的持续关注，以及不断的学习和实践，是成为该领域专家的关键。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/cloud/" style="color: #03a9f4">cloud</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/01/mdstorage/domain/cloud/Iaas%E7%BB%BC%E8%BF%B0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/pandoc%E9%85%8D%E7%BD%AE/">
-        <h2 class="post-title">typora_pandoc_picgo安装.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/resource/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                resource
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/1
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="github"><a href="#github" class="headerlink" title="github"></a>github</h3><ul>
-<li><p>申请 person token</p>
-<p>github 里面需要 repo 权限即可</p>
-</li>
-<li><p>仓库名</p>
-<p>abrance&#x2F;ImageStorage 这样即可</p>
-</li>
-<li><p>分支名</p>
-<p>master</p>
-</li>
-</ul>
-<h3 id="typora"><a href="#typora" class="headerlink" title="typora"></a>typora</h3><pre><code class="bash">申请 person token
-
-github 里面需要 repo 权限即可
-</code></pre>
-<h3 id="pandoc"><a href="#pandoc" class="headerlink" title="pandoc"></a>pandoc</h3><pre><code class="bash">仓库名
-</code></pre>
-<h3 id="picgo"><a href="#picgo" class="headerlink" title="picgo"></a>picgo</h3><ul>
-<li><p>下载 AppImage 后缀的文件</p>
-</li>
-<li><p>给予可执行权限</p>
-</li>
-<li><p>运行</p>
-</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/markdown-%E5%AE%89%E8%A3%85/" style="color: #03a9f4">markdown 安装</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/pandoc%E9%85%8D%E7%BD%AE/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora_pandoc_picgo%E5%AE%89%E8%A3%85/">
-        <h2 class="post-title">typora_pandoc_picgo安装.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/resource/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                resource
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/1
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="Ubuntu22-04"><a href="#Ubuntu22-04" class="headerlink" title="Ubuntu22.04"></a>Ubuntu22.04</h3><ul>
-<li><p>typora</p>
-<pre><code class="bash"># or run:
-# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
-wget -qO - https://typora.io/linux/public-key.asc | sudo tee /etc/apt/trusted.gpg.d/typora.asc
-
-# add Typora&#39;s repository
-sudo add-apt-repository &#39;deb https://typora.io/linux ./&#39;
-sudo apt-get update
-
-# install typora
-sudo apt-get install typora
-</code></pre>
-</li>
-<li><p>pandoc</p>
-<pre><code class="bash">wget $deb_package_uri
-sudo dpkg -i $deb_package
-</code></pre>
-</li>
-<li><p>picgo</p>
-<ul>
-<li>下载 AppImage 后缀的文件</li>
-<li>给予可执行权限</li>
-<li>运行</li>
-</ul>
-</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/markdown-install/" style="color: #ffa2c4">markdown install</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora_pandoc_picgo%E5%AE%89%E8%A3%85/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E4%BD%BF%E7%94%A8/">
-        <h2 class="post-title">typora使用.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/resource/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                resource
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/1
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="导入和导出"><a href="#导入和导出" class="headerlink" title="导入和导出"></a>导入和导出</h3><h4 id="word"><a href="#word" class="headerlink" title="word"></a>word</h4><ul>
-<li><p>导入</p>
-<p>文件 -&gt; 导入</p>
-<p>可将 pandoc 支持识别的都识别出来</p>
-</li>
-<li><p>导出</p>
-<p>文件 -&gt; 导出</p>
-<p>可将 pandoc支持导出功能发挥</p>
-</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/markdown/" style="color: #00a596">markdown</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/word/" style="color: #ffa2c4">word</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E4%BD%BF%E7%94%A8/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E6%8F%92%E4%BB%B6/">
-        <h2 class="post-title">typora插件.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/resource/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                resource
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/1
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="插件概述"><a href="#插件概述" class="headerlink" title="插件概述"></a>插件概述</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p><a target="_blank" rel="noopener" href="https://github.com/obgnail/typora_plugin#%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">github typora plugin use</a></p>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p><a target="_blank" rel="noopener" href="https://github.com/obgnail/typora_plugin#%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">使用</a></p>
-<h3 id="常用插件快捷键"><a href="#常用插件快捷键" class="headerlink" title="常用插件快捷键"></a>常用插件快捷键</h3><ul>
-<li>C-S-B  中英间隔 1 space</li>
-<li>C-j 搜索</li>
-<li>鼠标右键 插件功能</li>
-</ul>
-<h3 id="常用插件功能"><a href="#常用插件功能" class="headerlink" title="常用插件功能"></a>常用插件功能</h3><ul>
-<li>文件模板</li>
-<li>kanban 功能</li>
-<li>标签页（记得只保留一个，多了会出现现实问题）</li>
-<li>markdown 格式检查</li>
-</ul>
-<h3 id="插件开关配置"><a href="#插件开关配置" class="headerlink" title="插件开关配置"></a>插件开关配置</h3><ul>
-<li>linux<ul>
-<li>右键 -&gt; 非常用插件 -&gt; 右键菜单 -&gt; 打开插件配置文件</li>
-<li>settings.default.toml 里的配置 拷贝 到 settings.user.toml 中，将对应插件的 （sudo gedit settings.user.toml）启用插件 ENABLE &#x3D; false&#x2F;true</li>
-<li>（建议关闭标签页管理插件window_tab，经常有问题）</li>
-</ul>
-</li>
-<li>windows</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/Markdown/" style="color: #ff7d73">Markdown</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/plugin/" style="color: #00a596">plugin</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E6%8F%92%E4%BB%B6/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E9%85%8D%E7%BD%AE/">
-        <h2 class="post-title">typora配置.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/resource/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                resource
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/1
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="偏好设置"><a href="#偏好设置" class="headerlink" title="偏好设置"></a>偏好设置</h3><ul>
-<li><p>导出</p>
-<ul>
-<li>默认导出的文件夹 -&gt; 同一目录下</li>
-<li>pandoc路径 -&gt; $ where pandoc</li>
-<li>导出后打开导出目录</li>
-</ul>
-</li>
-<li><p>图片上传设置</p>
-<ul>
-<li>图像 -&gt; 上传服务设定 -&gt;  <ul>
-<li>上传服务 ： PicGo(app)</li>
-<li>PicGo路径  ： $picgo_appimage_uri</li>
-<li>验证图像上传选项</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/markdown/" style="color: #00bcd4">markdown</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/convert/" style="color: #03a9f4">convert</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E9%85%8D%E7%BD%AE/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/01/mdstorage/domain/cloud/apigateway/api%E7%BD%91%E5%85%B3%E7%BB%BC%E8%BF%B0/">
-        <h2 class="post-title">api网关综述.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/1
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="API-网关的历史"><a href="#API-网关的历史" class="headerlink" title="API 网关的历史"></a>API 网关的历史</h2><p>流量治理和 API 网关之间的关系密切且互补。它们在网络和软件架构领域中的应用可以增强系统的稳定性、可用性和性能。以下是流量治理和 API 网关之间的主要关系及其在网络和软件开发领域中的应用：</p>
-<ol>
-<li><p><strong>功能交叉</strong>：</p>
-<ul>
-<li><strong>API 网关</strong> 提供了一个集中的入口点，用于处理进出微服务架构的所有请求。它可以执行请求的路由、认证、授权、监控以及其他一些功能。</li>
-<li><strong>流量治理</strong> 是管理网络流量的一种方法，它包括负载均衡、流量分配、限流、熔断和流量监控等功能。</li>
-</ul>
-</li>
-<li><p><strong>流量控制</strong>：</p>
-<ul>
-<li><strong>API 网关</strong> 可以实现流量治理的某些功能，例如通过限流和负载均衡来管理不同服务之间的流量，确保系统的稳定运行。</li>
-<li><strong>流量治理</strong> 通常在 API 网关中实现，以确保对服务的访问是可控且合理的，防止系统过载并保持高可用性。</li>
-</ul>
-</li>
-<li><p><strong>安全和监控</strong>：</p>
-<ul>
-<li><strong>API 网关</strong> 能够提供一定的安全防护，例如通过身份验证和授权来保护后端服务。同时，它也可以通过日志和监控来提供对系统流量的实时视图。</li>
-<li><strong>流量治理</strong> 通过监控网络流量和实施安全策略，也能够增强系统的安全性。</li>
-</ul>
-</li>
-<li><p><strong>性能优化</strong>：</p>
-<ul>
-<li><strong>API 网关</strong> 和 <strong>流量治理</strong> 可以通过缓存、请求优化和响应转换等方式，帮助优化系统的性能。</li>
-</ul>
-</li>
-<li><p><strong>故障处理</strong>：</p>
-<ul>
-<li>通过在 <strong>API 网关</strong> 中实现 <strong>流量治理</strong> 的熔断机制，可以在后端服务发生故障时保持系统的可用性，通过重试、回退和重定向等策略来处理失败的请求。</li>
-</ul>
-</li>
-<li><p><strong>集中式管理</strong>：</p>
-<ul>
-<li>通过 <strong>API 网关</strong>，可以实现对多个服务和流量的集中式管理，这在微服务架构中尤为重要。</li>
-</ul>
-</li>
-</ol>
-<p>综上所述，流量治理和 API 网关是相互补充的，它们共同作用于网络和软件架构领域，以确保系统的稳定性、可用性和性能。在实际应用中，API 网关通常会集成流量治理的功能，为微服务架构提供统一、可控且高效的网络流量管理解决方案。</p>
-<h2 id="API-网关的过去、现在和未来"><a href="#API-网关的过去、现在和未来" class="headerlink" title="API 网关的过去、现在和未来"></a>API 网关的过去、现在和未来</h2><ol>
-<li><p><strong>标题和源头</strong>:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.infoq.com/articles/past-present-future-api-gateways/">infoQ</a></li>
-</ul>
-</li>
-<li><p><strong>日期和作者</strong>:</p>
-<ul>
-<li>记录资讯的发布日期和作者，以了解资讯的时效性和作者的背景。</li>
-</ul>
-</li>
-<li><p><strong>摘要</strong>:</p>
-<ul>
-<li>创建一个简短的摘要，概述资讯的主要内容和观点。这将帮助您快速回顾资讯的核心信息。</li>
-</ul>
-</li>
-<li><p><strong>关键点和数据</strong>:</p>
-<p>早期的互联网</p>
-<ul>
-<li>web 应用的体系结构为经典的 n 层体系结构，由数据库层、应用程序层和表示层组成。n 层体系结构是水平可扩展的 – 随着流量的增加，可以添加更多应用程序体系结构和表示层的实例。</li>
-<li>将应用程序或表示层的多个实例连接到 Internet 需要数据中心边缘的第一次迭代：负载平衡器。在这个时代，负载均衡器负责在应用程序的不同实例之间路由流量，确保高可用性和可扩展性。负载平衡器通常是一种硬件设备。</li>
-<li>2001 年 HAProxy 的发布开始普及软件负载平衡器的概念</li>
-</ul>
-<p>网络 2.0</p>
-<ul>
-<li>Darcy DiNucci 在 2 年创造了 Web 0.1999 一词，指的是互联网从单向媒介演变为用户参与网站的双向媒介。Web 2.0 网站不是被动的内容消费者，而是让用户积极贡献和相互参与。AJAX（异步 JavaScript 和 XML）开发技术变得无处不在。通过将数据交换与表示分离，AJAX 为最终用户创造了更丰富的用户体验。这种架构还创建了许多“聊天”客户端，因为这些客户端会不断地从 Web 应用程序发送和接收数据。</li>
-<li>电子商务开始起飞，信用卡信息的安全传输首次成为主要问题。Netscape 引入了安全套接字层 （SSL），后来演变为传输层安全 （TLS），以确保客户端和服务器之间的安全连接。</li>
-<li>网络的这些转变 - 加密通信和许多长期连接请求 - 推动了边缘从标准硬件&#x2F;软件负载平衡器向更专业的应用交付控制器（ADC）的演变。ADC 包括各种所谓的应用程序加速功能，包括 SSL 卸载、缓存和压缩。这种功能的增加意味着配置复杂性的增加。出现了各种专有配置标准，例如 VCL、SSI。负载均衡器不再只是负载均衡！</li>
-</ul>
-<p>网络规模时代</p>
-<ul>
-<li><strong>扩展问题</strong>：2010 年代初期，许多云优先公司的用户群呈指数级增长。这些公司背后的软件最初是使用易于使用的 Web 框架（如 Ruby on Rails 和 Django）构建为单体 Web 应用程序。随着他们的用户群膨胀到天文数字，这些公司发现网络规模问题确实是一种不同类型的问题，它决定了不同的架构。</li>
-<li><strong>单体架构重构</strong>： Twitter、Facebook 和 New Relic 等公司开始将关键功能从其单体架构中重构为独立部署的服务。通过将关键业务功能部署为服务，这些组织能够独立扩展和管理其整个应用程序的不同方面。流向这些独立服务的流量通过单体架构进行路由。对路由的任何更改都意味着开发人员经常不得不重新部署整个单体。这成为变革速度的瓶颈。</li>
-</ul>
-<p>API 网关的兴起</p>
-<ul>
-<li><strong>从单体到微服务</strong>：早期的技术公司在从单体应用向微服务架构转变时，发现原先的单体应用主要承担路由功能。</li>
-<li><strong>API 网关的诞生</strong>：这个观察促成了 API 网关的开发，API 网关承担了原单体中的路由功能，并为整个应用提供了一个共同的外观（facade）。</li>
-<li><strong>集中化跨服务功能</strong>：API 网关集中了跨应用的公共功能，如速率限制、身份验证和路由。</li>
-<li><strong>减少重复功能</strong>：这种集中化减少了在每个单独服务中所需的重复功能的数量，优化了整个服务架构。</li>
-</ul>
-<p>云原生时代：微服务</p>
-<ul>
-<li><p>API 网关为适应微服务架构的需求而不断演进，其现代化的关键点包括：</p>
-<ul>
-<li><strong>支持跨应用层面的关注点</strong>：如身份验证、速率限制、API 发布和指标收集。</li>
-<li><strong>集成了流量管理功能</strong>：这些功能在传统的应用交付控制器中常见，包括高级负载均衡、缓存以及自动重试和超时等。</li>
-<li><strong>支持实时服务发现</strong>：在诸如 Kubernetes 或无服务器环境这样短暂的环境中部署微服务时，实时发现每个微服务实例的网络位置至关重要。</li>
-</ul>
-</li>
-</ul>
-<p>全周期开发：云原生工作流</p>
-<ul>
-<li><strong>拥抱全生命周期开发</strong><ul>
-<li><strong>缩放发布和部署</strong><ul>
-<li>部署是在生产基础结构上安装代码更新的过程。发布是向实际生产用户公开代码更新的过程。虽然组织可以将部署和发布视为一个操作（所谓的“就地发布”模型），但这会向生产用户暴露实际的部署风险。例如，缺少必需的配置参数可能会导致最终用户在就地释放模型中出现可见的中断。通过将这两个阶段分开，部署风险永远不会暴露给最终用户。</li>
-<li>数据中心网关在发布中起着至关重要的作用。通过控制流向特定版本微服务的流量，网关负责向最终用户实际发布更新。此外，网关服务支持增量发布策略，例如金丝雀发布（随着时间的推移，一定比例的流量用于新的更新）或蓝&#x2F;绿部署。全周期开发团队需要对网关进行控制，以便编排发布。这些控制包括路由（哪个版本的服务应该接收生产流量）以及更细粒度的控制，例如加权路由（金丝雀版本需要）和流量镜像（为测试目的创建服务测试版本的流量副本）。通过使开发团队能够管理发布和部署，组织能够扩展这些流程以支持高度复杂的应用程序。</li>
-</ul>
-</li>
-<li><strong>监视服务范围</strong><ul>
-<li>网关通过分析流入和流出微服务的所有流量，提供对微服务行为的可视化分析。这使网关能够报告延迟、吞吐量和错误率等指标，从而深入了解应用程序运行状况。通过使用 OpenTracing 等标准在请求数据上引入相关标识符，实现了这种功能。最后，网关堆栈收集的所有这些指标都可配置的可视化工具向这些全周期开发团队公开。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>网关策略管理</p>
-<ul>
-<li><p>关键点和重点概述：</p>
-<ul>
-<li><strong>网关管理传统问题</strong>：传统上，网关的所有组件都由运维管理，而运维界面对于全周期开发团队中的应用开发者并不友好。</li>
-<li><strong>独立操作的网关组件</strong>：网关组件通常独立操作，缺乏统一的操作界面。</li>
-<li><strong>全周期开发者的需求</strong>：全周期开发者不是全职运维人员，他们需要能够为特定需求操作网关设备。</li>
-<li><strong>Kubernetes 生态系统的指导</strong>：Kubernetes 模型中，用户用通用的 YAML 配置语言声明他们的意图，通过声明性模型实现策略的代码化，可通过源代码控制系统（如 GitOps）进行管理。</li>
-<li><strong>声明性模型的好处</strong>：提供审计能力、版本控制和透明性。</li>
-<li><strong>分散的策略支持</strong>：多个策略文件被聚合为整个集群的全局策略配置。</li>
-<li><strong>API 网关模型的采纳</strong>：API 网关采纳了这种模型，例如 Azure Application Gateway 和 Kong 的入口控制器。</li>
-<li><strong>向边缘扩展声明性配置模型</strong>：对于全周期开发团队至关重要，每个团队可以独立维护自己的网关策略，并与微服务代码一起在源代码控制中进行管理。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>图表和图片</strong>:</p>
-<ul>
-<li><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-1-1589273542703.jpg" alt="img"></p>
-</li>
-<li><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-3-1589273542183.jpg" alt="img"></p>
-</li>
-<li><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-4-1589273541821.jpg" alt="img"></p>
-</li>
-<li><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-5-1589273542447.jpg" alt="img"></p>
-</li>
-<li><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-6-1589273541384.jpg" alt="img"></p>
-</li>
-</ul>
-</li>
-<li><p><strong>个人评价和思考</strong>:</p>
-<ul>
-<li>这篇文章是关于对 API 网关的综述性文档，对其发展历史中重要的节点部分作了简要描述，通过部分事例使读者能窥见 API网关所要解决的问题和发展的因果，写作思路和内容都非常有参考价值。</li>
-</ul>
-</li>
-<li><p><strong>相关链接和参考资料</strong>:</p>
-<ul>
-<li>无</li>
-</ul>
-</li>
-<li><p><strong>标签和分类</strong>:</p>
-<ul>
-<li>API网关</li>
-<li>API gateway</li>
-</ul>
-</li>
-<li><p><strong>后续行动和提醒</strong>:</p>
-<ul>
-<li>后续整理现代 API网关方面的模块清单</li>
-</ul>
-</li>
-<li><p><strong>保存和归档</strong>:</p>
-<ul>
-<li>略</li>
-</ul>
-</li>
-</ol>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/11/01/mdstorage/domain/cloud/apigateway/api%E7%BD%91%E5%85%B3%E7%BB%BC%E8%BF%B0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/09/10/mdstorage/project/sr/Golang%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%BB%84%E5%91%98%E7%AE%A1%E7%90%86/">
-        <h2 class="post-title">Golang项目管理组员管理.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/9/10
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>必要性： 所有参与者得到明确的目标，确保所有相关者都对预期结果有共同的理解，提高效率。</p>
-<p>任务、拆分与评估:</p>
-<p>组员的所有任务必须告知组长，由组长或老板授权下发，不然组长不承认其合规。</p>
-<p>小组长向下面管理组员，组长一般只跟小组长沟通</p>
-<p>所有执行的任务必须细分到可以在一个短时间周期（例如，3天内）完成。</p>
-<p>任务的评估应当是一个团队活动（任务相关人员和组长共同评估），确保任何时间随时沟通，每周将在周会中复盘。</p>
-<p>每到一个大型提测时，在拆分任务时预留一个处理bug的子任务并评估时间，以保证交付日期更接近真实，防止紧急任务插入过于频繁</p>
-<p>优先级应该基于业务价值和依赖关系。高业务价值和多依赖的任务应该有较高的优先级。</p>
-<p>优先级需要考虑不同任务间的关系，有前后有联动的应该安排好优先级，有前后依赖需要提前安排时间，尽量做到前置先做，后置后做，避免后置任务组员不好测试，最好是时间重叠，这样方便调试，而且评估工期时应该同时联系其他相关的人员，尽量多维评估工期。</p>
-<p>任务不填开始时间和结束时间，填工时，8小时为一天，因为前期 BUG 和紧急任务都比较多，一旦插入一个则会大量调整排期的时间。</p>
-<p>如有bug优先级高，则通知组长可以暂停已开始的任务来开始处理bug。</p>
-<p>任务执行时必须在禅道维护状态，开始执行了就点击开始任务。</p>
-<p>延期的任务会记录下来，放到周会时讨论。</p>
-<h3 id="组员的流程"><a href="#组员的流程" class="headerlink" title="组员的流程:"></a>组员的流程:</h3><h4 id="需求阶段"><a href="#需求阶段" class="headerlink" title="需求阶段"></a>需求阶段</h4><h5 id="需求接收"><a href="#需求接收" class="headerlink" title="需求接收"></a>需求接收</h5><p>从组长那里接收模块需求，描述需求背景和目标</p>
-<h5 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h5><p>分析流程、功能点、技术实现方案、风险等细节</p>
-<h5 id="需求评审"><a href="#需求评审" class="headerlink" title="需求评审"></a>需求评审</h5><p>对产品经理的需求文档持续分析</p>
-<p>参与产品经理需求评审会议并以技术角度提出、确认问题以免流程中遗漏、冲突等问题和人力、时间等资源问题。</p>
-<h4 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h4><p>任务评估与拆分: <strong>将模块进一步拆分为小任务，进行时间和优先级的评估。</strong></p>
-<p>持续沟通: 在日报会中分享进展和遇到的问题（即使已经解决的问题）。</p>
-<p>任务执行: 根据任务优先级开始执行任务，随时向组长汇报问题。</p>
-<p>紧急任务的处理: 根据组长的通知，调整任务的优先级或延期任务。</p>
-<p>反馈: 在项目的关键时点或结束时，参与回顾会议。</p>
-<h3 id="组长的流程"><a href="#组长的流程" class="headerlink" title="组长的流程:"></a>组长的流程:</h3><p>需求分解与分配: 将项目需求拆分为模块，并分配给小组。</p>
-<p>组长审查: 汇总组员的评估，再次审核。</p>
-<p>任务录入管理工具: 将经过审核的任务录入到禅道。</p>
-<p>组织持续沟通: 确保组员间的沟通，并组织日报和周会，提供稳定时间给组员沟通渠道。</p>
-<p>固定的评审时点: 周会设定评审会议，跟踪项目进度，调整任务优先级。</p>
-<p>处理紧急任务: 在禅道中插入紧急任务，并通知受影响的组员。</p>
-<p>持续监督任务的完整性: 对于预估时间过长的任务，与相关组员沟通拆分。</p>
-<p>组织反馈循环: 在项目结束时，组织回顾会议。</p>
-<h3 id="组员任务主流程图"><a href="#组员任务主流程图" class="headerlink" title="组员任务主流程图"></a>组员任务主流程图</h3><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231211114518347.png" alt="image-20231211114518347"></p>
-<p>延期：紧急任务、技术难题、人力风险等等造成。</p>
-<p>&gt; 任务下发流程</p>
-<p>1. 项目经理或大组长下发模块任务到禅道</p>
-<p>2. 大组长会通知小组长接任务</p>
-<p>3. 小组长接任务后进行任务分配, 由分配到的人进行任务拆分和工时评估后汇报结果给大组长</p>
-<p>4. 大组长将上面的录入到禅道(可能会重新评估出新任务或工时不一致的情况, 所以组员开始任务时要确认工时)</p>
-<p>5. 组员去 开始任务 完成任务 结束任务</p>
-<h3 id="任务拆分参考"><a href="#任务拆分参考" class="headerlink" title="任务拆分参考"></a>任务拆分参考</h3><p>&gt;&gt; 需求</p>
-<p>构想到需求, 形成需求</p>
-<p>需求评估</p>
-<p>需求评审</p>
-<p>需求开发设计文档</p>
-<p>需求开发</p>
-<p>开发自测</p>
-<p>测试用例评审</p>
-<h2 id="风险项参考"><a href="#风险项参考" class="headerlink" title="风险项参考"></a>风险项参考</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p>识别记录风险的目的是为了评估和规避风险，不是要追责，请大家踊跃提出风险。</p>
-<h4 id="需求风险"><a href="#需求风险" class="headerlink" title="需求风险"></a>需求风险</h4><p>需求的频繁变更导致的工作重复。</p>
-<p>不明确或模糊的需求。</p>
-<p>错误或遗漏的需求。</p>
-<h4 id="沟通与协作风险"><a href="#沟通与协作风险" class="headerlink" title="沟通与协作风险:"></a>沟通与协作风险:</h4><p>团队成员间、团队与其他团队、团队与利益相关者之间的沟通障碍。</p>
-<p>对外部团队或组织的依赖导致的沟通障碍。</p>
-<h4 id="技术风险"><a href="#技术风险" class="headerlink" title="技术风险"></a>技术风险</h4><p>采用新技术或工具可能导致的问题。</p>
-<p>与现有系统的集成问题。</p>
-<p>性能、安全性和可靠性问题。</p>
-<h4 id="人员风险"><a href="#人员风险" class="headerlink" title="人员风险:"></a>人员风险:</h4><p>关键人员的离职或长期（&gt;2天）缺席。</p>
-<p>团队成员技能或经验不足。</p>
-<h4 id="时间与资源风险"><a href="#时间与资源风险" class="headerlink" title="时间与资源风险:"></a>时间与资源风险:</h4><p>评估不准确，导致时间不足。</p>
-<p>资源（如开发者或设备）不足或不可用。</p>
-<p>对其他团队或外部组织的依赖导致的延迟。</p>
-<h4 id="质量风险"><a href="#质量风险" class="headerlink" title="质量风险:"></a><del>质量风险:</del></h4><p><del>代码或产品中的缺陷。</del></p>
-<p><del>不足的测试或不恰当的测试策略。</del></p>
-<p><del>缺乏合适的质量保证措施。</del></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>发现问题，根据来源评估优先级，建立任务到禅道</p>
-<h2 id="风险管理-组长关注"><a href="#风险管理-组长关注" class="headerlink" title="风险管理(组长关注)"></a>风险管理(组长关注)</h2><p>&gt;&gt; 识别收集风险</p>
-<p>&gt;&gt; 记录分类风险</p>
-<p>&gt;&gt; 设定优先级|指派处理人</p>
-<p>&gt;&gt; 跟踪进度</p>
-<h2 id="周会"><a href="#周会" class="headerlink" title="周会"></a>周会</h2><h3 id="复盘项"><a href="#复盘项" class="headerlink" title="复盘项"></a>复盘项</h3><p>任务评估回顾，降低延期风险，规整结算目标</p>
-<p>变动的评估项，提高评估能力</p>
-<p>延期任务回顾</p>
-<p>风险项回顾</p>
-<h1 id="困难"><a href="#困难" class="headerlink" title="困难"></a>困难</h1><p>大量任务同时进行，调整排期特别痛苦？作为风险汇报上去</p>
-<p>一个需求版本的周期大概预算？ 作为风险提上去</p>
-<p>模块需求拆分由组长和组员拆分？ 是</p>
-<p>有依赖项的任务怎么办？ 汇报风险</p>
-<h1 id="培训"><a href="#培训" class="headerlink" title="培训"></a>培训</h1><p>禅道使用培训</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/pm/" style="color: #03a9f4">pm</a>
-        </span>
-        
-    </div>
-    <a href="/2023/09/10/mdstorage/project/sr/Golang%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%BB%84%E5%91%98%E7%AE%A1%E7%90%86/" class="go-post">阅读全文</a>
-</div>
 
 
-        <div class="page-current">
-    
-    <a class="page-num" href="/page/26/">
-        <i class="fa-solid fa-caret-left fa-fw"></i>
-    </a>
-    <a class="page-num" href="/">1</a>
-    <span class="page-omit">...</span>
-    
-    <span class="current">27</span>
-    
-    <a class="page-num" href="/page/28">
-        28
-    </a>
+  <div class="row mx-auto index-card">
     
     
-    
-    
-    <a class="page-num" href="/page/28/">
-        <i class="fa-solid fa-caret-right fa-fw"></i>
-    </a>
-    
-</div>
-
-    </div>
-    
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">xiaoy</div>
-        <div class="description">
-            <p>xiaoy<br>…</p>
-
-        </div>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a href="https://abrance.github.io">Argvchs</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
+        <a href="/2023/11/02/mdstorage/domain/cloud/enterprise_organization/AWS%E7%BB%BC%E8%BF%B0/" target="_self">
+          AWS综述.md
+        </a>
+      </h2>
 
-    </div>
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/02/mdstorage/domain/cloud/enterprise_organization/AWS%E7%BB%BC%E8%BF%B0/" target="_self">
         <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
+          whatAmazon Web Services（AWS）是Amazon的子公司，提供了一个广泛且不断发展的云计算平台。以下是关于AWS的详细介绍：  概述：  AWS是全球最全面且广泛采用的云服务平台，提供超过200种完全功能的服务，这些服务来自全球的数据中心。数百万客户，包括快速成长的创业公司、大型企业和主要政府机构，都在使用AWS以降低成本、提高敏捷性并加速创新【100†(aws.amazon
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
+      </a>
 
-        </div>
+      <div class="index-btm post-metas">
         
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-02 00:00" pubdate>
+              2023-11-02
+            </time>
+          </div>
         
-    </div>
-    <script src="/js/main.js"></script>
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
     
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/cloud-enterprise-organization/" class="category-chain-item">cloud/enterprise_organization</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/02/mdstorage/domain/cloud/enterprise_organization/CloudSecurityAlliance/" target="_self">
+          CloudSecurityAlliance.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/02/mdstorage/domain/cloud/enterprise_organization/CloudSecurityAlliance/" target="_self">
+        <div>
+          whatCloud Security Alliance (CSA) 是一个全球领先的非营利组织，专注于定义和提升对云计算环境安全最佳实践的认识。以下是关于CSA的一些详细信息：  组织目标和活动：  CSA的主要目标是确保云计算环境的安全。它通过定义最佳实践和提高相关认识来实现这一目标【85†(CSA官网)】。 CSA提供了各种资源和培训，包括云安全认证、最新的云安全研究、以及与STAR（安全信任
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-02 00:00" pubdate>
+              2023-11-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/cloud-enterprise-organization/" class="category-chain-item">cloud/enterprise_organization</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/cloud/">#cloud</a>
+            
+              <a href="/tags/security/">#security</a>
+            
+              <a href="/tags/organization/">#organization</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/01/mdstorage/domain/cloud/Iaas%E7%BB%BC%E8%BF%B0/" target="_self">
+          Iaas综述.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/01/mdstorage/domain/cloud/Iaas%E7%BB%BC%E8%BF%B0/" target="_self">
+        <div>
+          what背景IaaS（基础设施即服务）的背景和发展与云计算技术的崛起密切相关。下面是 IaaS 背景的一些重要方面：  云计算的崛起：  云计算技术的出现为 IaaS 提供了基础。在 2000 年代初，随着虚拟化技术的发展和互联网的普及，云计算开始成为可能。它允许企业和个人通过网络访问计算资源，而无需购买和维护物理硬件。   虚拟化技术：  虚拟化技术是 IaaS 的核心组成部分。它允许在单个物理
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-01 00:00" pubdate>
+              2023-11-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/cloud/" class="category-chain-item">cloud</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/cloud/">#cloud</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/pandoc%E9%85%8D%E7%BD%AE/" target="_self">
+          typora_pandoc_picgo安装.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/pandoc%E9%85%8D%E7%BD%AE/" target="_self">
+        <div>
+          github 申请 person token github 里面需要 repo 权限即可  仓库名 abrance&#x2F;ImageStorage 这样即可  分支名 master   typora123申请 person tokengithub 里面需要 repo 权限即可  pandoc1仓库名  picgo 下载 AppImage 后缀的文件  给予可执行权限  运行
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-01 00:00" pubdate>
+              2023-11-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/resource/" class="category-chain-item">resource</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/resource/typora-pandoc-picgo/" class="category-chain-item">typora_pandoc_picgo</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/markdown-%E5%AE%89%E8%A3%85/">#markdown 安装</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora_pandoc_picgo%E5%AE%89%E8%A3%85/" target="_self">
+          typora_pandoc_picgo安装.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora_pandoc_picgo%E5%AE%89%E8%A3%85/" target="_self">
+        <div>
+          Ubuntu22.04 typora 12345678910# or run:# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAEwget -qO - https://typora.io/linux/public-key.asc | sudo tee /etc/apt/trusted.gpg
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-01 00:00" pubdate>
+              2023-11-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/resource/" class="category-chain-item">resource</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/resource/typora-pandoc-picgo/" class="category-chain-item">typora_pandoc_picgo</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/markdown-install/">#markdown install</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E4%BD%BF%E7%94%A8/" target="_self">
+          typora使用.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          导入和导出word 导入 文件 -&gt; 导入 可将 pandoc 支持识别的都识别出来  导出 文件 -&gt; 导出 可将 pandoc支持导出功能发挥
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-01 00:00" pubdate>
+              2023-11-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/resource/" class="category-chain-item">resource</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/resource/typora-pandoc-picgo/" class="category-chain-item">typora_pandoc_picgo</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/markdown/">#markdown</a>
+            
+              <a href="/tags/word/">#word</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E6%8F%92%E4%BB%B6/" target="_self">
+          typora插件.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E6%8F%92%E4%BB%B6/" target="_self">
+        <div>
+          插件概述安装github typora plugin use 使用使用 常用插件快捷键 C-S-B  中英间隔 1 space C-j 搜索 鼠标右键 插件功能  常用插件功能 文件模板 kanban 功能 标签页（记得只保留一个，多了会出现现实问题） markdown 格式检查  插件开关配置 linux 右键 -&gt; 非常用插件 -&gt; 右键菜单 -&gt; 打开插件配置文件 sett
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-01 00:00" pubdate>
+              2023-11-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/resource/" class="category-chain-item">resource</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/resource/typora-pandoc-picgo/" class="category-chain-item">typora_pandoc_picgo</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Markdown/">#Markdown</a>
+            
+              <a href="/tags/plugin/">#plugin</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E9%85%8D%E7%BD%AE/" target="_self">
+          typora配置.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/01/mdstorage/resource/typora_pandoc_picgo/typora%E9%85%8D%E7%BD%AE/" target="_self">
+        <div>
+          偏好设置 导出  默认导出的文件夹 -&gt; 同一目录下 pandoc路径 -&gt; $ where pandoc 导出后打开导出目录   图片上传设置  图像 -&gt; 上传服务设定 -&gt;   上传服务 ： PicGo(app) PicGo路径  ： $picgo_appimage_uri 验证图像上传选项
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-01 00:00" pubdate>
+              2023-11-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/resource/" class="category-chain-item">resource</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/resource/typora-pandoc-picgo/" class="category-chain-item">typora_pandoc_picgo</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/markdown/">#markdown</a>
+            
+              <a href="/tags/convert/">#convert</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/01/mdstorage/domain/cloud/apigateway/api%E7%BD%91%E5%85%B3%E7%BB%BC%E8%BF%B0/" target="_self">
+          api网关综述.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/01/mdstorage/domain/cloud/apigateway/api%E7%BD%91%E5%85%B3%E7%BB%BC%E8%BF%B0/" target="_self">
+        <div>
+          API 网关的历史流量治理和 API 网关之间的关系密切且互补。它们在网络和软件架构领域中的应用可以增强系统的稳定性、可用性和性能。以下是流量治理和 API 网关之间的主要关系及其在网络和软件开发领域中的应用：  功能交叉：  API 网关 提供了一个集中的入口点，用于处理进出微服务架构的所有请求。它可以执行请求的路由、认证、授权、监控以及其他一些功能。 流量治理 是管理网络流量的一种方法，它包括
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-01 00:00" pubdate>
+              2023-11-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/cloud-apigateway/" class="category-chain-item">cloud/apigateway</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/09/10/mdstorage/project/sr/Golang%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%BB%84%E5%91%98%E7%AE%A1%E7%90%86/" target="_self">
+          Golang项目管理组员管理.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/10/mdstorage/project/sr/Golang%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%BB%84%E5%91%98%E7%AE%A1%E7%90%86/" target="_self">
+        <div>
+          任务概述必要性： 所有参与者得到明确的目标，确保所有相关者都对预期结果有共同的理解，提高效率。 任务、拆分与评估: 组员的所有任务必须告知组长，由组长或老板授权下发，不然组长不承认其合规。 小组长向下面管理组员，组长一般只跟小组长沟通 所有执行的任务必须细分到可以在一个短时间周期（例如，3天内）完成。 任务的评估应当是一个团队活动（任务相关人员和组长共同评估），确保任何时间随时沟通，每周将在周会中
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-10 00:00" pubdate>
+              2023-09-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/pm/">#pm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/26/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/#board">25</a><a class="page-number" href="/page/26/#board">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/28/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

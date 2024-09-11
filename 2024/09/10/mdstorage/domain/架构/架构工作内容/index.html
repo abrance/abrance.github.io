@@ -1,186 +1,289 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>架构工作内容.md | Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概述架构定义 graph LR     ae[Architecture Element]     ie[Inter-Element Ralationship]     a[Architecture]     system[System]     ad[Architectural Description]     stakeholder[Stakeholder]     view[View]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="架构工作内容.md">
+<meta property="og:url" content="https://abrance.github.io/2024/09/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%B7%A5%E4%BD%9C%E5%86%85%E5%AE%B9/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="概述架构定义 graph LR     ae[Architecture Element]     ie[Inter-Element Ralationship]     a[Architecture]     system[System]     ad[Architectural Description]     stakeholder[Stakeholder]     view[View]">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic2.webp">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic3.webp">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic4.webp">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic5.webp">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic1.webp">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic6.webp">
+<meta property="article:published_time" content="2024-09-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-11T02:55:43.717Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic2.webp">
+  
+  
+  
+  <title>架构工作内容.md - Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
-
-
-
-
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
-<link rel="stylesheet" href="/css/main.css" />
 
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
 
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>架构工作内容.md</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/10
-        </span>
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        
-    </div>
+
+<body>
+  
+
+  <header>
     
-    <div class="content" v-pre>
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="架构定义"><a href="#架构定义" class="headerlink" title="架构定义"></a>架构定义</h2><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic2.webp" alt="架构定义"></p>
-<pre><code class="mermaid">graph LR
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="架构工作内容.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-10 00:00" pubdate>
+          September 10, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">架构工作内容.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="架构定义"><a href="#架构定义" class="headerlink" title="架构定义"></a>架构定义</h2><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic2.webp" srcset="/img/loading.gif" lazyload alt="架构定义"></p>
+<pre><code class=" mermaid">graph LR
     ae[Architecture Element]
     ie[Inter-Element Ralationship]
     a[Architecture]
@@ -201,7 +304,9 @@
     ad --&gt; |comprises| view
     view --&gt;|conforms to| vp --&gt;|addresses| concert
     stakeholder --&gt; |has| concert
+
 </code></pre>
+
 <ul>
 <li>每个系统都有一个架构</li>
 <li>架构由架构元素以及相互之间的关系构成</li>
@@ -233,7 +338,7 @@
 <h3 id="架构的迭代和演化性"><a href="#架构的迭代和演化性" class="headerlink" title="架构的迭代和演化性"></a>架构的迭代和演化性</h3><p>RUP，统一软件过程的理念。RUP 的理念对我的架构有很深的影响，RUP 总结起来就是三个特点：</p>
 <p>用例和风险驱动 Use Case and risk driven<br>架构中心 Architecture centric<br>迭代和增量 Iterative and incremental</p>
 <p>RUP 很注重架构，提倡以架构和风险驱动，项目开始一定要做端到端的原型（prototype）；通过压测验证架构可行性，然后在原型基础上持续迭代和增量式开发，开发 -&gt; 测试 -&gt; 调整架构 -&gt; 开发，循环，如下图所示：</p>
-<pre><code class="mermaid">
+<pre><code class=" mermaid">
 graph LR
     architecture --&gt; code &amp; test
     test --&gt; architecture &amp; code
@@ -241,9 +346,10 @@ graph LR
     
     
 </code></pre>
-<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic3.webp" alt="RUP 架构迭代和演化"></p>
-<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic4.webp" alt="最小可用产品"></p>
-<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic5.webp" alt="最小可用产品2"></p>
+
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic3.webp" srcset="/img/loading.gif" lazyload alt="RUP 架构迭代和演化"></p>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic4.webp" srcset="/img/loading.gif" lazyload alt="最小可用产品"></p>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic5.webp" srcset="/img/loading.gif" lazyload alt="最小可用产品2"></p>
 <p>从上图可以看出架构师要尽可能写代码，做测试，纸上谈兵式做架构而后丢给团队的作法非常不靠谱（除非是已经非常清晰成熟的领域）。另外，做技术架构的都有点完美主义倾向，一开始往往喜欢求大求全，忽视架构的演化和迭代性，这种倾向易造产品和用户之间不能形成有效快速的反馈，产品不满足最终用户需求。</p>
 <p>第一个图是讲最小可用产品（Minimum Viable Product， MVP）理念，做出最小可用产品，尽快丢给用户试用，快速获取客户反馈，在此基础上不断迭代和演化架构和产品。第二个图是过度工程（Over Engineering）的问题，其实也是讲产品架构和用户之间没有形成有效的反馈闭环，架构师想的和客户想的不在一个方向上，通过最小可用产品，快速迭代反馈的策略，可以避免这种问题。注意，在系统真正地投入生产使用之前，再好的架构都只是假设，产品越晚被使用者使用，失败的成本和风险就越高，而小步行进，通过MVP快速实验，获取客户反馈，迭代演化产品，能有效地减少失败的成本和风险。</p>
 <p>另外，多年的经验告诉我，架构，平台不是买来的，也不是用一个开源就能获得的，也不是设计出来，而是长期演化才能落地生根的。</p>
@@ -261,10 +367,10 @@ graph LR
 <p>第二条道路，强化反馈环，任何过程改进的目标都是加强和缩短反馈环。刚入行的工程师，也是中国学生的普遍问题，就是生产运维意识不足（监控是系统反馈的重要环节）。有两句号这样讲的：</p>
 <p>no measurement, no improvement 没有测量，就没有改进和提升<br>What your measure is what you get 你测量什么，就得到什么<br>没有监控或者监控不完善的系统相当于裸奔，开车上高速无仪表盘。有一篇很不错的关于测量驱动开发的文章，在 InfoQ 上的，向大家推荐：</p>
 <p><a target="_blank" rel="noopener" href="http://www.infoq.com/cn/articles/metrics-driven-development">http://www.infoq.com/cn/articles/metrics-driven-development</a></p>
-<p>这篇文章提出了度量驱动开发的理念，即所谓 MDD，在系统，应用和业务三个层次，通过三级监控，构建三个反馈环，在监控测量基础上持续改进系统和架构，我最近也在参考这个理念设计一个电商平台的技术架构，见下图：<br><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic1.webp" alt="技术架构图"></p>
+<p>这篇文章提出了度量驱动开发的理念，即所谓 MDD，在系统，应用和业务三个层次，通过三级监控，构建三个反馈环，在监控测量基础上持续改进系统和架构，我最近也在参考这个理念设计一个电商平台的技术架构，见下图：<br><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic1.webp" srcset="/img/loading.gif" lazyload alt="技术架构图"></p>
 <p>这是一个电商平台的架构，整个体现了闭环架构的思想，右侧是整个平台的反馈监控环节。具体如下：</p>
 <p>系统层监控计算网络存储，构建系统层的反馈环<br>应用服务层，监控业务、应用、服务，甚至整个研发流程，构建应用和服务层的反馈环<br>客户体验层，监控端用户和分析网站用户的行为，构建和客户的反馈环<br>下面这个图展示了系统提升和改进的一般方法：</p>
-<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic6.webp" alt="反馈环"></p>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic6.webp" srcset="/img/loading.gif" lazyload alt="反馈环"></p>
 <p>收集 -&gt; 测量 -&gt; 调整 -&gt; 闭环重复，在有测量数据和反馈的基础上，系统、应用、流程和客户体验才有可能获得持续的提升和改善，否则没有数据的所谓改进只能靠拍脑袋或者说猜测。</p>
 <p>第三条道路，鼓励勇于承担责任，冒险试错和持续提升的文化。这点是最难的，一般和企业人才密度有关。工具，技术，流程只是一个公司的冰山浮出水面的部分，而真正对企业效能影响大的则是冰山水下的部分，即企业的人和文化，架构师作为技术和架构的布道者，有责任义务鼓励和推动试错文化。</p>
 <p>架构师要深入领会这三条道路，关注整个价值交付链的效率，关注每个环节的闭环反馈，鼓励和推动公司的试错文化，打造全系统的闭环架构（Architecting for closed loop feedback），提升整个系统效能。下图的 DevOps 和每日交付是每一个互联网系统架构师的梦想和努力的方向。</p>
@@ -275,50 +381,386 @@ graph LR
 <li><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/every-architect-should-study-conway-law/">架构分享</a></li>
 </ul>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
-    
-    
-    
-    
-    
-    
-    
+  
+  
 </div>
 
-            <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
-        </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
 
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>架构工作内容.md</div>
+      <div>https://abrance.github.io/2024/09/10/mdstorage/domain/架构/架构工作内容/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
         </div>
-        
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 10, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/09/10/mdstorage/domain/shell/%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/" title="命令行调试技巧.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">命令行调试技巧.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/09/10/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/TLS%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/" title="TLS双向认证.md">
+                        <span class="hidden-mobile">TLS双向认证.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
             </div>
-        </transition>
-        
+
+            
+          </article>
+        </div>
+      </div>
     </div>
-    <script src="/js/main.js"></script>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
     
-    
-
-
-
 
     
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

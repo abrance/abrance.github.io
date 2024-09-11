@@ -1,3951 +1,679 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Xiaoy">
+<meta property="og:url" content="https://abrance.github.io/page/7/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
 
 
-<script src="/js/lib/home.js"></script>
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
+
+
 <body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
         
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
         
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
         
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
         
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
         
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
+          
         </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
                 
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
 
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/background.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>Xiaoy</h1>
-                <h3>xiaoy blog</h3>
-                <h5></h5>
-            </div>
-        </span>
-    </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
 
-<div class="post">
-    <a href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%20db%E6%95%B4%E7%90%86/">
-        <h2 class="post-title">installer db整理.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/6/24
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>整理 installer-sr-server 使用的数据库逻辑</p>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="manager"><a href="#manager" class="headerlink" title="manager"></a>manager</h3><pre><code class="mermaid">classDiagram
-direction LR
-class card_ip_mask &#123;
-   varchar(32) engine_serial  /* 引擎序列号 */
-   varchar(16) node_ip  /* 节点ip */
-   text ip_masks
-   datetime create_at
-   bigint id
-&#125;
-class t_agent &#123;
-   varchar(100) name
-   varchar(45) ip
-   bigint mirror_id
-   varchar(320) capture_iface
-   text iface
-   text capture_filter
-   varchar(10) filter_mode
-   tinyint(1) auto_suspend
-   tinyint system_cpu_overlimit
-   tinyint system_cpu_recover
-   tinyint system_mem_overlimit
-   tinyint system_mem_recover
-   tinyint agent_cpu_overlimit
-   tinyint agent_mem_overlimit
-   bigint access_time
-   bigint install_time
-   varchar(20) running_status
-   int reason
-   varchar(36) uuid
-&#125;
-class t_cert &#123;
-   varchar(32) name  /* 名称 */
-   varchar(32) key_name  /* 私钥名称 */
-   varchar(32) cert_name  /* 证书名称 */
-   text key
-   text cert
-   datetime create_at
-   bigint id
-&#125;
-class t_engine &#123;
-   install_type  /* 安装类型(1 代表在线 2 代表离线) */ tinyint
-   engine_type  /* 引擎类型(1 代表默认的引擎，2 代表边车引擎) */ tinyint
-   varchar(64) serial_number  /* 引擎序列号 */
-   datetime expire_time  /* 过期时间 */
-   varchar(64) engine_name  /* 引擎名称 */
-   varchar(64) engine_name_in_license  /* 授权文件中的引擎名 */
-   varchar(64) latest_version  /* 可升级包版本 */
-   varchar(64) current_version  /* 当前引擎版本 */
-   varchar(64) source  /* 来源 */
-   varchar(64) public_time  /* 发布时间 */
-   int major  /* 主版本号 */
-   int minor  /* 次版本号 */
-   int build  /* 内部版本号 */
-   tinyint delete_flag  /* 删除标记 0 未删除 1 删除 */
-   datetime create_at  /* 创建时间 */
-   datetime update_at  /* 更新时间 */
-   status  /* 状态(0 未定义,1 正常,2 已撤销) */ tinyint
-   varchar(1024) machine_code  /* 机器码 */
-   varchar(16) machine_ip  /* 机器ip */
-   bigint id
-&#125;
-class t_engine_global_param &#123;
-   bigint engine  /* 所属引擎 */
-   tinyint deploy_mode  /* 安装模式 1 默认模式 2 透明部署 3 路由模式 */
-   bigint process_id  /* 归属安装进程id */
-   int admin_virtual_router_id  /* 管理端虚拟路由id */
-   int data_virtual_router_id  /* 数据段虚拟路由id */
-   varchar(128) vip  /* 管理面浮动ip */
-   varchar(128) gateway_ip  /* 网关ip */
-   bridge_ip  /* 网桥ip(透明部署) */ varchar(128)
-   bridge_gateway  /* 网桥网关(透明部署) */ varchar(128)
-   network_device1  /* 网卡设备1(透明部署) */ varchar(128)
-   network_device2  /* 网卡设备2(透明部署) */ varchar(128)
-   varchar(128) upstream_bind_source_address  /* 上游绑定地址 */
-   is_transparent_deployment  /* 是否透明部署(2 否 1 是) */ tinyint
-   tinyint is_straight_through  /* 是否开通直通 2 否 1 是 */
-   tinyint mode  /* 节点模式, 0/1 单节点/三节点 */
-   varchar(255) cert_name  /* 证书名称 */
-   varchar(1024) cert_path  /* 证书路径 */
-   varchar(1024) cert_url  /* 证书url */
-   varchar(128) cert_hash  /* 证书hash */
-   int master_node_id  /* 安装时选定的管理面主节点，不一定永远是主节点 */
-   varchar(2048) token  /* 用来访问apiserver */
-   varchar(2048) token_csv  /* tokencsv */
-   varchar(4096) ca_base64  /* caBase64 */
-   varchar(2048) salt  /* 盐 */
-   varchar(2048) secret
-   varchar(32) sky_working_oap_addr  /* skyWorking地址 */
-   text bound_tls_key  /* 业务私钥 */
-   text bound_tls_cert  /* 业务公钥 */
-   varchar(32) tls_key_name  /* 私钥名称 */
-   varchar(32) tls_cert_name  /* 公钥名称 */
-   text out_bound_tls_key  /* 业务私钥 */
-   text out_bound_tls_cert  /* 业务公钥 */
-   varchar(32) out_tls_key_name  /* 私钥名称 */
-   varchar(32) out_tls_cert_name  /* 公钥名称 */
-   text cluster_info  /* 集群信息 */
-   tinyint version_tag
-   datetime create_at  /* 创建时间 */
-   datetime update_at  /* 更新时间 */
-   bigint id
-&#125;
-class t_engine_install_processes &#123;
-   action_type  /* 执行动作类型(1 安装 2 添加节点 3 升级 4 回退 5 卸载 6 删除节点) */ tinyint
-   int engine  /* 归属引擎id */
-   varchar(64) name  /* 安装进程名 */
-   tinyint status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
-   varchar(64) se_version  /* 引擎版本 */
-   int major  /* 主版本号 */
-   int minor  /* 次版本号 */
-   int build  /* 内部版本号 */
-   datetime create_at  /* 创建时间 */
-   datetime update_at  /* 更新时间 */
-   bigint id
-&#125;
-class t_engine_nodes &#123;
-   varchar(16) ipv4  /* 节点ip */
-   varchar(20) ip_mask  /* ip加子网掩码 */
-   int engine  /* 归属引擎的id */
-   int ssh_port  /* ssh端口 */
-   varchar(255) ssh_username  /* ssh用户 */
-   varchar(255) ssh_password  /* ssh密码 */
-   is_se_m  /* 是否是管理面节点 (2 不是 1 是) */ tinyint
-   tinyint sem_delete_flag  /* sem删除标记 */
-   is_se_s  /* 是否是数据面高可用节点(2 不是 1 是) */ tinyint
-   tinyint ses_delete_flag  /* ses删除标记 */
-   is_se_w  /* 是否是工作节点(2 不是 1 是) */ tinyint
-   tinyint sew_delete_flag  /* sew删除标记 */
-   tinyint is_side_car  /* 是否是边车引擎节点 */
-   tinyint is_sew_route  /* 是否是路由模式工作节点 */
-   tinyint sew_route_delete_flag  /* sewRoute删除标记 */
-   varchar(128) se_m_network_card  /* 管理面节点网卡 */
-   varchar(128) se_m_network_card_all  /* 管里面节点网卡加ip */
-   varchar(128) se_s_network_card  /* 数据面节点网卡 */
-   varchar(128) se_s_network_card_all  /* 数据面节点网卡加ip */
-   varchar(128) se_w_network_card  /* 工作节点网卡 */
-   varchar(128) se_w_network_card_all  /* 工作节点网卡加ip */
-   varchar(128) sew_route_network_card  /* 路由模式工作节点网卡 */
-   varchar(128) sew_route_network_card_all  /* 路由模式工作节点网卡加ip */
-   varchar(255) sew_package_serial  /* sew包序列号 */
-   tinyint is_agent_installed  /* 是否已安装agent */
-   varchar(255) name  /* 节点名称 */
-   varchar(64) uuid  /* 节点UUID */
-   int delete_flag
-   text business_port
-   text export_traffic_port
-   varchar(64) os_version  /* 节点操作系统版本 */
-   varchar(255) package_os_version  /* 包归属操作系统版本 */
-   bigint package_id  /* 包id */
-   datetime create_at  /* 创建时间 */
-   datetime update_at  /* 更新时间 */
-   varchar(128) data_nic_ip  /* 数据面业务口ip */
-   bigint id
-&#125;
-class t_engine_packages &#123;
-   int engine_id  /* 所属引擎的id */
-   is_use_replication  /* 包是否可复用 (1 可复用 2 不可 3 其他) */ tinyint
-   int used  /* 已经使用次数 */
-   max_use  /* 最大使用次数(0 不限制使用次数) 默认值为1 */ int
-   package_type  /* 包类型(0 未知 1 SE-M 2 SE-S 3 SE-W) */ tinyint
-   varchar(64) serial_number  /* 序列号 */
-   varchar(255) name  /* 授权包名称 */
-   varchar(255) display_name  /* 显示名称 */
-   varchar(64) version  /* 版本号 */
-   varchar(1024) path  /* 包路径 */
-   varchar(1024) url  /* 包url */
-   varchar(128) hash  /* hash值 */
-   varchar(128) license_hash  /* license hash */
-   varchar(64) source  /* 来源 */
-   datetime expire_time  /* 过期时间 */
-   text require  /* agent.require文件内容 */
-   use_flag  /* (1 未使用 2 已使用 3 正在使用 4 未知) */ tinyint
-   process_id  /* 归属安装进程id (0 代表任何安装进程可使用) */ int
-   node_ip  /* 归属节点ip (0 代表任何节点可使用) */ varchar(20)
-   status  /* 状态(0 未定义,1 正常,2 已撤销) */ tinyint
-   int step_all  /* 安装总步骤 */
-   varchar(255) os  /* 适配操作系统 */
-   text support_os_version  /* 支持的操作系统版本 */
-   datetime create_at  /* 创建时间 */
-   datetime update_at  /* 更新时间 */
-   bigint id
-&#125;
-class t_fail_table &#123;
-   varchar(16) node_ip  /* 失败节点 */
-   int engine
-   tinyint package_type
-   tinyint status  /* 失败状态 */
-   tinyint action  /* 执行动作 */
-   text message  /* 失败描述 */
-   datetime create_at
-   bigint id
-&#125;
-class t_mirror &#123;
-   varchar(36) uuid
-   varchar(16) install_type
-   varchar(100) name
-   varchar(100) license_name
-   varchar(16) sn
-   varchar(16) version
-   varchar(16) installed_version
-   smallint agent_max_license
-   smallint agent_access_count
-   smallint agent_active_count
-   varchar(20) status
-   varchar(45) ip
-   varchar(20) running_status
-   bigint install_time
-   text mgnt_iface
-   text data_iface
-   varchar(300) ssh
-   varchar(255) os
-   varchar(36) task_uid
-   bigint component_bitmap
-   tinyint(1) invalid_license
-   text mirror_filter
-   int id
-&#125;
-class t_node_record &#123;
-   int install_process_id  /* 安装进程id */
-   int node_id  /* 节点id */
-   tinyint is_se_m  /* 是否是se-m节点 */
-   tinyint se_m_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
-   tinyint is_se_s  /* 是否是se-s节点 */
-   tinyint se_s_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
-   tinyint is_se_w  /* 是否是se-w节点 */
-   tinyint se_w_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
-   varchar(16) se_version  /* 引擎版本 */
-   datetime create_at  /* 创建时间 */
-   datetime update_at  /* 更新时间 */
-   bigint id
-&#125;
-class t_process_node &#123;
-   varchar(20) node_ip  /* 用于查询节点的静态信息 */
-   int process_id  /* 归属安装进程的id */
-   action_type  /* 执行动作类型(1 安装 2 添加节点 3 升级 4 回退 5 卸载 6 删除节点) */ tinyint
-   is_install_se_m  /* 是否是安装SE-M (0 不是 1 是) */ tinyint
-   int se_m_steplevel1  /* se-m已安装的步骤 */
-   int se_m_steplevel_all  /* se-m总的安装步骤 */
-   tinyint se_m_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
-   tinyint is_install_side_car  /* 是否安装边车引擎 */
-   is_install_se_s  /* 是否是安装SE-S (0 不是 1是) */ tinyint
-   int se_s_steplevel1  /* se-s已安装的步骤 */
-   int se_s_steplevel_all  /* se-s总的安装步骤 */
-   tinyint se_s_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
-   is_install_se_w  /* 是否是安装SE-W (0 不是 1 是) */ tinyint
-   int se_w_steplevel1  /* se-w已安装的步骤 */
-   int se_w_steplevel_all  /* se-w总的安装步骤 */
-   int se_w_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
-   int step_all  /* 引擎所有组件 */
-   int step_level1  /* 安装步骤 */
-   tinyint status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
-   text message  /* 错误信息 */
-   datetime create_at  /* 创建时间 */
-   datetime update_at  /* 更新时间 */
-   bigint component_bitmap  /* 安装了哪些组件 */
-   bigint id
-&#125;
-class t_replace_record &#123;
-   varchar(20) engine_id  /* 引擎id */
-   int process_id  /* 归属安装进程的id */
-   varchar(16) old_ipv4  /* 被替换节点 */
-   varchar(16) new_ipv4  /* 替换的目标节点 */
-   int package_type  /* 替换类型 */
-   tinyint status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
-   bigint id
-&#125;
-</code></pre>
-<h3 id="表详解"><a href="#表详解" class="headerlink" title="表详解"></a>表详解</h3><p>安装进程表，安装、卸载、升级时使用。开始安装时，创建一条记录，查询安装状态时，查询此表</p>
-<pre><code class="mermaid">classDiagram
-    direction LR
-    
-    class t_engine_install_processes &#123;
-       action_type  /* 执行动作类型(1 安装 2 添加节点 3 升级 4 回退 5 卸载 6 删除节点) */ tinyint
-       int engine  /* 归属引擎id */
-       varchar(64) name  /* 安装进程名 */
-       tinyint status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
-       varchar(64) se_version  /* 引擎版本 */
-       int major  /* 主版本号 */
-       int minor  /* 次版本号 */
-       int build  /* 内部版本号 */
-       datetime create_at  /* 创建时间 */
-       datetime update_at  /* 更新时间 */
-       bigint id
-    &#125;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%20db%E6%95%B4%E7%90%86/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/06/24/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/sr%E9%80%9A%E4%BF%A1%E7%AB%AF%E5%8F%A3%E3%80%81%E9%93%BE%E8%B7%AF%E6%95%B4%E7%90%86/">
-        <h2 class="post-title">sr通信端口、链路整理.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/6/24
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="服务端口"><a href="#服务端口" class="headerlink" title="服务端口"></a>服务端口</h2><h3 id="总控"><a href="#总控" class="headerlink" title="总控"></a>总控</h3><ul>
-<li>sc  80 443</li>
-<li>mysql   3306</li>
-<li>redis   6379</li>
-<li>nsq     4150 4151 4160 4161 </li>
-<li>installer-sr-server 8098</li>
-<li>message-manager    21032</li>
-</ul>
-<h3 id="引擎"><a href="#引擎" class="headerlink" title="引擎"></a>引擎</h3><h2 id="通信关系"><a href="#通信关系" class="headerlink" title="通信关系"></a>通信关系</h2>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/06/24/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/sr%E9%80%9A%E4%BF%A1%E7%AB%AF%E5%8F%A3%E3%80%81%E9%93%BE%E8%B7%AF%E6%95%B4%E7%90%86/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/06/20/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%A4%A7%E7%BB%84%E4%BB%B6%E3%80%81%E5%B0%8F%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E8%AE%BE%E6%83%B3/">
-        <h2 class="post-title">大组件、小组件生命周期管理设想.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/6/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>大组件、小组件统一升级、安装、回滚、取消安装、卸载、强制卸载 逻辑</p>
-<p>在大型软件的生命周期管理中，选择使用配置文件的方法还是约定优于配置的方法，取决于具体的需求和系统的复杂性。以下是对两种方法的比较及其适用场景的详细分析：</p>
-<h2 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a>组件生命周期</h2><h3 id="总控生命周期"><a href="#总控生命周期" class="headerlink" title="总控生命周期"></a>总控生命周期</h3><pre><code class="mermaid">sequenceDiagram
-    participant User
-    participant UI as Command User Interface
-    participant Able
-    participant mysql as mysql
-    participant installer as installer
-    participant sc as sc
-
-    User -&gt;&gt; User: 解压总控组件包
-    User -&gt;&gt; UI: 执行安装脚本 install.sh，校验合法性
-    UI -&gt;&gt; Able: 解析依赖，开始安装总控各组件
-    Able -&gt;&gt; mysql: 安装组件
-    mysql --&gt;&gt; Able: 安装成功 
-    Able -&gt;&gt; sc: 安装组件
-    alt install sc 成功
-        sc --&gt;&gt; Able: 升级成功
-    else
-        sc --&gt;&gt; Able: 升级失败
-    end
-        
-        
-    
-    Able -&gt;&gt; installer: 安装组件
-
-</code></pre>
-<h3 id="组件依赖关系"><a href="#组件依赖关系" class="headerlink" title="组件依赖关系"></a>组件依赖关系</h3><h4 id="组件依赖关系说明"><a href="#组件依赖关系说明" class="headerlink" title="组件依赖关系说明"></a>组件依赖关系说明</h4><p>解释依赖关系</p>
-<p>   dependencies: 列出当前组件所依赖的其他组件。在安装或卸载当前组件之前，先处理这些依赖组件的生命周期步骤。</p>
-<p>Able 处理依赖关系</p>
-<p>在 Able 中处理依赖关系时，可以按以下步骤进行：<br>安装操作</p>
-<pre><code>解析依赖关系：读取组件的 JSON 配置文件，获取依赖列表。
-递归安装依赖组件：按照依赖关系的顺序递归安装每个依赖组件。确保所有依赖组件安装成功后，再安装当前组件。
-执行安装步骤：安装当前组件。
-</code></pre>
-<p>卸载操作</p>
-<pre><code>解析依赖关系：读取组件的 JSON 配置文件，获取依赖列表。
-递归卸载当前组件：在卸载当前组件之前，检查是否有其他组件依赖于它。
-卸载依赖组件：按照依赖关系的顺序递归卸载每个依赖组件。确保所有依赖组件卸载成功后，再卸载当前组件。
-</code></pre>
-<h3 id="Able-处理逻辑"><a href="#Able-处理逻辑" class="headerlink" title="Able 处理逻辑"></a>Able 处理逻辑</h3><pre><code>扫描目录：Able 程序扫描所有子目录，查找包含 able.json 文件的目录，并将其识别为组件。
-解析依赖关系：读取每个组件的 able.json 文件，解析其依赖关系，构建组件依赖关系图。
-生命周期管理：
-    安装：按照依赖关系的顺序，依次安装每个组件。确保依赖组件先行安装。
-    卸载：按照依赖关系的反向顺序，依次卸载每个组件。确保先卸载当前组件后，再卸载其依赖组件。
-    升级：先升级依赖组件，然后升级当前组件。
-    初始化：同样按依赖关系的顺序初始化每个组件。
-    回滚：当某步骤失败时，按依赖关系的反向顺序回滚操作。
-    取消安装：在安装过程中遇到问题时，执行取消安装逻辑。
-    强制卸载：不考虑依赖关系，直接卸载组件。
-    回退：用于将组件回退到之前的版本或状态。 
-</code></pre>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="各组件-able-json-文件结构"><a href="#各组件-able-json-文件结构" class="headerlink" title="各组件 able.json 文件结构"></a>各组件 able.json 文件结构</h3><pre><code class="json">&#123;
-  &quot;name&quot;: &quot;sc&quot;,                   // 组件名
-  &quot;version&quot;: &quot;1.5.9&quot;,             // 组件版本号，版本号相同则不升级（mysql kube-apiserver etcd）
-  &quot;dependencies&quot;: [               // 依赖
-    &quot;mysql&quot;,
-    &quot;redis&quot;,    
-  ],              
-  &quot;lifecycle&quot;: &#123;                  // 生命周期配置
-    &quot;install&quot;: &#123;                  // 安装
-      &quot;command&quot;: &quot;./scripts/install.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting installation&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Installation complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_install.sh&quot;,
-      &quot;retry&quot;: 3,                 // 重试次数， 不填就 不重试
-      &quot;timeout&quot;: 60,              // 超时 second， 默认 3 min
-    &#125;,
-    &quot;init&quot;: &#123;                     // 初始化阶段，用于初始化配置（总控、引擎修改 IP 这种需求）、数据库、数据迁移等用途
-      &quot;command&quot;: &quot;./scripts/init.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting initialization&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Initialization complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_init.sh&quot;,
-      &quot;trigger_on_dependency_change&quot;: true      // 当依赖变化时自动初始化
-    &#125;,
-    &quot;upgrade&quot;: &#123;                  // 升级
-      &quot;command&quot;: &quot;./scripts/upgrade.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting upgrade&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Upgrade complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_upgrade.sh&quot;
-    &#125;,
-    &quot;commit&quot;: &#123;                   // 升级成功确认，说明整个软件已升级完成，将清理前版本数据备份
-      &quot;command&quot;: &quot;./scripts/commit.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting commit&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Commit complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_commit.sh&quot;
-    &#125;,
-    &quot;rollback&quot;: &#123;                 // 回滚
-      &quot;command&quot;: &quot;./scripts/rollback.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting rollback&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Rollback complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_rollback.sh&quot;
-    &#125;,
-    &quot;cancel_install&quot;: &#123;            // 取消安装
-      &quot;command&quot;: &quot;./scripts/cancel_install.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting cancel install&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Cancel install complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_cancel_install.sh&quot;
-    &#125;,
-    &quot;cancel_upgrade&quot;: &#123;            // 取消升级
-      &quot;command&quot;: &quot;./scripts/cancel_upgrade.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting cancel upgrade&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Cancel upgrade complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_cancel_upgrade.sh&quot;
-    &#125;,
-    &quot;uninstall&quot;: &#123;                 // 卸载，场景类似于优雅关闭
-      &quot;command&quot;: &quot;./scripts/uninstall.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting uninstallation&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Uninstallation complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_uninstall.sh&quot;
-    &#125;,
-    &quot;force_uninstall&quot;: &#123;           // 强制卸载, 杀死进程，清理目录
-      &quot;command&quot;: &quot;./scripts/force_uninstall.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting force uninstallation&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Force uninstallation complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_force_uninstall.sh&quot;
-    &#125;,
-//    &quot;revert&quot;: &#123;                     // 回退 （为后面预留）
-//      &quot;command&quot;: &quot;./scripts/revert.sh&quot;,
-//      &quot;previous&quot;: &quot;echo &#39;Starting revert&#39;&quot;,
-//      &quot;after&quot;: &quot;echo &#39;Revert complete&#39;&quot;,
-//      &quot;check&quot;: &quot;./check_force_uninstall.sh&quot;
-//    &#125;
-  &#125;,
-  &quot;proto_version&quot;: &quot;1&quot;,     // 与 able 的协议版本
-&#125;
-</code></pre>
-<pre><code class="json">&#123;
-  &quot;name&quot;: &quot;webserver&quot;,                   // 组件名
-  &quot;version&quot;: &quot;2.1.7&quot;,             // 组件版本号，版本号相同则不升级
-  &quot;dependencies&quot;: &#123;               // 依赖组件
-    &quot;kube-apiserver&quot;                       // 其他组件名
-    &quot;etcd&quot;,
-  &#125;,
-  &quot;suits&quot;: [&quot;m&quot;, &quot;s&quot;, &quot;w&quot;],       // 目前有 m , s , w , 流量引擎的组件必须定义这个字段，最后在 able 中整合，安装套件就安装对应组件即可，根据目前调研的结果，各组件满足这种安装
-  &quot;lifecycle&quot;: &#123;                  // 生命周期配置
-    &quot;install&quot;: &#123;                  // 安装
-      &quot;command&quot;: &quot;./scripts/install.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting installation&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Installation complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_install.sh&quot;,
-      &quot;retry&quot;: 3,                 // 重试次数
-      &quot;timeout&quot;: 60,              // 超时 second
-    &#125;,
-    &quot;init&quot;: &#123;                     // 初始化阶段，用于初始化配置、数据库、数据迁移等用途
-      &quot;command&quot;: &quot;./scripts/init.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting initialization&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Initialization complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_init.sh&quot;,
-      &quot;trigger_on_dependency_change&quot;: true      // 当依赖变化后自动初始化
-    &#125;,
-    &quot;upgrade&quot;: &#123;                  // 升级
-      &quot;command&quot;: &quot;./scripts/upgrade.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting upgrade&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Upgrade complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_upgrade.sh&quot;
-    &#125;,
-    &quot;rollback&quot;: &#123;                 // 回滚
-      &quot;command&quot;: &quot;./scripts/rollback.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting rollback&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Rollback complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_rollback.sh&quot;
-    &#125;,
-    &quot;cancel_install&quot;: &#123;            // 取消安装
-      &quot;command&quot;: &quot;./scripts/cancel_install.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting cancel install&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Cancel install complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_cancel_install.sh&quot;
-    &#125;,
-    &quot;uninstall&quot;: &#123;                 // 卸载
-      &quot;command&quot;: &quot;./scripts/uninstall.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting uninstallation&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Uninstallation complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_uninstall.sh&quot;
-    &#125;,
-    &quot;force_uninstall&quot;: &#123;           // 强制卸载
-      &quot;command&quot;: &quot;./scripts/force_uninstall.sh&quot;,
-      &quot;previous&quot;: &quot;echo &#39;Starting force uninstallation&#39;&quot;,
-      &quot;after&quot;: &quot;echo &#39;Force uninstallation complete&#39;&quot;,
-      &quot;check&quot;: &quot;./check_force_uninstall.sh&quot;
-    &#125;,
-  &#125;,
-  &quot;proto_version&quot;: &quot;1&quot;,     // 与 able 的协议版本
-&#125;
-
-</code></pre>
-<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><pre><code class="mermaid">sequenceDiagram
-    participant User
-    participant UI as User Interface
-    participant Able
-    participant DB as Database
-    participant installer as installer
-    participant sc as sc
-    participant mysql as mysql
-
-    User -&gt;&gt; UI: 导入软件包
-    UI -&gt;&gt; Able: 上传软件包
-    Able -&gt;&gt; Able: 解析包内容
-    Able -&gt;&gt; DB: 记录包信息到数据库
-    DB -&gt;&gt; Able: 记录成功
-    Able -&gt;&gt; UI: 显示安装、升级、卸载等选项
-
-    User -&gt;&gt; UI: 点击安装
-    UI -&gt;&gt; Able: 请求安装
-    Able -&gt;&gt; DB: 获取组件依赖信息
-    DB -&gt;&gt; Able: 返回依赖信息
-
-    Able -&gt;&gt; installer: 检查依赖 (sc, mysql)
-    alt sc 未安装
-        Able -&gt;&gt; sc: 安装 sc
-        sc -&gt;&gt; Able: 安装成功
-    end
-    alt mysql 未安装
-        Able -&gt;&gt; mysql: 安装 mysql
-        mysql -&gt;&gt; Able: 安装成功
-    end
-
-    Able -&gt;&gt; installer: 安装 installer
-    installer -&gt;&gt; Able: 安装成功
-
-    Able -&gt;&gt; installer: 初始化 installer
-    installer -&gt;&gt; Able: 初始化成功
-
-    Able -&gt;&gt; UI: 安装完成
-
-    User -&gt;&gt; UI: 点击升级
-    UI -&gt;&gt; Able: 请求升级
-    Able -&gt;&gt; DB: 获取组件依赖信息
-    DB -&gt;&gt; Able: 返回依赖信息
-
-    Able -&gt;&gt; installer: 检查依赖 (sc, mysql)
-    alt sc 需升级
-        Able -&gt;&gt; sc: 升级 sc
-        sc -&gt;&gt; Able: 升级成功
-    end
-    alt mysql 需升级
-        Able -&gt;&gt; mysql: 升级 mysql
-        mysql -&gt;&gt; Able: 升级成功
-    end
-
-    Able -&gt;&gt; installer: 升级 installer
-    installer -&gt;&gt; Able: 升级成功
-
-    Able -&gt;&gt; installer: 重新初始化 installer
-    installer -&gt;&gt; Able: 初始化成功
-
-    Able -&gt;&gt; UI: 升级完成
-
-    User -&gt;&gt; UI: 点击卸载
-    UI -&gt;&gt; Able: 请求卸载
-    Able -&gt;&gt; DB: 获取组件依赖信息
-    DB -&gt;&gt; Able: 返回依赖信息
-
-    Able -&gt;&gt; installer: 检查依赖 (sc, mysql)
-    Able -&gt;&gt; installer: 卸载 installer
-    installer -&gt;&gt; Able: 卸载成功
-
-    alt sc 无其他依赖
-        Able -&gt;&gt; sc: 卸载 sc
-        sc -&gt;&gt; Able: 卸载成功
-    end
-    alt mysql 无其他依赖
-        Able -&gt;&gt; mysql: 卸载 mysql
-        mysql -&gt;&gt; Able: 卸载成功
-    end
-
-    Able -&gt;&gt; UI: 卸载完成
-
-</code></pre>
-<h2 id="总控安装顺序"><a href="#总控安装顺序" class="headerlink" title="总控安装顺序"></a>总控安装顺序</h2><ul>
-<li>installer 中的安装脚本，用户输入</li>
-<li>公共常量写入</li>
-<li></li>
-</ul>
-<h2 id="内部机制"><a href="#内部机制" class="headerlink" title="内部机制"></a>内部机制</h2><h3 id="公共常量的要求"><a href="#公共常量的要求" class="headerlink" title="公共常量的要求"></a>公共常量的要求</h3><p>各个组件可能需要支持安装到同一机器，所以各组件的常量不能冲突，防止出现情况</p>
-<ul>
-<li>A 组件安装时，注入环境变量 a&#x3D;1 b&#x3D;2 c&#x3D;3</li>
-<li>B 组件安装到同一节点，注入环境变量 a&#x3D;21 b&#x3D;2 c&#x3D;3 </li>
-<li>这样最后 a 的值被覆盖了，不准确的，需要整理出，与环境无关，与 A B 组件本身有关的常量</li>
-</ul>
-<p>（流量引擎）节点相关常量（变量） .env 文件</p>
-<pre><code class="Bash">GS_VIRD=
-GS_Mode=
-GS=
-GS_EE=
-GS_MasterIP=
-GS_IsMaster=
-GS_ArbiterIP=
-GS_DaIface=
-GS_LocalIP=
-GS_NodeUID=
-GS_DaIP=
-
-# 可能保存下面的作为兼容
-VIRD=      // 路由ID
-Mode=      // &quot;代理模式&quot;, &quot;透明部署模式&quot;, &quot;路由模式&quot;,  1 2 3
-GS=        // token
-GS_EE=     // 引擎SN
-MasterIP=  // 管理IP
-</code></pre>
-<h3 id="公共常量的传递"><a href="#公共常量的传递" class="headerlink" title="公共常量的传递"></a>公共常量的传递</h3><p>一些公共常量在安装时的传递过程</p>
-<ul>
-<li>安装组件</li>
-<li>数据库</li>
-<li>安装对应节点 &#x2F;opt&#x2F;public&#x2F;.env 中</li>
-<li>各组件通过 LoadEnv GetEnv 获取这些公共常量</li>
-</ul>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="产品，是否还有其他对总控、引擎、Agent-其他的生命周期管理方法，如-重启，回退版本"><a href="#产品，是否还有其他对总控、引擎、Agent-其他的生命周期管理方法，如-重启，回退版本" class="headerlink" title="@产品，是否还有其他对总控、引擎、Agent 其他的生命周期管理方法，如 重启，回退版本"></a>@产品，是否还有其他对总控、引擎、Agent 其他的生命周期管理方法，如 重启，回退版本</h3><h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h3 id="目前总控、引擎组件名整理"><a href="#目前总控、引擎组件名整理" class="headerlink" title="目前总控、引擎组件名整理"></a>目前总控、引擎组件名整理</h3><p>总控侧</p>
-<ul>
-<li>sc</li>
-<li>manager</li>
-<li>sc-core</li>
-<li>mysql</li>
-<li>nsq</li>
-<li>redis</li>
-<li>apione</li>
-<li>journal</li>
-<li>layer</li>
-</ul>
-<p>流量引擎</p>
-<ul>
-<li>webserver</li>
-<li>adminDam</li>
-<li>dataDam</li>
-<li>polycube</li>
-<li>nuclei</li>
-<li>envoy</li>
-<li>data_ha</li>
-<li>data_worker</li>
-<li>admin_ha</li>
-<li>keepalive  (它不会启动服务)</li>
-</ul>
-<p>边车引擎</p>
-<ul>
-<li>webserver</li>
-<li>envoy</li>
-<li>polycube</li>
-</ul>
-<p>镜像引擎</p>
-<ul>
-<li>webserver</li>
-<li>agent-server</li>
-<li>st-controller</li>
-<li>suricata</li>
-</ul>
-<p>流量Agent</p>
-<ul>
-<li>sr-agent</li>
-</ul>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="golang-kit"><a href="#golang-kit" class="headerlink" title="golang-kit"></a>golang-kit</h3><pre><code class="Go">// 加载 env 文件
-// LoadEnv(publicEnv)  &quot;/opt/public/.env&quot;
-func LoadEnv(envPath string) error &#123;
-    // Load the .env file
-    err := godotenv.Load(envPath)
-    if err != nil &#123;
-        log.Fatal(&quot;Error loading .env file: &quot;, err)
-    &#125;
-    return nil
-&#125;
-
-// 加载 env 文件
-nodeId := os.Getenv(EnvNodeID)
-</code></pre>
-<h3 id="总控安装逻辑"><a href="#总控安装逻辑" class="headerlink" title="总控安装逻辑"></a>总控安装逻辑</h3><ul>
-<li>调用 installer 中的 install.sh 脚本</li>
-<li>解析用户输入，校验值合法性，构建公共常量</li>
-<li>解析各组件依赖关系，被依赖的组件先安装，逐步安装完所有组件</li>
-<li>安装完后信息展示</li>
-</ul>
-<h3 id="调度逻辑"><a href="#调度逻辑" class="headerlink" title="调度逻辑"></a>调度逻辑</h3><p>总控、引擎安装调度逻辑</p>
-<ul>
-<li>able 后台开始一个异步安装任务（获取到安装进度，根据已安装组件&#x2F;总组件的数量计算进度）</li>
-<li>拷贝组件包到对应位置</li>
-</ul>
-<h3 id="配置文件方法和目录约定方法的比较"><a href="#配置文件方法和目录约定方法的比较" class="headerlink" title="配置文件方法和目录约定方法的比较"></a>配置文件方法和目录约定方法的比较</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
-<li><strong>灵活性</strong>：配置文件可以根据需要灵活定义各种参数和脚本路径，适应不同的需求。</li>
-<li><strong>可扩展性</strong>：可以很容易地添加新的配置选项或调整现有配置，而不需要改变目录结构或命名约定。</li>
-<li><strong>明确性</strong>：配置文件可以清晰地描述组件的所有生命周期步骤和相关参数，易于阅读和维护。</li>
-<li><strong>版本控制</strong>：配置文件可以方便地进行版本控制和管理，便于跟踪和回滚更改。</li>
-</ol>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
-<li><strong>复杂性</strong>：需要编写和维护配置文件，可能会增加一定的复杂性和工作量。</li>
-<li><strong>标准化难度</strong>：不同团队可能会有不同的配置文件格式和习惯，需要制定和遵守统一的标准。</li>
-</ol>
-<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><ul>
-<li><strong>复杂系统</strong>：当系统涉及到复杂的依赖关系和多样化的配置需求时，使用配置文件更为合适。</li>
-<li><strong>需要高度自定义</strong>：如果每个组件的生命周期管理需要高度自定义的操作和参数，配置文件可以提供更大的灵活性。</li>
-</ul>
-<h3 id="约定优于配置方法"><a href="#约定优于配置方法" class="headerlink" title="约定优于配置方法"></a>约定优于配置方法</h3><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
-<li><strong>简单易用</strong>：通过遵循约定，减少了显式配置的需求，使得系统更简单和一致。</li>
-<li><strong>快速上手</strong>：团队成员可以快速了解和遵循约定，不需要花费大量时间编写配置文件。</li>
-<li><strong>减少出错</strong>：统一的目录结构和命名约定可以减少配置错误，提高可靠性。</li>
-</ol>
-<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ol>
-<li><strong>灵活性有限</strong>：约定通常是固定的，灵活性可能不如配置文件高。</li>
-<li><strong>扩展性受限</strong>：在需要添加新的生命周期步骤或复杂的自定义操作时，可能需要修改约定和实现。</li>
-</ol>
-<h4 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h4><ul>
-<li><strong>简单系统</strong>：当系统相对简单且生命周期管理步骤较为标准化时，约定优于配置的方法更加合适。</li>
-<li><strong>快速开发</strong>：在需要快速开发和部署的场景下，约定优于配置的方法可以提高效率。</li>
-</ul>
-<h3 id="综合比较"><a href="#综合比较" class="headerlink" title="综合比较"></a>综合比较</h3><p>在大型软件系统中，配置文件方法和约定优于配置的方法各有优缺点。综合考虑，<strong>配置文件方法</strong>通常更适用于大型软件的生命周期管理，主要原因包括：</p>
-<ol>
-<li><strong>复杂性管理</strong>：大型系统通常具有复杂的依赖关系和多样化的需求，配置文件提供了足够的灵活性来应对这些复杂性。</li>
-<li><strong>可维护性</strong>：配置文件明确描述了每个组件的生命周期步骤和参数，便于维护和管理。</li>
-<li><strong>可扩展性</strong>：配置文件可以方便地进行扩展和调整，适应系统不断变化的需求。</li>
-</ol>
-<p>然而，在一些特定的场景下，如需要快速开发、部署且系统相对简单时，<strong>约定优于配置的方法</strong>也可以作为一种高效的选择。</p>
-<h3 id="实施建议"><a href="#实施建议" class="headerlink" title="实施建议"></a>实施建议</h3><p>为了兼顾两种方法的优点，可以考虑以下混合策略：</p>
-<ul>
-<li><strong>基础约定</strong>：使用约定优于配置的方法定义基础的目录结构和命名规则，确保简单、快速的生命周期管理。</li>
-<li><strong>配置扩展</strong>：在约定的基础上，提供可选的配置文件，用于定义复杂的自定义操作和参数，以满足更高的灵活性需求。</li>
-</ul>
-<p>这种混合策略可以在保持系统简单性的同时，提供足够的灵活性和扩展性，适应大型软件系统的生命周期管理需求。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/06/20/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%A4%A7%E7%BB%84%E4%BB%B6%E3%80%81%E5%B0%8F%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E8%AE%BE%E6%83%B3/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/06/18/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E6%80%BB%E6%8E%A7%E3%80%81%E5%BC%95%E6%93%8E%E3%80%81%E6%8F%92%E4%BB%B6%E7%BB%84%E4%BB%B6%E5%8C%85%E5%AE%9A%E4%B9%89/">
-        <h2 class="post-title">总控、引擎、插件组件包定义.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/6/18
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>总控、引擎、插件包定义，构建、导入等关键流程实现方案，和接口设计</p>
-<h2 id="组件包定义"><a href="#组件包定义" class="headerlink" title="组件包定义"></a>组件包定义</h2><p>总控、引擎、插件、Agent 等为大组件，它们的发布时按照下面协议约定构建出的文件称为组件包，导入到总控平台后，会在平台中生成对应可用组件，提供用户使用相应功能。结合平台自身环境，在导入后有不同的用户交互，如流量引擎组件包新导入总控平台时，平台会出现流量引擎安装交互接口，当之前已有可用的流量引擎组件时，平台则会出现流量引擎升级交互接口。</p>
-<h3 id="组件包结构"><a href="#组件包结构" class="headerlink" title="组件包结构"></a>组件包结构</h3><ul>
-<li><p><strong>基本信息：</strong></p>
-<p>  name：组件包的名称，使用产品定义的组件英文简称。<br>  version：组件包的当前版本。<br>  description：组件包的简要描述。<br>  type：组件包的类型，包括sc（总控组件）、engine（引擎组件）、plugin（插件组件）、agent（代理组件）。</p>
-</li>
-<li><p><strong>依赖信息：</strong></p>
-<p>  dependencies：组件包所依赖的其他组件包列表，包括依赖项的名称、版本范围、类型、兼容版本、不兼容版本和描述。</p>
-</li>
-<li><p><strong>完整性校验：</strong></p>
-<p>  checksum：包含整个压缩包的校验和信息，用于校验包的完整性。</p>
-</li>
-<li><p><strong>版本更新日志：</strong></p>
-<p>  changelog：此版本更新内容。</p>
-</li>
-<li><p><strong>运行相关内容：</strong></p>
-</li>
-</ul>
-<h3 id="组件包生命周期"><a href="#组件包生命周期" class="headerlink" title="组件包生命周期"></a>组件包生命周期</h3><h4 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h4><p>构建顺序：</p>
-<ul>
-<li>运行相关内容</li>
-<li>基本信息、依赖管理、完整性校验</li>
-</ul>
-<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><p>导入时会将组件包元信息录入到平台数据库中，以作安装、升级管理界面查看使用，在平台中生成用户可交互的组件</p>
-<p>组件用户操作接口</p>
-<ul>
-<li>安装、升级、回退（插件有）、回滚、取消安装、卸载、强制卸载、备份（引擎有）、备份恢复（引擎有）</li>
-</ul>
-<h3 id="组件包内容"><a href="#组件包内容" class="headerlink" title="组件包内容"></a>组件包内容</h3><h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><p>组件包文件格式为 ${组件名}_v${version}.${os_name}-${arch}.tar.gz  SC_v1.5.6.linux-x86_64.tar.gz<br>使用 tar -zxvf 解压后为以下目录接口</p>
-<pre><code class="Bash">SC_v1.5.15.linux-x86_64/
-│ ├── nsq
-│ │ ├── bin
-│ │ ├── hack
-│ │ └── systemd
-│ ├── redis
-│ │ ├── bin
-│ │ ├── etc
-│ │ └── hack
-│ ├── sc
-│ │ ├── bin
-│ │ ├── certificate
-│ │ ├── config
-│ │ ├── data
-│ │ ├── depends
-│ │ ├── dist
-│ │ ├── doc
-│ │ ├── hack
-│ │ ├── log
-│ │ ├── systemd
-│ │ └── template
-│ ├── sc-core
-│ │ ├── bin
-│ │ ├── config
-│ │ └── hack
-│ ├── script
-│ │ ├── check.sh
-│ │ ├── config
-│ │ ├── install.sh
-│ │ ├── os_info.env
-│ │ ├── uninstall.sh
-│ │ └── update_ui.sh
-│ └── template
-│     ├── install.sh
-│     ├── leakScan
-│     ├── README.md
-│     ├── sensitive
-│     ├── sqlInject
-│     ├── uninstall.sh
-│     ├── upgrade.sh
-│     ├── waf
-│     └── wpd
-├── meta.json
-├── install.sh
-├── uninstall.sh
-
-
-</code></pre>
-<h4 id="生命周期管理信息"><a href="#生命周期管理信息" class="headerlink" title="生命周期管理信息"></a>生命周期管理信息</h4><h4 id="发布信息"><a href="#发布信息" class="headerlink" title="发布信息"></a>发布信息</h4><h5 id="版本更新日志-changelog"><a href="#版本更新日志-changelog" class="headerlink" title="版本更新日志 changelog"></a>版本更新日志 changelog</h5><p><strong>格式</strong></p>
-<pre><code class="Text">## [1.2.0] - 2024-06-18
-### Added
-- 新特性 A
-- 新特性 B
-
-### Fixed
-- Bug X
-- Bug Y
-
-### Improved
-- 操作体验优化 Z
-</code></pre>
-<p>生命周期说明： 发布时由产品发布此文件，导入时解析此文件，并存入到数据库，安装包、升级包清理时，文件随包一起清理。有必要时，清理无用包信息，可以删除此信息</p>
-<h5 id="依赖信息-checksum-meta-json"><a href="#依赖信息-checksum-meta-json" class="headerlink" title="依赖信息 checksum  meta.json"></a>依赖信息 checksum  meta.json</h5><p>需要最后填充此信息，因为里面包含 checksum 信息，用于包完整性校验</p>
-<ul>
-<li><strong>sc示例</strong></li>
-</ul>
-<pre><code class="json">&#123;
-  &quot;name&quot;: &quot;SC&quot;,
-  // 产品定义的组件英文简称 https://doc.weixin.qq.com/sheet/e3_AIgA6waJABcW3JvHCTFSyGeeGr7PY?scode=ABwA9Qd2ABEu5XCNS9Ab8AhQbAADQ&amp;tab=BB08J2
-  &quot;version&quot;: &quot;1.7.0&quot;,
-  // 发布版本号
-  &quot;description&quot;: &quot;总控组件包&quot;,
-  &quot;type&quot;: &quot;sc&quot;,
-  // sc engine plugin agent
-  &quot;checksum&quot;: &#123;
-    &quot;v1&quot;: &quot;1234567890abcdef1234567890abcdef&quot;
-  &#125;,
-  &quot;dependencies&quot;: [
-    // 依赖管理
-    &#123;
-      &quot;name&quot;: &quot;SE&quot;,
-      &quot;type&quot;: &quot;engine&quot;,
-      &quot;compatible_versions&quot;: [&quot;&gt;=2.1.0&quot;, &quot;&lt;3.0.0&quot;],
-      &quot;incompatible_versions&quot;: [
-        &quot;2.1.2&quot;
-      ],
-      &quot;description&quot;: &quot;引擎组件包&quot;
-    &#125;
-  ],
-  &quot;proto_version&quot;: 1,   // 协议版本
-  &quot;changelog&quot;: &quot;This is the changelog content. \n- Added new features \n- Fixed bugs \n- Improved performance&quot;,
-  &quot;component&quot;: [&quot;sc&quot;, &quot;sc-core&quot;, &quot;installer&quot;],       // 这里就是组件目录名，组件名要和组件目录名一致，也就是在 able.json 中 name 要对上
-&#125;
-
-
-</code></pre>
-<ul>
-<li><strong>引擎示例</strong></li>
-</ul>
-<pre><code class="json">&#123;
-  &quot;name&quot;: &quot;SE&quot;,    // 产品定义的组件英文简称
-  &quot;version&quot;: &quot;2.1.1&quot;,    // 发布版本号
-  &quot;description&quot;: &quot;引擎组件包&quot;,
-  &quot;type&quot;: &quot;engine&quot;,     // sc engine plugin agent
-  &quot;checksum&quot;: &#123;
-    &quot;v1&quot;: &quot;1234567890abcdef1234567890abcdef&quot;,   
-  &#125;,
-  &quot;comp&quot;: &#123;&#125;,       // 小组件和目录
-  &quot;dependencies&quot;: [   // 依赖管理
-    &#123;
-      &quot;name&quot;: &quot;SC&quot;,
-      &quot;type&quot;: &quot;sc&quot;,
-      &quot;compatible_versions&quot;: &quot;&gt;=1.5.1, &lt;2.0.0&quot;,
-      &quot;incompatible_versions&quot;: [&quot;1.6.0&quot;, &quot;1.7.0&quot;],
-      &quot;description&quot;: &quot;总控组件包&quot;
-    &#125;,
-    &#123;
-      &quot;name&quot;: &quot;acl&quot;,    // 产品定义的组件英文简称
-      &quot;description&quot;: &quot;ACL 插件包&quot;,
-      &quot;type&quot;: &quot;plugin&quot;,
-      &quot;incompatible_versions&quot;: [&quot;4.1.5&quot;],      
-    &#125;
-  ],
-  &quot;proto_version&quot;: 1,
-  &quot;changelog&quot;: &quot;This is the changelog content. \n- Added new features \n- Fixed bugs \n- Improved performance&quot;,
-&#125;
-</code></pre>
-<ul>
-<li><strong>Agent 示例</strong></li>
-</ul>
-<pre><code class="json">&#123;
-  &quot;name&quot;: &quot;srfa&quot;,    // 产品定义的组件英文简称
-  &quot;version&quot;: &quot;1.6.1&quot;,    // 发布版本号
-  &quot;description&quot;: &quot;流量 Agent 组件包&quot;,
-  &quot;type&quot;: &quot;agent&quot;,     // sc engine plugin agent
-  &quot;checksum&quot;: &#123;
-    &quot;v1&quot;: &quot;1234567890abcdef1234567890abcdef&quot;,   
-  &#125;,
-  &quot;dependencies&quot;: [   // 依赖管理
-    &#123;
-      &quot;name&quot;: &quot;srfm&quot;,   // 镜像引擎
-      &quot;type&quot;: &quot;engine&quot;,
-      &quot;compatible_versions&quot;: &quot;&gt;=1.5.1, &lt;2.0.0&quot;,
-      &quot;incompatible_versions&quot;: [&quot;1.6.1&quot;],
-      &quot;description&quot;: &quot;镜像引擎组件包&quot;
-    &#125;,
-  ],
-  &quot;proto_version&quot;: 1,
-  &quot;changelog&quot;: &quot;This is the changelog content. \n- Added new features \n- Fixed bugs \n- Improved performance&quot;,
-&#125;
-</code></pre>
-<ul>
-<li><strong>插件示例</strong></li>
-</ul>
-<pre><code class="json">&#123;
-  &quot;name&quot;: &quot;acl&quot;,    // 产品定义的组件英文简称
-  &quot;version&quot;: &quot;4.1.3&quot;,
-  &quot;description&quot;: &quot;ACL 插件包&quot;,    // 界面上对于组件包信息描述
-  &quot;type&quot;: &quot;plugin&quot;,     // sc engine plugin agent
-  &quot;checksum&quot;: &#123;
-    &quot;v1&quot;: &quot;1234567890abcdef1234567890abcdef&quot;,  
-  &#125;,
-  &quot;dependencies&quot;: [   // 依赖管理
-    &#123;
-      &quot;name&quot;: &quot;SE&quot;,
-      &quot;type&quot;: &quot;engine&quot;,
-      &quot;compatible_versions&quot;: &quot;&gt;=2.1.0, &lt;3.0.0&quot;,
-      &quot;incompatible_versions&quot;: [&quot;2.1.2&quot;],
-      &quot;description&quot;: &quot;引擎组件包&quot;
-    &#125;,
-    &#123;
-      &quot;name&quot;: &quot;SC&quot;,
-      &quot;type&quot;: &quot;sc&quot;,
-      &quot;compatible_versions&quot;: &quot;&gt;=1.5.1, &lt;2.0.0&quot;,
-      &quot;incompatible_versions&quot;: [&quot;1.6.0&quot;, &quot;1.7.0&quot;],
-      &quot;description&quot;: &quot;总控组件包&quot;
-    &#125;
-  ],
-  &quot;proto_version&quot;: 1,
-  &quot;changelog&quot;: &quot;This is the changelog content. \n- Added new features \n- Fixed bugs \n- Improved performance&quot;,
-&#125;
-</code></pre>
-<ul>
-<li><strong>完整性校验机制机制</strong></li>
-</ul>
-<pre><code class="Bash"># 排除 meta.json 本身递归计算 目录下所有文件的 md5 值，注意，发布时要和导入校验时算法保持一致
-find . -type f ! -name &#39;meta.json&#39; -exec md5sum &#123;&#125; + | awk &#39;&#123;print $1&#125;&#39;  | md5sum
-</code></pre>
-<h4 id="运行时信息"><a href="#运行时信息" class="headerlink" title="运行时信息"></a>运行时信息</h4><p>包含 二进制可执行文件，配置文件，内置脚本，等信息</p>
-<h3 id="接口定义"><a href="#接口定义" class="headerlink" title="接口定义"></a>接口定义</h3><h2 id="组件包集"><a href="#组件包集" class="headerlink" title="组件包集"></a>组件包集</h2><h3 id="组件包集定义"><a href="#组件包集定义" class="headerlink" title="组件包集定义"></a>组件包集定义</h3><p>组件包集由多个组件包组成，软件交付时，大概率是多个组件包构建为一个组件包集给到用户，才能给用户完整的体验。</p>
-<h3 id="结构和构建规则"><a href="#结构和构建规则" class="headerlink" title="结构和构建规则"></a>结构和构建规则</h3><p>组件包集文件名格式：20240618-SRBundle-batch.tar.gz，组件包集由多个组件包和一个名为 batch.json 的文件组成。batch.json 文件记录了每个组件包的校验和（checksum）值，用于验证组件包的完整性。组件包集的目录结构如下：</p>
-<pre><code class="Text">SRBundle-batch/
-├── SC_v1.0.0.tar.gz
-├── SE_v2.0.0.tar.gz
-├── acl_v3.0.0.tar.gz
-├── install.sh
-├── uninstall.sh
-└── batch.json
-</code></pre>
-<p>batch.json</p>
-<pre><code class="json">&#123;
-  &quot;components&quot;: [
-    &#123;
-      &quot;name&quot;: &quot;SC_v1.0.0.tar.gz&quot;,
-      &quot;checksum&quot;: &#123;
-        &quot;v1&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;,
-      &#125;,
-    &#125;,
-    &#123;
-      &quot;name&quot;: &quot;SE_v2.0.0.tar.gz&quot;,
-      &quot;checksum&quot;: &#123;
-        &quot;v1&quot;: &quot;abcde1234567890abcdef1234567890abcdef1234567890abcdef1234567890&quot; 
-      &#125;,
-    &#125;,
-    &#123;
-      &quot;name&quot;: &quot;acl_v3.0.0.tar.gz&quot;,
-      &quot;checksum&quot;: &#123;
-        &quot;v1&quot;: &quot;7890abcdef1234567890abcdef1234567890abcdef1234567890abcdef123456&quot; 
-      &#125;,
-    &#125;
-  ],
-  &quot;proto_version&quot;: &quot;1&quot;,
-&#125;
-</code></pre>
-<h3 id="导入规则"><a href="#导入规则" class="headerlink" title="导入规则"></a>导入规则</h3><p>导入组件包集时，系统会首先读取 batch.json 文件并校验每个组件包的完整性。校验通过后，系统会开始导入每个组件包，执行相应的导入逻辑。导入过程如下：</p>
-<ul>
-<li>解压组件包集文件</li>
-<li>读取并解析 batch.json 文件，校验每个组件包的完整性。</li>
-<li>校验通过后，依次导入每个组件包，执行相应的导入逻辑。</li>
-</ul>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="升级兼容问题"><a href="#升级兼容问题" class="headerlink" title="升级兼容问题"></a>升级兼容问题</h3><h4 id="1-5-总控如何适配新构建的组件包和组件包集"><a href="#1-5-总控如何适配新构建的组件包和组件包集" class="headerlink" title="1.5 总控如何适配新构建的组件包和组件包集"></a>1.5 总控如何适配新构建的组件包和组件包集</h4><ul>
-<li><p>中间版本方案？<br>符合现有逻辑，有实现的可行性。决定做，现在开始开发中间版本，至少需要兼容新的导包逻辑，正常展示组件的交互接口</p>
-</li>
-<li><p>不兼容直接重装<br>如果有些存在服务彻底不兼容的情况，那就不做兼容逻辑。</p>
-</li>
-</ul>
-<h3 id="组件包和组件包集信息遗漏"><a href="#组件包和组件包集信息遗漏" class="headerlink" title="组件包和组件包集信息遗漏"></a>组件包和组件包集信息遗漏</h3><h4 id="补充信息"><a href="#补充信息" class="headerlink" title="补充信息"></a>补充信息</h4><ul>
-<li>发布方信息</li>
-<li>发布时间</li>
-</ul>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="组件包安装脚本"><a href="#组件包安装脚本" class="headerlink" title="组件包安装脚本"></a>组件包安装脚本</h3><pre><code class="Bash"># 用户解压组件包
-#tar zxvf SC_v1.0.0.tar.gz
-
-./install.sh
-</code></pre>
-<h3 id="组件包集安装脚本"><a href="#组件包集安装脚本" class="headerlink" title="组件包集安装脚本"></a>组件包集安装脚本</h3><pre><code class="Bash"># 用户解压组件包集
-# tar zxvf 20240618-SRBundle-batch.tar.gz
-./install.sh
-</code></pre>
-<h4 id="构建工具（打包平台使用）"><a href="#构建工具（打包平台使用）" class="headerlink" title="构建工具（打包平台使用）"></a>构建工具（打包平台使用）</h4><p>生成 meta.json 后续可再开发或内嵌到打包平台中自动完成 </p>
-<pre><code class="Bash">#!/bin/bash
-
-# Function to prompt user for input
-prompt() &#123;
-  local var_name=$1
-  local prompt_text=$2
-  local default_value=$3
-  read -p &quot;$prompt_text&quot; input
-  eval $var_name=&quot;&#39;$&#123;input:-$default_value&#125;&#39;&quot;
-&#125;
-
-# Prompt for required fields
-prompt name &quot;输入组件名 component name (required): &quot;
-prompt type &quot;输入组件类型 component type (required) [sc/engine/plugin/agent]: &quot;
-prompt version &quot;输入组件版本 the component version (required): &quot;
-prompt checksum &quot;输出组件 md5 the checksum (MD5) (required): &quot;
-
-# Start building the JSON structure
-json_content=&quot;&#123;\n&quot;
-json_content+=&quot;  \&quot;name\&quot;: \&quot;$name\&quot;,\n&quot;
-json_content+=&quot;  \&quot;version\&quot;: \&quot;$version\&quot;,\n&quot;
-json_content+=&quot;  \&quot;type\&quot;: \&quot;$type\&quot;,\n&quot;
-json_content+=&quot;  \&quot;checksum\&quot;: &#123;\n&quot;
-json_content+=&quot;    \&quot;v1\&quot;: \&quot;$checksum\&quot;\n&quot;
-json_content+=&quot;  &#125;&quot;
-
-# Prompt for optional fields
-read -p &quot;新增 description? (y/n): &quot; add_description
-if [[ $add_description == &quot;y&quot; ]]; then
-  prompt description &quot;Enter the description: &quot;
-  json_content+=&quot;,\n  \&quot;description\&quot;: \&quot;$description\&quot;&quot;
-fi
-
-# Prompt for dependencies
-read -p &quot;新增 dependencies? (y/n): &quot; add_dependencies
-if [[ $add_dependencies == &quot;y&quot; ]]; then
-  dependencies=&quot;[]&quot;
-  while : ; do
-    read -p &quot;Add a dependency? (y/n): &quot; add_dependency
-    if [[ $add_dependency != &quot;y&quot; ]]; then
-      break
-    fi
-    prompt dep_name &quot;Enter the dependency name: &quot;
-    prompt dep_type &quot;Enter the dependency type [sc/engine/plugin/agent]: &quot;
-    prompt dep_compatible_versions &quot;输入 compatible versions: &quot;
-    prompt dep_incompatible_versions &quot;输入 incompatible versions (使用 , 隔开 如：&gt;=1.5.1, &lt;2.0.0): &quot;
-    prompt dep_description &quot;输入依赖描述 ：&quot;
-
-    # Add the dependency to the dependencies array
-    dependency=&quot;&#123;\&quot;name\&quot;: \&quot;$dep_name\&quot;, \&quot;type\&quot;: \&quot;$dep_type\&quot;, \&quot;compatibleVersions\&quot;: \&quot;$dep_compatible_versions\&quot;, \&quot;incompatibleVersions\&quot;: [$(echo $dep_incompatible_versions | sed &#39;s/,/&quot;,&quot;/g&#39; | sed &#39;s/^/&quot;/&#39; | sed &#39;s/$/&quot;/&#39;)], \&quot;description\&quot;: \&quot;$dep_description\&quot;&#125;&quot;
-    if [[ $dependencies == &quot;[]&quot; ]]; then
-      dependencies=&quot;[$dependency]&quot;
-    else
-      dependencies=$(echo $dependencies | sed &#39;s/]$/,&#39;&quot;$&#123;dependency&#125;&quot;&#39;]/&#39;)
-    fi
-  done
-  json_content+=&quot;,\n  \&quot;dependencies\&quot;: $dependencies&quot;
-fi
-
-json_content+=&quot;,\n  \&quot;protoVersion\&quot;: 1\n&quot;
-
-# Prompt for changelog content
-echo &quot;请输入 changelog 内容 (结束输入使用 Ctrl+D):&quot;
-changelog=$(&lt;/dev/stdin)
-json_content+=&quot;,\n  \&quot;changelog\&quot;: \&quot;$changelog\&quot;\n&quot;
-
-json_content+=&quot;&#125;&quot;
-
-echo -e $json_content &gt; meta.json
-
-echo &quot;meta.json has been created with the provided information.&quot;
-</code></pre>
-<p>生成 batch.json</p>
-<pre><code class="Bash">#!/bin/bash
-
-calculate_checksum() &#123;
-  local file=$1
-  md5sum &quot;$file&quot; | awk &#39;&#123; print $1 &#125;&#39;
-&#125;
-
-json_content=&quot;&#123;\n&quot;
-json_content+=&quot;  \&quot;components\&quot;: [\n&quot;
-
-# 找到 tar.gz 后缀文件
-first=true
-for file in *.tar.gz; do
-  if [[ -f &quot;$file&quot; ]]; then
-    # Calculate the checksum
-    checksum=$(calculate_checksum &quot;$file&quot;)
-
-    if $first; then
-      first=false
-    else
-      json_content+=&quot;,\n&quot;
-    fi
-
-    json_content+=&quot;    &#123;\n&quot;
-    json_content+=&quot;      \&quot;name\&quot;: \&quot;$file\&quot;,\n&quot;
-    json_content+=&quot;      \&quot;checksum\&quot;: &#123;\n&quot;
-    json_content+=&quot;        \&quot;v1\&quot;: \&quot;$checksum\&quot;\n&quot;
-    json_content+=&quot;      &#125;\n&quot;
-    json_content+=&quot;    &#125;&quot;
-  fi
-done
-
-json_content+=&quot;\n  ],\n&quot;
-json_content+=&quot;  \&quot;protoVersion\&quot;: 1\n&quot;
-json_content+=&quot;&#125;&quot;
-
-echo -e $json_content &gt; batch.json
-
-echo &quot;batch.json has been created with the checksums of all .tar.gz files in the current directory.&quot;
-</code></pre>
-<h4 id="导入接口-golang-kit"><a href="#导入接口-golang-kit" class="headerlink" title="导入接口 golang-kit"></a>导入接口 golang-kit</h4><p>解析 meta.json 文件内容，校验包完整性后，再保存基本信息，版本更新日志，依赖关系。</p>
-<pre><code class="Go">package main
-
-import (
-    &quot;archive/tar&quot;
-    &quot;compress/gzip&quot;
-    &quot;encoding/json&quot;
-    &quot;io&quot;
-    &quot;io/ioutil&quot;
-    &quot;log&quot;
-    &quot;os&quot;
-    &quot;os/exec&quot;
-    &quot;path/filepath&quot;
-    &quot;strings&quot;
-
-    _ &quot;github.com/go-sql-driver/mysql&quot;
-    &quot;xorm.io/xorm&quot;
-)
-
-// ComponentBall represents the structure of the meta.json file and changelog.md combined
-type ComponentBall struct &#123;
-    ID               int64        `xorm:&quot;pk autoincr&quot; json:&quot;id&quot;`
-    Name             string       `json:&quot;name&quot;`
-    Version          string       `json:&quot;version&quot;`
-    Description      string       `json:&quot;description,omitempty&quot;`
-    Type             string       `json:&quot;type&quot;`
-    Checksum         string       `json:&quot;checksum&quot;`
-    Dependencies     string       `json:&quot;dependencies,omitempty&quot;` // Store dependencies as JSON string
-    ProtoVersion     int          `json:&quot;protoVersion&quot;`
-    Changelog        string       `xorm:&quot;TEXT&quot; json:&quot;changelog&quot;`
-    DependenciesList []Dependency `json:&quot;dependenciesList&quot; xorm:&quot;-&quot;`
-&#125;
-
-// Meta represents the structure of the meta.json file
-type Meta struct &#123;
-    Name         string       `json:&quot;name&quot;`
-    Version      string       `json:&quot;version&quot;`
-    Description  string       `json:&quot;description,omitempty&quot;`
-    Type         string       `json:&quot;type&quot;`
-    Checksum     Checksum     `json:&quot;checksum&quot;`
-    Dependencies []Dependency `json:&quot;dependencies,omitempty&quot;`
-    ProtoVersion int          `json:&quot;protoVersion&quot;`
-    Changelog    string       `json:&quot;changelog&quot;`
-&#125;
-
-// Checksum represents the checksum structure
-type Checksum struct &#123;
-    V1 string `json:&quot;v1&quot;`
-&#125;
-
-// Dependency represents a dependency in the meta.json file
-type Dependency struct &#123;
-    Name                 string   `json:&quot;name&quot;`
-    Type                 string   `json:&quot;type&quot;`
-    CompatibleVersions   string   `json:&quot;compatibleVersions&quot;`
-    IncompatibleVersions []string `json:&quot;incompatibleVersions&quot;`
-    Description          string   `json:&quot;description&quot;`
-&#125;
-
-// validateChecksum validates the checksum of the extracted files
-func validateChecksum(extractedDir string, expectedChecksum string) bool &#123;
-    cmd := exec.Command(&quot;bash&quot;, &quot;-c&quot;, &quot;find . -type f ! -name &#39;meta.json&#39; -exec md5sum &#123;&#125; + | awk &#39;&#123;print $1&#125;&#39; | md5sum&quot;)
-    cmd.Dir = extractedDir
-    output, err := cmd.Output()
-    if err != nil &#123;
-        log.Printf(&quot;Error executing checksum validation command: %v&quot;, err)
-        return false
-    &#125;
-
-    actualChecksumLs := strings.Fields(string(output))
-    if len(actualChecksumLs) &lt; 2 &#123;
-        log.Println(&quot;Error executing command:&quot;, err)
-    &#125;
-    actualChecksum := actualChecksumLs[0]
-    return actualChecksum == expectedChecksum
-&#125;
-
-// extractTarGz extracts a tar.gz file to a specified directory
-func extractTarGz(gzipStream io.Reader, dst string) error &#123;
-    uncompressedStream, err := gzip.NewReader(gzipStream)
-    if err != nil &#123;
-        return err
-    &#125;
-    defer uncompressedStream.Close()
-
-    tarReader := tar.NewReader(uncompressedStream)
-    for &#123;
-        header, err := tarReader.Next()
-        if err == io.EOF &#123;
-            break
-        &#125;
-        if err != nil &#123;
-            return err
-        &#125;
-
-        target := filepath.Join(dst, header.Name)
-        switch header.Typeflag &#123;
-        case tar.TypeDir:
-            if err := os.MkdirAll(target, os.FileMode(header.Mode)); err != nil &#123;
-                return err
-            &#125;
-        case tar.TypeReg:
-            f, err := os.OpenFile(target, os.O_CREATE|os.O_RDWR, os.FileMode(header.Mode))
-            if err != nil &#123;
-                return err
-            &#125;
-            if _, err := io.Copy(f, tarReader); err != nil &#123;
-                return err
-            &#125;
-            f.Close()
-        &#125;
-    &#125;
-    return nil
-&#125;
-
-// saveComponent saves the parsed component information to the database
-func saveComponent(engine *xorm.Engine, component ComponentBall) error &#123;
-    session := engine.NewSession()
-    defer session.Close()
-
-    err := session.Begin()
-    if err != nil &#123;
-        return err
-    &#125;
-
-    _, err = session.Insert(&amp;component)
-    if err != nil &#123;
-        session.Rollback()
-        return err
-    &#125;
-
-    return session.Commit()
-&#125;
-
-func ImportComponent() error &#123;
-    packageFile := &quot;SC_v1.5.15.linux-x86_64.tar.gz&quot;
-    extractedDir := &quot;SC_v1.5.15.linux-x86_64&quot;
-    err := os.MkdirAll(extractedDir, os.ModePerm)
-    if err != nil &#123;
-        return err
-    &#125;
-
-    file, err := os.Open(packageFile)
-    if err != nil &#123;
-        log.Fatalf(&quot;Error opening package file: %v&quot;, err)
-        return err
-    &#125;
-    defer file.Close()
-
-    err = extractTarGz(file, extractedDir)
-    if err != nil &#123;
-        log.Fatalf(&quot;Error extracting package file: %v&quot;, err)
-        return err
-    &#125;
-
-    metaFile := filepath.Join(extractedDir, &quot;meta.json&quot;)
-    metaData, err := ioutil.ReadFile(metaFile)
-    if err != nil &#123;
-        log.Fatalf(&quot;Error reading meta.json: %v&quot;, err)
-        return err
-    &#125;
-
-    // Parse meta.json content
-    var meta Meta
-    err = json.Unmarshal(metaData, &amp;meta)
-    if err != nil &#123;
-        log.Fatalf(&quot;Error parsing meta.json: %v&quot;, err)
-        return err
-    &#125;
-
-    // Validate package integrity
-    if !validateChecksum(extractedDir, meta.Checksum.V1) &#123;
-        log.Fatalf(&quot;Package integrity validation failed for %s&quot;, packageFile)
-        return err
-    &#125;
-
-    // Convert dependencies to JSON string for storage
-    dependenciesJSON, err := json.Marshal(meta.Dependencies)
-    if err != nil &#123;
-        log.Fatalf(&quot;Error marshaling dependencies: %v&quot;, err)
-        return err
-    &#125;
-
-    // Create component struct
-    component := ComponentBall&#123;
-        Name:             meta.Name,
-        Version:          meta.Version,
-        Description:      meta.Description,
-        Type:             meta.Type,
-        Checksum:         meta.Checksum.V1,
-        Dependencies:     string(dependenciesJSON),
-        ProtoVersion:     meta.ProtoVersion,
-        Changelog:        meta.Changelog,
-        DependenciesList: meta.Dependencies,
-    &#125;
-
-    // Connect to the database
-    dbURL := &quot;user:password@tcp(127.0.0.1:3306)/dbname?charset=utf8&amp;parseTime=True&quot;
-    engine, err := xorm.NewEngine(&quot;mysql&quot;, dbURL)
-    if err != nil &#123;
-        log.Fatalf(&quot;Error connecting to the database: %v&quot;, err)
-        return err
-    &#125;
-
-    // Save component information to the database
-    err = saveComponent(engine, component)
-    if err != nil &#123;
-        log.Fatalf(&quot;Error saving component information to the database: %v&quot;, err)
-        return err
-    &#125;
-
-    log.Println(&quot;Parsed component information saved to the database successfully.&quot;)
-    return nil
-&#125;
-
-func main() &#123;
-    err := ImportComponent()
-    if err != nil &#123;
-        log.Fatalf(&quot;Error importing component: %v&quot;, err)
-    &#125;
-&#125;
-
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/06/18/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E6%80%BB%E6%8E%A7%E3%80%81%E5%BC%95%E6%93%8E%E3%80%81%E6%8F%92%E4%BB%B6%E7%BB%84%E4%BB%B6%E5%8C%85%E5%AE%9A%E4%B9%89/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">
-        <h2 class="post-title">installer目录结构.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/6/17
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="逻辑入口"><a href="#逻辑入口" class="headerlink" title="逻辑入口"></a>逻辑入口</h2><h3 id="流量引擎安装-InstallProcess"><a href="#流量引擎安装-InstallProcess" class="headerlink" title="流量引擎安装 InstallProcess"></a>流量引擎安装 InstallProcess</h3><p>manager&#x2F;manager_route.go:6</p>
-<h3 id="流量引擎资源检测-ResourceCheck"><a href="#流量引擎资源检测-ResourceCheck" class="headerlink" title="流量引擎资源检测 ResourceCheck"></a>流量引擎资源检测 ResourceCheck</h3><p>manager&#x2F;manager.go:1380</p>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><p>sxctl 镜像引擎</p>
-<h2 id="逻辑整理"><a href="#逻辑整理" class="headerlink" title="逻辑整理"></a>逻辑整理</h2><p>每个组件已有的取消安装逻辑</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/">
-        <h2 class="post-title">引擎安装管理.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/6/17
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="引擎节点管理模块文档"><a href="#引擎节点管理模块文档" class="headerlink" title="引擎节点管理模块文档"></a>引擎节点管理模块文档</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>引擎节点管理的需求最早可追溯到v1.0.x版本，当时是希望实现任意数量的节点管理构成一个集群，但是因为实现过程中遇到了一些无法解决的问题，故以一种很多限制的形式流传了下来。<br>限制有不少，其中最大的限制是：管理节点必须为奇数，且引擎一旦安装成功，管理节点无法以任何一种形式变更数量、机器、IP地址等。<br>管理节点的数量变更需求每个版本都会有人提起，现如今又正式提出了，故对现状和历史状态进行一次梳理，以便看清前路。</p>
-<h2 id="名词旧解释"><a href="#名词旧解释" class="headerlink" title="名词旧解释"></a>名词旧解释</h2><ul>
-<li>引擎节点: 一般用来概括称呼管理节点、工作节点、调度节点，不同的类型的节点区别主要是运行的组件不同</li>
-<li>节点添加：为一个全新的OS安装工作节点或调度节点的组件；或者为一个当前引擎其他节点添加工作节点或者调度节点的组件。</li>
-<li>agent: 是installer-sr-server的一部分，它是一个运行在引擎节点的服务，下文中，会将其称呼为installer-sr-agent</li>
-</ul>
-<h2 id="名词新解释"><a href="#名词新解释" class="headerlink" title="名词新解释"></a>名词新解释</h2><ul>
-<li>引擎节点：指一个机器，或者说一个OS上装了石犀引擎的情况下。和旧版的区别在于其不可分&#x2F;不可共享性。</li>
-<li>节点添加：为一个全新的OS安装引擎组件。</li>
-<li>agent：是一个类似边车引擎的东西，属于镜像引擎的需求一部分，下文中，会将其称呼为sr-agent</li>
-</ul>
-<h2 id="演变历史"><a href="#演变历史" class="headerlink" title="演变历史"></a>演变历史</h2><p>目前installer-sr-server能追溯的最早代码位于release-v2.0.2分支，其核心功能是引擎组件的安装。对于节点添加的支持，仅支持工作节点的添加。其添加的实现非常简单，和安装是一致的。也就是说，为某个OS添加工作节点的实现为安装所有引擎组件（含非工作节点组件），通过设置systemd的enabled属性来控制是否运行某些组件。<br>后续版本添加了调度节点的节点添加，但是实现上和工作节点添加差异并不大。</p>
-<p>在1.5版本中，对安装逻辑做了一次重构, 在去掉了installer-sr-agent之后，虽然安装的逻辑发生了较多的变化，但是从节点管理这部分逻辑来看，并没有本质变化。都是和引擎安装复用同一个函数，根据节点类型筛选出需要安装的组件列表，依次执行他们的安装脚本。</p>
-<h3 id="整体设计演变"><a href="#整体设计演变" class="headerlink" title="整体设计演变"></a>整体设计演变</h3><h4 id="原设计伪代码描述"><a href="#原设计伪代码描述" class="headerlink" title="原设计伪代码描述"></a>原设计伪代码描述</h4><pre><code class="go">// installer-sr-manager
-func (s *Service)Install(req InstallReqParam)&#123;
-    dbGlobalParam := dosomething(req)
-    s.db.Save(dbGlobalParam)
-
-    dbGlobalParam = s.db.Query(req.EngineID)
-    http.PostRequest(install-sr-agent.ip:port, dbGlobalParam)
-&#125;
-
-
-// installer-sr-agent
-func (s *Service) Install(req GlobalParam) &#123;
-    // download files from manager
-    http.GetRequest(installer-sr-manager.ip:port/download, req.PackageVersion)
-    s.SaveLocalFile(packagePath,md5)
-
-    // parse install config 
-    installConfig := s.ParseConfig(req,enginePackage)
-    
-    for _, elem := range installConfig.ComponentList &#123;
-        elem.Install()
-        if elem.Start &#123;
-            systemctlStart(elem)
-        &#125;
-        if elem.Boot &#123;
-            systemctlEnable(elem)
-        &#125;
-
-        s.SaveLocalFile(elem,installed)
-        http.PostRequest(installer-sr-manager.ip:port/report, Progress++)
-    &#125;
-&#125;
-</code></pre>
-<h4 id="1-5设计伪代码描述"><a href="#1-5设计伪代码描述" class="headerlink" title="1.5设计伪代码描述"></a>1.5设计伪代码描述</h4><p>1.5的版本里面，进度相关的表已经名存实亡，进度和取消由另外的机制来实现。</p>
-<pre><code class="go">// installer-sr-manager
-func (s *Service)Install(req InstallReqParam)&#123;
-    dbGlobalParam := dosomething(req)
-    s.db.Save(dbGlobalParam)
-
-    dbGlobalParam = s.db.Query(req.EngineID)
-
-    sshClient := sshv2.NewClientWithPwd(req)
-    sshClient.Upload(req.enginePackage)
-
-    for _, elem := range installConfig.ComponentList &#123;
-        // elem.Install() 
-        grpc.PostRequest(webserver.Cmd, &quot;mv $elem /opt/$elem&quot;)
-        grpc.PostRequest(webserver.Cmd, &quot;/opt/$elem/scripts/install.sh&quot;)
-        s.db.Save(elem)
-        progress++
-    &#125;
-&#125;
-
-
-// webserver
-func (s *Service) Cmd(req CmdParam) &#123;
-    cmd := exec.Command(req.Name,req.Args...)
-    cmd.Run()
-&#125;
-</code></pre>
-<h2 id="依赖问题"><a href="#依赖问题" class="headerlink" title="依赖问题"></a>依赖问题</h2><p>对于将引擎的组件按照类型分割成3部分，并且允许独立安装的做法，最需要考虑的问题是节点与节点间的依赖、组件与组件间的依赖问题。<br>工作节点安装时，其实可以认为是独立的，它不需要依赖管理节点或者调度节点的信息。<br>但是工作节点要想正常工作，那么调度节点就需要知道有哪些工作节点。为了解决信息同步的问题，SX-HA模块从最早开始就介入了节点管理模块，节点的变更的实现对SX-HA模块有较强的依赖，可以认为节点管理是SX-HA和installer-sr-server共同实现的。</p>
-<p>SX-HA主要负责的部分其实是通过k8s+etcd来实现一个动态更新节点列表，并且动态下发配置，并将其称为节点发现模块。它的理念是：SX-HA模块运行时，往公共的注册中心注册自身的节点信息，通过注册中心来保持节点信息的一致性。通过watch机制，来感知注册中心信息的变化，然后更新自身节点的一些配置。<br>在之前的版本实现中，SX-HA还接管了etcd的启动配置生成，这是因为当时也对管理节点的添加删除做了一些尝试，但是以失败告终。</p>
-<h2 id="节点新增"><a href="#节点新增" class="headerlink" title="节点新增"></a>节点新增</h2><p>1.5版本，节点新增支持调度节点新增和工作节点新增。<br>假设有以下引擎</p>
-<table>
-<thead>
-<tr>
-<th>所属引擎</th>
-<th>IP</th>
-<th>角色组合</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>A</td>
-<td>1.1.1.1</td>
-<td>M</td>
-</tr>
-<tr>
-<td>A</td>
-<td>1.1.1.2</td>
-<td>MS</td>
-</tr>
-<tr>
-<td>A</td>
-<td>1.1.1.3</td>
-<td>MW</td>
-</tr>
-<tr>
-<td>B</td>
-<td>1.1.1.100</td>
-<td>MSW</td>
-</tr>
-</tbody></table>
-<p>它在manager的节点表中，记录如下</p>
-<table>
-<thead>
-<tr>
-<th>所属引擎</th>
-<th>IP</th>
-<th>角色枚举</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>A</td>
-<td>1.1.1.1</td>
-<td>M</td>
-</tr>
-<tr>
-<td>A</td>
-<td>1.1.1.2</td>
-<td>M</td>
-</tr>
-<tr>
-<td>A</td>
-<td>1.1.1.2</td>
-<td>S</td>
-</tr>
-<tr>
-<td>A</td>
-<td>1.1.1.3</td>
-<td>M</td>
-</tr>
-<tr>
-<td>A</td>
-<td>1.1.1.3</td>
-<td>W</td>
-</tr>
-<tr>
-<td>B</td>
-<td>1.1.1.100</td>
-<td>M</td>
-</tr>
-<tr>
-<td>B</td>
-<td>1.1.1.100</td>
-<td>S</td>
-</tr>
-<tr>
-<td>B</td>
-<td>1.1.1.100</td>
-<td>W</td>
-</tr>
-</tbody></table>
-<p>对于引擎A，它可以通过&lt;节点添加&gt;接口来添加一个1.1.1.1 W（或者S）<br>过程为：<br>在节点表中，添加一条记录<br>| A | 1.1.1.1 | W |<br>然后将每个工作节点的组件都执行一次安装脚本（引擎包会重新传一遍过去）<br>添加完毕后，会调用SX-HA的结构通知一下，后续流程应该是SX-HA模块在处理。</p>
-<h2 id="节点删除"><a href="#节点删除" class="headerlink" title="节点删除"></a>节点删除</h2><p>节点删除并没有什么特别的设计，同样是执行对应组件的脚本，然后通知SX-HA</p>
-<h2 id="节点替换"><a href="#节点替换" class="headerlink" title="节点替换"></a>节点替换</h2><p>调度节点是没有替换的，只有工作节点支持替换</p>
-<p>替换的流程是先在新的节点执行节点添加逻辑，然后在旧的节点执行节点删除逻辑。</p>
-<h2 id="1-6迭代思路"><a href="#1-6迭代思路" class="headerlink" title="1.6迭代思路"></a>1.6迭代思路</h2><p>首先是节点表的定义和需求匹配度已经不够了，要么重新定义一张表，要么修改原有字段的含义，各有各的做法。不过我认为原来的表定义字段存在一些意义不明的字段，直接重设计可以省去理解上的时间。<br>管理节点的添加、删除应该是主要的障碍，目前没有研究过这方面。调度节点1.5没有支持替换，原因可能只有原开发（贺泽）知道</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/">
-        <h2 class="post-title">生命周期管理方案.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/6/17
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="引擎生命周期管理方案整理"><a href="#引擎生命周期管理方案整理" class="headerlink" title="引擎生命周期管理方案整理"></a>引擎生命周期管理方案整理</h3><h4 id="1-生命周期管理框架和组件依赖的常量、变量的约定"><a href="#1-生命周期管理框架和组件依赖的常量、变量的约定" class="headerlink" title="1. 生命周期管理框架和组件依赖的常量、变量的约定"></a>1. 生命周期管理框架和组件依赖的常量、变量的约定</h4><p><strong>配置文件（config.env）</strong>：</p>
-<p>配置文件用于管理节点初始化时的常量和变量，所有组件的生命周期脚本均从该配置文件中读取必要的参数。</p>
-<p>示例配置文件内容：</p>
-<pre><code>Version=1 
-LogPath=/opt/private/log
-
-# MetaInfo
-VIRD=211
-Mode=1
-GS=f8fb61b0ce16ba41
-GS_EE=SA1014QTGVL9
-MasterIP=192.168.122.124
-GS_WW=SA1014WZMKVC
-
-# ShareInfo
-CompVar1=a
-CompVar2=1
-</code></pre>
-<h5 id="配置文件内容解析"><a href="#配置文件内容解析" class="headerlink" title="配置文件内容解析"></a>配置文件内容解析</h5><pre><code class="Bash"># 版本控制，向后兼容
-Version=1 
-# 日志目录
-LogPath=/opt/private/log
-
-# MetaInfo 节点元信息
-
-
-# ShareInfo 组件共享信息，组件可以自己注册信息，进行组件间通信（不同版本组件通信）
-</code></pre>
-<ul>
-<li>MetaInfo ShareInfo 之间不可重复定义常量、变量</li>
-<li>MetaInfo 不常修改，不可新增、删除</li>
-<li>MetaInfo ShareInfo 可分别进行 列出、监听</li>
-</ul>
-<h5 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h5><p>根据特性提供工具集，将提供两种形式的工具对 内容进行感知</p>
-<ul>
-<li>命令行工具</li>
-<li>golang kit</li>
-</ul>
-<p><strong>命令行</strong> : 内容 增删查改，一般只会 查<br><strong>golang kit</strong> : 内容 增删查改 ，监听变化 ， 查看节点修改日志</p>
-<h4 id="2-生命周期管理框架和组件定义的生命周期脚本约定"><a href="#2-生命周期管理框架和组件定义的生命周期脚本约定" class="headerlink" title="2. 生命周期管理框架和组件定义的生命周期脚本约定"></a>2. 生命周期管理框架和组件定义的生命周期脚本约定</h4><p>每个组件在生命周期的不同阶段需要执行特定的脚本，这些脚本约定统一读取配置文件中的参数。</p>
-<p><strong>生命周期脚本目录结构</strong>：</p>
-<pre><code>/path/to/component1/
-    ├── install.sh
-    ├── initialize.sh
-    ├── start.sh
-    ├── stop.sh
-    └── destroy.sh
-</code></pre>
-<p><strong>生命周期脚本模板</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-source /path/to/config.env
-
-# 脚本逻辑
-</code></pre>
-<p>具体示例：</p>
-<p><strong>install.sh</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-source /path/to/config.env
-
-echo &quot;Installing component with VIRD=$VIRD&quot;
-# 安装逻辑
-</code></pre>
-<p><strong>initialize.sh</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-source /path/to/config.env
-
-echo &quot;Initializing component with GS=$GS and MasterIP=$MasterIP&quot;
-# 初始化逻辑
-</code></pre>
-<p><strong>start.sh</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-source /path/to/config.env
-
-echo &quot;Starting component in mode $Mode&quot;
-# 启动逻辑
-</code></pre>
-<p><strong>stop.sh</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-source /path/to/config.env
-
-echo &quot;Stopping component&quot;
-# 停止逻辑
-</code></pre>
-<p><strong>destroy.sh</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-source /path/to/config.env
-
-echo &quot;Destroying component&quot;
-# 销毁逻辑
-</code></pre>
-<h4 id="3-各生命周期脚本统一共同动作"><a href="#3-各生命周期脚本统一共同动作" class="headerlink" title="3. 各生命周期脚本统一共同动作"></a>3. 各生命周期脚本统一共同动作</h4><p>所有生命周期脚本均需统一执行以下共同动作：</p>
-<ol>
-<li>加载配置文件：<code>source /path/to/config.env</code></li>
-<li>打印当前操作信息：<code>echo &quot;操作信息&quot;</code></li>
-<li>执行特定的生命周期逻辑</li>
-</ol>
-<h4 id="4-特殊场景整理"><a href="#4-特殊场景整理" class="headerlink" title="4. 特殊场景整理"></a>4. 特殊场景整理</h4><p>在实际应用中，可能会遇到一些特殊场景，需要针对这些场景制定相应的处理措施。</p>
-<p><strong>特殊场景1：节点重启</strong></p>
-<p>当节点重启时，需要确保各组件能够自动恢复到之前的工作状态。可以在节点启动时执行统一的恢复脚本。</p>
-<p><strong>恢复脚本（recover.sh）</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-
-# 组件列表
-components=(&quot;component1&quot; &quot;component2&quot; &quot;component3&quot;)
-
-# 恢复操作
-for component in &quot;$&#123;components[@]&#125;&quot;; do
-    echo &quot;Recovering $component&quot;
-    /path/to/$component/start.sh
-done
-</code></pre>
-<p><strong>特殊场景2：配置参数更新</strong></p>
-<p>当配置参数发生变化时，需要确保各组件能够及时读取新的配置参数。可以通过统一的更新脚本来实现。</p>
-<p><strong>更新脚本（update_config.sh）</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-
-# 写入新的配置文件
-cat &lt;&lt;EOL &gt; /path/to/config.env
-VIRD=212
-Mode=2
-GS=new_value
-GS_EE=new_value
-MasterIP=192.168.122.125
-GS_WW=new_value
-EOL
-
-echo &quot;Configuration file updated&quot;
-
-# 重启各组件以加载新的配置
-components=(&quot;component1&quot; &quot;component2&quot; &quot;component3&quot;)
-
-for component in &quot;$&#123;components[@]&#125;&quot;; do
-    echo &quot;Restarting $component&quot;
-    /path/to/$component/stop.sh
-    /path/to/$component/start.sh
-done
-</code></pre>
-<h3 id="5-错误处理机制"><a href="#5-错误处理机制" class="headerlink" title="5. 错误处理机制"></a>5. 错误处理机制</h3><p>在生命周期脚本中，需要增加错误处理机制，以确保在脚本执行过程中出现错误时能够及时记录并采取相应的措施。</p>
-<p><strong>示例错误处理</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-source /path/to/config.env
-
-echo &quot;Starting component in mode $Mode&quot;
-
-# 示例操作
-if ! operation; then
-    echo &quot;Error: Failed to perform operation&quot; &gt;&amp;2
-    exit 1
-fi
-
-echo &quot;Component started successfully&quot;
-</code></pre>
-<h3 id="6-日志记录"><a href="#6-日志记录" class="headerlink" title="6. 日志记录"></a>6. 日志记录</h3><p>为了方便调试和维护，每个生命周期脚本应该包含日志记录功能，将操作过程和结果记录到日志文件中。</p>
-<p><strong>示例日志记录</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-source /path/to/config.env
-
-LOGFILE=&quot;/var/log/component.log&quot;
-
-echo &quot;[$(date)] Starting component in mode $Mode&quot; &gt;&gt; $LOGFILE
-
-if ! operation; then
-    echo &quot;[$(date)] Error: Failed to perform operation&quot; &gt;&gt; $LOGFILE
-    exit 1
-fi
-
-echo &quot;[$(date)] Component started successfully&quot; &gt;&gt; $LOGFILE
-</code></pre>
-<h3 id="7-组件间的依赖关系"><a href="#7-组件间的依赖关系" class="headerlink" title="7. 组件间的依赖关系"></a>7. 组件间的依赖关系</h3><p>如果组件之间存在依赖关系（例如，组件A必须在组件B之后启动），需要在管理脚本中处理这些依赖关系。</p>
-<p><strong>示例管理脚本（manage_components.sh）</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-
-# 组件列表及其依赖关系
-declare -A components=(
-    [&quot;component1&quot;]=&quot;install initialize start&quot;
-    [&quot;component2&quot;]=&quot;install initialize start&quot;
-    [&quot;component3&quot;]=&quot;install initialize start&quot;
-)
-
-# 操作
-operation=$1
-
-# 依次执行每个组件的生命周期操作
-for component in &quot;$&#123;!components[@]&#125;&quot;; do
-    for action in $&#123;components[$component]&#125;; do
-        if [ &quot;$action&quot; == &quot;$operation&quot; ]; then
-            echo &quot;Executing $operation for $component&quot;
-            /path/to/$component/$operation.sh
-        fi
-    done
-done
-</code></pre>
-<h3 id="8-环境配置和依赖安装"><a href="#8-环境配置和依赖安装" class="headerlink" title="8. 环境配置和依赖安装"></a>8. 环境配置和依赖安装</h3><p>在初始化节点时，可能需要安装一些依赖的软件包或进行环境配置，以确保脚本能够正确执行。</p>
-<p><strong>示例环境配置脚本（setup_environment.sh）</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-
-# 安装必要的软件包
-sudo apt-get update
-sudo apt-get install -y package1 package2
-
-# 设置环境变量
-export VAR1=value1
-export VAR2=value2
-
-# 写入配置文件
-./write_config.sh
-
-echo &quot;Environment setup completed&quot;
-</code></pre>
-<h3 id="9-安全性"><a href="#9-安全性" class="headerlink" title="9. 安全性"></a>9. 安全性</h3><p>确保配置文件、脚本和日志文件的访问权限设置正确，防止未经授权的访问和修改。</p>
-<p><strong>示例权限设置</strong>：</p>
-<pre><code class="sh">#!/bin/bash
-
-# 设置配置文件权限
-chmod 600 /path/to/config.env
-
-# 设置脚本文件权限
-chmod 700 /path/to/*.sh
-
-# 设置日志文件权限
-chmod 600 /var/log/component.log
-</code></pre>
-<h3 id="10-文档和说明"><a href="#10-文档和说明" class="headerlink" title="10. 文档和说明"></a>10. 文档和说明</h3><p>为了便于使用和维护，需要为整个方案编写详细的文档和说明，包括配置文件格式、脚本使用方法、常见问题处理等。</p>
-<p><strong>示例文档结构</strong>：</p>
-<pre><code>docs/
-    ├── introduction.md
-    ├── configuration.md
-    ├── scripts_usage.md
-    ├── troubleshooting.md
-    └── faq.md
-</code></pre>
-<h3 id="方案整理总结"><a href="#方案整理总结" class="headerlink" title="方案整理总结"></a>方案整理总结</h3><ol>
-<li><p><strong>生命周期管理框架和组件依赖的常量、变量的约定</strong>：</p>
-<ul>
-<li>配置文件管理和写入脚本</li>
-</ul>
-</li>
-<li><p><strong>生命周期管理框架和组件定义的生命周期脚本约定</strong>：</p>
-<ul>
-<li>各生命周期脚本的模板和约定</li>
-</ul>
-</li>
-<li><p><strong>各生命周期脚本统一共同动作</strong>：</p>
-<ul>
-<li>加载配置文件</li>
-<li>打印操作信息</li>
-<li>执行特定逻辑</li>
-</ul>
-</li>
-<li><p><strong>特殊场景整理</strong>：</p>
-<ul>
-<li>节点重启的恢复脚本</li>
-<li>配置参数更新的更新脚本</li>
-</ul>
-</li>
-<li><p><strong>错误处理机制</strong>：</p>
-<ul>
-<li>错误记录和退出处理</li>
-</ul>
-</li>
-<li><p><strong>日志记录</strong>：</p>
-<ul>
-<li>操作过程和结果记录</li>
-</ul>
-</li>
-<li><p><strong>组件间的依赖关系</strong>：</p>
-<ul>
-<li>管理脚本处理组件依赖</li>
-</ul>
-</li>
-<li><p><strong>环境配置和依赖安装</strong>：</p>
-<ul>
-<li>环境配置和依赖安装脚本</li>
-</ul>
-</li>
-<li><p><strong>安全性</strong>：</p>
-<ul>
-<li>文件访问权限设置</li>
-</ul>
-</li>
-<li><p><strong>文档和说明</strong>：</p>
-<ul>
-<li>详细的使用和维护文档</li>
-</ul>
-</li>
-</ol>
-<p>通过上述整理和补充，可以确保引擎生命周期管理方案更加完善、合理和具体，具有更好的可操作性和维护性。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/">
-        <h2 class="post-title">1.6任务评估</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/6/12
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="总控-P2"><a href="#总控-P2" class="headerlink" title="总控 (P2)"></a>总控 (P2)</h2><h3 id="总控安装相关需求"><a href="#总控安装相关需求" class="headerlink" title="总控安装相关需求"></a>总控安装相关需求</h3><h4 id="安装脚本中加入IP设置的交互：文档-编码"><a href="#安装脚本中加入IP设置的交互：文档-编码" class="headerlink" title="安装脚本中加入IP设置的交互：文档+编码"></a>安装脚本中加入IP设置的交互：文档+编码</h4><ul>
-<li><strong>工时评估</strong>：2.4d</li>
-</ul>
-<h4 id="打总控包时需要将安装脚本挪到安装包的第一层目录下"><a href="#打总控包时需要将安装脚本挪到安装包的第一层目录下" class="headerlink" title="打总控包时需要将安装脚本挪到安装包的第一层目录下"></a>打总控包时需要将安装脚本挪到安装包的第一层目录下</h4><ul>
-<li><strong>工时评估</strong>：0.34d</li>
-</ul>
-<h4 id="需要调整安装脚本的默认工作目录"><a href="#需要调整安装脚本的默认工作目录" class="headerlink" title="需要调整安装脚本的默认工作目录"></a>需要调整安装脚本的默认工作目录</h4><ul>
-<li><strong>工时评估</strong>：0.34d</li>
-</ul>
-<h4 id="安装的残留清除：文档-编码"><a href="#安装的残留清除：文档-编码" class="headerlink" title="安装的残留清除：文档+编码"></a>安装的残留清除：文档+编码</h4><ul>
-<li><strong>工时评估</strong>：2.4d</li>
-</ul>
-<h4 id="在总控安装时需要将上次残留的总控给清除干净，并进行安装"><a href="#在总控安装时需要将上次残留的总控给清除干净，并进行安装" class="headerlink" title="在总控安装时需要将上次残留的总控给清除干净，并进行安装"></a>在总控安装时需要将上次残留的总控给清除干净，并进行安装</h4><ul>
-<li><strong>工时评估</strong>：2.2d</li>
-</ul>
-<h4 id="环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件"><a href="#环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件" class="headerlink" title="环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件"></a>环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件</h4><ul>
-<li><strong>工时评估</strong>：0.8d</li>
-</ul>
-<h4 id="总控数据初始化调整：纯执行"><a href="#总控数据初始化调整：纯执行" class="headerlink" title="总控数据初始化调整：纯执行"></a>总控数据初始化调整：纯执行</h4><ul>
-<li><strong>工时评估</strong>：2d</li>
-</ul>
-<h3 id="总控卸载相关的需求"><a href="#总控卸载相关的需求" class="headerlink" title="总控卸载相关的需求"></a>总控卸载相关的需求</h3><h4 id="打包时将总控的卸载脚本的调整到第一层目录"><a href="#打包时将总控的卸载脚本的调整到第一层目录" class="headerlink" title="打包时将总控的卸载脚本的调整到第一层目录"></a>打包时将总控的卸载脚本的调整到第一层目录</h4><ul>
-<li><strong>工时评估</strong>：0.34d</li>
-</ul>
-<h4 id="卸载脚本需要调整默认的工作目录位置"><a href="#卸载脚本需要调整默认的工作目录位置" class="headerlink" title="卸载脚本需要调整默认的工作目录位置"></a>卸载脚本需要调整默认的工作目录位置</h4><ul>
-<li><strong>工时评估</strong>：0.34d</li>
-</ul>
-<h3 id="总控升级相关的需求"><a href="#总控升级相关的需求" class="headerlink" title="总控升级相关的需求"></a>总控升级相关的需求</h3><h4 id="总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）"><a href="#总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）" class="headerlink" title="总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）"></a>总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）</h4><ul>
-<li><strong>工时评估</strong>：5.6d</li>
-</ul>
-<h4 id="在总控数据初始化的时候插件包数据初始化的代码需要做相关调整"><a href="#在总控数据初始化的时候插件包数据初始化的代码需要做相关调整" class="headerlink" title="在总控数据初始化的时候插件包数据初始化的代码需要做相关调整"></a>在总控数据初始化的时候插件包数据初始化的代码需要做相关调整</h4><ul>
-<li><strong>工时评估</strong>：2.2d</li>
-</ul>
-<h4 id="在总控升级包导入的时候需要对插件包导入逻辑做相关的调整"><a href="#在总控升级包导入的时候需要对插件包导入逻辑做相关的调整" class="headerlink" title="在总控升级包导入的时候需要对插件包导入逻辑做相关的调整"></a>在总控升级包导入的时候需要对插件包导入逻辑做相关的调整</h4><ul>
-<li><strong>工时评估</strong>：4.2d</li>
-</ul>
-<h4 id="增加对插件增量包导入的支持"><a href="#增加对插件增量包导入的支持" class="headerlink" title="增加对插件增量包导入的支持"></a>增加对插件增量包导入的支持</h4><ul>
-<li><strong>工时评估</strong>：1.4d</li>
-</ul>
-<h4 id="新增升级管理模块：升级包导入"><a href="#新增升级管理模块：升级包导入" class="headerlink" title="新增升级管理模块：升级包导入"></a>新增升级管理模块：升级包导入</h4><ul>
-<li><strong>工时评估</strong>：4.2d</li>
-<li><strong>细节</strong>：<ul>
-<li>在升级包导入时需要拆分、校验、与记录各个升级单位的数据，如：总控、流量引擎、某个插件。</li>
-<li>需要展示升级包导入状态。</li>
-<li>各个升级单位的版本识别。</li>
-</ul>
-</li>
-</ul>
-<h4 id="新增升级管理模块：展示每个升级单位的版本日志（插件升级，由-sc-调用插件管理程序实现）"><a href="#新增升级管理模块：展示每个升级单位的版本日志（插件升级，由-sc-调用插件管理程序实现）" class="headerlink" title="新增升级管理模块：展示每个升级单位的版本日志（插件升级，由 sc 调用插件管理程序实现）"></a>新增升级管理模块：展示每个升级单位的版本日志（插件升级，由 sc 调用插件管理程序实现）</h4><ul>
-<li><strong>工时评估</strong>：1.4d</li>
-</ul>
-<h4 id="新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）"><a href="#新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）" class="headerlink" title="新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）"></a>新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）</h4><h4 id="新增升级管理模块：聚合已安装-绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表"><a href="#新增升级管理模块：聚合已安装-绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表" class="headerlink" title="新增升级管理模块：聚合已安装&#x2F;绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表"></a>新增升级管理模块：聚合已安装&#x2F;绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表</h4><ul>
-<li><strong>工时评估</strong>：3.2d</li>
-</ul>
-<h4 id="新增升级管理模块：升级状态与进度的展示"><a href="#新增升级管理模块：升级状态与进度的展示" class="headerlink" title="新增升级管理模块：升级状态与进度的展示"></a>新增升级管理模块：升级状态与进度的展示</h4><ul>
-<li><strong>工时评估</strong>：1.4d</li>
-</ul>
-<h4 id="总控升级核心功能：总控各个组件的升级调度逻辑"><a href="#总控升级核心功能：总控各个组件的升级调度逻辑" class="headerlink" title="总控升级核心功能：总控各个组件的升级调度逻辑"></a>总控升级核心功能：总控各个组件的升级调度逻辑</h4><ul>
-<li><strong>工时评估</strong>：0.8d</li>
-</ul>
-<h4 id="总控升级核心功能：升级进度的反馈逻辑"><a href="#总控升级核心功能：升级进度的反馈逻辑" class="headerlink" title="总控升级核心功能：升级进度的反馈逻辑"></a>总控升级核心功能：升级进度的反馈逻辑</h4><ul>
-<li><strong>工时评估</strong>：0.8d</li>
-</ul>
-<h4 id="总控升级核心功能：升级失败信息的反馈"><a href="#总控升级核心功能：升级失败信息的反馈" class="headerlink" title="总控升级核心功能：升级失败信息的反馈"></a>总控升级核心功能：升级失败信息的反馈</h4><ul>
-<li><strong>工时评估</strong>：0.8d</li>
-</ul>
-<h4 id="总控升级核心功能：升级失败的回滚调度"><a href="#总控升级核心功能：升级失败的回滚调度" class="headerlink" title="总控升级核心功能：升级失败的回滚调度"></a>总控升级核心功能：升级失败的回滚调度</h4><ul>
-<li><strong>工时评估</strong>：2.2d</li>
-</ul>
-<h4 id="总控升级核心功能：升级成功的确认调度"><a href="#总控升级核心功能：升级成功的确认调度" class="headerlink" title="总控升级核心功能：升级成功的确认调度"></a>总控升级核心功能：升级成功的确认调度</h4><ul>
-<li><strong>工时评估</strong>：2.2d</li>
-</ul>
-<h2 id="流量引擎-P1"><a href="#流量引擎-P1" class="headerlink" title="流量引擎 (P1)"></a>流量引擎 (P1)</h2><h3 id="引擎安装界面相关"><a href="#引擎安装界面相关" class="headerlink" title="引擎安装界面相关"></a>引擎安装界面相关</h3><h4 id="引擎安装界面新增授权状态过滤选项"><a href="#引擎安装界面新增授权状态过滤选项" class="headerlink" title="引擎安装界面新增授权状态过滤选项"></a>引擎安装界面新增授权状态过滤选项</h4><ul>
-<li><strong>分析</strong>：这个需要 installer 这边查询授权接口，聚合查询。</li>
-<li><strong>关键词</strong>：总控联调、前后端联调</li>
-<li><strong>工时评估</strong>：0.8d</li>
-</ul>
-<h4 id="引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点"><a href="#引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点" class="headerlink" title="引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点"></a>引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点</h4><ul>
-<li><strong>分析</strong>：这里设计前端修改较大，后端改动不多。</li>
-<li><strong>关键词</strong>：前后端联调</li>
-<li><strong>工时评估</strong>：0.4d</li>
-</ul>
-<h4 id="引擎安装、卸载失败原因后端记录、展示"><a href="#引擎安装、卸载失败原因后端记录、展示" class="headerlink" title="引擎安装、卸载失败原因后端记录、展示"></a>引擎安装、卸载失败原因后端记录、展示</h4><ul>
-<li><strong>分析</strong>：需要加一张引擎生命周期操作表，记录某引擎下的操作，失败原因，时间等信息，便于查询展示。</li>
-<li><strong>关键词</strong>：表结构设计、前后端联调、引擎联调</li>
-<li><strong>工时评估</strong>：1.3d</li>
-</ul>
-<h4 id="已到期、未到期引擎工作节点展示"><a href="#已到期、未到期引擎工作节点展示" class="headerlink" title="已到期、未到期引擎工作节点展示"></a>已到期、未到期引擎工作节点展示</h4><ul>
-<li><strong>分析</strong>：installer 各个工作节点查询授权，聚合展示。</li>
-<li><strong>关键词</strong>：前后端联调</li>
-<li><strong>工时评估</strong>：0.8d</li>
-</ul>
-<h3 id="节点新增"><a href="#节点新增" class="headerlink" title="节点新增"></a>节点新增</h3><h4 id="节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段"><a href="#节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段" class="headerlink" title="节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段"></a>节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段</h4><ul>
-<li><strong>分析</strong>：新增检测项目。</li>
-<li><strong>关键词</strong>：前后端联调</li>
-<li><strong>工时评估</strong>：1.3d</li>
-</ul>
-<h4 id="允许管理节点扩容，技术调研"><a href="#允许管理节点扩容，技术调研" class="headerlink" title="允许管理节点扩容，技术调研"></a>允许管理节点扩容，技术调研</h4><ul>
-<li><strong>分析</strong>：需要做技术调研，测试，查看相关代码。</li>
-<li><strong>关键词</strong>：技术难点</li>
-<li><strong>工时评估</strong>：3d (做不到)</li>
-</ul>
-<h4 id="管理节点扩容，实现"><a href="#管理节点扩容，实现" class="headerlink" title="管理节点扩容，实现"></a>管理节点扩容，实现</h4><ul>
-<li><strong>分析</strong>：实现管理节点新增。</li>
-<li><strong>关键词</strong>：引擎配合</li>
-<li><strong>工时评估</strong>：3d (做不到)</li>
-</ul>
-<h3 id="引擎安装资源检测"><a href="#引擎安装资源检测" class="headerlink" title="引擎安装资源检测"></a>引擎安装资源检测</h3><h4 id="硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更"><a href="#硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更" class="headerlink" title="硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更"></a>硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更</h4><ul>
-<li><strong>分析</strong>：检测逻辑变更，展示逻辑变更。</li>
-<li><strong>关键词</strong>：前后端联调</li>
-<li><strong>工时评估</strong>：2.6d</li>
-</ul>
-<h4 id="程序冲突检测，冲突则不符合"><a href="#程序冲突检测，冲突则不符合" class="headerlink" title="程序冲突检测，冲突则不符合"></a>程序冲突检测，冲突则不符合</h4><ul>
-<li><strong>分析</strong>：统一程序冲突检测定义逻辑，出相应文档。</li>
-<li><strong>关键词</strong>：前后端联调</li>
-<li><strong>工时评估</strong>：1.3d</li>
-</ul>
-<h4 id="多节点安装并行执行"><a href="#多节点安装并行执行" class="headerlink" title="多节点安装并行执行"></a>多节点安装并行执行</h4><ul>
-<li><strong>分析</strong>：已实现。</li>
-<li><strong>工时评估</strong>：0</li>
-</ul>
-<h4 id="多节点安装，安装失败的引擎节点触发清理操作，卸载干净"><a href="#多节点安装，安装失败的引擎节点触发清理操作，卸载干净" class="headerlink" title="多节点安装，安装失败的引擎节点触发清理操作，卸载干净"></a>多节点安装，安装失败的引擎节点触发清理操作，卸载干净</h4><ul>
-<li><strong>分析</strong>：触发卸载操作，难点在可靠性的保证，当作一个新脚本实现，<code>uninstall --force</code>。</li>
-<li><strong>关键词</strong>：引擎联调、技术方案</li>
-<li><strong>工时评估</strong>：4.2d</li>
-</ul>
-<h4 id="多账户引擎安装操作时，提示引擎正在安装中"><a href="#多账户引擎安装操作时，提示引擎正在安装中" class="headerlink" title="多账户引擎安装操作时，提示引擎正在安装中"></a>多账户引擎安装操作时，提示引擎正在安装中</h4><ul>
-<li><strong>分析</strong>：当重入时，返回相应异常信息。</li>
-<li><strong>关键词</strong>：前后端联调</li>
-<li><strong>工时评估</strong>：1.4d</li>
-</ul>
-<h4 id="引擎编辑页名称重复校验"><a href="#引擎编辑页名称重复校验" class="headerlink" title="引擎编辑页名称重复校验"></a>引擎编辑页名称重复校验</h4><ul>
-<li><strong>分析</strong>：接口处做重复校验。</li>
-<li><strong>关键词</strong>：前后端联调</li>
-<li><strong>工时评估</strong>：0.4d</li>
-</ul>
-<h4 id="引擎安装详情优化"><a href="#引擎安装详情优化" class="headerlink" title="引擎安装详情优化"></a>引擎安装详情优化</h4><ul>
-<li><strong>分析</strong>：前端去掉了一些字段，增加了跳转。</li>
-<li><strong>关键词</strong>：前后端联调</li>
-<li><strong>工时评估</strong>：0.34d</li>
-</ul>
-<h3 id="卸载优化"><a href="#卸载优化" class="headerlink" title="卸载优化"></a>卸载优化</h3><h4 id="引擎离线时可以强制卸载，（删除对此节点授权）"><a href="#引擎离线时可以强制卸载，（删除对此节点授权）" class="headerlink" title="引擎离线时可以强制卸载，（删除对此节点授权）"></a>引擎离线时可以强制卸载，（删除对此节点授权）</h4><ul>
-<li><strong>分析</strong>：技术难点在于当引擎恢复后，是否影响引擎和总控的工作，需要将所有引擎与总控的通信机制整理出来后，修改机制，当没有获得总控认可，流量不被处理。</li>
-<li><strong>关键词</strong>：前后端联调、技术难点、技术方案</li>
-<li><strong>工时评估</strong>：6.8d</li>
-</ul>
-<h4 id="新增引擎节点离线卸载脚本（执行后该节点会释放资源）"><a href="#新增引擎节点离线卸载脚本（执行后该节点会释放资源）" class="headerlink" title="新增引擎节点离线卸载脚本（执行后该节点会释放资源）"></a>新增引擎节点离线卸载脚本（执行后该节点会释放资源）</h4><ul>
-<li><strong>分析</strong>：每个组件实现节点卸载脚本，卸载脚本执行节点卸载。</li>
-<li><strong>关键词</strong>：引擎联调</li>
-<li><strong>工时评估</strong>：2.6d</li>
-</ul>
-<h4 id="界面卸载交互确认密码"><a href="#界面卸载交互确认密码" class="headerlink" title="界面卸载交互确认密码"></a>界面卸载交互确认密码</h4><ul>
-<li><strong>分析</strong>：确认密码接口。</li>
-<li><strong>关键词</strong>：前后端联调、总控联调</li>
-<li><strong>工时评估</strong>：0.34d</li>
-</ul>
-<h2 id="边车引擎-P1"><a href="#边车引擎-P1" class="headerlink" title="边车引擎 (P1)"></a>边车引擎 (P1)</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="边车引擎安装列表优化"><a href="#边车引擎安装列表优化" class="headerlink" title="边车引擎安装列表优化"></a>边车引擎安装列表优化</h4><ul>
-<li><strong>工时评估</strong>：2d</li>
-</ul>
-<h4 id="安装弹窗优化"><a href="#安装弹窗优化" class="headerlink" title="安装弹窗优化"></a>安装弹窗优化</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h4 id="安装详情页优化"><a href="#安装详情页优化" class="headerlink" title="安装详情页优化"></a>安装详情页优化</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="编辑页面优化"><a href="#编辑页面优化" class="headerlink" title="编辑页面优化"></a>编辑页面优化</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="边车引擎资源检测前优化"><a href="#边车引擎资源检测前优化" class="headerlink" title="边车引擎资源检测前优化"></a>边车引擎资源检测前优化</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="安装失败回滚"><a href="#安装失败回滚" class="headerlink" title="安装失败回滚"></a>安装失败回滚</h4><ul>
-<li><strong>工时评估</strong>：1.5d</li>
-</ul>
-<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><h4 id="提供后台强制卸载脚本"><a href="#提供后台强制卸载脚本" class="headerlink" title="提供后台强制卸载脚本"></a>提供后台强制卸载脚本</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="新增强制卸载功能"><a href="#新增强制卸载功能" class="headerlink" title="新增强制卸载功能"></a>新增强制卸载功能</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><h4 id="边车升级包导入"><a href="#边车升级包导入" class="headerlink" title="边车升级包导入"></a>边车升级包导入</h4><ul>
-<li><strong>工时评估</strong>：2d</li>
-</ul>
-<h4 id="边车正常升级功能（需要C-组配合提供polycube和envoy升级脚本）"><a href="#边车正常升级功能（需要C-组配合提供polycube和envoy升级脚本）" class="headerlink" title="边车正常升级功能（需要C++组配合提供polycube和envoy升级脚本）"></a>边车正常升级功能（需要C++组配合提供polycube和envoy升级脚本）</h4><ul>
-<li><strong>工时评估</strong>：3d</li>
-</ul>
-<h4 id="升级失败回滚"><a href="#升级失败回滚" class="headerlink" title="升级失败回滚"></a>升级失败回滚</h4><ul>
-<li><strong>工时评估</strong>：3d</li>
-<li><strong>细节</strong>：实现方案或许可以在升级前把<code>/opt</code>目录下的组件先备份，升级失败后恢复相应目录，重启相关组件进程；升级成功则把备份数据删掉。</li>
-</ul>
-<h2 id="镜像引擎-P2"><a href="#镜像引擎-P2" class="headerlink" title="镜像引擎 (P2)"></a>镜像引擎 (P2)</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><h4 id="引擎授权状态查询（暂定调总控接口后聚合）"><a href="#引擎授权状态查询（暂定调总控接口后聚合）" class="headerlink" title="引擎授权状态查询（暂定调总控接口后聚合）"></a>引擎授权状态查询（暂定调总控接口后聚合）</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="名称重复校验（只对已安装的检测）"><a href="#名称重复校验（只对已安装的检测）" class="headerlink" title="名称重复校验（只对已安装的检测）"></a>名称重复校验（只对已安装的检测）</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="名称限制在63长度以下"><a href="#名称限制在63长度以下" class="headerlink" title="名称限制在63长度以下"></a>名称限制在63长度以下</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）"><a href="#安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）" class="headerlink" title="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）"></a>安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）</h4><ul>
-<li><strong>工时评估</strong>：3d</li>
-</ul>
-<h4 id="多账号安装时要加锁"><a href="#多账号安装时要加锁" class="headerlink" title="多账号安装时要加锁"></a>多账号安装时要加锁</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="相关日志要做记录（中间件或统一一种记录方式）"><a href="#相关日志要做记录（中间件或统一一种记录方式）" class="headerlink" title="相关日志要做记录（中间件或统一一种记录方式）"></a>相关日志要做记录（中间件或统一一种记录方式）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
-<li><strong>工时评估</strong>：1.5d</li>
-</ul>
-<h4 id="离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）"><a href="#离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）" class="headerlink" title="离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）"></a>离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）</h4><ul>
-<li><strong>工时评估</strong>：1.5d</li>
-</ul>
-<h4 id="离线安装：系统资源可用性检测，判断是否满足安装要求"><a href="#离线安装：系统资源可用性检测，判断是否满足安装要求" class="headerlink" title="离线安装：系统资源可用性检测，判断是否满足安装要求"></a>离线安装：系统资源可用性检测，判断是否满足安装要求</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h4 id="离线安装：卸载残留检测"><a href="#离线安装：卸载残留检测" class="headerlink" title="离线安装：卸载残留检测"></a>离线安装：卸载残留检测</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="离线安装：安装包下载接口（新增接口）"><a href="#离线安装：安装包下载接口（新增接口）" class="headerlink" title="离线安装：安装包下载接口（新增接口）"></a>离线安装：安装包下载接口（新增接口）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h4 id="离线安装：失败重试-回滚（大概率也会失败，次数和形式待定，是否需要交互）"><a href="#离线安装：失败重试-回滚（大概率也会失败，次数和形式待定，是否需要交互）" class="headerlink" title="离线安装：失败重试&#x2F;回滚（大概率也会失败，次数和形式待定，是否需要交互）"></a>离线安装：失败重试&#x2F;回滚（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
-<li><strong>工时评估</strong>：1.5d</li>
-</ul>
-<h4 id="离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）"><a href="#离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）" class="headerlink" title="离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）"></a>离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h3 id="卸载-1"><a href="#卸载-1" class="headerlink" title="卸载"></a>卸载</h3><h4 id="强制卸载，清除相关注册信息"><a href="#强制卸载，清除相关注册信息" class="headerlink" title="强制卸载，清除相关注册信息"></a>强制卸载，清除相关注册信息</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h4 id="被强制卸载的引擎若再次重连则不做处理"><a href="#被强制卸载的引擎若再次重连则不做处理" class="headerlink" title="被强制卸载的引擎若再次重连则不做处理"></a>被强制卸载的引擎若再次重连则不做处理</h4><ul>
-<li><strong>工时评估</strong>：5d</li>
-</ul>
-<h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-1"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-1" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
-<li><strong>工时评估</strong>：1.5d</li>
-</ul>
-<h4 id="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"><a href="#失败重试（大概率也会失败，次数和形式待定，是否需要交互）" class="headerlink" title="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"></a>失败重试（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h3 id="升级-1"><a href="#升级-1" class="headerlink" title="升级"></a>升级</h3><h4 id="升级包导入、取消导入（需新增接口，或共用接口）"><a href="#升级包导入、取消导入（需新增接口，或共用接口）" class="headerlink" title="升级包导入、取消导入（需新增接口，或共用接口）"></a>升级包导入、取消导入（需新增接口，或共用接口）</h4><ul>
-<li><strong>工时评估</strong>：2d</li>
-</ul>
-<h4 id="changelog（生成方式、内容和存放位置待定）"><a href="#changelog（生成方式、内容和存放位置待定）" class="headerlink" title="changelog（生成方式、内容和存放位置待定）"></a>changelog（生成方式、内容和存放位置待定）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h4 id="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）"><a href="#升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）" class="headerlink" title="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）"></a>升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）</h4><ul>
-<li><strong>工时评估</strong>：2d</li>
-</ul>
-<h4 id="多账号升级时要加锁"><a href="#多账号升级时要加锁" class="headerlink" title="多账号升级时要加锁"></a>多账号升级时要加锁</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="卸载升级中的引擎时要报错"><a href="#卸载升级中的引擎时要报错" class="headerlink" title="卸载升级中的引擎时要报错"></a>卸载升级中的引擎时要报错</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="升级时禁止对相关agent操作"><a href="#升级时禁止对相关agent操作" class="headerlink" title="升级时禁止对相关agent操作"></a>升级时禁止对相关agent操作</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="升级包要做依赖记录（需约定记录方式）"><a href="#升级包要做依赖记录（需约定记录方式）" class="headerlink" title="升级包要做依赖记录（需约定记录方式）"></a>升级包要做依赖记录（需约定记录方式）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h4 id="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）"><a href="#升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）" class="headerlink" title="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）"></a>升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h2 id="流量-Agent-P2"><a href="#流量-Agent-P2" class="headerlink" title="流量 Agent (P2)"></a>流量 Agent (P2)</h2><h3 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h3><h4 id="Agent授权状态查询（暂定调总控接口后聚合）"><a href="#Agent授权状态查询（暂定调总控接口后聚合）" class="headerlink" title="Agent授权状态查询（暂定调总控接口后聚合）"></a>Agent授权状态查询（暂定调总控接口后聚合）</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="名称重复校验（只对已安装的检测）-1"><a href="#名称重复校验（只对已安装的检测）-1" class="headerlink" title="名称重复校验（只对已安装的检测）"></a>名称重复校验（只对已安装的检测）</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="名称限制在63长度以下-1"><a href="#名称限制在63长度以下-1" class="headerlink" title="名称限制在63长度以下"></a>名称限制在63长度以下</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-2"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-2" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
-<li><strong>工时评估</strong>：1.5d</li>
-</ul>
-<h4 id="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）-1"><a href="#安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）-1" class="headerlink" title="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）"></a>安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）</h4><ul>
-<li><strong>工时评估</strong>：3d</li>
-</ul>
-<h4 id="多账号安装时要加锁-1"><a href="#多账号安装时要加锁-1" class="headerlink" title="多账号安装时要加锁"></a>多账号安装时要加锁</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="相关日志要做记录（中间件或统一一种记录方式）（给总控做）"><a href="#相关日志要做记录（中间件或统一一种记录方式）（给总控做）" class="headerlink" title="相关日志要做记录（中间件或统一一种记录方式）（给总控做）"></a>相关日志要做记录（中间件或统一一种记录方式）（给总控做）</h4><h4 id="组件要加版本号并记录（信息存放位置及内容不确定）"><a href="#组件要加版本号并记录（信息存放位置及内容不确定）" class="headerlink" title="组件要加版本号并记录（信息存放位置及内容不确定）"></a>组件要加版本号并记录（信息存放位置及内容不确定）</h4><ul>
-<li><strong>工时评估</strong>：2d</li>
-</ul>
-<h3 id="卸载-2"><a href="#卸载-2" class="headerlink" title="卸载"></a>卸载</h3><h4 id="强制卸载，清除相关注册信息-1"><a href="#强制卸载，清除相关注册信息-1" class="headerlink" title="强制卸载，清除相关注册信息"></a>强制卸载，清除相关注册信息</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="被强制卸载的Agent若再次重连则不做处理（需要C-组处理）"><a href="#被强制卸载的Agent若再次重连则不做处理（需要C-组处理）" class="headerlink" title="被强制卸载的Agent若再次重连则不做处理（需要C++组处理）"></a>被强制卸载的Agent若再次重连则不做处理（需要C++组处理）</h4><h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-3"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-3" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
-<li><strong>工时评估</strong>：1.5d</li>
-</ul>
-<h4 id="失败重试（大概率也会失败，次数和形式待定，是否需要交互）-1"><a href="#失败重试（大概率也会失败，次数和形式待定，是否需要交互）-1" class="headerlink" title="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"></a>失败重试（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h3 id="卸载-3"><a href="#卸载-3" class="headerlink" title="卸载"></a>卸载</h3><h4 id="强制卸载，清除相关注册信息-2"><a href="#强制卸载，清除相关注册信息-2" class="headerlink" title="强制卸载，清除相关注册信息"></a>强制卸载，清除相关注册信息</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="被强制卸载的Agent若再次重连则不做处理（需要C-组处理）-1"><a href="#被强制卸载的Agent若再次重连则不做处理（需要C-组处理）-1" class="headerlink" title="被强制卸载的Agent若再次重连则不做处理（需要C++组处理）"></a>被强制卸载的Agent若再次重连则不做处理（需要C++组处理）</h4><h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-4"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-4" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
-<li><strong>工时评估</strong>：1.5d</li>
-</ul>
-<h4 id="失败重试（大概率也会失败，次数和形式待定，是否需要交互）-2"><a href="#失败重试（大概率也会失败，次数和形式待定，是否需要交互）-2" class="headerlink" title="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"></a>失败重试（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h3 id="升级-2"><a href="#升级-2" class="headerlink" title="升级"></a>升级</h3><h4 id="升级包导入、取消导入（需新增接口，或共用接口）-1"><a href="#升级包导入、取消导入（需新增接口，或共用接口）-1" class="headerlink" title="升级包导入、取消导入（需新增接口，或共用接口）"></a>升级包导入、取消导入（需新增接口，或共用接口）</h4><ul>
-<li><strong>工时评估</strong>：2d</li>
-</ul>
-<h4 id="changelog（生成方式、内容和存放位置待定）-1"><a href="#changelog（生成方式、内容和存放位置待定）-1" class="headerlink" title="changelog（生成方式、内容和存放位置待定）"></a>changelog（生成方式、内容和存放位置待定）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h4 id="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）-1"><a href="#升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）-1" class="headerlink" title="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）"></a>升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）</h4><ul>
-<li><strong>工时评估</strong>：2d</li>
-</ul>
-<h4 id="多账号升级时要加锁-1"><a href="#多账号升级时要加锁-1" class="headerlink" title="多账号升级时要加锁"></a>多账号升级时要加锁</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="卸载升级中的引擎时要报错-1"><a href="#卸载升级中的引擎时要报错-1" class="headerlink" title="卸载升级中的引擎时要报错"></a>卸载升级中的引擎时要报错</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="升级时禁止编辑挂起等等操作"><a href="#升级时禁止编辑挂起等等操作" class="headerlink" title="升级时禁止编辑挂起等等操作"></a>升级时禁止编辑挂起等等操作</h4><ul>
-<li><strong>工时评估</strong>：0.5d</li>
-</ul>
-<h4 id="升级包要做依赖记录（需约定记录方式）-1"><a href="#升级包要做依赖记录（需约定记录方式）-1" class="headerlink" title="升级包要做依赖记录（需约定记录方式）"></a>升级包要做依赖记录（需约定记录方式）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-<h4 id="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）-1"><a href="#升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）-1" class="headerlink" title="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）"></a>升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
-<li><strong>工时评估</strong>：1d</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0v2/">
-        <h2 class="post-title">1.6任务评估v2.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/6/12
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <table>
-<thead>
-<tr>
-<th>需求</th>
-<th>子任务</th>
-<th>优先级</th>
-<th>负责人</th>
-<th>工时评估</th>
-<th>计划开始时间</th>
-<th>计划完成时间</th>
-<th>岗位组别</th>
-<th>任务状态</th>
-<th>前置任务</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>总控安装相关需求</td>
-<td>安装脚本中加入IP设置的交互：文档+编码</td>
-<td>P2</td>
-<td></td>
-<td>2.4</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控安装相关需求</td>
-<td>打总控包时需要将安装脚本挪到安装包的第一层目录下</td>
-<td>P2</td>
-<td></td>
-<td>0.34</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控安装相关需求</td>
-<td>需要调整安装脚本的默认工作目录</td>
-<td>P2</td>
-<td></td>
-<td>0.34</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控安装相关需求</td>
-<td>安装的残留清除：文档+编码</td>
-<td>P2</td>
-<td></td>
-<td>2.4</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控安装相关需求</td>
-<td>在总控安装时需要将上次残留的总控给清除干净，并进行安装</td>
-<td>P2</td>
-<td></td>
-<td>2.2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控安装相关需求</td>
-<td>环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件</td>
-<td>P2</td>
-<td></td>
-<td>0.8</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控安装相关需求</td>
-<td>总控数据初始化调整：纯执行</td>
-<td>P2</td>
-<td></td>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控卸载相关的需求</td>
-<td>打包时将总控的卸载脚本的调整到第一层目录</td>
-<td>P2</td>
-<td></td>
-<td>0.34</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控卸载相关的需求</td>
-<td>卸载脚本需要调整默认的工作目录位置</td>
-<td>P2</td>
-<td></td>
-<td>0.34</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级相关的需求</td>
-<td>总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）</td>
-<td>P2</td>
-<td></td>
-<td>5.6</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级相关的需求</td>
-<td>在总控数据初始化的时候插件包数据初始化的代码需要做相关调整</td>
-<td>P2</td>
-<td></td>
-<td>2.2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级相关的需求</td>
-<td>在总控升级包导入的时候需要对插件包导入逻辑做相关的调整</td>
-<td>P2</td>
-<td></td>
-<td>4.2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级相关的需求</td>
-<td>增加对插件增量包导入的支持</td>
-<td>P2</td>
-<td></td>
-<td>1.4</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级管理模块：升级包导入</td>
-<td>在升级包导入时需要拆分、校验、与记录各个升级单位的数据</td>
-<td>P2</td>
-<td></td>
-<td>4.2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级管理模块：展示每个升级单位的版本日志</td>
-<td>插件升级，由 sc 调用插件管理程序实现</td>
-<td>P2</td>
-<td></td>
-<td>1.4</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级管理模块</td>
-<td>聚合已安装&#x2F;绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表</td>
-<td>P2</td>
-<td></td>
-<td>3.2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级管理模块</td>
-<td>升级状态与进度的展示</td>
-<td>P2</td>
-<td></td>
-<td>1.4</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级核心功能</td>
-<td>总控各个组件的升级调度逻辑</td>
-<td>P2</td>
-<td></td>
-<td>0.8</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级核心功能</td>
-<td>升级进度的反馈逻辑</td>
-<td>P2</td>
-<td></td>
-<td>0.8</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级核心功能</td>
-<td>升级失败信息的反馈</td>
-<td>P2</td>
-<td></td>
-<td>0.8</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级核心功能</td>
-<td>升级失败的回滚调度</td>
-<td>P2</td>
-<td></td>
-<td>2.2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>总控升级核心功能</td>
-<td>升级成功的确认调度</td>
-<td>P2</td>
-<td></td>
-<td>2.2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>引擎安装界面新增授权状态过滤选项</td>
-<td>P1</td>
-<td></td>
-<td>0.8</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：这个需要 installer 这边查询授权接口，聚合查询。关键词：总控联调、前后端联调</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点</td>
-<td>P1</td>
-<td></td>
-<td>0.4</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：这里设计前端修改较大，后端改动不多。关键词：前后端联调</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>引擎安装、卸载失败原因后端记录、展示</td>
-<td>P1</td>
-<td></td>
-<td>1.3</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：需要加一张引擎生命周期操作表，记录某引擎下的操作，失败原因，时间等信息，便于查询展示。关键词：表结构设计、前后端联调、引擎联调</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>已到期、未到期引擎工作节点展示</td>
-<td>P1</td>
-<td></td>
-<td>0.8</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：installer 各个工作节点查询授权，聚合展示。关键词：前后端联调</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段</td>
-<td>P1</td>
-<td></td>
-<td>1.3</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：新增检测项目。关键词：前后端联调</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>允许管理节点扩容，技术调研</td>
-<td>P1</td>
-<td></td>
-<td>3d</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：需要做技术调研，测试，查看相关代码。关键词：技术难点</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>管理节点扩容，实现</td>
-<td>P1</td>
-<td></td>
-<td>3d</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：实现管理节点新增。关键词：引擎配合</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更</td>
-<td>P1</td>
-<td></td>
-<td>2.6</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：检测逻辑变更，展示逻辑变更。关键词：前后端联调</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>程序冲突检测，冲突则不符合</td>
-<td>P1</td>
-<td></td>
-<td>1.3</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：统一程序冲突检测定义逻辑，出相应文档。关键词：前后端联调</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>多节点安装并行执行</td>
-<td>P1</td>
-<td></td>
-<td>0</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>多节点安装，安装失败的引擎节点触发清理操作，卸载干净</td>
-<td>P1</td>
-<td></td>
-<td>4.2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：触发卸载操作，难点在可靠性的保证，当作一个新脚本实现，<code>uninstall --force</code>。关键词：引擎联调、技术方案</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>多账户引擎安装操作时，提示引擎正在安装中</td>
-<td>P1</td>
-<td></td>
-<td>1.4</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：当重入时，返回相应异常信息。关键词：前后端联调</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>引擎编辑页名称重复校验</td>
-<td>P1</td>
-<td></td>
-<td>0.4</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：接口处做重复校验。关键词：前后端联调</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>引擎安装详情优化</td>
-<td>P1</td>
-<td></td>
-<td>0.34</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：前端去掉了一些字段，增加了跳转。关键词：前后端联调</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>引擎离线时可以强制卸载，（删除对此节点授权）</td>
-<td>P1</td>
-<td></td>
-<td>6.8</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：技术难点在于当引擎恢复后，是否影响引擎和总控的工作，需要将所有引擎与总控的通信机制整理出来后，修改机制，当没有获得总控认可，流量不被处理。关键词：前后端联调、技术难点、技术方案</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>新增引擎节点离线卸载脚本（执行后该节点会释放资源）</td>
-<td>P1</td>
-<td></td>
-<td>2.6</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：每个组件实现节点卸载脚本，卸载脚本执行节点卸载。关键词：引擎联调</td>
-</tr>
-<tr>
-<td>流量引擎安装</td>
-<td>界面卸载交互确认密码</td>
-<td>P1</td>
-<td></td>
-<td>0.34</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td>分析：确认密码接口。关键词：前后端联调、总控联调</td>
-</tr>
-<tr>
-<td>边车引擎安装</td>
-<td>边车引擎安装列表优化</td>
-<td>P1</td>
-<td></td>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>边车引擎安装</td>
-<td>安装弹窗优化</td>
-<td>P1</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>边车引擎安装</td>
-<td>安装详情页优化</td>
-<td>P1</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>边车引擎安装</td>
-<td>编辑页面优化</td>
-<td>P1</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>边车引擎安装</td>
-<td>边车引擎资源检测前优化</td>
-<td>P1</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>边车引擎安装</td>
-<td>安装失败回滚</td>
-<td>P1</td>
-<td></td>
-<td>1.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>边车引擎安装</td>
-<td>提供后台强制卸载脚本</td>
-<td>P1</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>边车引擎安装</td>
-<td>新增强制卸载功能</td>
-<td>P1</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>边车引擎安装</td>
-<td>边车升级包导入</td>
-<td>P1</td>
-<td></td>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>边车引擎安装</td>
-<td>边车正常升级功能（需要C++组配合提供polycube和envoy升级脚本）</td>
-<td>P1</td>
-<td></td>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>升级失败回滚</td>
-<td>实现方案或许可以在升级前把<code>/opt</code>目录下的组件先备份，升级失败后恢复相应目录，重启相关组件进程；升级成功则把备份数据删掉</td>
-<td>P1</td>
-<td></td>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>引擎授权状态查询（暂定调总控接口后聚合）</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>名称重复校验（只对已安装的检测）</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>名称限制在63长度以下</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）</td>
-<td>P2</td>
-<td></td>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>多账号安装时要加锁</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>相关日志要做记录（中间件或统一一种记录方式）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>进度条（与前端约定或自行计算（可能要修改返回字段））</td>
-<td>P2</td>
-<td></td>
-<td>1.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）</td>
-<td>P2</td>
-<td></td>
-<td>1.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>离线安装：系统资源可用性检测，判断是否满足安装要求</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>离线安装：卸载残留检测</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>离线安装：安装包下载接口（新增接口）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>离线安装：失败重试&#x2F;回滚（大概率也会失败，次数和形式待定，是否需要交互）</td>
-<td>P2</td>
-<td></td>
-<td>1.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>强制卸载，清除相关注册信息</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>被强制卸载的引擎若再次重连则不做处理</td>
-<td>P2</td>
-<td></td>
-<td>5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>进度条（与前端约定或自行计算（可能要修改返回字段））</td>
-<td>P2</td>
-<td></td>
-<td>1.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>失败重试（大概率也会失败，次数和形式待定，是否需要交互）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>升级包导入、取消导入（需新增接口，或共用接口）</td>
-<td>P2</td>
-<td></td>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>changelog（生成方式、内容和存放位置待定）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）</td>
-<td>P2</td>
-<td></td>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>多账号升级时要加锁</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>卸载升级中的引擎时要报错</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>升级时禁止对相关agent操作</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>升级包要做依赖记录（需约定记录方式）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>镜像引擎安装</td>
-<td>升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>Agent授权状态查询（暂定调总控接口后聚合）</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>名称重复校验（只对已安装的检测）</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>名称限制在63长度以下</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>进度条（与前端约定或自行计算（可能要修改返回字段））</td>
-<td>P2</td>
-<td></td>
-<td>1.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）</td>
-<td>P2</td>
-<td></td>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>多账号安装时要加锁</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>相关日志要做记录（中间件或统一一种记录方式）（给总控做）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>组件要加版本号并记录（信息存放位置及内容不确定）</td>
-<td>P2</td>
-<td></td>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>强制卸载，清除相关注册信息</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>被强制卸载的Agent若再次重连则不做处理</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>进度条（与前端约定或自行计算（可能要修改返回字段））</td>
-<td>P2</td>
-<td></td>
-<td>1.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>失败重试（大概率也会失败，次数和形式待定，是否需要交互）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>升级包导入、取消导入（需新增接口，或共用接口）</td>
-<td>P2</td>
-<td></td>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>changelog（生成方式、内容和存放位置待定）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）</td>
-<td>P2</td>
-<td></td>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>多账号升级时要加锁</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>卸载升级中的引擎时要报错</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>升级时禁止编辑挂起等等操作</td>
-<td>P2</td>
-<td></td>
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>升级包要做依赖记录（需约定记录方式）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>流量Agent 安装</td>
-<td>升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）</td>
-<td>P2</td>
-<td></td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>未开始</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0v2/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/06/07/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/sr%E5%AE%89%E8%A3%85/">
-        <h2 class="post-title">sr安装.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/6/7
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="需求文档存在问题"><a href="#需求文档存在问题" class="headerlink" title="需求文档存在问题"></a>需求文档存在问题</h2><p>对象 定义不明，功能边界不清晰</p>
-<p>需求理解困难：</p>
-<pre><code>歧义与误解：研发团队可能会对需求产生不同的理解，导致开发出的功能不符合用户的实际需求。
-需求变更频繁：由于最初的需求不明确，在开发过程中可能会频繁调整和变更需求，增加开发成本和时间。
-</code></pre>
-<p>设计与架构挑战：</p>
-<pre><code>设计难度增加：不明确的需求使得设计团队无法确定系统的边界和行为，从而难以进行有效的系统设计。
-架构不稳定：功能边界不清晰可能导致系统架构反复调整，影响系统的稳定性和扩展性。
-</code></pre>
-<p>开发效率降低：</p>
-<pre><code>迭代开发：由于需求的不确定性，开发团队可能需要反复迭代和重构代码，影响开发效率。
-资源浪费：投入大量时间和资源去实现不明确的功能，可能导致人力和物力的浪费。
-</code></pre>
-<p>测试与质量保障难度增大：</p>
-<pre><code>测试用例难以编写：测试团队无法明确功能的预期行为，难以编写全面的测试用例，可能导致遗漏重要的测试场景。
-缺陷难以定位：由于功能定义不明确，发现缺陷后难以确定是需求问题还是实现问题。
-</code></pre>
-<p>项目管理风险：</p>
-<pre><code>进度与预算超支：由于需求变更和开发效率低下，项目可能超出预期的进度和预算。
-团队士气受挫：频繁的变更和不确定性会导致团队成员的士气受挫，影响工作积极性和生产力。
-</code></pre>
-<h2 id="镜像-Agent"><a href="#镜像-Agent" class="headerlink" title="镜像 Agent"></a>镜像 Agent</h2><h3 id="安装机制"><a href="#安装机制" class="headerlink" title="安装机制"></a>安装机制</h3><p>用 ssh 连上节点执行 安装</p>
-<h3 id="升级、卸载机制"><a href="#升级、卸载机制" class="headerlink" title="升级、卸载机制"></a>升级、卸载机制</h3><p>向其 镜像流量 Mirror 发送命令，Mirror 的组件 AgentServer 提供了升级、卸载接口</p>
-<h3 id="镜像-Agent-公共常量的定义"><a href="#镜像-Agent-公共常量的定义" class="headerlink" title="镜像 Agent 公共常量的定义"></a>镜像 Agent 公共常量的定义</h3>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/06/07/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/sr%E5%AE%89%E8%A3%85/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
-    
-    <a class="page-num" href="/page/6/">
-        <i class="fa-solid fa-caret-left fa-fw"></i>
-    </a>
-    <a class="page-num" href="/">1</a>
-    <span class="page-omit">...</span>
-    
-    <span class="current">7</span>
-    
-    <a class="page-num" href="/page/8">
-        8
-    </a>
+  <div class="row mx-auto index-card">
     
     
-    <a class="page-num" href="/page/9">
-        9
-    </a>
-    
-    
-    <span class="page-omit">...</span>
-    <a class="page-num" href="/page/28">28</a>
-    
-    
-    <a class="page-num" href="/page/8/">
-        <i class="fa-solid fa-caret-right fa-fw"></i>
-    </a>
-    
-</div>
-
-    </div>
-    
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">xiaoy</div>
-        <div class="description">
-            <p>xiaoy<br>…</p>
-
-        </div>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a href="https://abrance.github.io">Argvchs</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
+        <a href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E6%9C%BA%E5%88%B6/" target="_self">
+          installer机制.md
+        </a>
+      </h2>
 
-    </div>
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E6%9C%BA%E5%88%B6/" target="_self">
         <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
+          概述记录 installer 相关的机制，有的需要整理，有些需要改正的会渐渐改正 机制安装、卸载、进度条，异步任务处理机制使用 redis 分布式锁机制sc 侧使用 redis 逻辑pkg&#x2F;empower&#x2F;redis_lock&#x2F;lock.go:26外部使用的接口 TryLock UnLock ，其他的没有使用到 installer 侧使用 redis 逻辑manage
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
+      </a>
 
-        </div>
+      <div class="index-btm post-metas">
         
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-24 00:00" pubdate>
+              2024-06-24
+            </time>
+          </div>
         
-    </div>
-    <script src="/js/main.js"></script>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
     
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/24/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/sr%E9%80%9A%E4%BF%A1%E7%AB%AF%E5%8F%A3%E3%80%81%E9%93%BE%E8%B7%AF%E6%95%B4%E7%90%86/" target="_self">
+          sr通信端口、链路整理.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/24/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/sr%E9%80%9A%E4%BF%A1%E7%AB%AF%E5%8F%A3%E3%80%81%E9%93%BE%E8%B7%AF%E6%95%B4%E7%90%86/" target="_self">
+        <div>
+          概述服务端口总控 sc  80 443 mysql   3306 redis   6379 nsq     4150 4151 4160 4161  installer-sr-server 8098 message-manager    21032  引擎通信关系
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-24 00:00" pubdate>
+              2024-06-24
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/20/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%A4%A7%E7%BB%84%E4%BB%B6%E3%80%81%E5%B0%8F%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E8%AE%BE%E6%83%B3/" target="_self">
+          大组件、小组件生命周期管理设想.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/20/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%A4%A7%E7%BB%84%E4%BB%B6%E3%80%81%E5%B0%8F%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E8%AE%BE%E6%83%B3/" target="_self">
+        <div>
+          概述大组件、小组件统一升级、安装、回滚、取消安装、卸载、强制卸载 逻辑 在大型软件的生命周期管理中，选择使用配置文件的方法还是约定优于配置的方法，取决于具体的需求和系统的复杂性。以下是对两种方法的比较及其适用场景的详细分析： 组件生命周期总控生命周期sequenceDiagram     participant User     participant UI as Command User Int
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-20 00:00" pubdate>
+              2024-06-20
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/18/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E6%80%BB%E6%8E%A7%E3%80%81%E5%BC%95%E6%93%8E%E3%80%81%E6%8F%92%E4%BB%B6%E7%BB%84%E4%BB%B6%E5%8C%85%E5%AE%9A%E4%B9%89/" target="_self">
+          总控、引擎、插件组件包定义.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/18/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E6%80%BB%E6%8E%A7%E3%80%81%E5%BC%95%E6%93%8E%E3%80%81%E6%8F%92%E4%BB%B6%E7%BB%84%E4%BB%B6%E5%8C%85%E5%AE%9A%E4%B9%89/" target="_self">
+        <div>
+          概述总控、引擎、插件包定义，构建、导入等关键流程实现方案，和接口设计 组件包定义总控、引擎、插件、Agent 等为大组件，它们的发布时按照下面协议约定构建出的文件称为组件包，导入到总控平台后，会在平台中生成对应可用组件，提供用户使用相应功能。结合平台自身环境，在导入后有不同的用户交互，如流量引擎组件包新导入总控平台时，平台会出现流量引擎安装交互接口，当之前已有可用的流量引擎组件时，平台则会出现流量
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-18 00:00" pubdate>
+              2024-06-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" target="_self">
+          installer目录结构.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" target="_self">
+        <div>
+          概述逻辑入口流量引擎安装 InstallProcessmanager&#x2F;manager_route.go:6 流量引擎资源检测 ResourceCheckmanager&#x2F;manager.go:1380 名词解释sxctl 镜像引擎 逻辑整理每个组件已有的取消安装逻辑
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-17 00:00" pubdate>
+              2024-06-17
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/" target="_self">
+          引擎安装管理.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/" target="_self">
+        <div>
+          引擎节点管理模块文档背景引擎节点管理的需求最早可追溯到v1.0.x版本，当时是希望实现任意数量的节点管理构成一个集群，但是因为实现过程中遇到了一些无法解决的问题，故以一种很多限制的形式流传了下来。限制有不少，其中最大的限制是：管理节点必须为奇数，且引擎一旦安装成功，管理节点无法以任何一种形式变更数量、机器、IP地址等。管理节点的数量变更需求每个版本都会有人提起，现如今又正式提出了，故对现状和历史状
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-17 00:00" pubdate>
+              2024-06-17
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" target="_self">
+          生命周期管理方案.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" target="_self">
+        <div>
+          引擎生命周期管理方案整理1. 生命周期管理框架和组件依赖的常量、变量的约定配置文件（config.env）： 配置文件用于管理节点初始化时的常量和变量，所有组件的生命周期脚本均从该配置文件中读取必要的参数。 示例配置文件内容： 1234567891011121314Version=1 LogPath=/opt/private/log# MetaInfoVIRD=211Mode=1GS=f8fb61
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-17 00:00" pubdate>
+              2024-06-17
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/" target="_self">
+          1.6任务评估
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/" target="_self">
+        <div>
+          概述总控 (P2)总控安装相关需求安装脚本中加入IP设置的交互：文档+编码 工时评估：2.4d  打总控包时需要将安装脚本挪到安装包的第一层目录下 工时评估：0.34d  需要调整安装脚本的默认工作目录 工时评估：0.34d  安装的残留清除：文档+编码 工时评估：2.4d  在总控安装时需要将上次残留的总控给清除干净，并进行安装 工时评估：2.2d  环境检测时将内存、CPU核心数、磁盘存储空间
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-12 00:00" pubdate>
+              2024-06-12
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0v2/" target="_self">
+          1.6任务评估v2.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0v2/" target="_self">
+        <div>
+          需求 子任务 优先级 负责人 工时评估 计划开始时间 计划完成时间 岗位组别 任务状态 前置任务 备注    总控安装相关需求 安装脚本中加入IP设置的交互：文档+编码 P2  2.4    未开始     总控安装相关需求 打总控包时需要将安装脚本挪到安装包的第一层目录下 P2  0.34    未开始     总控安装相关需求 需要调整安装脚本的默认工作目录 P2  0.34    未开
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-12 00:00" pubdate>
+              2024-06-12
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/07/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/sr%E5%AE%89%E8%A3%85/" target="_self">
+          sr安装.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/07/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/sr%E5%AE%89%E8%A3%85/" target="_self">
+        <div>
+          概述需求文档存在问题对象 定义不明，功能边界不清晰 需求理解困难： 歧义与误解：研发团队可能会对需求产生不同的理解，导致开发出的功能不符合用户的实际需求。 需求变更频繁：由于最初的需求不明确，在开发过程中可能会频繁调整和变更需求，增加开发成本和时间。  设计与架构挑战： 设计难度增加：不明确的需求使得设计团队无法确定系统的边界和行为，从而难以进行有效的系统设计。 架构不稳定：功能边界不清晰可能导致
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-07 00:00" pubdate>
+              2024-06-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/8/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

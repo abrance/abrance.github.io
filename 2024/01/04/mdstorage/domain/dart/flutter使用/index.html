@@ -1,207 +1,283 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>flutter使用.md | Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概念1. Widgets 基础: 在 Flutter 中，几乎所有东西都是一个 Widget —— 它是构建界面的基本单位。Widgets 描述了它们在当前配置和状态下应该呈现的 UI。 类型: 有两种主要类型的 Widgets —— StatelessWidget 和 StatefulWidget。StatelessWidget 不变，而 StatefulWidget 持有状态，并且可以在其生命">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter使用.md">
+<meta property="og:url" content="https://abrance.github.io/2024/01/04/mdstorage/domain/dart/flutter%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="概念1. Widgets 基础: 在 Flutter 中，几乎所有东西都是一个 Widget —— 它是构建界面的基本单位。Widgets 描述了它们在当前配置和状态下应该呈现的 UI。 类型: 有两种主要类型的 Widgets —— StatelessWidget 和 StatefulWidget。StatelessWidget 不变，而 StatefulWidget 持有状态，并且可以在其生命">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-11T02:55:43.721Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="dart">
+<meta property="article:tag" content="flutter">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>flutter使用.md - Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
 
 
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
 
-<link rel="stylesheet" href="/css/main.css" />
-
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
 
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>flutter使用.md</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/4
-        </span>
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/tags/dart/" style="color: #00a596">
-                    dart
-                </a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/flutter/" style="color: #ffa2c4">
-                    flutter
-                </a>
-            </span>
-            
-        </span>
-        
-    </div>
+
+<body>
+  
+
+  <header>
     
-    <div class="content" v-pre>
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="1-Widgets"><a href="#1-Widgets" class="headerlink" title="1. Widgets"></a>1. <strong>Widgets</strong></h3><ul>
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="flutter使用.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-04 00:00" pubdate>
+          January 4, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">flutter使用.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="1-Widgets"><a href="#1-Widgets" class="headerlink" title="1. Widgets"></a>1. <strong>Widgets</strong></h3><ul>
 <li><strong>基础</strong>: 在 Flutter 中，几乎所有东西都是一个 Widget —— 它是构建界面的基本单位。Widgets 描述了它们在当前配置和状态下应该呈现的 UI。</li>
 <li><strong>类型</strong>: 有两种主要类型的 Widgets —— StatelessWidget 和 StatefulWidget。StatelessWidget 不变，而 StatefulWidget 持有状态，并且可以在其生命周期内改变。</li>
 </ul>
@@ -246,63 +322,8 @@
 <li>如果你已经是 Flutter 的经验开发者，那么了解自 Flutter 2.0 以来引入的新特性（如空安全、新的渲染引擎等）也很重要。</li>
 </ul>
 <h2 id="StatefulWidget"><a href="#StatefulWidget" class="headerlink" title="StatefulWidget"></a>StatefulWidget</h2><p>在 Flutter 中，<code>StatefulWidget</code> 是一种当其状态可能在其生命周期内发生变化时使用的 Widget。以下是一个<code>StatefulWidget</code>的示例，它演示了一个简单的计数器应用，以及对其各部分的解释：</p>
-<h3 id="示例：简单计数器"><a href="#示例：简单计数器" class="headerlink" title="示例：简单计数器"></a>示例：简单计数器</h3><pre><code class="dart">import &#39;package:flutter/material.dart&#39;;
+<h3 id="示例：简单计数器"><a href="#示例：简单计数器" class="headerlink" title="示例：简单计数器"></a>示例：简单计数器</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/material.dart&#x27;</span>;<br><br><span class="hljs-keyword">void</span> main() &#123;<br>  runApp(MyApp());<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> MaterialApp(<br>      title: <span class="hljs-string">&#x27;Stateful Widget Demo&#x27;</span>,<br>      home: CounterScreen(),<br>    );<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CounterScreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatefulWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  _CounterScreenState createState() =&gt; _CounterScreenState();<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_CounterScreenState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">State</span>&lt;<span class="hljs-title">CounterScreen</span>&gt; </span>&#123;<br>  <span class="hljs-built_in">int</span> _counter = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-keyword">void</span> _incrementCounter() &#123;<br>    setState(() &#123;<br>      _counter++;<br>    &#125;);<br>  &#125;<br><br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> Scaffold(<br>      appBar: AppBar(<br>        title: Text(<span class="hljs-string">&#x27;Stateful Widget Example&#x27;</span>),<br>      ),<br>      body: Center(<br>        child: Column(<br>          mainAxisAlignment: MainAxisAlignment.center,<br>          children: &lt;Widget&gt;[<br>            Text(<span class="hljs-string">&#x27;You have pushed the button this many times:&#x27;</span>),<br>            Text(<br>              <span class="hljs-string">&#x27;<span class="hljs-subst">$_counter</span>&#x27;</span>,<br>              style: Theme.of(context).textTheme.headline4,<br>            ),<br>          ],<br>        ),<br>      ),<br>      floatingActionButton: FloatingActionButton(<br>        onPressed: _incrementCounter,<br>        tooltip: <span class="hljs-string">&#x27;Increment&#x27;</span>,<br>        child: Icon(Icons.add),<br>      ),<br>    );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-void main() &#123;
-  runApp(MyApp());
-&#125;
-
-class MyApp extends StatelessWidget &#123;
-  @override
-  Widget build(BuildContext context) &#123;
-    return MaterialApp(
-      title: &#39;Stateful Widget Demo&#39;,
-      home: CounterScreen(),
-    );
-  &#125;
-&#125;
-
-class CounterScreen extends StatefulWidget &#123;
-  @override
-  _CounterScreenState createState() =&gt; _CounterScreenState();
-&#125;
-
-class _CounterScreenState extends State&lt;CounterScreen&gt; &#123;
-  int _counter = 0;
-
-  void _incrementCounter() &#123;
-    setState(() &#123;
-      _counter++;
-    &#125;);
-  &#125;
-
-  @override
-  Widget build(BuildContext context) &#123;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(&#39;Stateful Widget Example&#39;),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: &lt;Widget&gt;[
-            Text(&#39;You have pushed the button this many times:&#39;),
-            Text(
-              &#39;$_counter&#39;,
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: &#39;Increment&#39;,
-        child: Icon(Icons.add),
-      ),
-    );
-  &#125;
-&#125;
-</code></pre>
 <h3 id="解释："><a href="#解释：" class="headerlink" title="解释："></a>解释：</h3><ul>
 <li><p><strong>MyApp 类</strong>:</p>
 <ul>
@@ -337,39 +358,8 @@ class _CounterScreenState extends State&lt;CounterScreen&gt; &#123;
 </ul>
 <p>通过使用 <code>StatefulWidget</code>，你可以创建可以动态改变的交互式界面。在上面的例子中，每次点击按钮，计数器的值都会增加，并且界面会相应地更新显示新的值。</p>
 <h2 id="StatelessWidget"><a href="#StatelessWidget" class="headerlink" title="StatelessWidget"></a>StatelessWidget</h2><p>在 Flutter 中，<code>StatelessWidget</code> 是一种不可变的 widget，它不会改变其状态。它非常适合用于不需要响应任何内部状态改变的 UI 部分。以下是一个简单的 <code>StatelessWidget</code> 最佳实践示例，以及对其各部分的解释：</p>
-<h3 id="显示静态文本的-StatelessWidget"><a href="#显示静态文本的-StatelessWidget" class="headerlink" title="显示静态文本的 StatelessWidget"></a>显示静态文本的 StatelessWidget</h3><pre><code class="dart">import &#39;package:flutter/material.dart&#39;;
+<h3 id="显示静态文本的-StatelessWidget"><a href="#显示静态文本的-StatelessWidget" class="headerlink" title="显示静态文本的 StatelessWidget"></a>显示静态文本的 StatelessWidget</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/material.dart&#x27;</span>;<br><br><span class="hljs-keyword">void</span> main() &#123;<br>  runApp(MyApp());<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> MaterialApp(<br>      title: <span class="hljs-string">&#x27;Stateless Widget Demo&#x27;</span>,<br>      home: Scaffold(<br>        appBar: AppBar(<br>          title: Text(<span class="hljs-string">&#x27;Stateless Widget Example&#x27;</span>),<br>        ),<br>        body: Center(<br>          child: GreetingText(),<br>        ),<br>      ),<br>    );<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GreetingText</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> Text(<br>      <span class="hljs-string">&#x27;Hello, Flutter!&#x27;</span>,<br>      style: TextStyle(fontSize: <span class="hljs-number">24</span>, fontWeight: FontWeight.bold),<br>    );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-void main() &#123;
-  runApp(MyApp());
-&#125;
-
-class MyApp extends StatelessWidget &#123;
-  @override
-  Widget build(BuildContext context) &#123;
-    return MaterialApp(
-      title: &#39;Stateless Widget Demo&#39;,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(&#39;Stateless Widget Example&#39;),
-        ),
-        body: Center(
-          child: GreetingText(),
-        ),
-      ),
-    );
-  &#125;
-&#125;
-
-class GreetingText extends StatelessWidget &#123;
-  @override
-  Widget build(BuildContext context) &#123;
-    return Text(
-      &#39;Hello, Flutter!&#39;,
-      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-    );
-  &#125;
-&#125;
-</code></pre>
 <h3 id="解释：-1"><a href="#解释：-1" class="headerlink" title="解释："></a>解释：</h3><ul>
 <li><p><strong>导入必要的包</strong>:</p>
 <ul>
@@ -415,63 +405,8 @@ class GreetingText extends StatelessWidget &#123;
 </ul>
 <p>这个示例展示了如何使用 <code>StatelessWidget</code> 创建基础的静态 UI。理解和熟练使用 <code>StatelessWidget</code> 是学习 Flutter 的重要一步。</p>
 <h2 id="State-类"><a href="#State-类" class="headerlink" title="State 类"></a>State 类</h2><p>在 Flutter 中，<code>State</code> 类是与 <code>StatefulWidget</code> 紧密相关的，用于管理 <code>StatefulWidget</code> 的状态。<code>State</code> 对象存储了状态信息并提供了构建与其关联的 <code>StatefulWidget</code> 的界面的逻辑。以下是一个使用 <code>State</code> 类的示例，包括一个简单的计数器应用及其解释。</p>
-<h3 id="示例：简单计数器-1"><a href="#示例：简单计数器-1" class="headerlink" title="示例：简单计数器"></a>示例：简单计数器</h3><pre><code class="dart">import &#39;package:flutter/material.dart&#39;;
+<h3 id="示例：简单计数器-1"><a href="#示例：简单计数器-1" class="headerlink" title="示例：简单计数器"></a>示例：简单计数器</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/material.dart&#x27;</span>;<br><br><span class="hljs-keyword">void</span> main() &#123;<br>  runApp(MyApp());<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> MaterialApp(<br>      title: <span class="hljs-string">&#x27;State Class Demo&#x27;</span>,<br>      home: CounterScreen(),<br>    );<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CounterScreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatefulWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  _CounterScreenState createState() =&gt; _CounterScreenState();<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_CounterScreenState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">State</span>&lt;<span class="hljs-title">CounterScreen</span>&gt; </span>&#123;<br>  <span class="hljs-built_in">int</span> _counter = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-keyword">void</span> _incrementCounter() &#123;<br>    setState(() &#123;<br>      _counter++;<br>    &#125;);<br>  &#125;<br><br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> Scaffold(<br>      appBar: AppBar(<br>        title: Text(<span class="hljs-string">&#x27;State Class Example&#x27;</span>),<br>      ),<br>      body: Center(<br>        child: Column(<br>          mainAxisAlignment: MainAxisAlignment.center,<br>          children: &lt;Widget&gt;[<br>            Text(<span class="hljs-string">&#x27;You have pushed the button this many times:&#x27;</span>),<br>            Text(<br>              <span class="hljs-string">&#x27;<span class="hljs-subst">$_counter</span>&#x27;</span>,<br>              style: Theme.of(context).textTheme.headline4,<br>            ),<br>          ],<br>        ),<br>      ),<br>      floatingActionButton: FloatingActionButton(<br>        onPressed: _incrementCounter,<br>        tooltip: <span class="hljs-string">&#x27;Increment&#x27;</span>,<br>        child: Icon(Icons.add),<br>      ),<br>    );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-void main() &#123;
-  runApp(MyApp());
-&#125;
-
-class MyApp extends StatelessWidget &#123;
-  @override
-  Widget build(BuildContext context) &#123;
-    return MaterialApp(
-      title: &#39;State Class Demo&#39;,
-      home: CounterScreen(),
-    );
-  &#125;
-&#125;
-
-class CounterScreen extends StatefulWidget &#123;
-  @override
-  _CounterScreenState createState() =&gt; _CounterScreenState();
-&#125;
-
-class _CounterScreenState extends State&lt;CounterScreen&gt; &#123;
-  int _counter = 0;
-
-  void _incrementCounter() &#123;
-    setState(() &#123;
-      _counter++;
-    &#125;);
-  &#125;
-
-  @override
-  Widget build(BuildContext context) &#123;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(&#39;State Class Example&#39;),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: &lt;Widget&gt;[
-            Text(&#39;You have pushed the button this many times:&#39;),
-            Text(
-              &#39;$_counter&#39;,
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: &#39;Increment&#39;,
-        child: Icon(Icons.add),
-      ),
-    );
-  &#125;
-&#125;
-</code></pre>
 <h3 id="解释：-2"><a href="#解释：-2" class="headerlink" title="解释："></a>解释：</h3><ol>
 <li><p><strong><code>CounterScreen</code> 类</strong>:</p>
 <ul>
@@ -497,35 +432,11 @@ class _CounterScreenState extends State&lt;CounterScreen&gt; &#123;
 <p>要使另一个 <code>StatefulWidget</code> 监听 <code>_counter</code> 变量的变化，我们需要使用一种状态管理解决。在 Flutter 中，有多种方式来实现跨 widget 的状态共享和监听，例如使用 <code>Provider</code>、<code>InheritedWidget</code>、<code>Bloc</code> 或简单的回调。以下是使用回调和 <code>Provider</code> 包的两种方法：</p>
 <h3 id="方法-1-使用回调"><a href="#方法-1-使用回调" class="headerlink" title="方法 1: 使用回调"></a>方法 1: 使用回调</h3><p>如果你只需要简单地在几个 widget 之间共享状态，可以使用回调函数。</p>
 <p>首先，修改 <code>CounterScreen</code>，使它接受一个回调函数，并在 <code>_incrementCounter</code> 方法中调用这个回调：</p>
-<pre><code class="dart">class CounterScreen extends StatefulWidget &#123;
-  final Function(int) onCounterChanged;
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CounterScreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatefulWidget</span> </span>&#123;<br>  <span class="hljs-keyword">final</span> <span class="hljs-built_in">Function</span>(<span class="hljs-built_in">int</span>) onCounterChanged;<br><br>  CounterScreen(&#123;<span class="hljs-keyword">this</span>.onCounterChanged&#125;);<br><br>  <span class="hljs-meta">@override</span><br>  _CounterScreenState createState() =&gt; _CounterScreenState();<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_CounterScreenState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">State</span>&lt;<span class="hljs-title">CounterScreen</span>&gt; </span>&#123;<br>  <span class="hljs-built_in">int</span> _counter = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-keyword">void</span> _incrementCounter() &#123;<br>    setState(() &#123;<br>      _counter++;<br>    &#125;);<br>    widget.onCounterChanged?.call(_counter);<br>  &#125;<br><br>  <span class="hljs-comment">// ... 其他代码保持不变</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-  CounterScreen(&#123;this.onCounterChanged&#125;);
-
-  @override
-  _CounterScreenState createState() =&gt; _CounterScreenState();
-&#125;
-
-class _CounterScreenState extends State&lt;CounterScreen&gt; &#123;
-  int _counter = 0;
-
-  void _incrementCounter() &#123;
-    setState(() &#123;
-      _counter++;
-    &#125;);
-    widget.onCounterChanged?.call(_counter);
-  &#125;
-
-  // ... 其他代码保持不变
-&#125;
-</code></pre>
 <p>然后，在创建 <code>CounterScreen</code> 的地方，传递一个处理 <code>_counter</code> 变化的回调函数：</p>
-<pre><code class="dart">CounterScreen(
-  onCounterChanged: (newCounterValue) &#123;
-    // 处理 _counter 变化的逻辑
-  &#125;,
-)
-</code></pre>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dart">CounterScreen(<br>  onCounterChanged: (newCounterValue) &#123;<br>    <span class="hljs-comment">// 处理 _counter 变化的逻辑</span><br>  &#125;,<br>)<br></code></pre></td></tr></table></figure>
+
 <h3 id="方法-2-使用-Provider"><a href="#方法-2-使用-Provider" class="headerlink" title="方法 2: 使用 Provider"></a>方法 2: 使用 Provider</h3><p>对于更复杂的应用，你可能想要使用 <code>Provider</code> 包来更优雅地管理状态。</p>
 <ol>
 <li><p><strong>添加 Provider 依赖</strong>：<br>在 <code>pubspec.yaml</code> 文件中添加 <code>provider</code> 包的依赖。</p>
@@ -533,126 +444,35 @@ class _CounterScreenState extends State&lt;CounterScreen&gt; &#123;
 <li><p><strong>创建一个 Model 类</strong>：<br>创建一个用于存储 <code>_counter</code> 变量和更改通知的模型类。</p>
 </li>
 </ol>
-<pre><code class="dart">class CounterModel extends ChangeNotifier &#123;
-  int _counter = 0;
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CounterModel</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ChangeNotifier</span> </span>&#123;<br>  <span class="hljs-built_in">int</span> _counter = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-built_in">int</span> <span class="hljs-keyword">get</span> counter =&gt; _counter;<br><br>  <span class="hljs-keyword">void</span> incrementCounter() &#123;<br>    _counter++;<br>    notifyListeners();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-  int get counter =&gt; _counter;
-
-  void incrementCounter() &#123;
-    _counter++;
-    notifyListeners();
-  &#125;
-&#125;
-</code></pre>
 <ol start="3">
 <li><strong>在应用顶层使用 ChangeNotifierProvider</strong>：<br>在 <code>main.dart</code> 或最顶层 widget 中，使用 <code>ChangeNotifierProvider</code> 包裹你的应用或特定屏幕。</li>
 </ol>
-<pre><code class="dart">void main() &#123;
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) =&gt; CounterModel(),
-      child: MyApp(),
-    ),
-  );
-&#125;
-</code></pre>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main() &#123;<br>  runApp(<br>    ChangeNotifierProvider(<br>      create: (context) =&gt; CounterModel(),<br>      child: MyApp(),<br>    ),<br>  );<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <ol start="4">
 <li><strong>修改 CounterScreen 以使用 CounterModel</strong>：<br>然后，修改 <code>CounterScreen</code> 以使用 <code>CounterModel</code>。</li>
 </ol>
-<pre><code class="dart">class _CounterScreenState extends State&lt;CounterScreen&gt; &#123;
-  @override
-  Widget build(BuildContext context) &#123;
-    final counterModel = Provider.of&lt;CounterModel&gt;(context, listen: false);
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_CounterScreenState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">State</span>&lt;<span class="hljs-title">CounterScreen</span>&gt; </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">final</span> counterModel = Provider.of&lt;CounterModel&gt;(context, listen: <span class="hljs-keyword">false</span>);<br><br>    <span class="hljs-keyword">return</span> Scaffold(<br>      <span class="hljs-comment">// ... UI代码</span><br>      floatingActionButton: FloatingActionButton(<br>        onPressed: () =&gt; counterModel.incrementCounter(),<br>        tooltip: <span class="hljs-string">&#x27;Increment&#x27;</span>,<br>        child: Icon(Icons.add),<br>      ),<br>    );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-    return Scaffold(
-      // ... UI代码
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =&gt; counterModel.incrementCounter(),
-        tooltip: &#39;Increment&#39;,
-        child: Icon(Icons.add),
-      ),
-    );
-  &#125;
-&#125;
-</code></pre>
 <ol start="5">
 <li><strong>在其他 widget 中监听变化</strong>：<br>在另一个 <code>StatefulWidget</code> 中，你可以使用 <code>Provider.of</code> 来监听 <code>_counter</code> 的变化。</li>
 </ol>
-<pre><code class="dart">@override
-Widget build(BuildContext context) &#123;
-  int counter = Provider.of&lt;CounterModel&gt;(context).counter; // 自动监听变化
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-meta">@override</span><br>Widget build(BuildContext context) &#123;<br>  <span class="hljs-built_in">int</span> counter = Provider.of&lt;CounterModel&gt;(context).counter; <span class="hljs-comment">// 自动监听变化</span><br><br>  <span class="hljs-comment">// 使用 counter 构建 UI</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-  // 使用 counter 构建 UI
-&#125;
-</code></pre>
 <p>使用 <code>Provider</code>，你可以在应用的不同部分中共享和监听 <code>CounterModel</code> 的状态，从而实现跨 widget 的状态同步。这种方法适合于更复杂或更大型的应用，它有助于保持代码的清晰和组织。</p>
 <h2 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h2><p><code>Provider</code> 是 Flutter 中一种流行的状态管理解决方案，它允许数据和状态跨 widget 树高效地共享和更新。以下是使用 <code>Provider</code> 的一个最佳实践示例，以及对其各部分的解释：</p>
 <h3 id="示例：计数器应用"><a href="#示例：计数器应用" class="headerlink" title="示例：计数器应用"></a>示例：计数器应用</h3><p>首先，在你的 Flutter 项目的 <code>pubspec.yaml</code> 文件中添加 <code>provider</code> 作为依赖项：</p>
-<pre><code class="yaml">dependencies:
-  flutter:
-    sdk: flutter
-  provider: ^5.0.0 # 请使用最新版本
-</code></pre>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">dependencies:</span><br>  <span class="hljs-attr">flutter:</span><br>    <span class="hljs-attr">sdk:</span> <span class="hljs-string">flutter</span><br>  <span class="hljs-attr">provider:</span> <span class="hljs-string">^5.0.0</span> <span class="hljs-comment"># 请使用最新版本</span><br></code></pre></td></tr></table></figure>
+
 <p>然后，创建一个简单的计数器模型：</p>
-<pre><code class="dart">import &#39;package:flutter/foundation.dart&#39;;
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/foundation.dart&#x27;</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CounterModel</span> <span class="hljs-title">with</span> <span class="hljs-title">ChangeNotifier</span> </span>&#123;<br>  <span class="hljs-built_in">int</span> _count = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-built_in">int</span> <span class="hljs-keyword">get</span> count =&gt; _count;<br><br>  <span class="hljs-keyword">void</span> increment() &#123;<br>    _count++;<br>    notifyListeners(); <span class="hljs-comment">// 通知监听器有更新</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-class CounterModel with ChangeNotifier &#123;
-  int _count = 0;
-
-  int get count =&gt; _count;
-
-  void increment() &#123;
-    _count++;
-    notifyListeners(); // 通知监听器有更新
-  &#125;
-&#125;
-</code></pre>
 <p><code>CounterModel</code> 类使用 <code>ChangeNotifier</code> 来通知听众（在这种情况下是 widget），当内部状态（这里是 <code>_count</code>）改变时。</p>
 <p>接下来，在应用的顶层使用 <code>ChangeNotifierProvider</code>：</p>
-<pre><code class="dart">import &#39;package:flutter/material.dart&#39;;
-import &#39;package:provider/provider.dart&#39;;
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/material.dart&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:provider/provider.dart&#x27;</span>;<br><br><span class="hljs-keyword">void</span> main() &#123;<br>  runApp(<br>    ChangeNotifierProvider(<br>      create: (context) =&gt; CounterModel(),<br>      child: MyApp(),<br>    ),<br>  );<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> MaterialApp(<br>      title: <span class="hljs-string">&#x27;Provider Demo&#x27;</span>,<br>      home: CounterScreen(),<br>    );<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CounterScreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> Scaffold(<br>      appBar: AppBar(<br>        title: Text(<span class="hljs-string">&#x27;Provider Example&#x27;</span>),<br>      ),<br>      body: Center(<br>        child: Consumer&lt;CounterModel&gt;(<br>          builder: (context, counter, child) &#123;<br>            <span class="hljs-keyword">return</span> Text(<span class="hljs-string">&#x27;Count: <span class="hljs-subst">$&#123;counter.count&#125;</span>&#x27;</span>);<br>          &#125;,<br>        ),<br>      ),<br>      floatingActionButton: FloatingActionButton(<br>        onPressed: () =&gt; context.read&lt;CounterModel&gt;().increment(),<br>        child: Icon(Icons.add),<br>      ),<br>    );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-void main() &#123;
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) =&gt; CounterModel(),
-      child: MyApp(),
-    ),
-  );
-&#125;
-
-class MyApp extends StatelessWidget &#123;
-  @override
-  Widget build(BuildContext context) &#123;
-    return MaterialApp(
-      title: &#39;Provider Demo&#39;,
-      home: CounterScreen(),
-    );
-  &#125;
-&#125;
-
-class CounterScreen extends StatelessWidget &#123;
-  @override
-  Widget build(BuildContext context) &#123;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(&#39;Provider Example&#39;),
-      ),
-      body: Center(
-        child: Consumer&lt;CounterModel&gt;(
-          builder: (context, counter, child) &#123;
-            return Text(&#39;Count: $&#123;counter.count&#125;&#39;);
-          &#125;,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =&gt; context.read&lt;CounterModel&gt;().increment(),
-        child: Icon(Icons.add),
-      ),
-    );
-  &#125;
-&#125;
-</code></pre>
 <h3 id="解释：-3"><a href="#解释：-3" class="headerlink" title="解释："></a>解释：</h3><ol>
 <li><p><strong>CounterModel</strong>:</p>
 <ul>
@@ -711,22 +531,8 @@ class CounterScreen extends StatelessWidget &#123;
 <li><p><strong>国际化应用</strong>: 当应用需要支持多种语言时，<code>MaterialApp</code> 通过本地化代理简化了这个过程。</p>
 </li>
 </ul>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre><code class="dart">MaterialApp(
-  title: &#39;My Flutter App&#39;,
-  theme: ThemeData(
-    primarySwatch: Colors.blue,
-    visualDensity: VisualDensity.adaptivePlatformDensity,
-  ),
-  initialRoute: &#39;/&#39;,
-  routes: &#123;
-    &#39;/&#39;: (context) =&gt; HomePage(),
-    &#39;/details&#39;: (context) =&gt; DetailsPage(),
-  &#125;,
-  onUnknownRoute: (settings) =&gt; MaterialPageRoute(
-    builder: (context) =&gt; UnknownPage(),
-  ),
-);
-</code></pre>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs dart">MaterialApp(<br>  title: <span class="hljs-string">&#x27;My Flutter App&#x27;</span>,<br>  theme: ThemeData(<br>    primarySwatch: Colors.blue,<br>    visualDensity: VisualDensity.adaptivePlatformDensity,<br>  ),<br>  initialRoute: <span class="hljs-string">&#x27;/&#x27;</span>,<br>  routes: &#123;<br>    <span class="hljs-string">&#x27;/&#x27;</span>: (context) =&gt; HomePage(),<br>    <span class="hljs-string">&#x27;/details&#x27;</span>: (context) =&gt; DetailsPage(),<br>  &#125;,<br>  onUnknownRoute: (settings) =&gt; MaterialPageRoute(<br>    builder: (context) =&gt; UnknownPage(),<br>  ),<br>);<br></code></pre></td></tr></table></figure>
+
 <p>在这个示例中，<code>MaterialApp</code> 定义了应用的标题、主题、初始路由、路由表以及未知路由的处理方式。这样的配置确保了应用具有统一的风格和行为，并且易于维护和扩展。</p>
 <p>总之，<code>MaterialApp</code> 是构建任何基于 Material Design 的 Flutter 应用的基础，理解并熟练使用它对于开发高质量的 Flutter 应用是非常重要的。</p>
 <p><code>MaterialApp</code> 是 Flutter 中的一个非常重要的 widget，提供了许多参数来配置应用程序的各个方面。以下是 <code>MaterialApp</code> 的一些主要参数及其含义的详细说明：</p>
@@ -796,45 +602,34 @@ class CounterScreen extends StatelessWidget &#123;
 </ul>
 <p>这些参数提供了对 Flutter 应用外观、行为和路由的全面控制。通过合理配置这些参数，可以开发出符合需求且用户体验良好的应用程序。</p>
 <h2 id="pubspec-yaml"><a href="#pubspec-yaml" class="headerlink" title="pubspec.yaml"></a>pubspec.yaml</h2><p><code>pubspec.yaml</code> 是一个在每个 Dart 和 Flutter 项目中都非常关键的文件。它用于定义项目的名称、版本、依赖项以及其他一些重要的元数据。以下是 <code>pubspec.yaml</code> 文件的主要部分及其作用的介绍：</p>
-<h3 id="1-项目名称和描述"><a href="#1-项目名称和描述" class="headerlink" title="1. 项目名称和描述"></a>1. <strong>项目名称和描述</strong></h3><pre><code class="yaml">name: my_flutter_app
-description: A new Flutter project.
-</code></pre>
+<h3 id="1-项目名称和描述"><a href="#1-项目名称和描述" class="headerlink" title="1. 项目名称和描述"></a>1. <strong>项目名称和描述</strong></h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">my_flutter_app</span><br><span class="hljs-attr">description:</span> <span class="hljs-string">A</span> <span class="hljs-string">new</span> <span class="hljs-string">Flutter</span> <span class="hljs-string">project.</span><br></code></pre></td></tr></table></figure>
+
 <ul>
 <li><code>name</code>: 项目的名称，通常与包名一致。</li>
 <li><code>description</code>: 项目的简短描述。</li>
 </ul>
-<h3 id="2-版本"><a href="#2-版本" class="headerlink" title="2. 版本"></a>2. <strong>版本</strong></h3><pre><code class="yaml">version: 1.0.0+1
-</code></pre>
+<h3 id="2-版本"><a href="#2-版本" class="headerlink" title="2. 版本"></a>2. <strong>版本</strong></h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">1.0</span><span class="hljs-number">.0</span><span class="hljs-string">+1</span><br></code></pre></td></tr></table></figure>
+
 <ul>
 <li><code>version</code>: 项目的当前版本号。这通常遵循 <a target="_blank" rel="noopener" href="https://semver.org/">语义化版本控制</a>。<code>+1</code> 是构建号，它通常用于更新程序时不改变版本号的情况。</li>
 </ul>
-<h3 id="3-环境要求"><a href="#3-环境要求" class="headerlink" title="3. 环境要求"></a>3. <strong>环境要求</strong></h3><pre><code class="yaml">environment:
-  sdk: &quot;&gt;=2.7.0 &lt;3.0.0&quot;
-</code></pre>
+<h3 id="3-环境要求"><a href="#3-环境要求" class="headerlink" title="3. 环境要求"></a>3. <strong>环境要求</strong></h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">environment:</span><br>  <span class="hljs-attr">sdk:</span> <span class="hljs-string">&quot;&gt;=2.7.0 &lt;3.0.0&quot;</span><br></code></pre></td></tr></table></figure>
+
 <ul>
 <li><code>environment</code>: 指定项目所需的 Dart SDK 版本。</li>
 </ul>
-<h3 id="4-依赖"><a href="#4-依赖" class="headerlink" title="4. 依赖"></a>4. <strong>依赖</strong></h3><pre><code class="yaml">dependencies:
-  flutter:
-    sdk: flutter
-  cupertino_icons: ^1.0.2
-</code></pre>
+<h3 id="4-依赖"><a href="#4-依赖" class="headerlink" title="4. 依赖"></a>4. <strong>依赖</strong></h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">dependencies:</span><br>  <span class="hljs-attr">flutter:</span><br>    <span class="hljs-attr">sdk:</span> <span class="hljs-string">flutter</span><br>  <span class="hljs-attr">cupertino_icons:</span> <span class="hljs-string">^1.0.2</span><br></code></pre></td></tr></table></figure>
+
 <ul>
 <li><code>dependencies</code>: 列出项目需要的所有包依赖。这里包括了 Flutter SDK 本身和其他的包，如 <code>cupertino_icons</code>。</li>
 </ul>
-<h3 id="5-开发依赖"><a href="#5-开发依赖" class="headerlink" title="5. 开发依赖"></a>5. <strong>开发依赖</strong></h3><pre><code class="yaml">dev_dependencies:
-  flutter_test:
-    sdk: flutter
-</code></pre>
+<h3 id="5-开发依赖"><a href="#5-开发依赖" class="headerlink" title="5. 开发依赖"></a>5. <strong>开发依赖</strong></h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">dev_dependencies:</span><br>  <span class="hljs-attr">flutter_test:</span><br>    <span class="hljs-attr">sdk:</span> <span class="hljs-string">flutter</span><br></code></pre></td></tr></table></figure>
+
 <ul>
 <li><code>dev_dependencies</code>: 列出项目开发过程中需要的依赖，但在生产环境中不需要的。例如，测试框架。</li>
 </ul>
-<h3 id="6-Flutter-特定配置"><a href="#6-Flutter-特定配置" class="headerlink" title="6. Flutter 特定配置"></a>6. <strong>Flutter 特定配置</strong></h3><pre><code class="yaml">flutter:
-  uses-material-design: true
-  assets:
-    - images/a_dot_burr.jpeg
-    - images/a_dot_ham.jpeg
-</code></pre>
+<h3 id="6-Flutter-特定配置"><a href="#6-Flutter-特定配置" class="headerlink" title="6. Flutter 特定配置"></a>6. <strong>Flutter 特定配置</strong></h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">flutter:</span><br>  <span class="hljs-attr">uses-material-design:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">assets:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">images/a_dot_burr.jpeg</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">images/a_dot_ham.jpeg</span><br></code></pre></td></tr></table></figure>
+
 <ul>
 <li><code>flutter</code>: 特定于 Flutter 的配置。<ul>
 <li><code>uses-material-design</code>: 是否在项目中使用 Material Design。</li>
@@ -846,50 +641,395 @@ description: A new Flutter project.
 <h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p><code>pubspec.yaml</code> 文件是项目的核心，用于管理项目的依赖项、版本和其他重要设置。当你运行 <code>flutter pub get</code> 命令时，Flutter 会查看 <code>pubspec.yaml</code> 文件并下载所需的依赖包。这个文件对于项目的构建和打包也至关重要。</p>
 <p>简而言之，<code>pubspec.yaml</code> 是 Dart 和 Flutter 项目的蓝图，它告诉 Flutter 如何正确构建和运行你的应用。</p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/dart/" class="category-chain-item">dart</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
-    
-    
-    
-    
-    
-    
-    
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/dart/" class="print-no-link">#dart</a>
+      
+        <a href="/tags/flutter/" class="print-no-link">#flutter</a>
+      
+    </div>
+  
 </div>
 
-            <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
-        </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
 
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>flutter使用.md</div>
+      <div>https://abrance.github.io/2024/01/04/mdstorage/domain/dart/flutter使用/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
         </div>
-        
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>January 4, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E8%BD%AF%E4%BB%B6%E5%85%B3%E9%94%AE%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7/" title="软件关键质量属性.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">软件关键质量属性.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/04/mdstorage/domain/vsc/git%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/" title="git使用问题.md">
+                        <span class="hidden-mobile">git使用问题.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
             </div>
-        </transition>
-        
+
+            
+          </article>
+        </div>
+      </div>
     </div>
-    <script src="/js/main.js"></script>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
     
-    
-
-
-
 
     
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

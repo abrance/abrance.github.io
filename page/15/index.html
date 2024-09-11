@@ -1,2962 +1,1029 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
-
-
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
-
-
-
-
-
-<script src="/js/lib/home.js"></script>
-
-<link rel="stylesheet" href="/css/main.css" />
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/background.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>Xiaoy</h1>
-                <h3>xiaoy blog</h3>
-                <h5></h5>
-            </div>
-        </span>
-    </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/2024/03/11/mdstorage/cargo/">
-        <h2 class="post-title">cargo.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/3/11
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="cargo-概述"><a href="#cargo-概述" class="headerlink" title="cargo 概述"></a>cargo 概述</h2><p><code>https://doc.rust-lang.org/cargo/</code></p>
-<p>Cargo 是 Rust 包管理器。 Cargo 下载 Rust 包的依赖项，编译您的包，制作可分发的包，并将它们上传到 Rust 社区的包注册表 crates.io。您可以在 GitHub 上为本书做出贡献。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/cargo/" style="color: #03a9f4">cargo</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/Rust/" style="color: #ff7d73">Rust</a>
-        </span>
-        
-    </div>
-    <a href="/2024/03/11/mdstorage/cargo/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/03/07/mdstorage/project/cToRust/rust%E7%9A%84AST/">
-        <h2 class="post-title">rust的AST.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/project/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                project
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/3/7
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p><a href="mailto:&#49;&#x31;&#48;&#x33;&#x30;&#x39;&#x38;&#x36;&#x30;&#x37;&#64;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;">&#49;&#x31;&#48;&#x33;&#x30;&#x39;&#x38;&#x36;&#x30;&#x37;&#64;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;</a></p>
-<h2 id="Rust-输出-AST"><a href="#Rust-输出-AST" class="headerlink" title="Rust 输出 AST"></a>Rust 输出 AST</h2><h3 id="切换为-nightly-版本"><a href="#切换为-nightly-版本" class="headerlink" title="切换为 nightly 版本"></a>切换为 nightly 版本</h3><p><code>rustup override set nightly</code></p>
-<p><code>rustc --version</code></p>
-<h3 id="输出-AST"><a href="#输出-AST" class="headerlink" title="输出 AST"></a>输出 AST</h3><pre><code class="bash">rustc -Z help
-
-# 简略
-rustc +nightly src/main.rs -Z unpretty=ast-tree
-
-# 详细
-rustc +nightly src/main.rs -Z unpretty=ast-tree,expanded
-</code></pre>
-<h2 id="Rust-AST-分析"><a href="#Rust-AST-分析" class="headerlink" title="Rust AST 分析"></a>Rust AST 分析</h2><h2 id="Rust-AST-to-Rust-code"><a href="#Rust-AST-to-Rust-code" class="headerlink" title="Rust AST to Rust code"></a>Rust AST to Rust code</h2><h2 id="构建-Rust-程序"><a href="#构建-Rust-程序" class="headerlink" title="构建 Rust 程序"></a>构建 Rust 程序</h2><h3 id="syn-ItemFn"><a href="#syn-ItemFn" class="headerlink" title="syn::ItemFn"></a>syn::ItemFn</h3><pre><code class="rust">pub struct ItemFn &#123;
-    pub attrs: Vec&lt;Attribute&gt;,
-    pub vis: Visibility,
-    pub sig: Signature,
-    pub block: Box&lt;Block&gt;,
-&#125;
-</code></pre>
-<p><code>ItemFn</code> 是 <code>syn</code> 库中用于表示 Rust 函数的结构体。它包含了构成一个函数定义的所有主要部分。以下是对 <code>ItemFn</code> 结构体各字段的详细解释：</p>
-<h3 id="attrs-Vec"><a href="#attrs-Vec" class="headerlink" title="attrs: Vec&lt;Attribute&gt;"></a><code>attrs: Vec&lt;Attribute&gt;</code></h3><ul>
-<li><code>attrs</code> 字段包含了函数上的属性（attributes）。在 Rust 中，属性用于给编译器传递额外的信息，比如 <code>#[derive(Debug)]</code> 或者 <code>#[test]</code>。这些属性可以应用于许多种类的项，包括函数、结构体、枚举等。</li>
-<li>类型为 <code>Vec&lt;Attribute&gt;</code>，意味着一个函数可以有零个或多个属性。</li>
-</ul>
-<h3 id="vis-Visibility"><a href="#vis-Visibility" class="headerlink" title="vis: Visibility"></a><code>vis: Visibility</code></h3><ul>
-<li><code>vis</code> 字段表示函数的可见性（visibility）。Rust 中的可见性关键字有 <code>pub</code>、<code>pub(crate)</code> 等，用于控制项（比如函数、结构体字段等）的访问范围。</li>
-<li><code>Visibility</code> 是一个枚举，包含了不同的可见性级别，例如公开（<code>Public</code>）、私有（<code>Inherited</code>）、受限（具体受限的范围，如在模块内可见）等。</li>
-</ul>
-<h3 id="sig-Signature"><a href="#sig-Signature" class="headerlink" title="sig: Signature"></a><code>sig: Signature</code></h3><ul>
-<li><code>sig</code> 字段包含了函数的签名。函数签名定义了函数的名称、参数、返回类型以及其他如是否 <code>async</code>、是否 <code>unsafe</code> 的信息。</li>
-<li><code>Signature</code> 是一个结构体，包含了函数名称（<code>ident</code> 字段为 <code>Ident</code> 类型）、输入参数列表（<code>inputs</code> 字段为 <code>Punctuated&lt;FnArg, Comma&gt;</code> 类型）、返回类型（<code>output</code> 字段为 <code>ReturnType</code> 类型）、泛型参数等。</li>
-</ul>
-<h3 id="block-Box"><a href="#block-Box" class="headerlink" title="block: Box&lt;Block&gt;"></a><code>block: Box&lt;Block&gt;</code></h3><ul>
-<li><code>block</code> 字段表示函数体，包含了函数的实际代码块。在 Rust 中，函数体由一系列的语句和可能的尾部表达式组成。</li>
-<li>类型为 <code>Box&lt;Block&gt;</code>，这里 <code>Block</code> 是一个结构体，表示由花括号 <code>&#123;&#125;</code> 包围的代码块。<code>Box</code> 是 Rust 的一个智能指针类型，用于在堆上分配内存。这里使用 <code>Box</code> 是因为代码块可能包含大量的数据，使用堆分配可以避免栈溢出，并且可以提高数据结构的整体性能。</li>
-</ul>
-<h2 id="Signature"><a href="#Signature" class="headerlink" title="Signature"></a>Signature</h2><p><code>Signature</code> 结构体在 <code>syn</code> 库中代表了 Rust 函数的签名部分。以下是对 <code>Signature</code> 结构体各字段的详细解释：</p>
-<h3 id="constness-Option"><a href="#constness-Option" class="headerlink" title="constness: Option&lt;Const&gt;"></a><code>constness: Option&lt;Const&gt;</code></h3><ul>
-<li><code>constness</code> 字段表示函数是否是一个 <code>const</code> 函数。在 Rust 中，<code>const</code> 函数可以在编译时被求值。</li>
-<li>类型为 <code>Option&lt;Const&gt;</code>，这意味着该字段可以是 <code>None</code>（表示函数不是 <code>const</code>）或 <code>Some(Const)</code>（表示函数是 <code>const</code>）。</li>
-</ul>
-<h3 id="asyncness-Option"><a href="#asyncness-Option" class="headerlink" title="asyncness: Option&lt;Async&gt;"></a><code>asyncness: Option&lt;Async&gt;</code></h3><ul>
-<li><code>asyncness</code> 字段表示函数是否是异步的，即是否使用了 <code>async</code> 关键字。异步函数允许使用 <code>.await</code> 语法进行异步操作。</li>
-<li>类型为 <code>Option&lt;Async&gt;</code>，这意味着该字段可以是 <code>None</code>（表示函数不是异步的）或 <code>Some(Async)</code>（表示函数是异步的）。</li>
-</ul>
-<h3 id="unsafety-Option"><a href="#unsafety-Option" class="headerlink" title="unsafety: Option&lt;Unsafe&gt;"></a><code>unsafety: Option&lt;Unsafe&gt;</code></h3><ul>
-<li><code>unsafety</code> 字段表示函数是否是 <code>unsafe</code> 的。在 Rust 中，<code>unsafe</code> 函数允许执行一些正常情况下被 Rust 安全保证所禁止的操作，如直接操作裸指针。</li>
-<li>类型为 <code>Option&lt;Unsafe&gt;</code>，这意味着该字段可以是 <code>None</code>（表示函数不是 <code>unsafe</code>）或 <code>Some(Unsafe)</code>（表示函数是 <code>unsafe</code> 的）。</li>
-</ul>
-<h3 id="abi-Option"><a href="#abi-Option" class="headerlink" title="abi: Option&lt;Abi&gt;"></a><code>abi: Option&lt;Abi&gt;</code></h3><ul>
-<li><code>abi</code> 字段表示函数的应用二进制接口（Application Binary Interface，ABI）。ABI 定义了如何在不同的二进制模块或不同的编程语言之间调用函数。</li>
-<li>类型为 <code>Option&lt;Abi&gt;</code>，这意味着该字段可以是 <code>None</code>（使用 Rust 默认的 ABI）或 <code>Some(Abi)</code>（使用特定的 ABI，如 <code>&quot;C&quot;</code>）。</li>
-</ul>
-<h3 id="fn-token-Fn"><a href="#fn-token-Fn" class="headerlink" title="fn_token: Fn"></a><code>fn_token: Fn</code></h3><ul>
-<li><code>fn_token</code> 字段是 <code>Fn</code> 类型的 token，表示了 <code>fn</code> 关键字的存在。</li>
-</ul>
-<h3 id="ident-Ident"><a href="#ident-Ident" class="headerlink" title="ident: Ident"></a><code>ident: Ident</code></h3><ul>
-<li><code>ident</code> 字段是 <code>Ident</code> 类型，代表函数的名称。</li>
-</ul>
-<h3 id="generics-Generics"><a href="#generics-Generics" class="headerlink" title="generics: Generics"></a><code>generics: Generics</code></h3><ul>
-<li><code>generics</code> 字段表示函数的泛型参数。这包括泛型类型参数、生命周期参数以及它们的约束。</li>
-<li>类型为 <code>Generics</code>，它包含了函数泛型参数的详细信息。</li>
-</ul>
-<h3 id="paren-token-Paren"><a href="#paren-token-Paren" class="headerlink" title="paren_token: Paren"></a><code>paren_token: Paren</code></h3><ul>
-<li><code>paren_token</code> 字段是 <code>Paren</code> 类型的 token，表示函数参数列表周围的圆括号。</li>
-</ul>
-<h3 id="inputs-Punctuated"><a href="#inputs-Punctuated" class="headerlink" title="inputs: Punctuated&lt;FnArg, Comma&gt;"></a><code>inputs: Punctuated&lt;FnArg, Comma&gt;</code></h3><ul>
-<li><code>inputs</code> 字段表示函数的输入参数列表。</li>
-<li>类型为 <code>Punctuated&lt;FnArg, Comma&gt;</code>，这是一个使用逗号作为分隔符的列表，包含了一个或多个 <code>FnArg</code>（函数参数）。</li>
-</ul>
-<h3 id="variadic-Option"><a href="#variadic-Option" class="headerlink" title="variadic: Option&lt;Variadic&gt;"></a><code>variadic: Option&lt;Variadic&gt;</code></h3><ul>
-<li><code>variadic</code> 字段表示函数是否接受可变数量的参数（即 C 风格的可变参数函数）。</li>
-<li>类型为 <code>Option&lt;Variadic&gt;</code>，这意味着该字段可以是 <code>None</code>（表示函数不接受可变数量的参数）或 <code>Some(Variadic)</code>（表示函数接受可变数量的参数）。</li>
-</ul>
-<h3 id="output-ReturnType"><a href="#output-ReturnType" class="headerlink" title="output: ReturnType"></a><code>output: ReturnType</code></h3><ul>
-<li><code>output</code> 字段表示函数的返回类型。</li>
-<li>类型为 <code>ReturnType</code>，它可以是 <code>ReturnType::Default</code>（对应于没有明确指定返回类型的情况，等同于返回 <code>()</code>）或 <code>ReturnType::Type</code>（包含具体的返回类型）。</li>
-</ul>
-<p><code>Signature</code> 结构体提供了对 Rust 函数签名的全面描述，包括函数的名称、参数、返回类型以及其他与函数行为相关的关键字（如 <code>async</code>、<code>const</code>、<code>unsafe</code>）。通过操作这些字段，你可以解析、构造或修改函数签名的 AST。</p>
-<p>C 转换为 Rust，使用 syn 库进行 Rust 代码构建，将下面 case C转换为Rust中涉及到的变量、函数声明、调用等操作的对应关系完整的解析，给我一个模板让我能按照模板来将 C 程序和 Rust 程序的对应关系呈现出来</p>
-<h2 id="prompt"><a href="#prompt" class="headerlink" title="prompt"></a>prompt</h2><pre><code>你是 C Rust 语言领域资深专家，回答我的问题。我在做关于 C 转换为 Rust 的规则整理，其中计划使用 syn 库进行 Rust 代码构建，将下面 case 中 C转换为Rust中涉及到的变量、函数声明、调用等操作的对应关系完整的解析，并给出详细解析
-
-模板
-## **函数定义**:
-### 返回值类型
-   - **C**: 使用关键字 `void` 表示没有返回值的函数。
-   - **Rust**: Rust 中没有返回值的函数隐式返回 `()`，通常省略返回类型。
-
-### ...
-   - ...
-   - ...
-   
-## **传入参数**:
-### 传入参数格式
-   - **C**: 参数类型直接写在参数名前面。
-   - **Rust**: 参数类型由冒号隔开，格式为 `param_name: type`。
-
-### ...
-   - ...
-   - ...
-
-## **循环控制**:
-### for 循环写作格式
-   - **C**: 使用 `for` 循环，初始化变量，条件和增量在括号内定义。
-   - **Rust**: 使用 `for` 循环遍历一个范围，范围由 `start..end` 表示。
-   
-### ...
-   - ...
-   - ...
-   
-## **常用库**:
-### 标准输入输出
-   - **C**: 使用 `printf` 函数。
-   - **Rust**: 使用 `println!` 宏。
-   
-### ...
-   - ...
-   - ...
-   
-## **主函数**:
-### 主函数返回值规则
-   - **C**: 主函数 `main` 返回 `int` 类型，表示程序退出状态。
-   - **Rust**: 主函数 `main` 没有返回值，错误处理通常通过 `Result` 或 `panic!` 处理。
-
-### ...
-   - ...
-   - ...
-   
-## ...
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/Rust/" style="color: #03a9f4">Rust</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/AST/" style="color: #00bcd4">AST</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="color: #00a596">编译原理</a>
-        </span>
-        
-    </div>
-    <a href="/2024/03/07/mdstorage/project/cToRust/rust%E7%9A%84AST/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/03/07/mdstorage/domain/CICD/github_action/">
-        <h2 class="post-title">github_action.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/3/7
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p><strong>文章概述</strong></p>
-<ul>
-<li>标题：GitHub Actions 入门指南：自动化您的工作流程</li>
-<li>作者：John Doe</li>
-<li>发布日期：2023年12月30日</li>
-<li>链接地址：<a target="_blank" rel="noopener" href="https://www.example.com/github-actions-tutorial">GitHub Actions Tutorial</a></li>
-<li>摘要：本教程旨在为读者提供一个全面的 GitHub Actions 指南，帮助他们理解如何使用这个强大的自动化工具来优化他们的软件开发流程。无论是自动化测试、部署还是其他常见的开发任务，本文将一一涵盖。</li>
-</ul>
-<p><strong>技术背景与原理</strong></p>
-<ul>
-<li><strong>技术背景</strong>：GitHub Actions 是一种 CI&#x2F;CD（持续集成与持续部署）工具，允许开发者自动化各种软件开发过程中的任务，如代码测试、构建和部署。</li>
-<li><strong>关键技术</strong>：本教程的核心是 GitHub Actions 的工作流程文件（YAML 格式），它们定义了一系列的自动化步骤，类似于配方，每个步骤类似于配方中的一个步骤，按照特定顺序执行。</li>
-</ul>
-<p><strong>详细步骤</strong></p>
-<ul>
-<li><strong>逐步指南</strong>：<ol>
-<li><strong>创建工作流程文件</strong>：在仓库中的 <code>.github/workflows</code> 目录下创建一个新的 YAML 文件。</li>
-<li><strong>配置工作流程</strong>：定义工作流程的触发条件，如 <code>on: push</code> 表示每次推送时触发。</li>
-<li><strong>添加作业</strong>：定义作业和运行环境，例如 <code>runs-on: ubuntu-latest</code>。</li>
-<li><strong>定义步骤</strong>：编写执行的具体步骤，如检出代码、运行脚本等。</li>
-</ol>
-</li>
-<li><strong>截图和示例</strong>：（此处放置一个基本的 GitHub Actions 配置文件的截图或代码片段）</li>
-</ul>
-<p><strong>问题解决与常见问题</strong></p>
-<ul>
-<li><strong>问题解决</strong>：解决执行失败的一般步骤，如检查日志、修改配置文件。</li>
-<li><strong>常见问题</strong>：<ul>
-<li>Q: 如何触发工作流程？</li>
-<li>A: 通过 GitHub 事件，如 push、pull request 来触发。</li>
-<li>Q: 工作流程失败怎么办？</li>
-<li>A: 查看 GitHub Actions 日志以诊断问题。</li>
-</ul>
-</li>
-</ul>
-<p><strong>附加资源</strong></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://docs.github.com/en/actions">GitHub Actions 官方文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.continuousdelivery.com/">CI&#x2F;CD 最佳实践</a></li>
-<li><a target="_blank" rel="noopener" href="https://yamlvalidator.com/">在线 YAML 格式验证工具</a></li>
-</ul>
-<p><strong>总结</strong></p>
-<p>本教程提供了 GitHub Actions 的基础知识和操作指南，帮助读者理解如何利用这一强大的自动化工具优化他们的开发流程。通过学习如何创建和配置工作流程，读者可以提高软件开发的效率和质量。后续步骤包括深入探索更高级的特性和集成其他开发工具，以实现更复杂的自动化需求。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/github/" style="color: #ffa2c4">github</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/" style="color: #00bcd4">工作流</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/CI/" style="color: #ff7d73">CI</a>
-        </span>
-        
-    </div>
-    <a href="/2024/03/07/mdstorage/domain/CICD/github_action/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/03/07/mdstorage/domain/db/PostgreSQL%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/">
-        <h2 class="post-title">PostgreSQL相关资料.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/3/7
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="PostgreSQL-资料之一"><a href="#PostgreSQL-资料之一" class="headerlink" title="PostgreSQL 资料之一"></a>PostgreSQL 资料之一</h2><p><strong>文章概述</strong></p>
-<ul>
-<li>文章标题：PostgreSQL正在吞噬数据库世界</li>
-<li>作者：未明确标注</li>
-<li>发布日期：未提供</li>
-<li>链接地址：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/685247647">https://zhuanlan.zhihu.com/p/685247647</a></li>
-<li>文章主题简介：文章探讨了PostgreSQL不仅作为一个关系型数据库，而是作为一个数据管理的抽象框架，如何通过其可扩展性和生态系统的发展，逐渐成为数据库领域的主流实践，特别是在OLAP领域的表现和对大数据处理的影响。</li>
-</ul>
-<p><strong>主要观点</strong></p>
-<ul>
-<li>观点一：PostgreSQL的生态系统和可扩展性使其在数据库领域占据主导地位。</li>
-<li>观点二：PostgreSQL通过扩展插件，如ParadeDB和DuckDB，大幅提升了其在OLAP领域的性能。</li>
-<li>观点三：随着硬件的发展和数据库软件的进步，大数据时代的假设正在被挑战，PostgreSQL的适用场景越来越广泛。</li>
-</ul>
-<p><strong>支持论据</strong></p>
-<ul>
-<li>观点一的支持论据：文章提到PostgreSQL不仅是一个数据库，更是一个数据管理框架，通过其丰富的扩展插件支持，能够覆盖数据库领域的多个细分领域，如时序数据库、地理空间数据库等。</li>
-<li>观点二的支持论据：通过引入ParadeDB和DuckDB等扩展，PostgreSQL在OLAP性能上达到了与专用OLAP数据库相媲美的水平，这些扩展插件极大地提升了PostgreSQL在数据分析领域的竞争力。</li>
-<li>观点三的支持论据：随着硬件性能的提升和存储成本的降低，以及数据库软件技术的进步，大数据处理不再是少数场景的需求，PostgreSQL的适用性因此得到了极大的扩展。</li>
-</ul>
-<p><strong>逻辑连贯性分析</strong></p>
-<ul>
-<li>文章通过展示PostgreSQL的可扩展性和生态系统的优势，逐步引出其在OLAP领域的表现和对大数据处理观念的挑战，逻辑上形成了由内而外的扩展，从PostgreSQL的内在特性到其在外部应用场景的影响，展现了一个全面发展的视角。</li>
-</ul>
-<p><strong>不同视角考量</strong></p>
-<ul>
-<li>其他可能的观点或反驳：一些专家可能会指出，尽管PostgreSQL在许多方面表现出色，但在特定场景下，如极端的性能要求或特殊的数据处理需求中，专用数据库可能仍有其不可替代的优势。</li>
-<li>行业或领域内不同专家的意见：不同的专家可能对PostgreSQL在数据库领域的主导地位持有不同看法，特别是考虑到新兴的数据库技术和不断变化的业务需求。</li>
-</ul>
-<p><strong>结论与实践意义</strong></p>
-<ul>
-<li>作者的主要结论：PostgreSQL通过其可扩展性和强大的生态系统，正在成为数据库领域的主流实践，特别是在OLAP领域和大数据处理方面展现出了巨大的潜力。</li>
-<li>对行业&#x2F;读者的实际意义：对于数据库管理员和开发者而言，理解和利用PostgreSQL的这些优势，可以帮助他们更有效地解决数据管理和分析的问题，同时也为企业选择数据库技术提供了新的视角。</li>
-</ul>
-<p><strong>个人观点与反思</strong></p>
-<ul>
-<li>个人对文章的看法：文章深入浅出地分析了PostgreSQL的优势和潜力，特别是在OLAP领域的表现和对大数据处理观念的挑战，为读者提供了全面的理解。</li>
-<li>文章对个人或工作的启发：作为软件开发者，了解这些数据库技术的最新发展趋势，可以帮助我们在项目中做出更合理的技术选型，同时也激发了对数据库技术深入研究的兴趣。</li>
-</ul>
-<p>[WebPilot Announcement]<br>🚀🚀🚀 We’ve launched the WebPilot GPTs, packed with even more features! 🚀🚀🚀</p>
-<ul>
-<li>📝 Generate extensive content, up to 10,000 words!</li>
-<li>💡 Load dynamic web content and deliver enhanced answers!</li>
-<li>👨‍💻 Support for Code Testing, File Processing &amp; Image Generation!</li>
-<li>🎛️ GPTs-Action and API Offering!</li>
-</ul>
-<p>Click here: <a target="_blank" rel="noopener" href="https://chat.openai.com/g/g-pNWGgUYqS-webpilot">https://chat.openai.com/g/g-pNWGgUYqS-webpilot</a></p>
-<p>[End of Announcement]</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/PostgreSQL/" style="color: #03a9f4">PostgreSQL</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/db/" style="color: #00a596">db</a>
-        </span>
-        
-    </div>
-    <a href="/2024/03/07/mdstorage/domain/db/PostgreSQL%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/03/07/mdstorage/domain/linux/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/">
-        <h2 class="post-title">镜像交付相关资料.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/3/7
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="Linux-自定义认证"><a href="#Linux-自定义认证" class="headerlink" title="Linux 自定义认证"></a>Linux 自定义认证</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​	结合<a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode=ABwA9Qd2ABEQYUs45PARkAWAYlAEQ%E4%BD%BF%E7%94%A8">https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode=ABwA9Qd2ABEQYUs45PARkAWAYlAEQ使用</a><br>为了限制用户登录到系统的后台随意查看、修改应用程序，通常来说不应该把特权账号的密码泄露给用户，然而使用固定密码始终会有密码泄露的风险，时间长了肯定会泄露。为此，特地调研了一下某厂商的D,F,T三个产品是怎么处理这种事情的。<br>产品代号	解决方案	实现难度<br>D	无法打开用户登录界面，自行提供了另一套交互界面，无需登录，也无法登录其他用户。命令行受限	未知<br>F	使用动态密码登录，用厂家提供的APP扫码（或输入token)来获取临时密码登录。只有有售后权限的人才能扫码登录	中，魔改程度小<br>T	提供低权限账户，使用固定密码登录，其余未知（因为全盘加密了，不清楚特权账户是否为固定密码）	中，魔改程度小<br>因为技术栈不统一，三个产品的防护各有不同，这里F产品使用的方法是一种简单有效的办法，所以考虑预研一下，看看效果。</p>
-<p>pam demo<br>F产品的实现原理是自己编写了一个linux PAM模块，然后在配置文件中加载这段逻辑，就可以实现扩展linux登录时的验证。<br>这里先写个pam demo验证一下机制</p>
-<pre><code class="c">#include &lt;security/pam_appl.h&gt;
-#include &lt;security/pam_modules.h&gt;
-#include &lt;security/pam_ext.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-
-PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char **argv) &#123;
-    const char *username;
-    const char *password;
-    int pam_err;
-
-    pam_err = pam_get_user(pamh, &amp;username, &quot;Username: &quot;);
-    if (pam_err != PAM_SUCCESS || username == NULL) &#123;
-        return PAM_AUTH_ERR;
-    &#125;
-
-    // 获取用户输入的密码
-    pam_err = pam_get_authtok(pamh, PAM_AUTHTOK, &amp;password, &quot;Password: &quot;);
-    if (pam_err != PAM_SUCCESS || password == NULL) &#123;
-        return PAM_AUTH_ERR;
-    &#125;
-
-    // 检查密码是否为预期的值（例如，&quot;123&quot;）
-    if (strcmp(password, &quot;123&quot;) == 0) &#123;
-        return PAM_SUCCESS; // 密码验证成功
-    &#125; else &#123;
-        return PAM_AUTH_ERR; // 密码验证失败
-    &#125;
-&#125;
-
-PAM_EXTERN int pam_sm_setcred(pam_handle_t *pamh, int flags, int argc, const char **argv) &#123;
-    // 在这里实现设置凭据（credential）的逻辑，如果不需要，可以留空
-    return PAM_SUCCESS;
-&#125;
-</code></pre>
-<p>将代码保存为custom_auth.c 编译并修改sudo的pam配置文件</p>
-<pre><code class="c"># 编译
-gcc -fPIC -shared -o custom_auth.so custom_auth.c -lpam
-# 拷贝到正确的位置
-cp custom_auth.so /usr/lib/x86_64-linux-gnu/security/
-# -rw-r--r-- root:root 不需要执行权限
-chmod -x /usr/lib/x86_64-linux-gnu/security/custom_auth.so
-
-# 增加测试用户
-sudo useradd -m testuser
-sudo usermod -aG sudo testuser
-# 将密码改为和用户名相同
-passwd testuser
-
-# 修改sudo的PAM配置,在第一行增加 auth  sufficient  custom_auth.so
-vim /etc/pam.d/sudo
-su testuser
-
-# 此时输入testuser或者123都能成功，其他的密码则失败
-sudo -k cat /etc/passwd 
-</code></pre>
-<h2 id="qrcode-demo"><a href="#qrcode-demo" class="headerlink" title="qrcode demo"></a>qrcode demo</h2><p>​	使用二维码输入token不仅方便，还能减少输错的可能，这里是一个简单的验证控制台输出二维码的例子，效果如图（还有多余的边框到时候再修修），能够在控制台、ssh等任意字符界面正常显示。</p>
-<pre><code class="c">#include &lt;qrencode.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-
-static int margin;
-
-static void writeANSI_margin(FILE* fp, int realwidth, char* buffer,
-                             const char* white, int white_s) &#123;
-  int y;
-
-  strncpy(buffer, white, (size_t)white_s);
-  memset(buffer + white_s, &#39; &#39;, (size_t)realwidth * 2);
-  strcpy(buffer + white_s + realwidth * 2,
-         &quot;\033[0m\n&quot;);  // reset to default colors
-  for (y = 0; y &lt; margin; y++) &#123;
-    fputs(buffer, fp);
-  &#125;
-&#125;
-
-static void writeANSI(const char* msg,FILE* fp,  int size) &#123;
-  const char *white, *black;
-  char* buffer;
-  int white_s, black_s, buffer_s;
-  unsigned char *row, *p;
-  int x, y;
-  int realwidth;
-  int last;
-  QRcode* qrcode =
-      QRcode_encodeString(msg, 0, QR_ECLEVEL_L, QR_MODE_8, 1);
-      
-  if (qrcode == NULL) &#123;
-      fprintf(stderr, &quot;cannot parse msg to qrcode&quot;);
-      return;
-  &#125;
-
-  white = &quot;\033[47m&quot;;
-  white_s = 5;
-  black = &quot;\033[40m&quot;;
-  black_s = 5;
-
-  realwidth = (qrcode-&gt;width + margin * 2) * size;
-  buffer_s = (realwidth * white_s) * 2;
-  buffer = (char*)malloc((size_t)buffer_s);
-  if (buffer == NULL) &#123;
-    fprintf(stderr, &quot;Failed to allocate memory.\n&quot;);
-    exit(EXIT_FAILURE);
-  &#125;
-
-  /* top margin */
-  writeANSI_margin(fp, realwidth, buffer, white, white_s);
-
-  /* data */
-  p = qrcode-&gt;data;
-  for (y = 0; y &lt; qrcode-&gt;width; y++) &#123;
-    row = (p + (y * qrcode-&gt;width));
-
-    memset(buffer, 0, (size_t)buffer_s);
-    strncpy(buffer, white, (size_t)white_s);
-    for (x = 0; x &lt; margin; x++) &#123;
-      strncat(buffer, &quot;  &quot;, 2);
-    &#125;
-    last = 0;
-
-    for (x = 0; x &lt; qrcode-&gt;width; x++) &#123;
-      if (*(row + x) &amp; 0x1) &#123;
-        if (last != 1) &#123;
-          strncat(buffer, black, (size_t)black_s);
-          last = 1;
-        &#125;
-      &#125; else if (last != 0) &#123;
-        strncat(buffer, white, (size_t)white_s);
-        last = 0;
-      &#125;
-      strncat(buffer, &quot;  &quot;, 2);
-    &#125;
-
-    if (last != 0) &#123;
-      strncat(buffer, white, (size_t)white_s);
-    &#125;
-    for (x = 0; x &lt; margin; x++) &#123;
-      strncat(buffer, &quot;  &quot;, 2);
-    &#125;
-    strncat(buffer, &quot;\033[0m\n&quot;, 5);
-    fputs(buffer, fp);
-  &#125;
-
-  /* bottom margin */
-  writeANSI_margin(fp, realwidth, buffer, white, white_s);
-
-  free(buffer);
-&#125;
-
-int main() 
-&#123; 
-    margin = 1;
-    writeANSI(&quot;token:shrino.ouyrun.cn&quot;,stdout, 3);
-&#125;
-</code></pre>
-<p>编译运行：<br>先安装动态库 apt install libqrencode-dev<br>gcc qrtest.c -lqrencode</p>
-<p>C&#x2F;S demo<br>实现实现随机生成6位数数字密码，然后用RSA加密，将加密后的信息放到二维码，然后售后人员通过将二维码上传到服务器后（这里可以是用手机APP扫码，也可以是拍屏手动处理），服务器用RSA解密后，将结果返回给用户。</p>
-<p>随机密码生成</p>
-<pre><code class="c">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;
-int generateRandomPassword() &#123;
-    srand(time(NULL));
-    return rand() % 1000000; // 生成0到999999之间的随机数
-&#125;
-
-</code></pre>
-<p>加密部分</p>
-<pre><code class="c">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;openssl/rsa.h&gt;
-#include &lt;openssl/pem.h&gt;
-#include &lt;string.h&gt;
-
-void rsaEncryptPassword(const char* password, const char* publicKeyPath, const char* encryptedPath) &#123;
-    FILE* publicKeyFile = fopen(publicKeyPath, &quot;rb&quot;);
-    if (!publicKeyFile) &#123;
-        perror(&quot;Failed to open public key file&quot;);
-        return;
-    &#125;
-
-    RSA* rsa = PEM_read_RSA_PUBKEY(publicKeyFile, NULL, NULL, NULL);
-    if (!rsa) &#123;
-        perror(&quot;Failed to read public key&quot;);
-        fclose(publicKeyFile);
-        return;
-    &#125;
-
-    fclose(publicKeyFile);
-
-    int passwordLen = strlen(password);
-    unsigned char encrypted[256]; // 要根据RSA密钥的长度来设置
-    int encryptedLen = RSA_public_encrypt(passwordLen, (unsigned char*)password, encrypted, rsa, RSA_PKCS1_PADDING);
-
-    if (encryptedLen == -1) &#123;
-        perror(&quot;RSA encryption failed&quot;);
-        RSA_free(rsa);
-        return;
-    &#125;
-
-    FILE* encryptedFile = fopen(encryptedPath, &quot;wb&quot;);
-    if (!encryptedFile) &#123;
-        perror(&quot;Failed to open encrypted file&quot;);
-        RSA_free(rsa);
-        return;
-    &#125;
-
-    fwrite(encrypted, sizeof(unsigned char), encryptedLen, encryptedFile);
-    fclose(encryptedFile);
-
-    RSA_free(rsa);
-&#125;
-
-int main()
-&#123;
-        rsaEncryptPassword(&quot;123456&quot;, &quot;public_key.pem&quot;, &quot;test_encrypt_out&quot;);
-        return 0;
-&#125;
-
-</code></pre>
-<h4 id="安装开发库"><a href="#安装开发库" class="headerlink" title="安装开发库"></a>安装开发库</h4><pre><code class="bash"># 安装开发库
-apt install libssl-dev 
-# 生成密钥对（这里用1024位
-openssl genrsa -out private_key.pem 1024
-openssl rsa -pubout -in private_key.pem -out public_key.pem
-# 编译
-gcc rsa_enc.c -o rsa_enc -lssl -lcrypto
-</code></pre>
-<p>生成二维码部分</p>
-<pre><code class="c">#include &lt;stdio.h&gt;
-#include &lt;qrencode.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-
-static int margin = 1;
-
-static void writeANSI_margin(FILE* fp, int realwidth, char* buffer,
-                             const char* white, int white_s) &#123;
-  int y;
-
-  strncpy(buffer, white, (size_t)white_s);
-  memset(buffer + white_s, &#39; &#39;, (size_t)realwidth * 2);
-  strcpy(buffer + white_s + realwidth * 2,
-         &quot;\033[0m\n&quot;);  // reset to default colors
-  for (y = 0; y &lt; margin; y++) &#123;
-    fputs(buffer, fp);
-  &#125;
-&#125;
-
-static void writeANSI(QRcode* qrcode,FILE* fp,  int size) &#123;
-  const char *white, *black;
-  char* buffer;
-  int white_s, black_s, buffer_s;
-  unsigned char *row, *p;
-  int x, y;
-  int realwidth;
-  int last;
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   
-  if (qrcode == NULL) &#123;
-      return;
-  &#125;
 
-  white = &quot;\033[47m&quot;;
-  white_s = 5;
-  black = &quot;\033[40m&quot;;
-  black_s = 5;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Xiaoy">
+<meta property="og:url" content="https://abrance.github.io/page/15/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Xiaoy</title>
 
-  realwidth = (qrcode-&gt;width + margin * 2) * size;
-  buffer_s = (realwidth * white_s) * 2;
-  buffer = (char*)malloc((size_t)buffer_s);
-  if (buffer == NULL) &#123;
-    fprintf(stderr, &quot;Failed to allocate memory.\n&quot;);
-    exit(EXIT_FAILURE);
-  &#125;
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
-  /* top margin */
-  writeANSI_margin(fp, realwidth, buffer, white, white_s);
 
-  /* data */
-  p = qrcode-&gt;data;
-  for (y = 0; y &lt; qrcode-&gt;width; y++) &#123;
-    row = (p + (y * qrcode-&gt;width));
 
-    memset(buffer, 0, (size_t)buffer_s);
-    strncpy(buffer, white, (size_t)white_s);
-    for (x = 0; x &lt; margin; x++) &#123;
-      strncat(buffer, &quot;  &quot;, 2);
-    &#125;
-    last = 0;
 
-    for (x = 0; x &lt; qrcode-&gt;width; x++) &#123;
-      if (*(row + x) &amp; 0x1) &#123;
-        if (last != 1) &#123;
-          strncat(buffer, black, (size_t)black_s);
-          last = 1;
-        &#125;
-      &#125; else if (last != 0) &#123;
-        strncat(buffer, white, (size_t)white_s);
-        last = 0;
-      &#125;
-      strncat(buffer, &quot;  &quot;, 2);
-    &#125;
 
-    if (last != 0) &#123;
-      strncat(buffer, white, (size_t)white_s);
-    &#125;
-    for (x = 0; x &lt; margin; x++) &#123;
-      strncat(buffer, &quot;  &quot;, 2);
-    &#125;
-    strncat(buffer, &quot;\033[0m\n&quot;, 5);
-    fputs(buffer, fp);
-  &#125;
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-  /* bottom margin */
-  writeANSI_margin(fp, realwidth, buffer, white, white_s);
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
-  free(buffer);
-&#125;
 
-int generateQRCode(const char* encryptedPath) &#123;
-    FILE* encryptedFile = fopen(encryptedPath, &quot;rb&quot;);
-    if (!encryptedFile) &#123;
-        perror(&quot;Failed to open encrypted file&quot;);
-        return 1;
-    &#125;
 
-    fseek(encryptedFile, 0, SEEK_END);
-    long encryptedFileSize = ftell(encryptedFile);
-    rewind(encryptedFile);
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
-    unsigned char* encryptedData = (unsigned char*)malloc(encryptedFileSize);
-    if (!encryptedData) &#123;
-        perror(&quot;Memory allocation failed&quot;);
-        fclose(encryptedFile);
-        return 1;
-    &#125;
 
-    fread(encryptedData, sizeof(unsigned char), encryptedFileSize, encryptedFile);
-    fclose(encryptedFile);
+<link  rel="stylesheet" href="/css/main.css" />
 
-    QRcode* qrcode = QRcode_encodeData(encryptedFileSize, encryptedData, 0,QR_ECLEVEL_L);
-    if (!qrcode) &#123;
-        perror(&quot;QRcode encoding failed&quot;);
-        free(encryptedData);
-        return 1;
-    &#125;
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
     
-    writeANSI(qrcode,stdout,5);
-   
-    return 0;
-&#125;
 
-int main()
-&#123;
-    generateQRCode(&quot;test_encrypt_out&quot;);
-&#125;
-</code></pre>
-<p>服务端解码部分（未验证）</p>
-<pre><code class="c">package main
-
-import (
-    &quot;fmt&quot;
-    &quot;io/ioutil&quot;
-    &quot;net/http&quot;
-    &quot;strings&quot;
-
-    &quot;github.com/rsc/qr&quot;
-    &quot;github.com/rsc/qr/handy&quot;
-)
-
-func main() &#123;
-    http.HandleFunc(&quot;/process_qr_code&quot;, func(w http.ResponseWriter, r *http.Request) &#123;
-        // 读取上传的二维码图片
-        file, _, err := r.FormFile(&quot;qr_code&quot;)
-        if err != nil &#123;
-            http.Error(w, &quot;Failed to read QR code file&quot;, http.StatusBadRequest)
-            return
-        &#125;
-        defer file.Close()
-
-        // 解析二维码
-        img, _, err := handy.Decode(file)
-        if err != nil &#123;
-            http.Error(w, &quot;Failed to decode QR code&quot;, http.StatusInternalServerError)
-            return
-        &#125;
-
-        // 从解析的二维码中提取加密数据
-        encodedData := img.Content
-        encryptedData := strings.TrimSpace(encodedData)
-
-        
-        // 加载RSA私钥
-        privateKeyPEM, err := ioutil.ReadFile(&quot;private_key.pem&quot;)
-        if err != nil &#123;
-            http.Error(w, &quot;Failed to read private key&quot;, http.StatusInternalServerError)
-            return
-        &#125;
-
-        privateKeyBlock, _ := pem.Decode(privateKeyPEM)
-        if privateKeyBlock == nil &#123;
-            http.Error(w, &quot;Failed to decode private key&quot;, http.StatusInternalServerError)
-            return
-        &#125;
-
-        privateKey, err := x509.ParsePKCS1PrivateKey(privateKeyBlock.Bytes)
-        if err != nil &#123;
-            http.Error(w, &quot;Failed to parse private key&quot;, http.StatusInternalServerError)
-            return
-        &#125;
-
-        // 解密数据
-        decryptedData, err := rsa.DecryptPKCS1v15(nil, privateKey, encryptedData)
-        if err != nil &#123;
-            http.Error(w, &quot;Failed to decrypt data&quot;, http.StatusInternalServerError)
-            return
-        &#125;
-        // 返回解密后的数据
-        w.Header().Set(&quot;Content-Type&quot;, &quot;text/plain&quot;)
-        fmt.Fprintf(w, &quot;Decrypted Data: %s&quot;, decryptedData)
-    &#125;)
-
-    http.ListenAndServe(&quot;:8080&quot;, nil)
-&#125;
-
-</code></pre>
-<p>参考资料<br>Linux下PAM模块学习总结 - 散尽浮华 - 博客园 <code>https://www.cnblogs.com/kevingrace/p/8671964.html</code></p>
-<p>Linux PAM开发示例二:登录系统时使用自己的PAM模块进行密码认证-CSDN博客</p>
-<h1 id="软件保护"><a href="#软件保护" class="headerlink" title="软件保护"></a>软件保护</h1><p>软件保护目的：防止软件被未授权下载、复制、安装、运行、转让、出租、修改、破解</p>
-<p>软件保护从来都是多方面实现的，不能仅靠软件自身。这里从4个维度讨论一下各个层面可以做的事情。<br><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20240307114725324.png" alt="image-20240307114725324"></p>
-<p>软件授权通常出现在商业软件中，其可以对软件的安装、运行做出限制，例如未授权的用户使用该软件（或者该软件的某些功能）。<br>后台隐藏通常在TOB产品的系统级别产品中，通过WEBUI&#x2F;GUI等隐藏实现细节，常常伴随着系统后台信息隐藏、（售后）角色认证等机制，它防范的是用户进入软件的运行基座——操作系统。而原本操作系统的一些基础功能（如时间日期修改、IP地址修改），则通过UI来提供给用户。<br>售后支持是在软件出现问题时，由特定的售后人员去通过网络直连、远程桌面、线下操作等方式。网络直连通常发生在一些内置了对应模块的软件中，它允许售后人员直接连接到软件的控制台，可以看到用户的配置和软件的信息等。线下操作的形式有多种，简单的可以通过用户界面操作，有些特殊的操作则需要进入系统后台操作，这时，前面提到的”后台隐藏“必须要留下售后人员的入口。<br>加密是一种简单而有效的保护方式，加密的级别有很多，例如文件加密、数据库加密、磁盘加密。加密的算法一般是防护的关键，需要用各种手段降低算法被探测的可能，而密钥的存储比密钥的强度更重要。</p>
-<p>下面讨论一下各个部分的方案细节<br>对于在线使用的软件，让用户自行输入用户名是一种简单有效的机制，而对于允许离线使用的软件，需要收集软件的运行环境信息生成一个和环境相关的ID，这个ID通常成为机器码，收集的信息通常是硬件信息。然而，在虚拟化环境、docker环境下，情况可能略有不同，由于虚拟化环境的硬件信息不准确、容易发生变更，而docker就更加没有硬件信息，所以很多厂商都会采用一种叫授权服务器的东西（例如深信服VLS）来应对，这个后文再讨论。<br>软件厂商通过非对称或者对称加密技术，针对用户提供的ID来提供一段经过加密的序列号&#x2F;授权文件，软件通过特定的算法校验ID和序列号&#x2F;授权文件之间的对应关系。以某个厂商的序列号为例：软件通过计算网卡MAC地址的CRC32得到ID，用户提供ID后，厂商通过DES算法和固定密钥将ID变为一串序列号，这串序列号可以由用户手动输入软件中，软件通过DES算法和代码内置的固定密钥解密序列号，得到的信息和ID比较。<br>为了避免用户进入操作系统后台，通常厂商不会提供系统的特权账号密码，然而特权账号的密码在公司里面很多人都知道，例如研发员工、技术支持员工，这其中存在很多泄密的可能。所以有些厂商会修改操作系统的认证机制，实现自定义的认证逻辑，例如扫码登录、动态密码等。这里以linux系统为例，linux系统有一种叫PAM（Pluggable Authentication Modules)的东西，可以简单理解为认证插件，我们可以用c语言来实现对应的接口，然后把代码编译后以动态链接库的形式放到特定目录，修改配置文件即可，不需要修改操作系统的源代码。<br>相应的，我们虽然阻止了用户对系统后台的访问权限，但是也要给技术支持&#x2F;售后等留下入口。首先是软硬件的信息收集，平常我们可以进入系统后台，手动查看、拷贝日志文件，查看环境信息，在高度封闭系统后，这些信息通常会通过一个界面，允许用户&#x2F;技术支持来采集，有必要的时候，再通过售后系统获取系统的登录口令，进入后台手动操作。<br>有些软件会通过全盘加密的方式阻止用户将磁盘挂载到其他系统进行解析，常规的实现是用LUKS来全盘加密，然后在开机阶段去特定的位置获取密钥，大大增加了破解的难度。</p>
-<h1 id="设计文档"><a href="#设计文档" class="headerlink" title="设计文档"></a>设计文档</h1><p>版本修订记录:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>日期</td>
-<td>版本</td>
-<td>修订人</td>
-<td>修改内容</td>
-<td>备注</td>
-</tr>
-<tr>
-<td>2023-11-1</td>
-<td>0.1</td>
-<td>岑思华</td>
-<td>方案定型，文档基本完成</td>
-<td></td>
-</tr>
-<tr>
-<td>2023-11-6</td>
-<td>0.2</td>
-<td>岑思华</td>
-<td>补充打包项目代码设计</td>
-<td>Makefile</td>
-</tr>
-<tr>
-<td>2023-11-7</td>
-<td>0.3</td>
-<td>岑思华</td>
-<td>补充对其他模块影响；调整项目结构设计</td>
-<td>已评审</td>
-</tr>
-<tr>
-<td>2023-11-9</td>
-<td>0.4</td>
-<td>岑思华</td>
-<td>1.微调；2. 确定磁盘显示方案</td>
-<td></td>
-</tr>
-<tr>
-<td>2023-11-14</td>
-<td>0.5</td>
-<td>岑思华</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>2023-11-15</td>
-<td>0.6</td>
-<td>袁菘壑</td>
-<td>添加5.2.1.2章节</td>
-<td></td>
-</tr>
-<tr>
-<td>2023-11-22</td>
-<td>0.7</td>
-<td>岑思华</td>
-<td>添加5.2.5章节</td>
-<td></td>
-</tr>
-<tr>
-<td>2023-12</td>
-<td>0.8</td>
-<td>吴松达</td>
-<td>补充7.2.5的mongo动态配置实现</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="1-项目背景"><a href="#1-项目背景" class="headerlink" title="1 项目背景"></a>1 项目背景</h2><p>安装包交付背景下，操作系统由用户提供，用户拥有最高权限，能够随意对软件进行查看、修改、复制等，极大的增加了反破解的难度。</p>
-<p>镜像交付是友商广泛使用的一种做法，它除了体积比较大之外，能够提供比安装包交付更加标准、便捷的过程。</p>
-<h2 id="2-项目目标"><a href="#2-项目目标" class="headerlink" title="2 项目目标"></a>2 项目目标</h2><p>提供镜像交付，将操作系统和石犀软件作为一个交付整体，不再让用户提供操作系统。</p>
-<p>适配主流的虚拟化平台的交付。</p>
-<p>闭环镜像交付各个环节可能需要解决的技术问题</p>
-<p>TUI部分的设计在另一篇文档里面 <a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_AcwAzgacAIciuwXMHlQRMqme1AmWW?scode=ABwA9Qd2ABEOAPeCbsAcwAzgacAIc">TUI模块设计说明书</a></p>
-<h2 id="3-名词解释"><a href="#3-名词解释" class="headerlink" title="3 名词解释"></a>3 名词解释</h2><p><strong>镜像：</strong>本文泛指ISO镜像文件、OVA镜像文件、QCOW2镜像文件</p>
-<p><strong>ISO映像：</strong>即符合ISO 9660标准的文件系统，这个标准定义了目录结构、文件名规则、目录深度、文件属性等一系列东西。对于本文而言，ISO映像包含用于安装的引导程序、操作系统本身、其他附加应用，是一个文件。</p>
-<p><strong>ISO镜像：</strong>和ISO映像是一个概念。</p>
-<p><strong>系统安装：</strong>本文的系统安装指的是，将ISO文件挂载成虚拟DVD设备来引导操作系统的安装。</p>
-<p><strong>镜像导入：</strong>将特定格式的镜像文件上传到虚拟化平台称为镜像导入，不同的平台使用不同格式的文件，例如OVA。</p>
-<p><strong>VMDK：</strong> 是一种文件格式，用来作为虚拟磁盘的容器，最初是由vmware开发使用，后来发布OVF标准后，成为开放格式，为大多数虚拟化平台所支持。</p>
-<p><strong>QCOW2：</strong>即qcow的第二个版本,和vmdk类似，qcow也是一种虚拟磁盘容器。qcow目前有三个版本，国内大部分公有云支持的都是qcow2格式。</p>
-<p><strong>OVF文件：</strong>一种用于打包虚拟机配置信息（如CPU，内存，磁盘，网卡)的文件，它也是一种比较主流的规范，大多数虚拟化平台都支持。</p>
-<p><strong>OVA：</strong>一种打包格式，和tar是同一种标准，相当于tar包改了后缀名。里面包含至少两个文件：ovf和vmdk，还有一个可选的mf文件（存储其他文件的哈希值）</p>
-<p><strong>分区扩容：</strong>指在现有的分区上扩大分区空间，虽然虚拟磁盘可以调整大小，但是调整后的大小并不会直接反应到分区上，需要对分区进行扩容以适配新的磁盘大小。</p>
-<p><strong>关机扩容：</strong>即分区扩容需要关机或者重启，扩容才能生效。</p>
-<p><strong>开机扩容：</strong>即热扩容，分区扩容不需要重启就能生效。</p>
-<p><strong>包：</strong>包原本指将总控和引擎的二进制、配置、依赖等压缩在一起的一个可用于安装、升级的包。在本文中将其含义进一步泛化，将镜像文件也归类到包的范畴，会以镜像包指代镜像。</p>
-<p><strong>精简置备：</strong>精简置备是一种动态分配存储空间的技术，它允许在创建时仅分配必要的存储空间，而不是预先分配整个空间。这意味着虚拟磁盘的实际大小可以根据需要动态地增长，直到达到预设的上限。精简置备技术可以有效地提高存储利用率，因为它可以避免为未来可能用不上的空间预留存储容量。</p>
-<p><strong>厚置备：</strong>厚置备是一种静态分配存储空间的技术，它会在虚拟磁盘创建时立即分配整个设定空间。这意味着虚拟磁盘会占用所分配的空间，即使实际上并没有使用全部空间。厚置备会提供更高的性能，因为存储空间已经被预先分配并保留，但会导致低效的存储利用率。</p>
-<h2 id="4-总体设计"><a href="#4-总体设计" class="headerlink" title="4 总体设计"></a>4 总体设计</h2><h3 id="4-1-概要设计"><a href="#4-1-概要设计" class="headerlink" title="4.1 概要设计"></a>4.1 概要设计</h3><h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4><h4 id="4-1-1-实现的功能"><a href="#4-1-1-实现的功能" class="headerlink" title="4.1.1 实现的功能"></a>4.1.1 实现的功能</h4><p>概要描述该模块要实现的功能。列出要实现的功能点及子功能点，并对每一个功能点进行详细说明。功能点之间的层级和关联关系要明晰。这里仅描述功能，不需要涉及实现方案、功能取舍等问题。</p>
-<ol>
-<li><p>实现自动化镜像制作</p>
-</li>
-<li><p>镜像按照需求的描述，统一各项系统设置，安装过程自动化</p>
-<ol>
-<li><p>按照需求进行分区</p>
-</li>
-<li><p>按照需求定制grub引导</p>
-</li>
-</ol>
-</li>
-<li><p>实现分区的关机扩容</p>
-</li>
-</ol>
-<h4 id="-2"><a href="#-2" class="headerlink" title=""></a></h4><h4 id="4-1-2-设计的性能指标"><a href="#4-1-2-设计的性能指标" class="headerlink" title="4.1.2 设计的性能指标"></a>4.1.2 设计的性能指标</h4><p>无</p>
-<h4 id="4-2-覆盖范围"><a href="#4-2-覆盖范围" class="headerlink" title="4.2 覆盖范围"></a>4.2 覆盖范围</h4><p>描述本次项目覆盖的范围，为了降低风险，建议项目上线前做好灰度范围控制</p>
-<ol>
-<li><p>打包平台-出包流程</p>
-</li>
-<li><p>总控安装、部署、升级</p>
-</li>
-</ol>
-<h2 id="5-详细设计"><a href="#5-详细设计" class="headerlink" title="5 详细设计"></a>5 详细设计</h2><h3 id="5-1-设计图"><a href="#5-1-设计图" class="headerlink" title="5.1 设计图"></a>5.1 设计图</h3><p><strong>出包过程图</strong></p>
-<p>本图描述有哪些包，这些包的内容是从哪来的。</p>
-<p><img src="/../../../../home/xiaoy/media/image1.png" alt="图标 描述已自动生成"></p>
-<p><strong>镜像制作(image-builder)项目结构设计</strong></p>
-<p><strong>安装部署流程</strong></p>
-<p>本图提供安装部署的流程对比，左边是没有做这块需求的时候的逻辑，右边是有了镜像交付之后的逻辑.</p>
-<p><img src="/../../../../home/xiaoy/media/image2.png" alt="图标 描述已自动生成"></p>
-<p><strong>镜像生命周期</strong></p>
-<p>安装前包括打包的部分、将包上传到网盘、客户下载包、导入包</p>
-<p>安装中主要是导入进度条跑完之后，镜像的安装只需要调整配置，进度条即是上传的进度</p>
-<p><img src="/../../../../home/xiaoy/media/image3.png" alt="图标 描述已自动生成"></p>
-<h3 id="5-2-各模块详细设计"><a href="#5-2-各模块详细设计" class="headerlink" title="5.2 各模块详细设计"></a>5.2 各模块详细设计</h3><p>对各个模块进行详细阐述，数据之间的关联关系, 使用的何种算法, 明确的接口定义(包含输入&#x2F;输出&#x2F;异常&#x2F;错误码), 尽量明确到代码层级，达到设计文档交给第三个人也可以按照文档要求进行代码开发</p>
-<h4 id="5-2-1-基ISO镜像详细设计"><a href="#5-2-1-基ISO镜像详细设计" class="headerlink" title="5.2.1 基ISO镜像详细设计"></a>5.2.1 基ISO镜像详细设计</h4><p><strong>需求回顾</strong></p>
-<ol>
-<li><p>禁用snap包管理器</p>
-</li>
-<li><p>禁用系统自动更新</p>
-</li>
-<li><p>系统参数预定义（含账户、分区、语言等）</p>
-</li>
-</ol>
-<p><del>由于基镜像难以自动化制作，所以基镜像需要尽可能做到少更新，里面不包含总控应用，总控由打包流程集成到基镜像中作为正式镜像。</del></p>
-<p>后续引擎也需要考虑镜像交付，所以基镜像既是总控的基镜像，也是引擎的基镜像。不管是总控还是引擎，都应该能够顺利的在该镜像里面安装，不会出现系统版本、内核版本问题，不会出现底层依赖缺失问题。</p>
-<p>目前的设计仅考虑Legacy BIOS模式即可，不需要考虑UEFI模式。</p>
-<p><strong>方案一</strong>：使用cubic+seed制作</p>
-<p><strong>方案二</strong>：使用xorrios+cloud-init制作</p>
-<p>方案一在ubuntu20.04不可行，故使用方案二</p>
-<h5 id="5-2-1-1-使用cubic制作基镜像流程"><a href="#5-2-1-1-使用cubic制作基镜像流程" class="headerlink" title="5.2.1.1 使用cubic制作基镜像流程"></a>5.2.1.1 使用cubic制作基镜像流程</h5><ol>
-<li><p>下载一个官方的ISO镜像，这里使用ubuntu 20.04.6</p>
-</li>
-<li><p>用cubic打开官方ISO镜像</p>
-</li>
-<li><p>定制发行版名字</p>
-</li>
-<li><p>进入chroot环境，通过命令行进行定制</p>
-<ol>
-<li><p>删除不需要的包管理器（snap）</p>
-</li>
-<li><p><del>关闭系统自动更新（unattended-upgrades）</del>(可以在preseed里搞定)</p>
-</li>
-</ol>
-</li>
-<li><p>选择内核（如果有多个）</p>
-</li>
-<li><p>编写preseed文件，设定参数</p>
-<ol>
-<li><p>定制网络配置</p>
-</li>
-<li><p>定制磁盘分区</p>
-</li>
-<li><p>定制语言及键盘</p>
-</li>
-<li><p>定制用户名密码、主机名</p>
-</li>
-<li><p>定制预装的软件（ssh server)</p>
-</li>
-<li><p>定制GRUB密码</p>
-</li>
-</ol>
-</li>
-<li><p>修改&#x2F;isolinux&#x2F;txt.cfg，指向preseed文件</p>
-</li>
-</ol>
-<p><strong>preseed文件详细设计</strong></p>
-<p><strong>参考资料</strong></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37579176/article/details/112492277">【精选】使用 “Cubic” 制作自定义 “ubuntu” 系统镜像_cubic制作镜像_此木子的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/sexibytes/packer-sexigraf/blob/master/preseed.cfg">https://github.com/sexibytes/packer-sexigraf/blob/master/preseed.cfg</a></p>
-<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1228909/preseed-config-using-cubic-is-ignored-during-installation">18.04 - Preseed config (using cubic) is ignored during installation - Ask Ubuntu</a></p>
-<p><a target="_blank" rel="noopener" href="https://gist.github.com/styblope/2cf93a41662608f924de71fd0e91e0d1">https://gist.github.com/styblope/2cf93a41662608f924de71fd0e91e0d1</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.debian.org/releases/bullseye/amd64/apbs04.en.html">B.4.Contents of the preconfiguration file (for bullseye)</a></p>
-<p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1234791">使用preseed一键安装Ubuntu Server 1604-阿里云开发者社区</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhangguanzhang.github.io/2019/08/06/preseed/">ubuntu preseed无人应答安装 · zhangguanzhang&#39;s Blog</a></p>
-<p><a target="_blank" rel="noopener" href="https://sysin.org/blog/disable-ubuntu-auto-update/">https://sysin.org/blog/disable-ubuntu-auto-update/</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/covertsh/ubuntu-autoinstall-generator/tree/main">GitHub - covertsh&#x2F;ubuntu-autoinstall-generator: Generate a fully-automated Ubuntu ISO for unattended installations.</a></p>
-<h5 id="5-2-1-2-使用xorriso制作基镜像流程"><a href="#5-2-1-2-使用xorriso制作基镜像流程" class="headerlink" title="5.2.1.2 使用xorriso制作基镜像流程"></a>5.2.1.2 使用xorriso制作基镜像流程</h5><ol>
-<li><p>下载一个官方的ISO镜像，这里使用ubuntu 20.04.6</p>
-</li>
-<li><p>使用xorriso解压镜像文件</p>
-</li>
-<li><p>通过unsquash将解压出来的文件filesystem.squashfs进行反编译</p>
-</li>
-<li><p>通过chroot操作解压出来的filesystem.squashfs文件系统，对应安装后的ubuntu根目录，执行完毕后，将squashfs文件重新打包成filesystem.squashfs文件，放入解压的镜像目录中。</p>
-</li>
-<li><p>ubuntu20.04及其之后都使用cloud-init方式实现自动化安装，将自动安装参数autoinstall ds&#x3D;nocloud;s&#x3D;&#x2F;cdrom&#x2F;cloud_init&#x2F;添加到isolinux&#x2F;txt.cfg文件中quiet之前，然后将必要的文件user-data, meta-data复制到制定文件路径 &#x2F;cloud_init目录下。在user-data和meta-data中即可开启自动安装设置，不设置即走默认的安装设置。</p>
-<ol>
-<li><p>定制网络配置 &#x2F;&#x2F; 已完成</p>
-</li>
-<li><p>前置资源检查 &#x2F;&#x2F; 如何告诉用户？</p>
-</li>
-<li><p>定制磁盘分区 &#x2F;&#x2F; 已完成</p>
-</li>
-<li><p>定制语言及键盘 &#x2F;&#x2F; 已完成</p>
-</li>
-<li><p>定制用户名密码、主机名 &#x2F;&#x2F; 已完成</p>
-</li>
-<li><p>定制预装的软件（ssh server) &#x2F;&#x2F; 已完成</p>
-</li>
-<li><p>定制GRUB密码 &#x2F;&#x2F; 已完成</p>
-</li>
-<li><p>修改grub菜单选项</p>
-</li>
-</ol>
-</li>
-<li><p>镜像修改完成之后，通过xorriso再将文件打包成iso镜像。</p>
-</li>
-</ol>
-<p><strong>user-data文件配置</strong></p>
-<p><strong>制作镜像shell脚本(大概流程，实现与此不同)</strong></p>
-<p>参考资料</p>
-<p><a target="_blank" rel="noopener" href="https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html">ubuntu nocloud-init文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://netplan.readthedocs.io/en/stable/netplan-yaml/#properties-for-device-type-ethernets">网络配置</a></p>
-<p><a target="_blank" rel="noopener" href="https://curtin.readthedocs.io/en/latest/topics/storage.html#lvm-partition-command">curtin设置文件系统分区</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.gnu.org/software/grub/manual/grub/html_node/Authentication-and-authorisation.html">grub密码设置文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://michlstechblog.info/blog/linux-disable-assignment-of-new-names-for-network-interfaces/">网卡名称兼容</a></p>
-<h4 id="5-2-2-扩容脚本详细设计"><a href="#5-2-2-扩容脚本详细设计" class="headerlink" title="5.2.2 扩容脚本详细设计"></a>5.2.2 扩容脚本详细设计</h4><p><strong>目的</strong></p>
-<p>镜像交付下的磁盘是已经分好区的，是确定的大小，而客户有不同的目的，需要的磁盘空间是不确定的。脚本的目的是自动调整文件系统的配置，跟踪物理磁盘的容量变化（只增不减）。</p>
-<h5 id="5-2-2-1-可选方案"><a href="#5-2-2-1-可选方案" class="headerlink" title="5.2.2.1 可选方案"></a>5.2.2.1 可选方案</h5><p><strong>方案一 单磁盘设计</strong></p>
-<p>思路: 监控特定的硬盘&#x2F;dev&#x2F;sda的物理容量是否发生变化, 变化后则调整数据分区大小</p>
-<p>特点: 适用于虚拟化环境和带RAID卡的物理机环境，只能关机扩容。</p>
-<p>要求: 以虚拟机为例, 编辑虚拟机的磁盘配置,调大磁盘大小即可。以物理机为例，插入一块新的硬盘，然后在BIOS里面调整RAID配置。</p>
-<p><strong>方案二 多磁盘设计</strong></p>
-<p>思路: 监控新增的磁盘，如果识别到多了一块没使用的硬盘，则将其容量增加到数据分区</p>
-<p>特点：适用于虚拟化环境和不带RAID卡（或者RAID处于IT模式）的物理机环境，可以开机扩容</p>
-<p>要求：以虚拟机为例，增加一个块任意大小的虚拟磁盘即可。以物理机为例，插入一个新的硬盘即可。</p>
-<p>本节中，假定<strong>方案二</strong>更常见，并以此做进一步设计。</p>
-<h5 id="5-2-2-2-检测原理"><a href="#5-2-2-2-检测原理" class="headerlink" title="5.2.2.2 检测原理"></a>5.2.2.2 检测原理</h5><p>考虑关机扩容，那么假设有一个脚本，它在开机后执行</p>
-<p>基于单磁盘方案（<strong>方案一</strong>）：</p>
-<ol>
-<li><p>关机，修改硬盘大小</p>
-</li>
-<li><p>使用pvresize 调整pv大小</p>
-</li>
-<li><p>使用lvextend扩容lv到当前vg大小</p>
-</li>
-<li><p>使用resize2fs调整ext4分区大小</p>
-</li>
-</ol>
-<p>基于多磁盘方案（<strong>方案二</strong>）：</p>
-<p>遍历磁盘列表，如果发现有没有登记过的磁盘，则将其添加到vg中，然后再调整lv</p>
-<p>手动操作过程：</p>
-<ol>
-<li><p>添加一块磁盘</p>
-</li>
-<li><p>人肉判断哪个盘是新加的盘</p>
-</li>
-<li><p>用pvcreate将该盘添加到pv</p>
-</li>
-<li><p>用vgextend将pv添加到vg</p>
-</li>
-<li><p>用lvextend将lv扩容到当前vg的大小</p>
-</li>
-<li><p>用resize2fs将lv的容量应用到ext4分区大小</p>
-</li>
-</ol>
-<p><img src="/../../../../home/xiaoy/media/image4.png" alt="图标 描述已自动生成"></p>
-<h5 id="5-2-2-3-开机运行实现"><a href="#5-2-2-3-开机运行实现" class="headerlink" title="5.2.2.3 开机运行实现"></a>5.2.2.3 开机运行实现</h5><p>方案一：systemd</p>
-<p>方案二：init.d</p>
-<p>方案二在centos系统用的比较多，本文采用的首选方案为方案一</p>
-<h4 id="5-2-3-打包模块详细设计"><a href="#5-2-3-打包模块详细设计" class="headerlink" title="5.2.3 打包模块详细设计"></a>5.2.3 打包模块详细设计</h4><h5 id="5-2-3-1-ISO镜像打包方案"><a href="#5-2-3-1-ISO镜像打包方案" class="headerlink" title="5.2.3.1 ISO镜像打包方案"></a>5.2.3.1 ISO镜像打包方案</h5><p>概述</p>
-<p>在基ISO镜像的基础上，按照总控安装的流程，将二进制文件、配置文件、依赖的库拷贝到安装后的目录。基ISO镜像的制作使用了cubic，但cubic是一个图形化工具，不利于自动化，为此我们需要使用到命令行工具来达成目的。</p>
-<p>相关工具</p>
-<ul>
-<li><p>xorriso 用于解包和打包ISO</p>
-</li>
-<li><p>unsquashfs 用于展开casper压缩文件</p>
-</li>
-<li><p>mksquashfs 用于将文件系统压缩成casper</p>
-</li>
-<li><p>fakeroot 用于实现chroot，切换根目录，方便进行apt安装等操作</p>
-</li>
-</ul>
-<p>关键步骤实现</p>
-<ul>
-<li><p>文件拷贝</p>
-</li>
-<li><p>系统初始化</p>
-</li>
-</ul>
-<p>ISO挂载</p>
-<p>ISO解除挂载</p>
-<p>切换根目录</p>
-<h5 id="5-2-3-2-OVA镜像打包方案"><a href="#5-2-3-2-OVA镜像打包方案" class="headerlink" title="5.2.3.2 OVA镜像打包方案"></a>5.2.3.2 OVA镜像打包方案</h5><p><img src="/../../../../home/xiaoy/media/image5.png" alt="图标 描述已自动生成"></p>
-<p>如图，如果采用官方ISO镜像来制作OVA，那么制作出来的是基OVA镜像，它需要一次制作，不断更新。在无法实现制作石犀ISO的背景下，是比较合适的路。</p>
-<p>无论前面的方案如何，最终制作OVA时，都需要一个VMDK文件（虚拟磁盘文件），这个文件的创建有两条路走，一条是使用vmware来操作一遍安装流程，一条是用命令创建一个空的vmdk文件，并通过某种方式挂载到文件系统中，然后通过某种方式来将系统安装到vmdk上。 前者实现简单，但是存在难以自动化的问题，后者实现不确定性比较大，但是是理论上可以自动化的方案。</p>
-<p>综合多方考虑，取两种方案，分别为图中蓝色和绿色两种。绿色是比较理想的情况，它意味着ISO镜像的方案比较成熟，可以很好的支撑其他类型镜像的制作。蓝色是妥协的情况，这里着重说一下。</p>
-<p>蓝色的制作步骤为：</p>
-<ol>
-<li><p>获取官方ISO镜像</p>
-</li>
-<li><p>手工操作vmware，创建虚拟机，然后安装该镜像</p>
-</li>
-<li><p>安装完成后，不要重启，直接关机，避免进入系统</p>
-</li>
-<li><p>此时得到的vmdk可以认为是基OVA，下面步骤要实现自动化，否则全手操效率极低</p>
-</li>
-<li><p>将基OVA拷贝，挂载到其他系统</p>
-<ol>
-<li><p>ovftool将ova里的vmdk转化为可读写的vmdk</p>
-</li>
-<li><p>guestmount挂载vmdk里的文件系统到某个目录</p>
-</li>
-</ol>
-</li>
-<li><p>将一些定制化的内容放到该磁盘中（这一步可以前移到基镜像）</p>
-</li>
-<li><p>将总控安装到该磁盘中</p>
-<ol>
-<li><p>文件校验</p>
-</li>
-<li><p>拷贝二进制、配置到&#x2F;$挂载目录&#x2F;opt&#x2F;xxx（不含systemd)</p>
-</li>
-<li><p>拷贝systemd配置到&#x2F;$挂载目录&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;</p>
-</li>
-<li><p>chroot + 依赖安装 + 添加自启动</p>
-</li>
-<li><p>初始化mysql,mongo</p>
-</li>
-</ol>
-</li>
-<li><p>解除挂载，将vmdk和ovf封装成ova</p>
-</li>
-</ol>
-<p>相关工具</p>
-<ul>
-<li><p>guestmount</p>
-</li>
-<li><p>ovftool</p>
-</li>
-</ul>
-<p>ovftool解包</p>
-<p>ovftool打包</p>
-<p>OVA挂载</p>
-<p>OVA解除挂载</p>
-<p>参考资料</p>
-<p><a target="_blank" rel="noopener" href="https://dev.to/otomato_io/how-to-create-custom-debian-based-iso-4g37">How to Create Custom Debian BasedISO - DEV Community</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/covertsh/ubuntu-autoinstall-generator/blob/main/ubuntu-autoinstall-generator.sh">https://github.com/covertsh/ubuntu-autoinstall-generator/blob/main/ubuntu-autoinstall-generator.sh</a></p>
-<p><a target="_blank" rel="noopener" href="http://zenki2001cn.github.io/Wiki/Debian/iso%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6%E5%88%B6%E4%BD%9C.html">iso镜像文件制作</a></p>
-<h5 id="5-2-3-3-main-sh脚本设计"><a href="#5-2-3-3-main-sh脚本设计" class="headerlink" title="5.2.3.3 main.sh脚本设计"></a>5.2.3.3 main.sh脚本设计</h5><p>单纯的文件拷贝，可以由main.sh的各个函数完成，而有些需要在切换root后执行的命令，则作为单独的文件，在guest-install目录管理，将其拷贝到挂载路径后，在切换root后执行对应的脚本</p>
-<p><img src="/../../../../home/xiaoy/media/image6.png" alt="图标 描述已自动生成"></p>
-<h5 id="5-2-3-4-Makefile设计"><a href="#5-2-3-4-Makefile设计" class="headerlink" title="5.2.3.4 Makefile设计"></a>5.2.3.4 Makefile设计</h5><p>调用<a target="_blank" rel="noopener" href="http://main.sh/">main.sh</a> 传递解压后的总控包，基镜像，以及目标镜像作为参数 。目标镜像就是不同的target</p>
-<p><strong>target依赖关系图</strong></p>
-<ul>
-<li><p>ubuntu-iso-20-official是官方镜像，使用Ubuntu 20.04.6</p>
-</li>
-<li><p>srhino-package是打包平台出的tar.gz包</p>
-</li>
-</ul>
-<p>红色部分是识别到的难以自动化的步骤，故而ubuntu-ova-m1这个分支当前不具有可行性，导致整个iso分支暂时失去了价值。目前计划仅实现绿色路径的target</p>
-<p><img src="/../../../../home/xiaoy/media/image7.png" alt="图标 描述已自动生成"></p>
-<h4 id="5-2-4-磁盘分区详细设计"><a href="#5-2-4-磁盘分区详细设计" class="headerlink" title="5.2.4 磁盘分区详细设计"></a>5.2.4 磁盘分区详细设计</h4><h5 id="5-2-4-1-初始分区大小规划"><a href="#5-2-4-1-初始分区大小规划" class="headerlink" title="5.2.4.1 初始分区大小规划"></a>5.2.4.1 初始分区大小规划</h5><p>[TABLE]</p>
-<h5 id="5-2-4-2-LVM设计"><a href="#5-2-4-2-LVM设计" class="headerlink" title="5.2.4.2. LVM设计"></a>5.2.4.2. LVM设计</h5><p>将系统盘分为3个VG+1个普通分区，普通分区是&#x2F;boot分区，使用ext3或ext4文件系统</p>
-<p>3个VG分别和5.2.4.1中描述的分区大小一一对应，每个VG划分一个LV</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>VG(卷组)</td>
-<td>PV(物理卷)</td>
-<td>Size</td>
-</tr>
-<tr>
-<td>vg_root</td>
-<td>&#x2F;dev&#x2F;sdaX</td>
-<td>28G</td>
-</tr>
-<tr>
-<td>vg_app</td>
-<td>&#x2F;dev&#x2F;sdaX</td>
-<td>10G</td>
-</tr>
-<tr>
-<td>vg_data</td>
-<td>&#x2F;dev&#x2F;sdaX &#x2F;dev&#x2F;sdbX …</td>
-<td>60G+n</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>LV(逻辑卷)</td>
-<td>VG(卷组)</td>
-</tr>
-<tr>
-<td>lv_root</td>
-<td>vg_root</td>
-</tr>
-<tr>
-<td>lv_app</td>
-<td>vg_app</td>
-</tr>
-<tr>
-<td>lv_data</td>
-<td>vg_data</td>
-</tr>
-</tbody></table>
-<h5 id="5-2-4-3-软链接"><a href="#5-2-4-3-软链接" class="headerlink" title="5.2.4.3. 软链接"></a>5.2.4.3. 软链接</h5><p>在当前版本的镜像里面，创建好以下的软连接，将占用空间比较大的，且非固定大小的目录都链接到数据分区，如：数据库文件、用户上传的文件。</p>
-<p>软连接目前仅用于兼容原有设计，后续需要将各个程序的路径改为目的地所在的路径</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>软链接</td>
-<td>目的地</td>
-<td>说明</td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;mongodb&#x2F;data</td>
-<td>&#x2F;data&#x2F;mongodb&#x2F;data</td>
-<td>mongodb数据存储目录</td>
-</tr>
-<tr>
-<td><del>&#x2F;opt&#x2F;mongodb&#x2F;log&#x2F;</del></td>
-<td><del>&#x2F;data&#x2F;mongodb&#x2F;log</del></td>
-<td><del>mongo日志（有轮转）</del></td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;etcd&#x2F;data</td>
-<td>&#x2F;data&#x2F;etcd&#x2F;data</td>
-<td>etcd数据</td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;etcd&#x2F;wal</td>
-<td>&#x2F;data&#x2F;etcd&#x2F;wal</td>
-<td>etcd预写</td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;nsq&#x2F;data</td>
-<td>&#x2F;data&#x2F;nsq&#x2F;data</td>
-<td>mq数据</td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;redis&#x2F;data</td>
-<td>&#x2F;data&#x2F;redis&#x2F;data</td>
-<td>redis数据</td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;sv&#x2F;cache</td>
-<td>&#x2F;data&#x2F;sv&#x2F;cache</td>
-<td>可视化数据</td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;mysql&#x2F;data</td>
-<td>&#x2F;data&#x2F;mysql&#x2F;data</td>
-<td>mysql数据</td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;repo</td>
-<td>&#x2F;data&#x2F;repo</td>
-<td>插件包&#x2F;原始包</td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;sc&#x2F;data</td>
-<td>&#x2F;data&#x2F;sc&#x2F;data</td>
-<td>备份目录</td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;data</td>
-<td>&#x2F;data&#x2F;installer&#x2F;data</td>
-<td>引擎的证书</td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;installer&#x2F;data</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>&#x2F;opt&#x2F;os&#x2F;data</td>
-<td>&#x2F;data&#x2F;os&#x2F;data</td>
-<td>系统定制程序的数据</td>
-</tr>
-</tbody></table>
-<h5 id="5-2-4-4-OEM分区文件"><a href="#5-2-4-4-OEM分区文件" class="headerlink" title="5.2.4.4. OEM分区文件"></a>5.2.4.4. OEM分区文件</h5><p>文件格式为INI格式</p>
-<p>位于&#x2F;oem&#x2F;info，权限设计为rw——-</p>
-<p>文件内容的管理目前为手动更新，其托管在git上，集成到基镜像中</p>
-<p>注：关于SP版本，原设计是专注于系统内部程序补丁版本，现在既然把TUI和扩容集成进来，未来SP版本也会受到TUI和扩容脚本的版本影响。</p>
-<h4 id="5-2-5-预处理脚本详细设计"><a href="#5-2-5-预处理脚本详细设计" class="headerlink" title="5.2.5 预处理脚本详细设计"></a>5.2.5 预处理脚本详细设计</h4><p>当前总控打出的包感觉格式不统一，在统一规范未实现之前，本项目通过一个脚本来修正一些不合理的文件、配置、布局。镜像制作程序会按照预处理后的格式进行编码，为了不出现维护问题，以后的打包脚本应该满足下面的规范，满足后通知镜像这边，镜像这边再移除相应的逻辑。</p>
-<h5 id="5-2-5-1-统一systemd文件"><a href="#5-2-5-1-统一systemd文件" class="headerlink" title="5.2.5.1 统一systemd文件"></a>5.2.5.1 统一systemd文件</h5><p><strong>原则：</strong></p>
-<ul>
-<li><p>在总控通过systemd托管的程序，其service文件都要放到systemd子目录下</p>
-</li>
-<li><p>service文件必须是LF换行符</p>
-</li>
-</ul>
-<p><strong>当前实现：</strong></p>
-<ul>
-<li><p>api-gov&#x2F;hack&#x2F;*.service -&gt; api-gov&#x2F;systemd&#x2F;</p>
-</li>
-<li><p>sv&#x2F;hack&#x2F;sv.service -&gt; sv&#x2F;systemd&#x2F;sv.service</p>
-</li>
-<li><p>将nsq&#x2F;systemd&#x2F;nsqlookupd.service的换行符改为LF</p>
-</li>
-</ul>
-<h5 id="5-2-5-2-统一配置文件层级"><a href="#5-2-5-2-统一配置文件层级" class="headerlink" title="5.2.5.2 统一配置文件层级"></a>5.2.5.2 统一配置文件层级</h5><p><strong>原则：</strong></p>
-<ul>
-<li><p>在总控运行的程序，其配置文件在config子目录下</p>
-</li>
-<li><p>职责分明，依赖的处理应该由安装&#x2F;升级阶段解决</p>
-</li>
-</ul>
-<p><strong>当前实现：</strong></p>
-<ul>
-<li><p>删除mysql&#x2F;template目录</p>
-</li>
-<li><p>移除mysqld.service的`ExecStartPre&#x3D;&#x2F;opt&#x2F;mysql&#x2F;bin&#x2F;mysql-systemd-start pre`</p>
-</li>
-<li><p>删除etcd&#x2F;work目录</p>
-</li>
-<li><p>修改etcd.service的`EnvironmentFile&#x3D;&#x2F;opt&#x2F;etcd&#x2F;config&#x2F;etcd.conf`PI</p>
-</li>
-<li><p>将redis&#x2F;etc改为redis&#x2F;confg</p>
-</li>
-<li><p>修改redis.service的`ExecStart&#x3D;&#x2F;opt&#x2F;redis&#x2F;bin&#x2F;redis-server &#x2F;opt&#x2F;redis&#x2F;config&#x2F;redis-stack.conf`</p>
-</li>
-<li><p>&#x2F;etc&#x2F;mysql&#x2F;my.cnf从拷贝改为创建链接到&#x2F;opt&#x2F;mysql&#x2F;config&#x2F;my.cnf</p>
-</li>
-</ul>
-<p><strong>暂时仅限于镜像：</strong></p>
-<p>有些东西暂时要求不了，仅放镜像这边，后面再看情况(2023-11-23)</p>
-<ul>
-<li><p>删除mongod.service的`ExecStartPre&#x3D;ln -sf ……..`</p>
-</li>
-<li><p>删除mongod.service的`Environment&#x3D;”LD_LIBRARY_PATH&#x3D;…`</p>
-</li>
-</ul>
-<h5 id="5-2-5-3-统一data目录"><a href="#5-2-5-3-统一data目录" class="headerlink" title="5.2.5.3 统一data目录"></a>5.2.5.3 统一data目录</h5><p>TODO</p>
-<h3 id="5-3-功能实现"><a href="#5-3-功能实现" class="headerlink" title="5.3 功能实现"></a>5.3 功能实现</h3><h4 id="5-3-1-镜像制作相关实现"><a href="#5-3-1-镜像制作相关实现" class="headerlink" title="5.3.1 镜像制作相关实现"></a>5.3.1 镜像制作相关实现</h4><h5 id="5-3-1-1-系统定制相关说明"><a href="#5-3-1-1-系统定制相关说明" class="headerlink" title="5.3.1.1 系统定制相关说明"></a>5.3.1.1 系统定制相关说明</h5><ul>
-<li>root用户密码设置</li>
-</ul>
-<p>cloud-init不支持直接使用在identity中设置的root用户，需要手动修改root用户的相关权限</p>
-<p>首先解锁root用户后，设置相关密码</p>
-<p>密码使用openssl passwd -6 -stdin &lt;&lt;&lt; 123.com生成</p>
-<ul>
-<li>关闭swap文件</li>
-</ul>
-<p>&nbsp;</p>
-<ul>
-<li>关闭第一次开机sshinit信息</li>
-</ul>
-<p>&nbsp;</p>
-<ul>
-<li>禁用系统自动更新</li>
-</ul>
-<h5 id="5-3-1-2-grub定制相关说明"><a href="#5-3-1-2-grub定制相关说明" class="headerlink" title="5.3.1.2 grub定制相关说明"></a>5.3.1.2 grub定制相关说明</h5><ul>
-<li>设置重启后进入grub界面</li>
-</ul>
-<p>通过设置grub菜单选择超时时间，重启默认进入grub，即使没有多个启动选项</p>
-<ul>
-<li>开启grub菜单编辑密码保护</li>
-</ul>
-<p>&nbsp;</p>
-<ul>
-<li>修改grub菜单显示样式</li>
-</ul>
-<h5 id="5-3-1-3-内核启动参数定制说明"><a href="#5-3-1-3-内核启动参数定制说明" class="headerlink" title="5.3.1.3 内核启动参数定制说明"></a>5.3.1.3 内核启动参数定制说明</h5><ul>
-<li>设置网卡默认名称</li>
-</ul>
-<p>网卡名称通常分为两类(en卓和eth)，这里全部默认为eth0</p>
-<h5 id="5-3-1-4-离线apt仓库制作"><a href="#5-3-1-4-离线apt仓库制作" class="headerlink" title="5.3.1.4 离线apt仓库制作"></a>5.3.1.4 离线apt仓库制作</h5><ol>
-<li><p>生成gpg密钥，用于离线apt仓库的签名。</p>
-</li>
-<li><p>制作离线仓库包</p>
-</li>
-<li><p>基础镜像添加离线源</p>
-</li>
-<li><p>使用echo输入密码</p>
-</li>
-<li><p>打包deb依赖到离线仓库</p>
-</li>
-</ol>
-<h5 id="5-3-1-5-容器初始化数据库"><a href="#5-3-1-5-容器初始化数据库" class="headerlink" title="5.3.1.5 容器初始化数据库"></a>5.3.1.5 容器初始化数据库</h5><ol>
-<li>利用docker实现</li>
-</ol>
-<p>需要编写dockerFile 将文件映射到docker中，利用docker中的应用运行来初始化相关数据文件。优点: 不需要手动维护相关系统资源。缺点：打包需要引入docker组件，和一个dockerFile文件。</p>
-<ol start="2">
-<li>利用linux自带的命名空间实现</li>
-</ol>
-<p>通过unshare来隔离主机中的各个命名空间实现资源隔离，为docker的实现原理，但是需要手动管理相关的隔离资源。优点：不需要引入第三方依赖，直接在squashfs文件中运行，不需要做数据文件拷贝。缺点：在使用上可能会出现一些问题需要手动解决。</p>
-<ol start="3">
-<li>使用systemd-nspawn实现</li>
-</ol>
-<p>暂未调研</p>
-<h5 id="5-3-1-6-关闭cloud-init服务的ssh输出"><a href="#5-3-1-6-关闭cloud-init服务的ssh输出" class="headerlink" title="5.3.1.6 关闭cloud-init服务的ssh输出"></a>5.3.1.6 关闭cloud-init服务的ssh输出</h5><h5 id="5-3-1-7-系统启动信息输出服务"><a href="#5-3-1-7-系统启动信息输出服务" class="headerlink" title="5.3.1.7 系统启动信息输出服务"></a>5.3.1.7 系统启动信息输出服务</h5><p>系统启动信息输出是操作系统开机时输出的系统相关的信息，主要为用户了解当前的开机情况，其中包含系统基础信息输出，以及石犀组件状态在开机过程中的输出。</p>
-<ol>
-<li><p>ubuntu的开机过程主要托管到了systemd服务中，我们包含的cpu、lvm、内存、网卡信息以及总控组件的相关状态输出</p>
-</li>
-<li><p>该服务不阻塞系统的正常启动，仅仅只是为了添加系统启动的一个输出画面，该服务在TUI服务启动之前完成，避免将console信息输出到TUI界面上造成混乱。</p>
-</li>
-</ol>
-<ul>
-<li>实现</li>
-</ul>
-<p>通过读取config&#x2F;srhino_service获取当前总控所在机器的所有组件信息，然后进行服务状态输出。后续总控升级时添加了组件也需要将组件信息新增到这个配置文件。</p>
-<h5 id="5-3-1-8-添加服务状态菜单选项"><a href="#5-3-1-8-添加服务状态菜单选项" class="headerlink" title="5.3.1.8 添加服务状态菜单选项"></a>5.3.1.8 添加服务状态菜单选项</h5><p>将原来TUI第五个技术支持选项修改为服务状态选项，能够获取当前总控的各个组件的对应状态，在组件的右边如果是绿色则表示该组件是正常的，如果是红色则表示该组件是不正常的。</p>
-<ul>
-<li>实现</li>
-</ul>
-<p>在TUI的菜单中显示组件状态，依然使用config&#x2F;srhino_serivce文件中的配置信息。且考虑到组件可能是动态变化的，这里的TUI使用动态行高来展示组件状态。</p>
-<h5 id="5-3-1-9-系统硬件信息展示"><a href="#5-3-1-9-系统硬件信息展示" class="headerlink" title="5.3.1.9 系统硬件信息展示"></a>5.3.1.9 系统硬件信息展示</h5><p>在命令行选项里面，新增了一个hardware_info的命令，该命令能够展示当前系统的cpu，memory，disk的相关使用情况，该命令依赖于free, df命令。</p>
-<ul>
-<li>实现</li>
-</ul>
-<p>获取系统硬件信息的时候，主要通过df和free命令获取相关内存信息和分区信息。</p>
-<ol>
-<li><p>内存信息的使用为free -h中的used这一栏，目前没有展示剩余可用内存。</p>
-</li>
-<li><p>磁盘主要展示石犀自定义的三个分区相关使用情况(&#x2F; , &#x2F;data, &#x2F;opt)</p>
-</li>
-<li><p>cpu的使用率为间隔一秒读取&#x2F;proc&#x2F;cpuinfo计算得到。目前仅仅只有当前cpu使用率。</p>
-</li>
-</ol>
-<h4 id="5-3-2-iso自动化制作ova文件"><a href="#5-3-2-iso自动化制作ova文件" class="headerlink" title="5.3.2 iso自动化制作ova文件"></a>5.3.2 iso自动化制作ova文件</h4><h5 id="5-3-2-1-虚拟机的相关配置"><a href="#5-3-2-1-虚拟机的相关配置" class="headerlink" title="5.3.2.1 虚拟机的相关配置"></a>5.3.2.1 虚拟机的相关配置</h5><p>这个是srhino.vmx配置文件，通常用来描述一个虚拟机的配置，这里用于ovftool导出时，导出对应的虚拟机配置。</p>
-<h5 id="5-3-2-2-qemu启动参数"><a href="#5-3-2-2-qemu启动参数" class="headerlink" title="5.3.2.2 qemu启动参数"></a>5.3.2.2 qemu启动参数</h5><p>通过qemu挂载iso镜像之后启动镜像安装到指定vmdk磁盘</p>
-<p>然后通过ovftool导出ova磁盘文件</p>
-<p>5.3.2.3 镜像启动失败备用方案</p>
-<h2 id="6-自测"><a href="#6-自测" class="headerlink" title="6 自测"></a>6 自测</h2><p>当前工程下自己需要自测的模块以及自测方法</p>
-<h3 id="6-1-自测模块"><a href="#6-1-自测模块" class="headerlink" title="6.1 自测模块"></a>6.1 自测模块</h3><p>包含当前设计的模块与依赖的周边组件&#x2F;模块</p>
-<h3 id="-3"><a href="#-3" class="headerlink" title=""></a></h3><h3 id="6-2-自测方式"><a href="#6-2-自测方式" class="headerlink" title="6.2 自测方式"></a>6.2 自测方式</h3><p>进行测试验证的方法, 使用的工具, 请求的参数, 预期响应的结果</p>
-<ul>
-<li><p>扩容脚本自测方式</p>
-<ul>
-<li><p>增加一块SATA磁盘，10GB</p>
-</li>
-<li><p>增加一块IDE&#x2F;SCSI&#x2F;NVME磁盘，10GB</p>
-</li>
-<li><p>增加一块virtio磁盘，10GB</p>
-</li>
-<li><p>误调系统盘大小测试</p>
-</li>
-</ul>
-</li>
-<li><p>ISO镜像自测方式</p>
-<ul>
-<li><p>在vmware平台安装测试，需要提前准备ESXI6.5环境</p>
-</li>
-<li><p>在HCI平台安装测试</p>
-</li>
-</ul>
-</li>
-<li><p>OVA镜像自测方式</p>
-<ul>
-<li><p>参考部署文档，在不同平台测试</p>
-</li>
-<li><p>需要测试引擎安装</p>
-</li>
-</ul>
-</li>
-<li><p>分区自测方式</p>
-<ul>
-<li>人肉判断，使用命令lsblk， df等</li>
-</ul>
-</li>
-<li><p><del>单元测试</del></p>
-</li>
-</ul>
-<h2 id="7-风险评估及对其它模块-系统影响"><a href="#7-风险评估及对其它模块-系统影响" class="headerlink" title="7 风险评估及对其它模块&#x2F;系统影响"></a>7 风险评估及对其它模块&#x2F;系统影响</h2><p>实现当前设计存在什么已知风险</p>
-<ul>
-<li><p>分区后，可能会存在遗漏的其他模块仍在使用系统分区（根分区），在清理策略不起效的情况下，可能会导致OS异常</p>
-</li>
-<li><p>软连接可能有遗漏或者被应用程序误删导致有些大数据使用到了应用分区的空间</p>
-</li>
-<li><p>OVA和ISO镜像可能会比较大，估计大小为3~4GB，由于公司没有私有网盘，可能会对实施造成一些影响</p>
-</li>
-</ul>
-<h3 id="7-1-已知的或可预知的风险"><a href="#7-1-已知的或可预知的风险" class="headerlink" title="7.1 已知的或可预知的风险"></a>7.1 已知的或可预知的风险</h3><p>在这里加上已经知道的或可能会发生的风险，包括技术、业务等方面。最好针对每个风险，列出相应的应对措施。</p>
-<h4 id="7-1-1-商城的生产地址可能不可用"><a href="#7-1-1-商城的生产地址可能不可用" class="headerlink" title="7.1.1 商城的生产地址可能不可用"></a>7.1.1 商城的生产地址可能不可用</h4><p>总控的配置项[shopCenter]下的两个地址，一个用于获取数据，一个用于上报数据。这里的风险是生产的总控不一定可用</p>
-<h4 id="7-1-2-CPU指令集检查"><a href="#7-1-2-CPU指令集检查" class="headerlink" title="7.1.2 CPU指令集检查"></a>7.1.2 CPU指令集检查</h4><p>总控依赖AVX指令，需要检查CPU指令集。</p>
-<p>ISO要在正式安装系统前，进行检查。</p>
-<p><img src="/../../../../home/xiaoy/media/image8.png" alt="descript"></p>
-<p>OVA目前还不确定检查后在哪提示，<del>而且没有AVX好像也装不了ESXI。</del></p>
-<h4 id="7-1-3-总控WEBUI修改IP长时间不能落地"><a href="#7-1-3-总控WEBUI修改IP长时间不能落地" class="headerlink" title="7.1.3 总控WEBUI修改IP长时间不能落地"></a>7.1.3 总控WEBUI修改IP长时间不能落地</h4><p>当前TUI设计成配合WEBUI使用，但是WEBUI的需求都还没完全定下来，只知道1.4.0要做，在WEB界面修改IP实现以前，镜像也还有持久化修改IP的需求，目前的设想是通过一个脚本来代替WEBUI的操作。</p>
-<p>不论是用于代替的脚本还是未来的WEB界面，在安装引擎之前都需要通过他们来设置IP，以便持久化和修改对应应用的配置，否则无法安装引擎。</p>
-<p>脚本路径为&#x2F;user&#x2F;sbin&#x2F;quickstart_network_set</p>
-<h3 id="7-2-与其它模块-系统可能的影响"><a href="#7-2-与其它模块-系统可能的影响" class="headerlink" title="7.2 与其它模块&#x2F;系统可能的影响"></a>7.2 与其它模块&#x2F;系统可能的影响</h3><p>在详细设计中描述了该模块与其它模块的依赖关系。在这里描述这些依赖关系可能带来的影响。包括本模块对其它模块可能造成的影响以及其它模块可能给本模块造成的影响两个方面。</p>
-<h4 id="7-2-1-对总控监控体系的影响"><a href="#7-2-1-对总控监控体系的影响" class="headerlink" title="7.2.1 对总控监控体系的影响"></a>7.2.1 对总控监控体系的影响</h4><p>UI目录：</p>
-<ul>
-<li><p>系统管理-运行状态-硬盘</p>
-</li>
-<li><p>系统管理-日志管理-系统日志配置</p>
-</li>
-</ul>
-<p><strong>描述：</strong></p>
-<p>分区之后，原有磁盘空间使用率不能适应分区后的实际情况，也就是说显示的不准确，并且这块会被清理策略依赖，会产生进一步的影响。</p>
-<p>原因：</p>
-<p>分区之后，本质上是相当于将一个硬盘分为多个硬盘，但是UI显示上还是按照一个硬盘来显示。</p>
-<p><strong>解决方案：</strong></p>
-<p>方案1. 调整UI，将硬盘改为系统盘+数据盘双显。系统盘涵括根分区、应用分区和启动分区</p>
-<p>方案2. 调整算法，显示数据盘的使用率</p>
-<p>方案3. 调整算法，显示为（硬盘1使用+硬盘2使用+….+硬盘n使用)&#x2F;（硬盘1+硬盘2+….+硬盘n)</p>
-<p>方案4. 调整UI，每个盘（分区）分别显示</p>
-<p><strong>优缺点：</strong></p>
-<p>方案1. 优点：适配实现，能够减少对用户的误导，数据盘允许磁盘使用率低达1%；缺点：需要调整UI，清理策略UI文案也需要区分系统盘和数据盘。</p>
-<p>方案2. 优点：实现简单，允许磁盘使用率低达1%；缺点：如果哪天需要显示硬盘的具体容量，这里显示的数据盘容量会引起用户的困惑（容量小于分区前的磁盘），另外，如果哪个应用不小心把数据写到数据盘，并且还写满了，界面上也无法反应出来。</p>
-<p>方案3. 优点：相比其他方案相对中庸，没有明显的优点；缺点：磁盘使用率误导性强，无法反映用户最关心的指标，数据区满了也不会显示100%，数据区空了显示的可能是20%</p>
-<p>放哪4. 优点：显示的最为精确，能够发现任意分区使用率过高，对排查问题比较友好；缺点：暴露系统细节、用户认知不便，不知道这些分区是什么</p>
-<p><strong>结论</strong>：</p>
-<ul>
-<li><p>选择方案2：显示数据盘的使用率</p>
-</li>
-<li><p>双机主从同步等未来场景不受分区影响</p>
-</li>
-</ul>
-<h4 id="7-2-2-对文件目录规范的影响"><a href="#7-2-2-对文件目录规范的影响" class="headerlink" title="7.2.2 对文件目录规范的影响"></a>7.2.2 对文件目录规范的影响</h4><p>原本各个应用的文件目录规范为：</p>
-<ol>
-<li><p>每个应用一个文件夹，称为应用文件夹</p>
-</li>
-<li><p>应用文件夹下放置bin,config,data等多个目录，用于存储二进制、配置、数据等</p>
-</li>
-</ol>
-<p>这种方式对于数据分类存储不利，直接限制了分区的使用，调整后的目录规范为：</p>
-<p>原有规范基本不变，将data目录调整到数据分区</p>
-<p>调整前：${应用目录}&#x2F;${应用名}&#x2F;data</p>
-<p>调整后：${数据目录}&#x2F;${应用名}&#x2F;data</p>
-<ol start="3">
-<li><del>用户上传的文件，在tmp目录暂存后，移动到合适的位置</del></li>
-</ol>
-<p>调整前：&#x2F;tmp&#x2F;${tmpdir}&#x2F;uploadxxx</p>
-<p>调整后：&#x2F;data&#x2F;${tmpdir}&#x2F;uploadxxx</p>
-<p><del>另一个可选调整是，应用目录使用专有标识，不再使用opt（待评审确定）<br>调整前：${应用目录} &#x3D;&#x3D; &#x2F;opt</del></p>
-<p><del>调整后：${应用目录} &#x3D;&#x3D; &#x2F;srhino</del></p>
-<p><del>这样做的好处是，做清理类操作时，可以直接rm -rf &#x2F;srhino&#x2F;* 而不用小心翼翼的删除每个opt下的文件。但是清理这个需求理论上不应该出现在客户的场景里，特别是镜像交付的场景，唯一有用的场景可能是内部自测的时候，意义不太明确。</del></p>
-<p>上面说的都是理论上的场景，实际考察发现原有目录规范并不是每个应用都能遵守的，并且出于过渡期的考量，不会马上切到新的规范</p>
-<p>当前版本设计的是按照【5.2.4.3 软链接】描述，在制作镜像的时候，会将对应的软连接创建好。这样做有一些要求，主要是升级和重装的时候会有影响，在下面两节会有详细描述。</p>
-<p>结论：</p>
-<p>不需要&#x2F;srhino,,需要一个规范文档</p>
-<h4 id="7-2-3-对升级的影响"><a href="#7-2-3-对升级的影响" class="headerlink" title="7.2.3 对升级的影响"></a>7.2.3 对升级的影响</h4><p>导入过程：</p>
-<ul>
-<li><p>浏览器&gt;&gt;&gt;&gt;&#x2F;tmp&#x2F;${tmpdir}&#x2F;xxx.tar.gz</p>
-</li>
-<li><p>&#x2F;tmp&#x2F;${tmpdir}&#x2F;xxx.tar.gz &gt;&gt;&gt; sc &gt;&gt;&gt; 校验 &gt;&gt; 解压 &gt;&gt;&gt; &#x2F;opt&#x2F;repo</p>
-</li>
-</ul>
-<p>升级过程：</p>
-<ul>
-<li><p>启动&#x2F;opt&#x2F;repo&#x2F;sc&#x2F;sc&#x2F;bin&#x2F;sc (简称sc_new)，接管tcp listener socket</p>
-</li>
-<li><p>sc_new 拷贝&#x2F;opt&#x2F;repo&#x2F;部分文件到&#x2F;opt&#x2F;对应的程序下，替换二进制和配置</p>
-</li>
-<li><p>sc_new 执行&#x2F;opt&#x2F;sc&#x2F;hack&#x2F;seeder，这里会涉及数据迁移等各种复杂处理</p>
-</li>
-</ul>
-<p>要求：</p>
-<p><strong>整体约束：</strong></p>
-<p>升级过程执行流比较不确定，需要确保过程中不会删除&#x2F;opt下的目录，否则可能会导致软链接失效。</p>
-<p><strong>升级前约束：</strong></p>
-<p>升级前，检查&#x2F;oem&#x2F;info文件，如果不存在，则判定为软件部署</p>
-<p>如果文件存在，则检查OS.os-release和OS.os-patch，当前版本仅判断os-release是否为srhino focal即可，以后如果有其他类型的系统，则需要在升级前匹配好。</p>
-<p><strong>系统升级包：</strong></p>
-<p>在操作系统也归我们管后，对于操作系统的安全更新也需要通过升级包的方式发布。系统更新主要是系统软件的更新，理论上来说应该是把对应的deb包打包，并且制作升级脚本即可。对于系统升级而言，需要更新&#x2F;oem&#x2F;info文件的SP版本</p>
-<p><strong>升级包和安装包分离：</strong></p>
-<p>目前升级包和安装包都是同一个包，经了解，该包用作升级用途时，是不需要安装脚本（install.sh)的，所以我认为应该将两个包分离开来，对外以后不发布安装包，仅发布镜像和升级包，升级包里面不包含安装脚本和卸载脚本。</p>
-<p>结论：</p>
-<p>分离</p>
-<p>添加版本标识提升兼容性</p>
-<h4 id="7-2-4-对重装的影响"><a href="#7-2-4-对重装的影响" class="headerlink" title="7.2.4 对重装的影响"></a>7.2.4 对重装的影响</h4><p>重装应该仅发生在公司内部，外部要么用镜像重新部署，要么用升级包升级。</p>
-<p>卸载脚本删的比较彻底，软链接是一定会被删除的，所以要调整的是安装脚本，安装脚本需要</p>
-<p>在启动各个进程之前，先把解压后的一些文件夹挪到&#x2F;data目录(不存在则创建），然后创建好对应的软连接</p>
-<h4 id="7-2-5-mongodb的动态配置"><a href="#7-2-5-mongodb的动态配置" class="headerlink" title="7.2.5 mongodb的动态配置"></a>7.2.5 mongodb的动态配置</h4><h5 id="7-2-5-1-mongodb使用的机器资源限制"><a href="#7-2-5-1-mongodb使用的机器资源限制" class="headerlink" title="7.2.5.1 mongodb使用的机器资源限制"></a>7.2.5.1 mongodb使用的机器资源限制</h5><p><strong>CPU资源限制</strong></p>
-<ul>
-<li><p>根据 CPU 核心数量（CPU_NUM）计算核心最大利用率：</p>
-<ul>
-<li><p><strong>CPU_NUM ≤ 1</strong>：每核最大利用率 20%</p>
-</li>
-<li><p><strong>1 &lt; CPU_NUM &lt; 4</strong>：每核最大利用率 40%</p>
-</li>
-<li><p><strong>4 ≤ CPU_NUM &lt; 8</strong>：每核最大利用率 60%</p>
-</li>
-<li><p><strong>8 ≤ CPU_NUM &lt; 10</strong>：每核最大利用率 80%</p>
-</li>
-<li><p><strong>10 ≤ CPU_NUM &lt; 32</strong>：每核最大利用率 85%</p>
-</li>
-<li><p><strong>CPU_NUM ≥ 32</strong>：每核最大利用率 90%</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>内存资源限制</strong></p>
-<ul>
-<li>MongoDB 限制为使用最多机器实际内存的 30%。</li>
-</ul>
-<h5 id="7-2-5-2-实现MongoDB-机器资源限制的方法"><a href="#7-2-5-2-实现MongoDB-机器资源限制的方法" class="headerlink" title="7.2.5.2 实现MongoDB 机器资源限制的方法"></a>7.2.5.2 实现MongoDB 机器资源限制的方法</h5><ul>
-<li><p>CPU使用率限制：利用 systemd 配置的 CPUQuota 参数来限制 CPU 总使用率。</p>
-</li>
-<li><p>内存使用率限制：通过 systemd 配置中的 MemoryLimit（旧版）和 MemoryMax（新版）参数设置 MongoDB 内存使用上限。使用mongod的启动参数wiredTigerCacheSizeGB，来限制mongodb的缓冲区大小。</p>
-</li>
-<li><p>Mongodb缓冲区大小限制：使用 MongoDB 启动参数 wiredTigerCacheSizeGB 来限制缓冲区大小。</p>
-</li>
-</ul>
-<h5 id="7-2-5-3-mongodb的service文件内容计算"><a href="#7-2-5-3-mongodb的service文件内容计算" class="headerlink" title="7.2.5.3 mongodb的service文件内容计算"></a>7.2.5.3 mongodb的service文件内容计算</h5><p><strong>目标：</strong>根据当前机器资源信息生成 mongod.service 文件。</p>
-<p><strong>内容包括：</strong></p>
-<ul>
-<li><p>计算出CPU 和内存使用的限制配置。</p>
-</li>
-<li><p>计算出MongoDB 启动参数，如 wiredTigerCacheSizeGB，以控制缓冲区大小。</p>
-</li>
-</ul>
-<p><strong>具体实现：</strong></p>
-<ol>
-<li><p><strong>CPU使用率的计算：</strong></p>
-<ol>
-<li><p><del>使用 grep -c “processor” &#x2F;proc&#x2F;cpuinfo 命令得到当前CPU的核心数，并给 cpu_num 赋值</del></p>
-</li>
-<li><p>使用 nproc 命令得到当前CPU的核心数，并给 cpu_num 赋值</p>
-</li>
-<li><p>判断CPU的核心数所对应的核心使用率，并给quotient赋值</p>
-</li>
-<li><p>计算出CPUQuota的值：cpu_quota&#x3D;$((${cpu_num} * $quotient))</p>
-</li>
-</ol>
-</li>
-<li><p><strong>内存限制计算：</strong></p>
-<ol>
-<li>根据&#x2F;proc&#x2F;meminfo文件中的MemTotal字段的值得到总内存，并计算出总内存30%的大小：$(($(awk ‘&#x2F;MemTotal&#x2F; {print $2}’ &#x2F;proc&#x2F;meminfo) * 30 &#x2F; 100))，并赋值给mongodb_limit_mem</li>
-</ol>
-</li>
-<li><p><strong>mongo缓冲区大小计算：</strong></p>
-<ol>
-<li><p>将mongodb_limit_mem由原来的KB转换成以GB为单位，并向上取整</p>
-</li>
-<li><p>具体实现：</p>
-<ol>
-<li><p>1 GB &#x3D; 1048576 KB</p>
-</li>
-<li><p>让KB的值加上1048575，让它达到下一个GB的阈值，或达到当前GB的最大值</p>
-</li>
-<li><p>再让KB的值除以1048576，利用计算自动向下取整的机制得到KB转换成GB然后向上取整的值</p>
-</li>
-<li><p>mongodb_limit_mem_GB&#x3D;$(( (mongodb_limit_mem + 1048575) &#x2F; 1048576 ))</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p><strong>将计算好的值填入mongodb的模板service中并得到最终的service文件内容</strong></p>
-</li>
-</ol>
-<p><strong>mongo的service模板：</strong></p>
-<h5 id="-4"><a href="#-4" class="headerlink" title=""></a></h5><h5 id="7-2-5-4-动态配置的实现"><a href="#7-2-5-4-动态配置的实现" class="headerlink" title="7.2.5.4 动态配置的实现"></a>7.2.5.4 动态配置的实现</h5><p><strong>概要</strong>：</p>
-<ol>
-<li><p>在mongodb启动的时候设置一个前置执行脚本</p>
-</li>
-<li><p>前置脚本的作用使根据当前机器环境生成mongo的service内容，并与当前被配置到systemd的service内容比较，如果有差异，则更新systemd上的service内容，并调用systemd的配置重载操作，如果没有差异，则不作操作。</p>
-</li>
-</ol>
-<p><strong>具体实现：</strong></p>
-<h2 id="8-附件及参考资料"><a href="#8-附件及参考资料" class="headerlink" title="8 附件及参考资料"></a>8 附件及参考资料</h2><p>填写文档相关的附件或参考资料。</p>
-<p>【企微文档】研发参与流程</p>
-<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/sheet/e3_AYEAsQYMALY1HrUK7yXQsqdy4wf7K?scode=ABwA9Qd2ABEY9IZnbYAYEAsQYMALY&tab=819xxa">研发参与流程</a></p>
-<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQthA0ZiCxTuOexfXksQ?scode=ABwA9Qd2ABEpJroZxqARkAWAYlAEQ">ubuntu server 20.04 安装流程</a></p>
-<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQAyAAmu0ZTH29vNPcWA?scode=ABwA9Qd2ABE4iZqsuzARkAWAYlAEQ">基于官方镜像制作基OVA过程</a></p>
-<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/mind/m4_ARkAWAYlAEQwHM912uWR3e72MrE63?scode=ABwA9Qd2ABEbo5nbAUARkAWAYlAEQ">CPU指令集调研</a></p>
-<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_AcwAzgacAIcdOkk7yyKQeOwsSOL0X?scode=ABwA9Qd2ABELAP25QwAcwAzgacAIc">LVM介绍及使用</a></p>
-<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQJVecguFrTkaXWFm2Jg?scode=ABwA9Qd2ABE9IioVr6ARkAWAYlAEQ">软件保护需求文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQk8xh84ZXSBmbtHNEYm?scode=ABwA9Qd2ABEJpM0tXrARkAWAYlAEQ">镜像交付培训资料</a></p>
-<h3 id="8-1-详细修改历史"><a href="#8-1-详细修改历史" class="headerlink" title="8.1 详细修改历史"></a>8.1 详细修改历史</h3><p>2023-11-6，岑思华：</p>
-<ul>
-<li><p>增加5.2.3.3-5.2.3.5 三个小章节，描述打包项目的代码设计</p>
-</li>
-<li><p>增加7.2.1-7.2.3 三个小章节，描述对其他模块产生的影响</p>
-</li>
-<li><p>增加5.2.4.2一节，描述关于LVM的设计</p>
-</li>
-</ul>
-<p>2023-11-7， 岑思华:</p>
-<ul>
-<li><p>将保留分区显式的挂载为&#x2F;oem，存储一些oem信息</p>
-</li>
-<li><p>继续完善7.2部分的内容</p>
-</li>
-<li><p>修改项目结构，去掉install.sh和init.sh，增加main.sh，补充main.sh的细节</p>
-</li>
-</ul>
-<p>2023-11-9，岑思华</p>
-<ul>
-<li><p>补充扩容脚本的目的</p>
-</li>
-<li><p>补充附件及参考资料</p>
-</li>
-<li><p>产品和技术部沟通后，确定磁盘百分比显示采用方案2（显示数据盘占用）</p>
-</li>
-</ul>
-<p>2023-11-14，岑思华</p>
-<ul>
-<li><p>补充mongodb配置文件的风险</p>
-</li>
-<li><p>细化ova构建细节</p>
-</li>
-</ul>
-<p>2023-11-15，岑思华</p>
-<ul>
-<li>更新7.2.5的新方案与结论</li>
-</ul>
-<p>2023-11-15，袁菘壑</p>
-<ul>
-<li>新增5.2.1.2章节</li>
-</ul>
-<p>2023-11-18，沙汉路</p>
-<ul>
-<li>增加LVM相关参考资料</li>
-</ul>
-<p>2023-11-20，岑思华</p>
-<ul>
-<li>更新5.2.3.2关于ova文件的处理方案：ovftool</li>
-</ul>
-<p>2023-11-22，岑思华</p>
-<ul>
-<li><p>将数据分区从固定的60G改为使用剩余所有空间（60G+）</p>
-</li>
-<li><p>增加5.2.5章节</p>
-</li>
-</ul>
-<p>2023-11-29 袁菘壑</p>
-<ul>
-<li>增加5.3功能实现章节 包含5.3.1镜像制作的相关实现</li>
-</ul>
-<p>2023-11-30，岑思华</p>
-<ul>
-<li>更新5.2.4.4, 设定oem文件的管理位置和管理方式</li>
-</ul>
-<p>2023-12-7，吴松达</p>
-<ul>
-<li>增加7.2.5，增加mongodb动态配置的实现</li>
-</ul>
-<p>2023-12-7，袁菘壑</p>
-<ul>
-<li>增加5.3.1.5，增加容器初始化数据库实现</li>
-</ul>
-<p>2023-12-8，岑思华</p>
-<ul>
-<li><p>更新基镜像的需求说明</p>
-</li>
-<li><p>增加oem文件SP版本的含义备注</p>
-</li>
-<li><p>增加7.1.3章节</p>
-</li>
-</ul>
-<p>2023-12-11，岑思华</p>
-<ul>
-<li>更新关于ISO镜像的UEFI补充说明，不支持UEFI</li>
-</ul>
-<p>2023-12-12，袁菘壑</p>
-<ul>
-<li><p>更新关于grub密码兼容问题，在5.3.1.2章</p>
-</li>
-<li><p>更新gpg禁用ui输入密码，在5.3.1.4章</p>
-</li>
-<li><p>添加grub静默启动，在5.3.1.3章</p>
-</li>
-<li><p>删除ssh初始化打印脚本，在5.3.1.6章</p>
-</li>
-<li><p>修改7.1.3脚本路径</p>
-</li>
-</ul>
-<p>2023-12-14，岑思华</p>
-<ul>
-<li><p>&#x2F;user&#x2F;sbin&#x2F;quickstart_network_set.sh改为&#x2F;user&#x2F;sbin&#x2F;quickstart_network_set</p>
-</li>
-<li><p>grub密码易混淆的小写L和数字1，改为大写L</p>
-</li>
-</ul>
-<p>2024-01-02，袁菘壑</p>
-<ul>
-<li>添加iso制作ova流程，在5.3.2章</li>
-</ul>
-<p>2024-01-03，袁菘壑</p>
-<ul>
-<li>增加镜像启动不了后的备用方案</li>
-</ul>
-<p>2024-01-15，袁菘壑</p>
-<ul>
-<li>新增5.3.1.7到5.3.1.9节</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/Linux/" style="color: #ffa2c4">Linux</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98/" style="color: #ff7d73">镜像交付</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E9%83%A8%E7%BD%B2/" style="color: #00bcd4">部署</a>
-        </span>
-        
-    </div>
-    <a href="/2024/03/07/mdstorage/domain/linux/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/03/07/mdstorage/domain/%E6%8B%9B%E8%81%98/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B8%85%E5%8D%95/">
-        <h2 class="post-title">面试题清单.md</h2>
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
     </a>
-    <div class="category-and-date">
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
             </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/3/7
-        </span>
+          </li>
+          
         
         
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="Linux-系统"><a href="#Linux-系统" class="headerlink" title="Linux 系统"></a>Linux 系统</h2><h3 id="详细描述-Linux-系统中，写入一个文件的过程"><a href="#详细描述-Linux-系统中，写入一个文件的过程" class="headerlink" title="详细描述 Linux 系统中，写入一个文件的过程"></a>详细描述 Linux 系统中，写入一个文件的过程</h3><ol>
-<li><strong>用户空间操作</strong>:<ul>
-<li>应用程序通过调用标准库（如 C 语言的 <code>stdio</code> 库）或系统调用（如 <code>write</code>）来请求写入数据到文件。</li>
-<li>如果使用的是标准库函数（如 <code>fwrite</code>），首先这些数据可能会被暂存到应用程序的输出缓冲区中。当缓冲区满或者显式调用刷新（如 <code>fflush</code>）时，标准库会进一步调用相应的系统调用来实际执行写入操作。</li>
-</ul>
-</li>
-<li><strong>系统调用</strong>:<ul>
-<li>当执行写入的系统调用（如 <code>write</code>）时，控制权从用户空间传递到操作系统内核。</li>
-<li>内核接收到这个调用后，会进行必要的权限检查，确认调用进程有权写入指定文件。</li>
-</ul>
-</li>
-<li><strong>虚拟文件系统（VFS）</strong>:<ul>
-<li>Linux 使用虚拟文件系统（VFS）作为所有文件系统类型（如 ext4、xfs、btrfs 等）的抽象层。VFS 负责将通用的文件操作转换为特定文件系统的操作。</li>
-<li>VFS 根据文件描述符找到对应的 inode（索引节点），inode 包含了文件的元数据以及指向文件实际数据块的指针。</li>
-</ul>
-</li>
-<li><strong>文件系统操作</strong>:<ul>
-<li>根据 VFS 和具体文件系统的操作，数据会被写入到文件系统的缓冲区。这一步可能涉及将数据拷贝到内核的页面缓存（page cache）。</li>
-<li>文件系统可能会执行一些优化，如合并连续的写入请求以减少实际的磁盘操作。</li>
-</ul>
-</li>
-<li><strong>写回（Write-back）</strong>:<ul>
-<li>数据首先被写入到缓冲区中，并在一段时间后异步写回到磁盘。这个机制可以提高性能，因为它减少了磁盘 I&#x2F;O 操作的次数。</li>
-<li>系统也可能通过“写穿”（write-through）策略直接写入磁盘，这取决于文件系统的配置和具体操作（如 <code>fsync</code> 系统调用）。</li>
-</ul>
-</li>
-<li><strong>硬件层面</strong>:<ul>
-<li>数据最终通过存储设备的驱动程序写入磁盘。如果使用的是固态硬盘（SSD），数据实际上是写入到 NAND 闪存单元；如果是传统的机械硬盘（HDD），数据则是写入到磁盘的物理扇区。</li>
-</ul>
-</li>
-<li><strong>确认写入完成</strong>:<ul>
-<li>一旦数据成功写入存储设备，相应的系统调用会完成，并将控制权返回给用户空间应用程序，同时返回写入操作的状态。</li>
-</ul>
-</li>
-</ol>
-<h3 id="详细描述访问一个域名到浏览器显示页面的过程"><a href="#详细描述访问一个域名到浏览器显示页面的过程" class="headerlink" title="详细描述访问一个域名到浏览器显示页面的过程"></a>详细描述访问一个域名到浏览器显示页面的过程</h3><ol>
-<li><strong>域名解析</strong>:<ul>
-<li>浏览器首先检查域名是否已在本地缓存中解析过，如果是，则直接使用该 IP 地址。如果没有，浏览器会发起一个 DNS (Domain Name System) 查询来将域名转换成 IP 地址。这可能涉及多级查询，从本地 DNS 服务器到根 DNS 服务器，再到负责该顶级域名（TLD）的服务器，最后是负责该具体域名的名称服务器。</li>
-</ul>
-</li>
-<li><strong>建立连接</strong>:<ul>
-<li>浏览器使用解析得到的 IP 地址尝试与目标服务器建立 TCP 连接。这一过程通常涉及三次握手，确保双方正确建立连接。</li>
-<li>如果网站使用 HTTPS，还需要进行 SSL&#x2F;TLS 握手，以安全地加密之后的通信。</li>
-</ul>
-</li>
-<li><strong>发送 HTTP 请求</strong>:<ul>
-<li>一旦建立了 TCP 连接（和可选的 SSL&#x2F;TLS 加密层），浏览器就会向服务器发送 HTTP 请求。这个请求包括请求行（如 <code>GET / HTTP/1.1</code>），请求头（包括用户代理、接受的内容类型等），以及可选的请求体。</li>
-</ul>
-</li>
-<li><strong>服务器处理请求并响应</strong>:<ul>
-<li>服务器接收到请求后，会根据请求的资源（如网页、图片等）进行处理。这可能涉及到服务器端的脚本或应用程序的执行，如数据库查询或动态内容的生成。</li>
-<li>处理完成后，服务器会将响应数据（如 HTML 页面）以及响应头（状态码、内容类型等）发送回浏览器。</li>
-</ul>
-</li>
-<li><strong>浏览器处理响应</strong>:<ul>
-<li>浏览器接收到服务器的响应数据后，首先会检查状态码。如果是成功的响应（如 200 OK），浏览器会继续解析返回的内容。</li>
-<li>浏览器解析 HTML 内容，并根据需要发起额外的请求来获取嵌入资源（如 CSS 文件、JavaScript 脚本、图片等）。</li>
-</ul>
-</li>
-<li><strong>渲染页面</strong>:<ul>
-<li>浏览器根据 HTML 和 CSS 构建 DOM (Document Object Model) 树和 CSSOM (CSS Object Model) 树，然后将它们合并成渲染树。</li>
-<li>浏览器根据渲染树来布局页面，计算每个元素的尺寸和位置。</li>
-<li>最后，浏览器绘制页面内容到屏幕上。</li>
-</ul>
-</li>
-<li><strong>JavaScript 执行</strong>:<ul>
-<li>如果页面包含 JavaScript，浏览器还会解析和执行脚本。这可能会修改 DOM，触发重新渲染。</li>
-</ul>
-</li>
-</ol>
-<h3 id="详细描述在两个Linux系统中双方发送接受-TCP-请求的过程"><a href="#详细描述在两个Linux系统中双方发送接受-TCP-请求的过程" class="headerlink" title="详细描述在两个Linux系统中双方发送接受 TCP 请求的过程"></a>详细描述在两个Linux系统中双方发送接受 TCP 请求的过程</h3><h4 id="1-TCP-三次握手（建立连接）"><a href="#1-TCP-三次握手（建立连接）" class="headerlink" title="1. TCP 三次握手（建立连接）"></a>1. TCP 三次握手（建立连接）</h4><ol>
-<li><strong>SYN 发送</strong>:<ul>
-<li>主动方（客户端）发送一个 SYN（同步序列编号）报文给被动方（服务器），表示开始建立一个新的连接。这个 SYN 报文包含一个客户端选择的初始序列号（ISN）。</li>
-<li>此时，客户端进入 SYN-SENT 状态。</li>
-</ul>
-</li>
-<li><strong>SYN-ACK 接收</strong>:<ul>
-<li>服务器收到 SYN 报文后，会返回一个 SYN-ACK 报文。这个报文包含服务器自己的初始序列号，以及对客户端 ISN 的确认（客户端 ISN+1）。</li>
-<li>服务器此时进入 SYN-RECEIVED 状态。</li>
-</ul>
-</li>
-<li><strong>ACK 发送</strong>:<ul>
-<li>客户端收到 SYN-ACK 后，发送一个 ACK（确认）报文给服务器，确认号为服务器 ISN+1。</li>
-<li>发送完这个 ACK 报文后，客户端进入 ESTABLISHED 状态。服务器在收到这个 ACK 后也进入 ESTABLISHED 状态。</li>
-<li>此时，TCP 连接建立完成，双方可以开始数据传输。</li>
-</ul>
-</li>
-</ol>
-<h4 id="2-数据传输"><a href="#2-数据传输" class="headerlink" title="2. 数据传输"></a>2. 数据传输</h4><ul>
-<li>一旦 TCP 连接建立，两个 Linux 系统可以开始双向数据传输。应用数据被封装在 TCP 段中，每个 TCP 段都包含序列号和确认号，以确保数据的可靠传输和顺序到达。</li>
-<li>TCP 提供流量控制和拥塞控制机制，确保网络条件变化时调整数据发送速率，优化性能和资源利用。</li>
-</ul>
-<h4 id="3-TCP-四次挥手（断开连接）"><a href="#3-TCP-四次挥手（断开连接）" class="headerlink" title="3. TCP 四次挥手（断开连接）"></a>3. TCP 四次挥手（断开连接）</h4><ol>
-<li><strong>FIN 发送</strong>:<ul>
-<li>当一方（假设为客户端）完成数据发送后，它会发送一个 FIN 报文给服务器，表示没有数据发送了，请求关闭连接。</li>
-<li>客户端进入 FIN-WAIT-1 状态。</li>
-</ul>
-</li>
-<li><strong>ACK 接收</strong>:<ul>
-<li>服务器收到 FIN 报文后，发送一个 ACK 报文作为回应，确认号为客户端的 FIN 序列号+1。</li>
-<li>服务器此时进入 CLOSE-WAIT 状态，客户端收到 ACK 后进入 FIN-WAIT-2 状态。</li>
-</ul>
-</li>
-<li><strong>FIN 发送（服务器端）</strong>:<ul>
-<li>服务器完成其数据发送后，也发送一个 FIN 报文给客户端，请求关闭连接。</li>
-<li>服务器进入 LAST-ACK 状态。</li>
-</ul>
-</li>
-<li><strong>ACK 接收</strong>:<ul>
-<li>客户端收到服务器的 FIN 报文后，发送一个 ACK 报文作为回应，确认号为服务器的 FIN 序列号+1。</li>
-<li>客户端进入 TIME-WAIT 状态，等待足够的时间以确保服务器接收到最终的 ACK 报文，然后关闭连接</li>
-</ul>
-</li>
-</ol>
-<h3 id="一个-tcp-请求的生命周期中进行的系统调用的过程"><a href="#一个-tcp-请求的生命周期中进行的系统调用的过程" class="headerlink" title="一个 tcp 请求的生命周期中进行的系统调用的过程"></a>一个 tcp 请求的生命周期中进行的系统调用的过程</h3><h4 id="1-建立连接"><a href="#1-建立连接" class="headerlink" title="1. 建立连接"></a>1. 建立连接</h4><h5 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h5><ol>
-<li><strong><code>socket()</code></strong>:<ul>
-<li>调用 <code>socket()</code> 创建一个新的套接字。这是与网络通信的端点，用于发送和接收数据。</li>
-</ul>
-</li>
-<li><strong><code>connect()</code></strong>:<ul>
-<li>使用 <code>connect()</code> 系统调用并指定服务器的地址和端口来尝试建立到服务器的连接。这将启动 TCP 三次握手过程。</li>
-<li>客户端首先发送 SYN 包给服务器，状态变为 SYN-SENT。</li>
-</ul>
-</li>
-</ol>
-<h5 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h5><ol>
-<li><strong><code>socket()</code></strong>:<ul>
-<li>同样调用 <code>socket()</code> 创建一个套接字。</li>
-</ul>
-</li>
-<li><strong><code>bind()</code></strong>:<ul>
-<li>调用 <code>bind()</code> 将套接字绑定到一个本地地址和端口上。这通常是服务器监听客户端连接请求的端口。</li>
-</ul>
-</li>
-<li><strong><code>listen()</code></strong>:<ul>
-<li>通过 <code>listen()</code> 告诉系统该套接字是服务器的监听套接字，准备接受客户端连接请求。</li>
-</ul>
-</li>
-<li><strong><code>accept()</code></strong>:<ul>
-<li>服务器调用 <code>accept()</code> 阻塞等待客户端的连接请求。当接收到客户端的 SYN 请求后，服务器发送 SYN-ACK 响应，并进入 SYN-RECEIVED 状态。一旦客户端回应 ACK，<code>accept()</code> 返回，服务器进入 ESTABLISHED 状态，此时 TCP 连接建立。</li>
-</ul>
-</li>
-</ol>
-<h4 id="2-数据传输-1"><a href="#2-数据传输-1" class="headerlink" title="2. 数据传输"></a>2. 数据传输</h4><ul>
-<li><strong><code>write()</code> &#x2F; <code>send()</code></strong>:<ul>
-<li>在连接建立后，双方可以使用 <code>write()</code> 或 <code>send()</code> 系统调用发送数据。这些调用将应用程序的数据写入 TCP 套接字，由 TCP 协议处理数据的分段、封装和发送。</li>
-</ul>
-</li>
-<li><strong><code>read()</code> &#x2F; <code>recv()</code></strong>:<ul>
-<li>对应地，使用 <code>read()</code> 或 <code>recv()</code> 系统调用来接收从对方发送过来的数据。这些调用从 TCP 套接字读取数据，如果没有可用数据，调用会阻塞，直到有数据到达。</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-断开连接"><a href="#3-断开连接" class="headerlink" title="3. 断开连接"></a>3. 断开连接</h4><h5 id="发起关闭的一方"><a href="#发起关闭的一方" class="headerlink" title="发起关闭的一方"></a>发起关闭的一方</h5><ol>
-<li><code>close()</code> &#x2F; <code>shutdown()</code>:<ul>
-<li>当通信完成，一方（假设为客户端）使用 <code>close()</code> 或 <code>shutdown()</code> 系统调用来关闭套接字。这会导致发送一个 FIN 包给对方，开始 TCP 四次挥手过程。</li>
-</ul>
-</li>
-</ol>
-<h5 id="接收-FIN-的一方"><a href="#接收-FIN-的一方" class="headerlink" title="接收 FIN 的一方"></a>接收 FIN 的一方</h5><ul>
-<li>服务器在接收到客户端的 FIN 包后，内核通知应用程序套接字关闭（如果应用程序阻塞在 <code>read()</code> 调用中，则 <code>read()</code> 返回0，表示EOF）。此时，服务器也可以调用 <code>close()</code> 或 <code>shutdown()</code> 来关闭连接并发送 FIN 包给客户端。</li>
-</ul>
-<h4 id="4-清理"><a href="#4-清理" class="headerlink" title="4. 清理"></a>4. 清理</h4><ul>
-<li>在四次挥手后，当双方都发送并确认 FIN 包，TCP 连接被彻底关闭，操作系统会清理与该连接相关的资源。</li>
-</ul>
-<h3 id="详细描述-Linux系统中-epoll-多路复用机制和关键原理"><a href="#详细描述-Linux系统中-epoll-多路复用机制和关键原理" class="headerlink" title="详细描述 Linux系统中 epoll 多路复用机制和关键原理"></a>详细描述 Linux系统中 epoll 多路复用机制和关键原理</h3><p>在Linux系统中，<code>epoll</code>是一种高效的I&#x2F;O事件通知机制，特别适用于处理大量并发连接的服务器程序。与传统的多路复用机制如<code>select</code>和<code>poll</code>相比，<code>epoll</code>提供了更好的扩展性和性能，主要因为它能够避免<code>select</code>和<code>poll</code>中的一些固有限制和性能瓶颈。</p>
-<h4 id="关键原理和特性"><a href="#关键原理和特性" class="headerlink" title="关键原理和特性"></a>关键原理和特性</h4><ol>
-<li><p><strong>效率与可扩展性</strong>：</p>
-<ul>
-<li><code>epoll</code>通过一种有效的方法管理大量的文件描述符（FD）。它使用一个红黑树（一种自平衡二叉查找树）来存储所有正在监视的FDs，这样查找、添加或删除FDs的操作都可以在对数时间内完成。与之相比，<code>select</code>和<code>poll</code>需要遍历整个FD集合来检查状态，效率随着FD数量的增加而线性下降。</li>
-</ul>
-</li>
-<li><p><strong>事件驱动</strong>：</p>
-<ul>
-<li><code>epoll</code>是基于事件的，它只对活动的FD进行操作。当一个或多个FD状态发生变化时，<code>epoll</code>会将这些活动FD添加到一个就绪列表中，应用程序只需处理这个列表中的FD。这种方式避免了在大量FD中轮询寻找那些状态发生变化的FD，从而大大提高了效率。</li>
-</ul>
-</li>
-<li><p><strong>两种工作模式</strong>：</p>
-<ul>
-<li><code>epoll</code>支持两种工作模式：边缘触发（ET，Edge Triggered）和水平触发（LT，Level Triggered）。<ul>
-<li><strong>水平触发（LT）</strong>：这是默认模式，当FD就绪时，<code>epoll_wait</code>会返回该FD，而且只要这个FD仍然处于就绪状态，<code>epoll_wait</code>会再次报告它。</li>
-<li><strong>边缘触发（ET）</strong>：在这种模式下，只有FD状态从不可用变为可用，或者有更多数据可读写时，<code>epoll_wait</code>才会返回FD。这要求应用程序必须处理所有的数据，直到没有更多可用为止，因为再次状态变化之前，<code>epoll_wait</code>不会再次报告该FD。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>一次注册，多次使用</strong>：</p>
-<ul>
-<li><code>epoll</code>允许应用程序只注册一次FD，除非FD的监听事件发生变化，否则无需重新注册。这与<code>select</code>和<code>poll</code>每次调用时都需要重新构建FD集的方式形成鲜明对比。</li>
-</ul>
-</li>
-</ol>
-<h4 id="使用过程"><a href="#使用过程" class="headerlink" title="使用过程"></a>使用过程</h4><p><code>epoll</code>的使用通常包括以下几个步骤：</p>
-<ol>
-<li><p><strong>创建epoll实例</strong>：</p>
-<ul>
-<li>调用<code>epoll_create</code>函数创建一个epoll实例，它返回一个文件描述符，用于后续所有的<code>epoll</code>操作。</li>
-</ul>
-</li>
-<li><p><strong>注册感兴趣的事件</strong>：</p>
-<ul>
-<li>使用<code>epoll_ctl</code>添加、修改或删除要监控的文件描述符及其对应的事件。这些事件可以是读就绪、写就绪等。</li>
-</ul>
-</li>
-<li><p><strong>等待事件发生</strong>：</p>
-<ul>
-<li>调用<code>epoll_wait</code>等待一个或多个FD上的事件发生。<code>epoll_wait</code>可以指定超时时间，以防在指定时间内没有任何事件发生。</li>
-</ul>
-</li>
-<li><p><strong>处理就绪的事件</strong>：</p>
-<ul>
-<li><code>epoll_wait</code>返回时，会提供一个事件列表，应用程序遍历这个列表，处理所有就绪的事件。</li>
-</ul>
-</li>
-</ol>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
-<li><strong>高效</strong>：对于大规模FD集合，<code>epoll</code>提供了优越的性能。</li>
-<li><strong>可扩展</strong>：<code>epoll</code>的性能不会随着FD数量的增加而显著下降。</li>
-<li><strong>灵活</strong>：支持边缘触发和水平触发，适应不同</li>
-</ul>
-<h3 id="描述-epoll-机制中进行网络请求多路复用的主流程"><a href="#描述-epoll-机制中进行网络请求多路复用的主流程" class="headerlink" title="描述 epoll 机制中进行网络请求多路复用的主流程"></a>描述 epoll 机制中进行网络请求多路复用的主流程</h3><p>使用 <code>epoll</code> 机制进行网络请求多路复用涉及到创建 <code>epoll</code> 实例、向 <code>epoll</code> 实例注册感兴趣的事件（如可读、可写事件）、等待事件发生，以及处理发生的事件。这里以一个典型的网络服务器为例，描述使用 <code>epoll</code> 进行网络请求多路复用的主要流程：</p>
-<h3 id="1-创建-epoll-实例"><a href="#1-创建-epoll-实例" class="headerlink" title="1. 创建 epoll 实例"></a>1. 创建 <code>epoll</code> 实例</h3><p>首先，服务器启动时创建一个 <code>epoll</code> 实例，用于后续的事件监听和处理。</p>
-<pre><code class="c">int epfd = epoll_create1(0);
-if (epfd == -1) &#123;
-    perror(&quot;epoll_create1&quot;);
-    exit(EXIT_FAILURE);
-&#125;
-</code></pre>
-<h3 id="2-注册感兴趣的事件"><a href="#2-注册感兴趣的事件" class="headerlink" title="2. 注册感兴趣的事件"></a>2. 注册感兴趣的事件</h3><p>服务器的监听socket需要注册到 <code>epoll</code> 实例中，以便 <code>epoll</code> 能够通知应用程序有新的连接请求。此外，随着新的客户端连接到服务器，相应的客户端socket也需要注册到 <code>epoll</code> 实例中，以监听这些socket上的可读或可写事件。</p>
-<pre><code class="c">struct epoll_event ev;
-ev.events = EPOLLIN; // 表示对应的文件描述符可以读（如：TCP socket的远程关闭，有数据可读）
-ev.data.fd = listen_fd; // listen_fd 是监听socket的文件描述符
-if (epoll_ctl(epfd, EPOLL_CTL_ADD, listen_fd, &amp;ev) == -1) &#123;
-    perror(&quot;epoll_ctl: listen_fd&quot;);
-    exit(EXIT_FAILURE);
-&#125;
-</code></pre>
-<h3 id="3-等待事件发生"><a href="#3-等待事件发生" class="headerlink" title="3. 等待事件发生"></a>3. 等待事件发生</h3><p>应用程序通过调用 <code>epoll_wait</code> 等待事件的发生。这个调用可以指定超时，以便在没有事件发生时不会无限期地阻塞。</p>
-<pre><code class="c">#define MAX_EVENTS 10
-struct epoll_event events[MAX_EVENTS];
-
-int nfds = epoll_wait(epfd, events, MAX_EVENTS, -1);
-if (nfds == -1) &#123;
-    perror(&quot;epoll_wait&quot;);
-    exit(EXIT_FAILURE);
-&#125;
-</code></pre>
-<h3 id="4-处理就绪的事件"><a href="#4-处理就绪的事件" class="headerlink" title="4. 处理就绪的事件"></a>4. 处理就绪的事件</h3><p>当 <code>epoll_wait</code> 返回后，应用程序遍历事件数组，处理每个就绪的事件。如果事件与监听socket相关（表示有新的连接请求），服务器将接受这个连接，并将新的客户端socket注册到 <code>epoll</code> 实例中。如果事件与客户端socket相关（表示有数据可读或可写），服务器则进行相应的读或写操作。</p>
-<pre><code class="c">for (int n = 0; n &lt; nfds; ++n) &#123;
-    if (events[n].data.fd == listen_fd) &#123;
-        // 处理新的连接请求
-        int conn_fd = accept(listen_fd, (struct sockaddr *)&amp;client_addr, &amp;addr_len);
-        if (conn_fd == -1) &#123;
-            perror(&quot;accept&quot;);
-            exit(EXIT_FAILURE);
-        &#125;
-        setnonblocking(conn_fd); // 通常设置为非阻塞模式
-        ev.events = EPOLLIN | EPOLLET; // 可读事件，边缘触发模式
-        ev.data.fd = conn_fd;
-        if (epoll_ctl(epfd, EPOLL_CTL_ADD, conn_fd, &amp;ev) == -1) &#123;
-            perror(&quot;epoll_ctl: conn_fd&quot;);
-            exit(EXIT_FAILURE);
-        &#125;
-    &#125; else &#123;
-        // 处理客户端socket的事件（读或写）
-        int fd = events[n].data.fd;
-        // 进行读或写操作...
-    &#125;
-&#125;
-</code></pre>
-<p>通过以上流程，服务器能够高效地管理多个网络连接，使用单个线程或进程即可同时处理多个网络I&#x2F;O操作，大大提高了网络应用程序的性能和吞吐量。</p>
-<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="color: #00bcd4">面试题</a>
-        </span>
-        
-    </div>
-    <a href="/2024/03/07/mdstorage/domain/%E6%8B%9B%E8%81%98/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B8%85%E5%8D%95/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/03/07/mdstorage/domain/%E6%96%87%E6%A1%A3/mermaid%E6%B5%81%E7%A8%8B%E5%9B%BE%E5%86%99%E4%BD%9C%E6%96%87%E6%A1%A3/">
-        <h2 class="post-title">mermaid流程图写作文档.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
             </a>
-        </span>
+          </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/3/7
-        </span>
-        
-        
+      </ul>
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Mermaid 是一个强大的、基于文本的图表绘制工具，它允许用户通过简单的文本描述来生成复杂的图表。这种方式使得图表的创建和维护变得更加容易和高效，尤其是在需要将图表版本控制或与文档集成时。Mermaid 减少了使用传统图形编辑工具的需要，使非设计师也能快速绘制出看起来专业的图表。</p>
-<h3 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h3><ul>
-<li><strong>易于学习和使用：</strong> Mermaid 的语法简单直观，用户可以通过学习几个基本的语法规则来快速开始绘图。</li>
-<li><strong>文本到图形：</strong> 通过编写和解析文本描述，Mermaid 自动生成图表。这使得图表易于在版本控制系统中管理，并可以像代码一样被审查。</li>
-<li><strong>广泛的图表类型支持：</strong> Mermaid 支持多种图表类型，包括流程图、序列图、类图、状态图、甘特图以及实体关系图等，几乎涵盖了所有文档和报告中常见的图表需求。</li>
-<li><strong>集成方便：</strong> 它可以被集成到多种平台和工具中，例如 Markdown 编辑器、Confluence、GitHub、GitLab 等，很多支持 Markdown 的平台已经内置了对 Mermaid 的支持。</li>
-</ul>
-<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><p>Mermaid 的语法主要由图表声明（定义图表的类型和方向）、节点定义（定义图表中的元素）和连接符（定义节点之间的关系）组成。下面是一个简单的流程图示例的 Mermaid 代码：</p>
-<pre><code class="text">graph LR
-    A[Start] --&gt; B&#123;Decision&#125;
-    B --&gt;|Yes| C[Do Something]
-    B --&gt;|No| D[Do Something Else]
-    C --&gt; D[End]
-</code></pre>
-<pre><code class="mermaid">graph LR
-    A[Start] --&gt; B&#123;Decision&#125;
-    B --&gt;|Yes| C[Do Something]
-    B --&gt;|No| D[Do Something Else]
-    C --&gt; D[End]
-</code></pre>
-<p>这段代码描述了一个包含开始节点、决策节点和操作节点的简单流程，并指定了它们之间的关系。</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>Mermaid 非常适合软件开发、项目管理、系统设计和文档编写等领域，特别是在需要快速创建和更新图表以说明复杂过程和系统的场合。</p>
-<h3 id="怎么开始"><a href="#怎么开始" class="headerlink" title="怎么开始"></a>怎么开始</h3><p>要开始使用 Mermaid，你可以：</p>
-<ul>
-<li>使用支持 Mermaid 的 Markdown 编辑器或平台。</li>
-<li>安装 Mermaid CLI（命令行接口）工具，以在本地环境中生成图表。</li>
-<li>在线使用 Mermaid Live Editor，这是一个官方提供的在线工具，允许用户即时预览他们的 Mermaid 图表代码生成的图形。</li>
-</ul>
-<p>Mermaid 的学习曲线相对平缓，通过阅读其官方文档和在 Mermaid Live Editor 上进行实践，用户可以快速掌握如何绘制基础甚至是复杂的图表。</p>
-<h2 id="mermaid-常用写作工具"><a href="#mermaid-常用写作工具" class="headerlink" title="mermaid 常用写作工具"></a>mermaid 常用写作工具</h2><ul>
-<li><strong>typora</strong></li>
-<li><a target="_blank" rel="noopener" href="https://mermaid.live/"><strong>mermaid在线</strong></a></li>
-<li><code>https://mermaid.nodejs.cn/syntax/block.html</code></li>
-</ul>
-<h2 id="mermaid-常用工具库代码风格参考"><a href="#mermaid-常用工具库代码风格参考" class="headerlink" title="mermaid 常用工具库代码风格参考"></a>mermaid 常用工具库代码风格参考</h2><pre><code class="text">---
-title: mermaid 常用工具库代码风格参考
----
-graph TB
-    a[A]
-    b[B]
-    c[C]
-    subgraph MySubGraphTitle
-        comp_a:::Orange
-        comp_a ---&gt; comp_b[B]
-        comp_b ----&gt; comp_c
-        comp_c ---&gt; comp_d
-        comp_d -- D转E --&gt; comp_e
-    end
-    
-    subgraph Layer1
-        l_a
-    end
-    
-    subgraph Layer2
-        test_no_border:::NoBorder
-    end
+  </div>
+</nav>
 
+  
 
-    linkStyle 1 stroke:blue,stroke-width:1px,color:black,stroke-dasharray: 5, 5;
-    linkStyle 3 stroke:red,stroke-width:4px,color:green;
-
-    %% stroke 为边框或线条 stroke: , stroke-width: 宽度 stroke-dasharray: 虚线
-    %% fill 为填充结点的颜色
-    %% color 为结点中文字颜色
-    
-    %% fill: 
-
-    style a stroke:#f66,stroke-width:2px;
-    style b stroke:#66f,stroke-width:4px;
-
-    style Layer1 fill:#FFEBB5
-    classDef Orange fill:#f96
-
-    %% 颜色 transparent 透明
-    classDef NoBorder fill:transparent, stroke:transparent;
-    
-    %% 样式测试区
-    %%classDef Orange fill:#f96
-</code></pre>
-<pre><code class="mermaid">---
-title: mermaid 常用工具库代码风格参考
----
-graph TB
-    a[A]
-    b[B]
-    c[C]
-    subgraph MySubGraphTitle
-        comp_a:::Orange
-        comp_a ---&gt; comp_b[B]
-        comp_b ----&gt; comp_c
-        comp_c ---&gt; comp_d
-        comp_d -- D转E --&gt; comp_e
-    end
-    
-    subgraph Layer1
-        l_a
-    end
-    
-    subgraph Layer2
-        test_no_border:::NoBorder
-    end
-
-
-    linkStyle 1 stroke:blue,stroke-width:1px,color:black,stroke-dasharray: 5, 5;
-    linkStyle 3 stroke:red,stroke-width:4px,color:green;
-
-    %% stroke 为边框或线条 stroke: , stroke-width: 宽度 stroke-dasharray: 虚线
-    %% fill 为填充结点的颜色
-    %% color 为结点中文字颜色
-    
-    %% fill: 
-
-    style a stroke:#f66,stroke-width:2px;
-    style b stroke:#66f,stroke-width:4px;
-
-    style Layer1 fill:#FFEBB5
-    classDef Orange fill:#f96
-
-    %% 颜色 transparent 透明
-    classDef NoBorder fill:transparent, stroke:transparent;
-    
-    %% 样式测试区
-    %%classDef Orange fill:#f96
-</code></pre>
-<h3 id="常用颜色方案"><a href="#常用颜色方案" class="headerlink" title="常用颜色方案"></a>常用颜色方案</h3><ul>
-<li><p>基础色：</p>
-<p> 提供足够对比度，适用于大多数背景和用途。</p>
-<ul>
-<li>蓝色：<code>#1E90FF</code>（道奇蓝），给人以专业和可靠的感觉。</li>
-<li>绿色：<code>#32CD32</code>（酸橙绿），代表增长和繁荣。</li>
-<li>红色：<code>#FF6347</code>（番茄），用于警告或强调。</li>
-<li>黄色：<code>#FFD700</code>（金色），用来吸引注意或表示警告，但比红色更温和。</li>
-<li>灰色：<code>#708090</code>（石板灰），适合背景和非主要元素，提供足够对比而不过于抢眼。</li>
-</ul>
-</li>
-</ul>
-<h3 id="辅助色方案"><a href="#辅助色方案" class="headerlink" title="辅助色方案"></a>辅助色方案</h3><p>辅助色可用于强调、分类或作为基础色的补充：</p>
-<ul>
-<li>浅蓝色：<code>#87CEFA</code>（浅天蓝色），温和且易于观看，适合作为背景或强调信息。</li>
-<li>紫色：<code>#9370DB</code>（中紫色），神秘且优雅，适合创意展示。</li>
-<li>橙色：<code>#FFA07A</code>（浅橙色），活泼且友好，适合吸引注意。</li>
-<li>粉色：<code>#FFC0CB</code>（粉红），温柔且亲切，用于温和强调。</li>
-</ul>
-
-            
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
+          
         </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/markdown/" style="color: #ff7d73">markdown</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/mermaid/" style="color: #ffa2c4">mermaid</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/typora/" style="color: #00a596">typora</a>
-        </span>
-        
-    </div>
-    <a href="/2024/03/07/mdstorage/domain/%E6%96%87%E6%A1%A3/mermaid%E6%B5%81%E7%A8%8B%E5%9B%BE%E5%86%99%E4%BD%9C%E6%96%87%E6%A1%A3/" class="go-post">阅读全文</a>
+  </div>
 </div>
 
-<div class="post">
-    <a href="/2024/03/06/mdstorage/domain/network/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%B7%AF%E7%94%B1%E5%99%A8/">
-        <h2 class="post-title">交换机路由器.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/3/6
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="LAN-中网关通常存在于路由器中"><a href="#LAN-中网关通常存在于路由器中" class="headerlink" title="LAN 中网关通常存在于路由器中"></a>LAN 中网关通常存在于路由器中</h2><p>一般来说，一个局域网（LAN）上的网关通常存在于路由器中。网关是一个网络连接点，它允许一个网络上的设备访问另一个网络。在大多数家庭和小型企业网络中，网关设备提供了多种功能，包括：</p>
-<ul>
-<li><strong>路由功能</strong>：将数据包从一个网络路由到另一个网络，通常是从局域网（LAN）路由到广域网（WAN），如互联网。</li>
-<li><strong>NAT（网络地址转换）</strong>：允许多个设备共享一个公共 IP 地址进行互联网访问，增强了网络的安全性和效率。</li>
-<li><strong>DHCP（动态主机配置协议）</strong>：自动分配 IP 地址给网络上的设备，简化了网络管理。</li>
-<li><strong>防火墙功能</strong>：提供基本的网络安全防护，防止未经授权的访问。</li>
-</ul>
-<h2 id="路由器、交换机如何参与到-ARP-协议中"><a href="#路由器、交换机如何参与到-ARP-协议中" class="headerlink" title="路由器、交换机如何参与到 ARP 协议中"></a>路由器、交换机如何参与到 ARP 协议中</h2><h3 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h3><p>交换机工作在数据链路层（第二层），主要负责转发基于 MAC 地址的帧。在 ARP 协议中，交换机的角色主要包括：</p>
-<ol>
-<li><strong>转发 ARP 请求</strong>：当交换机接收到一个 ARP 请求（一个广播帧），它会将这个请求转发到除了接收该请求的端口之外的所有活动端口。这样做是为了确保局域网内的所有主机都有机会接收到这个 ARP 请求。</li>
-<li><strong>学习 MAC 地址</strong>：虽然交换机不直接参与 ARP 请求的生成或响应，但它们会利用经过的 ARP 流量来学习网络上设备的 MAC 地址。当交换机转发 ARP 请求或响应时，它会在其 MAC 地址表中记录发送方的 MAC 地址和对应的端口号，从而优化未来的帧转发过程。</li>
-<li><strong>不干预 ARP 流程</strong>：交换机不会修改 ARP 请求或响应的内容。它的主要任务是透明地传递这些帧，确保它们到达目的地。</li>
-</ol>
-<h3 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h3><p>路由器工作在网络层（第三层），负责在不同网络之间转发数据包。在 ARP 的上下文中，路由器有几种不同的参与方式：</p>
-<ol>
-<li><strong>响应 ARP 请求</strong>：当主机尝试与不同子网的主机通信时，它会发送一个 ARP 请求来查找该目的地的 MAC 地址。在这种情况下，路由器会响应 ARP 请求，提供其自己的 MAC 地址作为目的地（下一跳）。这样，发送方会将数据包发送到路由器，然后路由器将数据包转发到正确的网络。</li>
-<li><strong>生成 ARP 请求</strong>：当路由器需要将数据包转发到其直接连接的网络上的主机，但它不知道该主机的 MAC 地址时，它会生成 ARP 请求。一旦收到 ARP 响应并学习了目标主机的 MAC 地址，路由器就可以将数据包正确地转发给该主机。</li>
-<li><strong>维护 ARP 表</strong>：路由器维护自己的 ARP 表（或 ARP 缓存），其中包含其直接连接的网络上已知主机的 IP 到 MAC 地址映射。这样可以加快后续数据包的转发速度，因为路由器可以直接从 ARP 表中查找到需要的 MAC 地址。</li>
-<li><strong>代理 ARP</strong>：在某些配置中，路由器可能执行代理 ARP 的角色，帮助不在同一子网内的主机相互通信。通过代理 ARP，路由器响应代表另一个不同网络的主机的 ARP 请求，允许两个不同网络的设备通过路由器中继来通信，尽管这种做法在现代网络中较少使用，因为它可能导致网络拓扑和流量管理的复杂性增加。</li>
-</ol>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/network/" style="color: #00bcd4">network</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" style="color: #ff7d73">交换机</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" style="color: #ffa2c4">路由器</a>
-        </span>
-        
-    </div>
-    <a href="/2024/03/06/mdstorage/domain/network/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%B7%AF%E7%94%B1%E5%99%A8/" class="go-post">阅读全文</a>
 </div>
 
-<div class="post">
-    <a href="/2024/03/06/mdstorage/domain/network/%E5%B8%B8%E8%A7%81%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE/">
-        <h2 class="post-title">常见交换机路由器网络拓扑图.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/3/6
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="网络拓扑图"><a href="#网络拓扑图" class="headerlink" title="网络拓扑图"></a>网络拓扑图</h2><pre><code class="mermaid">graph TD;
-    subgraph WAN
-    Internet[互联网]
-    end
+  </header>
 
-    subgraph LAN
-    Router[路由器] --&gt; |内网接口| Switch1[交换机1]
-    Router --&gt; |内网接口| Switch2[交换机2]
-    Switch1 --&gt; PC1[PC 1]
-    Switch1 --&gt; PC2[PC 2]
-    Switch2 --&gt; Terminal1[终端设备 1]
-    Switch2 --&gt; Terminal2[终端设备 2]
-    Switch1 --&gt; Switch3[交换机3]
-    Switch3 --&gt; PC3[PC 3]
-    Switch3 --&gt; Terminal3[终端设备 3]
-    end
-
-    Internet --&gt; |外网接口| Router
-
-    classDef router fill:#f9d5e5,stroke:#b84a62,stroke-width:2px;
-    classDef switch fill:#eef5db,stroke:#d2b48c,stroke-width:2px;
-    classDef device fill:#d5eaf4,stroke:#6b8ba4,stroke-width:2px;
-    classDef internet fill:#c2cad0,stroke:#6b7b8b,stroke-width:2px,stroke-dasharray: 5, 5;
-
-    class Router router;
-    class Switch1,Switch2,Switch3 switch;
-    class PC1,PC2,PC3,Terminal1,Terminal2,Terminal3 device;
-    class Internet internet;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/network/" style="color: #00bcd4">network</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" style="color: #00a596">交换机</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" style="color: #ffa2c4">路由器</a>
-        </span>
-        
-    </div>
-    <a href="/2024/03/06/mdstorage/domain/network/%E5%B8%B8%E8%A7%81%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/03/05/mdstorage/domain/linux/%E7%BD%91%E5%8D%A1%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/">
-        <h2 class="post-title">网卡命名guize.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/3/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="eth0-和-enp1s0"><a href="#eth0-和-enp1s0" class="headerlink" title="eth0 和 enp1s0"></a>eth0 和 enp1s0</h2><p><code>eth0</code>和<code>enp1s0</code>这两种命名方式代表了Linux系统中网络接口（网卡）的两种不同命名规则。它们的区别主要源于网络接口的命名方案，即传统命名方案与预测网络接口名称（Predictable Network Interface Names）。</p>
-<h3 id="传统命名方案（eth0）"><a href="#传统命名方案（eth0）" class="headerlink" title="传统命名方案（eth0）"></a>传统命名方案（<code>eth0</code>）</h3><ul>
-<li><strong>命名方式</strong>：在传统的命名方案中，以太网接口通常被命名为<code>eth0</code>、<code>eth1</code>等。这种命名方式简单直观，易于理解。</li>
-<li><strong>特点</strong>：命名是基于内核检测到的接口顺序，但这会导致一个问题：网络接口的名称在系统重启或添加新的网卡时可能会变化，因为它们是根据发现的顺序命名的。这种不可预测性可能会导致配置错误。</li>
-</ul>
-<h3 id="预测网络接口名称（enp1s0）"><a href="#预测网络接口名称（enp1s0）" class="headerlink" title="预测网络接口名称（enp1s0）"></a>预测网络接口名称（<code>enp1s0</code>）</h3><ul>
-<li><p>命名方式</p>
-<p>：为了解决传统命名方案的不可预测性问题，引入了预测网络接口名称。这种命名方式试图提供一种更一致、可预测的方法来命名网络接口。例如，</p>
-<pre><code>enp1s0
-</code></pre>
-<p>代表的是：</p>
-<ul>
-<li><code>en</code>：Ethernet</li>
-<li><code>p1</code>：PCI bus 1</li>
-<li><code>s0</code>：slot 0</li>
-</ul>
-</li>
-<li><p><strong>特点</strong>：这种命名规则基于硬件的物理位置（如PCI插槽位置）来命名网络接口，因此即使在系统重启或硬件更改的情况下，网络接口的名称也保持不变，从而提高了配置的一致性和稳定性。</p>
-</li>
-</ul>
-<h3 id="转变的原因"><a href="#转变的原因" class="headerlink" title="转变的原因"></a>转变的原因</h3><p>转向预测网络接口名称的主要原因是为了解决设备命名的不一致性和不可预测性，尤其是在具有多个网络接口的系统中。这有助于系统管理员更准确地识别和配置网络接口，尤其是在自动化部署和维护大规模系统时。</p>
-<p>系统可以配置为使用任一种命名方案，而且某些Linux发行版允许用户通过修改udev规则等方法来自定义网络接口的命名方式。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/Linux/" style="color: #ffa2c4">Linux</a>
-        </span>
-        
-    </div>
-    <a href="/2024/03/05/mdstorage/domain/linux/%E7%BD%91%E5%8D%A1%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
+  <main>
     
-    <a class="page-num" href="/page/14/">
-        <i class="fa-solid fa-caret-left fa-fw"></i>
-    </a>
-    <a class="page-num" href="/">1</a>
-    <span class="page-omit">...</span>
-    
-    <span class="current">15</span>
-    
-    <a class="page-num" href="/page/16">
-        16
-    </a>
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
     
     
-    <a class="page-num" href="/page/17">
-        17
-    </a>
-    
-    
-    <span class="page-omit">...</span>
-    <a class="page-num" href="/page/28">28</a>
-    
-    
-    <a class="page-num" href="/page/16/">
-        <i class="fa-solid fa-caret-right fa-fw"></i>
-    </a>
-    
-</div>
-
-    </div>
-    
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">xiaoy</div>
-        <div class="description">
-            <p>xiaoy<br>…</p>
-
-        </div>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a href="https://abrance.github.io">Argvchs</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
+        <a href="/2024/03/11/mdstorage/cargo/" target="_self">
+          cargo.md
+        </a>
+      </h2>
 
-    </div>
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/11/mdstorage/cargo/" target="_self">
         <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
+          cargo 概述https://doc.rust-lang.org/cargo/ Cargo 是 Rust 包管理器。 Cargo 下载 Rust 包的依赖项，编译您的包，制作可分发的包，并将它们上传到 Rust 社区的包注册表 crates.io。您可以在 GitHub 上为本书做出贡献。
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
+      </a>
 
-        </div>
+      <div class="index-btm post-metas">
         
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-11 00:00" pubdate>
+              2024-03-11
+            </time>
+          </div>
         
-    </div>
-    <script src="/js/main.js"></script>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/cargo/">#cargo</a>
+            
+              <a href="/tags/Rust/">#Rust</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
     
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/07/mdstorage/domain/CICD/github_action/" target="_self">
+          github_action.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/07/mdstorage/domain/CICD/github_action/" target="_self">
+        <div>
+          文章概述  标题：GitHub Actions 入门指南：自动化您的工作流程 作者：John Doe 发布日期：2023年12月30日 链接地址：GitHub Actions Tutorial 摘要：本教程旨在为读者提供一个全面的 GitHub Actions 指南，帮助他们理解如何使用这个强大的自动化工具来优化他们的软件开发流程。无论是自动化测试、部署还是其他常见的开发任务，本文将一一涵盖。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-07 00:00" pubdate>
+              2024-03-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/CICD/" class="category-chain-item">CICD</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/github/">#github</a>
+            
+              <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/">#工作流</a>
+            
+              <a href="/tags/CI/">#CI</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/07/mdstorage/domain/db/PostgreSQL%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/" target="_self">
+          PostgreSQL相关资料.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/07/mdstorage/domain/db/PostgreSQL%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/" target="_self">
+        <div>
+          PostgreSQL 资料之一文章概述  文章标题：PostgreSQL正在吞噬数据库世界 作者：未明确标注 发布日期：未提供 链接地址：https://zhuanlan.zhihu.com/p/685247647 文章主题简介：文章探讨了PostgreSQL不仅作为一个关系型数据库，而是作为一个数据管理的抽象框架，如何通过其可扩展性和生态系统的发展，逐渐成为数据库领域的主流实践，特别是在OLAP
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-07 00:00" pubdate>
+              2024-03-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/db/" class="category-chain-item">db</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PostgreSQL/">#PostgreSQL</a>
+            
+              <a href="/tags/db/">#db</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/07/mdstorage/domain/linux/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/" target="_self">
+          镜像交付相关资料.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/07/mdstorage/domain/linux/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/" target="_self">
+        <div>
+          Linux 自定义认证背景​	结合https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode=ABwA9Qd2ABEQYUs45PARkAWAYlAEQ使用为了限制用户登录到系统的后台随意查看、修改应用程序，通常来说不应该把特权账号的密码泄露给用户，然而使用固定密码始终会有密码泄露的风险，时间长了肯定会泄露。为此，特地调
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-07 00:00" pubdate>
+              2024-03-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+              <a href="/tags/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98/">#镜像交付</a>
+            
+              <a href="/tags/%E9%83%A8%E7%BD%B2/">#部署</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/07/mdstorage/domain/%E6%8B%9B%E8%81%98/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B8%85%E5%8D%95/" target="_self">
+          面试题清单.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/07/mdstorage/domain/%E6%8B%9B%E8%81%98/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B8%85%E5%8D%95/" target="_self">
+        <div>
+          Linux 系统详细描述 Linux 系统中，写入一个文件的过程 用户空间操作: 应用程序通过调用标准库（如 C 语言的 stdio 库）或系统调用（如 write）来请求写入数据到文件。 如果使用的是标准库函数（如 fwrite），首先这些数据可能会被暂存到应用程序的输出缓冲区中。当缓冲区满或者显式调用刷新（如 fflush）时，标准库会进一步调用相应的系统调用来实际执行写入操作。   系统调用
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-07 00:00" pubdate>
+              2024-03-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E6%8B%9B%E8%81%98/" class="category-chain-item">招聘</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">#面试题</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/07/mdstorage/domain/%E6%96%87%E6%A1%A3/mermaid%E6%B5%81%E7%A8%8B%E5%9B%BE%E5%86%99%E4%BD%9C%E6%96%87%E6%A1%A3/" target="_self">
+          mermaid流程图写作文档.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/07/mdstorage/domain/%E6%96%87%E6%A1%A3/mermaid%E6%B5%81%E7%A8%8B%E5%9B%BE%E5%86%99%E4%BD%9C%E6%96%87%E6%A1%A3/" target="_self">
+        <div>
+          概念Mermaid 是一个强大的、基于文本的图表绘制工具，它允许用户通过简单的文本描述来生成复杂的图表。这种方式使得图表的创建和维护变得更加容易和高效，尤其是在需要将图表版本控制或与文档集成时。Mermaid 减少了使用传统图形编辑工具的需要，使非设计师也能快速绘制出看起来专业的图表。 主要特点 易于学习和使用： Mermaid 的语法简单直观，用户可以通过学习几个基本的语法规则来快速开始绘图。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-07 00:00" pubdate>
+              2024-03-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/markdown/">#markdown</a>
+            
+              <a href="/tags/mermaid/">#mermaid</a>
+            
+              <a href="/tags/typora/">#typora</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/07/mdstorage/project/cToRust/rust%E7%9A%84AST/" target="_self">
+          rust的AST.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/07/mdstorage/project/cToRust/rust%E7%9A%84AST/" target="_self">
+        <div>
+          &#49;&#49;&#48;&#x33;&#x30;&#57;&#x38;&#54;&#x30;&#x37;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d; Rust 输出 AST切换为 nightly 版本rustup override set nightly rustc --version 输出 AST12345678rustc -Z help# 简略rus
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-07 00:00" pubdate>
+              2024-03-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/project/" class="category-chain-item">project</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/project/cToRust/" class="category-chain-item">cToRust</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Rust/">#Rust</a>
+            
+              <a href="/tags/AST/">#AST</a>
+            
+              <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">#编译原理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/06/mdstorage/domain/network/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%B7%AF%E7%94%B1%E5%99%A8/" target="_self">
+          交换机路由器.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/06/mdstorage/domain/network/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%B7%AF%E7%94%B1%E5%99%A8/" target="_self">
+        <div>
+          LAN 中网关通常存在于路由器中一般来说，一个局域网（LAN）上的网关通常存在于路由器中。网关是一个网络连接点，它允许一个网络上的设备访问另一个网络。在大多数家庭和小型企业网络中，网关设备提供了多种功能，包括：  路由功能：将数据包从一个网络路由到另一个网络，通常是从局域网（LAN）路由到广域网（WAN），如互联网。 NAT（网络地址转换）：允许多个设备共享一个公共 IP 地址进行互联网访问，增强
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-06 00:00" pubdate>
+              2024-03-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/" class="category-chain-item">network</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/network/">#network</a>
+            
+              <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">#交换机</a>
+            
+              <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">#路由器</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/06/mdstorage/domain/network/%E5%B8%B8%E8%A7%81%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE/" target="_self">
+          常见交换机路由器网络拓扑图.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/06/mdstorage/domain/network/%E5%B8%B8%E8%A7%81%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE/" target="_self">
+        <div>
+          网络拓扑图graph TD;     subgraph WAN     Internet[互联网]     end      subgraph LAN     Router[路由器] --&gt; |内网接口| Switch1[交换机1]     Router --&gt; |内网接口| Switch2[交换机2]     Switch1 --&gt; PC1[PC 1]     Switch1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-06 00:00" pubdate>
+              2024-03-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/" class="category-chain-item">network</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/network/">#network</a>
+            
+              <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">#交换机</a>
+            
+              <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">#路由器</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/05/mdstorage/domain/linux/%E7%BD%91%E5%8D%A1%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/" target="_self">
+          网卡命名guize.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/05/mdstorage/domain/linux/%E7%BD%91%E5%8D%A1%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/" target="_self">
+        <div>
+          eth0 和 enp1s0eth0和enp1s0这两种命名方式代表了Linux系统中网络接口（网卡）的两种不同命名规则。它们的区别主要源于网络接口的命名方案，即传统命名方案与预测网络接口名称（Predictable Network Interface Names）。 传统命名方案（eth0） 命名方式：在传统的命名方案中，以太网接口通常被命名为eth0、eth1等。这种命名方式简单直观，易于理解。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-05 00:00" pubdate>
+              2024-03-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/14/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/#board">13</a><a class="page-number" href="/page/14/#board">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/#board">16</a><a class="page-number" href="/page/17/#board">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/16/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

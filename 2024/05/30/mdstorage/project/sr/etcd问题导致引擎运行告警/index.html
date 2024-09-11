@@ -1,206 +1,303 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>etcd问题导致引擎运行告警.md | Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="从提供的 etcd 日志中，可以观察到以下几点可能导致问题的线索：  **时钟漂移 (Clock Drift)**：  多次出现时钟漂移的警告，例如：1&#123;&quot;level&quot;:&quot;warn&quot;,&quot;ts&quot;:&quot;2024-05-30T16:29:50.127958+0800&quot;,&quot;caller&quot;:&amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="etcd问题导致引擎运行告警.md">
+<meta property="og:url" content="https://abrance.github.io/2024/05/30/mdstorage/project/sr/etcd%E9%97%AE%E9%A2%98%E5%AF%BC%E8%87%B4%E5%BC%95%E6%93%8E%E8%BF%90%E8%A1%8C%E5%91%8A%E8%AD%A6/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="从提供的 etcd 日志中，可以观察到以下几点可能导致问题的线索：  **时钟漂移 (Clock Drift)**：  多次出现时钟漂移的警告，例如：1&#123;&quot;level&quot;:&quot;warn&quot;,&quot;ts&quot;:&quot;2024-05-30T16:29:50.127958+0800&quot;,&quot;caller&quot;:&amp;quot">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-11T02:55:43.733Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>etcd问题导致引擎运行告警.md - Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
 
 
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
 
-<link rel="stylesheet" href="/css/main.css" />
-
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
 
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>etcd问题导致引擎运行告警.md</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/5/30
-        </span>
-        
-        
-    </div>
+
+<body>
+  
+
+  <header>
     
-    <div class="content" v-pre>
-        <p>从提供的 etcd 日志中，可以观察到以下几点可能导致问题的线索：</p>
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="etcd问题导致引擎运行告警.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-30 00:00" pubdate>
+          May 30, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          705 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          6 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">etcd问题导致引擎运行告警.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>从提供的 etcd 日志中，可以观察到以下几点可能导致问题的线索：</p>
 <ol>
 <li><p>**时钟漂移 (Clock Drift)**：</p>
 <ul>
-<li>多次出现时钟漂移的警告，例如：<pre><code class="json">&#123;&quot;level&quot;:&quot;warn&quot;,&quot;ts&quot;:&quot;2024-05-30T16:29:50.127958+0800&quot;,&quot;caller&quot;:&quot;rafthttp/probing_status.go:82&quot;,&quot;msg&quot;:&quot;prober found high clock drift&quot;,&quot;round-tripper-name&quot;:&quot;ROUND_TRIPPER_SNAPSHOT&quot;,&quot;remote-peer-id&quot;:&quot;980160cbc9bad363&quot;,&quot;clock-drift&quot;:&quot;1.108841426s&quot;,&quot;rtt&quot;:&quot;6.684067ms&quot;&#125;
-</code></pre>
-</li>
+<li>多次出现时钟漂移的警告，例如：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;level&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;warn&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;ts&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2024-05-30T16:29:50.127958+0800&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;caller&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;rafthttp/probing_status.go:82&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;msg&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;prober found high clock drift&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;round-tripper-name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;ROUND_TRIPPER_SNAPSHOT&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;remote-peer-id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;980160cbc9bad363&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;clock-drift&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1.108841426s&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;rtt&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;6.684067ms&quot;</span><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></li>
 <li>这表明 etcd 节点之间的时钟不同步，时钟不同步会导致分布式系统中数据的一致性问题。</li>
 </ul>
 </li>
 <li><p>**请求处理时间过长 (Apply Request Took Too Long)**：</p>
 <ul>
-<li>多次出现请求处理时间超过预期的警告，例如：<pre><code class="json">&#123;&quot;level&quot;:&quot;warn&quot;,&quot;ts&quot;:&quot;2024-05-30T16:29:43.717108+0800&quot;,&quot;caller&quot;:&quot;etcdserver/util.go:170&quot;,&quot;msg&quot;:&quot;apply request took too long&quot;,&quot;took&quot;:&quot;288.810682ms&quot;,&quot;expected-duration&quot;:&quot;100ms&quot;,&quot;prefix&quot;:&quot;read-only range &quot;,&quot;request&quot;:&quot;key:\&quot;/registry/nettools.ouryun.com.cn/dataifaces/\&quot; range_end:\&quot;/registry/nettools.ouryun.com.cn/dataifaces0\&quot; cou&gt;&quot;&#125;
-</code></pre>
-</li>
+<li>多次出现请求处理时间超过预期的警告，例如：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;level&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;warn&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;ts&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2024-05-30T16:29:43.717108+0800&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;caller&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;etcdserver/util.go:170&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;msg&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;apply request took too long&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;took&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;288.810682ms&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;expected-duration&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;100ms&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;prefix&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;read-only range &quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;key:\&quot;/registry/nettools.ouryun.com.cn/dataifaces/\&quot; range_end:\&quot;/registry/nettools.ouryun.com.cn/dataifaces0\&quot; cou&gt;&quot;</span><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></li>
 <li>请求处理时间过长可能是由于系统负载过高、磁盘性能低下或者其他资源瓶颈。</li>
 </ul>
 </li>
 <li><p>**领导者心跳超时 (Leader Heartbeat Timeout)**：</p>
 <ul>
-<li>多次出现领导者心跳超时的警告，例如：<pre><code class="json">&#123;&quot;level&quot;:&quot;warn&quot;,&quot;ts&quot;:&quot;2024-05-30T16:29:28.574033+0800&quot;,&quot;caller&quot;:&quot;etcdserver/raft.go:416&quot;,&quot;msg&quot;:&quot;leader failed to send out heartbeat on time; took too long, leader is overloaded likely from slow disk&quot;,&quot;to&quot;:&quot;1199e95a63037f54&quot;,&quot;heartbeat-interval&quot;:&quot;100ms&quot;,&quot;expected-duration&quot;:&quot;200ms&quot;,&quot;exceeded-duration&quot;:&quot;158.790811ms&quot;&#125;
-</code></pre>
-</li>
+<li>多次出现领导者心跳超时的警告，例如：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;level&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;warn&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;ts&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2024-05-30T16:29:28.574033+0800&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;caller&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;etcdserver/raft.go:416&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;msg&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;leader failed to send out heartbeat on time; took too long, leader is overloaded likely from slow disk&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;to&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1199e95a63037f54&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;heartbeat-interval&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;100ms&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;expected-duration&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;200ms&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;exceeded-duration&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;158.790811ms&quot;</span><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></li>
 <li>这表明 etcd 领导者节点可能由于磁盘性能问题导致无法及时发送心跳信号，进而影响集群稳定性。</li>
 </ul>
 </li>
 <li><p>**慢的磁盘同步 (Slow Disk Sync)**：</p>
 <ul>
-<li>出现了慢磁盘同步的警告，例如：<pre><code class="json">&#123;&quot;level&quot;:&quot;warn&quot;,&quot;ts&quot;:&quot;2024-05-30T16:28:05.556009+0800&quot;,&quot;caller&quot;:&quot;wal/wal.go:805&quot;,&quot;msg&quot;:&quot;slow fdatasync&quot;,&quot;took&quot;:&quot;1.008456685s&quot;,&quot;expected-duration&quot;:&quot;1s&quot;&#125;
-</code></pre>
-</li>
+<li>出现了慢磁盘同步的警告，例如：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;level&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;warn&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;ts&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2024-05-30T16:28:05.556009+0800&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;caller&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;wal/wal.go:805&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;msg&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;slow fdatasync&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;took&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1.008456685s&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;expected-duration&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1s&quot;</span><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></li>
 <li>这进一步支持了磁盘性能问题的可能性。</li>
 </ul>
 </li>
@@ -218,50 +315,358 @@
 <li><strong>磁盘性能</strong>：检查磁盘性能，考虑使用性能更好的存储设备或者优化现有存储设备的配置。</li>
 </ol>
 
-    </div>
-    
-    
-    
-    
-    
-    
-    
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
 </div>
 
-            <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
-        </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
 
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>etcd问题导致引擎运行告警.md</div>
+      <div>https://abrance.github.io/2024/05/30/mdstorage/project/sr/etcd问题导致引擎运行告警/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
         </div>
-        
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 30, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/06/06/mdstorage/domain/linux/watch/" title="watch.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">watch.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/28/mdstorage/project/sr/%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/" title="数据迁移操作手册.md">
+                        <span class="hidden-mobile">数据迁移操作手册.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
             </div>
-        </transition>
-        
+
+            
+          </article>
+        </div>
+      </div>
     </div>
-    <script src="/js/main.js"></script>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
     
-    
-
-
-
 
     
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

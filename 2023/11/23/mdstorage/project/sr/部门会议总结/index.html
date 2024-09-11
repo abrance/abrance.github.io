@@ -1,191 +1,282 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>部门会议总结 | Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="道歉与感谢在这次版本发布之际，我想先向一些项目中的同志道歉。回顾这个版本的开发过程，我认识到自己在领导Go二组时出现了一些失误。特别是在风险管理方面，我没有及时收集并上报关键信息，导致问题的严重性没有被上级及时认识到，给团队带来了不必要的压力和挑战。 我要特别向可视化组的向阳、院红、琼婷、育孟，以及引擎安装的贺泽道歉。我的管理和技术上的不足影响了他们的绩效，尤其是在他们向我报告风险并提出解决方案时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部门会议总结">
+<meta property="og:url" content="https://abrance.github.io/2023/11/23/mdstorage/project/sr/%E9%83%A8%E9%97%A8%E4%BC%9A%E8%AE%AE%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="道歉与感谢在这次版本发布之际，我想先向一些项目中的同志道歉。回顾这个版本的开发过程，我认识到自己在领导Go二组时出现了一些失误。特别是在风险管理方面，我没有及时收集并上报关键信息，导致问题的严重性没有被上级及时认识到，给团队带来了不必要的压力和挑战。 我要特别向可视化组的向阳、院红、琼婷、育孟，以及引擎安装的贺泽道歉。我的管理和技术上的不足影响了他们的绩效，尤其是在他们向我报告风险并提出解决方案时">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-11-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-11T02:55:43.737Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="总结">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>部门会议总结 - Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
 
 
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
 
-<link rel="stylesheet" href="/css/main.css" />
-
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
 
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>部门会议总结</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/23
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/tags/%E6%80%BB%E7%BB%93/" style="color: #ff7d73">
-                    总结
-                </a>
-            </span>
-            
-        </span>
-        
-    </div>
+
+<body>
+  
+
+  <header>
     
-    <div class="content" v-pre>
-        <h2 id="道歉与感谢"><a href="#道歉与感谢" class="headerlink" title="道歉与感谢"></a>道歉与感谢</h2><p>在这次版本发布之际，我想先向一些项目中的同志道歉。回顾这个版本的开发过程，我认识到自己在领导Go二组时出现了一些失误。特别是在风险管理方面，我没有及时收集并上报关键信息，导致问题的严重性没有被上级及时认识到，给团队带来了不必要的压力和挑战。</p>
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="部门会议总结"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-23 00:00" pubdate>
+          November 23, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          68 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">部门会议总结</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="道歉与感谢"><a href="#道歉与感谢" class="headerlink" title="道歉与感谢"></a>道歉与感谢</h2><p>在这次版本发布之际，我想先向一些项目中的同志道歉。回顾这个版本的开发过程，我认识到自己在领导Go二组时出现了一些失误。特别是在风险管理方面，我没有及时收集并上报关键信息，导致问题的严重性没有被上级及时认识到，给团队带来了不必要的压力和挑战。</p>
 <p>我要特别向可视化组的向阳、院红、琼婷、育孟，以及引擎安装的贺泽道歉。我的管理和技术上的不足影响了他们的绩效，尤其是在他们向我报告风险并提出解决方案时，我未能采取有效措施。他们在问题发生后积极参与解决，为团队做出了巨大贡献，是我学习的榜样。</p>
 <p>同时，我也要向向阳致以深深的歉意。他加入团队后，不仅帮助我领导团队，还在可视化组独立后承担了重担，我相信他会成功完成项目。</p>
 <p>对于C++组、测试组和项目经理们，我也表达我的歉意。在规范开发流程的过程中，我们之间发生了一些不必要的言语冲突，我对此感到十分后悔。我认识到这不是任何个人的过错，而是整个流程中的挑战。</p>
@@ -399,265 +490,368 @@
 </ol>
 <hr>
 <p>以上内容梳理了1.3.0版本在需求管理、开发过程、安装升级和联调、测试与部署、技术支持与资源配置方面遇到的主要问题，并提出了相应的改进措施。请根据实际情况进一步调整和完善这些内容。</p>
-<pre><code class="tex">1. **团队的主要成就**：在过去的一段时间里，团队取得了哪些显著成果？
-2. **挑战与困难**：团队在工作中遇到了哪些难题，以及是如何克服这些挑战的？
-3. **个别成员表现**：是否有特别需要表扬或提及的团队成员？
-4. **未来规划**：团队接下来有哪些计划或目标？
-5. **感谢与鼓励**：对团队的感谢之词或鼓励的话语。
-6. **其他补充信息**：任何您认为重要的信息，比如团队的特殊事件、重要里程碑等。
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br></pre></td><td class="code"><pre><code class="hljs tex">1. **团队的主要成就**：在过去的一段时间里，团队取得了哪些显著成果？<br>2. **挑战与困难**：团队在工作中遇到了哪些难题，以及是如何克服这些挑战的？<br>3. **个别成员表现**：是否有特别需要表扬或提及的团队成员？<br>4. **未来规划**：团队接下来有哪些计划或目标？<br>5. **感谢与鼓励**：对团队的感谢之词或鼓励的话语。<br>6. **其他补充信息**：任何您认为重要的信息，比如团队的特殊事件、重要里程碑等。<br><br><br><br>团队的主要成就：<br><br>1. 按照需求任务，完成 总控、引擎、插件 1.3.0 版本需求的研发<br>2. 规范了部分研发流程，并以微盘文档的形式以供团队学习，部分流程开展了培训。<br><br>挑战与困难：<br><br>见附录<br><br>个别成员表现：<br><br>1. 吴松达、贺泽： 安排的任务反馈不及时、请假没有按规定、考勤不好、情绪不稳定、日报周报等常常遗漏。但是承担的任务很多，范围很广，平时积极活泼，常常提出问题，思考解决方案。对应了人类珍贵的四种品质：爱思考 坚韧 社会性 有好奇心。<br>2. 韩志凯、范众星：沟通比较充分、稳重，负责的模块不出纰漏，善战者无赫赫之功，维护好一个模块将日常的工作做到极致也是非常值得肯定的。<br><br>未来规划：<br><br>1. 需要建立更规范的规章制度和流程规范。规章制度流程规范是组织内部管理和操作的核心组成部分，要确保有效性、透明性和适应性：需要做到<br><br>   **明确性（Clarity）**：规章制度应该清晰明确，易于理解。避免使用模糊不清的语言，确保所有相关人员都能准确理解其含义和应用方式。<br><br>   **一致性（Consistency）**：制度和流程应该在整个组织内保持一致。这有助于减少混淆，确保所有部门和员工按照相同的标准执行。<br><br>   **可访问性（Accessibility）**：员工应能轻松访问到相关的规章制度文档。这通常意味着将它们存放在中央、容易访问的位置，如内部网络或手册。<br><br>   **适用性（Applicability）**：制度应与组织的运营、文化和目标紧密相连。它们应该针对组织的具体情况设计，而不是简单地复制其他组织的模式。<br><br>   **合法性（Legality）**：所有规章制度必须遵守相关的法律和行业标准。它们不应与任何法律条文相冲突。<br><br>   **灵活性（Flexibility）**：制度应该有一定的灵活性，以适应不断变化的环境和需求。应当定期审查并根据需要进行调整。<br><br>   **可执行性（Enforceability）**：应该有明确的执行机制。员工需要知道，对于不遵守规章制度将会有何种后果。<br><br>   **透明性（Transparency）**：制定和修改规章制度的过程应公开透明，以便员工理解制度的目的和重要性。<br><br>   **目标导向（Goal-oriented）**：流程和规章应支持组织的总体目标和战略。<br><br>   **评估和反馈（Evaluation and Feedback）**：应定期评估制度的有效性，并对员工的反馈做出响应<br><br>   <br><br>   原因：<br><br>- **团队规模增长时**：随着团队规模的增长，原有的非正式或口头沟通方式可能不再有效。规章制度可以帮助确保信息的一致性和准确性，特别是在团队成员之间需要协作的情况下。<br>- **面临复杂项目时**：当项目涉及多个部门、多个阶段或高度复杂性时，明确的流程规范有助于保持项目的顺利进行，并确保各个环节协调一致。<br>- **引入新技术或方法时**：当团队采用新的技术、工具或开发方法（如敏捷开发）时，建立相关的规章制度可以帮助团队成员理解和适应这些新变化。<br>- **遵守行业标准和法律要求时**：在某些行业中，遵守特定的法律法规和标准是必须的。例如，在医疗、金融或政府项目中，规章制度和流程规范可以帮助确保合规。<br>- **提高效率和质量时**：为了提高工作效率和产品质量，团队可能需要引入标准化的工作流程和质量控制措施。<br>- **面对频繁的变更和迭代时**：在快速变化的市场环境中，规章制度可以帮助团队快速适应变化，同时保持工作的连贯性和效率。<br>- **实现知识共享和传承时**：随着团队成员的更迭，重要知识和经验的传承变得尤为重要。规章制度可以帮助新成员快速融入团队，理解工作流程和文化。<br>- **远程工作或分布式团队时**：对于远程工作或地理位置分散的团队，明确的规章制度和流程规范对于保持团队协调和高效合作至关重要。<br><br><br><br>2. 更细致的分工<br><br>研发岗位的组长和组员强调对于技术方面更多的参与，关注代码本身。<br><br>对于组长以上，应该做到对规章制度和流程规范，项目管理层面的把控，注意合理、可行、公平<br><br>3. 完成 1.4.0 版本需求<br>4. 优化端口策略<br><br>- 复用<br><br>- 尽量连续<br><br>  <br><br>5. 拥抱信创<br><br>- Envoy Polycube waf 等编译<br>- MySQL5.7 MongoDB HyperScan<br>- so 依赖库问题<br>- 组件依赖汇编<br><br><br><br><span class="hljs-params">##</span> 附录<br><br><span class="hljs-params">###</span> 1.3.0 版本问题整理<br><br><span class="hljs-params">###</span> 需求<br><br><span class="hljs-params">####</span> 需求文档质量差<br><br>各个模块完成的功能和目标没有梳理清楚，导致流程不合理、自相矛盾的情况屡屡发生。<br><br>需求文档应该在开发介入前评审完成，而不是让开发和需求同时进行<br><br>产品经理应该和需求来源方达成一致后<br><br>多个模块、界面设计风格不一致<br><br>存在很多无意义的功能、模块<br><br>设计功能、模块时未考虑对系统性能影响，导致影响越来越大，最终系统中部分的业务性能出现瓶颈，导致需要开发设计重构，需求重做。至今尚未解决性能问题。<br><br>需求文档没有经过拆分，一个版本一个需求文档，找到某一个功能的需求非常困难<br><br><span class="hljs-params">####</span> 需求变动频繁、随意<br><br>需求变动频繁，临近上线还经常看到群里有需求变更，甚至还添加新需求，版本需求临界点不清晰<br><br><span class="hljs-params">###</span> 开发<br><br><span class="hljs-params">####</span> 设计文档不全<br><br>这版本之前开发的功能模块开发的设计文档都是没有的，相当一部分人没有补齐<br><br><span class="hljs-params">####</span> 设计不充分<br><br>有些设计文档也有考虑不周的情况，安全性、性能、影响范围、测试建议、自测实现思路、兼容性（不同组件、不同版本）<br><br><span class="hljs-params">####</span> 安装升级问题<br><br><span class="hljs-params">#####</span> 安装升级问题<br><br>依赖<br><br>升级兼容性<br><br><span class="hljs-params">####</span> 联调<br><br>从各个层面，如何协作才能更好完成<br><br><span class="hljs-params">#####</span> 主管<br><br><span class="hljs-params">#####</span>  项目经理<br><br><span class="hljs-params">#####</span> 大组长<br><br><span class="hljs-params">#####</span> 开发<br><br><span class="hljs-params">###</span> 测试<br><br><span class="hljs-params">####</span> 测试介入时间是否及时<br><br>测试是否介入太晚？有时候看到测试提的bug是几周前就已经提测的需求了，这些问题按道理应该是需要提前发现提出的<br><br><span class="hljs-params">###</span> 打包部署<br><br><span class="hljs-params">####</span> 打包部署一次周期很长<br><br><span class="hljs-params">#####</span> 现象<br><br>打包部署一次时间很长，这个现象已经持续很久，急需解决。<br><br>超融合机器性能不好，部署周期过长，从打包到升级耗时往往超过1小时，期间如果出现包有问题的情况可能一个上午就过去了，甚至会出现几天没有一个有用包的情况出现<br><br><span class="hljs-params">#####</span> 解决<br><br><span class="hljs-params">######</span> 技术支持<br><br>更强大的技术支持，如打包机器用更好的磁盘、CPU、更多内存，集测环境机器网络延迟和吞吐量要满足低延迟高吞吐量要求。<br><br><span class="hljs-params">######</span> 架构、研发经理<br><br>CI/CD 实践指导<br><br><span class="hljs-params">######</span> 项目经理<br><br>指定并协调人力、时间资源<br><br><span class="hljs-params">######</span> 开发<br><br>- 开发人员跟打包部署测试人员要做充分沟通（提交新的代码）<br>- 在某一功能新开发时就充分考虑功能的扩展性、兼容性，在后续开发时首先在自己组件层面做好数据兼容，逻辑兼容，涉及多个组件交互的模块尽量解耦，尽早识别风险。如果遇到绕不过，需要其他组件配合实现的，在打包时跟相关开发和打包部署测试人员充分沟通后走流程。<br>- 数据提供方在设计完成后优先考虑数据结构交互部分的实现，如将 接口请求响应、API文档部分完成。<br><br><br><br><span class="hljs-params">##</span> <br><br><br><br><br><br><br>在这次版本发布之际，我首先要向团队中的同事们表达我的歉意。回顾这个版本的开发过程，我认识到自己在领导Go二组和可视化小组时出现了一些失误。特别是在风险管理方面，我没有及时收集并上报关键信息，导致问题的严重性没有被上级及时认识到，给团队带来了不必要的压力和挑战。<br><br>我要特别向可视化组的向阳、院红、琼婷、育孟，以及引擎安装的贺泽道歉。我的管理和技术上的不足影响了他们的绩效，尤其是在他们向我报告风险并提出解决方案时，我未能采取有效措施。他们在问题发生后积极参与解决，为团队做出了巨大贡献，是我学习的榜样。<br><br>同时，我也要向向阳致以深深的歉意。他加入团队后，不仅帮助我领导团队，还在可视化组独立后承担了重担，我相信他会成功完成项目。<br><br>对于C++组、测试组和项目经理们，我也表达我的歉意。在规范开发流程的过程中，我们之间发生了一些冲突，我对此感到后悔。我认识到这不是任何个人的过错，而是整个流程中的挑战。<br><br>我还需要向技术部的李福林、王总道歉。由于我的不足，技术部在客户那里面临了挑战，给团队增加了困难。<br><br>最后，我要向老板道歉。我没能完全达到您的期望，但请相信，团队中每个人都有出色的潜力和能力。作为领导者，我将承担主要的责任。<br><br>在此，我也要感谢那些在困难时刻仍然坚守岗位的团队成员，如志凯、立成、慧军、松达，他们的努力保持了项目的稳定。同时感谢思华、宋燚、周宇、福林、王总、桂华、刘总的支持和帮助。<br><br>“海阔凭鱼跃，天高任鸟飞。” 我期待我们所有人在石犀这片蓝天中自由翱翔、不断进取。<br><br><br><br>在这个版本发布后，我想先向一些项目中的同志道歉。原因是这样的，在这个版本开始时，我接手的Go二组和可视化小组是包含关系。桂华将小组责任交与我，但是我并未将其按质按量完成，在风险管控上，未让相关人员收集所有信息导致不能早早让上级意识到这是个严重的问题，以至于暴露出的问题让老板都惊讶。<br><br>我深切认识到，这确确实实是我的责任。在此，先是可视化组成员：向阳、院红、琼婷、育孟等，再是引擎安装的贺泽，第一，他们因为我能力上的不足导致在绩效上非常受影响。第二，重点道歉院红、琼婷、贺泽，在发现了风险后，他们向我提出过这些问题和详细信息，但是我没有实施有益的措施帮助。而后，他们非常积极的帮助补救形势而努力工作，他们是我学习的榜样。下面也要向向阳道歉：向阳进入团队后，一直为团队摆脱困境协助我带领团队，后面可视化独立成一个组去收拾我留下的烂摊子，我相信他会把项目完成好。第三，向 C++ 组成员、测试组和项目经理们道歉，在这个版本进行中，还有一件大事同步进行，就是规范项目各种开发流程，这期间很多次跟很多人发生冲突，可能表现为语言上冲突很严重，有时说完立刻就觉得很后悔，这可能并不是任何人的错，不应该有人为此承担责任的。第四，向技术部李福林、王总道歉，消耗了许多技术部资源但是我这边交付的需求不达标导致他们在客户那边很难维持关系，给我们技术部团队添了太多麻烦。第五，向老板道歉，我觉得我辜负了老板对我的信任，但是我想澄清的是，团队的表现不佳，并不代表团队中每个人都不好，最大的原因一定是带头实施的人员没做好。最后，我想郑重向我的上级道歉，虽然是我在道歉，但是最终犯错的结果、责任还是落在上级头上。<br><br>道歉后，我想感谢一些人，除了刚刚提到的院红、琼婷、贺泽、向阳外，还有一些团队成员，志凯、立成、慧军、松达，他们没有受到我的影响，为维持总控项目的基础稳定进行了出色的工作，是团队中最可敬的人。还有思华、宋燚、周宇、福林、王总、桂华、刘总，他们给予我许多信息上、资源上、时间上非常多的帮助。<br><br>海阔凭鱼跃，天高任鸟飞。希望大家在石犀这片蓝天中自由翱翔、一往无前。<br><br><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%80%BB%E7%BB%93/" class="print-no-link">#总结</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>部门会议总结</div>
+      <div>https://abrance.github.io/2023/11/23/mdstorage/project/sr/部门会议总结/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 23, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
 
 
 
-团队的主要成就：
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/11/23/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%AE%A1%E7%90%86%E7%9A%84%E7%9F%9B%E7%9B%BE/" title="技术与管理的矛盾.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">技术与管理的矛盾.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/22/mdstorage/domain/%E6%8B%9B%E8%81%98/Golang%E5%85%A5%E8%81%8C%E8%80%83%E8%AF%95%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3/" title="Golang入职考试数据库相关.md">
+                        <span class="hidden-mobile">Golang入职考试数据库相关.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-1. 按照需求任务，完成 总控、引擎、插件 1.3.0 版本需求的研发
-2. 规范了部分研发流程，并以微盘文档的形式以供团队学习，部分流程开展了培训。
+            
+          </article>
+        </div>
+      </div>
+    </div>
 
-挑战与困难：
-
-见附录
-
-个别成员表现：
-
-1. 吴松达、贺泽： 安排的任务反馈不及时、请假没有按规定、考勤不好、情绪不稳定、日报周报等常常遗漏。但是承担的任务很多，范围很广，平时积极活泼，常常提出问题，思考解决方案。对应了人类珍贵的四种品质：爱思考 坚韧 社会性 有好奇心。
-2. 韩志凯、范众星：沟通比较充分、稳重，负责的模块不出纰漏，善战者无赫赫之功，维护好一个模块将日常的工作做到极致也是非常值得肯定的。
-
-未来规划：
-
-1. 需要建立更规范的规章制度和流程规范。规章制度流程规范是组织内部管理和操作的核心组成部分，要确保有效性、透明性和适应性：需要做到
-
-   **明确性（Clarity）**：规章制度应该清晰明确，易于理解。避免使用模糊不清的语言，确保所有相关人员都能准确理解其含义和应用方式。
-
-   **一致性（Consistency）**：制度和流程应该在整个组织内保持一致。这有助于减少混淆，确保所有部门和员工按照相同的标准执行。
-
-   **可访问性（Accessibility）**：员工应能轻松访问到相关的规章制度文档。这通常意味着将它们存放在中央、容易访问的位置，如内部网络或手册。
-
-   **适用性（Applicability）**：制度应与组织的运营、文化和目标紧密相连。它们应该针对组织的具体情况设计，而不是简单地复制其他组织的模式。
-
-   **合法性（Legality）**：所有规章制度必须遵守相关的法律和行业标准。它们不应与任何法律条文相冲突。
-
-   **灵活性（Flexibility）**：制度应该有一定的灵活性，以适应不断变化的环境和需求。应当定期审查并根据需要进行调整。
-
-   **可执行性（Enforceability）**：应该有明确的执行机制。员工需要知道，对于不遵守规章制度将会有何种后果。
-
-   **透明性（Transparency）**：制定和修改规章制度的过程应公开透明，以便员工理解制度的目的和重要性。
-
-   **目标导向（Goal-oriented）**：流程和规章应支持组织的总体目标和战略。
-
-   **评估和反馈（Evaluation and Feedback）**：应定期评估制度的有效性，并对员工的反馈做出响应
-
-   
-
-   原因：
-
-- **团队规模增长时**：随着团队规模的增长，原有的非正式或口头沟通方式可能不再有效。规章制度可以帮助确保信息的一致性和准确性，特别是在团队成员之间需要协作的情况下。
-- **面临复杂项目时**：当项目涉及多个部门、多个阶段或高度复杂性时，明确的流程规范有助于保持项目的顺利进行，并确保各个环节协调一致。
-- **引入新技术或方法时**：当团队采用新的技术、工具或开发方法（如敏捷开发）时，建立相关的规章制度可以帮助团队成员理解和适应这些新变化。
-- **遵守行业标准和法律要求时**：在某些行业中，遵守特定的法律法规和标准是必须的。例如，在医疗、金融或政府项目中，规章制度和流程规范可以帮助确保合规。
-- **提高效率和质量时**：为了提高工作效率和产品质量，团队可能需要引入标准化的工作流程和质量控制措施。
-- **面对频繁的变更和迭代时**：在快速变化的市场环境中，规章制度可以帮助团队快速适应变化，同时保持工作的连贯性和效率。
-- **实现知识共享和传承时**：随着团队成员的更迭，重要知识和经验的传承变得尤为重要。规章制度可以帮助新成员快速融入团队，理解工作流程和文化。
-- **远程工作或分布式团队时**：对于远程工作或地理位置分散的团队，明确的规章制度和流程规范对于保持团队协调和高效合作至关重要。
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
 
 
-2. 更细致的分工
+  </aside>
 
-研发岗位的组长和组员强调对于技术方面更多的参与，关注代码本身。
 
-对于组长以上，应该做到对规章制度和流程规范，项目管理层面的把控，注意合理、可行、公平
+    </div>
+  </div>
+</div>
 
-3. 完成 1.4.0 版本需求
-4. 优化端口策略
 
-- 复用
 
-- 尽量连续
+
 
   
 
-5. 拥抱信创
 
-- Envoy Polycube waf 等编译
-- MySQL5.7 MongoDB HyperScan
-- so 依赖库问题
-- 组件依赖汇编
 
+  
 
 
-## 附录
 
-### 1.3.0 版本问题整理
+  
 
-### 需求
 
-#### 需求文档质量差
 
-各个模块完成的功能和目标没有梳理清楚，导致流程不合理、自相矛盾的情况屡屡发生。
+  
 
-需求文档应该在开发介入前评审完成，而不是让开发和需求同时进行
 
-产品经理应该和需求来源方达成一致后
 
-多个模块、界面设计风格不一致
+  
 
-存在很多无意义的功能、模块
 
-设计功能、模块时未考虑对系统性能影响，导致影响越来越大，最终系统中部分的业务性能出现瓶颈，导致需要开发设计重构，需求重做。至今尚未解决性能问题。
 
-需求文档没有经过拆分，一个版本一个需求文档，找到某一个功能的需求非常困难
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
 
-#### 需求变动频繁、随意
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
 
-需求变动频繁，临近上线还经常看到群里有需求变更，甚至还添加新需求，版本需求临界点不清晰
 
-### 开发
 
-#### 设计文档不全
 
-这版本之前开发的功能模块开发的设计文档都是没有的，相当一部分人没有补齐
 
-#### 设计不充分
 
-有些设计文档也有考虑不周的情况，安全性、性能、影响范围、测试建议、自测实现思路、兼容性（不同组件、不同版本）
+    
 
-#### 安装升级问题
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-##### 安装升级问题
-
-依赖
-
-升级兼容性
-
-#### 联调
-
-从各个层面，如何协作才能更好完成
-
-##### 主管
-
-#####  项目经理
-
-##### 大组长
-
-##### 开发
-
-### 测试
-
-#### 测试介入时间是否及时
-
-测试是否介入太晚？有时候看到测试提的bug是几周前就已经提测的需求了，这些问题按道理应该是需要提前发现提出的
-
-### 打包部署
-
-#### 打包部署一次周期很长
-
-##### 现象
-
-打包部署一次时间很长，这个现象已经持续很久，急需解决。
-
-超融合机器性能不好，部署周期过长，从打包到升级耗时往往超过1小时，期间如果出现包有问题的情况可能一个上午就过去了，甚至会出现几天没有一个有用包的情况出现
-
-##### 解决
-
-###### 技术支持
-
-更强大的技术支持，如打包机器用更好的磁盘、CPU、更多内存，集测环境机器网络延迟和吞吐量要满足低延迟高吞吐量要求。
-
-###### 架构、研发经理
-
-CI/CD 实践指导
-
-###### 项目经理
-
-指定并协调人力、时间资源
-
-###### 开发
-
-- 开发人员跟打包部署测试人员要做充分沟通（提交新的代码）
-- 在某一功能新开发时就充分考虑功能的扩展性、兼容性，在后续开发时首先在自己组件层面做好数据兼容，逻辑兼容，涉及多个组件交互的模块尽量解耦，尽早识别风险。如果遇到绕不过，需要其他组件配合实现的，在打包时跟相关开发和打包部署测试人员充分沟通后走流程。
-- 数据提供方在设计完成后优先考虑数据结构交互部分的实现，如将 接口请求响应、API文档部分完成。
-
-
-
-## 
-
-
-
-
-
-
-在这次版本发布之际，我首先要向团队中的同事们表达我的歉意。回顾这个版本的开发过程，我认识到自己在领导Go二组和可视化小组时出现了一些失误。特别是在风险管理方面，我没有及时收集并上报关键信息，导致问题的严重性没有被上级及时认识到，给团队带来了不必要的压力和挑战。
-
-我要特别向可视化组的向阳、院红、琼婷、育孟，以及引擎安装的贺泽道歉。我的管理和技术上的不足影响了他们的绩效，尤其是在他们向我报告风险并提出解决方案时，我未能采取有效措施。他们在问题发生后积极参与解决，为团队做出了巨大贡献，是我学习的榜样。
-
-同时，我也要向向阳致以深深的歉意。他加入团队后，不仅帮助我领导团队，还在可视化组独立后承担了重担，我相信他会成功完成项目。
-
-对于C++组、测试组和项目经理们，我也表达我的歉意。在规范开发流程的过程中，我们之间发生了一些冲突，我对此感到后悔。我认识到这不是任何个人的过错，而是整个流程中的挑战。
-
-我还需要向技术部的李福林、王总道歉。由于我的不足，技术部在客户那里面临了挑战，给团队增加了困难。
-
-最后，我要向老板道歉。我没能完全达到您的期望，但请相信，团队中每个人都有出色的潜力和能力。作为领导者，我将承担主要的责任。
-
-在此，我也要感谢那些在困难时刻仍然坚守岗位的团队成员，如志凯、立成、慧军、松达，他们的努力保持了项目的稳定。同时感谢思华、宋燚、周宇、福林、王总、桂华、刘总的支持和帮助。
-
-“海阔凭鱼跃，天高任鸟飞。” 我期待我们所有人在石犀这片蓝天中自由翱翔、不断进取。
-
-
-
-在这个版本发布后，我想先向一些项目中的同志道歉。原因是这样的，在这个版本开始时，我接手的Go二组和可视化小组是包含关系。桂华将小组责任交与我，但是我并未将其按质按量完成，在风险管控上，未让相关人员收集所有信息导致不能早早让上级意识到这是个严重的问题，以至于暴露出的问题让老板都惊讶。
-
-我深切认识到，这确确实实是我的责任。在此，先是可视化组成员：向阳、院红、琼婷、育孟等，再是引擎安装的贺泽，第一，他们因为我能力上的不足导致在绩效上非常受影响。第二，重点道歉院红、琼婷、贺泽，在发现了风险后，他们向我提出过这些问题和详细信息，但是我没有实施有益的措施帮助。而后，他们非常积极的帮助补救形势而努力工作，他们是我学习的榜样。下面也要向向阳道歉：向阳进入团队后，一直为团队摆脱困境协助我带领团队，后面可视化独立成一个组去收拾我留下的烂摊子，我相信他会把项目完成好。第三，向 C++ 组成员、测试组和项目经理们道歉，在这个版本进行中，还有一件大事同步进行，就是规范项目各种开发流程，这期间很多次跟很多人发生冲突，可能表现为语言上冲突很严重，有时说完立刻就觉得很后悔，这可能并不是任何人的错，不应该有人为此承担责任的。第四，向技术部李福林、王总道歉，消耗了许多技术部资源但是我这边交付的需求不达标导致他们在客户那边很难维持关系，给我们技术部团队添了太多麻烦。第五，向老板道歉，我觉得我辜负了老板对我的信任，但是我想澄清的是，团队的表现不佳，并不代表团队中每个人都不好，最大的原因一定是带头实施的人员没做好。最后，我想郑重向我的上级道歉，虽然是我在道歉，但是最终犯错的结果、责任还是落在上级头上。
-
-道歉后，我想感谢一些人，除了刚刚提到的院红、琼婷、贺泽、向阳外，还有一些团队成员，志凯、立成、慧军、松达，他们没有受到我的影响，为维持总控项目的基础稳定进行了出色的工作，是团队中最可敬的人。还有思华、宋燚、周宇、福林、王总、桂华、刘总，他们给予我许多信息上、资源上、时间上非常多的帮助。
-
-海阔凭鱼跃，天高任鸟飞。希望大家在石犀这片蓝天中自由翱翔、一往无前。
-
-</code></pre>
-
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
-    
-    
-    
-    
-    
-    
-    
+  </div>
 </div>
 
-            <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
-        </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
-</footer>
+  
+  
+  
+</div>
 
-        </div>
-        
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
-        
-    </div>
-    <script src="/js/main.js"></script>
-    
-    
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
 
 
 
-    
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

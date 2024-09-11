@@ -1,1257 +1,964 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Xiaoy">
+<meta property="og:url" content="https://abrance.github.io/page/4/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
 
 
-<script src="/js/lib/home.js"></script>
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
+
+
 <body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
         
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
         
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
         
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
         
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
         
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
+          
         </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
                 
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/background.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>Xiaoy</h1>
-                <h3>xiaoy blog</h3>
-                <h5></h5>
-            </div>
-        </span>
-    </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/2024/09/04/mdstorage/resource/%E5%9B%BE%E7%89%87/%E7%99%BD%E6%8F%8F%E4%BD%BF%E7%94%A8/">
-        <h2 class="post-title">白描使用.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/resource/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                resource
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>图片转文字 </p>
-<p>提取图片的文字信息</p>
-<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>windows</p>
-<p>安卓&#x2F;IOS</p>
-<p>mac</p>
-<p><a target="_blank" rel="noopener" href="https://web.baimiaoapp.com/">网页</a></p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/tool/" style="color: #ff7d73">tool</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E7%99%BD%E6%8F%8F-ocr-%E5%9B%BE%E7%89%87%E8%BD%AC%E6%96%87%E5%AD%97/" style="color: #03a9f4">白描 ocr 图片转文字</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/04/mdstorage/resource/%E5%9B%BE%E7%89%87/%E7%99%BD%E6%8F%8F%E4%BD%BF%E7%94%A8/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E8%8D%89%E7%A8%BF/">
-        <h2 class="post-title">噩梦年记事草稿.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/project/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                project
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>第一章 小镇的夕阳<br>    “吉尔伯特，开门！”<br>　　在日光的偏移中，老旧的铁门随着访客拍门的动作而发出有节奏的声响。<br>　　在亚楠镇居民的眼里，这样的行为往往是不受欢迎的，毫无礼节的敲门配合着大声的呼喊往往会让人们想起那些糟糕的夜晚。<br>　　但是，当路过的人们看到那访客身上的衣服时，便又将满嘴的埋怨与不满吞回了肚子里，更何况他正在直呼吉尔伯特的名字。<br>　　“大概是教会里的猎人吧。”<br>　　人们这么想着，随后便纷纷朝着自己家的方向赶去，天色已经不早了。<br>　　门内传来了脚步声，随后，一个有着棕色卷发的中年人打开了房门，将自己疲惫的面孔暴露在了夕阳的余晖里。<br>　　在看到访客的脸后，吉尔伯特的面容立即抖动了一下，他让开了身子，示意对方进屋说话。<br>　　“怎么回事？现在应该并不是你执勤的时间。”，吉尔伯特关上门，疑惑地询问这位不速之客：“还是说，咱们的卡尔先生打算从工房里出来透透风？”<br>　　被称为卡尔的男子从头上摘下了制式的猎人三角帽，露出了那张苍白而瘦削的脸，他瘦得有些不成样子了，长时间对学识的钻研使得他不得不依靠一些手段来维持身体对营养的需求，不过近期，这种补充方法也被他自己戒掉了，这就让他看上去更加地不堪。<br>　　“瘦得和木杆子差不多了。”<br>　　吉尔伯特腹诽着，然而卡尔却没有回应他的玩笑，而是用急促而阴冷的语气说道：“提前了。”<br>　　吉尔伯特没反应过来：“什么？”<br>　　卡尔盯着他，无神的眼睛看上去就像是两个黑洞：“狩猎之夜提前了。”<br>　　吉尔伯特的表情僵住了，他惊疑不定地看着卡尔，随后试探性地问道：“提前了多少？”<br>　　“今晚。”<br>　　这个答案像是从火枪里射出的子弹一样命中了吉尔伯特，他对自己朋友的回答没有丝毫怀疑，卡尔或许并不讨人喜欢，但却不会有人想去质疑他的话的真实度。<br>　　吉尔伯特看向了墙壁，在那里正挂着一把造型狰狞的武器，乍一看像是弧形的巨大砍刀，为了便于放置，它的把柄与刀刃折叠在了一起，这就使得砍刀锯齿上的一些血渍沾染到了刀柄的白布上。<br>　　血渍还未彻底干涸，那些兽化病患者的血液比正常人的鲜血要粘稠得多，这就使得武器在使用后容易沾染上无法去除的污浊。<br>　　吉尔伯特算是知道卡尔为什么如此紧张了，他现在甚至能够感觉自己的呼吸变得无比困难。<br>　　狩猎之夜才刚结束，就又要开始了。<br>　　……<br>　　将信息带到之后，卡尔便离开了吉尔伯特家，朝着自己来时的方向走去。<br>　　在大街上能够看到不少猎人装束的亚楠居民，这些亚楠猎人在看到卡尔后，便纷纷朝他行礼，尽管卡尔看上去弱不禁风，但是他背后那治愈教会的披风却是做不得假的。<br>　　人们对治愈教会充满了尊敬，毕竟现在，小镇的治安与生存环境全靠教会的猎人与圣职者们维持着，而那些被招募的亚楠居民则更是如此，他们中的不少人都目睹过教会的精英们猎杀野兽时的场景，也因此，治愈教会的成员在小镇上拥有了惊人的地位和声望。<br>　　卡尔伸手拦住了一名行色匆匆的小伙，对方在看见卡尔的装束后便收起了自己一脸的不满，小心翼翼地问道：“先生，有什么事吗？”<br>　　“你们在紧急集合？”<br>　　卡尔用手杖指了指街道的另一头，几个朝着小镇中心赶去的亚楠猎人，如是问道。<br>　　“是的先生！”，小伙子迅速地回答道，他顺手整理了一下自己的腰带，因为高速的奔跑，上面的猎人手枪偏到了一边，看上去非常的滑稽。<br>　　在整理完腰带后，他又说道：“是路德维希大人的命令，日落之前在小镇中心集合。”<br>　　在提到路德维希这个名字的时候，小伙的脸上闪过了崇敬的神情。<br>　　卡尔抬手拍了拍对方的肩膀，顺手帮他整理了一下同样歪斜的肩带：“去吧，别迟到了。”<br>　　“谢谢您！先生！”<br>　　目送这个年轻的猎人顺着街道一路跑去，卡尔的脸色变得更加难看，这些集结的亚楠猎人的数量已经完全超出了常规配置，几乎是把所有能够招募的猎人全部集合了起来，这种情况是从来没有出现过的。<br>　　卡尔走到街道的边上，扶着护栏向下看去。<br>　　亚楠一直是一个有着独特结构的城镇，顺着山势修建的建筑带来的是一种奇妙的层叠感，而在亚楠的正上方，则有着另外一个小镇，即独属于治愈教会的辖区。<br>　　当猎杀之夜开始，人们将被要求锁死房门藏在家中，除了身具猎杀任务的猎人们，将不会有人在街道之上行走。<br>　　卡尔的手指在护栏上摩擦了一下，他摸到了一道狭长的凹痕，那是兽爪留下的痕迹。<br>　　这些平日里或沉默，或卑微，或遵纪守法的居民们一旦陷入兽化，便拥有了给这座城市留下伤痕的能力，这些痕迹是细微而不足道的，但就今日的情况来看，这些积累的伤痕似乎已经为整个城镇带来了威胁。<br>　　毫无疑问，猎杀之夜要提前了，而且接下来的这个夜晚的恶劣程度将会远超以往，可以看出，教会已经没有心思和精力去隐瞒这一点了，这从大量集结的猎人们就能看出。<br>　　最后看了一眼亚楠镇底层街道上奔走的居民，卡尔转身离去，他还要去一趟猎人工坊，每当这个时候，水银子弹与汽油弹之类的基础物资总是极为紧缺。<br>　　他朝着教会镇的入口走去，太阳的余晖维持不了多久，他必须赶在大门封锁前离开亚楠。<br>　　街道是寂静的，但是却又弥漫着一种难以言明的紧张和恐慌，人们或许已经意识到了什么，但是常识所给予他们的信心和勇气使得他们仍然能够待在屋内，向着神明祷告。<br>　　一股饭菜的味道传入卡尔的鼻子，居然难得地勾起了他对食物的渴望，但是很快，一股夹杂在食物中的血腥气使得卡尔打了一个寒颤。<br>　　这并不是正常的血疗中所用的血液的味道，它闻起来腐臭而粘稠，虽然还不够浓郁，但却足以证明，一次兽化正在附近发生。<br>　　他捏了捏手杖，拇指压在了手杖铁柄的机括上，顺着那股味道的源头走去。<br>　　兽化往往不会在白日里发生，兽化病的患者们在意识清醒的时候，可以利用镇静剂与教会发放的血液来安抚自己，所以兽化大都在睡眠时产生，又或者在患者们意识不清醒的时候爆发。<br>　　发生在傍晚时分的兽化案例可以说是屈指可数。<br>　　尖锐的叫声从小巷的深处传出，卡尔迅速地确定了方向，三步并作两步冲进了狭窄的巷道中，抬起一脚用力踢在了小巷尽头的木门上。<br>　　“嘭！”<br>　　颇为脆弱的门锁在暴力的踢击下损毁，房门大开的同时，一股浓重的血腥气便扑面而来。<br>　　兽化病可以是一个缓慢的过程，也可以在一瞬之间爆发，它会使得患者的身体出现皮肤破裂，关节扭曲等症状，而当病症再也无法扭转时，患者的血液将可能从身体各处的裂口中迸射而出，此时的患者仍然拥有神志，但强烈的痛楚与惊恐使得他们极容易被自身的攻击欲所控制。<br>　　此时此刻，那朝着卡尔扑来的人影便是这样一个可怜的存在。<br>　　仿佛早已排演过无数遍一般，卡尔的右手猛地抬起，拇指用力地按下把柄上的机括，原本的柱状手杖便如同散架了一般松散开来，那些金属斜着从上而下排开，形成了如同锯齿一般的存在，而这些锯齿之间，却又被金属关节所连接。<br>　　这条造型奇特的锯齿长鞭就这么展开了，随着卡尔的动作向上荡起，而后，又挟带着风声朝着前方抽下。<br>　　锋利的锯齿在滑过木质墙壁时发出了刺耳难听的声响，但随后，这声音便被血肉的撕裂声所取代。<br>　　这种诡异的伸缩手杖是猎人们执勤时常用的武器，尖锐的底部以及坚硬的主体使得它可以被当做短剑来使用，必要时也能够将其展开成致命的金属长鞭。<br>　　将武器藏于手杖，并选择用鞭子抽打自己的敌人，这本身便是一种慈悲，也是为了证明猎杀时的血液与痛楚永远无法侵蚀猎人高尚的灵魂。<br>　　腥臭的血液随着卡尔的动作在房屋之内泼洒开去，但仅仅是这样的鞭挞并无法阻止一个兽化的患者。<br>　　猎杀对他来说并不陌生，就算不是以猎杀为主要任务的教会猎人，卡尔一样能够熟练地应对这一切。<br>　　那两只已经被黑色的粗糙毛发所覆盖的手臂朝着两边展开，患者的双手已经朝着野兽的利爪靠拢，然而就在这尖爪即将碰到卡尔的身体时，那展开的金属长鞭迅速地扭转起来，伴随着这位瘦弱的猎人前刺的动作，长鞭再次化作手杖，其尖锐的底部轻松地贯入了对方的胸膛。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E5%B0%8F%E8%AF%B4/" style="color: #03a9f4">小说</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E8%8D%89%E7%A8%BF/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E5%A4%A7%E7%BA%B2/">
-        <h2 class="post-title">噩梦年记事大纲.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/project/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                project
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <ul>
-<li><strong>构思主题与情节</strong>：<ul>
-<li>确定您想要探讨的中心主题。</li>
-<li>构思大致的情节框架，包括故事的开端、发展、高潮、和结局。</li>
-</ul>
-</li>
-<li><strong>人物创造与发展</strong>：<ul>
-<li>设计主要和次要人物，为他们制定背景故事、性格特点和动机。</li>
-<li>考虑人物之间的关系以及这些关系如何推动故事发展。</li>
-</ul>
-</li>
-<li><strong>世界建构</strong>：<ul>
-<li>如果故事背景非现实世界，需要详细描绘故事的设定，包括地理、政治、经济、文化等方面。</li>
-<li>即使故事设定在现实世界，也要研究相关的背景信息，让故事环境真实可信。</li>
-</ul>
-</li>
-<li><strong>研究与灵感搜集</strong>：<ul>
-<li>阅读相关书籍、文章，了解您的题材和背景。</li>
-<li>搜集灵感，可能来自电影、音乐、艺术作品等。</li>
-</ul>
-</li>
-<li><strong>情节细化</strong>：<ul>
-<li>将大致情节拆分为章节和场景，规划每一部分要发生的事情。</li>
-<li>可以通过故事梗概、时间线、情节图等工具帮助组织情节。</li>
-</ul>
-</li>
-<li><strong>写作计划</strong>：<ul>
-<li>制定写作计划和时间表，确定每天或每周的写作目标。</li>
-<li>保持纪律，按计划写作，同时也要允许灵感的自然涌现。</li>
-</ul>
-</li>
-<li><strong>文体和语言风格</strong>：<ul>
-<li>确定小说的叙述视角和时态（例如第一人称过去时、第三人称全知视角等）。</li>
-<li>础定语言风格和语调，比如正式、幽默、沉重或轻松等。</li>
-</ul>
-</li>
-<li><strong>回顾与修订</strong>：<ul>
-<li>准备好在初稿完成后进行大量的修订和润色。</li>
-<li>可能需要多次重写某些章节，甚至整个情节。</li>
-</ul>
-</li>
-<li><strong>反馈与改进</strong>：<ul>
-<li>考虑在某个阶段将您的草稿或想法分享给信任的朋友或同行，获取反馈。</li>
-<li>保持开放的态度，对建设性的批评持接受心态，并据此改进。</li>
-</ul>
-</li>
-<li><strong>备份与记录</strong>：<ul>
-<li>经常备份您的工作，以防丢失。</li>
-<li>记录下写作过程中的想法和修改，这有助于未来的审稿和修订。</li>
-</ul>
-</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E5%B0%8F%E8%AF%B4/" style="color: #ff7d73">小说</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E5%A4%A7%E7%BA%B2/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/04/mdstorage/project/sr/golang%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/grpc-Tutorial/">
-        <h2 class="post-title">grpc-Tutorial.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="gRPC-教程"><a href="#gRPC-教程" class="headerlink" title="gRPC 教程"></a>gRPC 教程</h1><p>本教程针对希望学习如何使用 gRPC 构建和部署高效、可扩展的微服务的开发者。通过阅读本教程，了解 gRPC 的基本概念、如何在 Go 语言中实现 gRPC 服务，以及如何进行客户端和服务器之间的通信。寻找一个高性能、跨语言、开放源代码的远程过程调用 (RPC) 框架，gRPC 是一个理想的选择。</p>
-<h2 id="教程概览"><a href="#教程概览" class="headerlink" title="教程概览"></a>教程概览</h2><p>在本教程中，学习如何：</p>
-<ul>
-<li>设计和定义 gRPC 服务</li>
-<li>在 Go 语言中实现 gRPC 服务器和客户端</li>
-<li>使用 Protocol Buffers 进行数据序列化</li>
-</ul>
-<h2 id="在开始之前"><a href="#在开始之前" class="headerlink" title="在开始之前"></a>在开始之前</h2><p>确保安装了以下必备软件和工具：</p>
-<ul>
-<li>Go 语言环境（至少 Go 1.15）</li>
-<li>Protocol Buffers 编译器 (<code>protoc</code>)</li>
-<li>gRPC Go 语言库</li>
-</ul>
-<p>以下知识或经验：</p>
-<ul>
-<li>基本的 Go 语言编程知识</li>
-<li>对 RPC 和客户端-服务器架构有基本的了解</li>
-</ul>
-<h2 id="第一部分：定义和实现-gRPC-服务-id-”grpc-1”"><a href="#第一部分：定义和实现-gRPC-服务-id-”grpc-1”" class="headerlink" title="第一部分：定义和实现 gRPC 服务 {id&#x3D;”grpc_1”}"></a>第一部分：定义和实现 gRPC 服务 {id&#x3D;”grpc_1”}</h2><p>学习如何定义 gRPC 服务和在 Go 中实现这些服务。</p>
-<ol>
-<li><p>定义服务和消息格式。在 <code>service.proto</code> 文件中编写以下内容：</p>
-<pre><code>syntax = &quot;proto3&quot;;
-
-package tutorial;
-
-// 定义 Greeter 服务
-service Greeter &#123;
-    // 发送问候
-    rpc SayHello (HelloRequest) returns (HelloReply) &#123;&#125;
-&#125;
-
-// HelloRequest 消息定义
-message HelloRequest &#123;
-    string name = 1;
-&#125;
-
-// HelloReply 消息定义
-message HelloReply &#123;
-    string message = 1;
-&#125;
-</code></pre>
-</li>
-<li><p>使用 Protocol Buffers 编译器生成 Go 代码。在终端执行：</p>
-<pre><code class="bash">protoc --go_out=. --go-grpc_out=. service.proto
-</code></pre>
-</li>
-<li><p>实现 gRPC 服务器。创建 <code>server.go</code> 并添加以下代码：</p>
-<pre><code class="go">package main
-
-import (
-    &quot;context&quot;
-    &quot;log&quot;
-    &quot;net&quot;
-
-    &quot;google.golang.org/grpc&quot;
-    pb &quot;path/to/your/service&quot;
-)
-
-type server struct &#123;
-    pb.UnimplementedGreeterServer
-&#125;
-
-func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) &#123;
-    return &amp;pb.HelloReply&#123;Message: &quot;Hello &quot; + in.Name&#125;, nil
-&#125;
-
-func main() &#123;
-    lis, err := net.Listen(&quot;tcp&quot;, &quot;:50051&quot;)
-    if err != nil &#123;
-        log.Fatalf(&quot;failed to listen: %v&quot;, err)
-    &#125;
-    s := grpc.NewServer()
-    pb.RegisterGreeterServer(s, &amp;server&#123;&#125;)
-    if err := s.Serve(lis); err != nil &#123;
-        log.Fatalf(&quot;failed to serve: %v&quot;, err)
-    &#125;
-&#125;
-</code></pre>
-</li>
-</ol>
-<h2 id="第二部分：创建-gRPC-客户端"><a href="#第二部分：创建-gRPC-客户端" class="headerlink" title="第二部分：创建 gRPC 客户端"></a>第二部分：创建 gRPC 客户端</h2><p>学习如何创建 gRPC 客户端来调用服务器。</p>
-<ol>
-<li><p>创建 <code>client.go</code> 并添加以下代码：</p>
-<pre><code class="go">package main
-
-import (
-    &quot;context&quot;
-    &quot;log&quot;
-    &quot;time&quot;
-
-    &quot;google.golang.org/grpc&quot;
-    pb &quot;path/to/your/service&quot;
-)
-
-func main() &#123;
-    conn, err := grpc.Dial(&quot;localhost:50051&quot;, grpc.WithInsecure(), grpc.WithBlock())
-    if err != nil &#123;
-        log.Fatalf(&quot;did not connect: %v&quot;, err)
-    &#125;
-    defer conn.Close()
-    c := pb.NewGreeterClient(conn)
-
-    name := &quot;world&quot;
-    ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-    defer cancel()
-    r, err := c.SayHello(ctx, &amp;pb.HelloRequest&#123;Name: name&#125;)
-    if err != nil &#123;
-        log.Fatalf(&quot;could not greet: %v&quot;, err)
-    &#125;
-    log.Printf(&quot;Greeting: %s&quot;, r.Message)
-&#125;
-</code></pre>
-</li>
-<li><p>运行服务器和客户端，验证通信是否成功。</p>
-</li>
-</ol>
-<h2 id="所学到的内容-id-”what-learned”"><a href="#所学到的内容-id-”what-learned”" class="headerlink" title="所学到的内容 {id&#x3D;”what-learned”}"></a>所学到的内容 {id&#x3D;”what-learned”}</h2><p>通过完成这个教程，已经成功地定义了一个简单的 gRPC 服务，实现了服务端和客户端，并在本地进行了测试。还学习了如何使用 Protocol Buffers 来定义数据格式和服务接口。</p>
-<seealso>
-<!-- 给出一些相关链接到如何文章 -->
-- [gRPC 官方文档](https://grpc.io/docs/)
-- [Go 语言官方文档](https://golang.org/doc/)
-</seealso>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/golang/" style="color: #03a9f4">golang</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/grpc/" style="color: #ffa2c4">grpc</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/04/mdstorage/project/sr/golang%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/grpc-Tutorial/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/03/hello-world/">
-        <h2 class="post-title">Hello World</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/3
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/09/03/hello-world/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/03/mdstorage/%E6%B8%85%E5%8D%95/">
-        <h2 class="post-title">清单软件设计</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/3
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="清单"><a href="#清单" class="headerlink" title="清单"></a>清单</h2><h3 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h3><p>用户信息展示</p>
-<h3 id="清单-1"><a href="#清单-1" class="headerlink" title="清单"></a>清单</h3><p>清单展示</p>
-<ul>
-<li>清单<ul>
-<li>分组<ul>
-<li>任务<ul>
-<li>子任务</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><h3 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h3><ul>
-<li>title</li>
-<li>content</li>
-<li>置顶</li>
-<li>置顶时间</li>
-<li>创建时间</li>
-<li>更新时间</li>
-<li>状态 0&#x2F;进度&#x2F;已完成&#x2F;已放弃</li>
-<li>是否删除</li>
-<li>删除时间</li>
-</ul>
-<h3 id="动态"><a href="#动态" class="headerlink" title="动态"></a>动态</h3><h3 id="用户用户-bind"><a href="#用户用户-bind" class="headerlink" title="用户用户 bind"></a>用户用户 bind</h3><p>联系人</p>
-<h3 id="清单用户-bind"><a href="#清单用户-bind" class="headerlink" title="清单用户 bind"></a>清单用户 bind</h3><p>用户查看清单、共享清单</p>
-<h3 id="任务用户-bind"><a href="#任务用户-bind" class="headerlink" title="任务用户 bind"></a>任务用户 bind</h3><p>指派任务给用户</p>
-<h3 id="连接状态"><a href="#连接状态" class="headerlink" title="连接状态"></a>连接状态</h3><h3 id="任务动态-bind"><a href="#任务动态-bind" class="headerlink" title="任务动态 bind"></a>任务动态 bind</h3><h3 id="清单动态-bind"><a href="#清单动态-bind" class="headerlink" title="清单动态 bind"></a>清单动态 bind</h3><h2 id="维度"><a href="#维度" class="headerlink" title="维度"></a>维度</h2><h3 id="清单、任务"><a href="#清单、任务" class="headerlink" title="清单、任务"></a>清单、任务</h3><h3 id="标签-1"><a href="#标签-1" class="headerlink" title="标签"></a>标签</h3><h3 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h3><h3 id="用户-1"><a href="#用户-1" class="headerlink" title="用户"></a>用户</h3><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="分层架构"><a href="#分层架构" class="headerlink" title="分层架构"></a>分层架构</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>dashboard 、 core、 server</p>
-<h4 id="dashboard"><a href="#dashboard" class="headerlink" title="dashboard"></a>dashboard</h4><p>展示层</p>
-<h4 id="core"><a href="#core" class="headerlink" title="core"></a>core</h4><p>数据传递、数据同步</p>
-<h4 id="server"><a href="#server" class="headerlink" title="server"></a>server</h4><p>数据收集、维护、提供</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E6%9E%B6%E6%9E%84/" style="color: #03a9f4">架构</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E6%B8%85%E5%8D%95%E8%BD%AF%E4%BB%B6/" style="color: #00bcd4">清单软件</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/03/mdstorage/%E6%B8%85%E5%8D%95/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/03/mdstorage/domain/%E6%8B%9B%E8%81%98/%E5%85%A5%E8%81%8C%E8%80%83%E8%AF%95%E9%A2%98%E7%9B%AE/">
-        <h2 class="post-title">入职考试题目.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/3
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><ol>
-<li><strong>基础知识</strong>：<ul>
-<li>解释 Golang 的垃圾回收机制。(3分)</li>
-<li>在 Golang 中，<code>interface&#123;&#125;</code> 的作用是什么？(3分)</li>
-</ul>
-</li>
-<li><strong>HTTP 协议与网络编程</strong>：<ul>
-<li>列举 HTTP 状态码 200、400 和 500 分别代表什么？ (2分)</li>
-<li>如何在 Go 中处理 HTTP 超时？ (2分)</li>
-</ul>
-</li>
-<li><strong>Linux 操作系统</strong><ul>
-<li>描述 Linux 操作系统写入文件的过程。</li>
-</ul>
-<ol start="2">
-<li>描述 Linux 操作系统处理多任务的机制。</li>
-</ol>
-</li>
-<li><strong>Gin 框架</strong>：<ul>
-<li>Gin 框架中如何实现中间件？（4分）</li>
-<li>在 Gin 中处理 panic 的最佳实践是什么？ （4分）</li>
-</ul>
-</li>
-<li><strong>GRPC</strong>：<ul>
-<li>描述 GRPC 与传统 HTTP REST API 之间的主要区别。 （4分）</li>
-<li>在 GRPC 中，什么是拦截器（Interceptor）？ （4分）</li>
-</ul>
-</li>
-<li><strong>数据库与存储</strong>：<ul>
-<li>如何在 Go 中使用 Redis 进行缓存操作？ （3分）</li>
-<li>解释 Golang 中的 ORM，并举例说明如何使用。 （3分）</li>
-</ul>
-</li>
-<li><strong>性能与优化</strong>：<ul>
-<li>什么是 Goroutine 泄漏，如何避免？ （4分）</li>
-<li>Golang 性能调优的一些常用方法是什么？ （4分）</li>
-</ul>
-</li>
-<li><strong>高级题目</strong>（拉开差距的题目）：<ul>
-<li>解释 Golang 中的反射（reflection）以及其使用场景。 （5分）</li>
-<li>描述 Go 程序中死锁的概念，并提供一个简单的示例。 （5分）</li>
-<li>解释 Keepalived 在 Linux 系统中的故障切换原理。 （8分）</li>
-<li>阐述 LVS（Linux Virtual Server）的工作原理和架构。 （8分）</li>
-<li>描述 NSQ 消息队列系统中消息的写入和读取过程。 （8分）</li>
-<li>描述 Kubernetes 中自定义资源定义（CRD）的概念及其用途。 （8分）</li>
-<li>概述 etcd 的主要功能和在分布式系统中的作用。 （9分）</li>
-<li>解释 Envoy XDS 协议以及其下不同数据平面（DS）的概念和作用。 （9分）</li>
-</ul>
-</li>
-</ol>
-<h1 id="参考答案"><a href="#参考答案" class="headerlink" title="参考答案"></a>参考答案</h1><h2 id="试题"><a href="#试题" class="headerlink" title="试题"></a>试题</h2><p>Golang 的 GC 机制</p>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>考察对 Golang 垃圾回收机制的理解，包括其工作原理和对程序性能的影响。</p>
-<h3 id="得分点"><a href="#得分点" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>描述垃圾回收的基本概念。</li>
-<li>说明 Golang 中垃圾回收的工作方式（如三色标记算法）。</li>
-<li>讨论垃圾回收对性能的影响。</li>
-</ul>
-<h3 id="参考答案-1"><a href="#参考答案-1" class="headerlink" title="参考答案"></a>参考答案</h3><p>Golang 使用并发的、三色标记的垃圾回收算法。在此过程中，分配器和写屏障会插入额外的代码来维护垃圾回收的数据结构。这种方法减少了程序暂停的时间，但可能会对整体性能造成轻微影响。</p>
-<hr>
-<h2 id="试题-1"><a href="#试题-1" class="headerlink" title="试题"></a>试题</h2><p>在 Golang 中，<code>interface&#123;&#125;</code> 的作用是什么？</p>
-<h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>考查对 Go 中空接口的理解及其使用场景。</p>
-<h3 id="得分点-1"><a href="#得分点-1" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>解释空接口的概念。</li>
-<li>讨论其在类型系统中的应用。</li>
-<li>说明使用空接口的优缺点。</li>
-</ul>
-<h3 id="参考答案-2"><a href="#参考答案-2" class="headerlink" title="参考答案"></a>参考答案</h3><p><code>interface&#123;&#125;</code> 是 Go 中的空接口，可表示任何类型。由于 Go 是静态类型语言，空接口在需要泛型处理时非常有用，但使用时需注意类型断言或反射来处理具体类型。</p>
-<hr>
-<h2 id="试题-2"><a href="#试题-2" class="headerlink" title="试题"></a>试题</h2><p>列举 HTTP 状态码 200、400 和 500 分别代表什么？</p>
-<h3 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h3><p>考查对 HTTP 状态码的基本理解。</p>
-<h3 id="得分点-2"><a href="#得分点-2" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>准确描述每个状态码的含义。</li>
-<li>能够举例说明状态码的使用场景。</li>
-</ul>
-<h3 id="参考答案-3"><a href="#参考答案-3" class="headerlink" title="参考答案"></a>参考答案</h3><ul>
-<li>200: 请求成功。</li>
-<li>400: 错误的请求，客户端请求有语法错误。</li>
-<li>500: 服务器内部错误，服务器遇到了一个意外的情况，无法完成请求。</li>
-</ul>
-<hr>
-<h2 id="试题-3"><a href="#试题-3" class="headerlink" title="试题"></a>试题</h2><p>如何在 Go 中处理 HTTP 超时？</p>
-<h3 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h3><p>考查对 Go http 包使用和错误处理的理解。</p>
-<h3 id="得分点-3"><a href="#得分点-3" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>说明如何设置超时。</li>
-<li>讨论超时处理的重要性。</li>
-</ul>
-<h3 id="参考答案-4"><a href="#参考答案-4" class="headerlink" title="参考答案"></a>参考答案</h3><p>在 Go 中，可以通过设置 <code>http.Client</code> 的 <code>Timeout</code> 属性来处理 HTTP 请求的超时。这对于避免无限期等待响应和资源的有效管理非常重要。</p>
-<hr>
-<h2 id="试题-4"><a href="#试题-4" class="headerlink" title="试题"></a>试题</h2><p>描述 Linux 操作系统写入文件的过程。</p>
-<h3 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h3><p>考察对 Linux 文件系统和写入操作的理解，包括用户空间与内核空间的交互。</p>
-<h3 id="得分点-4"><a href="#得分点-4" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>描述用户空间和内核空间的交互过程。</li>
-<li>说明系统调用（如<code>write()</code>）的作用。</li>
-<li>讨论缓冲区的角色和写入过程的同步&#x2F;异步特性。</li>
-</ul>
-<h3 id="参考答案-5"><a href="#参考答案-5" class="headerlink" title="参考答案"></a>参考答案</h3><p>在 Linux 中，写入文件通常涉及系统调用，如<code>write()</code>。应用程序在用户空间发起写入请求，通过系统调用传递给内核空间。数据首先被写入缓冲区，然后由内核管理的I&#x2F;O操作将数据写入磁盘。这个过程可以是同步的，也可以是异步的，取决于文件系统和具体的写入策略。</p>
-<hr>
-<h2 id="试题-5"><a href="#试题-5" class="headerlink" title="试题"></a>试题</h2><p>描述 Linux 操作系统处理多任务的机制。</p>
-<h3 id="解题思路-5"><a href="#解题思路-5" class="headerlink" title="解题思路"></a>解题思路</h3><p>考察对 Linux 多任务处理和调度机制的理解。</p>
-<h3 id="得分点-5"><a href="#得分点-5" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>描述进程和线程的概念。</li>
-<li>说明 Linux 的任务调度器如何管理多个任务。</li>
-<li>讨论上下文切换对性能的影响。</li>
-</ul>
-<h3 id="参考答案-6"><a href="#参考答案-6" class="headerlink" title="参考答案"></a>参考答案</h3><p>Linux 通过进程和线程来实现多任务处理。每个进程拥有独立的地址空间，而线程则是轻量级的执行单元。Linux 的任务调度器负责分配 CPU 时间给各个任务。调度器根据任务的优先级和其他因素来决定任务的执行顺序。多任务处理涉及频繁的上下文切换，这可能对系统性能产生影响，尤其是在高负载情况下。</p>
-<hr>
-<h2 id="试题-6"><a href="#试题-6" class="headerlink" title="试题"></a>试题</h2><p>Gin 框架中如何实现中间件？</p>
-<h3 id="解题思路-6"><a href="#解题思路-6" class="headerlink" title="解题思路"></a>解题思路</h3><p>考查对 Gin 框架中间件的实现和应用的理解。</p>
-<h3 id="得分点-6"><a href="#得分点-6" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>描述中间件在 Gin 中的作用。</li>
-<li>举例说明如何编写和注册中间件。</li>
-</ul>
-<h3 id="参考答案-7"><a href="#参考答案-7" class="headerlink" title="参考答案"></a>参考答案</h3><p>在 Gin 中，中间件是一种处理 HTTP 请求的函数，在请求到达路由处理函数之前或之后执行。可以通过使用 <code>router.Use()</code> 函数来注册中间件。中间件可以用于日志记录、用户认证等功能。</p>
-<hr>
-<h2 id="试题-7"><a href="#试题-7" class="headerlink" title="试题"></a>试题</h2><p>在 Gin 中处理 panic 的最佳实践是什么？</p>
-<h3 id="解题思路-7"><a href="#解题思路-7" class="headerlink" title="解题思路"></a>解题思路</h3><p>考查对异常处理和稳健性编程在 Gin 框架中的应用。</p>
-<h3 id="得分点-7"><a href="#得分点-7" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>说明 panic 的影响。</li>
-<li>描述如何在 Gin 中优雅地处理 panic。</li>
-</ul>
-<h3 id="参考答案-8"><a href="#参考答案-8" class="headerlink" title="参考答案"></a>参考答案</h3><p>在 Gin 中处理 panic 的最佳实践是使用内建的 <code>Recovery</code> 中间件，它可以捕获任何路由或中间件中的 panic，并恢复正常的 HTTP 请求处理。这样可以防止服务器因为单一的错误而崩溃。</p>
-<hr>
-<h2 id="试题-8"><a href="#试题-8" class="headerlink" title="试题"></a>试题</h2><p>描述 GRPC 与传统 HTTP REST API 之间的主要区别。</p>
-<h3 id="解题思路-8"><a href="#解题思路-8" class="headerlink" title="解题思路"></a>解题思路</h3><p>考查对 GRPC 和 HTTP REST API 技术的理解，及其优缺点。</p>
-<h3 id="得分点-8"><a href="#得分点-8" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>说明两者在协议、性能和使用场景上的不同。</li>
-<li>讨论使用场景和选择依据。</li>
-</ul>
-<h3 id="参考答案-9"><a href="#参考答案-9" class="headerlink" title="参考答案"></a>参考答案</h3><p>GRPC 基于 HTTP&#x2F;2, 主要用于内部服务之间的通信，支持流传输和更高效的二进制消息格式。相比之下，HTTP REST API 是基于 HTTP&#x2F;1.1, 更适用于公共 API 和不同语言之间的交互，使用 JSON 或 XML 格式进行数据传输。</p>
-<hr>
-<h2 id="试题-9"><a href="#试题-9" class="headerlink" title="试题"></a>试题</h2><p>在 GRPC 中，什么是拦截器（Interceptor）？</p>
-<h3 id="解题思路-9"><a href="#解题思路-9" class="headerlink" title="解题思路"></a>解题思路</h3><p>探讨 GRPC 拦截器的概念及其在 GRPC 服务中的作用。</p>
-<h3 id="得分点-9"><a href="#得分点-9" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>定义 GRPC 拦截器。</li>
-<li>描述拦截器的常见用途。</li>
-</ul>
-<h3 id="参考答案-10"><a href="#参考答案-10" class="headerlink" title="参考答案"></a>参考答案</h3><p>拦截器在 GRPC 中用于在处理请求和响应之前或之后插入额外的逻辑。它们类似于中间件，可以用于日志记录、认证、监控等。</p>
-<hr>
-<h2 id="试题-10"><a href="#试题-10" class="headerlink" title="试题"></a>试题</h2><p>如何在 Go 中使用 Redis 进行缓存操作？</p>
-<h3 id="解题思路-10"><a href="#解题思路-10" class="headerlink" title="解题思路"></a>解题思路</h3><p>考查对 Go 语言中使用 Redis 进行数据缓存的方法。</p>
-<h3 id="得分点-10"><a href="#得分点-10" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>介绍在 Go 中连接和使用 Redis 的基本步骤。</li>
-<li>讨论在缓存中存储和检索数据的常见模式。</li>
-</ul>
-<h3 id="参考答案-11"><a href="#参考答案-11" class="headerlink" title="参考答案"></a>参考答案</h3><p>在 Go 中使用 Redis，首先需要使用 Redis 客户端库，如 <code>go-redis/redis</code>。创建客户端连接后，可以使用各种命令来操作 Redis，如 <code>SET</code> 和 <code>GET</code> 来存储和检索数据。</p>
-<hr>
-<h2 id="试题-11"><a href="#试题-11" class="headerlink" title="试题"></a>试题</h2><p>解释 Golang 中的 ORM，并举例说明如何使用。</p>
-<h3 id="解题思路-11"><a href="#解题思路-11" class="headerlink" title="解题思路"></a>解题思路</h3><p>探讨在 Go 中 ORM（对象关系映射）的概念及其应用。</p>
-<h3 id="得分点-11"><a href="#得分点-11" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>定义 ORM 和其在 Go 中的作用。</li>
-<li>举例说明如何在 Go 中使用 ORM 库。</li>
-</ul>
-<h3 id="参考答案-12"><a href="#参考答案-12" class="headerlink" title="参考答案"></a>参考答案</h3><p>ORM 在 Go 中是将数据库的表结构映射到 Go 的结构体。这样，可以使用 Go 的语法而非 SQL 来操作数据库。例如，使用 <code>gorm</code> 库可以通过定义结构体和调用方法来实现数据库操作。</p>
-<hr>
-<h2 id="试题-12"><a href="#试题-12" class="headerlink" title="试题"></a>试题</h2><p>什么是 Goroutine 泄漏，如何避免？</p>
-<h3 id="解题思路-12"><a href="#解题思路-12" class="headerlink" title="解题思路"></a>解题思路</h3><p>考察对 Goroutine 泄漏的理解及预防措施。</p>
-<h3 id="得分点-12"><a href="#得分点-12" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>定义 Goroutine 泄漏。</li>
-<li>提供预防 Goroutine 泄漏的方法。</li>
-</ul>
-<h3 id="参考答案-13"><a href="#参考答案-13" class="headerlink" title="参考答案"></a>参考答案</h3><p>Goroutine 泄漏是指在 Go 程序中，Goroutines 由于某些原因（如阻塞的通道或无限循环）无法正常退出。避免泄漏的方法包括使用超时机制、确保所有通道能够关闭，以及避免无限循环。</p>
-<hr>
-<h2 id="试题-13"><a href="#试题-13" class="headerlink" title="试题"></a>试题</h2><p>Golang 性能调优的一些常用方法是什么？</p>
-<h3 id="解题思路-13"><a href="#解题思路-13" class="headerlink" title="解题思路"></a>解题思路</h3><p>考察对 Go 语言中常见的性能优化技术的了解。</p>
-<h3 id="得分点-13"><a href="#得分点-13" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>讨论代码优化（如避免内存分配、使用更高效的数据结构）。</li>
-<li>描述性能分析和调试工具的使用。</li>
-</ul>
-<h3 id="参考答案-14"><a href="#参考答案-14" class="headerlink" title="参考答案"></a>参考答案</h3><p>Golang 性能优化的常见方法包括：优化内存使用和减少内存分配、使用高效的数据结构和算法、并发编程优化、以及使用 pprof 等工具进行性能分析。</p>
-<hr>
-<h2 id="试题-14"><a href="#试题-14" class="headerlink" title="试题"></a>试题</h2><p>解释 Golang 中的反射（reflection）以及其使用场景。</p>
-<h3 id="解题思路-14"><a href="#解题思路-14" class="headerlink" title="解题思路"></a>解题思路</h3><p>考察对 Go 中反射的理解及其应用场景。</p>
-<h3 id="得分点-14"><a href="#得分点-14" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>定义反射。</li>
-<li>描述反射的典型应用。</li>
-</ul>
-<h3 id="参考答案-15"><a href="#参考答案-15" class="headerlink" title="参考答案"></a>参考答案</h3><p>反射是指在程序运行时检查、修改其变量的类型和值的能力。在 Go 中，反射常用于序列化和反序列化、实现泛型功能等。</p>
-<hr>
-<h2 id="试题-15"><a href="#试题-15" class="headerlink" title="试题"></a>试题</h2><p>描述 Go 程序中死锁的概念，并提供一个简单的示例。</p>
-<h3 id="解题思路-15"><a href="#解题思路-15" class="headerlink" title="解题思路"></a>解题思路</h3><p>讨论 Go 中死锁的概念及其发生的条件。</p>
-<h3 id="得分点-15"><a href="#得分点-15" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>解释死锁。</li>
-<li>提供死锁的示例。</li>
-</ul>
-<h3 id="参考答案-16"><a href="#参考答案-16" class="headerlink" title="参考答案"></a>参考答案</h3><p>死锁是指两个或多个进程在执行过程中，因争夺资源而造成的一种僵局。在 Go 中，死锁通常发生在 Goroutines 和通道之间。一个简单的例子是两个 Goroutines 相互等待对方释放资源。</p>
-<hr>
-<h2 id="试题-16"><a href="#试题-16" class="headerlink" title="试题"></a>试题</h2><p>解释 Keepalived 在 Linux 系统中的故障切换原理。</p>
-<h3 id="解题思路-16"><a href="#解题思路-16" class="headerlink" title="解题思路"></a>解题思路</h3><p>考察对 Keepalived 在高可用性设置中的故障切换机制的理解。</p>
-<h3 id="得分点-16"><a href="#得分点-16" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>定义 Keepalived。</li>
-<li>描述故障切换原理。</li>
-</ul>
-<h3 id="参考答案-17"><a href="#参考答案-17" class="headerlink" title="参考答案"></a>参考答案</h3><p>Keepalived 是一个用于 Linux 系统的高可用性解决方案，主要通过 VRRP 协议实现故障切换。它通过在多个服务器中选举一个主服务器来保证服务的可用性。当主服务器出现故障时，备份服务器接管，以此实现无缝切换。</p>
-<hr>
-<h2 id="试题-17"><a href="#试题-17" class="headerlink" title="试题"></a>试题</h2><p>阐述 LVS（Linux Virtual Server）的工作原理和架构。</p>
-<h3 id="解题思路-17"><a href="#解题思路-17" class="headerlink" title="解题思路"></a>解题思路</h3><p>考查对 LVS 作为负载均衡解决方案的基本了解。</p>
-<h3 id="得分点-17"><a href="#得分点-17" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>解释 LVS 的功能。</li>
-<li>描述其工作原理和架构。</li>
-</ul>
-<h3 id="参考答案-18"><a href="#参考答案-18" class="headerlink" title="参考答案"></a>参考答案</h3><p>LVS 是一个基于 Linux 的负载均衡软件。它通过分发请求到多个服务器来提高服务的可用性和伸缩性。LVS 使用调度算法（如轮询、加权轮询）来选择后端服务器，并可以通过 NAT、IP隧道或直接路由模式来转发请求。</p>
-<hr>
-<h2 id="试题-18"><a href="#试题-18" class="headerlink" title="试题"></a>试题</h2><p>描述 NSQ 消息队列系统中消息的写入和读取过程。</p>
-<h3 id="解题思路-18"><a href="#解题思路-18" class="headerlink" title="解题思路"></a>解题思路</h3><p>考察对 NSQ 作为消息队列系统的基本操作流程的理解。</p>
-<h3 id="得分点-18"><a href="#得分点-18" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>解释消息队列的概念。</li>
-<li>描述 NSQ 中消息的写入和读取流程。</li>
-</ul>
-<h3 id="参考答案-19"><a href="#参考答案-19" class="headerlink" title="参考答案"></a>参考答案</h3><p>NSQ 是一个实时分布式消息队列系统。在 NSQ 中，生产者将消息发送到主题（topic），消费者从通道（channel）读取消息。每个通道接收到主题的所有消息的副本，从而实现消息的分发和处理。</p>
-<hr>
-<h2 id="试题-19"><a href="#试题-19" class="headerlink" title="试题"></a>试题</h2><p>描述 Kubernetes 中自定义资源定义（CRD）的概念及其用途。</p>
-<h3 id="解题思路-19"><a href="#解题思路-19" class="headerlink" title="解题思路"></a>解题思路</h3><p>考察对 Kubernetes 中 CRD 的理解，包括其创建和使用。</p>
-<h3 id="得分点-19"><a href="#得分点-19" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>定义 CRD。</li>
-<li>描述 CRD 如何扩展 Kubernetes API。</li>
-</ul>
-<h3 id="参考答案-20"><a href="#参考答案-20" class="headerlink" title="参考答案"></a>参考答案</h3><p>CRD（Custom Resource Definition）是 Kubernetes 中用于定义新的资源类型的机制。通过 CRD，用户可以创建符合自己需求的定制资源，并利用 Kubernetes API 来管理这些资源。</p>
-<hr>
-<h2 id="试题-20"><a href="#试题-20" class="headerlink" title="试题"></a>试题</h2><p>概述 etcd 的主要功能和在分布式系统中的作用。</p>
-<h3 id="解题思路-20"><a href="#解题思路-20" class="headerlink" title="解题思路"></a>解题思路</h3><p>考察对 etcd 作为分布式键值存储系统的理解。</p>
-<h3 id="得分点-20"><a href="#得分点-20" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>介绍 etcd 的主要功能。</li>
-<li>讨论其在分布式系统（如 Kubernetes）中的角色。</li>
-</ul>
-<h3 id="参考答案-21"><a href="#参考答案-21" class="headerlink" title="参考答案"></a>参考答案</h3><p>etcd 是一个分布式键值存储系统，用于可靠地存储关键数据，并在分布式系统中保持集群状态一致。它是 Kubernetes 的核心组件之一，用于保存所有集群数据。</p>
-<hr>
-<h2 id="试题-21"><a href="#试题-21" class="headerlink" title="试题"></a>试题</h2><p>解释 Envoy XDS 协议以及其下不同数据平面（DS）的概念和作用。</p>
-<h3 id="解题思路-21"><a href="#解题思路-21" class="headerlink" title="解题思路"></a>解题思路</h3><p>探讨 Envoy 代理中的 XDS 协议及其数据平面服务的作用。</p>
-<h3 id="得分点-21"><a href="#得分点-21" class="headerlink" title="得分点"></a>得分点</h3><ul>
-<li>描述 XDS 协议的目的。</li>
-<li>阐述不同 DS（如 CDS、EDS、LDS、RDS）的功能。</li>
-</ul>
-<h3 id="参考答案-22"><a href="#参考答案-22" class="headerlink" title="参考答案"></a>参考答案</h3><p>Envoy XDS（xDS）协议用于动态配置 Envoy 代理。它包括几种不同的数据平面服务，例如 CDS（Cluster Discovery Service）、EDS（Endpoint Discovery Service）、LDS（Listener Discovery Service）、RDS（Route Discovery Service），每种服务管理 Envoy 配置的不同部分，以实现灵活的动态路由和负载均衡。</p>
-<hr>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/golang/" style="color: #00a596">golang</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="color: #03a9f4">面试题</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/03/mdstorage/domain/%E6%8B%9B%E8%81%98/%E5%85%A5%E8%81%8C%E8%80%83%E8%AF%95%E9%A2%98%E7%9B%AE/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/03/mdstorage/domain/%E6%96%87%E6%A1%A3/hexo%E9%83%A8%E7%BD%B2github-page/">
-        <h2 class="post-title">hexo部署github-page.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/3
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cat_bayi/article/details/128725230">部署教学文档</a><br><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">官方文档</a><br><a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#tag-%E6%8F%92%E4%BB%B6">fluid theme 用户手册</a></p>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="部署-hexo-test-目录"><a href="#部署-hexo-test-目录" class="headerlink" title="部署 hexo-test 目录"></a>部署 hexo-test 目录</h3><ul>
-<li>初始化 hexo-test</li>
-</ul>
-<pre><code class="Bash">npm install -g hexo-cli
-mkdir hexo-test
-hexo init hexo-test
-</code></pre>
-<ul>
-<li>修改 _config.yml</li>
-</ul>
-<pre><code class="Text">title
-subtitle
-description
-author
-language
-
-url
-
-theme
-
-deploy:
-  type: git
-  repo: $&#123;github_page_url&#125;  # 这里填 ssh 的, 本机认证
-  branch: $&#123;branch&#125;
-</code></pre>
-<h3 id="部署-fluid"><a href="#部署-fluid" class="headerlink" title="部署 fluid"></a>部署 fluid</h3><pre><code class="Bash">cd hexo-test/theme &amp;&amp; git clone https://github.com/fluid-dev/hexo-theme-fluid/
-mv hexo-theme-fluid fluid
-cp fluid/_config.yml ../_config.fluid.yml 
-</code></pre>
-<ul>
-<li>修改 _config.fluid.yml 内容</li>
-</ul>
-<pre><code class="Text">mermaid  修改为 true
-</code></pre>
-<h3 id="拷贝-markdown-目录到-source-post-下"><a href="#拷贝-markdown-目录到-source-post-下" class="headerlink" title="拷贝 markdown 目录到 source&#x2F;_post 下"></a>拷贝 markdown 目录到 source&#x2F;_post 下</h3><pre><code class="Bash">cp -r ../dairy/
-</code></pre>
-<h3 id="github-建立-仓库-xxx-github-io"><a href="#github-建立-仓库-xxx-github-io" class="headerlink" title="github 建立 仓库 xxx.github.io"></a>github 建立 仓库 xxx.github.io</h3><ul>
-<li>创建 repo</li>
-<li>在 repo setting -&gt; pages -&gt; source 选择 deploy from a branch -&gt; branch main &#x2F;(root)  即可</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/hexo/" style="color: #00a596">hexo</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/03/mdstorage/domain/%E6%96%87%E6%A1%A3/hexo%E9%83%A8%E7%BD%B2github-page/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/03/mdstorage/resource/windows/%E8%AE%BE%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%87%E6%8D%A2/">
-        <h2 class="post-title">windows 设置浏览器切换</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/resource/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                resource
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/3
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Ussim/article/details/108299370">Windows 10 修改 Alt+Tab 键 切换 新版 Microsoft Edge 单个标签页&#x2F;窗</a></p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/windows/" style="color: #03a9f4">windows</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/edge/" style="color: #ff7d73">edge</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/03/mdstorage/resource/windows/%E8%AE%BE%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%87%E6%8D%A2/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/03/mdstorage/resource/windows/cygwin/">
-        <h2 class="post-title">cygwin.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/resource/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                resource
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/3
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>cygwin 可以帮助我们在 windows 系统中使用类 unix 模拟环境，安装一些工具。</p>
-<h2 id="安装-cygwin"><a href="#安装-cygwin" class="headerlink" title="安装 cygwin"></a>安装 cygwin</h2><p><a target="_blank" rel="noopener" href="https://cygwin.com/">官网</a>  下载 cygwin setup 程序， 运行则开始选择安装常用工具集， 选择完后才开始安装。</p>
-<p>左上角，选择状态，状态为 待安装的，输入 gcc-g++ 就会出现候选列表</p>
-<p>常用工具集： gcc-g++ ，make </p>
-<h2 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h2><p>如果想使用工具， 可以打开 cygwin terminal 直接运行命令。</p>
-<p>如果想在 windows cmd 中使用，将 cygwin 安装目录加入环境变量 Path 中</p>
-<h2 id="安装额外工具"><a href="#安装额外工具" class="headerlink" title="安装额外工具"></a>安装额外工具</h2><p>如果操作完成后还想再安装额外的工具，如 rsync 等，再次运行 cygwin setup 程序， 重复步骤即可</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/software/" style="color: #00a596">software</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/windows/" style="color: #ff7d73">windows</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/03/mdstorage/resource/windows/cygwin/" class="go-post">阅读全文</a>
-</div>
 
 
-        <div class="page-current">
-    
-    <a class="page-num" href="/page/3/">
-        <i class="fa-solid fa-caret-left fa-fw"></i>
-    </a>
-    <a class="page-num" href="/">1</a>
-    <span class="page-omit">...</span>
-    
-    <span class="current">4</span>
-    
-    <a class="page-num" href="/page/5">
-        5
-    </a>
+  <div class="row mx-auto index-card">
     
     
-    <a class="page-num" href="/page/6">
-        6
-    </a>
-    
-    
-    <span class="page-omit">...</span>
-    <a class="page-num" href="/page/28">28</a>
-    
-    
-    <a class="page-num" href="/page/5/">
-        <i class="fa-solid fa-caret-right fa-fw"></i>
-    </a>
-    
-</div>
-
-    </div>
-    
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">xiaoy</div>
-        <div class="description">
-            <p>xiaoy<br>…</p>
-
-        </div>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a href="https://abrance.github.io">Argvchs</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
+        <a href="/2024/09/04/mdstorage/resource/%E5%9B%BE%E7%89%87/%E7%99%BD%E6%8F%8F%E4%BD%BF%E7%94%A8/" target="_self">
+          白描使用.md
+        </a>
+      </h2>
 
-    </div>
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/resource/%E5%9B%BE%E7%89%87/%E7%99%BD%E6%8F%8F%E4%BD%BF%E7%94%A8/" target="_self">
         <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
+          功能图片转文字  提取图片的文字信息 客户端windows 安卓&#x2F;IOS mac 网页
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
+      </a>
 
-        </div>
+      <div class="index-btm post-metas">
         
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
         
-    </div>
-    <script src="/js/main.js"></script>
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
     
+      <span class="category-chain">
+        
+  <a href="/categories/resource/" class="category-chain-item">resource</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/resource/%E5%9B%BE%E7%89%87/" class="category-chain-item">图片</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/tool/">#tool</a>
+            
+              <a href="/tags/%E7%99%BD%E6%8F%8F-ocr-%E5%9B%BE%E7%89%87%E8%BD%AC%E6%96%87%E5%AD%97/">#白描 ocr 图片转文字</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E5%A4%A7%E7%BA%B2/" target="_self">
+          噩梦年记事大纲.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E5%A4%A7%E7%BA%B2/" target="_self">
+        <div>
+          构思主题与情节： 确定您想要探讨的中心主题。 构思大致的情节框架，包括故事的开端、发展、高潮、和结局。   人物创造与发展： 设计主要和次要人物，为他们制定背景故事、性格特点和动机。 考虑人物之间的关系以及这些关系如何推动故事发展。   世界建构： 如果故事背景非现实世界，需要详细描绘故事的设定，包括地理、政治、经济、文化等方面。 即使故事设定在现实世界，也要研究相关的背景信息，让故事环境真实可
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/project/" class="category-chain-item">project</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/project/fountain/" class="category-chain-item">fountain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/" class="category-chain-item">噩梦年记事</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B0%8F%E8%AF%B4/">#小说</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E8%8D%89%E7%A8%BF/" target="_self">
+          噩梦年记事草稿.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/%E8%8D%89%E7%A8%BF/" target="_self">
+        <div>
+          第一章 小镇的夕阳    “吉尔伯特，开门！”　　在日光的偏移中，老旧的铁门随着访客拍门的动作而发出有节奏的声响。　　在亚楠镇居民的眼里，这样的行为往往是不受欢迎的，毫无礼节的敲门配合着大声的呼喊往往会让人们想起那些糟糕的夜晚。　　但是，当路过的人们看到那访客身上的衣服时，便又将满嘴的埋怨与不满吞回了肚子里，更何况他正在直呼吉尔伯特的名字。　　“大概是教会里的猎人吧。”　　人们这么想着，随后便纷纷
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/project/" class="category-chain-item">project</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/project/fountain/" class="category-chain-item">fountain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/project/fountain/%E5%99%A9%E6%A2%A6%E5%B9%B4%E8%AE%B0%E4%BA%8B/" class="category-chain-item">噩梦年记事</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B0%8F%E8%AF%B4/">#小说</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/project/sr/golang%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/grpc-Tutorial/" target="_self">
+          grpc-Tutorial.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/project/sr/golang%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/grpc-Tutorial/" target="_self">
+        <div>
+          gRPC 教程本教程针对希望学习如何使用 gRPC 构建和部署高效、可扩展的微服务的开发者。通过阅读本教程，了解 gRPC 的基本概念、如何在 Go 语言中实现 gRPC 服务，以及如何进行客户端和服务器之间的通信。寻找一个高性能、跨语言、开放源代码的远程过程调用 (RPC) 框架，gRPC 是一个理想的选择。 教程概览在本教程中，学习如何：  设计和定义 gRPC 服务 在 Go 语言中实现 g
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/golang/">#golang</a>
+            
+              <a href="/tags/grpc/">#grpc</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/03/hello-world/" target="_self">
+          Hello World
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/03/hello-world/" target="_self">
+        <div>
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-03 10:09" pubdate>
+              2024-09-03
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/03/mdstorage/%E6%B8%85%E5%8D%95/" target="_self">
+          清单软件设计
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/03/mdstorage/%E6%B8%85%E5%8D%95/" target="_self">
+        <div>
+          清单用户用户信息展示 清单清单展示  清单 分组 任务 子任务        标签任务 title content 置顶 置顶时间 创建时间 更新时间 状态 0&#x2F;进度&#x2F;已完成&#x2F;已放弃 是否删除 删除时间  动态用户用户 bind联系人 清单用户 bind用户查看清单、共享清单 任务用户 bind指派任务给用户 连接状态任务动态 bind清单动态 bind维度清单、任务
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-03 00:00" pubdate>
+              2024-09-03
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
+            
+              <a href="/tags/%E6%B8%85%E5%8D%95%E8%BD%AF%E4%BB%B6/">#清单软件</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/03/mdstorage/domain/%E6%8B%9B%E8%81%98/%E5%85%A5%E8%81%8C%E8%80%83%E8%AF%95%E9%A2%98%E7%9B%AE/" target="_self">
+          入职考试题目.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/03/mdstorage/domain/%E6%8B%9B%E8%81%98/%E5%85%A5%E8%81%8C%E8%80%83%E8%AF%95%E9%A2%98%E7%9B%AE/" target="_self">
+        <div>
+          题目 基础知识： 解释 Golang 的垃圾回收机制。(3分) 在 Golang 中，interface&#123;&#125; 的作用是什么？(3分)   HTTP 协议与网络编程： 列举 HTTP 状态码 200、400 和 500 分别代表什么？ (2分) 如何在 Go 中处理 HTTP 超时？ (2分)   Linux 操作系统 描述 Linux 操作系统写入文件的过程。   描述 Lin
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-03 00:00" pubdate>
+              2024-09-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E6%8B%9B%E8%81%98/" class="category-chain-item">招聘</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/golang/">#golang</a>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">#面试题</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/03/mdstorage/domain/%E6%96%87%E6%A1%A3/hexo%E9%83%A8%E7%BD%B2github-page/" target="_self">
+          hexo部署github-page.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/03/mdstorage/domain/%E6%96%87%E6%A1%A3/hexo%E9%83%A8%E7%BD%B2github-page/" target="_self">
+        <div>
+          参考链接部署教学文档官方文档fluid theme 用户手册 部署部署 hexo-test 目录 初始化 hexo-test 123npm install -g hexo-climkdir hexo-testhexo init hexo-test  修改 _config.yml   1234567891011121314titlesubtitledescriptionauthorlanguageu
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-03 00:00" pubdate>
+              2024-09-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/hexo/">#hexo</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/03/mdstorage/resource/windows/cygwin/" target="_self">
+          cygwin.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/03/mdstorage/resource/windows/cygwin/" target="_self">
+        <div>
+          概述cygwin 可以帮助我们在 windows 系统中使用类 unix 模拟环境，安装一些工具。 安装 cygwin官网  下载 cygwin setup 程序， 运行则开始选择安装常用工具集， 选择完后才开始安装。 左上角，选择状态，状态为 待安装的，输入 gcc-g++ 就会出现候选列表 常用工具集： gcc-g++ ，make  使用工具如果想使用工具， 可以打开 cygwin termi
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-03 00:00" pubdate>
+              2024-09-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/resource/" class="category-chain-item">resource</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/resource/windows/" class="category-chain-item">windows</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/software/">#software</a>
+            
+              <a href="/tags/windows/">#windows</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/03/mdstorage/resource/windows/%E8%AE%BE%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%87%E6%8D%A2/" target="_self">
+          windows 设置浏览器切换
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/03/mdstorage/resource/windows/%E8%AE%BE%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%87%E6%8D%A2/" target="_self">
+        <div>
+          概述Windows 10 修改 Alt+Tab 键 切换 新版 Microsoft Edge 单个标签页&#x2F;窗
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-03 00:00" pubdate>
+              2024-09-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/resource/" class="category-chain-item">resource</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/resource/windows/" class="category-chain-item">windows</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/windows/">#windows</a>
+            
+              <a href="/tags/edge/">#edge</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

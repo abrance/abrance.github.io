@@ -1,1228 +1,884 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Xiaoy">
+<meta property="og:url" content="https://abrance.github.io/page/24/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
 
 
-<script src="/js/lib/home.js"></script>
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
+
+
 <body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
+  
 
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/background.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>Xiaoy</h1>
-                <h3>xiaoy blog</h3>
-                <h5></h5>
-            </div>
-        </span>
-    </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
+  <header>
+    
 
-<div class="post">
-    <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BD%93%E4%BB%A3%E4%BA%BA%E5%B9%B8%E7%A6%8F%E6%84%9F%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BD%8E/">
-        <h2 class="post-title">为什么当代人幸福感越来越低.md</h2>
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
     </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/17
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>今日话题：为什么当代人幸福感越来越低？</p>
-<p>评论一：看看现在这社会，变化快得像变脸似的，让人应接不暇。你今天掌握了个新技能，明天可能就过时了。就像那些曾经火爆一时的小玩意儿，一下子就被淘汰了，连带着带动了一波员工下岗潮。在这种不停变化的社会里，每个人都像是在冰面上跳舞，一不小心就得滑倒。于是乎，焦虑就成了大家的日常，大家都在担心哪天自己会成为下一个被社会淘汰的对象。</p>
-<p>评论二：然后呢，资本消费主义的大旗一挥，我们每个人都被卷入了一场看不见边际的消费战。从早到晚，我们被各种广告包围，告诉我们买这个会更快乐，买那个会更成功。于是，我们开始了无休止的购物大军，想通过买买买来找到幸福感。但等我们买完了，瞧瞧自己的银行账户，幸福感似乎并没有那么直观。</p>
-<p>最后，还有阶级固化的问题。说直白点，就是钱赚得太难了。你赚得还算可以，可能不觉得有啥，但对于那些每天还得为三餐操心的人来说，幸福感更多的时候是奢侈品。现代社会，不管你多努力，有时候感觉都像是在原地踏步。这种无力感，自然就压低了幸福感。</p>
-<p>最后，我想说的是，幸福感不仅仅是物质满足，更多的是来自于内心的平静和满足。在这个快节奏、高压力的社会里，找到属于自己的小确幸，学会欣赏生活中的小美好，也许就是提升幸福感的关键。毕竟，生活不只有眼前的苟且，还有诗和远方的云彩。</p>
 
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/talk/" style="color: #03a9f4">talk</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BD%93%E4%BB%A3%E4%BA%BA%E5%B9%B8%E7%A6%8F%E6%84%9F%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BD%8E/" class="go-post">阅读全文</a>
-</div>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-<div class="post">
-    <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E7%94%B7%E7%94%9F%E5%AE%81%E5%8F%AF%E6%89%93%E6%B8%B8%E6%88%8F%E4%B9%9F%E4%B8%8D%E6%84%BF%E8%BF%BD%E5%A5%B3%E7%94%9F/">
-        <h2 class="post-title">为什么很多男生宁可打游戏也不愿意追女生呢.md</h2>
-    </a>
-    <div class="category-and-date">
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/17
-        </span>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
         
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>今日话题：为什么很多男生宁可打游戏也不愿意追女生呢？</p>
-<p>评论一：这个话题可真是热门，现在的男生啊，宁愿和虚拟世界里的角色谈恋爱，也不愿意去追现实中的女生。原因嘛，可能跟这个观点有关：追女生就像是在做一场投资，但这种投资的风险和回报很难预测。一些男生可能会想，我和她又不熟，凭什么要我无条件地付出？这种心态，就像是说，“在你成为我的女朋友之前，我愿意付出一点点，成了我女朋友之后，我自然会全力以赴。”</p>
-<p>评论二：再说了，现在的男生不像以前那么单纯了，他们更懂得权衡和选择。打游戏，至少知道怎么玩能升级，怎么战斗能赢；而追女生呢，这规则可没那么明确，失败的概率还挺高。所以，不少男生可能就选择了更“安全”的打游戏。至于那些喊着“你得不停地跪舔才算真正努力”的声音，他们可能会觉得这有点太过了。</p>
-<p>最后，我想说的是，每个人对爱情的态度和方式都不一样。追求爱情是人之常情，但也不能一味地强求。毕竟，在这个多元化的社会里，不是每个人都愿意或者能够马上投入到一段感情中去。有些人可能需要更多的时间去了解对方，有些人则可能更喜欢享受单身的自由。所以，不要太过于一概而论，让我们尊重每个人的选择和节奏。毕竟，幸福的形式有很多种，不一定非得是两个人手牵手走在一起。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
         
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
         
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/talk/" style="color: #ff7d73">talk</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E7%94%B7%E7%94%9F%E5%AE%81%E5%8F%AF%E6%89%93%E6%B8%B8%E6%88%8F%E4%B9%9F%E4%B8%8D%E6%84%BF%E8%BF%BD%E5%A5%B3%E7%94%9F/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E4%BA%BA%E9%80%89%E6%8B%A9%E7%9B%B4%E6%92%AD/">
-        <h2 class="post-title">为什么现在越来越多的人选择做直播.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/17
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>今日话题：为什么现在越来越多的人选择做直播？</p>
-<p>评论一：说起来做直播，这可真是个热门行业了。很多人看中的，首先就是那个低门槛和来钱快。你想啊，只要有部手机，一个小小的直播间，人人都能成为主播。不像其他行业，需要各种资质、技能或者资本。而且，如果运气好，一夜之间爆红，就能实现从草根到网红的华丽转变，这种魅力谁能抵挡？</p>
-<p>评论二：不过，话说回来，真正通过直播挣大钱的人其实并不多。大部分所谓的“直播挣钱”，其实是来自于那些教人直播的人、卖课程的人，还有卖直播设备的人。他们四处宣传直播能挣钱，但其实很多时候，他们自己才是真正的赢家。就像是热潮中的淘金热，真正发财的，往往是卖铁锹的人。</p>
-<p>最后，我想说的是，选择做直播当然是个人的自由，但在追求这个梦想的时候，也要保持清醒的头脑。不要被那些看似光鲜的表象迷惑，更不要轻信那些不切实际的“暴富课程”。真正的成功，是建立在坚持和实力上的，而不是一蹴而就的。在这个看似繁荣的直播浪潮中，保持一份冷静和理智，才是最重要的。毕竟，不是每个人都能成为直播界的流量王，但每个人都能在自己的领域里发光发热。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
         
         
-        
-        <span class="tag">
-            
-            <a href="/tags/talk/" style="color: #ffa2c4">talk</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E4%BA%BA%E9%80%89%E6%8B%A9%E7%9B%B4%E6%92%AD/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%BB%8A%E6%97%A5%E8%AF%9D%E9%A2%98%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7/">
-        <h2 class="post-title">做今日话题的思路.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/17
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>做今日话题的思路</p>
-<ol>
-<li>不过多考虑话题本身的对错，考虑观众的接受度。</li>
-</ol>
-<p>对图不满意：</p>
-<ol>
-<li>换图（剪映、本地、网图）</li>
-</ol>
-<p>今日话题编写技巧</p>
-<ol>
-<li>今日话题： $标题</li>
-<li>今日话题： $标题  \n 贴上知乎新论点，参考xxx，生成今日话题内容</li>
-</ol>
-<p>观众想看到的话题内容有哪些种类？</p>
-<ul>
-<li><p>认同感</p>
-</li>
-<li><p>角度新颖、同时让观众有些顿悟感</p>
-</li>
-<li><p>门槛低、来钱快</p>
-</li>
-<li><p>直播可能真正挣钱的人少，但是实际上教人直播挣钱的多，卖课卖器材的多，大部分说直播挣钱的都是那些人宣传的，实际上有些可能还会割韭菜</p>
-</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/talk/" style="color: #ff7d73">talk</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%BB%8A%E6%97%A5%E8%AF%9D%E9%A2%98%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E6%B1%9F%E8%BE%B9%E7%9A%84%E6%99%9A%E4%B8%8A/">
-        <h2 class="post-title">江边的晚上.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/17
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>故事一：</p>
-<p>去年的今天，在火车上，我接到疯子的电话，说，</p>
-<p>“我已经在武汉车站等你了，你赶紧过来。”</p>
-<p>“啊？可是我要回鄂州，难不成要提前下车？”</p>
-<p>”别废话，赶紧过来。“</p>
-<p>我嘴里骂骂咧咧，在武汉火车站下车，结果没在出站口看到他，打电话给他，他说他在武汉车站，不是火车站。我拖着大皮箱，一路打车一路骂，等到了武汉车站，一眼就看到了他。</p>
-<p>”皮衣，皮裤，墨镜，带个帽子，不愧是你。要是人品跟你模样一半好就好了。“</p>
-<p>故事二：</p>
-<p>大二的时候，疯子打电话给我，</p>
-<p>”去云南不？“</p>
-<p>”哪儿？“</p>
-<p>”问那么多干嘛，怕把你卖了？赶紧过来。“</p>
-<p>见到穿着机长制服的他把我带到乘机人员位置坐下来后，我强忍着第一次登机的冲动，到了云南丽江。</p>
-<p>…</p>
-<p>故事二中，疯子介绍给我他当地的女朋友，阳光，善良，活泼，可爱。疯子说他很喜欢她，我们一起在丽江玩了很久。中途晚上他们俩去了其他景点玩，没跟我一起，也有打电话给我，让我提前下车的环节，有意无意之间给我找麻烦。故事一中，我们在江边找了旅店住了下来，他在酒吧大肆消费，表现了他洒脱的一面，回头，他告诉我，他没钱了。我们在江边坐了很久，他跟之前的女朋友分了很久了，他管不了那么多，只想要按照自己的想法生活，这是他跟我说的。</p>
-<p>参考上面的文体风格，补充故事一，故事二中的内容。</p>
-<p>去年的今天，在火车上，我接到疯子的电话，他说，“我已经在武汉车站等你了，你赶紧过来。”</p>
-<p>“啊？可是我要回鄂州，难不成要提前下车？”我疑惑地问。</p>
-<p>“别废话，赶紧过来。”他的声音听起来有些急切。</p>
-<p>我嘴里骂骂咧咧，在武汉火车站下车，但在出站口并没有看到他。打电话过去，他说他在武汉车站，不是火车站。拖着大皮箱，我一路打车，一路骂，终于到了武汉车站，一眼就看到了他。</p>
-<p>穿着皮衣，皮裤，戴着墨镜和帽子，疯子的模样一如既往地引人注目。“皮衣，皮裤，墨镜，带个帽子，不愧是你。要是人品跟你模样一半好就好了。”我半开玩笑地说。</p>
-<p>疯子只是笑了笑，那种既狡黠又自信的笑。“我带你去个地方。”他说着，拉起我的手就往外走。</p>
-<p>我们穿过繁忙的街道，来到了一条安静的河边。河水在灯光下波光粼粼，两岸的灯火倒映其中，显得格外迷人。</p>
-<p>“这就是你的惊喜？”我问，心里虽然抱怨，但也不得不承认这里的景色确实美丽。</p>
-<p>“不全是。”他说着，从口袋里掏出一个小盒子，递给我。“这是给你的。”</p>
-<p>我打开盒子，里面是一枚精致的银戒指。简单却不失优雅，我有些愣住了。</p>
-<p>“为什么给我这个？”我迷惑地问。</p>
-<p>“因为，你是我最重要的朋友。”疯子的眼神里闪过一丝认真。“我总是给你添麻烦，但你始终在我身边。”</p>
-<p>我感到一阵温暖和感动。疯子虽然常常令人头疼，但在关键时刻总是能感动人心。</p>
-<p>我们在江边坐下，谈论着过去的种种。疯子讲述他的冒险，我分享我的日常。我们笑了又笑，直到夜深人静。</p>
-<p>这就是我和疯子的友情，虽然有时疯狂，但却充满了真诚和温暖。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/write/" style="color: #00a596">write</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E6%B1%9F%E8%BE%B9%E7%9A%84%E6%99%9A%E4%B8%8A/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/16/mdstorage/domain/network/%E4%B8%BB%E6%9C%BA%E6%8E%A5%E5%85%A5%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E8%93%9D%E5%9B%BE/">
-        <h2 class="post-title">主机接入网络配置蓝图.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
             </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/16
-        </span>
+          </li>
+          
         
         
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>接入的主机并非是集群的一部分；</p>
-<p>有关主机硬件、基础设施不需要这里来考虑搭建；</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在将服务器接入数据中心时，可以将关注点分为两大类：<strong>本机以外需要关注的项</strong> 和 <strong>本机网络配置关注的项</strong>。</p>
-<h3 id="本机以外需要关注的项"><a href="#本机以外需要关注的项" class="headerlink" title="本机以外需要关注的项"></a>本机以外需要关注的项</h3><p>这些是与数据中心的基础设施、环境和外部网络相关的方面。</p>
-<ol>
-<li><p><strong>交换机和路由器</strong>：</p>
-<ul>
-<li>确保数据中心提供的交换机和路由器能满足您的网络需求（带宽、VLAN 支持、路由协议等）。</li>
-</ul>
-</li>
-<li><p><strong>物理连接</strong>：</p>
-<ul>
-<li>使用适当的电缆连接服务器至数据中心的网络设备。验证端口速度和兼容性。</li>
-</ul>
-</li>
-<li><p><strong>网络监控和管理</strong>：</p>
-<ul>
-<li>数据中心可能提供的网络监控工具和服务。</li>
-<li>网络的远程管理和维护服务。</li>
-</ul>
-</li>
-<li><p><strong>安全性和隔离</strong>：</p>
-<ul>
-<li>数据中心级别的安全措施（如防火墙、入侵检测系统）。</li>
-<li>物理安全和访问控制。</li>
-</ul>
-</li>
-<li><p><strong>冗余和灾难恢复</strong>：</p>
-<ul>
-<li>网络连接的冗余设计，例如备用电源和备用网络路径。</li>
-<li>数据中心的备份和恢复策略。</li>
-</ul>
-</li>
-<li><p><strong>合规性和标准</strong>：</p>
-<ul>
-<li>遵守数据中心的操作和安全标准。</li>
-<li>法律合规性考量。</li>
-</ul>
-</li>
-</ol>
-<h3 id="本机网络配置关注的项"><a href="#本机网络配置关注的项" class="headerlink" title="本机网络配置关注的项"></a>本机网络配置关注的项</h3><p>这些项涉及服务器本身的网络设置和配置。</p>
-<ol>
-<li><p><strong>IP 地址配置</strong>：</p>
-<ul>
-<li>静态 IP 地址配置或 DHCP 设置。</li>
-<li>子网掩码、默认网关和 DNS 服务器设置。</li>
-</ul>
-</li>
-<li><p><strong>网络接口配置</strong>：</p>
-<ul>
-<li>网络接口卡（NIC）的配置，包括速率、双工模式等。</li>
-<li>配置多个 NIC 以实现负载均衡或冗余。</li>
-</ul>
-</li>
-<li><p><strong>安全配置</strong>：</p>
-<ul>
-<li>服务器防火墙规则的设置，以限制或允许特定的流量。</li>
-<li>网络服务的安全配置，如 SSH、Web 服务器等。</li>
-</ul>
-</li>
-<li><p><strong>性能优化</strong>：</p>
-<ul>
-<li>网络带宽的管理和优化。</li>
-<li>针对特定应用的网络参数调整。</li>
-</ul>
-</li>
-<li><p><strong>本地网络监控</strong>：</p>
-<ul>
-<li>安装和配置本地网络监控工具，如 Nagios、Zabbix 等，以监控网络性能和连接状态。</li>
-</ul>
-</li>
-<li><p><strong>配置管理</strong>：</p>
-<ul>
-<li>使用配置管理工具确保网络配置的一致性和自动化。</li>
-</ul>
-</li>
-</ol>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>在接入数据中心时，这两类关注点都至关重要。本机网络配置关注的项着重于服务器自身的设置和操作，而本机以外需要关注的项则涉及到服务器与数据中心基础设施和服务的交互。正确处理这两方面的事项将确保服务器的顺畅运行和高效性能。</p>
-<h2 id="本机网络配置"><a href="#本机网络配置" class="headerlink" title="本机网络配置"></a>本机网络配置</h2><h3 id="网络协议栈的第二层-数据链路层"><a href="#网络协议栈的第二层-数据链路层" class="headerlink" title="网络协议栈的第二层 - 数据链路层"></a>网络协议栈的第二层 - 数据链路层</h3><h4 id="关键组件和配置项"><a href="#关键组件和配置项" class="headerlink" title="关键组件和配置项"></a>关键组件和配置项</h4><ol>
-<li><strong>网络接口卡（NIC）配置</strong>：<ul>
-<li><strong>MAC 地址</strong>：每个 NIC 有一个独一无二的 MAC 地址，用于局域网内的通信。</li>
-<li><strong>速度和双工模式</strong>：配置 NIC 的工作速度（如 1Gbps, 10Gbps 等）和双工模式（全双工或半双工）。</li>
-</ul>
-</li>
-<li><strong>链路聚合（LACP）</strong>：<ul>
-<li>如果服务器有多个 NIC，可以通过链路聚合提高冗余和带宽。</li>
-</ul>
-</li>
-<li><strong>虚拟局域网（VLAN）</strong>：<ul>
-<li><strong>VLAN 标签</strong>：配置 VLAN 标签来区分不同的网络流量。这对于隔离流量、增加安全性和改善网络性能很有用。</li>
-</ul>
-</li>
-<li><strong>MTU（最大传输单元）</strong>：<ul>
-<li>配置每个网络数据包的最大大小。过大或过小的 MTU 设置可能会影响性能。</li>
-</ul>
-</li>
-<li><strong>以太网帧类型</strong>：<ul>
-<li>如需要，配置特定类型的以太网帧（例如，标准帧、VLAN 帧等）。</li>
-</ul>
-</li>
-</ol>
-<h4 id="实施思路"><a href="#实施思路" class="headerlink" title="实施思路"></a>实施思路</h4><ol>
-<li><p><strong>设备识别与文档化</strong>：</p>
-<ul>
-<li>识别并记录服务器的所有网络接口卡（NIC）。</li>
-<li>确定这些 NIC 的 MAC 地址和支持的最大速度。</li>
-</ul>
-</li>
-<li><p><strong>网络设计</strong>：</p>
-<ul>
-<li>根据业务需求设计 VLAN 架构。确定哪些服务器需要隔离在不同的 VLAN 中。</li>
-<li>设计链路聚合策略来增加带宽和提供冗余。</li>
-</ul>
-</li>
-<li><p><strong>配置网络接口</strong>：</p>
-<ul>
-<li>在操作系统中配置 NIC 的速度、双工模式和 MTU 设置。</li>
-<li>为每个 NIC 配置 VLAN 标签（如果使用）。</li>
-</ul>
-</li>
-<li><p><strong>链路聚合配置</strong>：</p>
-<ul>
-<li>如果使用多个 NIC，通过 LACP 或其他链路聚合协议配置聚合链路。</li>
-</ul>
-</li>
-<li><p><strong>性能调优和测试</strong>：</p>
-<ul>
-<li>测试不同 MTU 大小对性能的影响。</li>
-<li>通过网络测试工具（如 iperf）测试链路聚合的性能。</li>
-</ul>
-</li>
-<li><p><strong>监控和维护</strong>：</p>
-<ul>
-<li>定期监控网络性能和链路状态。</li>
-<li>调整配置以适应网络流量的变化和业务需求的发展。</li>
-</ul>
-</li>
-</ol>
-<h3 id="蓝图的制作"><a href="#蓝图的制作" class="headerlink" title="蓝图的制作"></a>蓝图的制作</h3><p>为了制作这样的蓝图，可以使用网络设计软件（如 Visio 或在线工具），展示以下内容：</p>
-<ul>
-<li>每个服务器的 NIC，包括其 MAC 地址、配置的速度和双工模式。</li>
-<li>VLAN 的布局，包括每个 NIC 的 VLAN 标签。</li>
-<li>链路聚合的配置，显示哪些 NIC 是聚合在一起的。</li>
-<li>网络连接的总体布局，显示服务器如何连接到交换机和其他网络设备。</li>
-</ul>
-<p>这样的蓝图有助于清晰地理解和管理数据中心内的网络配置，确保高效和安全的网络通信。</p>
-<pre><code class="mermaid">graph LR
-    A[主机A] --&gt;|NIC配置| A_NIC[主机A NIC]
-    A_NIC --&gt;|VLAN| SW[交换机]
-    A_NIC --&gt;|链路聚合| SW
-    SW --&gt;|VLAN| B_NIC[主机B NIC]
-    SW --&gt;|链路聚合| B_NIC
-    B_NIC --&gt;|NIC配置| B[主机B]
-    A_NIC --&gt;|MTU| B_NIC
-    B_NIC --&gt;|MTU| A_NIC
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#f9f,stroke:#333,stroke-width:2px
-    style A_NIC fill:#fc0,stroke:#333,stroke-width:2px
-    style B_NIC fill:#fc0,stroke:#333,stroke-width:2px
-    style SW fill:#9f6,stroke:#333,stroke-width:2px
-
-</code></pre>
-<h4 id="IP-地址配置"><a href="#IP-地址配置" class="headerlink" title="IP 地址配置"></a>IP 地址配置</h4><p>IP 地址配置是确保服务器在网络中能够正确通信的关键部分。它包括为服务器分配一个独特的 IP 地址，以及其他相关的网络设置。这里是详细的分析和实施思路：</p>
-<ol>
-<li><p><strong>选择 IP 地址分配方式</strong>：</p>
-<ul>
-<li><strong>静态 IP 地址</strong>：手动为服务器分配一个固定的 IP 地址。这通常用于确保服务器的地址不会改变，特别是对于提供持续服务的关键服务器（如数据库服务器、Web 服务器）。</li>
-<li><strong>动态主机配置协议（DHCP）</strong>：通过数据中心的 DHCP 服务器自动为服务器分配 IP 地址。这适用于需要灵活管理和较少手动配置的环境。</li>
-</ul>
-</li>
-<li><p><strong>确定 IP 地址和子网</strong>：</p>
-<ul>
-<li><strong>IP 地址</strong>：根据数据中心提供的 IP 地址范围选择一个地址。确保这个地址没有被其他设备使用。</li>
-<li><strong>子网掩码</strong>：确定服务器所在的子网。子网掩码决定了网络中哪部分地址是网络地址，哪部分是主机地址。</li>
-</ul>
-</li>
-<li><p><strong>配置默认网关</strong>：</p>
-<ul>
-<li>默认网关是服务器将数据发送到外部网络（如互联网）时使用的设备的 IP 地址。通常是数据中心路由器的地址。</li>
-</ul>
-</li>
-<li><p><strong>设置 DNS 服务器</strong>：</p>
-<ul>
-<li>DNS 服务器用于解析域名到 IP 地址。可以使用数据中心提供的 DNS 服务器，或选择公共 DNS 服务（如 Google 的 8.8.8.8）。</li>
-</ul>
-</li>
-</ol>
-<h4 id="实施思路："><a href="#实施思路：" class="headerlink" title="实施思路："></a>实施思路：</h4><ol>
-<li><p><strong>信息收集</strong>：</p>
-<ul>
-<li>从数据中心获取可用的 IP 地址范围、子网掩码、默认网关和 DNS 服务器信息。</li>
-</ul>
-</li>
-<li><p><strong>计划 IP 地址分配</strong>：</p>
-<ul>
-<li>根据服务器的角色和需求选择静态 IP 或 DHCP。</li>
-<li>如果选择静态 IP，确保地址不与数据中心中的其他设备冲突。</li>
-</ul>
-</li>
-<li><p><strong>配置服务器网络设置</strong>：</p>
-<ul>
-<li>在服务器的操作系统中进入网络设置。</li>
-<li>输入 IP 地址、子网掩码、默认网关和 DNS 服务器信息。</li>
-<li>对于静态 IP，手动配置这些设置。对于 DHCP，确保服务器的网络接口设置为自动获取。</li>
-</ul>
-</li>
-<li><p><strong>测试配置</strong>：</p>
-<ul>
-<li>使用如 <code>ping</code>、<code>traceroute</code> 等命令测试网络连接。</li>
-<li>确保服务器能够访问内部网络和外部网络（如互联网）。</li>
-</ul>
-</li>
-<li><p><strong>文档化和备份</strong>：</p>
-<ul>
-<li>记录服务器的网络配置信息。</li>
-<li>在更改前备份当前的网络设置，以便在问题发生时快速恢复。</li>
-</ul>
-</li>
-<li><p><strong>监控和维护</strong>：</p>
-<ul>
-<li>定期检查网络连接状态和性能。</li>
-<li>确保 IP 地址分配策略与网络架构和业务需求保持一致。</li>
-</ul>
-</li>
-</ol>
-<p>通过这些步骤，可以确保服务器的 IP 地址配置正确无误，从而保障网络通信的稳定性和效率。</p>
-<h2 id="VLAN-配置"><a href="#VLAN-配置" class="headerlink" title="VLAN 配置"></a>VLAN 配置</h2><p>虚拟局域网（VLAN）配置在多种场景下非常有用，主要是因为它能提供网络分割、增强安全性、提高网络性能和管理的灵活性。以下是一些典型的使用 VLAN 配置的场景：</p>
-<h3 id="1-网络隔离和安全性"><a href="#1-网络隔离和安全性" class="headerlink" title="1. 网络隔离和安全性"></a>1. 网络隔离和安全性</h3><ul>
-<li><strong>隔离敏感数据</strong>：在处理敏感数据（如金融信息、个人数据）的网络中，使用 VLAN 可以将这些数据的流量与其他网络流量隔离开来。</li>
-<li><strong>安全区域划分</strong>：在需要不同安全级别的网络区域（如公共区域、管理区域、测试区域）中，VLAN 可用于创建物理上隔离的网络。</li>
-</ul>
-<h3 id="2-性能优化"><a href="#2-性能优化" class="headerlink" title="2. 性能优化"></a>2. 性能优化</h3><ul>
-<li><strong>流量管理</strong>：通过 VLAN 划分，可以减少广播域的大小，从而减少不必要的网络流量和拥堵。</li>
-<li><strong>优化关键应用性能</strong>：为关键业务或应用创建专用的 VLAN，以确保它们有足够的带宽和较低的延迟。</li>
-</ul>
-<h3 id="3-服务和应用分割"><a href="#3-服务和应用分割" class="headerlink" title="3. 服务和应用分割"></a>3. 服务和应用分割</h3><ul>
-<li><strong>不同服务的逻辑分离</strong>：例如，将语音通信（VoIP）、视频会议和数据通信分配到不同的 VLAN，以优化服务质量和管理。</li>
-<li><strong>多租户环境</strong>：在共享基础设施的环境中（如云服务提供商），使用 VLAN 来为不同的客户或租户划分网络。</li>
-</ul>
-<h3 id="4-成本节约和资源优化"><a href="#4-成本节约和资源优化" class="headerlink" title="4. 成本节约和资源优化"></a>4. 成本节约和资源优化</h3><ul>
-<li><strong>物理网络设施的优化</strong>：通过 VLAN，可以在同一物理网络基础设施上创建多个逻辑网络，从而降低成本和简化网络管理。</li>
-<li><strong>灵活的网络规划</strong>：VLAN 允许更加灵活地重新配置网络，而不需要进行昂贵和复杂的物理改动。</li>
-</ul>
-<h3 id="5-网络管理和简化部署"><a href="#5-网络管理和简化部署" class="headerlink" title="5. 网络管理和简化部署"></a>5. 网络管理和简化部署</h3><ul>
-<li><strong>简化网络管理</strong>：通过 VLAN，可以更方便地管理和监控网络流量。</li>
-<li><strong>部署新服务</strong>：当引入新的服务或应用时，可以通过添加新的 VLAN 来快速部署，而不影响现有网络结构。</li>
-</ul>
-<h3 id="6-合规性和政策执行"><a href="#6-合规性和政策执行" class="headerlink" title="6. 合规性和政策执行"></a>6. 合规性和政策执行</h3><ul>
-<li><strong>遵守法规要求</strong>：某些行业标准或法规可能要求数据隔离，VLAN 提供了一个实现这一点的有效方法。</li>
-<li><strong>政策执行</strong>：在需要对不同用户群或部门实施不同网络策略的场景中，VLAN 能够提供所需的网络分割。</li>
-</ul>
-<p>综上所述，VLAN 的使用在多种场合都非常有益，尤其是在需要安全性、性能优化、灵活的网络管理和成本效益的环境中。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/network-configuration/" style="color: #00bcd4">network-configuration</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/16/mdstorage/domain/network/%E4%B8%BB%E6%9C%BA%E6%8E%A5%E5%85%A5%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E8%93%9D%E5%9B%BE/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/16/mdstorage/domain/network/%E7%BD%91%E5%8D%A1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">
-        <h2 class="post-title">网卡工作原理.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
             </a>
-        </span>
+          </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/16
-        </span>
-        
-        
+      </ul>
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="网卡发送-接收数据包工作原理"><a href="#网卡发送-接收数据包工作原理" class="headerlink" title="网卡发送&#x2F;接收数据包工作原理"></a>网卡发送&#x2F;接收数据包工作原理</h2><h3 id="NIC发送-接收数据包的工作原理"><a href="#NIC发送-接收数据包的工作原理" class="headerlink" title="NIC发送&#x2F;接收数据包的工作原理"></a>NIC发送&#x2F;接收数据包的工作原理</h3><p>网络接口卡（NIC）是计算机与网络之间通信的桥梁。其基本工作原理如下：</p>
-<h4 id="发送数据包"><a href="#发送数据包" class="headerlink" title="发送数据包"></a>发送数据包</h4><ol>
-<li><p><strong>数据封装</strong>：当计算机需要发送数据时，操作系统先将数据封装成适合网络传输的格式，通常是以太网帧。这包括目标MAC地址、源MAC地址、数据负载和校验序列。</p>
-</li>
-<li><p><strong>数字信号转换</strong>：数据包（以太网帧）由NIC的硬件转换为数字信号。对于有线网络，这通常意味着将数据转换为电信号；对于无线网络，则转换为无线信号。</p>
-</li>
-<li><p><strong>物理传输</strong>：转换后的信号通过网络（如以太网电缆或无线媒介）发送到目标。</p>
-</li>
-</ol>
-<h4 id="接收数据包"><a href="#接收数据包" class="headerlink" title="接收数据包"></a>接收数据包</h4><ol>
-<li><p><strong>信号检测</strong>：NIC不断监测网络上的信号。当检测到数据传输时，NIC会接收信号。</p>
-</li>
-<li><p><strong>信号转换</strong>：NIC将接收到的物理信号（电信号或无线信号）转换回数字数据。</p>
-</li>
-<li><p><strong>数据解析</strong>：NIC检查数据包的完整性（如校验和）。如果数据包是发给本机的（即目标MAC地址与NIC的MAC地址匹配），NIC则将数据传递给操作系统进行进一步处理。</p>
-</li>
-</ol>
-<h3 id="自动协商机制"><a href="#自动协商机制" class="headerlink" title="自动协商机制"></a>自动协商机制</h3><p>自动协商是网络设备用来自动确定连接速度和双工模式的一种机制。这个过程如下：</p>
-<ol>
-<li><p><strong>能力广播</strong>：当连接建立时，NIC向连接的网络设备（如交换机）发送一个特殊的帧，其中包含了它支持的速度和双工模式的列表。</p>
-</li>
-<li><p><strong>能力接收</strong>：交换机接收到这些信息后，也会发送一个类似的帧，告知自己支持的速度和双工模式。</p>
-</li>
-<li><p><strong>协商决定</strong>：NIC和交换机比较各自的能力列表，选择一个共同支持的最高速度和最佳双工模式。</p>
-</li>
-<li><p><strong>配置应用</strong>：一旦决定了速度和双工模式，NIC和交换机就会自动配置这些设置，并开始正常的数据传输。</p>
-</li>
-</ol>
-<h3 id="可视化描述和实例"><a href="#可视化描述和实例" class="headerlink" title="可视化描述和实例"></a>可视化描述和实例</h3><p>假设有一个计算机（主机A）和一个交换机。主机A的NIC支持10&#x2F;100&#x2F;1000 Mbps 的速度和全双工模式，而交换机支持100&#x2F;1000 Mbps 的速度和全&#x2F;半双工模式。</p>
-<pre><code class="mermaid">sequenceDiagram
-    participant NIC
-    participant Switch
+  </div>
+</nav>
 
-    Note over NIC, Switch: 连接建立
-    NIC-&gt;&gt;Switch: 发送支持的速度和模式（10/100/1000 Mbps, 全双工）
-    Switch-&gt;&gt;NIC: 发送支持的速度和模式（100/1000 Mbps, 全/半双工）
-    Note over NIC, Switch: 协商选择1000 Mbps, 全双工
-    NIC-&gt;&gt;Switch: 配置1000 Mbps, 全双工
-    Switch-&gt;&gt;NIC: 配置1000 Mbps, 全双工
-</code></pre>
-<p>在这个例子中，自动协商机制允许NIC和交换机选择它们共同支持的最高速度（1000 Mbps）和最佳双工模式（全双工），从而实现最优的网络性能。</p>
-<p>在NIC发送&#x2F;接收数据包的过程中，多个模块协同工作以确保数据的有效传输。这些模块在各个操作步骤中的具体作用如下：</p>
-<h3 id="1-发送数据包"><a href="#1-发送数据包" class="headerlink" title="1. 发送数据包"></a>1. 发送数据包</h3><h4 id="a-数据缓冲和处理模块"><a href="#a-数据缓冲和处理模块" class="headerlink" title="a. 数据缓冲和处理模块"></a>a. 数据缓冲和处理模块</h4><ul>
-<li><strong>作用</strong>：这个模块负责临时存储待发送的数据，并将其准备成适合网络传输的格式。</li>
-<li><strong>操作</strong>：当操作系统指示NIC发送数据时，数据缓冲和处理模块会接收数据，并根据需要的网络协议（如以太网协议）进行封装。这包括添加必要的头部信息，如目标和源MAC地址、以太网类型字段等。</li>
-</ul>
-<h4 id="b-数字信号处理器（DSP）"><a href="#b-数字信号处理器（DSP）" class="headerlink" title="b. 数字信号处理器（DSP）"></a>b. 数字信号处理器（DSP）</h4><ul>
-<li><strong>作用</strong>：DSP负责将数字数据转换为适合于物理媒介的信号。</li>
-<li><strong>操作</strong>：在数据封装完毕后，DSP将数字数据（以太网帧）转换成电信号（对于有线网络）或无线信号（对于无线网络）。</li>
-</ul>
-<h4 id="c-发送-接收接口"><a href="#c-发送-接收接口" class="headerlink" title="c. 发送&#x2F;接收接口"></a>c. 发送&#x2F;接收接口</h4><ul>
-<li><strong>作用</strong>：这个模块管理着与物理网络媒介的直接接口。</li>
-<li><strong>操作</strong>：处理过的信号通过这个接口发送出去。对于有线网络，这通常涉及电信号的传输；对于无线网络，则涉及无线频率的使用。</li>
-</ul>
-<h3 id="2-接收数据包"><a href="#2-接收数据包" class="headerlink" title="2. 接收数据包"></a>2. 接收数据包</h3><h4 id="a-接收-发送接口"><a href="#a-接收-发送接口" class="headerlink" title="a. 接收&#x2F;发送接口"></a>a. 接收&#x2F;发送接口</h4><ul>
-<li><strong>作用</strong>：同样管理着与物理网络媒介的接口，但这次用于接收信号。</li>
-<li><strong>操作</strong>：当网络上有数据传入时，这个接口会检测到信号并接收它。</li>
-</ul>
-<h4 id="b-数字信号处理器（DSP）-1"><a href="#b-数字信号处理器（DSP）-1" class="headerlink" title="b. 数字信号处理器（DSP）"></a>b. 数字信号处理器（DSP）</h4><ul>
-<li><strong>作用</strong>：DSP在接收数据时负责将物理信号（电信号或无线信号）转换回数字数据。</li>
-<li><strong>操作</strong>：接收到的信号经过DSP处理，转换成数字格式的数据包，以供进一步处理。</li>
-</ul>
-<h4 id="c-数据缓冲和处理模块"><a href="#c-数据缓冲和处理模块" class="headerlink" title="c. 数据缓冲和处理模块"></a>c. 数据缓冲和处理模块</h4><ul>
-<li><strong>作用</strong>：处理接收到的数据包，检查其完整性并准备交给操作系统。</li>
-<li><strong>操作</strong>：这个模块首先检查数据包的完整性（如通过校验和）。如果数据包是发往本机（即目标MAC地址与NIC的MAC地址匹配），则数据包被传递给操作系统进行进一步处理。</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在发送数据包的过程中，数据缓冲和处理模块负责数据封装，数字信号处理器负责信号转换，而发送&#x2F;接收接口管理物理信号的传输。在接收数据包的过程中，这些模块执行相反的操作，确保数据包能够被正确接收和处理。NIC的这些模块共同确保了高效和可靠的网络通信。</p>
-<pre><code class="mermaid">graph TD
-    subgraph 发送数据包
-        OS[操作系统]
-        DBP[数据缓冲和处理模块]
-        DSP1[数字信号处理器（DSP）]
-        SRI[发送/接收接口]
-        NW[网络]
-        OS --&gt;|数据| DBP
-        DBP --&gt;|封装成以太网帧| DSP1
-        DSP1 --&gt;|转换为电/无线信号| SRI
-        SRI --&gt;|物理传输| NW
-    end
+  
 
-    subgraph 接收数据包
-        NW2[网络]
-        SRI2[发送/接收接口]
-        DSP2[数字信号处理器（DSP）]
-        DBP2[数据缓冲和处理模块]
-        OS2[操作系统]
-        NW2 --&gt;|物理信号| SRI2
-        SRI2 --&gt;|接收信号| DSP2
-        DSP2 --&gt;|转换为数字数据| DBP2
-        DBP2 --&gt;|数据交付| OS2
-    end
-
-    style OS fill:#f9f,stroke:#333,stroke-width:2px
-    style OS2 fill:#f9f,stroke:#333,stroke-width:2px
-    style DBP fill:#fc0,stroke:#333,stroke-width:2px
-    style DBP2 fill:#fc0,stroke:#333,stroke-width:2px
-    style DSP1 fill:#9f6,stroke:#333,stroke-width:2px
-    style DSP2 fill:#9f6,stroke:#333,stroke-width:2px
-    style SRI fill:#bbf,stroke:#333,stroke-width:2px
-    style SRI2 fill:#bbf,stroke:#333,stroke-width:2px
-    style NW fill:#f96,stroke:#333,stroke-width:2px
-    style NW2 fill:#f96,stroke:#333,stroke-width:2px
-</code></pre>
-<h2 id="网卡数据通信信号"><a href="#网卡数据通信信号" class="headerlink" title="网卡数据通信信号"></a>网卡数据通信信号</h2><h3 id="电信号"><a href="#电信号" class="headerlink" title="电信号"></a>电信号</h3><p>电信号是通过电缆（如双绞线或光纤）传输的信号。它们在有线网络中使用，具体特征包括：</p>
-<ol>
-<li><strong>物理媒介</strong>：通常通过铜线（在双绞线中）或光波（在光纤中）传输。</li>
-<li><strong>信号类型</strong>：<ul>
-<li>对于铜线，信号是电压变化。</li>
-<li>对于光纤，信号是光脉冲。</li>
-</ul>
-</li>
-<li><strong>传输速度</strong>：受到电缆类型和质量的影响。例如，Cat5e、Cat6、Cat7等不同类型的以太网电缆支持不同的传输速度。</li>
-<li><strong>距离限制</strong>：电信号随距离增加而衰减。例如，标准以太网电缆的最大传输距离通常限制在100米内。</li>
-<li><strong>干扰</strong>：可能受到电磁干扰（EMI）或射频干扰（RFI）的影响，特别是在未屏蔽的电缆中。</li>
-</ol>
-<h3 id="无线信号"><a href="#无线信号" class="headerlink" title="无线信号"></a>无线信号</h3><p>无线信号通过空气或真空传输，无需物理媒介。它们在无线网络中使用，特征包括：</p>
-<ol>
-<li><strong>传输媒介</strong>：通过空气或其他非物理媒介传播。</li>
-<li><strong>信号类型</strong>：是电磁波，通常在射频（RF）范围内。</li>
-<li><strong>频率范围</strong>：无线信号在特定的频率上操作，如2.4 GHz或5 GHz。</li>
-<li><strong>覆盖范围</strong>：受到发射功率、接收灵敏度和环境因素（如墙壁、建筑物）的影响。覆盖范围可以从几米到数千米不等。</li>
-<li><strong>干扰和衰减</strong>：可能受到其他无线设备、物理障碍物和环境因素的影响。在拥挤的频率带宽上，如2.4 GHz，干扰尤其常见。</li>
-<li><strong>安全性</strong>：由于信号可以超出物理边界，无线网络通常需要额外的安全措施来防止未授权访问。</li>
-</ol>
-<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>电信号和无线信号各有特点，它们的选择取决于应用场景、传输距离、速度要求和环境条件。有线连接提供了更稳定和通常更快的连接，而无线连接则提供了更大的灵活性和移动性。</p>
-
-            
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
+          
         </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/network/" style="color: #ff7d73">network</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/NIC/" style="color: #ffa2c4">NIC</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/16/mdstorage/domain/network/%E7%BD%91%E5%8D%A1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" class="go-post">阅读全文</a>
+  </div>
 </div>
 
-<div class="post">
-    <a href="/2023/11/14/mdstorage/domain/db/MongoDB%E4%B8%8E%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE%E5%86%B2%E7%AA%81/">
-        <h2 class="post-title">MongoDB与时间设置冲突.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/14
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a target="_blank" rel="noopener" href="https://www.mongodb.com/community/forums/t/new-clustertime-is-too-far-from-this-nodes-wall-clock-time/204403/1">社区帖子</a></p>
-<h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>在 MongoDB 社区论坛的这篇帖子中，用户报告了一个问题，即在将其 Mac 日期手动设置为 2036 年后，再回到 2022 年时，MongoDB 出现了错误提示：“新的$clusterTime 与这个节点的墙上时钟时间相差太远”。为了解决这个问题，有两种可能的方案：</p>
-<ol>
-<li>将客户端的时间设置为与集群的时间相匹配。这可能是一个不切实际的解决方案，因为所有操作将被记录为在未来发生。</li>
-<li>转储并恢复整个数据库，并将服务器的时间修正为正确的时间。</li>
-</ol>
-<p>该帖子指出，MongoDB 在分布式系统中确定操作顺序时使用 Lamport 时钟，Lamport 时钟具有时间戳始终增加的特性。在 MongoDB 6.0.3 中，Lamport 时钟对时间的前后移动有最大一年的容忍度。如果集群的任何部分的时间差超过一年，则会出现此错误。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="Lamport-时钟"><a href="#Lamport-时钟" class="headerlink" title="Lamport 时钟"></a>Lamport 时钟</h3><p>Lamport 时间戳是一种在分布式计算机系统中用来建立事件部分排序的逻辑时钟算法，由其创造者 Leslie Lamport 命名。这个算法的关键特点包括：</p>
-<ol>
-<li><p><strong>事件排序</strong>：它帮助确定分布式系统中事件的顺序，这些系统的节点或进程不完全同步。算法提供了一种方法，以数值方式捕获事件之间的“发生在之前”的关系。</p>
-</li>
-<li><p><strong>机制</strong>：分布式系统中的每个进程维护一个数值计数器（逻辑时钟）。规则包括：</p>
-<ul>
-<li>在每个本地事件之前增加计数器。</li>
-<li>在每条发送的消息中包含计数器值。</li>
-<li>收到消息时，将计数器更新为其当前值和接收消息中的时间戳中的较大值，然后增加 1。</li>
-</ul>
-</li>
-<li><p><strong>概念性应用</strong>：这个逻辑时钟在进程间消息传递的上下文中具有意义。当一个进程收到消息时，它会与发送方的时钟重新同步，确保时间戳的有序进展。</p>
-</li>
-<li><p><strong>时间戳的唯一性</strong>：不同事件在同一进程中的时间戳永远不相等是必要的，这要求事件之间至少有一个时钟跳动。</p>
-</li>
-</ol>
-<h2 id="处理方案"><a href="#处理方案" class="headerlink" title="处理方案"></a>处理方案</h2><ul>
-<li>验证调整容忍度参数是否可以解决此问题</li>
-<li>修改 MongoDB 启动参数</li>
-<li>测试验证</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/MongoDB/" style="color: #00bcd4">MongoDB</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/14/mdstorage/domain/db/MongoDB%E4%B8%8E%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE%E5%86%B2%E7%AA%81/" class="go-post">阅读全文</a>
 </div>
 
-<div class="post">
-    <a href="/2023/11/14/mdstorage/resource/typora_pandoc_picgo/typora_crack/">
-        <h2 class="post-title">typora_crack.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/resource/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                resource
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/14
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a target="_blank" rel="noopener" href="https://github.com/DiamondHunters/NodeInject_Hook_example">https://github.com/DiamondHunters/NodeInject_Hook_example</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/abrance/NodeInject_Hook_example">https://github.com/abrance/NodeInject_Hook_example</a></p>
-<h2 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h2><h3 id="Ubuntu22-04"><a href="#Ubuntu22-04" class="headerlink" title="Ubuntu22.04"></a>Ubuntu22.04</h3><p>typora 1.7.6</p>
-<h3 id="win10"><a href="#win10" class="headerlink" title="win10"></a>win10</h3><p>todo</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><pre><code class="bash">git clone https://github.com/abrance/NodeInject_Hook_example.git
-git clone https://github.com/abrance/NodeInject.git
+  </header>
 
-# 回退一个版本
-cd NodeInject_Hook_example &amp;&amp; git reset --hard 81f8612
-cp NodeInject_Hook_example/hook.js NodeInject/src/hooklog.js
-
-cd NodeInject &amp;&amp; cargo build
-cd NodeInject_Hook_example/license-gen &amp;&amp; cargo build
-
-cp NodeInject/target/debug/node_inject /usr/share/typora
-
-# 执行
-# 第一步 执行注入
-cd /usr/share/typora/ &amp;&amp; sudo ./node_inject
-# 看到下面结果为正常
-# extracting node_modules.asar
-# adding hook.js
-# applying patch
-# packing node_modules.asar
-# done!
-# 第二步 生成激活码
-sudo NodeInject_Hook_example/license-gen/target/debug/license-gen
-
-# 第三步 打开 typora 填入激活码激活
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/crack/" style="color: #03a9f4">crack</a>
-        </span>
-        
-    </div>
-    <a href="/2023/11/14/mdstorage/resource/typora_pandoc_picgo/typora_crack/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/13/mdstorage/project/sr/%E5%91%A8%E6%8A%A5-11.10/">
-        <h2 class="post-title">周报-11.10.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/13
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <pre><code class="kanban"># 2023/11/10 Task List
-
-## Todo
-- 总控授权许可文件验证开发确认(刚开始)
-- https://github.com/mli/autocut 是什么
-- on-premise 综述
-- InfoQ 一周消息速递  
-- 搜书方法、主流格式文档转换方法、以图搜图、学习资料搜索
-
-- 周会 （1. 转测流程 2. 任务进度 3. 说说问题）
-
-## In-Progress
-
-- 总控软件设计说明书
-- 松达：1. dam webhook 2. 授权进度
-
-- 机器迁移环境搭建测试
-
-## Completed
-- 开发项目经理打包人员部署人员转测流程规范文档
-- Iaas 综述
-- 贺泽：透明部署任务
-- 转测报告影响范围写作思路
-- 定位 101.51 连不上的问题
-- 环境迁移问题解决
-- 总控开发分支维护文档
-- Api网关的历史
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/11/13/mdstorage/project/sr/%E5%91%A8%E6%8A%A5-11.10/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
+  <main>
     
-    <a class="page-num" href="/page/23/">
-        <i class="fa-solid fa-caret-left fa-fw"></i>
-    </a>
-    <a class="page-num" href="/">1</a>
-    <span class="page-omit">...</span>
-    
-    <span class="current">24</span>
-    
-    <a class="page-num" href="/page/25">
-        25
-    </a>
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
     
     
-    <a class="page-num" href="/page/26">
-        26
-    </a>
-    
-    
-    <span class="page-omit">...</span>
-    <a class="page-num" href="/page/28">28</a>
-    
-    
-    <a class="page-num" href="/page/25/">
-        <i class="fa-solid fa-caret-right fa-fw"></i>
-    </a>
-    
-</div>
-
-    </div>
-    
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">xiaoy</div>
-        <div class="description">
-            <p>xiaoy<br>…</p>
-
-        </div>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a href="https://abrance.github.io">Argvchs</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
+        <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BD%93%E4%BB%A3%E4%BA%BA%E5%B9%B8%E7%A6%8F%E6%84%9F%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BD%8E/" target="_self">
+          为什么当代人幸福感越来越低.md
+        </a>
+      </h2>
 
-    </div>
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BD%93%E4%BB%A3%E4%BA%BA%E5%B9%B8%E7%A6%8F%E6%84%9F%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BD%8E/" target="_self">
         <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
+          今日话题：为什么当代人幸福感越来越低？ 评论一：看看现在这社会，变化快得像变脸似的，让人应接不暇。你今天掌握了个新技能，明天可能就过时了。就像那些曾经火爆一时的小玩意儿，一下子就被淘汰了，连带着带动了一波员工下岗潮。在这种不停变化的社会里，每个人都像是在冰面上跳舞，一不小心就得滑倒。于是乎，焦虑就成了大家的日常，大家都在担心哪天自己会成为下一个被社会淘汰的对象。 评论二：然后呢，资本消费主义的大旗
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
+      </a>
 
-        </div>
+      <div class="index-btm post-metas">
         
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-17 00:00" pubdate>
+              2023-11-17
+            </time>
+          </div>
         
-    </div>
-    <script src="/js/main.js"></script>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/talk/">#talk</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
     
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E7%94%B7%E7%94%9F%E5%AE%81%E5%8F%AF%E6%89%93%E6%B8%B8%E6%88%8F%E4%B9%9F%E4%B8%8D%E6%84%BF%E8%BF%BD%E5%A5%B3%E7%94%9F/" target="_self">
+          为什么很多男生宁可打游戏也不愿意追女生呢.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E7%94%B7%E7%94%9F%E5%AE%81%E5%8F%AF%E6%89%93%E6%B8%B8%E6%88%8F%E4%B9%9F%E4%B8%8D%E6%84%BF%E8%BF%BD%E5%A5%B3%E7%94%9F/" target="_self">
+        <div>
+          今日话题：为什么很多男生宁可打游戏也不愿意追女生呢？ 评论一：这个话题可真是热门，现在的男生啊，宁愿和虚拟世界里的角色谈恋爱，也不愿意去追现实中的女生。原因嘛，可能跟这个观点有关：追女生就像是在做一场投资，但这种投资的风险和回报很难预测。一些男生可能会想，我和她又不熟，凭什么要我无条件地付出？这种心态，就像是说，“在你成为我的女朋友之前，我愿意付出一点点，成了我女朋友之后，我自然会全力以赴。” 评
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-17 00:00" pubdate>
+              2023-11-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/talk/">#talk</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E4%BA%BA%E9%80%89%E6%8B%A9%E7%9B%B4%E6%92%AD/" target="_self">
+          为什么现在越来越多的人选择做直播.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E4%BA%BA%E9%80%89%E6%8B%A9%E7%9B%B4%E6%92%AD/" target="_self">
+        <div>
+          今日话题：为什么现在越来越多的人选择做直播？ 评论一：说起来做直播，这可真是个热门行业了。很多人看中的，首先就是那个低门槛和来钱快。你想啊，只要有部手机，一个小小的直播间，人人都能成为主播。不像其他行业，需要各种资质、技能或者资本。而且，如果运气好，一夜之间爆红，就能实现从草根到网红的华丽转变，这种魅力谁能抵挡？ 评论二：不过，话说回来，真正通过直播挣大钱的人其实并不多。大部分所谓的“直播挣钱”，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-17 00:00" pubdate>
+              2023-11-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/talk/">#talk</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%BB%8A%E6%97%A5%E8%AF%9D%E9%A2%98%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7/" target="_self">
+          做今日话题的思路.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%BB%8A%E6%97%A5%E8%AF%9D%E9%A2%98%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7/" target="_self">
+        <div>
+          做今日话题的思路  不过多考虑话题本身的对错，考虑观众的接受度。  对图不满意：  换图（剪映、本地、网图）  今日话题编写技巧  今日话题： $标题 今日话题： $标题  \n 贴上知乎新论点，参考xxx，生成今日话题内容  观众想看到的话题内容有哪些种类？  认同感  角度新颖、同时让观众有些顿悟感  门槛低、来钱快  直播可能真正挣钱的人少，但是实际上教人直播挣钱的多，卖课卖器材的多，大部分
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-17 00:00" pubdate>
+              2023-11-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/talk/">#talk</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E6%B1%9F%E8%BE%B9%E7%9A%84%E6%99%9A%E4%B8%8A/" target="_self">
+          江边的晚上.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/17/mdstorage/project/%E5%86%99%E4%BD%9C/%E6%B1%9F%E8%BE%B9%E7%9A%84%E6%99%9A%E4%B8%8A/" target="_self">
+        <div>
+          故事一： 去年的今天，在火车上，我接到疯子的电话，说， “我已经在武汉车站等你了，你赶紧过来。” “啊？可是我要回鄂州，难不成要提前下车？” ”别废话，赶紧过来。“ 我嘴里骂骂咧咧，在武汉火车站下车，结果没在出站口看到他，打电话给他，他说他在武汉车站，不是火车站。我拖着大皮箱，一路打车一路骂，等到了武汉车站，一眼就看到了他。 ”皮衣，皮裤，墨镜，带个帽子，不愧是你。要是人品跟你模样一半好就好了。“
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-17 00:00" pubdate>
+              2023-11-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/write/">#write</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/16/mdstorage/domain/network/%E4%B8%BB%E6%9C%BA%E6%8E%A5%E5%85%A5%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E8%93%9D%E5%9B%BE/" target="_self">
+          主机接入网络配置蓝图.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/16/mdstorage/domain/network/%E4%B8%BB%E6%9C%BA%E6%8E%A5%E5%85%A5%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E8%93%9D%E5%9B%BE/" target="_self">
+        <div>
+          前提接入的主机并非是集群的一部分； 有关主机硬件、基础设施不需要这里来考虑搭建； 概述在将服务器接入数据中心时，可以将关注点分为两大类：本机以外需要关注的项 和 本机网络配置关注的项。 本机以外需要关注的项这些是与数据中心的基础设施、环境和外部网络相关的方面。  交换机和路由器：  确保数据中心提供的交换机和路由器能满足您的网络需求（带宽、VLAN 支持、路由协议等）。   物理连接：  使用适当
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-16 00:00" pubdate>
+              2023-11-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/" class="category-chain-item">network</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/network-configuration/">#network-configuration</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/16/mdstorage/domain/network/%E7%BD%91%E5%8D%A1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" target="_self">
+          网卡工作原理.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/16/mdstorage/domain/network/%E7%BD%91%E5%8D%A1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" target="_self">
+        <div>
+          网卡发送&#x2F;接收数据包工作原理NIC发送&#x2F;接收数据包的工作原理网络接口卡（NIC）是计算机与网络之间通信的桥梁。其基本工作原理如下： 发送数据包 数据封装：当计算机需要发送数据时，操作系统先将数据封装成适合网络传输的格式，通常是以太网帧。这包括目标MAC地址、源MAC地址、数据负载和校验序列。  数字信号转换：数据包（以太网帧）由NIC的硬件转换为数字信号。对于有线网络，这通常意
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-16 00:00" pubdate>
+              2023-11-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/" class="category-chain-item">network</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/network/">#network</a>
+            
+              <a href="/tags/NIC/">#NIC</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/14/mdstorage/domain/db/MongoDB%E4%B8%8E%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE%E5%86%B2%E7%AA%81/" target="_self">
+          MongoDB与时间设置冲突.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/14/mdstorage/domain/db/MongoDB%E4%B8%8E%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE%E5%86%B2%E7%AA%81/" target="_self">
+        <div>
+          原文链接社区帖子 现象在 MongoDB 社区论坛的这篇帖子中，用户报告了一个问题，即在将其 Mac 日期手动设置为 2036 年后，再回到 2022 年时，MongoDB 出现了错误提示：“新的$clusterTime 与这个节点的墙上时钟时间相差太远”。为了解决这个问题，有两种可能的方案：  将客户端的时间设置为与集群的时间相匹配。这可能是一个不切实际的解决方案，因为所有操作将被记录为在未来发
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-14 00:00" pubdate>
+              2023-11-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/db/" class="category-chain-item">db</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/MongoDB/">#MongoDB</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/14/mdstorage/resource/typora_pandoc_picgo/typora_crack/" target="_self">
+          typora_crack.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/14/mdstorage/resource/typora_pandoc_picgo/typora_crack/" target="_self">
+        <div>
+          原文链接https://github.com/DiamondHunters/NodeInject_Hook_example https://github.com/abrance/NodeInject_Hook_example 材料Ubuntu22.04typora 1.7.6 win10todo 步骤Ubuntu12345678910111213141516171819202122232425gi
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-14 00:00" pubdate>
+              2023-11-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/resource/" class="category-chain-item">resource</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/resource/typora-pandoc-picgo/" class="category-chain-item">typora_pandoc_picgo</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/crack/">#crack</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/13/mdstorage/domain/linux/ubuntu%E8%AE%BE%E7%BD%AEDNS%E6%9C%8D%E5%8A%A1/" target="_self">
+          ubuntu设置DNS服务.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/13/mdstorage/domain/linux/ubuntu%E8%AE%BE%E7%BD%AEDNS%E6%9C%8D%E5%8A%A1/" target="_self">
+        <div>
+          思路Ubuntu 使用 /etc/resolve.conf 文件进行域名解析，该文件通常是 /run/systemd/resolve/resolv.conf 的软链接。直接编辑 /etc/resolve.conf 是不正确的，因为文件顶部有明确指示不要编辑，并且这些更改可能会被覆盖。 方法 编辑 /etc/systemd/resolved.conf 文件：在 [Resolve] 部分添加所需的 D
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-13 00:00" pubdate>
+              2023-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/23/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/#board">22</a><a class="page-number" href="/page/23/#board">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/#board">25</a><a class="page-number" href="/page/26/#board">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/25/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

@@ -1,1143 +1,991 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Xiaoy">
+<meta property="og:url" content="https://abrance.github.io/page/18/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
 
 
-<script src="/js/lib/home.js"></script>
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
+
+
 <body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/background.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>Xiaoy</h1>
-                <h3>xiaoy blog</h3>
-                <h5></h5>
-            </div>
-        </span>
-    </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/2024/01/19/mdstorage/project/sr/%E4%BF%A1%E5%88%9B%E8%AE%A4%E8%AF%81/">
-        <h2 class="post-title">信创认证.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/19
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="信创认证"><a href="#信创认证" class="headerlink" title="信创认证"></a>信创认证</h2><h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><pre><code>machine:
-10.8.10.206
-7!-r&#123;5HU[b
-
-vm:
-192.168.122.24
-root/123.com/456
-</code></pre>
-<h3 id="devkit-软件安装部署"><a href="#devkit-软件安装部署" class="headerlink" title="devkit 软件安装部署"></a>devkit 软件安装部署</h3><h4 id="安装依赖系统工具"><a href="#安装依赖系统工具" class="headerlink" title="安装依赖系统工具"></a>安装依赖系统工具</h4><h4 id="安装-devkit"><a href="#安装-devkit" class="headerlink" title="安装 devkit"></a>安装 devkit</h4><p><a target="_blank" rel="noopener" href="https://www.hikunpeng.com/zh/developer/devkit/download">浏览器工作模式安装包下载地址</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.hikunpeng.com/document/detail/zh/kunpengdevps/userguide/usermanual/KunpengDevKit_0017.html">安装指导文档</a></p>
-<h4 id="修改-ip-port"><a href="#修改-ip-port" class="headerlink" title="修改 ip port"></a>修改 ip port</h4><h5 id="nginx-修改"><a href="#nginx-修改" class="headerlink" title="nginx 修改"></a>nginx 修改</h5><pre><code class="bash"># /opt/ 作为安装目录
-# 找到 nginx 目录 的 devkit_xxx.conf 修改 server 8086 监听地址
-# /usr/bin/systemctl restart devkit_nginx
-</code></pre>
-<h5 id="ssh-隧道转发流量"><a href="#ssh-隧道转发流量" class="headerlink" title="ssh 隧道转发流量"></a>ssh 隧道转发流量</h5><pre><code class="bash">ssh -L 0.0.0.0:8086:192.168.122.24:8086 root@10.8.10.206
-
-# 服务监听 `https://10.8.10.206:8086/`
-# 帐号密码 : devadmin 123.com/456
-</code></pre>
-<h3 id="迁移工具使用"><a href="#迁移工具使用" class="headerlink" title="迁移工具使用"></a>迁移工具使用</h3><ul>
-<li>源码扫描（源码 tar gz 上传）</li>
-<li>软件扫描（安装包 tar gz 上传）</li>
-</ul>
-<h3 id="确定扫描源码组件"><a href="#确定扫描源码组件" class="headerlink" title="确定扫描源码组件"></a>确定扫描源码组件</h3><ul>
-<li>sc</li>
-<li>sv</li>
-<li>installer</li>
-<li>api-gov</li>
-<li></li>
-<li>webserver</li>
-<li>nexus</li>
-<li>dam</li>
-<li>nuclei</li>
-<li></li>
-<li>envoy</li>
-<li>polycube</li>
-<li>sx-ha</li>
-<li></li>
-<li>mysql</li>
-<li>mongodb</li>
-<li>redis</li>
-<li>nsq</li>
-<li>etcd</li>
-<li>hyperscan</li>
-<li>kube-apiserver</li>
-<li>kubectl</li>
-</ul>
-<h3 id="扫描工具原理分析"><a href="#扫描工具原理分析" class="headerlink" title="扫描工具原理分析"></a>扫描工具原理分析</h3><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20240119175222574.png" alt="image-20240119175222574"></p>
-<p>通过构建文件内容扫描关键字匹配，如 <strong>-l</strong>  参数，<strong>arm dpkg x86</strong> ，软件扫描，大概是扫描 <strong>so</strong> 文件是否兼容</p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
-<li>libdflags.so 依赖</li>
-</ul>
-<pre><code>从红框有半部分的内容可以确认用户提供分析的待认证应用中所包含的依赖文件待替换信息。此部分内容不需要做前后严格对比，只需要保证前后两次分析中每次“依赖文件总数”、“可兼容替换”、“待验证替换”这三项不全为0即可。如果是第一次分析有报告，第二次分析时提示“您指定的分析路径/分析包中没有需要迁移的内容”，则结果也可以判定为通过。
-</code></pre>
-<pre><code>从红框有半部分的内容可以确认用户提供分析的待认证应用中所包含的依赖文件待替换信息。此部分内容不需要做前后严格对比，只需要保证前后两次分析中每次“依赖文件总数”、“源码迁移人力”这两项不全为0即可。如果是第一次分析有报告，第二次分析时提示“源码迁移成功：您指定的分析路径/分析包中没有需要迁移的内容”，则结果也可以判定为通过。
-</code></pre>
-<h3 id="是否扫描工具中有代码泄露风险"><a href="#是否扫描工具中有代码泄露风险" class="headerlink" title="是否扫描工具中有代码泄露风险"></a>是否扫描工具中有代码泄露风险</h3><h4 id="验证扫描是否依赖公网环境（结论：确实需要公网）"><a href="#验证扫描是否依赖公网环境（结论：确实需要公网）" class="headerlink" title="验证扫描是否依赖公网环境（结论：确实需要公网）"></a>验证扫描是否依赖公网环境（结论：确实需要公网）</h4><pre><code class="bash">[root@localhost ~]# sudo iptables -P INPUT ACCEPT
-[root@localhost ~]# sudo iptables -P FORWARD ACCEPT
-[root@localhost ~]# sudo iptables -P OUTPUT ACCEPT
-[root@localhost ~]# sudo iptables -A INPUT -s 192.168.122.0/24 -j ACCEPT
-[root@localhost ~]# sudo iptables -A OUTPUT -d 192.168.122.0/24 -j ACCEPT
-[root@localhost ~]# sudo iptables -A OUTPUT ! -d 192.168.122.0/24 -j DROP
-</code></pre>
-<pre><code class="bash">[root@localhost ~]# curl -v https://www.baidu.com
-*   Trying 183.2.172.42:443...
-*   Trying 240e:ff:e020:9ae:0:ff:b014:8e8b:443...
-* Immediate connect fail for 240e:ff:e020:9ae:0:ff:b014:8e8b: 网络不可达
-*   Trying 240e:ff:e020:966:0:ff:b042:f296:443...
-* Immediate connect fail for 240e:ff:e020:966:0:ff:b042:f296: 网络不可达
-^C
-</code></pre>
-<pre><code class="bash">10:53:46.738577 IP localhost.localdomain.34448 &gt; ecs-124-70-125-167.compute.hwclouds-dns.com.https: Flags [S], seq 851829615, win 64240, options [mss 1460,sackOK,TS val 953561537 ecr 0,nop,wscale 7], length 0
-10:53:46.784314 IP localhost.localdomain.34448 &gt; ecs-124-70-125-167.compute.hwclouds-dns.com.https: Flags [.], ack 2880648456, win 502, options [nop,nop,TS val 953561583 ecr 3062878975], length 0
-10:53:46.785374 IP localhost.localdomain.34448 &gt; ecs-124-70-125-167.compute.hwclouds-dns.com.https: Flags [P.], seq 0:517, ack 1, win 502, options [nop,nop,TS val 953561584 ecr 3062878975], length 517
-10:53:46.832766 IP localhost.localdomain.34448 &gt; ecs-124-70-125-167.compute.hwclouds-dns.com.https: Flags [.], ack 3399, win 491, options [nop,nop,TS val 953561632 ecr 3062879024], length 0
-10:53:46.833224 IP localhost.localdomain.34448 &gt; ecs-124-70-125-167.compute.hwclouds-dns.com.https: Flags [P.], seq 517:523, ack 3399, win 491, options [nop,nop,TS val 953561632 ecr 3062879024], length 6
-10:53:46.918337 IP localhost.localdomain.34448 &gt; ecs-124-70-125-167.compute.hwclouds-dns.com.https: Flags [P.], seq 523:597, ack 3399, win 501, options [nop,nop,TS val 953561717 ecr 3062879110], length 74
-10:53:46.963808 IP localhost.localdomain.34448 &gt; ecs-124-70-125-167.compute.hwclouds-dns.com.https: Flags [P.], seq 597:833, ack 3399, win 501, options [nop,nop,TS val 953561763 ecr 3062879155], length 236
-10:53:46.963999 IP localhost.localdomain.34448 &gt; ecs-124-70-125-167.compute.hwclouds-dns.com.https: Flags [.], ack 3941, win 501, options [nop,nop,TS val 953561763 ecr 3062879155], length 0
-10:53:47.014211 IP localhost.localdomain.34448 &gt; ecs-124-70-125-167.compute.hwclouds-dns.com.https: Flags [F.], seq 833, ack 4459, win 501, options [nop,nop,TS val 953561813 ecr 3062879205], length 0
-10:53:47.059715 IP localhost.localdomain.34448 &gt; ecs-124-70-125-167.compute.hwclouds-dns.com.https: Flags [.], ack 4460, win 501, options [nop,nop,TS val 953561858 ecr 3062879251], length 0
-</code></pre>
-<h2 id="信创兼容性测试用例"><a href="#信创兼容性测试用例" class="headerlink" title="信创兼容性测试用例"></a>信创兼容性测试用例</h2><ul>
-<li>data_ha</li>
-<li>admin_ha</li>
-<li>agent</li>
-<li>data_worker</li>
-<li>webserver</li>
-<li>nexus</li>
-<li>dam</li>
-<li>nuclei</li>
-<li>envoy</li>
-<li>polycubed</li>
-</ul>
-<pre><code class="bash"># stop 指令
-systemctl stop admin_ha.service adminDam.service dataDam.service data_ha.service nuclei.service envoy.service polycubed.service agent.service data_worker.service nexus webserver
-
-# start 指令
-ip link set enp1s0 up, systemctl start admin_ha.service adminDam.service dataDam.service data_ha.service nuclei.service envoy.service polycubed.service agent.service data_worker.service nexus webserver
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E4%BF%A1%E5%88%9B/" style="color: #00a596">信创</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/devkit/" style="color: #00bcd4">devkit</a>
-        </span>
-        
-    </div>
-    <a href="/2024/01/19/mdstorage/project/sr/%E4%BF%A1%E5%88%9B%E8%AE%A4%E8%AF%81/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/01/19/mdstorage/domain/%E6%96%87%E6%A1%A3/ppt%E5%86%99%E4%BD%9C/">
-        <h2 class="post-title">ppt写作.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/19
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="PPT-模板"><a href="#PPT-模板" class="headerlink" title="PPT 模板"></a>PPT 模板</h2><p><a href="smb://truenas.local/public/resource/公司通用工作汇报模板PPT.pptx">公司通用工作汇报模板PPT</a> </p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
-<li><strong>独特性</strong><ul>
-<li>模板独特</li>
-<li>思路独特</li>
-<li>观点独特</li>
-</ul>
-</li>
-<li><h2 id="完整性-结构完整-全局整体描述-局部细节把控-内容完整"><a href="#完整性-结构完整-全局整体描述-局部细节把控-内容完整" class="headerlink" title="完整性- 结构完整  - 全局整体描述  - 局部细节把控- 内容完整"></a><strong>完整性</strong><br>- 结构完整<br>  - 全局整体描述<br>  - 局部细节把控<br>- 内容完整</h2><ul>
-<li>方案完整<ul>
-<li>生命周期各个环节</li>
-<li>各个执行流程</li>
-<li>各个阶段</li>
-<li>所需资源</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>一致性</strong><ul>
-<li>设计与真实一致</li>
-<li>方案与执行一致</li>
-<li>结构与设计一致</li>
-<li>自己在时间周期前后一致</li>
-</ul>
-</li>
-<li>TODO</li>
-</ul>
-<h2 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h2>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/ppt/" style="color: #ff7d73">ppt</a>
-        </span>
-        
-    </div>
-    <a href="/2024/01/19/mdstorage/domain/%E6%96%87%E6%A1%A3/ppt%E5%86%99%E4%BD%9C/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/01/19/mdstorage/resource/vpn/zerotier/">
-        <h2 class="post-title">zerotier.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/resource/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                resource
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/19
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="zerotier-安装使用（此方案有问题，废弃）"><a href="#zerotier-安装使用（此方案有问题，废弃）" class="headerlink" title="zerotier 安装使用（此方案有问题，废弃）"></a>zerotier 安装使用（此方案有问题，废弃）</h2><h3 id="zerotier-网络建立"><a href="#zerotier-网络建立" class="headerlink" title="zerotier 网络建立"></a>zerotier 网络建立</h3><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="Truenas-SCALE平台"><a href="#Truenas-SCALE平台" class="headerlink" title="Truenas SCALE平台"></a>Truenas SCALE平台</h4><pre><code class="bash">curl -s https://install.zerotier.com | sudo bash
-sudo chmod +x /bin/apt* /bin/dpkg
-</code></pre>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/zerotier/" style="color: #ff7d73">zerotier</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/" style="color: #ffa2c4">软路由</a>
-        </span>
-        
-    </div>
-    <a href="/2024/01/19/mdstorage/resource/vpn/zerotier/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/01/18/mdstorage/domain/linux/Linux%E9%98%B2%E7%81%AB%E5%A2%99/">
-        <h2 class="post-title">Linux防火墙.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/18
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="场景用例"><a href="#场景用例" class="headerlink" title="场景用例"></a>场景用例</h2><h3 id="禁止公网访问、不限制局域网访问和进流量"><a href="#禁止公网访问、不限制局域网访问和进流量" class="headerlink" title="禁止公网访问、不限制局域网访问和进流量"></a>禁止公网访问、不限制局域网访问和进流量</h3><pre><code class="bash"># 用例局域网为 192.168.122.0/24
-# 直接用 sudo iptables -P OUTPUT DROP 会把被访问连接也断开
-
-[root@localhost ~]# sudo iptables -P INPUT ACCEPT
-[root@localhost ~]# sudo iptables -P FORWARD ACCEPT
-[root@localhost ~]# sudo iptables -P OUTPUT ACCEPT
-[root@localhost ~]# sudo iptables -A INPUT -s 192.168.122.0/24 -j ACCEPT
-[root@localhost ~]# sudo iptables -A OUTPUT -d 192.168.122.0/24 -j ACCEPT
-[root@localhost ~]# sudo iptables -A OUTPUT ! -d 192.168.122.0/24 -j DROP
-
-# iptables -D 是删除策略
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/firewall/" style="color: #00bcd4">firewall</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/Linux/" style="color: #03a9f4">Linux</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/iptables/" style="color: #ffa2c4">iptables</a>
-        </span>
-        
-    </div>
-    <a href="/2024/01/18/mdstorage/domain/linux/Linux%E9%98%B2%E7%81%AB%E5%A2%99/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/01/18/mdstorage/domain/linux/QemuKVM%E5%85%B1%E4%BA%AB%E5%89%AA%E8%B4%B4%E6%9D%BF/">
-        <h2 class="post-title">QemuKVM共享剪贴板.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/18
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="QEMU-KVM-安装Windows虚拟机"><a href="#QEMU-KVM-安装Windows虚拟机" class="headerlink" title="QEMU&#x2F;KVM 安装Windows虚拟机"></a>QEMU&#x2F;KVM 安装Windows虚拟机</h3><ol>
-<li>打开virt-manager</li>
-<li>File -&gt; Add connection…</li>
-<li>New Virtual Machine<br> - Local install media<br> - Choose ISO,  type: <code>Generic or unknown OS. Usage is not recommended.</code><br> - 4C&#x2F;8G&#x2F;128G<br> - ……<br> - [x] Customize configuration before install</li>
-<li>Overview -&gt; Hypervisor Details<br> - Firmware: BIOS</li>
-<li>启动开始安装</li>
-<li>Windows系统安装后下载安装<br> - 剪贴板📋共享: <a target="_blank" rel="noopener" href="https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe">spice-guest-tools</a><br>     - 文件夹共享: <a target="_blank" rel="noopener" href="https://www.spice-space.org/download/windows/spice-webdavd/spice-webdavd-x86-latest.msi">spice-webdavd</a></li>
-</ol>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/VM/" style="color: #ff7d73">VM</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/QEMU/" style="color: #03a9f4">QEMU</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/KVM/" style="color: #ffa2c4">KVM</a>
-        </span>
-        
-    </div>
-    <a href="/2024/01/18/mdstorage/domain/linux/QemuKVM%E5%85%B1%E4%BA%AB%E5%89%AA%E8%B4%B4%E6%9D%BF/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/01/18/mdstorage/domain/linux/Remmina/">
-        <h2 class="post-title">Remmina</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/18
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="Remmina"><a href="#Remmina" class="headerlink" title="Remmina"></a>Remmina</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26879292">介绍链接</a></p>
-<p>特点： Linux 中功能较丰富的 rdp 客户端</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code class="bash">sudo apt-get install -y remmina remmina-plugin-*
-</code></pre>
-<h3 id="实用功能"><a href="#实用功能" class="headerlink" title="实用功能"></a>实用功能</h3><h4 id="动态分辨率更新"><a href="#动态分辨率更新" class="headerlink" title="动态分辨率更新"></a>动态分辨率更新</h4>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/rdp-client/" style="color: #03a9f4">rdp_client</a>
-        </span>
-        
-    </div>
-    <a href="/2024/01/18/mdstorage/domain/linux/Remmina/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/01/18/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/QemuKVM%E5%85%B1%E4%BA%AB%E5%89%AA%E8%B4%B4%E6%9D%BF/">
-        <h2 class="post-title">QemuKVM共享剪贴板.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/18
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="QEMU-KVM-安装Windows虚拟机"><a href="#QEMU-KVM-安装Windows虚拟机" class="headerlink" title="QEMU&#x2F;KVM 安装Windows虚拟机"></a>QEMU&#x2F;KVM 安装Windows虚拟机</h3><ol>
-<li>打开virt-manager</li>
-<li>File -&gt; Add connection…</li>
-<li>New Virtual Machine<br> - Local install media<br> - Choose ISO,  type: <code>Generic or unknown OS. Usage is not recommended.</code><br> - 4C&#x2F;8G&#x2F;128G<br> - ……<br> - [x] Customize configuration before install</li>
-<li>Overview -&gt; Hypervisor Details<br> - Firmware: BIOS</li>
-<li>启动开始安装</li>
-<li>Windows系统安装后下载安装<br> - 剪贴板📋共享: <a target="_blank" rel="noopener" href="https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe">spice-guest-tools</a><br>     - 文件夹共享: <a target="_blank" rel="noopener" href="https://www.spice-space.org/download/windows/spice-webdavd/spice-webdavd-x86-latest.msi">spice-webdavd</a></li>
-</ol>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/VM/" style="color: #ff7d73">VM</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/QEMU/" style="color: #00bcd4">QEMU</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/KVM/" style="color: #00a596">KVM</a>
-        </span>
-        
-    </div>
-    <a href="/2024/01/18/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/QemuKVM%E5%85%B1%E4%BA%AB%E5%89%AA%E8%B4%B4%E6%9D%BF/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/01/15/mdstorage/domain/dart/dart%E8%AF%AD%E6%B3%95/">
-        <h2 class="post-title">dart语法.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/15
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="成员变量赋值"><a href="#成员变量赋值" class="headerlink" title="成员变量赋值"></a>成员变量赋值</h3><pre><code class="dart">class MyClass &#123;
-  final Color color;
-
-  MyClass(this.color);   // 在 Dart 中，MyClass(this.color); 这种语法直接将构造函数的参数 color 赋值给类的成员变量 color。这是 Dart 语言的特性，用于简化代码，避免显式地写出 this.color = color; 这样的赋值语句。
-
-  void describeColor() &#123;
-    print(&#39;The color is: $color&#39;);
-  &#125;
-&#125;
-</code></pre>
-<h3 id="super"><a href="#super" class="headerlink" title="super"></a>super</h3><pre><code class="dart">class Parent &#123;
-  int a;
-  Parent(this.a);
-&#125;
-
-class Child extends Parent &#123;
-  int b;
-  Child(int a, this.b) : super(a) &#123;
-    // 初始化逻辑
-  &#125;
-&#125;
-</code></pre>
-<h3 id="字典传参"><a href="#字典传参" class="headerlink" title="字典传参"></a>字典传参</h3><pre><code class="dart">class User &#123;
-  int id;
-  String? name;
-  String password;
-  String? email;
-  String? phone;
-  String address;
-  String avatar;
-  String introduction;
-  Gender? gender;
-  DateTime? birthday;
-
-  UserStatus status;
-  UserType type;
-  DateTime createdAt;
-  DateTime? updatedAt;
-
-  User(&#123;
-    required this.id,
-    this.name,
-    required this.password,
-    this.email,
-    this.phone,
-    this.address = &quot;&quot;,
-    this.avatar = &quot;&quot;,
-    this.introduction = &quot;&quot;,
-    this.gender,
-    this.birthday,
-    this.status = UserStatus.using,
-    this.type = UserType.unknown,
-    required this.createdAt,
-    this.updatedAt,
-  &#125;);
-&#125;
-</code></pre>
-<h3 id="非空类型赋值"><a href="#非空类型赋值" class="headerlink" title="非空类型赋值"></a>非空类型赋值</h3><pre><code class="dart">class SingleTask extends StatefulWidget &#123;
-  String? taskTitle, taskRelativePerson;
-  DateTime? taskDate;
-  SingleTask(&#123;
-    Key? key,
-    this.taskTitle,
-    this.taskDate,
-    this.taskRelativePerson,
-  &#125;) : super(key: key) &#123;
-    taskTitle ??= &quot;&quot;;
-    taskRelativePerson ??= &quot;&quot;;
-    print(&quot;$taskTitle, $taskRelativePerson, $taskDate&quot;);
-  &#125;
-
-  @override
-  State&lt;SingleTask&gt; createState() =&gt; _SingleTaskState();
-&#125;
-</code></pre>
-<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><h3 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h3><pre><code class="dart">print(&quot;$taskTitle, $taskRelativePerson, $taskDate&quot;);
-</code></pre>
-<h2 id="map-方法"><a href="#map-方法" class="headerlink" title="map 方法"></a>map 方法</h2><p>在 Dart 中，<code>map</code> 方法是一个非常强大的工具，用于对集合（如列表或可迭代对象）中的每个元素执行一个函数，并将结果收集为一个新的可迭代对象。这种用法广泛应用于数据转换、过滤、和操作场景中。</p>
-<h3 id="map-方法的使用"><a href="#map-方法的使用" class="headerlink" title="map 方法的使用"></a><code>map</code> 方法的使用</h3><p>当你看到如下代码：</p>
-<pre><code class="dart">subTask.map((task) =&gt; taskPlane(task)).toList(),
-</code></pre>
-<p>这里发生的事情是：</p>
-<ol>
-<li><code>subTask</code> 是一个可迭代的集合，比如 List。</li>
-<li><code>.map((task) =&gt; taskPlane(task))</code> 对 <code>subTask</code> 集合中的每一个元素执行 <code>taskPlane(task)</code> 函数。<code>task</code> 是当前迭代到的元素。</li>
-<li><code>.toList()</code> 是将 <code>map</code> 操作的结果（仍然是一个可迭代对象）转换成一个列表。</li>
-</ol>
-<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ol>
-<li><p><strong>使用箭头函数简化代码（当适用时）</strong>：如果你的转换逻辑非常简单，可以直接使用箭头函数，使代码更加简洁。</p>
-</li>
-<li><p><strong>明确类型注解</strong>：尽管 Dart 能够推断出类型，明确地声明输入和输出的类型可以提高代码的可读性和维护性。</p>
-</li>
-</ol>
-<pre><code class="dart">List&lt;NewType&gt; newList = subTask.map&lt;NewType&gt;((Task task) =&gt; taskPlane(task)).toList();
-</code></pre>
-<ol start="3">
-<li><p><strong>避免不必要的性能损耗</strong>：<code>.toList()</code> 会创建一个新的集合，如果你只需要迭代结果，不一定需要转换成 List，直接使用 <code>.map()</code> 的结果进行迭代可以节省资源。</p>
-</li>
-<li><p><strong>结合使用其他迭代方法</strong>：<code>map</code> 经常与 <code>where</code>（过滤）、<code>any</code>（检查是否至少有一个元素满足条件）、<code>fold</code>（累加器）等方法结合使用，以实现更复杂的数据处理逻辑。</p>
-</li>
-<li><p><strong>理解 <code>map</code> 和 <code>forEach</code> 的区别</strong>：<code>map</code> 用于转换集合中的每个元素并收集结果，而 <code>forEach</code> 仅用于遍历集合中的元素执行操作，不返回任何结果。</p>
-</li>
-</ol>
-<p>使用 <code>map</code> 的目的是生成一个新的集合，其中包含对原始集合中每个元素应用给定函数后的结果。它是函数式编程的一个体现，可以让你写出更清晰、更简洁、更易于维护的代码。</p>
-<h2 id="语法糖"><a href="#语法糖" class="headerlink" title="语法糖"></a>语法糖</h2><h3 id=""><a href="#" class="headerlink" title="??&#x3D;"></a>??&#x3D;</h3><pre><code>class TaskTitle extends StatelessWidget &#123;
-  String? title;
-  TaskTitle(&#123;Key? key, this.title&#125;) : super(key: key) &#123;
-    title ??= &quot;&quot;;    // 如果为空则赋值为 &quot;&quot;
-  &#125;
-
-  @override
-  Widget build(BuildContext context) &#123;
-    return Expanded(
-      child: Text(
-        title!,
-        style: const TextStyle(fontWeight: FontWeight.bold),
-      ),
-    );
-  &#125;
-&#125;
-</code></pre>
-<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>在Dart中，断言（assertions）是一种在开发过程中用于检查代码逻辑的工具，它可以确保变量或表达式符合特定条件。如果断言失败（即条件评估为<code>false</code>），程序会抛出一个<code>AssertionError</code>异常。这在开发和测试阶段非常有用，因为它可以帮助开发者及早发现和修复潜在的错误。然而，需要注意的是，断言只在开发模式下工作，在生产模式下会被忽略。</p>
-<pre><code class="dart">void main() &#123;
-  var text = &#39;Dart&#39;;
   
-  // 断言文本不为空
-  assert(text.isNotEmpty, &#39;The text should not be empty.&#39;);
 
-  // 断言文本长度大于3
-  assert(text.length &gt; 3, &#39;The text should be more than 3 characters.&#39;);
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
   
-  print(&#39;Passed all assertions.&#39;);
-&#125;
-</code></pre>
 
-            
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
+          
         </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/dart/" style="color: #ff7d73">dart</a>
-        </span>
-        
-    </div>
-    <a href="/2024/01/15/mdstorage/domain/dart/dart%E8%AF%AD%E6%B3%95/" class="go-post">阅读全文</a>
+  </div>
 </div>
 
-<div class="post">
-    <a href="/2024/01/12/mdstorage/project/sr/%E4%BA%BA%E6%89%8D%E5%9F%B9%E5%85%BB/">
-        <h2 class="post-title">人才培养</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/12
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="人才培养"><a href="#人才培养" class="headerlink" title="人才培养"></a>人才培养</h2><h3 id="1-确定技能需求和职业路径"><a href="#1-确定技能需求和职业路径" class="headerlink" title="1. 确定技能需求和职业路径"></a>1. 确定技能需求和职业路径</h3><h3 id="2-制定个性化培训计划"><a href="#2-制定个性化培训计划" class="headerlink" title="2. 制定个性化培训计划"></a>2. 制定个性化培训计划</h3><h3 id="3-实践和应用"><a href="#3-实践和应用" class="headerlink" title="3. 实践和应用"></a>3. 实践和应用</h3><h3 id="4-提供反馈和指导"><a href="#4-提供反馈和指导" class="headerlink" title="4. 提供反馈和指导"></a>4. 提供反馈和指导</h3><h3 id="5-建立知识共享文化"><a href="#5-建立知识共享文化" class="headerlink" title="5. 建立知识共享文化"></a>5. 建立知识共享文化</h3><h3 id="6-鼓励创新和自我提升"><a href="#6-鼓励创新和自我提升" class="headerlink" title="6. 鼓励创新和自我提升"></a>6. 鼓励创新和自我提升</h3><h3 id="7-注重团队合作和沟通"><a href="#7-注重团队合作和沟通" class="headerlink" title="7. 注重团队合作和沟通"></a>7. 注重团队合作和沟通</h3><h3 id="1-增强自我意识和领导力"><a href="#1-增强自我意识和领导力" class="headerlink" title="1. 增强自我意识和领导力"></a>1. 增强自我意识和领导力</h3><h3 id="2-学习有效的沟通技巧"><a href="#2-学习有效的沟通技巧" class="headerlink" title="2. 学习有效的沟通技巧"></a>2. 学习有效的沟通技巧</h3><h3 id="3-建立有效的培训和发展程序"><a href="#3-建立有效的培训和发展程序" class="headerlink" title="3. 建立有效的培训和发展程序"></a>3. 建立有效的培训和发展程序</h3><h3 id="4-促进学习和成长的文化"><a href="#4-促进学习和成长的文化" class="headerlink" title="4. 促进学习和成长的文化"></a>4. 促进学习和成长的文化</h3><h3 id="5-实践授权和信任"><a href="#5-实践授权和信任" class="headerlink" title="5. 实践授权和信任"></a>5. 实践授权和信任</h3><h3 id="6-拓展视野和网络"><a href="#6-拓展视野和网络" class="headerlink" title="6. 拓展视野和网络"></a>6. 拓展视野和网络</h3><h3 id="7-关注个人发展"><a href="#7-关注个人发展" class="headerlink" title="7. 关注个人发展"></a>7. 关注个人发展</h3>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E4%BA%BA%E6%89%8D%E5%9F%B9%E5%85%BB/" style="color: #ffa2c4">人才培养</a>
-        </span>
-        
-    </div>
-    <a href="/2024/01/12/mdstorage/project/sr/%E4%BA%BA%E6%89%8D%E5%9F%B9%E5%85%BB/" class="go-post">阅读全文</a>
 </div>
 
-<div class="post">
-    <a href="/2024/01/12/mdstorage/project/sr/%E9%A1%B9%E7%9B%AE%E9%94%80%E5%94%AE%E6%94%AF%E6%8C%81/">
-        <h2 class="post-title">项目销售支持.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/1/12
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>市场、研发信息对齐</p>
-<h2 id="销售不明产品定义"><a href="#销售不明产品定义" class="headerlink" title="销售不明产品定义"></a>销售不明产品定义</h2><p>见客户时、销售不清楚产品定义： 加强市场与研发沟通交流，每月有固定会议，规划市场策略</p>
-<h2 id="销售突破（研发如何协助）"><a href="#销售突破（研发如何协助）" class="headerlink" title="销售突破（研发如何协助）"></a>销售突破（研发如何协助）</h2><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>WAF 这个销售场景，研发支持跟长亭研发有劣势，如何补足</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>研发的输出本质上是产品的：时间、质量、成本 三个维度</p>
-<p>寻求必要的各需求方最小集，资源足够的情况下，带着最小集沿着最佳方案实施</p>
-<p>资源不足的情况下，评估竞争对手做到什么程度、级别，我们追上的可能性，有可能性后，沿着最佳方案实施，无可能，换个方向努力</p>
-<h3 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h3><p>研究我方各部人马优势项，研发带着最小的包袱输出产品冲击市场，以获取一定规模业务。</p>
-<p>具体，市场带研发，研发助市场，形成良性循环，研发需要输入： 1. 行业信息 2. 客户真实需要 3. 竞争对手材料。研发需要输出： 1. 场景 2. 亮点</p>
-<p>四两拨千斤，实现销售突破。</p>
-<h3 id="粒度"><a href="#粒度" class="headerlink" title="粒度"></a>粒度</h3><p>以何种粒度实施</p>
-<h2 id="如何有亮点（以脱敏功能为例）"><a href="#如何有亮点（以脱敏功能为例）" class="headerlink" title="如何有亮点（以脱敏功能为例）"></a>如何有亮点（以脱敏功能为例）</h2><h3 id="第一种（适合项目初期找不到销售突破）"><a href="#第一种（适合项目初期找不到销售突破）" class="headerlink" title="第一种（适合项目初期找不到销售突破）"></a>第一种（适合项目初期找不到销售突破）</h3><ul>
-<li>寻找目标客户（是否愿意将数据脱敏从95做到100分）</li>
-<li>研发调研需要哪些材料（如接口API协议格式）</li>
-<li>市场积极寻找对方材料（对方技术等）</li>
-<li>针对性局部性突破到 100 分</li>
-</ul>
-<h3 id="第二种（适合初期实力不够强，有愿意合作的供应商）"><a href="#第二种（适合初期实力不够强，有愿意合作的供应商）" class="headerlink" title="第二种（适合初期实力不够强，有愿意合作的供应商）"></a>第二种（适合初期实力不够强，有愿意合作的供应商）</h3><ul>
-<li>石犀各组件化整为零，单项突破，以小博大</li>
-<li>与合作供应商结合，汲取供应商资源</li>
-<li>渐渐整合资源、自立山头</li>
-</ul>
-<h2 id="销售策略"><a href="#销售策略" class="headerlink" title="销售策略"></a>销售策略</h2><h3 id="阶段一：-集中测试"><a href="#阶段一：-集中测试" class="headerlink" title="阶段一： 集中测试"></a>阶段一： 集中测试</h3><ul>
-<li><p>5-10 医院 POC 测试项目</p>
-</li>
-<li><p>API治理，业务安全发布</p>
-</li>
-<li><p>正在测试：2家</p>
-</li>
-<li><p>本月部署：3家</p>
-</li>
-<li><p>测试方面的的支持</p>
-</li>
-<li><p>形成有效的案例</p>
-</li>
-</ul>
-<h3 id="阶段二：行业爆破"><a href="#阶段二：行业爆破" class="headerlink" title="阶段二：行业爆破"></a>阶段二：行业爆破</h3><ul>
-<li>医疗行业：行业研讨会</li>
-<li>扩大行业品牌影响力</li>
-<li>促进项目成交落地</li>
-</ul>
-<h3 id="阶段三：-建立优势"><a href="#阶段三：-建立优势" class="headerlink" title="阶段三： 建立优势"></a>阶段三： 建立优势</h3><ul>
-<li>输出行业解决方案机案例</li>
-<li>产品形成行业优势</li>
-</ul>
-<h3 id="阶段四：-复制"><a href="#阶段四：-复制" class="headerlink" title="阶段四： 复制"></a>阶段四： 复制</h3><ul>
-<li>提高行业覆盖率</li>
-<li>寻求签单率</li>
-</ul>
-<h2 id="销售团队文化"><a href="#销售团队文化" class="headerlink" title="销售团队文化"></a>销售团队文化</h2><p>狼性</p>
-<p>学习型</p>
-<p>流程、标准</p>
-<p>结果</p>
-<h2 id="销售组织协同需求"><a href="#销售组织协同需求" class="headerlink" title="销售组织协同需求"></a>销售组织协同需求</h2><ul>
-<li>刘总：参与到实习团队的销售工作中来，月度总结会</li>
-<li>研发、技术：建立沟通机制；每周通过售前反馈市场信息；每月一次交流会</li>
-<li>售前：绩效引导</li>
-<li>众云：客户需求、进展信息胡同；合作BD客户</li>
-</ul>
-<h2 id="问题和场景"><a href="#问题和场景" class="headerlink" title="问题和场景"></a>问题和场景</h2><h3 id="医院已有供应商、直接进不太现实"><a href="#医院已有供应商、直接进不太现实" class="headerlink" title="医院已有供应商、直接进不太现实"></a>医院已有供应商、直接进不太现实</h3><ul>
-<li>要找到门当户对的供应商，大供应商不会和小团队合作，看不上</li>
-<li>从医院客户提场景，倒逼供应商与我们结合</li>
-</ul>
-<h2 id="重点客户项目"><a href="#重点客户项目" class="headerlink" title="重点客户项目"></a>重点客户项目</h2><h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><ul>
-<li>政务云</li>
-<li>数字政府</li>
-<li>智慧城市</li>
-<li>城市安全大脑</li>
-<li>数据安全中台</li>
-<li>云资源池安全平台</li>
-<li>数据要素安全管理平台</li>
-</ul>
-<h3 id="组织"><a href="#组织" class="headerlink" title="组织"></a>组织</h3><p>公检发、政法委、GA</p>
-<p>数字政府： 网信办&#x2F;司法、应急、消防</p>
-<p>补充党政口：人设、组织、档案、纪委</p>
-<p>三大运营商、设计院</p>
-<p>大国企：南方电网、传媒、大交通、铁投、城投</p>
-<p>烟草、税务、电力、运营商、税务、边检、海关</p>
-<p>股份制、城商行、农商行</p>
-<p>消费金融，融资机构等反金融行业</p>
-<p>渠道合作伙伴</p>
+  </header>
 
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E9%94%80%E5%94%AE/" style="color: #ffa2c4">销售</a>
-        </span>
-        
-    </div>
-    <a href="/2024/01/12/mdstorage/project/sr/%E9%A1%B9%E7%9B%AE%E9%94%80%E5%94%AE%E6%94%AF%E6%8C%81/" class="go-post">阅读全文</a>
-</div>
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
 
 
-        <div class="page-current">
-    
-    <a class="page-num" href="/page/17/">
-        <i class="fa-solid fa-caret-left fa-fw"></i>
-    </a>
-    <a class="page-num" href="/">1</a>
-    <span class="page-omit">...</span>
-    
-    <span class="current">18</span>
-    
-    <a class="page-num" href="/page/19">
-        19
-    </a>
+  <div class="row mx-auto index-card">
     
     
-    <a class="page-num" href="/page/20">
-        20
-    </a>
-    
-    
-    <span class="page-omit">...</span>
-    <a class="page-num" href="/page/28">28</a>
-    
-    
-    <a class="page-num" href="/page/19/">
-        <i class="fa-solid fa-caret-right fa-fw"></i>
-    </a>
-    
-</div>
-
-    </div>
-    
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">xiaoy</div>
-        <div class="description">
-            <p>xiaoy<br>…</p>
-
-        </div>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a href="https://abrance.github.io">Argvchs</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
+        <a href="/2024/01/19/mdstorage/domain/%E6%96%87%E6%A1%A3/ppt%E5%86%99%E4%BD%9C/" target="_self">
+          ppt写作.md
+        </a>
+      </h2>
 
-    </div>
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/19/mdstorage/domain/%E6%96%87%E6%A1%A3/ppt%E5%86%99%E4%BD%9C/" target="_self">
         <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
+          PPT 模板公司通用工作汇报模板PPT  思路 独特性 模板独特 思路独特 观点独特   完整性- 结构完整  - 全局整体描述  - 局部细节把控- 内容完整 方案完整 生命周期各个环节 各个执行流程 各个阶段 所需资源     一致性 设计与真实一致 方案与执行一致 结构与设计一致 自己在时间周期前后一致   TODO  原则
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
+      </a>
 
-        </div>
+      <div class="index-btm post-metas">
         
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-19 00:00" pubdate>
+              2024-01-19
+            </time>
+          </div>
         
-    </div>
-    <script src="/js/main.js"></script>
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
     
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ppt/">#ppt</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/19/mdstorage/project/sr/%E4%BF%A1%E5%88%9B%E8%AE%A4%E8%AF%81/" target="_self">
+          信创认证.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/19/mdstorage/project/sr/%E4%BF%A1%E5%88%9B%E8%AE%A4%E8%AF%81/" target="_self">
+        <div>
+          信创认证资源1234567machine:10.8.10.2067!-r&#123;5HU[bvm:192.168.122.24root/123.com/456  devkit 软件安装部署安装依赖系统工具安装 devkit浏览器工作模式安装包下载地址 安装指导文档 修改 ip portnginx 修改123# /opt/ 作为安装目录# 找到 nginx 目录 的 devkit_xxx.conf
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-19 00:00" pubdate>
+              2024-01-19
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BF%A1%E5%88%9B/">#信创</a>
+            
+              <a href="/tags/devkit/">#devkit</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/19/mdstorage/resource/vpn/zerotier/" target="_self">
+          zerotier.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/19/mdstorage/resource/vpn/zerotier/" target="_self">
+        <div>
+          zerotier 安装使用（此方案有问题，废弃）zerotier 网络建立安装Truenas SCALE平台12curl -s https://install.zerotier.com | sudo bashsudo chmod +x /bin/apt* /bin/dpkg  使用
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-19 00:00" pubdate>
+              2024-01-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/resource/" class="category-chain-item">resource</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/resource/vpn/" class="category-chain-item">vpn</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/zerotier/">#zerotier</a>
+            
+              <a href="/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/">#软路由</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/18/mdstorage/domain/linux/Linux%E9%98%B2%E7%81%AB%E5%A2%99/" target="_self">
+          Linux防火墙.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/18/mdstorage/domain/linux/Linux%E9%98%B2%E7%81%AB%E5%A2%99/" target="_self">
+        <div>
+          场景用例禁止公网访问、不限制局域网访问和进流量1234567891011# 用例局域网为 192.168.122.0/24# 直接用 sudo iptables -P OUTPUT DROP 会把被访问连接也断开[root@localhost ~]# sudo iptables -P INPUT ACCEPT[root@localhost ~]# sudo iptables -P FORWARD
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-18 00:00" pubdate>
+              2024-01-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/firewall/">#firewall</a>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+              <a href="/tags/iptables/">#iptables</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/18/mdstorage/domain/linux/QemuKVM%E5%85%B1%E4%BA%AB%E5%89%AA%E8%B4%B4%E6%9D%BF/" target="_self">
+          QemuKVM共享剪贴板.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/18/mdstorage/domain/linux/QemuKVM%E5%85%B1%E4%BA%AB%E5%89%AA%E8%B4%B4%E6%9D%BF/" target="_self">
+        <div>
+          QEMU&#x2F;KVM 安装Windows虚拟机 打开virt-manager File -&gt; Add connection… New Virtual Machine - Local install media - Choose ISO,  type: Generic or unknown OS. Usage is not recommended. - 4C&#x2F;8G&#x2F;1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-18 00:00" pubdate>
+              2024-01-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/VM/">#VM</a>
+            
+              <a href="/tags/QEMU/">#QEMU</a>
+            
+              <a href="/tags/KVM/">#KVM</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/18/mdstorage/domain/linux/Remmina/" target="_self">
+          Remmina
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/18/mdstorage/domain/linux/Remmina/" target="_self">
+        <div>
+          Remmina概述介绍链接 特点： Linux 中功能较丰富的 rdp 客户端 安装1sudo apt-get install -y remmina remmina-plugin-*  实用功能动态分辨率更新
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-18 00:00" pubdate>
+              2024-01-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/rdp-client/">#rdp_client</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/18/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/QemuKVM%E5%85%B1%E4%BA%AB%E5%89%AA%E8%B4%B4%E6%9D%BF/" target="_self">
+          QemuKVM共享剪贴板.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/18/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/QemuKVM%E5%85%B1%E4%BA%AB%E5%89%AA%E8%B4%B4%E6%9D%BF/" target="_self">
+        <div>
+          QEMU&#x2F;KVM 安装Windows虚拟机 打开virt-manager File -&gt; Add connection… New Virtual Machine - Local install media - Choose ISO,  type: Generic or unknown OS. Usage is not recommended. - 4C&#x2F;8G&#x2F;1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-18 00:00" pubdate>
+              2024-01-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/" class="category-chain-item">虚拟化</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/VM/">#VM</a>
+            
+              <a href="/tags/QEMU/">#QEMU</a>
+            
+              <a href="/tags/KVM/">#KVM</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/15/mdstorage/domain/dart/dart%E8%AF%AD%E6%B3%95/" target="_self">
+          dart语法.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/15/mdstorage/domain/dart/dart%E8%AF%AD%E6%B3%95/" target="_self">
+        <div>
+          类成员变量赋值123456789class MyClass &#123;  final Color color;  MyClass(this.color);   // 在 Dart 中，MyClass(this.color); 这种语法直接将构造函数的参数 color 赋值给类的成员变量 color。这是 Dart 语言的特性，用于简化代码，避免显式地写出 this.color = color;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-15 00:00" pubdate>
+              2024-01-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/dart/" class="category-chain-item">dart</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/dart/">#dart</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/12/mdstorage/domain/golang/golang%E5%AE%89%E8%A3%85/" target="_self">
+          golang安装.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/mdstorage/domain/golang/golang%E5%AE%89%E8%A3%85/" target="_self">
+        <div>
+          golang 安装12345678910111213141516171819202122232425262728293031323334353637#!/bin/bashset -euxcd $(dirname $0) || exit 1GO_VERSION=1.22.3GO_INSTALL_DIR=/opt/goGO_ROOT=$&#123;GO_INSTALL_DIR&#125;/$&#123
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-12 00:00" pubdate>
+              2024-01-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/golang/" class="category-chain-item">golang</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/golang/">#golang</a>
+            
+              <a href="/tags/%E5%AE%89%E8%A3%85/">#安装</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/12/mdstorage/project/sr/%E4%BA%BA%E6%89%8D%E5%9F%B9%E5%85%BB/" target="_self">
+          人才培养
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/mdstorage/project/sr/%E4%BA%BA%E6%89%8D%E5%9F%B9%E5%85%BB/" target="_self">
+        <div>
+          人才培养1. 确定技能需求和职业路径2. 制定个性化培训计划3. 实践和应用4. 提供反馈和指导5. 建立知识共享文化6. 鼓励创新和自我提升7. 注重团队合作和沟通1. 增强自我意识和领导力2. 学习有效的沟通技巧3. 建立有效的培训和发展程序4. 促进学习和成长的文化5. 实践授权和信任6. 拓展视野和网络7. 关注个人发展
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-12 00:00" pubdate>
+              2024-01-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BA%BA%E6%89%8D%E5%9F%B9%E5%85%BB/">#人才培养</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/17/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/#board">16</a><a class="page-number" href="/page/17/#board">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/#board">19</a><a class="page-number" href="/page/20/#board">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/19/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

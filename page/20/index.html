@@ -1,1423 +1,904 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Xiaoy">
+<meta property="og:url" content="https://abrance.github.io/page/20/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
 
 
-<script src="/js/lib/home.js"></script>
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
+
+
 <body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
+  
 
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/background.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>Xiaoy</h1>
-                <h3>xiaoy blog</h3>
-                <h5></h5>
-            </div>
-        </span>
-    </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
+  <header>
+    
 
-<div class="post">
-    <a href="/2023/12/28/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/MDNS/">
-        <h2 class="post-title">MDNS.md</h2>
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
     </a>
-    <div class="category-and-date">
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
             </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/12/28
-        </span>
+          </li>
+          
         
         
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h4 id="简短介绍"><a href="#简短介绍" class="headerlink" title="简短介绍"></a>简短介绍</h4><p>本文将深入探讨MDNS（Multicast DNS）技术，它是一种在小型网络上实现设备名称解析到IP地址的机制。本文的目的是为读者提供一个全面的MDNS知识框架，包括其工作原理、实际应用和最佳实践。</p>
-<h4 id="主题和目的概述"><a href="#主题和目的概述" class="headerlink" title="主题和目的概述"></a>主题和目的概述</h4><p>我们将首先概述MDNS的基本概念，然后详细讲解其背后的技术原理，以及如何在实际环境中应用MDNS。最后，本文将提供一些最佳实践和性能优化的建议。</p>
-<h3 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h3><h4 id="相关技术的涉及的算法历史演进概述"><a href="#相关技术的涉及的算法历史演进概述" class="headerlink" title="相关技术的涉及的算法历史演进概述"></a>相关技术的涉及的算法历史演进概述</h4><p>MDNS起源于传统的DNS（Domain Name System），用于解决小型网络（如家庭或小型办公室）中设备发现和名称解析的需求。与传统DNS不同，MDNS不依赖于中央DNS服务器，而是使用多播查询在本地网络上进行通信。</p>
-<h4 id="适用场景概述"><a href="#适用场景概述" class="headerlink" title="适用场景概述"></a>适用场景概述</h4><p>MDNS适用于设备数量相对较少、缺乏专用DNS服务器的网络环境。它在IoT设备、家庭自动化、小型办公网络中尤为常见。</p>
-<h3 id="详细内容"><a href="#详细内容" class="headerlink" title="详细内容"></a>详细内容</h3><h4 id="核心技术概念的详细解释"><a href="#核心技术概念的详细解释" class="headerlink" title="核心技术概念的详细解释"></a>核心技术概念的详细解释</h4><p>MDNS利用UDP协议在224.0.0.251地址和5353端口上进行多播。当一个设备需要解析另一个设备的名称时，它会在局域网上发送一个多播查询。所有网络上的设备都会监听这个查询，如果某个设备识别出查询中的名称与其相匹配，它会响应其IP地址。</p>
-<h4 id="逐步指南或操作步骤"><a href="#逐步指南或操作步骤" class="headerlink" title="逐步指南或操作步骤"></a>逐步指南或操作步骤</h4><ul>
-<li><strong>步骤1</strong>：在网络上的设备启动时，它会通过MDNS协议广播自己的名字。</li>
-<li><strong>步骤2</strong>：当需要找到特定设备的IP地址时，发送一个多播请求。</li>
-<li><strong>步骤3</strong>：接收到请求的设备检查名称是否匹配，如果匹配则响应其IP地址。</li>
-</ul>
-<h3 id="实际示例"><a href="#实际示例" class="headerlink" title="实际示例"></a>实际示例</h3><h4 id="代码示例或案例研究"><a href="#代码示例或案例研究" class="headerlink" title="代码示例或案例研究"></a>代码示例或案例研究</h4><p>以Python编写的简单MDNS查询示例：</p>
-<pre><code class="python"># 伪代码，用于演示MDNS查询
-import mdns
-
-# 查询网络上的设备名称
-response = mdns.query(&#39;device-name.local&#39;)
-print(response)
-</code></pre>
-<h4 id="实际应用场景描述"><a href="#实际应用场景描述" class="headerlink" title="实际应用场景描述"></a>实际应用场景描述</h4><p>在家庭自动化系统中，MDNS可用于自动发现和连接智能家居设备，如智能灯泡或温控器。</p>
-<h3 id="最佳实践和建议"><a href="#最佳实践和建议" class="headerlink" title="最佳实践和建议"></a>最佳实践和建议</h3><h4 id="实用技巧和技术最佳实践"><a href="#实用技巧和技术最佳实践" class="headerlink" title="实用技巧和技术最佳实践"></a>实用技巧和技术最佳实践</h4><ul>
-<li>保持设备名称的唯一性和一致性。</li>
-<li>在网络负载较重时，优化MDNS的查询频率。</li>
-</ul>
-<h4 id="性能优化建议"><a href="#性能优化建议" class="headerlink" title="性能优化建议"></a>性能优化建议</h4><ul>
-<li>使用缓存机制减少网络上的查询次数。</li>
-<li>在适当的情况下，考虑使用静态IP地址以减少对MDNS的依赖。</li>
-</ul>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><h4 id="文章的主要观点总结"><a href="#文章的主要观点总结" class="headerlink" title="文章的主要观点总结"></a>文章的主要观点总结</h4><p>MDNS是一种适用于小型网络的有效设备发现和名称解析技术。通过广播和监听多播查询，它允许设备在没有中央DNS服务器的情况下彼此发现和交互。</p>
-<h4 id="对读者的最后建议"><a href="#对读者的最后建议" class="headerlink" title="对读者的最后建议"></a>对读者的最后建议</h4><p>掌握MDNS的工作原理和最佳实践对于管理小型网络环境非常有用。它不仅简化了设备配置，还为资源有限</p>
-<p>的环境提供了有效的解决方案。</p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li>[1] “MDNS Explained,” [Online]. Available: <a target="_blank" rel="noopener" href="https://www.example-mdns.com/">https://www.example-mdns.com</a></li>
-<li>[2] “Networking Basics: MDNS,” [Online]. Available: <a target="_blank" rel="noopener" href="https://www.networkingbasics.com/mdns">https://www.networkingbasics.com/mdns</a></li>
-<li>[3] Python MDNS Library Documentation, [Online]. Available: <a target="_blank" rel="noopener" href="https://www.python-mdns.org/">https://www.python-mdns.org</a></li>
-<li>[4] “Home Automation using MDNS,” [Online]. Available: <a target="_blank" rel="noopener" href="https://www.homeautomation-mdns.com/">https://www.homeautomation-mdns.com</a></li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/DNS-%E5%A4%9A%E6%92%AD/" style="color: #ff7d73">DNS 多播</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E8%AE%BE%E5%A4%87%E5%8F%91%E7%8E%B0/" style="color: #03a9f4">设备发现</a>
-        </span>
-        
-    </div>
-    <a href="/2023/12/28/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/MDNS/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/">
-        <h2 class="post-title">Makefile指定cpu架构选项.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
             </a>
-        </span>
+          </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/12/27
-        </span>
-        
-        
+      </ul>
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="Makefile-构建，使用环境变量来控制编译选项"><a href="#Makefile-构建，使用环境变量来控制编译选项" class="headerlink" title="Makefile 构建，使用环境变量来控制编译选项"></a>Makefile 构建，使用环境变量来控制编译选项</h3><ol>
-<li><strong>设置环境变量</strong>：在命令行上或在用户的环境配置文件中设置环境变量，如 <code>ARCH=arm</code> 或 <code>ARCH=x86</code>。</li>
-<li><strong>在 Makefile 中使用条件语句</strong>：Makefile 使用 <code>ifeq</code>、<code>ifdef</code> 等条件语句根据环境变量的值选择不同的编译器选项、链接器选项和其他设置。</li>
-</ol>
-<h5 id="ARCH-可选值"><a href="#ARCH-可选值" class="headerlink" title="ARCH 可选值"></a>ARCH 可选值</h5><ol>
-<li><strong>aarch64</strong>：代表 ARM 架构的 64 位版本（ARMv8-A 和更高版本）。</li>
-<li><strong>x86-64</strong>（或 <strong>amd64</strong>）：代表 Intel 和 AMD 的 64 位 x86 架构。</li>
-<li><strong>risc-v</strong>：指的是开源的 RISC-V 架构。</li>
-<li><strong>mips</strong>：代表 MIPS 架构，一种较老的 RISC 架构，常用于嵌入式系统。</li>
-<li><strong>arm</strong> 或 <strong>armv7</strong>：用于 ARM 架构的 32 位版本（如 ARMv7）。</li>
-<li><strong>powerpc</strong> 或 <strong>ppc</strong>：代表 PowerPC 架构，一种由 IBM、摩托罗拉和苹果开发的 RISC 架构。</li>
-<li><strong>sparc</strong>：代表由 Sun Microsystems 开发的 SPARC 架构。</li>
-<li><strong>i386</strong> 或 <strong>x86</strong>：指的是 Intel 和 AMD 的 32 位 x86 架构。</li>
-<li><strong>s390x</strong>：用于 IBM 的 System z 大型机架构。</li>
-<li><strong>ia64</strong>：代表 Intel 的 Itanium 架构，这是一种不同于 x86 的 64 位架构。</li>
-</ol>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><pre><code class="makefile"># 默认的编译器
-CC=gcc
-# 默认的编译器标志
-CFLAGS=-Wall
+  </div>
+</nav>
 
-# 根据 ARCH 环境变量设置编译器和特定的编译器标志
-ifeq ($(ARCH),aarch64)
-    CC=arm-linux-gnueabihf-gcc
-    CFLAGS+= -march=arm
-else ifeq ($(ARCH),x86-64)
-    CC=gcc
-    CFLAGS+= -march=x86-64
-endif
+  
 
-# 目标可执行文件名
-TARGET=myapp
-
-# 构建目标
-all: $(TARGET)
-
-$(TARGET): myapp.c
-    $(CC) $(CFLAGS) -o $(TARGET) myapp.c
-
-# 清理构建文件
-clean:
-    rm -f $(TARGET)
-
-.PHONY: all clean
-</code></pre>
-<pre><code class="makefile"># 默认的目标平台
-ARCH ?= x86-64
-
-# Go 编译器
-GO=go
-
-# 根据 ARCH 环境变量设置 GOARCH
-ifeq ($(ARCH),aarch64)
-    GOARCH=arm64
-else ifeq ($(ARCH),x86-64)
-    GOARCH=amd64
-else
-    $(error Unknown or unsupported architecture)
-endif
-
-# 目标可执行文件名
-TARGET=myapp
-
-# 源代码文件
-SRC=$(wildcard *.go)
-
-# 构建目标
-all: $(TARGET)
-
-$(TARGET): $(SRC)
-    GOARCH=$(GOARCH) $(GO) build -o $(TARGET) $(SRC)
-
-# 清理构建文件
-clean:
-    rm -f $(TARGET)
-
-.PHONY: all clean
-</code></pre>
-
-            
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
+          
         </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/make/" style="color: #ff7d73">make</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/Makefile/" style="color: #00bcd4">Makefile</a>
-        </span>
-        
-    </div>
-    <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" class="go-post">阅读全文</a>
+  </div>
 </div>
 
-<div class="post">
-    <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/">
-        <h2 class="post-title">Makefile的函数使用.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/12/27
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="wildcard"><a href="#wildcard" class="headerlink" title="wildcard"></a>wildcard</h2><p>使通配符生效场景</p>
-<p>在Makefile规则中，通配符会被自动展开。但在变量的定义和函数引用时，通配符将失效。</p>
-<p>$(wildcard &lt;PATTERN…&gt;)</p>
-<h2 id="patsubst"><a href="#patsubst" class="headerlink" title="patsubst"></a>patsubst</h2><p>patsubst函数返回被替换过后的字符串。</p>
-<p>$(patsubst  <pattern>,<replacement>,<text>)</p>
-<h2 id="define"><a href="#define" class="headerlink" title="define"></a>define</h2><pre><code class="makefile">define fun1
-    @echo &quot;My name is $(0)&quot;
-endef
-define fun2
-    @echo &quot;My name is $(0), param is $(1)&quot;
-    @echo &quot;My name is $(0)&quot;
-endef
-
-define fun2
-    @echo &quot;My name is $(0), param is $(1)&quot;
-enddef
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/make/" style="color: #ff7d73">make</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/Makefile/" style="color: #00a596">Makefile</a>
-        </span>
-        
-    </div>
-    <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" class="go-post">阅读全文</a>
 </div>
 
-<div class="post">
-    <a href="/2023/12/26/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E3%80%81%E5%BC%95%E6%93%8E%E3%80%81%E6%8F%92%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%A2%B3%E7%90%86/">
-        <h2 class="post-title">总控、引擎、插件软件架构梳理.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/12/26
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="现有架构梳理"><a href="#现有架构梳理" class="headerlink" title="现有架构梳理"></a>现有架构梳理</h2><h2 id="核心系统组件、应用、插件构想"><a href="#核心系统组件、应用、插件构想" class="headerlink" title="核心系统组件、应用、插件构想"></a>核心系统组件、应用、插件构想</h2><h3 id="核心系统"><a href="#核心系统" class="headerlink" title="核心系统"></a>核心系统</h3><p>总控、流量引擎</p>
-<h3 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h3><p>核心系统中的核心应用</p>
-<p>属性： 核心组件的启动、运行依赖关系、通信链路形成有向无环图结构，核心组件之间逻辑自洽，向上提供的接口已在内部达成逻辑自洽</p>
-<p>依赖：操作系统底层资源、其他核心组件</p>
-<h4 id="系统核心组件依赖关系和通信链路示意图"><a href="#系统核心组件依赖关系和通信链路示意图" class="headerlink" title="系统核心组件依赖关系和通信链路示意图"></a>系统核心组件依赖关系和通信链路示意图</h4><pre><code class="mermaid">graph TB
-    subgraph kernel[系统核心组件]
-        comp2[Comp2]
-        comp1[Comp1]
-        comp3[Comp3]
-        comp4[Comp4]
-        comp5[Comp5]
-        
-        comp3 --&gt; comp1		
-        comp5 --&gt; comp1 &amp; comp2 &amp; comp3 &amp; comp4																
-    end	
-</code></pre>
-<h3 id="核心系统功能"><a href="#核心系统功能" class="headerlink" title="核心系统功能"></a>核心系统功能</h3><h4 id="核心系统功能-1"><a href="#核心系统功能-1" class="headerlink" title="核心系统功能"></a>核心系统功能</h4><p>最核心系统为流量引擎，功能为反向代理。其中的系统组件重要且紧急，如果其中出现故障属于一级紧急事故</p>
-<p>核心系统旁路：目前延伸出可视化旁路，它同样重要，但是属于次紧急的链路。</p>
-<p>提供插件应用接口，完成插件注册、绑定、插件之间通信问题</p>
-<p>为普通应用提供接口，提供核心系统功能的延伸</p>
-<h4 id="核心系统组件职责"><a href="#核心系统组件职责" class="headerlink" title="核心系统组件职责"></a>核心系统组件职责</h4><p>流量引擎侧: 完成反向代理功能，提供流量引擎侧必须提供的信息</p>
-<p>总控侧：完成引擎配置下发、建立事件总线，提供总控侧必须提供的信息。</p>
-<h4 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h4><p>核心系统组件异常推荐设置管理员通知机制，意味着紧急事件发生</p>
-<p>核心系统旁路可设置较松的通知</p>
-<p>其他不重要错误信息可只显示于日志文件中，日志文件可支持导出</p>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>应用是在软件系统上运行的程序，它们使用系统提供的服务和接口完成特定的功能或任务。应用通常是用户与系统交互的主要方式。</p>
-<h4 id="普通应用功能"><a href="#普通应用功能" class="headerlink" title="普通应用功能"></a>普通应用功能</h4><p>属性： 应用依赖关系形成有向无环图结构，应用之间逻辑自洽，向上提供的接口已在内部达成逻辑自洽</p>
-<p>依赖：操作系统资源、通常独立于其他应用（可能依赖其他应用和核心组件）</p>
-<h4 id="依赖关系和通信链路示意图"><a href="#依赖关系和通信链路示意图" class="headerlink" title="依赖关系和通信链路示意图"></a>依赖关系和通信链路示意图</h4><pre><code class="mermaid">graph TB
-    subgraph kernel[系统核心组件层]
-        comp2[Comp2]
-        comp1[Comp1]
-        comp3[Interface==Comp3]
-        comp4[Comp4]
-        comp5[Interface==Comp5]
-        
-        comp3 --&gt; comp1
-        comp5 --&gt; comp1 &amp; comp2 &amp; comp3 &amp; comp4
-    end
-    
-    subgraph app[应用层]
-        app1[APP1]
-        app2[APP2]
-        app3[APP3]
-        
-        app3 ----&gt; app1 &amp; app2 
-        app1 --&gt; app2						
-            end	
-    
-    app3 --&gt; comp5
-    app1 --&gt; comp3
-    
-    linkStyle 8,9 stroke:red,stroke-width:5px;				
-                    
-    
-</code></pre>
-<h4 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h4><p>应用有自己的鉴权机制，因为应用可能被其他应用调用，可以简单实现，借鉴 Linux 用户权限机制。</p>
-<h3 id="应用关于核心系统组件接口使用方式"><a href="#应用关于核心系统组件接口使用方式" class="headerlink" title="应用关于核心系统组件接口使用方式"></a>应用关于核心系统组件接口使用方式</h3><p>应遵循就进原则，每个应用应明确与之最近的核心组件接口，并严格执行，不可连接越过最近的组件，连接更远的组件。</p>
-<p>这个限制通过设置核心系统组件接口必须通过本地回环网络访问</p>
-<p>如果本机不存在核心系统组件但是想要获取此数据，须安装一个核心系统组件的 agent,并在 agent 做了准入处理。</p>
-<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>插件是软件的组件（也可以为组件），可以在不改变核心系统代码的情况下，为系统增加新的功能或扩展现有功能。它们通常是可选的，按需加载，并与核心系统通过定义好的接口交互。</p>
-<h4 id="权限-1"><a href="#权限-1" class="headerlink" title="权限"></a>权限</h4><p>插件本身没有权限概念，因为它依附于核心系统，而核心系统脱离了权限概念。</p>
-<p>插件可以在通过某些普通应用提供权限管理，如 dashboard 等管理界面，这些应用已获准接入了核心系统应用接口，应该在这些应用中做好鉴权体系。</p>
-<h3 id="应用与插件区别"><a href="#应用与插件区别" class="headerlink" title="应用与插件区别"></a>应用与插件区别</h3><h4 id="1-功能范围和目的"><a href="#1-功能范围和目的" class="headerlink" title="1. 功能范围和目的"></a>1. 功能范围和目的</h4><ul>
-<li><strong>插件</strong>：通常设计为扩展或增强主程序的特定功能。它们是为了增加额外的核心系统的特性或工具而设计的，不是独立运行的程序。</li>
-<li><strong>应用</strong>：是独立的程序，用于执行完整的任务或工作流程。应用通常具有更广泛和独立的功能范围。</li>
-</ul>
-<h4 id="2-依赖性"><a href="#2-依赖性" class="headerlink" title="2. 依赖性"></a>2. 依赖性</h4><ul>
-<li><strong>插件</strong>：依赖于核心系统，不能独立于核心存在。它们是核心系统功能的补充。</li>
-<li><strong>应用</strong>：通常独立于任何其他应用。应用提供一组完整的接口或功能集，可能提供独立界面。</li>
-</ul>
-<h4 id="3-交互性和集成"><a href="#3-交互性和集成" class="headerlink" title="3. 交互性和集成"></a>3. 交互性和集成</h4><ul>
-<li><strong>插件</strong>：紧密集成于核心系统，通过预定义的接口与核心系统组件交互。</li>
-<li><strong>应用</strong>：可能与系统的其他部分交互，但不一定需要集成到另一个特定的程序中。</li>
-</ul>
-<h4 id="4-用户控制和定制"><a href="#4-用户控制和定制" class="headerlink" title="4. 用户控制和定制"></a>4. 用户控制和定制</h4><ul>
-<li><strong>插件</strong>：提供给用户更多的定制选项来修改或增强核心系统的行为。</li>
-<li><strong>应用</strong>：通常作为完整的解决方案提供，用户定制性相对较少。</li>
-</ul>
-<h4 id="5-安装和维护"><a href="#5-安装和维护" class="headerlink" title="5. 安装和维护"></a>5. 安装和维护</h4><ul>
-<li><strong>插件</strong>：作为核心系统的一部分进行安装和更新，其生命周期通常与核心系统相关联。</li>
-<li><strong>应用</strong>：独立安装和更新，拥有自己的生命周期管理。</li>
-</ul>
-<h4 id="6-资源使用和性能影响"><a href="#6-资源使用和性能影响" class="headerlink" title="6. 资源使用和性能影响"></a>6. 资源使用和性能影响</h4><ul>
-<li><strong>插件</strong>：由于与核心系统紧密集成，其对系统资源的使用和性能影响需要更加小心处理，以免影响核心系统。</li>
-<li><strong>应用</strong>：作为独立实体，负责自己的资源管理和性能优化。</li>
-</ul>
-<h4 id="7-安全性和权限"><a href="#7-安全性和权限" class="headerlink" title="7. 安全性和权限"></a>7. 安全性和权限</h4><ul>
-<li><strong>插件</strong>：其安全性和权限直接关联于核心系统，通常受到更严格的限制和控制。</li>
-<li><strong>应用</strong>：需要独立管理自己的安全性和用户权限。</li>
-</ul>
-<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>核心组件安全性由操作系统保证，操作系统是经过改造过的，用户不知道操作系统账户密码，不能简单进入到系统终端</p>
-<p>插件目前是由可信任的插件开发者完成，通过统一的发布平台发布，并在发布和导入插件包阶段做了相应校验，不存在安全问题</p>
-<p>应用同插件一样</p>
-<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>暂无分析</p>
+  </header>
 
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E6%9E%B6%E6%9E%84/" style="color: #00a596">架构</a>
-        </span>
-        
-    </div>
-    <a href="/2023/12/26/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E3%80%81%E5%BC%95%E6%93%8E%E3%80%81%E6%8F%92%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%A2%B3%E7%90%86/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/12/26/mdstorage/domain/%E6%9E%B6%E6%9E%84/4+1%E6%9E%B6%E6%9E%84%E8%A7%86%E8%A7%92%E6%A8%A1%E5%9E%8B/">
-        <h2 class="post-title">4+1架构视角模型.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/12/26
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>“4+1”架构视角模型是一种框架，用于描述复杂软件系统的架构。由Philippe Kruchten在1995年提出，这个模型旨在满足不同利益相关者的需求，并提供全面的系统视图。下面详细介绍这个模型的五个部分：</p>
-<h3 id="1-逻辑视图（Logical-View）"><a href="#1-逻辑视图（Logical-View）" class="headerlink" title="1. 逻辑视图（Logical View）"></a>1. 逻辑视图（Logical View）</h3><ul>
-<li><strong>目的</strong>：描述系统的功能性需求，即系统“做什么”。</li>
-<li><strong>内容</strong>：包括系统的关键功能模块、类或对象，以及它们之间的关系。</li>
-<li><strong>重点</strong>：系统的业务功能和对象模型。</li>
-<li><strong>面向的利益相关者</strong>：软件开发者、系统分析师。</li>
-<li><strong>示例</strong>：类图、对象图。</li>
-</ul>
-<h3 id="2-开发视图（Development-View）"><a href="#2-开发视图（Development-View）" class="headerlink" title="2. 开发视图（Development View）"></a>2. 开发视图（Development View）</h3><ul>
-<li><strong>目的</strong>：描述软件模块的组织和静态结构。</li>
-<li><strong>内容</strong>：系统的软件模块、包、子系统的组织方式，以及它们在开发环境中的布局。</li>
-<li><strong>重点</strong>：软件管理、源代码组织、重用、维护性。</li>
-<li><strong>面向的利益相关者</strong>：程序员、开发管理者。</li>
-<li><strong>示例</strong>：源代码目录结构、开发环境配置。</li>
-</ul>
-<h3 id="3-物理视图（Physical-View）"><a href="#3-物理视图（Physical-View）" class="headerlink" title="3. 物理视图（Physical View）"></a>3. 物理视图（Physical View）</h3><ul>
-<li><strong>目的</strong>：描述系统的物理部署和分布。</li>
-<li><strong>内容</strong>：物理节点（如服务器、计算机、网络设备）的布局，以及软件组件如何映射到这些节点上。</li>
-<li><strong>重点</strong>：系统的扩展性、性能、安全性、系统集成。</li>
-<li><strong>面向的利益相关者</strong>：系统工程师、网络管理员。</li>
-<li><strong>示例</strong>：部署图、网络拓扑图。</li>
-</ul>
-<h3 id="4-过程视图（Process-View）"><a href="#4-过程视图（Process-View）" class="headerlink" title="4. 过程视图（Process View）"></a>4. 过程视图（Process View）</h3><ul>
-<li><strong>目的</strong>：展示系统的运行时行为。</li>
-<li><strong>内容</strong>：进程、线程的组织和交互，以及系统运行时的动态。</li>
-<li><strong>重点</strong>：并发、分布式处理、系统的运行时性能和容错性。</li>
-<li><strong>面向的利益相关者</strong>：系统集成者、性能测试工程师。</li>
-<li><strong>示例</strong>：进程图、运行时交互图。</li>
-</ul>
-<h3 id="5-场景（Scenarios）-用例视图（Use-Case-View）"><a href="#5-场景（Scenarios）-用例视图（Use-Case-View）" class="headerlink" title="5. 场景（Scenarios）&#x2F;用例视图（Use Case View）"></a>5. 场景（Scenarios）&#x2F;用例视图（Use Case View）</h3><ul>
-<li><strong>目的</strong>：通过具体的用例或场景来验证其他四个视图。</li>
-<li><strong>内容</strong>：代表用户交互或系统事件的一系列用例或故事。</li>
-<li><strong>重点</strong>：系统的整体功能性和非功能性需求。</li>
-<li><strong>面向的利益相关者</strong>：最终用户、市场分析师、所有利益相关者。</li>
-<li><strong>示例</strong>：用例图、用户故事。</li>
-</ul>
-<h3 id="使用场景和范围"><a href="#使用场景和范围" class="headerlink" title="使用场景和范围"></a>使用场景和范围</h3><ol>
-<li><strong>大型和复杂的软件项目</strong>：在这些项目中，需求复杂多变，涉及多个团队和不同的技术栈。”4+1” 模型能够帮助组织和沟通大量的信息。</li>
-<li><strong>多团队协作的项目</strong>：不同团队可能关注项目的不同方面（比如开发、测试、部署）。此模型通过提供不同的视图，帮助不同团队更好地理解他们的责任和需求。</li>
-<li><strong>需要高度文档化的项目</strong>：在一些项目中，如企业级应用或符合特定行业标准的项目，详细的文档化是必须的。这个模型提供了一个架构文档化的框架。</li>
-<li><strong>系统重构或升级</strong>：在现有系统的重构或升级过程中，”4+1” 模型可以帮助理解系统的当前架构，并规划新的架构设计。</li>
-</ol>
-<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ol>
-<li><strong>全面性</strong>：通过不同的视图，它能全面捕获系统的不同方面，从逻辑、开发、物理、过程到用例。</li>
-<li><strong>沟通效率</strong>：它提供了一个共同的语言和框架，有助于不同背景的利益相关者之间的沟通。</li>
-<li><strong>灵活性</strong>：模型本身足够灵活，可以根据项目的具体需求调整重点。</li>
-<li><strong>验证和完整性</strong>：用例视图可以用来验证其他视图的完整性和正确性。</li>
-</ol>
-<h3 id="劣势"><a href="#劣势" class="headerlink" title="劣势"></a>劣势</h3><ol>
-<li><strong>复杂性</strong>：对于小型或较少复杂的项目来说，这个模型可能过于复杂，导致不必要的工作量。</li>
-<li><strong>资源消耗</strong>：维护这五个视图需要时间和资源，特别是在快速迭代的开发环境中。</li>
-<li><strong>更新和同步</strong>：随着项目的进展，保持这五个视图的同步更新是一个挑战。</li>
-<li><strong>需要专业知识</strong>：正确地实施和利用这个模型需要团队成员具备一定程度的架构知识和经验。</li>
-</ol>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E6%9E%B6%E6%9E%84/" style="color: #00a596">架构</a>
-        </span>
-        
-    </div>
-    <a href="/2023/12/26/mdstorage/domain/%E6%9E%B6%E6%9E%84/4+1%E6%9E%B6%E6%9E%84%E8%A7%86%E8%A7%92%E6%A8%A1%E5%9E%8B/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/12/25/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E6%80%BB%E6%8E%A7%E5%BC%95%E6%93%8E%E6%8F%92%E4%BB%B6%E8%B7%A8%E8%8A%82%E7%82%B9%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E5%92%8C%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92/">
-        <h2 class="post-title">总控引擎插件跨节点通信链路和改造计划.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/12/25
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="总控、引擎、插件跨节点通信链路"><a href="#总控、引擎、插件跨节点通信链路" class="headerlink" title="总控、引擎、插件跨节点通信链路"></a>总控、引擎、插件跨节点通信链路</h3><pre><code class="mermaid">graph LR
-    subgraph Sc[总控]
-        sc
-        sv[可视化 sv]
-        installer-manager[引擎安装 manager]
-    end
+  <main>
     
-    subgraph Se[流量引擎]
-        subgraph Sem[流量引擎 管理节点]
-            installer-agent[引擎安装 agent]
-            webserver[Webserver]
-            admin_dam[admin Dam]
-            apiserver[Apiserver]
-            admin_ha[admin HA]
-            nexus_m[Nexus]
-            global_plugin_server[global-plugin-server]
-        end
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
 
-        subgraph Sew[流量引擎 工作节点]
-            data_dam[data Dam]
-            nexus_w[Nexus]
-            envoy[Envoy]
-        end
-        
-        subgraph Ses[流量引擎 调度节点]
-            nexus_s[Nexus]
-        end
-    end
-    
-    installer-manager --&gt;|vip/nodeIP:8099|installer-agent
-    installer-manager --&gt;|vip:6898|admin_ha
-    sv --&gt;|vip:1234|admin_dam
-    sv --&gt;|vip:8899|admin_dam
-    sv --&gt;|vip:8299|webserver
-    sc --&gt;|vip:8229|webserver	
-    
-    installer-agent --&gt;|nodeIP:8098|installer-manager
-    data_dam --&gt;|nodeIp:4150|sv
+
+  <div class="row mx-auto index-card">
     
     
-    data_dam --&gt;|nodeIp:9001|webserver
-    webserver --&gt;|nodeIp:8000| nexus_m &amp; nexus_s &amp; nexus_w
-    envoy --&gt;|vip:7878 7978| global_plugin_server
-    
-    %%installer-agent --&gt;|vip:6443|apiserver
-</code></pre>
-<h3 id="第一步改造（通信方向反转）"><a href="#第一步改造（通信方向反转）" class="headerlink" title="第一步改造（通信方向反转）"></a>第一步改造（通信方向反转）</h3><h4 id="改造前"><a href="#改造前" class="headerlink" title="改造前"></a>改造前</h4><pre><code class="mermaid">graph LR
-    subgraph Sc[总控]
-        sc
-        sv[可视化 sv]
-        installer-manager[引擎安装 manager]
-    end
-    
-    subgraph Se[流量引擎]
-        subgraph Sem[流量引擎 管理节点]
-            installer-agent[引擎安装 agent]
-            webserver[Webserver]
-            admin_dam[admin Dam]
-            apiserver[Apiserver]
-            admin_ha[admin HA]
-            nexus_m[Nexus]
-            global_plugin_server[global-plugin-server]
-        end
-
-        subgraph Sew[流量引擎 工作节点]
-            data_dam[data Dam]
-            nexus_w[Nexus]
-            envoy[Envoy]
-        end
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        subgraph Ses[流量引擎 调度节点]
-            nexus_s[Nexus]
-        end
-    end
-    
-    installer-manager --&gt;|vip/nodeIP:8099|installer-agent
-    installer-manager --&gt;|vip:6898|admin_ha
-    sv --&gt;|vip:1234|admin_dam
-    sv --&gt;|vip:8899|admin_dam
-    sv --&gt;|vip:8299|webserver
-    sc --&gt;|vip:8229|webserver	
-</code></pre>
-<h4 id="改造后"><a href="#改造后" class="headerlink" title="改造后"></a>改造后</h4><pre><code class="mermaid">graph RL
-    subgraph Sc[总控]
-        sc
-        sv[可视化 sv]
-        installer-manager[引擎安装 manager]
-    end
-    
-    subgraph Se[流量引擎]
-        subgraph Sem[流量引擎 管理节点]
-            installer-agent[引擎安装 agent]
-            webserver[Webserver]
-            admin_dam[admin Dam]
-            apiserver[Apiserver]
-            admin_ha[admin HA]
-            nexus_m[Nexus]
-            global_plugin_server[global-plugin-server]
-        end
+        <a href="/2023/12/28/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/MDNS/" target="_self">
+          MDNS.md
+        </a>
+      </h2>
 
-        subgraph Sew[流量引擎 工作节点]
-            data_dam[data Dam]
-            nexus_w[Nexus]
-            envoy[Envoy]
-        end
-        
-        subgraph Ses[流量引擎 调度节点]
-            nexus_s[Nexus]
-        end
-    end
-    
-    installer-agent --&gt;|nodeIp:29030|installer-manager
-    admin_ha --&gt;|nodeIp:29030| installer-manager
-    admin_dam --&gt;|nodeIp:29120|sv
-    admin_dam --&gt;|nodeIp:29120|sv
-    webserver --&gt;|nodeIp:29120|sv
-    webserver --&gt;|nodeIp:29020|sc
-    
-</code></pre>
-<h4 id="改造后开放端口策略"><a href="#改造后开放端口策略" class="headerlink" title="改造后开放端口策略"></a>改造后开放端口策略</h4><h5 id="涉及组件"><a href="#涉及组件" class="headerlink" title="涉及组件"></a>涉及组件</h5><ul>
-<li>sc </li>
-<li>sv </li>
-<li>webserver </li>
-<li>admin-ha </li>
-<li>installer-manager </li>
-<li>installer-agent </li>
-<li>admin-dam</li>
-</ul>
-<h5 id="改造后-1"><a href="#改造后-1" class="headerlink" title="改造后"></a>改造后</h5><h6 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h6><p>sc sv installer-manager</p>
-<h6 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h6><p>webserver admin-ha admin-dam installer-agent</p>
-<h6 id="组件开放端口"><a href="#组件开放端口" class="headerlink" title="组件开放端口"></a>组件开放端口</h6><p><strong>sc</strong> ：29020<br><strong>sv</strong> ：29120<br><strong>installer-manager</strong>： 29030</p>
-<h6 id="总结开放端口策略："><a href="#总结开放端口策略：" class="headerlink" title="总结开放端口策略："></a>总结开放端口策略：</h6><p>总控侧开放 nodeIp:29029 29120 29030 端口、客户端通过 nodeIp 这些端口来建立通信</p>
-<h4 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h4><ul>
-<li><p>grpc 双向流</p>
-<ul>
-<li><h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ul>
-<li><strong>基于 HTTP&#x2F;2</strong>: 支持流控制、头部压缩等高效功能。</li>
-<li><strong>强类型接口定义</strong>: 使用 Protocol Buffers，可以定义清晰的服务接口。</li>
-<li><strong>多语言支持</strong>: 客户端和服务端可以使用不同的编程语言实现。</li>
-</ul>
-<h4 id="劣势"><a href="#劣势" class="headerlink" title="劣势"></a>劣势</h4><ul>
-<li><strong>浏览器支持有限</strong>: 直接在浏览器中使用 gRPC 可能有兼容性问题。</li>
-<li><strong>复杂度较高</strong>: 相比于 RESTful API 或 WebSocket，gRPC 的学习曲线更陡峭。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><del>websocket 双向通信</del></p>
-<ul>
-<li><h4 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a><del>优势</del></h4><ul>
-<li><del><strong>全双工通信</strong>: 允许服务器和客户端之间进行实时、双向通信。</del></li>
-<li><del><strong>低延迟</strong>: 一旦建立连接，数据交换延迟非常低。</del></li>
-<li><del><strong>广泛支持</strong>: 大多数现代浏览器和网络库都支持 WebSocket。</del></li>
-</ul>
-<h4 id="劣势-1"><a href="#劣势-1" class="headerlink" title="劣势"></a><del>劣势</del></h4><ul>
-<li><del><strong>缺乏内置消息格式</strong>: 需要自定义协议来处理消息。</del></li>
-<li><del><strong>缺少先进的消息处理功能</strong>: 如消息队列、消息确认等。</del></li>
-<li><del><strong>扩展性</strong>: 在大规模应用中，保持大量的 WebSocket 连接可能会导致资源问题。</del></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><del>http2.0 双向通信</del></p>
-<ul>
-<li><h4 id="优势-2"><a href="#优势-2" class="headerlink" title="优势"></a><del>优势</del></h4><ul>
-<li><del><strong>多路复用</strong>: 单个连接上可以并行多个请求&#x2F;响应，提高效率。</del></li>
-<li><del><strong>头部压缩</strong>: 减少了额外的网络开销。</del></li>
-<li><del><strong>服务器推送</strong>: 服务器可以主动向客户端发送资源。</del></li>
-</ul>
-<h4 id="劣势-2"><a href="#劣势-2" class="headerlink" title="劣势"></a><del>劣势</del></h4><ul>
-<li><del><strong>兼容性和支持</strong>: 虽然现代浏览器普遍支持 HTTP&#x2F;2，但在某些环境中可能仍需考虑兼容性问题。</del></li>
-<li><del><strong>复杂性</strong>: 相比 HTTP&#x2F;1.1，HTTP&#x2F;2 实现更复杂。</del></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><del>长轮询</del></p>
-</li>
-<li><p><del>消息队列&#x2F;订阅发布模型</del></p>
-<ul>
-<li><h4 id="优势-3"><a href="#优势-3" class="headerlink" title="优势"></a><del>优势</del></h4><ul>
-<li><del><strong>解耦生产者和消费者</strong>: 生产者和消费者不必知道对方的存在。</del></li>
-<li><del><strong>可扩展性</strong>: 更容易在分布式系统中扩展。</del></li>
-<li><del><strong>可靠性</strong>: 很多消息队列系统提供消息持久化、确认机制等功能，确保消息不会丢失。</del></li>
-</ul>
-<h4 id="劣势-3"><a href="#劣势-3" class="headerlink" title="劣势"></a><del>劣势</del></h4><ul>
-<li><del><strong>延迟</strong>: 相比直接的双向通信，可能会引入更多的延迟。</del></li>
-<li><del><strong>复杂性</strong>: 引入消息队列系统会增加系统架构的复杂性。</del></li>
-<li><del><strong>维护成本</strong>: 需要管理和维护额外的消息队列服务。</del></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="第二步改造（规整）"><a href="#第二步改造（规整）" class="headerlink" title="第二步改造（规整）"></a>第二步改造（规整）</h3>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF/" style="color: #00a596">通信链路</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E9%80%9A%E4%BF%A1%E6%96%B9%E5%90%91/" style="color: #03a9f4">通信方向</a>
-        </span>
-        
-    </div>
-    <a href="/2023/12/25/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E6%80%BB%E6%8E%A7%E5%BC%95%E6%93%8E%E6%8F%92%E4%BB%B6%E8%B7%A8%E8%8A%82%E7%82%B9%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E5%92%8C%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/12/21/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%86%B3%E5%AE%9A%E6%97%A5%E5%BF%97%E6%A8%A1%E6%9D%BF/">
-        <h2 class="post-title">架构决定日志模板.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/12/21
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h2><ul>
-<li><strong>版本信息</strong>：version 时间 作者</li>
-<li><strong>项目描述</strong>：xxx</li>
-</ul>
-<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><table>
-<thead>
-<tr>
-<th>编号</th>
-<th>标题</th>
-<th>简要描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="详细记录"><a href="#详细记录" class="headerlink" title="详细记录"></a>详细记录</h2><ul>
-<li><strong>决定编号</strong>：唯一标识每个架构决定。</li>
-<li><strong>标题</strong>：简洁描述决定的内容。</li>
-<li><strong>日期</strong>：决定做出的日期。</li>
-<li><strong>状态</strong>：例如，“已实施”、“正在审议”或“已废弃”。</li>
-<li><strong>问题描述</strong>：描述决定解决的问题或需求。</li>
-<li><strong>决定内容</strong>：具体说明做出的架构决定。</li>
-<li><strong>替代方案</strong>：列出考虑过的其他方案，并解释为什么没有选择它们。</li>
-<li><strong>原因和理由</strong>：解释为什么选择这个方案，包括技术、业务和其他考虑因素。</li>
-<li><strong>影响</strong>：评估这个决定对项目的影响，包括正面和负面影响。</li>
-<li><strong>相关决定</strong>：如果适用，指出与其他架构决定的关联。</li>
-<li><strong>附件和参考资料</strong>：</li>
-<li><strong>审核批准人员名单</strong>：</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E6%9E%B6%E6%9E%84%E5%86%B3%E5%AE%9A/" style="color: #ffa2c4">架构决定</a>
-        </span>
-        
-    </div>
-    <a href="/2023/12/21/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%86%B3%E5%AE%9A%E6%97%A5%E5%BF%97%E6%A8%A1%E6%9D%BF/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/12/21/mdstorage/project/sr/sc/%E6%80%BB%E6%8E%A7%E6%9E%B6%E6%9E%84%E5%86%B3%E5%AE%9A%E6%97%A5%E5%BF%97/">
-        <h2 class="post-title">总控架构决定日志.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/12/21
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h2><ul>
-<li><strong>版本信息</strong>：v1.3.0 2023&#x2F;12&#x2F;21 小歪</li>
-<li><strong>项目描述</strong>：总控该系统是本项目开发的核心软件组件，它负责统筹管理各种引擎和插件的操作，确保系统整体运行的效率和安全性。</li>
-</ul>
-<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><table>
-<thead>
-<tr>
-<th>编号</th>
-<th>标题</th>
-<th>简要描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>- </p>
-<h2 id="详细记录"><a href="#详细记录" class="headerlink" title="详细记录"></a>详细记录</h2><h3 id="总控引擎插件组件通信方向反转"><a href="#总控引擎插件组件通信方向反转" class="headerlink" title="总控引擎插件组件通信方向反转"></a>总控引擎插件组件通信方向反转</h3><ul>
-<li><strong>决定编号</strong>：1</li>
-<li><strong>标题</strong>：总控引擎插件组件通信方向反转</li>
-<li><strong>日期</strong>：2023&#x2F;12&#x2F;25</li>
-<li><strong>状态</strong>：正在审议</li>
-<li><strong>问题描述</strong>：总控、引擎管理配置通信链路中现状是 建立连接方向、数据流向 SC –&gt; SE，而，客户场景中，引擎的连接方式不支持长期被动连接，所以需要将建立连接方向改变为 SE –&gt; SC。</li>
-<li><strong>决定内容</strong>：使用 grpc 双向流式通信建立连接并消息推送。其中 SE 的组件为客户端，SC 组件为服务端建立通信。具体查看附件</li>
-<li><strong>替代方案</strong>：1. 长轮询（延迟高、占用资源高、性能差） 2. websocket（限制少出错几率更大、数据压缩流控特性支持更少） 3. 消息队列&#x2F;发布订阅模型（复杂度高、团队目前没用过这种模型风险大） 4. http2.0 双向通信（限制少出错几率更大、数据压缩流控特性支持更少）</li>
-<li><strong>原因和理由</strong>：grpc 更成熟，适用的场景更多，需要自己实现的功能更少，开发人员出错的概率更小。</li>
-<li><strong>影响</strong>：1. 产品层面上重新定义引擎连接状态 2. 总控、引擎开发端口策略需改变 3. 引擎安装时需要更改相应逻辑 具体目标查看附件</li>
-<li><strong>相关决定</strong>：可能有目前总控、引擎、插件组件通信链路过于繁杂的问题</li>
-</ul>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="详细记录模板"><a href="#详细记录模板" class="headerlink" title="详细记录模板"></a>详细记录模板</h3><ul>
-<li><strong>决定编号</strong>：唯一标识每个架构决定。</li>
-<li><strong>标题</strong>：简洁描述决定的内容。</li>
-<li><strong>日期</strong>：决定做出的日期。</li>
-<li><strong>状态</strong>：例如，“已实施”、“正在审议”或“已废弃”。</li>
-<li><strong>问题描述</strong>：描述决定解决的问题或需求。</li>
-<li><strong>决定内容</strong>：具体说明做出的架构决定。</li>
-<li><strong>替代方案</strong>：列出考虑过的其他方案，并解释为什么没有选择它们。</li>
-<li><strong>原因和理由</strong>：解释为什么选择这个方案，包括技术、业务和其他考虑因素。</li>
-<li><strong>影响</strong>：评估这个决定对项目的影响，包括正面和负面影响。</li>
-<li><strong>相关决定</strong>：如果适用，指出与其他架构决定的关联。</li>
-<li><strong>附件和参考资料</strong>：</li>
-<li><strong>审核批准人员名单</strong>：</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E6%9E%B6%E6%9E%84/" style="color: #ff7d73">架构</a>
-        </span>
-        
-    </div>
-    <a href="/2023/12/21/mdstorage/project/sr/sc/%E6%80%BB%E6%8E%A7%E6%9E%B6%E6%9E%84%E5%86%B3%E5%AE%9A%E6%97%A5%E5%BF%97/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/12/18/mdstorage/project/sr/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF-12.18/">
-        <h2 class="post-title">一周看板-12.18.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/12/18
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <pre><code class="kanban"># 2023/12/11 Task List
-
-## Todo
-- https://github.com/mli/autocut 是什么
-- on-premise 综述
-- InfoQ 一周消息速递
-- 搜书方法、主流格式文档转换方法、以图搜图、学习资料搜索
-
-- 周会 （1. 转测流程 2. 任务进度 3. 说说问题）
-- 新人培训计划文档
-
-- chatgpt 插件调研文档
-- SR 问题跟踪文档
-- 虚拟机克隆调研文档
-
-- SR 研发工作流程统计时长
-
-- 安装升级框架实施方案
-
-- 文章类型概述文档
-- 部门会议总结
-- 基础设施组概述
-- 测试用例设计文档内容要求
-
-- 公共库维护指南文档
-- 慢速拒绝需求
-
-- PostgreSQL数据库内核分析 拆解
-
-- 针对产品的石犀培训文档
-
-- AES 算法
-
-- mermaid 流程图文档（重要）
-
-- 插件架构设计文档（重要）
-
-## In-Progress
-- 总控软件设计说明书(重要不紧急)
-- 总控修改IP构想文档、问题解决、文档组织(重要)
-
-- 分支管理文档
-
-- SC后端启动原理，启动协程，常驻协程，与文件系统的交互通道，网络通道，进程通信通道，系统权限使用情况，系统资源占用情况，可能的依赖关系。 中长期规划
-- markdown 文档模板--操作手册
-- 网络配置蓝图
-
-- 引擎备份/恢复 机制
-
-- 升级兼容性要求文档
-
-- api-gov 安装目录改造
-
-- 11/24 跟老板关于 SV 重构的讨论总结
-- 近半年内总控引擎插件软件系统架构调整规划、人力资源以及招聘计划
-
-- 软件架构概述 文档
-
-- 代码能力恢复计划 文档
-
-- 总控引擎修改IP 需求评审
-
-- 总控 引擎 通信链路整理文档
-
-- 石犀适配kylin分析文档
-    -- kylin 环境搭建文档
-    -- kylin 问题整理文档
-
-
-- gitlab commit 信息对不上问题文档
-
-- Golang 组长项目管理文档
-    -- 组长职责
-    -- 组员管理事项
-    
-- 架构 12 项修炼
-
-- 我想要什么
-    -- 编码时间
-    -- 自由时间
-    -- 娱乐时间
-    
-    
-- docker hub
-
-## Completed
-
-- 绩效模板审查（紧急）
-    -- 团队贡献加分事项
-
-- 12/11任务跟进
-    -- 动态口令
-    -- 慢速拒绝
-    
-- 软件兼容性文档
-- SOA架构和ESB
-
-- 12.15总结会议准备发言稿
-
-- 石犀适配 kylin 任务分发
-- 石犀客户环境遭病毒攻击排查解决记录
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E7%9C%8B%E6%9D%BF/" style="color: #03a9f4">看板</a>
-        </span>
-        
-    </div>
-    <a href="/2023/12/18/mdstorage/project/sr/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF-12.18/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/12/15/mdstorage/project/sr/%E7%9F%B3%E7%8A%80%E5%AE%A2%E6%88%B7%E7%8E%AF%E5%A2%83%E9%81%AD%E7%97%85%E6%AF%92%E6%94%BB%E5%87%BB%E6%8E%92%E6%9F%A5%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/">
-        <h2 class="post-title">石犀客户环境遭病毒攻击排查解决记录.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/12/15
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="石犀客户环境遭病毒攻击排查解决记录"><a href="#石犀客户环境遭病毒攻击排查解决记录" class="headerlink" title="石犀客户环境遭病毒攻击排查解决记录"></a>石犀客户环境遭病毒攻击排查解决记录</h2><h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h3><p>检测到机器频繁访问外网 10w 次</p>
-<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231215152706997.png" alt="image-20231215152706997"></p>
-<h3 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h3><h4 id="top-ps-排查"><a href="#top-ps-排查" class="headerlink" title="top ps 排查"></a>top ps 排查</h4><p>一般进程会排到比较前，如果没排查到，也有可能是 top 程序被黑客替换，新装一个系统资源检测工具试试。</p>
-<p>这一步可以查到异常进程 pid 和进程启动用户</p>
-<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231215153729017.png" alt="image-20231215153729017"></p>
-<p>ps -efl | grep $pid  显示是 kworker </p>
-<h4 id="查看用户登录历史和进程环境变量"><a href="#查看用户登录历史和进程环境变量" class="headerlink" title="查看用户登录历史和进程环境变量"></a>查看用户登录历史和进程环境变量</h4><h5 id="last-查看用户登录历史"><a href="#last-查看用户登录历史" class="headerlink" title="last 查看用户登录历史"></a>last 查看用户登录历史</h5><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231215160118595.png" alt="image-20231215160118595"></p>
-<h5 id="cat-proc-pid-environ"><a href="#cat-proc-pid-environ" class="headerlink" title="cat &#x2F;proc&#x2F;$pid&#x2F;environ"></a>cat &#x2F;proc&#x2F;$pid&#x2F;environ</h5><pre><code class="bash">root@sr:/home/sr# cat /proc/479850/environ
-SHELL=/bin/bashHISTSIZE=0PWD=/mnt/.xLOGNAME=rootXDG_SESSION_TYPE=ttyMOTD_SHOWN=pamHOME=/rootLANG=en_US.UTF-8HISTFILE=/dev/nullLS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:SSH_CONNECTION=10.110.13.44 46598 192.168.241.150 22LESSCLOSE=/usr/bin/lesspipe %s %sXDG_SESSION_CLASS=userTERM=xtermLESSOPEN=| /usr/bin/lesspipe %sUSER=rootSHLVL=1XDG_SESSION_ID=114015LC_CTYPE=en_US.UTF-8XDG_RUNTIME_DIR=/run/user/0SSH_CLIENT=10.110.13.44 46598 22XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktopPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/binHISTFILESIZE=0DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/0/busSSH_TTY=/dev/pts/0OLDPWD=/mnt/.x_=./
-</code></pre>
-<h3 id="清理病毒程序"><a href="#清理病毒程序" class="headerlink" title="清理病毒程序"></a>清理病毒程序</h3><h4 id="杀死进程和可执行文件"><a href="#杀死进程和可执行文件" class="headerlink" title="杀死进程和可执行文件"></a>杀死进程和可执行文件</h4><p>kill $pid </p>
-<p>rm &#x2F;mnt&#x2F;.x</p>
-<h4 id="查杀系统定时任务"><a href="#查杀系统定时任务" class="headerlink" title="查杀系统定时任务"></a>查杀系统定时任务</h4><p>vim &#x2F;etc&#x2F;crontab</p>
-<h4 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h4><p>持续监控被攻击机器，避免未杀干净</p>
-<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p>经客户确认 last 返回结果中 10.110.13.44 为内网一台被黑客攻陷的机器。推测是通过此机器暴力破解两台 sc se 机器 root 帐号密码。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="漏洞和防护"><a href="#漏洞和防护" class="headerlink" title="漏洞和防护"></a>漏洞和防护</h3><ol>
-<li>机器网络访问安全策略没做，应该对机器做源IP访问白名单和目的IP访问白名单</li>
-<li>（客户那边应该做网络隔离）</li>
-<li>root 权限不应该允许直接登录</li>
-<li>不管是什么环境，应该将密码设置为高安全级别，防暴力破解</li>
-</ol>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/" style="color: #00a596">问题排查</a>
-        </span>
-        
-    </div>
-    <a href="/2023/12/15/mdstorage/project/sr/%E7%9F%B3%E7%8A%80%E5%AE%A2%E6%88%B7%E7%8E%AF%E5%A2%83%E9%81%AD%E7%97%85%E6%AF%92%E6%94%BB%E5%87%BB%E6%8E%92%E6%9F%A5%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
-    
-    <a class="page-num" href="/page/19/">
-        <i class="fa-solid fa-caret-left fa-fw"></i>
-    </a>
-    <a class="page-num" href="/">1</a>
-    <span class="page-omit">...</span>
-    
-    <span class="current">20</span>
-    
-    <a class="page-num" href="/page/21">
-        21
-    </a>
-    
-    
-    <a class="page-num" href="/page/22">
-        22
-    </a>
-    
-    
-    <span class="page-omit">...</span>
-    <a class="page-num" href="/page/28">28</a>
-    
-    
-    <a class="page-num" href="/page/21/">
-        <i class="fa-solid fa-caret-right fa-fw"></i>
-    </a>
-    
-</div>
-
-    </div>
-    
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">xiaoy</div>
-        <div class="description">
-            <p>xiaoy<br>…</p>
-
-        </div>
-        
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a href="https://abrance.github.io">Argvchs</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
-
-    </div>
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/28/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/MDNS/" target="_self">
         <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
+          概述简短介绍本文将深入探讨MDNS（Multicast DNS）技术，它是一种在小型网络上实现设备名称解析到IP地址的机制。本文的目的是为读者提供一个全面的MDNS知识框架，包括其工作原理、实际应用和最佳实践。 主题和目的概述我们将首先概述MDNS的基本概念，然后详细讲解其背后的技术原理，以及如何在实际环境中应用MDNS。最后，本文将提供一些最佳实践和性能优化的建议。 算法原理相关技术的涉及的算法
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
+      </a>
 
-        </div>
+      <div class="index-btm post-metas">
         
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-28 00:00" pubdate>
+              2023-12-28
+            </time>
+          </div>
         
-    </div>
-    <script src="/js/main.js"></script>
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
     
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/" class="category-chain-item">network</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/%E5%8D%8F%E8%AE%AE/" class="category-chain-item">协议</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DNS-%E5%A4%9A%E6%92%AD/">#DNS 多播</a>
+            
+              <a href="/tags/%E8%AE%BE%E5%A4%87%E5%8F%91%E7%8E%B0/">#设备发现</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" target="_self">
+          Makefile指定cpu架构选项.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/mdstorage/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" target="_self">
+        <div>
+          思路Makefile 构建，使用环境变量来控制编译选项 设置环境变量：在命令行上或在用户的环境配置文件中设置环境变量，如 ARCH=arm 或 ARCH=x86。 在 Makefile 中使用条件语句：Makefile 使用 ifeq、ifdef 等条件语句根据环境变量的值选择不同的编译器选项、链接器选项和其他设置。  ARCH 可选值 aarch64：代表 ARM 架构的 64 位版本（ARMv
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-27 00:00" pubdate>
+              2023-12-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/makefile/" class="category-chain-item">makefile</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/make/">#make</a>
+            
+              <a href="/tags/Makefile/">#Makefile</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" target="_self">
+          Makefile的函数使用.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/mdstorage/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          wildcard使通配符生效场景 在Makefile规则中，通配符会被自动展开。但在变量的定义和函数引用时，通配符将失效。 $(wildcard &lt;PATTERN…&gt;) patsubstpatsubst函数返回被替换过后的字符串。 $(patsubst  ,,) define1234567891011define fun1	@echo &quot;My name is $(0)&quo
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-27 00:00" pubdate>
+              2023-12-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/makefile/" class="category-chain-item">makefile</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/make/">#make</a>
+            
+              <a href="/tags/Makefile/">#Makefile</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/26/mdstorage/domain/%E6%9E%B6%E6%9E%84/4+1%E6%9E%B6%E6%9E%84%E8%A7%86%E8%A7%92%E6%A8%A1%E5%9E%8B/" target="_self">
+          4+1架构视角模型.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/26/mdstorage/domain/%E6%9E%B6%E6%9E%84/4+1%E6%9E%B6%E6%9E%84%E8%A7%86%E8%A7%92%E6%A8%A1%E5%9E%8B/" target="_self">
+        <div>
+          概念“4+1”架构视角模型是一种框架，用于描述复杂软件系统的架构。由Philippe Kruchten在1995年提出，这个模型旨在满足不同利益相关者的需求，并提供全面的系统视图。下面详细介绍这个模型的五个部分： 1. 逻辑视图（Logical View） 目的：描述系统的功能性需求，即系统“做什么”。 内容：包括系统的关键功能模块、类或对象，以及它们之间的关系。 重点：系统的业务功能和对象模型。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-26 00:00" pubdate>
+              2023-12-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/26/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E3%80%81%E5%BC%95%E6%93%8E%E3%80%81%E6%8F%92%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%A2%B3%E7%90%86/" target="_self">
+          总控、引擎、插件软件架构梳理.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/26/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E3%80%81%E5%BC%95%E6%93%8E%E3%80%81%E6%8F%92%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%A2%B3%E7%90%86/" target="_self">
+        <div>
+          现有架构梳理核心系统组件、应用、插件构想核心系统总控、流量引擎 核心组件核心系统中的核心应用 属性： 核心组件的启动、运行依赖关系、通信链路形成有向无环图结构，核心组件之间逻辑自洽，向上提供的接口已在内部达成逻辑自洽 依赖：操作系统底层资源、其他核心组件 系统核心组件依赖关系和通信链路示意图graph TB 	subgraph kernel[系统核心组件] 		comp2[Comp2] 		com
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-26 00:00" pubdate>
+              2023-12-26
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/25/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E6%80%BB%E6%8E%A7%E5%BC%95%E6%93%8E%E6%8F%92%E4%BB%B6%E8%B7%A8%E8%8A%82%E7%82%B9%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E5%92%8C%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92/" target="_self">
+          总控引擎插件跨节点通信链路和改造计划.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/25/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E6%80%BB%E6%8E%A7%E5%BC%95%E6%93%8E%E6%8F%92%E4%BB%B6%E8%B7%A8%E8%8A%82%E7%82%B9%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E5%92%8C%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92/" target="_self">
+        <div>
+          总控、引擎、插件跨节点通信链路graph LR 	subgraph Sc[总控] 		sc 		sv[可视化 sv] 		installer-manager[引擎安装 manager] 	end 	 	subgraph Se[流量引擎]         subgraph Sem[流量引擎 管理节点]             installer-agent[引擎安装 agent]
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-25 00:00" pubdate>
+              2023-12-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF/">#通信链路</a>
+            
+              <a href="/tags/%E9%80%9A%E4%BF%A1%E6%96%B9%E5%90%91/">#通信方向</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/21/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%86%B3%E5%AE%9A%E6%97%A5%E5%BF%97%E6%A8%A1%E6%9D%BF/" target="_self">
+          架构决定日志模板.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/21/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%86%B3%E5%AE%9A%E6%97%A5%E5%BF%97%E6%A8%A1%E6%9D%BF/" target="_self">
+        <div>
+          版本信息 版本信息：version 时间 作者 项目描述：xxx  索引   编号 标题 简要描述                   详细记录 决定编号：唯一标识每个架构决定。 标题：简洁描述决定的内容。 日期：决定做出的日期。 状态：例如，“已实施”、“正在审议”或“已废弃”。 问题描述：描述决定解决的问题或需求。 决定内容：具体说明做出的架构决定。 替代方案：列出考虑过的其他方案，并解释为什
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-21 00:00" pubdate>
+              2023-12-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9E%B6%E6%9E%84%E5%86%B3%E5%AE%9A/">#架构决定</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/21/mdstorage/project/sr/sc/%E6%80%BB%E6%8E%A7%E6%9E%B6%E6%9E%84%E5%86%B3%E5%AE%9A%E6%97%A5%E5%BF%97/" target="_self">
+          总控架构决定日志.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/21/mdstorage/project/sr/sc/%E6%80%BB%E6%8E%A7%E6%9E%B6%E6%9E%84%E5%86%B3%E5%AE%9A%E6%97%A5%E5%BF%97/" target="_self">
+        <div>
+          版本信息 版本信息：v1.3.0 2023&#x2F;12&#x2F;21 小歪 项目描述：总控该系统是本项目开发的核心软件组件，它负责统筹管理各种引擎和插件的操作，确保系统整体运行的效率和安全性。  索引   编号 标题 简要描述                   -  详细记录总控引擎插件组件通信方向反转 决定编号：1 标题：总控引擎插件组件通信方向反转 日期：2023&#x2F;12&#x
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-21 00:00" pubdate>
+              2023-12-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/18/mdstorage/project/sr/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF-12.18/" target="_self">
+          一周看板-12.18.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/18/mdstorage/project/sr/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF-12.18/" target="_self">
+        <div>
+          123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102#
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-18 00:00" pubdate>
+              2023-12-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%9C%8B%E6%9D%BF/">#看板</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/15/mdstorage/project/sr/%E7%9F%B3%E7%8A%80%E5%AE%A2%E6%88%B7%E7%8E%AF%E5%A2%83%E9%81%AD%E7%97%85%E6%AF%92%E6%94%BB%E5%87%BB%E6%8E%92%E6%9F%A5%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/" target="_self">
+          石犀客户环境遭病毒攻击排查解决记录.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/15/mdstorage/project/sr/%E7%9F%B3%E7%8A%80%E5%AE%A2%E6%88%B7%E7%8E%AF%E5%A2%83%E9%81%AD%E7%97%85%E6%AF%92%E6%94%BB%E5%87%BB%E6%8E%92%E6%9F%A5%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/" target="_self">
+        <div>
+          石犀客户环境遭病毒攻击排查解决记录现象检测到机器频繁访问外网 10w 次  问题排查top ps 排查一般进程会排到比较前，如果没排查到，也有可能是 top 程序被黑客替换，新装一个系统资源检测工具试试。 这一步可以查到异常进程 pid 和进程启动用户  ps -efl | grep $pid  显示是 kworker  查看用户登录历史和进程环境变量last 查看用户登录历史 cat &#x2F
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-15 00:00" pubdate>
+              2023-12-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">#问题排查</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/19/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/#board">18</a><a class="page-number" href="/page/19/#board">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/#board">21</a><a class="page-number" href="/page/22/#board">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/21/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

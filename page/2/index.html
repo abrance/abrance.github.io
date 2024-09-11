@@ -1,1208 +1,933 @@
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-    <title>Xiaoy</title>
-    <meta name="author" content="xiaoy" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+  <meta charset="UTF-8">
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Xiaoy">
+<meta property="og:url" content="https://abrance.github.io/page/2/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Xiaoy</title>
 
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
 
 
-<script src="/js/lib/home.js"></script>
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
+
+
 <body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>XIAOY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;XIAOY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
+  
 
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/background.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>Xiaoy</h1>
-                <h3>xiaoy blog</h3>
-                <h5></h5>
-            </div>
-        </span>
-    </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
+  <header>
+    
 
-<div class="post">
-    <a href="/2024/09/06/mdstorage/domain/shell/bash%E5%8F%98%E9%87%8F%E5%A4%84%E7%90%86/">
-        <h2 class="post-title">bash变量处理.md</h2>
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
     </a>
-    <div class="category-and-date">
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
             </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/6
-        </span>
+          </li>
+          
         
         
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="Bash-变量分割处理成数组"><a href="#Bash-变量分割处理成数组" class="headerlink" title="Bash 变量分割处理成数组"></a>Bash 变量分割处理成数组</h2><p>在这篇文章中，我们将探讨在 Bash 中使用数组、<code>IFS</code> 变量的作用以及如何通过 <code>read</code> 命令来分割字符串并存入数组。这些知识对于处理复杂的字符串输入和数组操作非常有用。</p>
-<h3 id="1-IFS（Internal-Field-Separator）"><a href="#1-IFS（Internal-Field-Separator）" class="headerlink" title="1. IFS（Internal Field Separator）"></a>1. <code>IFS</code>（Internal Field Separator）</h3><p><code>IFS</code> 是 Bash 中的内部字段分隔符，它决定了在处理字符串时，如何将字符串拆分成字段。默认情况下，<code>IFS</code> 包含空格、制表符和换行符。</p>
-<h4 id="修改-IFS"><a href="#修改-IFS" class="headerlink" title="修改 IFS"></a>修改 <code>IFS</code></h4><p>我们可以通过更改 <code>IFS</code> 来自定义分隔符。比如我们希望使用逗号（<code>,</code>）作为分隔符：</p>
-<pre><code class="bash">IFS=&#39;,&#39;
-</code></pre>
-<p>这告诉 Bash 在处理输入时，使用逗号作为字段分隔符。</p>
-<h3 id="2-使用-read-读取并分割字符串"><a href="#2-使用-read-读取并分割字符串" class="headerlink" title="2. 使用 read 读取并分割字符串"></a>2. 使用 <code>read</code> 读取并分割字符串</h3><p><code>read</code> 命令用于从标准输入读取数据。在与 <code>IFS</code> 结合时，它可以根据指定的分隔符将字符串拆分为多个字段并存储在变量中。</p>
-<p>例如：</p>
-<pre><code class="bash">IFS=&#39;,&#39; read -r -a my_array &lt;&lt;&lt; &quot;192.168.1.1,192.168.1.2,192.168.1.3&quot;
-</code></pre>
-<p>在这个例子中，字符串 <code>&quot;192.168.1.1,192.168.1.2,192.168.1.3&quot;</code> 被 <code>IFS=&#39;,&#39;</code> 分割为三个部分，并存储在数组 <code>my_array</code> 中。</p>
-<h4 id="read-命令的选项"><a href="#read-命令的选项" class="headerlink" title="read 命令的选项"></a><code>read</code> 命令的选项</h4><ul>
-<li><code>-r</code>：表示禁止反斜杠转义。如果不加 <code>-r</code>，反斜杠会被解释为转义字符。</li>
-<li><code>-a</code>：表示将读取的数据作为数组存储。</li>
-</ul>
-<h3 id="3-数组的引用"><a href="#3-数组的引用" class="headerlink" title="3. 数组的引用"></a>3. 数组的引用</h3><p>在 Bash 中，数组的元素通过 <code>$&#123;array_name[index]&#125;</code> 进行访问。</p>
-<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><pre><code class="bash">echo $&#123;my_array[0]&#125;  # 输出: 192.168.1.1
-echo $&#123;my_array[1]&#125;  # 输出: 192.168.1.2
-echo $&#123;my_array[2]&#125;  # 输出: 192.168.1.3
-</code></pre>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>当你直接使用 <code>echo $array_name</code> 来引用数组时，Bash 只会输出数组的第一个元素。这是因为 Bash 默认情况下只处理单个标量变量。如果你想要打印整个数组，应该使用 <code>$&#123;array_name[@]&#125;</code> 或 <code>$&#123;array_name[*]&#125;</code>。</p>
-<h4 id="打印整个数组"><a href="#打印整个数组" class="headerlink" title="打印整个数组"></a>打印整个数组</h4><pre><code class="bash">echo $&#123;my_array[@]&#125;  # 输出: 192.168.1.1 192.168.1.2 192.168.1.3
-</code></pre>
-<p>你还可以使用 <code>for</code> 循环来遍历数组并逐个输出元素：</p>
-<pre><code class="bash">for ip in &quot;$&#123;my_array[@]&#125;&quot;; do
-    echo &quot;$ip&quot;
-done
-</code></pre>
-<h3 id="4-Here-String-重定向"><a href="#4-Here-String-重定向" class="headerlink" title="4. Here String 重定向"></a>4. <code>Here String</code> 重定向</h3><p><code>&lt;&lt;&lt;</code> 是 Bash 中的 <strong>Here String</strong> 重定向符号，它可以将字符串作为标准输入传递给命令。</p>
-<p>例如：</p>
-<pre><code class="bash">cat &lt;&lt;&lt; &quot;Hello World&quot;
-</code></pre>
-<p>相当于将 <code>&quot;Hello World&quot;</code> 作为输入传递给 <code>cat</code>，然后 <code>cat</code> 将其输出。</p>
-<p>在我们的数组操作中，使用 <code>&lt;&lt;&lt;</code> 来将 <code>ClusterMasterIPLs</code> 变量的值传递给 <code>read</code> 命令：</p>
-<pre><code class="bash">IFS=&#39;,&#39; read -r -a cluster_master_ip &lt;&lt;&lt; $&#123;ClusterMasterIPLs&#125;
-</code></pre>
-<h3 id="5-实例：通过-IFS-和-read-处理-IP-列表"><a href="#5-实例：通过-IFS-和-read-处理-IP-列表" class="headerlink" title="5. 实例：通过 IFS 和 read 处理 IP 列表"></a>5. 实例：通过 <code>IFS</code> 和 <code>read</code> 处理 IP 列表</h3><p>假设我们有一个包含多个 IP 地址的字符串，这些 IP 地址由逗号分隔。我们想要将这些 IP 地址存入一个数组并逐个处理。可以通过以下代码实现：</p>
-<pre><code class="bash">ClusterMasterIPLs=&quot;192.168.1.1,192.168.1.2,192.168.1.3&quot;
-IFS=&#39;,&#39; read -r -a cluster_master_ip &lt;&lt;&lt; $&#123;ClusterMasterIPLs&#125;
-
-# 打印第一个元素
-echo $&#123;cluster_master_ip[0]&#125;  # 输出: 192.168.1.1
-
-# 打印整个数组
-echo $&#123;cluster_master_ip[@]&#125;  # 输出: 192.168.1.1 192.168.1.2 192.168.1.3
-
-# 遍历数组
-for ip in &quot;$&#123;cluster_master_ip[@]&#125;&quot;; do
-    echo &quot;$ip&quot;
-done
-</code></pre>
-<h4 id="关键点总结"><a href="#关键点总结" class="headerlink" title="关键点总结"></a>关键点总结</h4><ul>
-<li>**<code>IFS</code>**：内部字段分隔符，用于定义如何分割字符串。</li>
-<li>**<code>read -a</code>**：将输入拆分为数组。</li>
-<li>**<code>&lt;&lt;&lt;</code>**：将字符串传递给命令的 Here String 重定向。</li>
-<li><strong>数组引用</strong>：<code>$&#123;array[@]&#125;</code> 用于引用整个数组，而 <code>$&#123;array[index]&#125;</code> 引用特定的数组元素。</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/09/06/mdstorage/domain/shell/bash%E5%8F%98%E9%87%8F%E5%A4%84%E7%90%86/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/06/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/">
-        <h2 class="post-title">NAS访问.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/resource/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                resource
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
             </a>
-        </span>
+          </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/6
-        </span>
-        
-        
+      </ul>
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="ssh访问"><a href="#ssh访问" class="headerlink" title="ssh访问"></a>ssh访问</h2><h3 id="先用普通账户登陆"><a href="#先用普通账户登陆" class="headerlink" title="先用普通账户登陆"></a>先用普通账户登陆</h3><p><code>xiaoy/$faker.</code></p>
-<h3 id="切换root"><a href="#切换root" class="headerlink" title="切换root"></a>切换root</h3><p><code>root/$faker.</code></p>
+  </div>
+</nav>
 
-            
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
+          
         </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/nas/" style="color: #00a596">nas</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/06/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/" class="go-post">阅读全文</a>
+  </div>
 </div>
 
-<div class="post">
-    <a href="/2024/09/06/mdstorage/domain/ide/idea/live_template/">
-        <h2 class="post-title">live_template.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/6
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="live-template-变量语法"><a href="#live-template-变量语法" class="headerlink" title="live template 变量语法"></a>live template 变量语法</h2><p>settings -&gt; live templates -&gt; $item -&gt; template text -&gt; edit variables …</p>
-<p>template text 写作<br>xxx $variable_name$  xxx     </p>
-<p>edit variables expression 语法参考链接: <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/idea/template-variables.html">官方链接</a><br><a target="_blank" rel="noopener" href="http://www.ice-maple.com/2020/06/07/Idea%20Live%20Templates/">中文链接</a></p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><pre><code class="Bash"># 获取第一层文件目录(去掉了真正的第一层,因为这里的需求是第一层不要), 变量表达式 Expression
-substringBefore(regularExpression(regularExpression(fileRelativePath(), concat(substringBefore(fileRelativePath(), &quot;/&quot;),&quot;/&quot;), &quot;&quot;), concat(&quot;/&quot;,fileName()), &quot;&quot;),&quot;/&quot;)
-
-# 获取第二层文件目录, 实际是第一层后面的都算第二层
-regularExpression(regularExpression(regularExpression(fileRelativePath(), concat(substringBefore(fileRelativePath(), &quot;/&quot;),&quot;/&quot;), &quot;&quot;), concat(&quot;/&quot;,fileName()), &quot;&quot;), concat(substringBefore(regularExpression(regularExpression(fileRelativePath(), concat(substringBefore(fileRelativePath(), &quot;/&quot;),&quot;/&quot;), &quot;&quot;), concat(&quot;/&quot;,fileName()), &quot;&quot;),&quot;/&quot;), &quot;/&quot;), &quot;&quot;)
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/09/06/mdstorage/domain/ide/idea/live_template/" class="go-post">阅读全文</a>
 </div>
 
-<div class="post">
-    <a href="/2024/09/04/mdstorage/API%E6%9C%AA%E6%8E%88%E6%9D%83%E9%A3%8E%E9%99%A9%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B%E6%80%9D%E8%B7%AF/">
-        <h2 class="post-title">API未授权风险自动化检测思路.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/09/04/mdstorage/API%E6%9C%AA%E6%8E%88%E6%9D%83%E9%A3%8E%E9%99%A9%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B%E6%80%9D%E8%B7%AF/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/04/mdstorage/proto-store%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/">
-        <h2 class="post-title">proto-store项目概述.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>此仓库是总控、引擎、插件系统中多个组件共同使用的中央协议定义库，在<code>proto-store</code>项目中，我们组织软件模块、包和子系统，以促进高效的开发流程和代码的可维护性。项目主要使用Go语言开发，采用清晰、模块化的方式组织代码，以支持多组件间的 gRPC 通信。</p>
-<h3 id="主要职能"><a href="#主要职能" class="headerlink" title="主要职能"></a>主要职能</h3><p>项目分为几个主要模块，包括gRPC接口定义、服务实现和工具类。</p>
-<h2 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h2><p>项目包含一个<code>README.md</code>文件，其中详细描述了如何设置开发环境，包括安装Go语言环境、gRPC 工具和其他依赖项。</p>
-<p>包含 <code>Makefile </code> 文件，帮助开发人员迅速搭建开发环境、生成所需代码等。</p>
-<h2 id="开发模型"><a href="#开发模型" class="headerlink" title="开发模型"></a>开发模型</h2><h2 id="分层逻辑"><a href="#分层逻辑" class="headerlink" title="分层逻辑"></a>分层逻辑</h2><ol>
-<li><strong>清晰的逻辑分层</strong>：核心逻辑（<code>core</code>）分离出来，突出其稳定性和重要性；<code>api</code>用于常规业务逻辑，而<code>extension</code>用于易变或实验性质的特性。</li>
-<li><strong>便于维护和扩展</strong>：通过这种分层，维护者可以快速识别代码的稳定性和变化频率，从而更有效地进行维护和更新。</li>
-<li><strong>降低风险</strong>：将核心逻辑与易变逻辑分离，减少了核心功能因频繁更改而出现问题的风险。</li>
-<li><strong>灵活性提升</strong>：为新特性提供了灵活的试验空间（在<code>extension</code>），不影响核心和常规逻辑。</li>
-<li><strong>通用代码灵活使用</strong>: common 按需使用，可以跨版本使用，也可跨功能使用</li>
-<li><strong>服务分层</strong>: service 描述服务层面的接口定义，用于控制和管理该功能中的行为，例如获取信息、配置更新等。</li>
-</ol>
-<h2 id="版本概念"><a href="#版本概念" class="headerlink" title="版本概念"></a>版本概念</h2><ol>
-<li><strong>向后兼容性</strong>：新版本并不会立即替换旧版本，使得客户端可以平滑过渡。</li>
-<li><strong>清晰的版本管理</strong>：每个版本的更改和特性都清晰可追溯。</li>
-</ol>
-<h2 id="proto-store-目录结构"><a href="#proto-store-目录结构" class="headerlink" title="proto-store 目录结构"></a>proto-store 目录结构</h2><pre><code class="protobuf">proto-store/
-├── Makefile
-├── pkg                          # pb.go 代码
-│   ├── auth                     # 按功能分类，不要按组件分类
-│   │   ├── api
-│   │   │   ├── common
-│   │   │   │   └── common.pb.go  # 公共API的Go代码
-│   │   │   └── v1
-│   │   │       └── auth_api_v1.pb.go  # auth API v1版本的Go代码
-│   │   ├── core
-│   │   │   └── v1
-│   │   │       └── auth_core_v1.pb.go  # auth核心v1版本的Go代码
-│   │   ├── extension
-│   │   │   └── v1
-│   │   │       └── auth_extension_v1.pb.go  # auth扩展v1版本的Go代码
-│   │   └── service
-│   │       └── v1
-│   │           └── auth_service_v1.pb.go  # auth服务v1版本的Go代码
-│   ├── common
-│   │   └── v1
-│   │       └── common_v1.pb.go  # 通用类型v1版本的Go代码
-│   └── type
-│       └── v1
-│           └── types_v1.pb.go  # 数据类型v1版本的Go代码
-├── proto
-│   ├── auth
-│   │   ├── api
-│   │   │   ├── common
-│   │   │   │   └── common.proto  # 公共API的proto定义
-│   │   │   └── v1
-│   │   │       └── auth_api_v1.proto  # auth API v1版本的proto定义
-│   │   ├── core
-│   │   │   └── v1
-│   │   │       └── auth_core_v1.proto  # auth核心v1版本的proto定义
-│   │   ├── extension
-│   │   │   └── v1
-│   │   │       └── auth_extension_v1.proto  # auth扩展v1版本的proto定义
-│   │   └── service
-│   │       └── v1
-│   │           └── auth_service_v1.proto  # auth服务v1版本的proto定义
-│   ├── common
-│   │   └── v1
-│   │       └── common_v1.proto  # 通用类型v1版本的proto定义
-│   └── type
-│       └── v1
-│           └── types_v1.proto  # 数据类型v1版本的proto定义
-└── README.md
-
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/proto-buffer/" style="color: #00bcd4">proto-buffer</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/04/mdstorage/proto-store%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/04/mdstorage/readme/">
-        <h2 class="post-title">readme</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>mdstorage 储存了一系列以 markdown 格式为主的文档, 想要用于分享知识和方便查阅</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>make gp-deploy 完成对 hexo-test 的部署</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/readme/" style="color: #03a9f4">readme</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/04/mdstorage/readme/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/04/mdstorage/arch/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0%E4%B8%80%E9%97%A8%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
-        <h2 class="post-title">如何学习一门编程语言.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/arch/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                arch
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="学习一门编程语言"><a href="#学习一门编程语言" class="headerlink" title="学习一门编程语言"></a>学习一门编程语言</h1><p>参考链接: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/qiaogaojian/p/6781908.html">学习方法</a></p>
-<h2 id="初步了解"><a href="#初步了解" class="headerlink" title="初步了解"></a>初步了解</h2><ul>
-<li>如何运行一个简单的该语言程序</li>
-<li>了解该语言的基本要素:<ul>
-<li>基本数据类型</li>
-<li>基本语法和流程控制（判断&#x2F;分支&#x2F;循环等）</li>
-<li>主要数学运算符</li>
-<li><code>print</code>函数的使用</li>
-</ul>
-</li>
-</ul>
-<h2 id="进阶学习"><a href="#进阶学习" class="headerlink" title="进阶学习"></a>进阶学习</h2><ul>
-<li>掌握数组和其他集合类的使用</li>
-<li>理解泛型（如果有基础的话，否则可以后补）</li>
-<li>简单字符串处理，包括查找替换、截断去字串等（不涉及Regex和Parser）</li>
-<li>字符编码问题（如果理解困难，可跳过）</li>
-</ul>
-<h2 id="深入理解"><a href="#深入理解" class="headerlink" title="深入理解"></a>深入理解</h2><ul>
-<li>基本面向对象或函数式编程的特征<ul>
-<li>继承</li>
-<li>多态</li>
-<li>Lambda函数等</li>
-</ul>
-</li>
-<li>异常、错误处理、断言、日志和调试</li>
-<li>支持单元测试（不必须用TDD，但应掌握基本技能）</li>
-</ul>
-<h2 id="代码组织与运行"><a href="#代码组织与运行" class="headerlink" title="代码组织与运行"></a>代码组织与运行</h2><ul>
-<li>程序代码和可执行代码的组织机制</li>
-<li>运行时模块加载和符号查找机制</li>
-<li>基本输入输出和文件处理</li>
-</ul>
-<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><ul>
-<li>Callback方法调用和事件驱动编程模型</li>
-<li>序列化和反序列化</li>
-<li>动态编程、反射、元数据编程</li>
-<li>运行时编译和执行的机制</li>
-</ul>
-<h2 id="可选深化方向"><a href="#可选深化方向" class="headerlink" title="可选深化方向"></a>可选深化方向</h2><ol>
-<li>线程、并发和异步调用机制（读懂别人代码或专门学习）</li>
-<li>研究Regex和XML处理（如无必要可跳过）</li>
-<li>泛型的支持（使用现成的泛型集合和函数即可，深入学习需谨慎）</li>
-<li>咨询经验丰富的人了解该语言常用的特色features（如Ruby的block iterator, Java的dynamic proxy, C# 3的LINQ和extension method）</li>
-</ol>
-<h2 id="长期发展"><a href="#长期发展" class="headerlink" title="长期发展"></a>长期发展</h2><ul>
-<li>在工作的闲暇时间，重点考察：<ul>
-<li>该语言的惯用法和模式</li>
-<li>编译&#x2F;解释执行机制</li>
-</ul>
-</li>
-<li>之后可根据需求学习数据库、网络或图形，找成熟框架或库，边做边学。</li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="color: #00a596">学习</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/04/mdstorage/arch/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0%E4%B8%80%E9%97%A8%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/04/mdstorage/project/sr/%E5%91%A8%E6%8A%A5%E6%A8%A1%E6%9D%BF/">
-        <h2 class="post-title">周报模板.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="周报模板"><a href="#周报模板" class="headerlink" title="周报模板"></a>周报模板</h3><p>引擎组&#x2F;石犀&#x2F;总控组&#x2F;HA&#x2F;引擎&amp;插件&amp;总控</p>
-<p><strong>报告周期</strong><br>2023年12月11日 - 2023年12月15日</p>
-<hr>
-<h4 id="组员周报摘要"><a href="#组员周报摘要" class="headerlink" title="组员周报摘要"></a>组员周报摘要</h4><hr>
-<h5 id="组员-xxxx"><a href="#组员-xxxx" class="headerlink" title="组员: xxxx"></a>组员: xxxx</h5><ul>
-<li><strong>本周完成工作</strong>:<ul>
-<li>镜像自测: 自测文档已写，等待测试有空转测即可。</li>
-<li>慢速拒绝: 表面上完成，可能还需技术部反馈调整界面。</li>
-<li>边车: 自测通过，流程需完善，已交由项目经理跟进。</li>
-</ul>
-</li>
-<li><strong>本周总结</strong>:<ul>
-<li>临近发版小问题不断，需求加，慢速拒绝需求草率，建议减少此类情况。</li>
-</ul>
-</li>
-<li><strong>下周计划</strong>:<ul>
-<li>梳理引擎组各成员任务。</li>
-<li>检阅引擎相关技术文档。</li>
-<li>镜像交付技术分享培训（可能）。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h5 id="组员-xx"><a href="#组员-xx" class="headerlink" title="组员: xx"></a>组员: xx</h5><ul>
-<li><strong>本周完成工作</strong>:<ul>
-<li>弱密码可视化功能相关性能优化及代码重写，完成联调。</li>
-<li>MongoDB技术研究文档编写。</li>
-</ul>
-</li>
-<li><strong>本周总结</strong>:<ul>
-<li>代码分支弱密码可视化功能优化和前端联调完成，MongoDB技术文档编写完成。</li>
-</ul>
-</li>
-<li><strong>下周计划</strong>:<ul>
-<li>加强弱密码可视化测试，解决bug。</li>
-<li>研究配置下发流程。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h5 id="组员-xxx"><a href="#组员-xxx" class="headerlink" title="组员: xxx"></a>组员: xxx</h5><ul>
-<li><strong>本周完成工作</strong>:<ul>
-<li>每日任务设计文档编写，自测平台部署。</li>
-<li>生产环境时间问题处理，学习测试工具并形成文档。</li>
-<li>219升级220邮箱帮助文档404bug修复。</li>
-</ul>
-</li>
-<li><strong>本周总结</strong>:<ul>
-<li>[无特别总结，可能因为内容重复。]</li>
-</ul>
-</li>
-<li><strong>下周计划</strong>:<ul>
-<li>完成文档补充并开始补充总控的单元测试。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h5 id="组员-xxxx-1"><a href="#组员-xxxx-1" class="headerlink" title="组员: xxxx"></a>组员: xxxx</h5><ul>
-<li><strong>本周完成工作</strong>:<ul>
-<li>协助完成20亿级别数据，协助定位etcd升级失败问题。</li>
-<li>HA适配ARM平台，可以编译，联调待确定。</li>
-</ul>
-</li>
-<li><strong>本周总结</strong>:<ul>
-<li>定位问题和准备压测数据，下周完成压测数据录入，增加TDengine适配访问日志压测代码。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h5 id="组员-xxx-1"><a href="#组员-xxx-1" class="headerlink" title="组员: xxx"></a>组员: xxx</h5><ul>
-<li><strong>本周完成工作</strong>:<ul>
-<li>完成镜像安装测试，镜像中bug修复，自测文档编写。</li>
-<li>API-GOV编译ARM64架构软件包。</li>
-</ul>
-</li>
-<li><strong>本周总结</strong>:<ul>
-<li>主要完成镜像测试与文档编写，bug修复。</li>
-</ul>
-</li>
-<li><strong>下周计划</strong>:<ul>
-<li>Aarch64平台cpuid获取调研与编码，适配授权功能。</li>
-<li>YQ合并配置文件脚本研究。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h5 id="组员-xxx-2"><a href="#组员-xxx-2" class="headerlink" title="组员: xxx"></a>组员: xxx</h5><ul>
-<li><strong>本周完成工作</strong>:<ul>
-<li>项目管理相关事务处理，Nginx配置转换过滤。</li>
-<li>1.3.X版本问题处理，1.4.0 Nginx模块设计文档编写60%。</li>
-</ul>
-</li>
-<li><strong>本周总结</strong>:<ul>
-<li>[无特别总结。]</li>
-</ul>
-</li>
-<li><strong>下周计划</strong>:<ul>
-<li>完成1.4.0</li>
-</ul>
-</li>
-</ul>
-<p> Nginx模块设计文档。</p>
-<ul>
-<li>跟进信创与单测任务。</li>
-</ul>
-<hr>
-<h5 id="组员-xxx-3"><a href="#组员-xxx-3" class="headerlink" title="组员: xxx"></a>组员: xxx</h5><ul>
-<li><strong>本周完成工作</strong>:<ul>
-<li>慢速拒绝需求对接，设计文档输出，代码合并及自测。</li>
-<li>路由部署提示优化，静态路由设计文档补充。</li>
-<li>WAF插件问题处理，总控时间设置需求开发。</li>
-<li>协助排查引擎失联问题，分析WAF访问频率需求。</li>
-</ul>
-</li>
-<li><strong>本周总结</strong>:<ul>
-<li>WAF插件发现问题，数据结构变化导致，已重组数据。</li>
-</ul>
-</li>
-<li><strong>下周计划</strong>:<ul>
-<li>Webserver文档完成，ARM结构编译测试。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h5 id="组员-xxxx-2"><a href="#组员-xxxx-2" class="headerlink" title="组员: xxxx"></a>组员: xxxx</h5><ul>
-<li><strong>本周完成工作</strong>:<ul>
-<li>总控热升级时间延长，总控时间设置需求变更。</li>
-<li>总控安装升级设计文档完善，调研总控部署适配信创平台。</li>
-</ul>
-</li>
-<li><strong>本周总结</strong>:<ul>
-<li>临时需求多，打包效率低。</li>
-</ul>
-</li>
-<li><strong>下周计划</strong>:<ul>
-<li>继续调研总控部署适配信创平台，引擎集成测试。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h5 id="组员-xxx-4"><a href="#组员-xxx-4" class="headerlink" title="组员: xxx"></a>组员: xxx</h5><ul>
-<li><p>本周完成工作</p>
-<ul>
-<li>完成对ddos攻击源追踪和防御功能设计和原型规划。</li>
-<li>深入研究了流量清洗机制，编写了详细的设计文档。</li>
-<li>完成了app1.3版本的安全性升级和app1.4版本的需求分析。</li>
-</ul>
-</li>
-<li><p>问题</p>
-<ul>
-<li>在流量清洗机制中存在一些理论上的问题，需要进一步的实验和测试。</li>
-</ul>
-</li>
-<li><p>下周计划</p>
-<ul>
-<li>继续对ddos攻击源追踪和防御功能进行详细设计。</li>
-<li>开始实施app1.3版本的安全性升级。</li>
-<li>对app1.4版本进行详细的需求分析和设计。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="总结备注"><a href="#总结备注" class="headerlink" title="总结备注"></a>总结备注</h4><ul>
-<li><strong>本周整体进度</strong>:<ul>
-<li>各组员积极推进项目任务，完成本周计划工作，同时准备下周工作计划。</li>
-</ul>
-</li>
-<li><strong>团队整体问题</strong>:<ul>
-<li>部分需求变更及紧急任务导致计划外工作量增加，需合理安排时间和资源。</li>
-</ul>
-</li>
-<li><strong>下周关注点</strong>:<ul>
-<li>优化工作流程，减少临时需求对项目进度的影响，保证关键任务的完成。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h5 id="其他备注"><a href="#其他备注" class="headerlink" title="其他备注:"></a>其他备注:</h5><hr>
-<p><strong>编制人</strong>: xx<br><strong>日期</strong>: 2023年12月15日</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E5%91%A8%E6%8A%A5/" style="color: #03a9f4">周报</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/04/mdstorage/project/sr/%E5%91%A8%E6%8A%A5%E6%A8%A1%E6%9D%BF/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/04/mdstorage/project/sr/%E7%AB%AF%E5%8F%A3%E8%A7%84%E5%88%92/">
-        <h2 class="post-title">端口规划文档.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <pre><code class="Text">端口规划文档
-
-    &gt;&gt; 概述
-
-        总控引擎的任务因为是在客户提供的环境下运行, 所以端口需要规划, 避免出现与客户部署的服务端口冲突的情况
-
-        同时, 也需要告知客户有哪些端口需要放开, 避免防火墙
-
-        每个端口只会分配一个固定的组件, 组件如果废弃掉, 端口再分配给另一个组件, 这样避免多个版本组件端口冲突的情况
-
-        目前待规划的端口池 [22000-29000)
-
-    &gt;&gt; 蓝图
-
-        &gt;&gt;&gt; 总控
-
-            总控和总控组件    [29000-29100)
-
-            可视化和可视化组件  [29100-29200)
-
-            全流量组件 [29200-29300] 
-
-            API 组件  [29300-29400)
-
-            第三方组件      [29900-30000)
-
-
-        &gt;&gt;&gt; 引擎
-
-            &gt;&gt;&gt;&gt; HA 组件
-
-                管理面 HA 组件   [20100-20133)
-
-                调度节点 HA 组件  [20133-20166)
-
-            &gt;&gt;&gt;&gt; 引擎安装组件
-
-                自研组件      [20000, 20100)
-
-            &gt;&gt;&gt;&gt; 管理面组件
-
-                自研组件      [20200-20300)
-
-                第三方组件     [20300-20400)
-
-            &gt;&gt;&gt;&gt; 调度节点组件
-
-                自研组件      [28900-28950)
-
-            &gt;&gt;&gt;&gt; 数据面组件
-
-                自研组件      [28950-29000)
-
-    &gt;&gt; 总控使用的端口
-
-        &gt;&gt;&gt; 概述
-
-            总控使用端口思路不用太严格, 因为总控是与引擎分开部署的, 理论上这台机器没有引擎运行
-
-            总控除了80 443外使用 [29000-30000) (包括29000, 不包括 30000)
-
-            sc 和 sc的组件使用 [29000-29100)
-
-            sv 和 sv的组件使用 [29100-29200)
-
-            全流量和全流量组件 [29200-29300)
-
-            API 组件  [29300-29400)
-
-            总控的第三方组件使用 [29900-30000)
-
-        sc(80 443 8080)   -&gt; 29000
-
-        installer(8098)   -&gt; 29001		
-
-        meta(29010)   -&gt; 29010	
-
-        sv(20522)      -&gt; 29100
-
-        mongodb(27017)   -&gt; 29900
-
-        redis(6379)     -&gt; 29901
-
-        mysql(3306)     -&gt; 29902
-
-        etcd(2379 2380)   -&gt; 29903 29904
-
-        AgentServer(29201,29202)		    # 2024/4/7
-
-    &gt;&gt; 引擎
-
-        &gt;&gt;&gt; 概述
-
-            引擎使用端口思路是必须要严格而且要整齐, 因为引擎要负责服务转发, 需要与客户共享端口资源
-
-            引擎拆分后有 SE-M SE-S SE-W , 三个组件 都可以部署一台节点上, 也可以分开部署, 直接视为部署到一台节点的情况.
-
-            引擎使用 [20000-29000) 的端口, 其中管理面使用 [20200-28900), 调度节点使用 [28900-28950), 数据面使用 [28950-29000), 这样安排的理由是, 管理面可能开较多的插件服务, 端口是为插件服务提供的.
-
-            安装引擎的服务统一规划, 安装引擎目前不管是什么组件, 都是通过 agent 统一安装的, 所以 agent 端口都是 20000, 引擎安装使用 [20000, 20100)
-
-            引擎HA在引擎端口下统一规划, 每个引擎节点不管是什么组件, 都有 nexus 服务, 端口都是 20100, nexus 属于 HA 相关组件, HA 相关的服务使用 [20100, 20200)
-
-            
-
-        &gt;&gt;&gt; 引擎组件和对应的端口
-
-            &gt;&gt;&gt;&gt; SE-M 管理面组件
-
-                &gt;&gt;&gt;&gt;&gt; 管理面节点安装的服务使用 [20000-20010) 端口, 管理面自研应用使用 [20200-20300), 管理面第三方组件 [20300-20400), 管理面插件应用使用 [21000-22000), 管理面 HA 组件 [20100-20133), admin_dam 和 data_dam 比较特殊, 其中端口做到了复用, admin_dam和data_dam共用了 28952 端口, 一个绑定 127.0.0.1, 一个绑定 VIP, 所以不会冲突
-
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
                 
 
-                agent(8099)      -&gt; 20000
 
-                nexus(8000)				   -&gt; 20100				
-
-                admin_ha(6898)     -&gt; 20101
-
-                webserver(8299 8298)  -&gt; 20200 20201
-
-                etcd(2379 2380)    -&gt; 20300 20301
-
-                apiserver(6443)    -&gt; 20302
-
-                全局限速(7676)     -&gt; 21000
-
-                admin_dam($VIP:7000 8899 8443) -&gt; $VIP:28952 20202 20203
-
-            &gt;&gt;&gt;&gt; SE-S 调度节点组件
-
-                &gt;&gt;&gt;&gt;&gt; 调度节点 HA 使用 [20133-20166)
-
-                
-
-                agent(8099)      -&gt; 20000
-
-                data_ha grpc(6899)   -&gt; 20133
-
-* 				nexus(8000)      -&gt; 20100
-
-            &gt;&gt;&gt;&gt; SE-W 数据面组件
-
-                &gt;&gt;&gt;&gt;&gt; 数据面 HA使用 [20166-20199), 数据面自研应用使用 [28950-29000)
-
-                agent(8099)			    -&gt; 20000
-
-                nexus(8000)      -&gt; 20100				
-
-                envoy(9902)      -&gt; 28950				
-
-                data_dam(9977 127.0.0.1:7000)     -&gt; 28951 127.0.0.1:28952
-
-                polycube(9000)     -&gt; 28953
-
-                super_glue        28954    内部组件使用端口, envoy 相关
-
-                dataWorker(6879)
-
-                边车模式     -&gt; 28960-28965
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/09/04/mdstorage/project/sr/%E7%AB%AF%E5%8F%A3%E8%A7%84%E5%88%92/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/09/04/mdstorage/domain/js/vue%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%AD%A6/">
-        <h2 class="post-title">vue项目初学.md</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/domain/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                domain
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>作为初学这, 学习 vue </p>
-<h2 id="学习路径"><a href="#学习路径" class="headerlink" title="学习路径"></a>学习路径</h2><h2 id="搭建-vue-项目"><a href="#搭建-vue-项目" class="headerlink" title="搭建 vue 项目"></a>搭建 vue 项目</h2><pre><code class="Bash">npm create vite@latest $&#123;DIR_PATH&#125; --template vue  # 会自动下载 create-vite 工具
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/vue/" style="color: #00a596">vue</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/js/" style="color: #03a9f4">js</a>
-        </span>
-        
-    </div>
-    <a href="/2024/09/04/mdstorage/domain/js/vue%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%AD%A6/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
-    
-    <a class="page-num" href="/">
-        <i class="fa-solid fa-caret-left fa-fw"></i>
-    </a>
-    <a class="page-num" href="/">1</a>
-    <span class="page-omit">...</span>
-    
-    <span class="current">2</span>
-    
-    <a class="page-num" href="/page/3">
-        3
-    </a>
+  <div class="row mx-auto index-card">
     
     
-    <a class="page-num" href="/page/4">
-        4
-    </a>
-    
-    
-    <span class="page-omit">...</span>
-    <a class="page-num" href="/page/28">28</a>
-    
-    
-    <a class="page-num" href="/page/3/">
-        <i class="fa-solid fa-caret-right fa-fw"></i>
-    </a>
-    
-</div>
-
-    </div>
-    
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">xiaoy</div>
-        <div class="description">
-            <p>xiaoy<br>…</p>
-
-        </div>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a href="https://abrance.github.io">Argvchs</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
+        <a href="/2024/09/06/mdstorage/domain/shell/bash%E5%8F%98%E9%87%8F%E5%A4%84%E7%90%86/" target="_self">
+          bash变量处理.md
+        </a>
+      </h2>
 
-    </div>
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/06/mdstorage/domain/shell/bash%E5%8F%98%E9%87%8F%E5%A4%84%E7%90%86/" target="_self">
         <div>
-            &copy;
-            2024 - 2024 Xiaoy
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;xiaoy
+          Bash 变量分割处理成数组在这篇文章中，我们将探讨在 Bash 中使用数组、IFS 变量的作用以及如何通过 read 命令来分割字符串并存入数组。这些知识对于处理复杂的字符串输入和数组操作非常有用。 1. IFS（Internal Field Separator）IFS 是 Bash 中的内部字段分隔符，它决定了在处理字符串时，如何将字符串拆分成字段。默认情况下，IFS 包含空格、制表符和换行符
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
+      </a>
 
-        </div>
+      <div class="index-btm post-metas">
         
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-06 00:00" pubdate>
+              2024-09-06
+            </time>
+          </div>
         
-    </div>
-    <script src="/js/main.js"></script>
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
     
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/shell/" class="category-chain-item">shell</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/06/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/" target="_self">
+          NAS访问.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/06/mdstorage/resource/asset/NAS%E8%AE%BF%E9%97%AE/" target="_self">
+        <div>
+          ssh访问先用普通账户登陆xiaoy/$faker. 切换rootroot/$faker.
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-06 00:00" pubdate>
+              2024-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/resource/" class="category-chain-item">resource</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/resource/asset/" class="category-chain-item">asset</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/nas/">#nas</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/06/mdstorage/domain/ide/idea/live_template/" target="_self">
+          live_template.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/06/mdstorage/domain/ide/idea/live_template/" target="_self">
+        <div>
+          live template 变量语法settings -&gt; live templates -&gt; $item -&gt; template text -&gt; edit variables … template text 写作xxx $variable_name$  xxx      edit variables expression 语法参考链接: 官方链接中文链接 实例12345#
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-06 00:00" pubdate>
+              2024-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/ide/" class="category-chain-item">ide</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/ide/idea/" class="category-chain-item">idea</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/API%E6%9C%AA%E6%8E%88%E6%9D%83%E9%A3%8E%E9%99%A9%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B%E6%80%9D%E8%B7%AF/" target="_self">
+          API未授权风险自动化检测思路.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/API%E6%9C%AA%E6%8E%88%E6%9D%83%E9%A3%8E%E9%99%A9%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B%E6%80%9D%E8%B7%AF/" target="_self">
+        <div>
+          
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/proto-store%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/" target="_self">
+          proto-store项目概述.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/proto-store%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/" target="_self">
+        <div>
+          概述定义此仓库是总控、引擎、插件系统中多个组件共同使用的中央协议定义库，在proto-store项目中，我们组织软件模块、包和子系统，以促进高效的开发流程和代码的可维护性。项目主要使用Go语言开发，采用清晰、模块化的方式组织代码，以支持多组件间的 gRPC 通信。 主要职能项目分为几个主要模块，包括gRPC接口定义、服务实现和工具类。 依赖安装项目包含一个README.md文件，其中详细描述了如何
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/proto-buffer/">#proto-buffer</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/readme/" target="_self">
+          readme
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/readme/" target="_self">
+        <div>
+          概述mdstorage 储存了一系列以 markdown 格式为主的文档, 想要用于分享知识和方便查阅 使用make gp-deploy 完成对 hexo-test 的部署
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/readme/">#readme</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/arch/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0%E4%B8%80%E9%97%A8%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" target="_self">
+          如何学习一门编程语言.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/arch/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0%E4%B8%80%E9%97%A8%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" target="_self">
+        <div>
+          学习一门编程语言参考链接: 学习方法 初步了解 如何运行一个简单的该语言程序 了解该语言的基本要素: 基本数据类型 基本语法和流程控制（判断&#x2F;分支&#x2F;循环等） 主要数学运算符 print函数的使用    进阶学习 掌握数组和其他集合类的使用 理解泛型（如果有基础的话，否则可以后补） 简单字符串处理，包括查找替换、截断去字串等（不涉及Regex和Parser） 字符编码问题（如果理
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/arch/" class="category-chain-item">arch</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/arch/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">如何学习</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">#学习</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/domain/golang/fmt%E5%92%8Cprintln/" target="_self">
+          fmt和println.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/domain/golang/fmt%E5%92%8Cprintln/" target="_self">
+        <div>
+          fmt.Print 和 println 区别https://gfw.go101.org/article/unofficial-faq.html#print-builtin-fmt-log 标准输出 (stdout)stdout 通常用于输出程序的主要结果或期望的数据。这些信息通常是：  正常的数据输出：程序正常运行的结果，如计算输出、查询结果等。 信息性消息：提供程序运行状态的信息，如进程指示、状
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/golang/" class="category-chain-item">golang</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/golang/">#golang</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/domain/js/vue%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%AD%A6/" target="_self">
+          vue项目初学.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/domain/js/vue%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%AD%A6/" target="_self">
+        <div>
+          概述作为初学这, 学习 vue  学习路径搭建 vue 项目1npm create vite@latest $&#123;DIR_PATH&#125; --template vue  # 会自动下载 create-vite 工具
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/js/" class="category-chain-item">js</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">#vue</a>
+            
+              <a href="/tags/js/">#js</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/mdstorage/domain/linux/Ubuntu_wifi%E8%BF%9E%E4%B8%8D%E4%B8%8A/" target="_self">
+          Ubuntu_wifi连不上.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/mdstorage/domain/linux/Ubuntu_wifi%E8%BF%9E%E4%B8%8D%E4%B8%8A/" target="_self">
+        <div>
+          reset systemd-resolved123# 尝试修改 dns 配置，解决问题sudo nano /etc/systemd/resolved.confsystemctl restart systemd-resolved
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 00:00" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ubuntu/">#ubuntu</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
