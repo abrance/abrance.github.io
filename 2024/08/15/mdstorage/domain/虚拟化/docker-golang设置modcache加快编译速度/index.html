@@ -1,284 +1,212 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>docker-golang设置modcache加快编译速度.md | Xiaoy</title>
+    <meta name="author" content="xiaoy" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="xiaoy">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="概述如果每次只提供源码进行 docker build 一个 golang 项目, 那么每次都会拉取依赖仓库, 所以希望能充分利用缓存机制来减少 docker build 的时间. 实践实例go.Dockerfile 1234567891011121314151617181920212223242526FROM golang:1.22.3ARG HTTP_PROXYARG HTTPS_PROXYEN">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker-golang设置modcache加快编译速度.md">
-<meta property="og:url" content="https://abrance.github.io/2024/08/15/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker-golang%E8%AE%BE%E7%BD%AEmodcache%E5%8A%A0%E5%BF%AB%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6/index.html">
-<meta property="og:site_name" content="Xiaoy">
-<meta property="og:description" content="概述如果每次只提供源码进行 docker build 一个 golang 项目, 那么每次都会拉取依赖仓库, 所以希望能充分利用缓存机制来减少 docker build 的时间. 实践实例go.Dockerfile 1234567891011121314151617181920212223242526FROM golang:1.22.3ARG HTTP_PROXYARG HTTPS_PROXYEN">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-08-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-11T02:55:43.729Z">
-<meta property="article:author" content="xiaoy">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>docker-golang设置modcache加快编译速度.md - Xiaoy</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
 
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="/js/lib/preview.js"></script>
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
 
 
-  
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>xiaoy</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XIAOY</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
         
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="docker-golang设置modcache加快编译速度.md"></span>
-          
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XIAOY</span>
         </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-15 00:00" pubdate>
-          August 15, 2024 am
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          480 words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          5 mins
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">docker-golang设置modcache加快编译速度.md</h1>
-            
-            
-              <div class="markdown-body">
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
                 
-                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>如果每次只提供源码进行 docker build 一个 golang 项目, 那么每次都会拉取依赖仓库, 所以希望能充分利用缓存机制来减少 docker build 的时间.</p>
-<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>go.Dockerfile</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-keyword">FROM</span> golang:<span class="hljs-number">1.22</span>.<span class="hljs-number">3</span><br><br><span class="hljs-keyword">ARG</span> HTTP_PROXY<br><span class="hljs-keyword">ARG</span> HTTPS_PROXY<br><br><span class="hljs-keyword">ENV</span> PROJECT_NAME=installer<br><span class="hljs-keyword">ENV</span> GOMODCACHE=/go/pkg/mod<br><br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span></span><br><br><span class="hljs-keyword">COPY</span><span class="language-bash"> . /<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span></span><br><br><span class="hljs-comment"># 拷贝凭证文件到 Docker 容器中, 这里要确保 .git-credentials 存在</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> .git-credentials /root/.git-credentials</span><br><br><span class="hljs-keyword">RUN</span><span class="language-bash"> git config --global credential.helper <span class="hljs-string">&#x27;store --file=/root/.git-credentials&#x27;</span> &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOPRIVATE=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GONOSUMDB=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GONOPROXY=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOINSECURE=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOPROXY=<span class="hljs-string">&quot;https://goproxy.cn|https://goproxy.io|direct&quot;</span> &amp;&amp; \</span><br><span class="language-bash">    go mod tidy -x</span><br><br><span class="hljs-comment"># 指定容器启动时执行的命令</span><br><span class="hljs-keyword">CMD</span><span class="language-bash"> go mod download</span><br><br></code></pre></td></tr></table></figure>
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>docker-golang设置modcache加快编译速度.md</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/15
+        </span>
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>如果每次只提供源码进行 docker build 一个 golang 项目, 那么每次都会拉取依赖仓库, 所以希望能充分利用缓存机制来减少 docker build 的时间.</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>go.Dockerfile</p>
+<pre><code class="Dockerfile">FROM golang:1.22.3
+
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+
+ENV PROJECT_NAME=installer
+ENV GOMODCACHE=/go/pkg/mod
+
+WORKDIR /$&#123;PROJECT_NAME&#125;
+
+COPY . /$&#123;PROJECT_NAME&#125;
+
+# 拷贝凭证文件到 Docker 容器中, 这里要确保 .git-credentials 存在
+COPY .git-credentials /root/.git-credentials
+
+RUN git config --global credential.helper &#39;store --file=/root/.git-credentials&#39; &amp;&amp; \
+    go env -w GOPRIVATE=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GONOSUMDB=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GONOPROXY=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GOINSECURE=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GOPROXY=&quot;https://goproxy.cn|https://goproxy.io|direct&quot; &amp;&amp; \
+    go mod tidy -x
+
+# 指定容器启动时执行的命令
+CMD go mod download
+</code></pre>
 <p>构建 mod cache</p>
 <ul>
 <li>docker build -t cache_builder -f .&#x2F;go.Dockerfile .</li>
@@ -286,396 +214,97 @@
 <li>mkdir temp</li>
 <li>docker cp cache_extractor:&#x2F;go&#x2F;pkg&#x2F;mod .&#x2F;temp&#x2F;</li>
 </ul>
-<p>执行完后 &#x2F;temp 下就会出现 mod, 这时的 mod 目录约 300MB+, 注意会有 open &#x2F;xxxx&#x2F;temp&#x2F;mod&#x2F;cel.dev&#x2F;<a href="mailto:&#101;&#120;&#112;&#114;&#x40;&#x76;&#48;&#x2e;&#49;&#x35;&#46;&#x30;">&#101;&#120;&#112;&#114;&#x40;&#x76;&#48;&#x2e;&#49;&#x35;&#46;&#x30;</a>&#x2F;.bazelversion: permission denied 的警告字符的目录或者文件,会报文件权限不够,如果用 sudo 执行, 则可以拷贝出来, 会发现这时的 temp 磁盘占用大很多 1GB+ .</p>
+<p>执行完后 &#x2F;temp 下就会出现 mod, 这时的 mod 目录约 300MB+, 注意会有 open &#x2F;xxxx&#x2F;temp&#x2F;mod&#x2F;cel.dev&#x2F;<a href="mailto:&#x65;&#x78;&#112;&#x72;&#x40;&#x76;&#x30;&#x2e;&#49;&#53;&#x2e;&#x30;">&#x65;&#x78;&#112;&#x72;&#x40;&#x76;&#x30;&#x2e;&#49;&#53;&#x2e;&#x30;</a>&#x2F;.bazelversion: permission denied 的警告字符的目录或者文件,会报文件权限不够,如果用 sudo 执行, 则可以拷贝出来, 会发现这时的 temp 磁盘占用大很多 1GB+ .</p>
 <p>构建Dockerfile:<br>Dockerfile</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-keyword">FROM</span> srmysql<br><br><span class="hljs-keyword">ARG</span> HTTP_PROXY<br><span class="hljs-keyword">ARG</span> HTTPS_PROXY<br><br><span class="hljs-keyword">ENV</span> PROJECT_NAME=installer<br><span class="hljs-keyword">ENV</span> SC_IP=<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span><br><span class="hljs-keyword">ENV</span> GOMODCACHE=/go/pkg/mod<br><br><span class="hljs-keyword">RUN</span><span class="language-bash"> apt update &amp;&amp; apt-get -y install gettext</span><br><br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span></span><br><br><span class="hljs-keyword">COPY</span><span class="language-bash"> . /<span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span></span><br><br><span class="hljs-keyword">COPY</span><span class="language-bash"> temp/mod /go/pkg/mod</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> go mod download</span><br><br><span class="hljs-comment"># 拷贝凭证文件到 Docker 容器中, 这里要确保 .git-credentials 存在</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> git config --global credential.helper <span class="hljs-string">&#x27;store --file=/$&#123;PROJECT_NAME&#125;/.git-credentials&#x27;</span> &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOPRIVATE=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GONOSUMDB=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GONOPROXY=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOINSECURE=git.ouryun.cn,192.168.20.12 &amp;&amp; \</span><br><span class="language-bash">    go <span class="hljs-built_in">env</span> -w GOPROXY=<span class="hljs-string">&quot;https://goproxy.cn|https://goproxy.io|direct&quot;</span> &amp;&amp; \</span><br><span class="language-bash">    go install github.com/go-delve/delve/cmd/dlv@latest &amp;&amp; \</span><br><span class="language-bash">    go mod tidy -x</span><br><br><span class="hljs-comment"># 构建应用</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> make release</span><br><span class="hljs-comment"># 指定容器启动时执行的命令</span><br><br><span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">mkdir</span> -p /opt/public/ &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;SCIP=172.17.0.200&quot;</span> | <span class="hljs-built_in">tee</span> -a /opt/public/.env</span><br><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">8098</span><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">2345</span><br><br><span class="hljs-keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="hljs-string">&quot;/lib/systemd/systemd&quot;</span>]</span><br><br></code></pre></td></tr></table></figure>
+<pre><code class="Dockerfile">FROM srmysql
 
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+
+ENV PROJECT_NAME=installer
+ENV SC_IP=127.0.0.1
+ENV GOMODCACHE=/go/pkg/mod
+
+RUN apt update &amp;&amp; apt-get -y install gettext
+
+WORKDIR /$&#123;PROJECT_NAME&#125;
+
+COPY . /$&#123;PROJECT_NAME&#125;
+
+COPY temp/mod /go/pkg/mod
+RUN go mod download
+
+# 拷贝凭证文件到 Docker 容器中, 这里要确保 .git-credentials 存在
+RUN git config --global credential.helper &#39;store --file=/$&#123;PROJECT_NAME&#125;/.git-credentials&#39; &amp;&amp; \
+    go env -w GOPRIVATE=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GONOSUMDB=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GONOPROXY=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GOINSECURE=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GOPROXY=&quot;https://goproxy.cn|https://goproxy.io|direct&quot; &amp;&amp; \
+    go install github.com/go-delve/delve/cmd/dlv@latest &amp;&amp; \
+    go mod tidy -x
+
+# 构建应用
+RUN make release
+# 指定容器启动时执行的命令
+
+RUN mkdir -p /opt/public/ &amp;&amp; echo &quot;SCIP=172.17.0.200&quot; | tee -a /opt/public/.env
+
+EXPOSE 8098
+EXPOSE 2345
+
+ENTRYPOINT [&quot;/lib/systemd/systemd&quot;]
+</code></pre>
 <p>主要起作用的两行:</p>
 <ul>
 <li>COPY temp&#x2F;mod &#x2F;go&#x2F;pkg&#x2F;mod</li>
 <li>RUN go mod download</li>
 </ul>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
+    </div>
     
-      <span class="category-chain">
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 Xiaoy
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;xiaoy
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
         
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/" class="category-chain-item">虚拟化</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
     </div>
-  
-  
-</div>
+</footer>
 
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>docker-golang设置modcache加快编译速度.md</div>
-      <div>https://abrance.github.io/2024/08/15/mdstorage/domain/虚拟化/docker-golang设置modcache加快编译速度/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>Author</div>
-          <div>xiaoy</div>
         </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>August 15, 2024</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>Licensed under</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                    <i class="iconfont icon-cc-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2024/08/15/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%B8%80%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%9B%88%E5%88%A9%E7%9A%84%E6%A6%82%E8%A6%81%E5%88%86%E6%9E%90/" title="一个软件实现盈利的概要分析.md">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">一个软件实现盈利的概要分析.md</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2024/08/07/mdstorage/project/%E5%AE%9D%E8%B4%B5%E7%BB%8F%E9%AA%8C/strace%E6%8E%92%E6%9F%A5%E5%BC%82%E6%AD%A5shell%E6%89%A7%E8%A1%8C%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" title="strace排查异步shell执行失败问题.md">
-                        <span class="hidden-mobile">strace排查异步shell执行失败问题.md</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
             </div>
-
-            
-          </article>
-        </div>
-      </div>
+        </transition>
+        
     </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
-    mermaid.initialize({"theme":"default"});
-
-    Fluid.utils.listenDOMLoaded(function() {
-      Fluid.events.registerRefreshCallback(function() {
-        if ('mermaid' in window) {
-          mermaid.init();
-        }
-      });
-    });
-  });
-</script>
-
-
+    <script src="/js/main.js"></script>
+    
+    
 
 
 
 
     
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
 </body>
 </html>

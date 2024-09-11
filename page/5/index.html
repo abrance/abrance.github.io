@@ -1,980 +1,833 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>Xiaoy</title>
+    <meta name="author" content="xiaoy" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="xiaoy">
-  <meta name="keywords" content="">
-  
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Xiaoy">
-<meta property="og:url" content="https://abrance.github.io/page/5/index.html">
-<meta property="og:site_name" content="Xiaoy">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="xiaoy">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>Xiaoy</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
 
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="/js/lib/preview.js"></script>
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
+<script src="/js/lib/home.js"></script>
 
+<link rel="stylesheet" href="/css/main.css" />
 
-  
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>xiaoy</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/29/mdstorage/domain/golang/mmap/" target="_self">
-          mmap.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/29/mdstorage/domain/golang/mmap/" target="_self">
-        <div>
-          mmap概述https://zhuanlan.zhihu.com/p/366964820 mmap 机制mmap 通过将文件直接映射到进程的地址空间来提高文件访问的效率。 优势 性能：对于大文件的随机读写，mmap 可以提供更高的性能，因为它避免了传统的文件读写中的数据复制步骤。 简易的接口：mmap 提供了一种将文件内容直接映射为内存的方法，这使得读写文件就像访问内存一样简单。 系统优化：利用操
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-29 00:00" pubdate>
-              2024-08-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/golang/" class="category-chain-item">golang</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/29/mdstorage/domain/linux/%E6%A1%8C%E9%9D%A2%E5%9B%BE%E6%A0%87/" target="_self">
-          桌面图标.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/29/mdstorage/domain/linux/%E6%A1%8C%E9%9D%A2%E5%9B%BE%E6%A0%87/" target="_self">
-        <div>
-          TODOLinux 桌面应用图标123456789101112131415161718# .desktop 放到 ~/.local/share/applications/your_app_name.desktop 是用户目录# /usr/share/applications/your_app_name.desktop 是系统应用目录[Desktop Entry]Type=ApplicationNa
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-29 00:00" pubdate>
-              2024-08-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/29/mdstorage/domain/pm/%E6%B2%9F%E9%80%9A/" target="_self">
-          沟通.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/29/mdstorage/domain/pm/%E6%B2%9F%E9%80%9A/" target="_self">
-        <div>
-          交待任务和询问进度技巧1. 明确任务目标和期望 具体化任务：当主管交代任务时，确保了解任务的具体目标和预期成果。询问具体的细节和预期的结果，以便你可以更好地规划和执行。 阐述目标：在回应时，重申你对任务目标的理解，确保你和主管对任务的理解是一致的。  2. 识别和聚焦关键点 关键绩效指标（KPIs）：确定哪些指标或成果是衡量任务成功的关键。 关注重点：在讨论进度时，集中讨论这些关键指标的当前状态和
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-29 00:00" pubdate>
-              2024-08-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/pm/" class="category-chain-item">pm</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/29/mdstorage/domain/windows/win10%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
-          win10端口转发.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/29/mdstorage/domain/windows/win10%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
-        <div>
-          TODOwin10 端口转发场景用例主机 A (Ubuntu22.04) ，虚拟机 B (win10)，B 中连接了 VPN， 可以连接 10.9.220.87，A 通过 B 端口转发连接 10.9.220.87 22 端口。 1netsh interface portproxy add v4tov4 listenaddress=192.168.122.36 listenport=22 conne
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-29 00:00" pubdate>
-              2024-08-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/windows/" class="category-chain-item">windows</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/29/mdstorage/domain/%E4%BF%A1%E5%88%9B/%E4%BF%A1%E5%88%9B/" target="_self">
-          信创.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/29/mdstorage/domain/%E4%BF%A1%E5%88%9B/%E4%BF%A1%E5%88%9B/" target="_self">
-        <div>
-          信创（飞腾）鲲鹏920是目前业界领先的ARM-based处理器。该处理器采用7nm制造工艺，基于ARM架构授权，由华为公司自主设计完成。通过优化分支预测算法、提升运算单元数量、改进内存子系统架构等一系列微架构设计，大幅提高处理器性能。典型主频下，SPECint Benchmark评分超过930，超出业界标杆25%。同时，能效比优于业界标杆30%。鲲鹏920以更低功耗为数据中心提供更强性能¹。 飞腾
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-29 00:00" pubdate>
-              2024-08-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E4%BF%A1%E5%88%9B/" class="category-chain-item">信创</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/29/mdstorage/domain/%E6%96%87%E6%A1%A3/mkdocs/" target="_self">
-          mkdoc.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/29/mdstorage/domain/%E6%96%87%E6%A1%A3/mkdocs/" target="_self">
-        <div>
-          TODOmkdocs使用https://yangjh.gitee.io/mkdocs/ 启动https://squidfunk.github.io/mkdocs-material/reference/diagrams/ mkdocs serve –dev-addr 172.16.1.216:12520 -f mkdocs.yml 1234567891011121314site_name: ston
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-29 00:00" pubdate>
-              2024-08-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%96%87%E6%A1%A3/">#文档</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/29/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/kvm%E7%BD%91%E7%BB%9C/" target="_self">
-          kvm网络.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/29/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/kvm%E7%BD%91%E7%BB%9C/" target="_self">
-        <div>
-          KVM 配置桥接网络KVM之配置桥接网卡
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-29 00:00" pubdate>
-              2024-08-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/" class="category-chain-item">虚拟化</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/kvm/">#kvm</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/29/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88/" target="_self">
-          技术方案.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/29/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88/" target="_self">
-        <div>
-          TODO方案设计标准 设计时要做到、交付后、只剩下交付后涉及人员能搞定的事情。 systemd 的机制调研文档
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-29 00:00" pubdate>
-              2024-08-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/29/mdstorage/resource/%E4%B9%A6%E7%B1%8D/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D/" target="_self">
-          计算机书籍.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/29/mdstorage/resource/%E4%B9%A6%E7%B1%8D/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D/" target="_self">
-        <div>
-          产品任务原理 从零开始学架构  C++ primer  C++ 模板编程  数据密集型应用系统设计	  正则表达式必知必会  程序员修炼之道  深入理解 linux 内核  深入理解Linux 网络内幕  大规模分布式系统   实践技术 client-go   条件锁 Raft 协议	 GMP 模型 精通git
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-29 00:00" pubdate>
-              2024-08-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/resource/" class="category-chain-item">resource</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/resource/%E4%B9%A6%E7%B1%8D/" class="category-chain-item">书籍</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/book/">#book</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/29/mdstorage/resource/%E4%BA%BA%E7%89%A9/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%A2%86%E5%9F%9F/" target="_self">
-          计算机领域.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/29/mdstorage/resource/%E4%BA%BA%E7%89%A9/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%A2%86%E5%9F%9F/" target="_self">
-        <div>
-          TODO概述计算机领域的牛人 plantegg 硬件 CPU 网络blog  温玉 网易云原生专家blog
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-29 00:00" pubdate>
-              2024-08-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/resource/" class="category-chain-item">resource</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/resource/%E4%BA%BA%E7%89%A9/" class="category-chain-item">人物</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-              </div>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
             </div>
-          </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XIAOY</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XIAOY</span>
         </div>
-      </div>
-    
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div id="home-head">
+    <div
+        id="home-background"
+        ref="homeBackground"
+        data-images="/images/background.jpg"
+    ></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Xiaoy</h1>
+                <h3>xiaoy blog</h3>
+                <h5></h5>
+            </div>
+        </span>
     </div>
-  </div>
+</div>
+<div
+    id="home-posts-wrap"
+    ref="homePostsWrap"
+    true
+>
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/2024/08/29/mdstorage/domain/golang/mmap/">
+        <h2 class="post-title">mmap.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="mmap"><a href="#mmap" class="headerlink" title="mmap"></a>mmap</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/366964820">https://zhuanlan.zhihu.com/p/366964820</a></p>
+<h3 id="mmap-机制"><a href="#mmap-机制" class="headerlink" title="mmap 机制"></a>mmap 机制</h3><p><code>mmap</code> 通过将文件直接映射到进程的地址空间来提高文件访问的效率。</p>
+<h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ol>
+<li><strong>性能</strong>：对于大文件的随机读写，<code>mmap</code> 可以提供更高的性能，因为它避免了传统的文件读写中的数据复制步骤。</li>
+<li><strong>简易的接口</strong>：<code>mmap</code> 提供了一种将文件内容直接映射为内存的方法，这使得读写文件就像访问内存一样简单。</li>
+<li><strong>系统优化</strong>：利用操作系统的页面缓存和虚拟内存系统，可以有效地处理大文件。</li>
+</ol>
+<h4 id="劣势"><a href="#劣势" class="headerlink" title="劣势"></a>劣势</h4><ol>
+<li><strong>安全风险</strong>：直接操作内存可能导致程序崩溃和数据损坏。</li>
+<li><strong>复杂性</strong>：需要手动管理内存映射的生命周期，错误处理更加复杂。</li>
+<li><strong>可移植性和兼容性问题</strong>：不同操作系统对 <code>mmap</code> 的支持不同，可能需要平台特定的代码。（检测适配 鲲鹏 kylinos v10）</li>
+</ol>
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><ul>
+<li>对大型文件进行高效的随机读写。</li>
+<li>处理有限的结构化数据，不需要复杂的查询或事务处理。</li>
+<li>在内存和文件之间快速共享数据。</li>
+</ul>
+<h3 id="数据库（DB）"><a href="#数据库（DB）" class="headerlink" title="数据库（DB）"></a>数据库（DB）</h3><p>数据库是用于存储、检索、更新和管理数据的系统，它提供了数据的结构化组织、查询语言和事务处理。</p>
+<h4 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h4><ol>
+<li><strong>数据管理</strong>：提供复杂的数据查询、索引和管理能力。</li>
+<li><strong>事务支持</strong>：支持事务处理，包括原子性、一致性、隔离性和持久性。</li>
+<li><strong>易于使用和维护</strong>：提供了用户友好的接口和工具，简化了数据管理和维护。</li>
+<li><strong>扩展性和灵活性</strong>：支持大量数据和多种数据类型，易于扩展和修改数据模型。</li>
+<li><strong>安全性</strong>：提供访问控制和数据加密功能。</li>
+</ol>
+<h4 id="劣势-1"><a href="#劣势-1" class="headerlink" title="劣势"></a>劣势</h4><ol>
+<li><strong>性能开销</strong>：对于简单的数据访问，数据库的额外功能可能带来性能开销。</li>
+<li><strong>复杂性</strong>：数据库的安装、配置和维护相对复杂。</li>
+<li><strong>成本</strong>：某些数据库软件可能需要购买许可证。</li>
+</ol>
+<h4 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h4><ul>
+<li>需要复杂查询和数据分析的应用。</li>
+<li>需要事务处理和数据完整性保证的场景。</li>
+<li>处理大量结构化数据和关系型数据。</li>
+<li>需要多用户并发访问和数据安全性的应用。</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/29/mdstorage/domain/golang/mmap/" class="go-post">阅读全文</a>
 </div>
 
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+<div class="post">
+    <a href="/2024/08/29/mdstorage/domain/linux/%E6%A1%8C%E9%9D%A2%E5%9B%BE%E6%A0%87/">
+        <h2 class="post-title">桌面图标.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/29
+        </span>
+        
+        
     </div>
-  
-  
-  
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h2 id="Linux-桌面应用图标"><a href="#Linux-桌面应用图标" class="headerlink" title="Linux 桌面应用图标"></a>Linux 桌面应用图标</h2><pre><code># .desktop 放到 ~/.local/share/applications/your_app_name.desktop 是用户目录
+# /usr/share/applications/your_app_name.desktop 是系统应用目录
+[Desktop Entry]
+Type=Application
+Name=List Dashboard
+Exec=/opt/mystorage/github/list_dashboard/build/linux/x64/release/bundle/list_dashboard
+Icon=/opt/mystorage/github/list_dashboard/linux/icons/Icon-512.png
+Comment=Your Application Description
+Terminal=false
+Categories=Utility;
+
+Type：条目的类型，对于应用程序应该是 Application。
+Name：应用程序的名称，将在菜单和搜索中显示。
+Exec：启动应用程序的命令或可执行文件的路径。
+Icon：应用程序图标的路径，可以是绝对路径，或者如果图标已安装到系统图标路径，只需图标文件的名称。
+Comment：应用程序的描述，将在鼠标悬停时显示。
+Terminal：是否在终端中运行应用程序。对于GUI应用，通常是 false。
+Categories：应用程序分类，帮助在应用菜单中归类。
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/29/mdstorage/domain/linux/%E6%A1%8C%E9%9D%A2%E5%9B%BE%E6%A0%87/" class="go-post">阅读全文</a>
 </div>
 
-  </footer>
+<div class="post">
+    <a href="/2024/08/29/mdstorage/domain/pm/%E6%B2%9F%E9%80%9A/">
+        <h2 class="post-title">沟通.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="交待任务和询问进度技巧"><a href="#交待任务和询问进度技巧" class="headerlink" title="交待任务和询问进度技巧"></a>交待任务和询问进度技巧</h2><h3 id="1-明确任务目标和期望"><a href="#1-明确任务目标和期望" class="headerlink" title="1. 明确任务目标和期望"></a>1. 明确任务目标和期望</h3><ul>
+<li><strong>具体化任务</strong>：当主管交代任务时，确保了解任务的具体目标和预期成果。询问具体的细节和预期的结果，以便你可以更好地规划和执行。</li>
+<li><strong>阐述目标</strong>：在回应时，重申你对任务目标的理解，确保你和主管对任务的理解是一致的。</li>
+</ul>
+<h3 id="2-识别和聚焦关键点"><a href="#2-识别和聚焦关键点" class="headerlink" title="2. 识别和聚焦关键点"></a>2. 识别和聚焦关键点</h3><ul>
+<li><strong>关键绩效指标（KPIs）</strong>：确定哪些指标或成果是衡量任务成功的关键。</li>
+<li><strong>关注重点</strong>：在讨论进度时，集中讨论这些关键指标的当前状态和任何潜在的挑战。</li>
+</ul>
+<h3 id="3-透明的沟通"><a href="#3-透明的沟通" class="headerlink" title="3. 透明的沟通"></a>3. 透明的沟通</h3><ul>
+<li><strong>真实情况</strong>：提供真实、直接的进度更新。如果遇到问题或延迟，请直接说明。</li>
+<li><strong>风险和挑战</strong>：提前识别并汇报可能影响任务的风险或挑战，以及你的应对计划。</li>
+</ul>
+<h3 id="4-使用简明扼要的语言"><a href="#4-使用简明扼要的语言" class="headerlink" title="4. 使用简明扼要的语言"></a>4. 使用简明扼要的语言</h3><ul>
+<li><strong>避免技术术语</strong>：尽量使用非技术性的语言，除非你的主管对相关技术有深入了解。</li>
+<li><strong>关键信息优先</strong>：首先传达最重要的信息，然后再提供必要的背景或细节。</li>
+</ul>
+<h3 id="5-准备数据和证据"><a href="#5-准备数据和证据" class="headerlink" title="5. 准备数据和证据"></a>5. 准备数据和证据</h3><ul>
+<li><strong>数据支持</strong>：使用具体数据和实例来支持你的进度报告和任何观点。</li>
+<li><strong>可视化展示</strong>：如果可能，使用图表或其他可视化工具来展示复杂的数据或趋势。</li>
+</ul>
+<h3 id="6-提前准备"><a href="#6-提前准备" class="headerlink" title="6. 提前准备"></a>6. 提前准备</h3><ul>
+<li><strong>准备汇报内容</strong>：在与主管交流之前，准备一个简明的进度摘要或任务概览。</li>
+<li><strong>预期问题</strong>：思考主管可能会问哪些问题，并准备好回答。</li>
+</ul>
+<h3 id="7-主动更新"><a href="#7-主动更新" class="headerlink" title="7. 主动更新"></a>7. 主动更新</h3><ul>
+<li><strong>定期更新</strong>：不要等到被询问时才提供信息。定期主动更新任务进度，可以建立信任并减少不必要的担忧。</li>
+<li><strong>建议和反馈</strong>：主动提出建议或寻求反馈，展现你对项目的投入和责任感。</li>
+</ul>
 
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/29/mdstorage/domain/pm/%E6%B2%9F%E9%80%9A/" class="go-post">阅读全文</a>
+</div>
 
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
+<div class="post">
+    <a href="/2024/08/29/mdstorage/domain/windows/win10%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">
+        <h2 class="post-title">win10端口转发.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h2 id="win10-端口转发"><a href="#win10-端口转发" class="headerlink" title="win10 端口转发"></a>win10 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/sttchengfei/p/13209761.html">端口转发</a></h2><h3 id="场景用例"><a href="#场景用例" class="headerlink" title="场景用例"></a>场景用例</h3><p>主机 A (Ubuntu22.04) ，虚拟机 B (win10)，B 中连接了 VPN， 可以连接 10.9.220.87，A 通过 B 端口转发连接 10.9.220.87 22 端口。</p>
+<pre><code class="bash">netsh interface portproxy add v4tov4 listenaddress=192.168.122.36 listenport=22 connectaddress=10.9.220.87 connectport=22
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/29/mdstorage/domain/windows/win10%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/29/mdstorage/domain/%E4%BF%A1%E5%88%9B/%E4%BF%A1%E5%88%9B/">
+        <h2 class="post-title">信创.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="信创（飞腾）"><a href="#信创（飞腾）" class="headerlink" title="信创（飞腾）"></a>信创（飞腾）</h2><p><strong>鲲鹏920</strong>是目前业界领先的<strong>ARM-based处理器</strong>。该处理器采用<strong>7nm制造工艺</strong>，基于<strong>ARM架构授权</strong>，由华为公司自主设计完成。通过优化分支预测算法、提升运算单元数量、改进内存子系统架构<strong>等一系列微架构设计</strong>，大幅提高处理器性能。典型主频下，<strong>SPECint Benchmark评分超过930</strong>，超出业界标杆25%。同时，能效比优于业界标杆30%。鲲鹏920以更低功耗为数据中心提供更强性能¹。</p>
+<p><strong>飞腾S2500</strong>是目前国产性能最强的多路服务器系统。作为<strong>16nm工艺CPU</strong>，性能已跟7nm的华为鲲鹏920难分伯仲。而CPU制作工艺缩小会提高CPU性能，预计明后年发布的<strong>7nmS5000</strong>、<strong>5nmS6000</strong>将会在性能上有质的飞跃³.</p>
+<p>两者之间的性能差异值得深入思考。例如，<strong>鲲鹏920</strong>拥有<strong>64个核心</strong>，而<strong>飞腾S2500</strong>则有<strong>16个NUMA节点</strong>。较少的NUMA节点意味着访存一致性更好。此外，鲲鹏的缓存量相对较少，尽管一般来说，缓存越多性能越好，但怀疑飞腾的多核之间的通信可能不够优化，导致缓存总数较多⁴。</p>
+<p>总之，这两款处理器在不同方面都有各自的优势，具体应用场景和需求会影响选择。⁵</p>
+<p>源: 与必应的对话， 2024&#x2F;2&#x2F;18<br>(1) 鲲鹏920芯片 | 海思官网 - HiSilicon. <a target="_blank" rel="noopener" href="https://www.hisilicon.com/cn/products/kunpeng/huawei-kunpeng/huawei-kunpeng-920">https://www.hisilicon.com/cn/products/kunpeng/huawei-kunpeng/huawei-kunpeng-920</a>.<br>(2) 如何了解鲲鹏920与飞腾S2500性能对比的概念是怎样的?. <a target="_blank" rel="noopener" href="https://www.hanghangcha.com/hhcQuestion/detail/933930.html">https://www.hanghangcha.com/hhcQuestion/detail/933930.html</a>.<br>(3) 飞腾与鲲鹏性能差异的一些思考 - 济南小老虎 - 博客园. <a target="_blank" rel="noopener" href="https://www.cnblogs.com/jinanxiaolaohu/p/17267168.html">https://www.cnblogs.com/jinanxiaolaohu/p/17267168.html</a>.<br>(4) 鲲鹏920与飞腾S2500性能对 - 行业研究数据 - 小牛行研. <a target="_blank" rel="noopener" href="https://www.hangyan.co/charts/2532558532885087241">https://www.hangyan.co/charts/2532558532885087241</a>.<br>(5) Intel、海光、鲲鹏920、飞腾2500 CPU性能对比 | plantegg. <a target="_blank" rel="noopener" href="https://bing.com/search?q=%E9%B2%B2%E9%B9%8F920+%E9%A3%9E%E8%85%BEs2500">https://bing.com/search?q=%e9%b2%b2%e9%b9%8f920+%e9%a3%9e%e8%85%bes2500</a>.</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/29/mdstorage/domain/%E4%BF%A1%E5%88%9B/%E4%BF%A1%E5%88%9B/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/29/mdstorage/domain/%E6%96%87%E6%A1%A3/mkdocs/">
+        <h2 class="post-title">mkdoc.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h2 id="mkdocs"><a href="#mkdocs" class="headerlink" title="mkdocs"></a>mkdocs</h2><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p><a target="_blank" rel="noopener" href="https://yangjh.gitee.io/mkdocs/">https://yangjh.gitee.io/mkdocs/</a></p>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p><a target="_blank" rel="noopener" href="https://squidfunk.github.io/mkdocs-material/reference/diagrams/">https://squidfunk.github.io/mkdocs-material/reference/diagrams/</a></p>
+<p>mkdocs serve –dev-addr 172.16.1.216:12520 -f mkdocs.yml</p>
+<pre><code class="yaml">site_name: stone-mdstorage
+site_url: http://172.16.1.216:12520
+theme:
+  name: &#39;material&#39;
+  features:
+    - mermaid
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+</code></pre>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p><a target="_blank" rel="noopener" href="https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins">https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins</a></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%96%87%E6%A1%A3/" style="color: #ff7d73">文档</a>
+        </span>
+        
+    </div>
+    <a href="/2024/08/29/mdstorage/domain/%E6%96%87%E6%A1%A3/mkdocs/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/29/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88/">
+        <h2 class="post-title">技术方案.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h2 id="方案设计标准"><a href="#方案设计标准" class="headerlink" title="方案设计标准"></a>方案设计标准</h2><ol>
+<li>设计时要做到、交付后、只剩下交付后涉及人员能搞定的事情。</li>
+<li>systemd 的机制调研文档</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/29/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/29/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/kvm%E7%BD%91%E7%BB%9C/">
+        <h2 class="post-title">kvm网络.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="KVM-配置桥接网络"><a href="#KVM-配置桥接网络" class="headerlink" title="KVM 配置桥接网络"></a>KVM 配置桥接网络</h2><h4 id="KVM之配置桥接网卡"><a href="#KVM之配置桥接网卡" class="headerlink" title="KVM之配置桥接网卡"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wshenjin/p/11096847.html">KVM之配置桥接网卡</a></h4>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/kvm/" style="color: #00bcd4">kvm</a>
+        </span>
+        
+    </div>
+    <a href="/2024/08/29/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/kvm%E7%BD%91%E7%BB%9C/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/29/mdstorage/resource/%E4%B9%A6%E7%B1%8D/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D/">
+        <h2 class="post-title">计算机书籍.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/resource/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                resource
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="产品"><a href="#产品" class="headerlink" title="产品"></a>产品</h2><h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
+<li><p>从零开始学架构</p>
+</li>
+<li><p>C++ primer</p>
+</li>
+<li><p>C++ 模板编程</p>
+</li>
+<li><p>数据密集型应用系统设计	</p>
+</li>
+<li><p>正则表达式必知必会</p>
+</li>
+<li><p>程序员修炼之道</p>
+</li>
+<li><p>深入理解 linux 内核</p>
+</li>
+<li><p>深入理解Linux 网络内幕</p>
+</li>
+<li><p>大规模分布式系统</p>
+</li>
+</ul>
+<h2 id="实践技术"><a href="#实践技术" class="headerlink" title="实践技术"></a>实践技术</h2><ul>
+<li>client-go   条件锁</li>
+<li>Raft 协议	</li>
+<li>GMP 模型</li>
+<li>精通git</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/book/" style="color: #ff7d73">book</a>
+        </span>
+        
+    </div>
+    <a href="/2024/08/29/mdstorage/resource/%E4%B9%A6%E7%B1%8D/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/29/mdstorage/resource/%E4%BA%BA%E7%89%A9/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%A2%86%E5%9F%9F/">
+        <h2 class="post-title">计算机领域.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/resource/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                resource
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>计算机领域的牛人</p>
+<h3 id="plantegg-硬件-CPU-网络"><a href="#plantegg-硬件-CPU-网络" class="headerlink" title="plantegg 硬件 CPU 网络"></a>plantegg 硬件 CPU 网络</h3><p><a target="_blank" rel="noopener" href="https://plantegg.github.io/">blog</a> </p>
+<h3 id="温玉-网易云原生专家"><a href="#温玉-网易云原生专家" class="headerlink" title="温玉 网易云原生专家"></a>温玉 网易云原生专家</h3><p><a target="_blank" rel="noopener" href="https://www.zhaowenyu.com/">blog</a></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/29/mdstorage/resource/%E4%BA%BA%E7%89%A9/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%A2%86%E5%9F%9F/" class="go-post">阅读全文</a>
+</div>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+        <div class="page-current">
+    
+    <a class="page-num" href="/page/4/">
+        <i class="fa-solid fa-caret-left fa-fw"></i>
+    </a>
+    <a class="page-num" href="/">1</a>
+    <span class="page-omit">...</span>
+    
+    <span class="current">5</span>
+    
+    <a class="page-num" href="/page/6">
+        6
+    </a>
+    
+    
+    <a class="page-num" href="/page/7">
+        7
+    </a>
+    
+    
+    <span class="page-omit">...</span>
+    <a class="page-num" href="/page/28">28</a>
+    
+    
+    <a class="page-num" href="/page/6/">
+        <i class="fa-solid fa-caret-right fa-fw"></i>
+    </a>
+    
+</div>
 
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">xiaoy</div>
+        <div class="description">
+            <p>Description<br>…</p>
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
 
+    </div>
+    
+</div>
 
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 Xiaoy
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;xiaoy
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
 
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
 </body>
 </html>

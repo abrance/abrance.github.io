@@ -1,857 +1,2032 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>Xiaoy</title>
+    <meta name="author" content="xiaoy" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="xiaoy">
-  <meta name="keywords" content="">
-  
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Xiaoy">
-<meta property="og:url" content="https://abrance.github.io/page/25/index.html">
-<meta property="og:site_name" content="Xiaoy">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="xiaoy">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>Xiaoy</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
 
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="/js/lib/preview.js"></script>
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
+<script src="/js/lib/home.js"></script>
 
+<link rel="stylesheet" href="/css/main.css" />
 
-  
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>xiaoy</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/13/mdstorage/project/sr/%E5%91%A8%E6%8A%A5-11.10/" target="_self">
-          周报-11.10.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/13/mdstorage/project/sr/%E5%91%A8%E6%8A%A5-11.10/" target="_self">
-        <div>
-          123456789101112131415161718192021222324252627# 2023/11/10 Task List## Todo- 总控授权许可文件验证开发确认(刚开始)- https://github.com/mli/autocut 是什么- on-premise 综述- InfoQ 一周消息速递  - 搜书方法、主流格式文档转换方法、以图搜图、学习资料搜索- 周会 （1.
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-13 00:00" pubdate>
-              2023-11-13
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/13/mdstorage/resource/linux/gnome-tweaks%E4%BD%BF%E7%94%A8/" target="_self">
-          GNOME Tweaks Tool 在 Ubuntu 22.04 的安装与使用手册
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/13/mdstorage/resource/linux/gnome-tweaks%E4%BD%BF%E7%94%A8/" target="_self">
-        <div>
-          GNOME Tweaks Tool 在 Ubuntu 22.04 的安装与使用手册（丰富版）1. 介绍 GNOME Tweaks Tool，一个强大的工具，用于自定义和优化 Ubuntu 的 GNOME 桌面环境。特别是在管理开机启动项方面，提供了简单的界面来控制哪些应用程序在登录时自动启动。  2. 安装 GNOME Tweaks Tool 打开终端：按 Ctrl + Alt + T。 更新软件
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-13 00:00" pubdate>
-              2023-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/resource/" class="category-chain-item">resource</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/resource/linux/" class="category-chain-item">linux</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ubuntu/">#ubuntu</a>
-            
-              <a href="/tags/gnome-tweaks-tool/">#gnome tweaks tool</a>
-            
-              <a href="/tags/%E7%B3%BB%E7%BB%9F%E5%AE%9A%E5%88%B6/">#系统定制</a>
-            
-              <a href="/tags/%E6%A1%8C%E9%9D%A2%E7%AE%A1%E7%90%86/">#桌面管理</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/13/mdstorage/resource/openai/chatgpt%E7%94%9F%E6%88%90%E9%AB%98%E8%B4%A8%E9%87%8F%E5%86%85%E5%AE%B9/" target="_self">
-          chatgpt生成高质量内容.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/13/mdstorage/resource/openai/chatgpt%E7%94%9F%E6%88%90%E9%AB%98%E8%B4%A8%E9%87%8F%E5%86%85%E5%AE%B9/" target="_self">
-        <div>
-          谷歌对于 AI 生成内容的态度及如何让 AI 生成高质量内容原文链接如何让 AI 生成高质量内容 归纳解读在探索 AI 内容生成的领域中，两个核心要素显得尤为重要：对参考资料的依赖和格式指导的应用。这些要素不仅确保了内容的准确性和风格的一致性，而且在提升内容对搜索引擎的友好度方面发挥了重要作用。 1. AI 内容生成依赖参考资料和格式指导  依赖参考资料确保 AI 不凭空捏造信息 为了确保 AI
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-13 00:00" pubdate>
-              2023-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/resource/" class="category-chain-item">resource</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/resource/openai/" class="category-chain-item">openai</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ai/">#ai</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/10/mdstorage/project/sr/%E5%91%A8%E4%BC%9A%E8%AE%AE%E7%A8%8B-11.10/" target="_self">
-          周会议程-11.10.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/10/mdstorage/project/sr/%E5%91%A8%E4%BC%9A%E8%AE%AE%E7%A8%8B-11.10/" target="_self">
-        <div>
-          周会议程开场白 时间：2023&#x2F;11&#x2F;10 地点：培训室 参与人员：全体 Golang 组员 会议主题：增强团队协作和项目开发管理回顾，转测流程注意项传达 会议时长：1 小时内  一、 转测流程培训 目的：确保团队成员关注到细节，使实施时没有造成理解上的困难，沟通上更顺畅。 内容： 自测后和集成测试完成后需要通知项目经理，并在文档中修改需求状态，通知项目经理在企微的 石犀总控小
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-10 00:00" pubdate>
-              2023-11-10
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%91%A8%E4%BC%9A/">#周会</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/09/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E5%BC%80%E5%8F%91%E5%88%86%E6%94%AF%E7%BB%B4%E6%8A%A4/" target="_self">
-          总控开发分支维护.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/09/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E5%BC%80%E5%8F%91%E5%88%86%E6%94%AF%E7%BB%B4%E6%8A%A4/" target="_self">
-        <div>
-          概述 目前石犀总控引擎软件系统中，只认为存在一条主线产品在往后演进，其中这个主线产品的发布即会对应发布分支，在多次发布后，即会产生多条发布分支，这就是主要的分支形态。 类似演示平台其实认为它是一个客户定制产品，每个客户定制产品和主线产品是同级关系，也就是说，假设客户定制产品和主线产品的发布频率完全一致的情况下，同一个组件的一个版本开发，将有多个发布分支在演进，如 release-v1.2.3 、z
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-09 00:00" pubdate>
-              2023-11-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/git/">#git</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/08/mdstorage/project/sr/%E8%BD%AC%E6%B5%8B%E6%8A%A5%E5%91%8A%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4%E5%86%99%E4%BD%9C%E6%80%9D%E8%B7%AF/" target="_self">
-          转测报告影响范围写作思路.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/08/mdstorage/project/sr/%E8%BD%AC%E6%B5%8B%E6%8A%A5%E5%91%8A%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4%E5%86%99%E4%BD%9C%E6%80%9D%E8%B7%AF/" target="_self">
-        <div>
-          概述影响范围通常描述了改动点可能影响到的系统其他部分，包括与改动点直接或间接相关的模块、功能、接口等。在编写转测报告的测试内容&#x2F;范围时，应包括一部分对可能受到影响的范围进行说明，以便测试团队能够进行充分的回归测试和验证。以下是如何编写影响范围的示例： 影响范围：本次转测所涉及的改动对以下系统部分可能产生影响：  前端用户界面： 改动的授权流程影响到前端界面交互，新增的授权申请，授权申请文
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-08 00:00" pubdate>
-              2023-11-08
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/sr/">#sr</a>
-            
-              <a href="/tags/%E6%B5%8B%E8%AF%95/">#测试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/08/mdstorage/project/sr/%E8%BF%90%E7%BB%B4%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/" target="_self">
-          运维的必要性.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/08/mdstorage/project/sr/%E8%BF%90%E7%BB%B4%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/" target="_self">
-        <div>
-          团队运维缺失案例团队资产管理 机器资产：目前是由项目经理和技术部建立一个群，需要提前申请机器，申请机器沟通繁琐。 证书资产：目前团队需要一个一个团队的证书 CA 机构来统一管理研发团队的证书，多次沟通推进困难。  gitlab ：目前 CI&#x2F;CD 无法支持，产品质量降低、团队的自动化测试效率非常低。 禅道 ： 禅道项目管理无人打理，有很多不合理的地方，如项目版本的概念现在用独立的项目;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-08 00:00" pubdate>
-              2023-11-08
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/08/mdstorage/resource/typora_pandoc_picgo/pandoc%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E5%BA%8A%E5%92%8C%E6%9C%8D%E5%8A%A1/" target="_self">
-          pandoc自定义图床和服务.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/08/mdstorage/resource/typora_pandoc_picgo/pandoc%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E5%BA%8A%E5%92%8C%E6%9C%8D%E5%8A%A1/" target="_self">
-        <div>
-          自定义图床服务 环境要求 linux golang   代码  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778package mainimport (
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-08 00:00" pubdate>
-              2023-11-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/resource/" class="category-chain-item">resource</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/resource/typora-pandoc-picgo/" class="category-chain-item">typora_pandoc_picgo</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/typora/">#typora</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/04/mdstorage/domain/%E6%96%87%E6%A1%A3/mermaid/" target="_self">
-          mermaid.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/04/mdstorage/domain/%E6%96%87%E6%A1%A3/mermaid/" target="_self">
-        <div>
-          mindmap不支持样式微调：如线条颜色、节点颜色
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-04 00:00" pubdate>
-              2023-11-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/markdown/">#markdown</a>
-            
-              <a href="/tags/mermaid/">#mermaid</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/03/mdstorage/project/sr/%E5%91%A8%E4%BC%9A%E8%AE%AE%E7%A8%8B-11.3/" target="_self">
-          周会议程-11.3.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/03/mdstorage/project/sr/%E5%91%A8%E4%BC%9A%E8%AE%AE%E7%A8%8B-11.3/" target="_self">
-        <div>
-          周会议程开场白 时间：2023&#x2F;11&#x2F;3 地点：培训室 参与人员：全体 Golang 组员 会议主题：增强团队协作和项目开发管理回顾 会议时长：1 小时内  一、 转测流程培训 目的：确保团队成员理解并能够有效实施软件的转测流程。 内容： 流程概述 关键步骤详解 常见问题及解决方案    二、 任务管理与评估2.1 任务评估回顾 目标：识别评估过程中的问题，减少项目延期。 议程
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-03 00:00" pubdate>
-              2023-11-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%91%A8%E4%BC%9A/">#周会</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/24/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/#board">23</a><a class="page-number" href="/page/24/#board">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/#board">26</a><a class="page-number" href="/page/27/#board">27</a><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/26/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-              </div>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
             </div>
-          </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XIAOY</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XIAOY</span>
         </div>
-      </div>
-    
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div id="home-head">
+    <div
+        id="home-background"
+        ref="homeBackground"
+        data-images="/images/background.jpg"
+    ></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Xiaoy</h1>
+                <h3>xiaoy blog</h3>
+                <h5></h5>
+            </div>
+        </span>
     </div>
-  </div>
+</div>
+<div
+    id="home-posts-wrap"
+    ref="homePostsWrap"
+    true
+>
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/2023/11/13/mdstorage/domain/linux/ubuntu%E8%AE%BE%E7%BD%AEDNS%E6%9C%8D%E5%8A%A1/">
+        <h2 class="post-title">ubuntu设置DNS服务.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/13
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>Ubuntu 使用 <code>/etc/resolve.conf</code> 文件进行域名解析，该文件通常是 <code>/run/systemd/resolve/resolv.conf</code> 的软链接。直接编辑 <code>/etc/resolve.conf</code> 是不正确的，因为文件顶部有明确指示不要编辑，并且这些更改可能会被覆盖。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ol>
+<li><strong>编辑 <code>/etc/systemd/resolved.conf</code> 文件</strong>：在 <code>[Resolve]</code> 部分添加所需的 DNS 服务器地址，例如 <code>DNS=8.8.8.8 114.114.114.114</code>。</li>
+<li><strong>重启域名解析服务</strong>：使用命令 <code>systemctl restart systemd-resolved</code> 和 <code>systemctl enable systemd-resolved</code> 来重启和启用服务。</li>
+<li><strong>备份并重建软链接</strong>：备份 <code>/etc/resolve.conf</code> 文件，并设置 <code>/run/systemd/resolve/resolv.conf</code> 到 <code>/etc/resolve.conf</code> 的新软链接。</li>
+</ol>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li><strong>systemd-resolved</strong>：用于管理域名解析服务。</li>
+<li><strong>命令行工具</strong>：如 <code>systemctl</code>, <code>mv</code>, <code>ln</code> 等，用于执行服务操作和文件操作。</li>
+</ul>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><ul>
+<li>在修改 DNS 设置时，确保正确编辑 <code>resolved.conf</code> 而非 <code>resolv.conf</code>。</li>
+<li>重启服务和重新链接文件是关键步骤，以确保更改生效。</li>
+<li>进行更改后，检查 <code>/etc/resolv.conf</code> 确认 DNS 地址已正确更新。</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/11/13/mdstorage/domain/linux/ubuntu%E8%AE%BE%E7%BD%AEDNS%E6%9C%8D%E5%8A%A1/" class="go-post">阅读全文</a>
 </div>
 
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+<div class="post">
+    <a href="/2023/11/13/mdstorage/resource/openai/chatgpt%E7%94%9F%E6%88%90%E9%AB%98%E8%B4%A8%E9%87%8F%E5%86%85%E5%AE%B9/">
+        <h2 class="post-title">chatgpt生成高质量内容.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/resource/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                resource
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/13
+        </span>
+        
+        
     </div>
-  
-  
-  
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="谷歌对于-AI-生成内容的态度及如何让-AI-生成高质量内容"><a href="#谷歌对于-AI-生成内容的态度及如何让-AI-生成高质量内容" class="headerlink" title="谷歌对于 AI 生成内容的态度及如何让 AI 生成高质量内容"></a>谷歌对于 AI 生成内容的态度及如何让 AI 生成高质量内容</h1><h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MjM5OTIzMzYyMA==&mid=2650080834&idx=1&sn=8195fdc685d5b73515923ac6c2911ee5&chksm=bf3f37798848be6f04bd80bbc46fe470824c99e691ab79c577b30b9af998be9026deb9b3e0ab&cur_album_id=2696276945558552577&scene=190#rd">如何让 AI 生成高质量内容</a></p>
+<h2 id="归纳解读"><a href="#归纳解读" class="headerlink" title="归纳解读"></a>归纳解读</h2><p>在探索 AI 内容生成的领域中，两个核心要素显得尤为重要：对参考资料的依赖和格式指导的应用。这些要素不仅确保了内容的准确性和风格的一致性，而且在提升内容对搜索引擎的友好度方面发挥了重要作用。</p>
+<p><strong>1. AI 内容生成依赖参考资料和格式指导</strong></p>
+<ul>
+<li><p><strong>依赖参考资料确保 AI 不凭空捏造信息</strong></p>
+<p>为了确保 AI 生成的内容既准确又可靠，它必须依赖于可信的参考资料。这种依赖有助于避免 AI 在缺乏足够信息的情况下“凭空捏造”内容，从而保证信息的真实性和准确性。</p>
+</li>
+<li><p><strong>格式指导帮助 AI 沿用一致的文章风格</strong></p>
+<p>通过采用明确的格式指导，可以确保 AI 生成的内容不仅在信息上准确，而且在风格上一致。这种方法有助于维持文章的结构性和连贯性，使得内容更易于读者理解和接受。</p>
+</li>
+</ul>
+<p><strong>2. 结构化内容设计增强搜索引擎优化</strong></p>
+<ul>
+<li><p><strong>半结构化内容对搜索引擎更有吸引力</strong></p>
+<p>结构化或半结构化的内容布局对于搜索引擎优化至关重要。这种内容布局不仅有助于搜索引擎更好地理解和索引页面内容，还提高了内容在搜索结果中的可见度。</p>
+</li>
+<li><p><strong>保持内容质量和一致性提升用户体验</strong></p>
+<p>高质量的内容和一致的表现形式不仅对读者更有吸引力，也提升了整体的用户体验。这种质量和一致性的维持是通过对 AI 内容生成的持续监控和优化实现的，确保内容始终保持相关性和吸引力。</p>
+</li>
+</ul>
+<p>通过综合运用这些策略和方法，可以有效地利用 AI 技术来生成高质量、高效能的内容，这对于内容创作者和数字营销专家来说具有重大意义。</p>
+<hr>
+<p>这个总结集中体现了文章的核心理念，并通过具体的支持点来阐述了如何有效地利用 AI 生成高质量内容。</p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>使用提示词范文和具体指示确保 AI 生成内容的准确性和一致性。</p>
+<pre><code class="text">我有一个范文示例：
+
+
+```
+这里放范文
+```
+请学习这个范例，之后我每给你一个的 xxx，
+你都返回这种格式的介绍内容，并且以“xxx”的口吻进行点评。
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/ai/" style="color: #03a9f4">ai</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/13/mdstorage/resource/openai/chatgpt%E7%94%9F%E6%88%90%E9%AB%98%E8%B4%A8%E9%87%8F%E5%86%85%E5%AE%B9/" class="go-post">阅读全文</a>
 </div>
 
-  </footer>
+<div class="post">
+    <a href="/2023/11/13/mdstorage/resource/linux/gnome-tweaks%E4%BD%BF%E7%94%A8/">
+        <h2 class="post-title">GNOME Tweaks Tool 在 Ubuntu 22.04 的安装与使用手册</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/resource/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                resource
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/13
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h3 id="GNOME-Tweaks-Tool-在-Ubuntu-22-04-的安装与使用手册（丰富版）"><a href="#GNOME-Tweaks-Tool-在-Ubuntu-22-04-的安装与使用手册（丰富版）" class="headerlink" title="GNOME Tweaks Tool 在 Ubuntu 22.04 的安装与使用手册（丰富版）"></a>GNOME Tweaks Tool 在 Ubuntu 22.04 的安装与使用手册（丰富版）</h3><h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h4><ul>
+<li><strong>GNOME Tweaks Tool</strong>，一个强大的工具，用于自定义和优化 Ubuntu 的 GNOME 桌面环境。特别是在管理开机启动项方面，提供了简单的界面来控制哪些应用程序在登录时自动启动。</li>
+</ul>
+<h4 id="2-安装-GNOME-Tweaks-Tool"><a href="#2-安装-GNOME-Tweaks-Tool" class="headerlink" title="2. 安装 GNOME Tweaks Tool"></a>2. 安装 GNOME Tweaks Tool</h4><ul>
+<li><strong>打开终端</strong>：按 <code>Ctrl + Alt + T</code>。</li>
+<li><strong>更新软件包列表</strong>：输入 <code>sudo apt update</code> 并回车。</li>
+<li><strong>安装 GNOME Tweaks</strong>：输入 <code>sudo apt install gnome-tweaks</code> 并回车。</li>
+</ul>
+<h4 id="3-打开-GNOME-Tweaks-Tool"><a href="#3-打开-GNOME-Tweaks-Tool" class="headerlink" title="3. 打开 GNOME Tweaks Tool"></a>3. 打开 GNOME Tweaks Tool</h4><ul>
+<li>通过 <strong>活动概览</strong> 搜索并启动，或在终端输入 <code>gnome-tweaks</code>。</li>
+</ul>
+<h4 id="4-使用-GNOME-Tweaks-Tool"><a href="#4-使用-GNOME-Tweaks-Tool" class="headerlink" title="4. 使用 GNOME Tweaks Tool"></a>4. 使用 GNOME Tweaks Tool</h4><ul>
+<li><strong>外观调整</strong>：更改主题、图标、光标等。</li>
+<li><strong>桌面配置</strong>：调整桌面图标显示。</li>
+<li><strong>字体设置</strong>：更改系统字体和大小。</li>
+<li><strong>键盘和鼠标</strong>：调整行为和速度。</li>
+<li><strong>窗口选项</strong>：更改标题栏按钮布局。</li>
+<li><strong>工作区管理</strong>：设置虚拟工作区。</li>
+</ul>
+<h4 id="5-管理开机启动项"><a href="#5-管理开机启动项" class="headerlink" title="5. 管理开机启动项"></a>5. 管理开机启动项</h4><ul>
+<li><strong>启动项</strong>：在 GNOME Tweaks 中选择“启动应用程序”。列出所有设置为在登录时启动的应用程序。</li>
+<li><strong>添加或移除</strong>：添加新的启动项或移除现有的。点击“添加”并填写应用程序的名称和命令，或选择程序并点击“删除”以移除。</li>
+<li><strong>编辑</strong>：对现有启动项进行编辑，如更改命令或延迟启动时间。</li>
+</ul>
+<h4 id="6-注意事项"><a href="#6-注意事项" class="headerlink" title="6. 注意事项"></a>6. 注意事项</h4><ul>
+<li>更改设置可能需要注销或重启。</li>
+<li>确保安装的扩展与 GNOME 版本兼容。</li>
+</ul>
+<h4 id="7-结论"><a href="#7-结论" class="headerlink" title="7. 结论"></a>7. 结论</h4><ul>
+<li>GNOME Tweaks Tool 是 Ubuntu 用户的重要工具，特别适用于那些希望精细控制其桌面体验的用户。</li>
+</ul>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>GNOME Tweaks Tool 提供了对 Ubuntu 22.04 系统的深度定制和管理能力，是高级用户的理想选择。上述指南将帮助您有效地安装和使用这一工具，充分利用 Ubuntu 系统的潜力。</p>
 
-  <!-- Scripts -->
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/ubuntu/" style="color: #00bcd4">ubuntu</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/gnome-tweaks-tool/" style="color: #03a9f4">gnome tweaks tool</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%B3%BB%E7%BB%9F%E5%AE%9A%E5%88%B6/" style="color: #00a596">系统定制</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%A1%8C%E9%9D%A2%E7%AE%A1%E7%90%86/" style="color: #ff7d73">桌面管理</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/13/mdstorage/resource/linux/gnome-tweaks%E4%BD%BF%E7%94%A8/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/10/mdstorage/project/sr/%E5%91%A8%E4%BC%9A%E8%AE%AE%E7%A8%8B-11.10/">
+        <h2 class="post-title">周会议程-11.10.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="周会议程"><a href="#周会议程" class="headerlink" title="周会议程"></a>周会议程</h1><h2 id="开场白"><a href="#开场白" class="headerlink" title="开场白"></a>开场白</h2><ul>
+<li><strong>时间</strong>：2023&#x2F;11&#x2F;10</li>
+<li><strong>地点</strong>：培训室</li>
+<li><strong>参与人员</strong>：全体 Golang 组员</li>
+<li><strong>会议主题</strong>：增强团队协作和项目开发管理回顾，转测流程注意项传达</li>
+<li><strong>会议时长</strong>：1 小时内</li>
+</ul>
+<h2 id="一、-转测流程培训"><a href="#一、-转测流程培训" class="headerlink" title="一、 转测流程培训"></a>一、 转测流程培训</h2><ul>
+<li><strong>目的</strong>：确保团队成员关注到细节，使实施时没有造成理解上的困难，沟通上更顺畅。</li>
+<li><strong>内容</strong>：<ul>
+<li>自测后和集成测试完成后需要通知项目经理，并在文档中修改需求状态，通知项目经理在企微的 <code>石犀总控小组</code> 群中通知。</li>
+<li>唯一责任人（项目经理按情况指定）</li>
+<li>转测报告影响范围</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、-任务管理与评估"><a href="#二、-任务管理与评估" class="headerlink" title="二、 任务管理与评估"></a>二、 任务管理与评估</h2><h3 id="任务评估回顾"><a href="#任务评估回顾" class="headerlink" title="任务评估回顾"></a>任务评估回顾</h3><ul>
+<li><strong>目标</strong>：识别评估过程中的问题，减少项目延期。</li>
+<li><strong>议程</strong>：<ul>
+<li>回顾上周的任务评估准确性</li>
+<li>分析延期的任务和原因</li>
+</ul>
+</li>
+</ul>
+<h3 id="延期任务回顾"><a href="#延期任务回顾" class="headerlink" title="延期任务回顾"></a>延期任务回顾</h3><ul>
+<li><p><strong>目标</strong>：分析导致延期的因素，寻找解决方案。</p>
+</li>
+<li><p><strong>议程</strong>：</p>
+<ul>
+<li>所有的需求功能都延期了（大家提一下原因，先不要分析原因）</li>
+<li>总结延期原因<ul>
+<li>插入新任务（调研和设计时没考虑清楚，决策得不合理）</li>
+<li>任务没有理清楚</li>
+<li>人员调动 （插件人员调动）</li>
+<li>数据面延期导致无法联调延期</li>
+<li>联调时间没把控好（缺失联调培训和流程）</li>
+<li>需求变更</li>
+<li>自测时间未能评估准确</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>（方案调整导致延期）</p>
+</li>
+<li><p>历史遗留问题，导致新功能延期</p>
+</li>
+</ul>
+<h3 id="风险项回顾"><a href="#风险项回顾" class="headerlink" title="风险项回顾"></a>风险项回顾</h3><ul>
+<li><strong>目标</strong>：分析和回顾当前的风险项，提前规划风险应对措施。</li>
+<li><strong>议程</strong>：<ul>
+<li>确定风险清单</li>
+<li>分享风险管理策略</li>
+</ul>
+</li>
+</ul>
+<h3 id="本周改进点回顾"><a href="#本周改进点回顾" class="headerlink" title="本周改进点回顾"></a>本周改进点回顾</h3><ul>
+<li><strong>目标</strong>：看到问题、争取改进<ul>
+<li>每位团队成员分享两个他们认为本周做得不够好的点，限于描述现象，不涉及原因分析</li>
+<li>收集所有问题点，用于未来的改进会议讨论<ul>
+<li>联调时间前端资源不足</li>
+<li>联调时间还是不准，环境准备阶段也需要花时间，零散事项很多</li>
+<li>集成环境打包输出标准没有</li>
+<li>联调人多后忙不过来</li>
+<li>多关注禅道排期</li>
+<li>业务数据主要是 生造的数据 、资源、支持<ul>
+<li>产品需求时就考虑这些支持</li>
+</ul>
+</li>
+<li>出包的频率想要更快一点</li>
+<li>打包服务太慢了（要CICD），非常卡进度</li>
+<li>透明部署、路由部署 资源紧缺，非常卡进度</li>
+<li>集成环境部署周期太长了，一天出不了两个，办公室网慢死，传半个小时，集成环境资源太烂。</li>
+<li>授权联调时间、卡流程的问题不能及时解决，导致联调延期</li>
+<li>升级替换文件很多写死，固定替换 sv 二进制等，其他目录新增依赖没写上去。</li>
+<li>升级包导入、升级文件替换要花时间调整。</li>
+<li>升级没有签名校验、有安全风险</li>
+<li>升级目前很多坑，影响思华这边项目周期</li>
+<li>插件方面有很多问题，不知道怎么改了，想要重构，是否先补设计文档</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="事项宣布"><a href="#事项宣布" class="headerlink" title="事项宣布"></a>事项宣布</h2><ul>
+<li><p>影响范围一定要写</p>
+</li>
+<li><p>每个需求唯一责任人要积极推动</p>
+</li>
+</ul>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><ul>
+<li><strong>小结</strong>：目前大家不同程度都有延期，请延期的需求呢，该推进就推进，有阻塞的地方也要不停去跟进，尽量降低延期时间。已经转测了的，也不要松懈，将各种显而易见的问题清理出来优化了，将未完成的设计文档补全了，不要闲下来就发呆、玩手机、学一些项目无关的，对其他人不公平。</li>
+<li><strong>行动项</strong>：分配任务，明确下一步行动计划。</li>
+<li><strong>感谢</strong>：对团队的努力和贡献表示感谢。</li>
+</ul>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="过往问题回顾"><a href="#过往问题回顾" class="headerlink" title="过往问题回顾"></a>过往问题回顾</h3><ul>
+<li><p>人员调动，不合理</p>
+</li>
+<li><p>禅道任务项目管理没跟踪-更新</p>
+</li>
+<li><p>需求不合理、产品变更需求文档后未通知项目经理</p>
+</li>
+<li><p>岗位职责未清</p>
+</li>
+<li><p>联调时遇到问题、项目经理也需要反馈给到开发</p>
+</li>
+<li><p>企微已读不回</p>
+</li>
+<li><p>某功能开发的进度管理缺失</p>
+</li>
+<li><p>开发周期太短、评估时间长了会想压缩</p>
+</li>
+<li><p>禅道版本太低、gitlab、CICD、wiki 等基础设施简陋</p>
+</li>
+<li><p>调研拆细、分给大家</p>
+</li>
+<li><p>开发自测还要松达帮忙打包</p>
+</li>
+<li><p>开发不知道这套系统的部署</p>
+</li>
+<li><p>没有整个系统的操作指引</p>
+</li>
+<li><p>项目开发节奏太紧、项目版本的节点设置不合理</p>
+</li>
+<li><p>插件开发周期太紧、测试的 bug 需要排优先级</p>
+</li>
+<li><p>联调插件前期沟通没做好</p>
+</li>
+<li><p>代码不规范</p>
+</li>
+<li><p>代码 review 缺失</p>
+</li>
+<li><p>大家沟通不够</p>
+<ul>
+<li>反馈</li>
+<li>回应</li>
+</ul>
+</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%91%A8%E4%BC%9A/" style="color: #00bcd4">周会</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/10/mdstorage/project/sr/%E5%91%A8%E4%BC%9A%E8%AE%AE%E7%A8%8B-11.10/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/09/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E5%BC%80%E5%8F%91%E5%88%86%E6%94%AF%E7%BB%B4%E6%8A%A4/">
+        <h2 class="post-title">总控开发分支维护.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/9
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ol>
+<li>目前石犀总控引擎软件系统中，只认为存在一条<strong>主线产品</strong>在往后演进，其中这个主线产品的发布即会对应发布分支，在多次发布后，即会产生多条发布分支，这就是主要的分支形态。</li>
+<li>类似<strong>演示平台</strong>其实认为它是一个<strong>客户定制产品</strong>，每个客户定制产品和主线产品是同级关系，也就是说，假设客户定制产品和主线产品的发布频率完全一致的情况下，同一个组件的一个版本开发，将有多个发布分支在演进，如 release-v1.2.3 、zsj-release-v1.2.3。</li>
+<li>注意总控、引擎的发布版本规则是不同的。</li>
+<li>展望：当一个客户定制产品已经和主线产品异化太严重时，应该将属于它的 release 分支抽取独立为新组件。</li>
+</ol>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ol>
+<li><strong>主分支（main）</strong>：主分支应始终保持可部署状态。所有从主分支衍生的分支最终都应合并回主分支。</li>
+<li><strong>特性分支（feature branches）</strong>：用于开发新功能。每个特性分支应只关注一个具体的功能或修复。</li>
+<li><strong>修复分支（fix branches）</strong>：用于处理生产环境中的紧急问题。修复后，应该将更改合并回主分支和所有受影响的当前活动分支。</li>
+<li><strong>发布分支（release branches）</strong>：用于准备即将发布的版本。在此分支上，可以进行最后的调整、测试和 bug 修复。</li>
+<li><strong>标签（tags）</strong>：用于标记重要的开发里程碑，如新版本发布。</li>
+</ol>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
+<li><strong>合并策略</strong>：在主分支和特性分支之间定期合并可以减少合并冲突。但应避免不必要的合并，因为它们可能带来问题而不是解决问题。</li>
+<li><strong>版本控制</strong>：给新版本打标签（tag）可以帮助团队更好地管理版本和历史。标签创建后不应更改，以保持历史的准确性。</li>
+<li><strong>分支生命周期</strong>：每个分支应有明确的创建和终结时间。长期存在的分支可能难以维护，容易产生过时的代码和合并冲突。</li>
+<li><strong>紧急修复</strong>：紧急修复应在专门的分支上进行，并尽快合并回主要分支。这有助于快速部署修复，同时保持主要分支的稳定。</li>
+<li><strong>代码审查</strong>：所有合并操作之前应有代码审查机制，确保新合并的代码符合质量标准。</li>
+<li><strong>测试</strong>：每次合并之后都应执行自动化测试，以保证新代码的加入不会破坏现有功能。</li>
+</ol>
+<h2 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h2><h3 id="创建版本"><a href="#创建版本" class="headerlink" title="创建版本"></a>创建版本</h3><ul>
+<li>每个版本必须从 main 中签出</li>
+<li>每个版本从 main 中签出后需要做此版本初始化维护工作，包括维护后需要和 main merge 一次，防止后续merge 难度太大，因为 main 保存的框架是多个 release 分支共同所有的，很有可能很多代码需要废弃掉或是需要新增工具库</li>
+</ul>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li><strong>一致性基础</strong>：从 <code>main</code> 分支签出每个版本确保了所有版本都基于统一的代码基础，这有助于保持代码库的一致性。</li>
+<li><strong>稳定性</strong>：通常，<code>main</code> 分支被视为最稳定的分支，用作创建新 <code>release</code> 的基础可以减少引入未测试或不稳定代码的风险。</li>
+<li><strong>追踪简单</strong>：从 <code>main</code> 分支签出版本意味着所有版本的起点都是明确和统一的，便于追踪每个版本的变更。</li>
+<li><strong>集中管理</strong>：需要废弃或新增的代码和工具库的维护可以在 <code>main</code> 分支上进行，避免了在多个分支上重复相同的工作。</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li><strong>可能的初期不稳定</strong>：虽然 <code>main</code> 应该是稳定的，但如果存在频繁的合并，<code>main</code> 可能会暂时包含一些尚未完全验证的代码，这可能导致从 <code>main</code> 签出的新版本需要更多的初期维护。</li>
+<li><strong>维护工作量</strong>：如果 <code>main</code> 分支经常接收来自多个 <code>release</code> 分支的合并，那么每次从 <code>main</code> 创建新版本时都可能需要进行显著的清理和初始化工作。</li>
+<li><strong>分支膨胀</strong>：如果每个新版本都从 <code>main</code> 签出，并且版本更新频繁，可能会导致大量的分支存在，增加了管理的复杂性。</li>
+</ol>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><ol>
+<li><strong>保持 <code>main</code> 的纯净</strong>：尽可能只在 <code>main</code> 分支上进行稳定性和性能改进，而不是功能添加，这样新签出的版本就需要较少的初始化维护。</li>
+<li><strong>清晰的版本策略</strong>：确保有一个清晰的策略来决定何时和为什么需要创建新版本，避免不必要的版本创建。</li>
+<li><strong>自动化初始化工作</strong>：开发脚本或工具来自动化版本创建后的初始化工作，如代码清理、库更新等，以减轻人工负担。</li>
+<li><strong>详细的变更日志</strong>：维护一个详尽的变更日志，记录从上一个稳定点到当前 <code>main</code> 分支的所有变更，这样在签出新版本时，开发者可以迅速识别和处理那些需要被废弃或新增的代码。</li>
+<li><strong>代码审查和测试</strong>：在代码合并到 <code>main</code> 分支之前，实施严格的代码审查和测试流程，确保引入的变更都是稳定和可靠的。</li>
+</ol>
+<h3 id="定期合并"><a href="#定期合并" class="headerlink" title="定期合并"></a>定期合并</h3><ul>
+<li>定一个周期，一个周期内每个 release 分支至少要和 main merge 一次，否则将导致 main 与众多分支太不一致</li>
+</ul>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><pre><code>保持一致性：定期合并有助于确保 main 分支与所有活跃的 release 分支保持一致，减少分支间的差异。
+简化合并：频繁的合并可以减小每次合并的规模，理论上可以减少合并冲突的可能性。
+及时发现问题：通过定期将更改合并回 main，可以更早地发现并解决集成问题。
+流程规范化：这种策略强制实施了一个规范化的流程，要求团队成员按时完成任务，这有助于保持项目进度。
+</code></pre>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><pre><code>可能的过度集成：如果 release 分支还不稳定或者包含尚未准备好合并的功能，频繁的合并可能会导致 main 分支的不稳定。
+合并负担：定期合并可能会增加团队的工作负担，特别是如果存在多个活跃的 release 分支时。
+自动化测试的压力：频繁的合并需要强大的自动化测试支持，以确保不会引入新的错误。
+过度的流程化：过度的流程化可能会限制某些情况下的灵活性，因为并非所有的工作流程都能适应这种定期合并的模式。
+</code></pre>
+<h4 id="结论与展望"><a href="#结论与展望" class="headerlink" title="结论与展望"></a>结论与展望</h4><ul>
+<li><strong>灵活应用</strong>：应该根据实际情况灵活应用这个规则。如果某个 <code>release</code> 分支包含的是一个大变更，可能需要特别的处理，而不是简单的定期合并。</li>
+<li><strong>强化自动化</strong>：增强自动化测试和构建流程，确保合并的过程尽可能无痛，并及时发现问题。</li>
+<li><strong>监控分支差异</strong>：监控不同分支之间的差异，确保没有太大的偏离。</li>
+<li><strong>及时通讯</strong>：确保团队成员之间有良好的沟通机制，合并时遇到的任何问题都应及时通知并寻求解决。</li>
+</ul>
+<h3 id="新版本启动前-tagging"><a href="#新版本启动前-tagging" class="headerlink" title="新版本启动前 tagging"></a>新版本启动前 tagging</h3><h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ol>
+<li><strong>版本追踪</strong>：标签为版本提供了明确的锚点，使得在项目的生命周期中能够轻松地检出特定的发布版本。</li>
+<li><strong>回溯方便</strong>：如果在新版本发布之后发现问题，可以方便地回退到标签所指的提交进行 bug 修复。</li>
+<li><strong>文档记录</strong>：标签可以包括额外的发布信息，如版本号、发布日期等，提供了更丰富的历史信息。</li>
+<li><strong>构建和部署</strong>：自动化的构建和部署系统可以利用标签来触发特定版本的构建和部署。</li>
+<li><strong>非线性开发流程</strong>：在采用 Git 流或其他分支策略时，标签帮助维护了一个清晰的、非线性的开发历史。</li>
+<li><strong>热修复（Hotfixes）</strong>：如果需要对特定版本进行热修复，可以从相应的标签签出一个热修复分支，修复后再合并回主分支。</li>
+</ol>
+<h3 id="定期同步-tagging"><a href="#定期同步-tagging" class="headerlink" title="定期同步 tagging"></a>定期同步 tagging</h3><h4 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h4><ol>
+<li><strong>维持代码同步</strong>：周期性地将 <code>release</code> 分支合并回 <code>main</code> 可以保持各个分支间的同步，减少未来合并时的冲突概率。</li>
+<li><strong>固定集成点</strong>：这样做提供了一个固定的集成点，团队成员可以期待这些时间点，并准备他们的代码以确保合并时没有问题。</li>
+<li><strong>改进稳定性</strong>：通过定期的合并和标记，<code>main</code> 分支始终保持最新且稳定的代码状态，确保了 <code>main</code> 分支的代码质量。</li>
+<li><strong>简化版本追踪</strong>：每次合并后对 <code>main</code> 分支打标签，可以方便地跟踪各个周期的代码状态，这在识别问题和理解特定时间点的代码变更时特别有用。</li>
+<li><strong>自动化触发点</strong>：标签可以作为自动化构建和部署流程的触发点，比如当你在 <code>main</code> 上打上标签时，可以自动开始构建和部署到测试环境。</li>
+<li><strong>审计和合规性</strong>：在企业环境中，定期合并和标记可以提供审计跟踪，证明代码已经按照规定的流程进行了合并和测试。</li>
+<li><strong>快速回滚</strong>：如果新引入的代码导致问题，可以使用标签快速找到稳定状态的代码进行回滚。</li>
+<li><strong>里程碑文档化</strong>：对 <code>main</code> 分支的标记可以作为项目进度的里程碑，有助于文档化项目的发展历程。</li>
+</ol>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><strong>过度合并</strong>：如果 <code>release</code> 分支还不稳定或包含未完成的特性，过度频繁的合并可能会向 <code>main</code> 分支引入不稳定的代码。</li>
+</ul>
+<h2 id="事务和时机"><a href="#事务和时机" class="headerlink" title="事务和时机"></a>事务和时机</h2><h3 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h3><p><strong>现设定有下面关于分支管理的事务，并在下面对每个事务执行的时机和注意事项进行说明</strong></p>
+<ol>
+<li><strong>打标签</strong>：在每个重要的发行版或里程碑完成时打标签，比如完成一个稳定的开发周期或准备发布一个新版本。</li>
+<li><strong>创建分支</strong>：当开始新功能开发、预备新版本发布，或需要紧急修复时创建新的分支。</li>
+<li><strong>合并分支</strong>：功能完成且经过充分测试时，将特性分支合并到主分支；紧急修复完成后，立即合并到主分支和其他相关分支。</li>
+<li><strong>定期维护</strong>：定期评估现有分支，删除不再需要的分支，合并长时间未更新的分支，以保持代码库的整洁和可管理性。</li>
+<li><strong>紧急修复</strong>：一旦在生产环境中发现紧急问题，立即创建修复分支，开始修复工作，并按照紧急情况处理合并和部署。</li>
+</ol>
+<h3 id="时机"><a href="#时机" class="headerlink" title="时机"></a>时机</h3><h4 id="打标签（tagging）"><a href="#打标签（tagging）" class="headerlink" title="打标签（tagging）"></a>打标签（tagging）</h4><h5 id="main"><a href="#main" class="headerlink" title="main"></a>main</h5><ul>
+<li>启动一个新版本时先打 tag， tag content: init version $version</li>
+<li>定期维护所有发布分支和 main 分支，一次整体维护完之后打 tag</li>
+</ul>
+<h2 id="图表和图像"><a href="#图表和图像" class="headerlink" title="图表和图像"></a>图表和图像</h2><h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><pre><code class="mermaid">    %%&#123;init: &#123; &#39;logLevel&#39;: &#39;debug&#39;, &#39;theme&#39;: &#39;default&#39; , &#39;themeVariables&#39;: &#123;
+        &#39;gitBranchLabel0&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel1&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel2&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel3&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel4&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel5&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel6&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel7&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel8&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel9&#39;: &#39;#ffffff&#39;
+  &#125; &#125; &#125;%%
+
+gitGraph
+  # 初始化组件代码仓库
+  checkout main
+  commit
+  branch feat-init
+  commit id: &quot;A1&quot; type: NORMAL
+  commit id: &quot;A2&quot; type: NORMAL
+  commit id: &quot;A3&quot; type: NORMAL
+  checkout main
+  merge feat-init
   
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main timestamp1&quot; tag: &quot;init v1.2.3&quot;
   
-    <script  src="/js/img-lazyload.js" ></script>
+  # 签新版本分支，从 main 中
+  branch release-v1.2.3
   
-
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.3 init&quot;
+  checkout main
+  merge release-v1.2.3
+  checkout release-v1.2.3
   
+  # feat-v1.2.3-1, fix-v1.2.3-x 同时进行，一个修复 bug，一个开发新功能
+  branch feat-v1.2.3-1
+  commit id: &quot;feat-v1.2.3-1 init&quot;
+  
+  # release-v1.2.3 开始修复 A 功能 bug
+  branch fix-v1.2.3-x
+  commit id: &quot;fix-v1.2.3-x init&quot;
+  commit id: &quot;Fix A 1&quot;
+  commit id: &quot;Fix A 2&quot;
+  commit id: &quot;Fix A 3&quot;
+  checkout feat-v1.2.3-1
+  
+  # release-v1.2.3 开发 B 功能 
+  commit id: &quot;B1&quot;
+  commit id: &quot;B2&quot;
+  commit id: &quot;B3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-1
+  
+  # release-v1.2.3 提交修复 A 功能 bug
+  merge fix-v1.2.3-x
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp1&quot; tag: &quot;PeriodMerge $timestamp1&quot;
+  checkout release-v1.2.3
+  
+  # release-v1.2.3 开发 C 功能
+  branch feat-v1.2.3-2
+  commit id: &quot;C1&quot;
+  commit id: &quot;C2&quot;
+  commit id: &quot;C3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp2&quot; tag: &quot;PeriodMerge $timestamp2&quot;
+  checkout release-v1.2.3
+  commit id: &quot;something 1&quot;
+  commit id: &quot;something 2&quot;
+  # release-v1.2.3 继续维护 ... 直到维护周期结束
 
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
+  # 启动一个新版本时先打 tag 方便随后切分支
+  checkout main
+  commit id: &quot;fix branch main timestamp2&quot; tag: &quot;init v1.2.4&quot;
+  
+  # 签版本分支，从 main 中
+  branch release-v1.2.4
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.4 init&quot;
+  checkout main
+  merge release-v1.2.4
+  checkout release-v1.2.4
+
+  # release-v1.2.4 开始开发新功能
+  branch feat-v1.2.4-1
+  commit id: &quot;feat-v1.2.4-1 init&quot;
+  commit id: &quot;D1&quot;
+  commit id: &quot;D2&quot;
+  commit id: &quot;D3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-1
+  
+  # 这时生产 release-v1.2.3 出现 A 功能 bug4
+  
+  # 先紧急解决 release-v1.2.3 问题，验证完合并代码
+  checkout release-v1.2.3
+  branch fix-v1.2.3-y
+  commit id: &quot;fix-v1.2.3-y init&quot;
+  commit id: &quot;Fix A 4 release-v1.2.3&quot;
+  checkout release-v1.2.3
+  merge fix-v1.2.3-y
+  
+  # 再解决现有其他分支问题，目前 main 和 release-v1.2.4 也有同样的问题，想办法将 main 和 release-v1.2.4 分支中 A bug4 解决
+  # 方案：（不一定是这个方案，具体问题具体选择方案解决）直接合并 release-v1.2.3 和 release-v1.2.4 main 代码
+  # 方案 一： main release-v1.2.3 release-v1.2.4 关于 A 功能代码相似度较高，就直接合并代码
+  # 方案 二： release-v1.2.3 main 代码相似度低，main release-v1.2.4 相似度高 这种情况用上面方案
+  # 方案 三： release-v1.2.3 main release-v1.2.4 相似度都低，都分别 commit，等定期维护时 merge 分别维护 A 功能代码
+  # 方案 四： release-v1.2.3 release-v1.2.4 相似度高，与 main 相似度低，release 之间 merge，main 单独维护 A 功能代码（甚至去掉 A 功能代码）
+  checkout main
+  merge release-v1.2.3
+  merge release-v1.2.4
+  
+  # release-v1.2.4 继续开发功能 E
+  checkout release-v1.2.4
+  branch feat-v1.2.4-2
+  commit id: &quot;feat-v1.2.4-2 init&quot;
+  commit id: &quot;E1&quot;
+  commit id: &quot;E2&quot;
+  commit id: &quot;E3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp3&quot; tag: &quot;PeriodMerge $timestamp3&quot;
+  
+  # 切分支继续开发 release-v1.2.4
+  checkout release-v1.2.4
+  branch feat-v1.2.4-3
+  commit id: &quot;feat-v1.2.4-3&quot;
+  commit id: &quot;D4&quot;
+  commit id: &quot;D5&quot;
+  commit id: &quot;D6&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-3
+  commit id: &quot;fix branch3 v1.2.3&quot;
+
+  # 定期维护所有分支 release-v1.2.4 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp4&quot; tag: &quot;PeriodMerge$timestamp4&quot;
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main $timestamp3&quot; tag: &quot;init v1.2.5&quot;
+  
+  # 签分支启动版本 release-v1.2.5
+  branch release-v1.2.5
+  commit id: &quot;release-v1.2.5 init&quot;
+  checkout main
+  merge release-v1.2.5
+  
+  # release-v1.2.5 上开发 F 功能
+  branch feat-v1.2.5-1
+  commit id: &quot;feat-v1.2.5-1 init&quot;
+  commit id: &quot;F1&quot;
+  # ,,,
+</code></pre>
+<h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><pre><code class="mermaid">    %%&#123;init: &#123; &#39;logLevel&#39;: &#39;debug&#39;, &#39;theme&#39;: &#39;default&#39; , &#39;themeVariables&#39;: &#123;
+        &#39;gitBranchLabel0&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel1&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel2&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel3&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel4&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel5&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel6&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel7&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel8&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel9&#39;: &#39;#ffffff&#39;
+  &#125; &#125; &#125;%%
+
+
+gitGraph
+  # 初始化组件代码仓库
+  checkout main
+  commit
+  branch feat-init
+  commit id: &quot;A1&quot; type: NORMAL
+  commit id: &quot;A2&quot; type: NORMAL
+  commit id: &quot;A3&quot; type: NORMAL
+  checkout main
+  merge feat-init
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main timestamp1&quot; tag: &quot;init v1.2.3&quot;
+  
+  # 签新版本分支，从 main 中
+  branch release-v1.2.3
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.3 init&quot;
+  checkout main
+  merge release-v1.2.3
+  checkout release-v1.2.3
+  
+  # feat-v1.2.3-1, fix-v1.2.3-x 同时进行，一个修复 bug，一个开发新功能
+  branch feat-v1.2.3-1
+  commit id: &quot;feat-v1.2.3-1 init&quot;
+  
+  # release-v1.2.3 开始修复 A 功能 bug
+  branch fix-v1.2.3-x
+  commit id: &quot;fix-v1.2.3-x init&quot;
+  commit id: &quot;Fix A 1&quot;
+  commit id: &quot;Fix A 2&quot;
+  commit id: &quot;Fix A 3&quot;
+  checkout feat-v1.2.3-1
+  
+  # release-v1.2.3 开发 B 功能 
+  commit id: &quot;B1&quot;
+  commit id: &quot;B2&quot;
+  commit id: &quot;B3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-1
+  
+  # release-v1.2.3 提交修复 A 功能 bug
+  merge fix-v1.2.3-x
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp1&quot; tag: &quot;PeriodMerge $timestamp1&quot;
+  checkout release-v1.2.3
+  
+  # release-v1.2.3 开发 C 功能
+  branch feat-v1.2.3-2
+  commit id: &quot;C1&quot;
+  commit id: &quot;C2&quot;
+  commit id: &quot;C3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp2&quot; tag: &quot;PeriodMerge $timestamp2&quot;
+  checkout release-v1.2.3
+  commit id: &quot;something 1&quot;
+  commit id: &quot;something 2&quot;
+  # release-v1.2.3 继续维护 ... 直到维护周期结束
+
+  # 启动一个新版本时先打 tag 方便随后切分支
+  checkout main
+  commit id: &quot;fix branch main timestamp2&quot; tag: &quot;init v1.2.4&quot;
+  
+  # 签版本分支，从 main 中
+  branch release-v1.2.4
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.4 init&quot;
+  checkout main
+  merge release-v1.2.4
+  checkout release-v1.2.4
+
+  # release-v1.2.4 开始开发新功能
+  branch feat-v1.2.4-1
+  commit id: &quot;feat-v1.2.4-1 init&quot;
+  commit id: &quot;D1&quot;
+  commit id: &quot;D2&quot;
+  commit id: &quot;D3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-1
+  
+  # 这时生产 release-v1.2.3 出现 A 功能 bug4
+  
+  # 先紧急解决 release-v1.2.3 问题，验证完合并代码
+  checkout release-v1.2.3
+  branch fix-v1.2.3-y
+  commit id: &quot;fix-v1.2.3-y init&quot;
+  commit id: &quot;Fix A 4 release-v1.2.3&quot;
+  checkout release-v1.2.3
+  merge fix-v1.2.3-y
+  
+  # 再解决现有其他分支问题，目前 main 和 release-v1.2.4 也有同样的问题，想办法将 main 和 release-v1.2.4 分支中 A bug4 解决
+  # 方案：（不一定是这个方案，具体问题具体选择方案解决）先解决 main 问题，再合并到 release-v1.2.4
+  # 方案 一： main release-v1.2.3 release-v1.2.4 关于 A 功能代码相似度较高，就直接合并代码
+  # 方案 二： release-v1.2.3 main 代码相似度低，main release-v1.2.4 相似度高 这种情况用上面方案
+  # 方案 三： release-v1.2.3 main release-v1.2.4 相似度都低，都分别 commit，等定期维护时 merge 分别维护 A 功能代码
+  # 方案 四： release-v1.2.3 release-v1.2.4 相似度高，与 main 相似度低，release 之间 merge，main 单独维护 A 功能代码（甚至去掉 A 功能代码）
+  checkout main
+  branch fix-main-A-4
+  commit id: &quot;fix-main-A-4 init&quot;
+  commit id: &quot;Fix A 4 main&quot;
+  checkout main
+  merge fix-main-A-4
+  merge release-v1.2.4
+  
+  # release-v1.2.4 继续开发功能 E
+  checkout release-v1.2.4
+  branch feat-v1.2.4-2
+  commit id: &quot;feat-v1.2.4-2 init&quot;
+  commit id: &quot;E1&quot;
+  commit id: &quot;E2&quot;
+  commit id: &quot;E3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp3&quot; tag: &quot;PeriodMerge $timestamp3&quot;
+  
+  # 切分支继续开发 release-v1.2.4
+  checkout release-v1.2.4
+  branch feat-v1.2.4-3
+  commit id: &quot;feat-v1.2.4-3&quot;
+  commit id: &quot;D4&quot;
+  commit id: &quot;D5&quot;
+  commit id: &quot;D6&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-3
+  commit id: &quot;fix branch3 v1.2.3&quot;
+
+  # 定期维护所有分支 release-v1.2.4 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp4&quot; tag: &quot;PeriodMerge$timestamp4&quot;
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main $timestamp3&quot; tag: &quot;init v1.2.5&quot;
+  
+  # 签分支启动版本 release-v1.2.5
+  branch release-v1.2.5
+  commit id: &quot;release-v1.2.5 init&quot;
+  checkout main
+  merge release-v1.2.5
+  
+  # release-v1.2.5 上开发 F 功能
+  branch feat-v1.2.5-1
+  commit id: &quot;feat-v1.2.5-1 init&quot;
+  commit id: &quot;F1&quot;
+  # ,,,
+  
+  
+</code></pre>
+<h3 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h3><pre><code class="mermaid">    %%&#123;init: &#123; &#39;logLevel&#39;: &#39;debug&#39;, &#39;theme&#39;: &#39;default&#39; , &#39;themeVariables&#39;: &#123;
+        &#39;gitBranchLabel0&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel1&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel2&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel3&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel4&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel5&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel6&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel7&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel8&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel9&#39;: &#39;#ffffff&#39;
+  &#125; &#125; &#125;%%
+
+
+gitGraph
+  # 初始化组件代码仓库
+  checkout main
+  commit
+  branch feat-init
+  commit id: &quot;A1&quot; type: NORMAL
+  commit id: &quot;A2&quot; type: NORMAL
+  commit id: &quot;A3&quot; type: NORMAL
+  checkout main
+  merge feat-init
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main timestamp1&quot; tag: &quot;init v1.2.3&quot;
+  
+  # 签新版本分支，从 main 中
+  branch release-v1.2.3
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.3 init&quot;
+  checkout main
+  merge release-v1.2.3
+  checkout release-v1.2.3
+  
+  # feat-v1.2.3-1, fix-v1.2.3-x 同时进行，一个修复 bug，一个开发新功能
+  branch feat-v1.2.3-1
+  commit id: &quot;feat-v1.2.3-1 init&quot;
+  
+  # release-v1.2.3 开始修复 A 功能 bug
+  branch fix-v1.2.3-x
+  commit id: &quot;fix-v1.2.3-x init&quot;
+  commit id: &quot;Fix A 1&quot;
+  commit id: &quot;Fix A 2&quot;
+  commit id: &quot;Fix A 3&quot;
+  checkout feat-v1.2.3-1
+  
+  # release-v1.2.3 开发 B 功能 
+  commit id: &quot;B1&quot;
+  commit id: &quot;B2&quot;
+  commit id: &quot;B3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-1
+  
+  # release-v1.2.3 提交修复 A 功能 bug
+  merge fix-v1.2.3-x
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp1&quot; tag: &quot;PeriodMerge $timestamp1&quot;
+  checkout release-v1.2.3
+  
+  # release-v1.2.3 开发 C 功能
+  branch feat-v1.2.3-2
+  commit id: &quot;C1&quot;
+  commit id: &quot;C2&quot;
+  commit id: &quot;C3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp2&quot; tag: &quot;PeriodMerge $timestamp2&quot;
+  checkout release-v1.2.3
+  commit id: &quot;something 1&quot;
+  commit id: &quot;something 2&quot;
+  # release-v1.2.3 继续维护 ... 直到维护周期结束
+
+  # 启动一个新版本时先打 tag 方便随后切分支
+  checkout main
+  commit id: &quot;fix branch main timestamp2&quot; tag: &quot;init v1.2.4&quot;
+  
+  # 签版本分支，从 main 中
+  branch release-v1.2.4
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.4 init&quot;
+  checkout main
+  merge release-v1.2.4
+  checkout release-v1.2.4
+
+  # release-v1.2.4 开始开发新功能
+  branch feat-v1.2.4-1
+  commit id: &quot;feat-v1.2.4-1 init&quot;
+  commit id: &quot;D1&quot;
+  commit id: &quot;D2&quot;
+  commit id: &quot;D3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-1
+  
+  # 这时生产 release-v1.2.3 出现 A 功能 bug4
+  
+  # 先紧急解决 release-v1.2.3 问题，验证完合并代码
+  checkout release-v1.2.3
+  branch fix-v1.2.3-y
+  commit id: &quot;fix-v1.2.3-y init&quot;
+  commit id: &quot;Fix A 4 release-v1.2.3&quot;
+  checkout release-v1.2.3
+  merge fix-v1.2.3-y
+  
+  # 再解决现有其他分支问题，目前 main 和 release-v1.2.4 也有同样的问题，想办法将 main 和 release-v1.2.4 分支中 A bug4 解决
+  # 方案：（不一定是这个方案，具体问题具体选择方案解决）分别 commit，定期维护时维护 A 功能代码合并
+  # 方案 一： main release-v1.2.3 release-v1.2.4 关于 A 功能代码相似度较高，就直接合并代码
+  # 方案 二： release-v1.2.3 main 代码相似度低，main release-v1.2.4 相似度高 这种情况用上面方案
+  # 方案 三： release-v1.2.3 main release-v1.2.4 相似度都低，都分别 commit，等定期维护时 merge 分别维护 A 功能代码
+  # 方案 四： release-v1.2.3 release-v1.2.4 相似度高，与 main 相似度低，release 之间 merge，main 单独维护 A 功能代码（甚至去掉 A 功能代码）
+  checkout main
+  branch fix-main-A-4
+  commit id: &quot;fix-main-A-4 init&quot;
+  commit id: &quot;Fix A 4 main&quot;
+  checkout main
+  merge fix-main-A-4
+  
+  checkout release-v1.2.4
+  branch fix-v1.2.4-x
+  commit id: &quot;fix-v1.2.4-x init&quot;
+  commit id: &quot;Fix A 4 v1.2.4&quot;
+  checkout release-v1.2.4
+  merge fix-v1.2.4-x
+  
+  # release-v1.2.4 继续开发功能 E
+  checkout release-v1.2.4
+  branch feat-v1.2.4-2
+  commit id: &quot;feat-v1.2.4-2 init&quot;
+  commit id: &quot;E1&quot;
+  commit id: &quot;E2&quot;
+  commit id: &quot;E3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp3&quot; tag: &quot;PeriodMerge $timestamp3&quot;
+  
+  # 切分支继续开发 release-v1.2.4
+  checkout release-v1.2.4
+  branch feat-v1.2.4-3
+  commit id: &quot;feat-v1.2.4-3&quot;
+  commit id: &quot;D4&quot;
+  commit id: &quot;D5&quot;
+  commit id: &quot;D6&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-3
+  commit id: &quot;fix branch3 v1.2.3&quot;
+
+  # 定期维护所有分支 release-v1.2.4 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp4&quot; tag: &quot;PeriodMerge$timestamp4&quot;
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main $timestamp3&quot; tag: &quot;init v1.2.5&quot;
+  
+  # 签分支启动版本 release-v1.2.5
+  branch release-v1.2.5
+  commit id: &quot;release-v1.2.5 init&quot;
+  checkout main
+  merge release-v1.2.5
+  
+  # release-v1.2.5 上开发 F 功能
+  branch feat-v1.2.5-1
+  commit id: &quot;feat-v1.2.5-1 init&quot;
+  commit id: &quot;F1&quot;
+  # ,,,
+  
+</code></pre>
+<h3 id="方案四"><a href="#方案四" class="headerlink" title="方案四"></a>方案四</h3><pre><code class="mermaid">    %%&#123;init: &#123; &#39;logLevel&#39;: &#39;debug&#39;, &#39;theme&#39;: &#39;default&#39; , &#39;themeVariables&#39;: &#123;
+        &#39;gitBranchLabel0&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel1&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel2&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel3&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel4&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel5&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel6&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel7&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel8&#39;: &#39;#ffffff&#39;,
+        &#39;gitBranchLabel9&#39;: &#39;#ffffff&#39;
+  &#125; &#125; &#125;%%
+
+
+gitGraph
+  # 初始化组件代码仓库
+  checkout main
+  commit
+  branch feat-init
+  commit id: &quot;A1&quot; type: NORMAL
+  commit id: &quot;A2&quot; type: NORMAL
+  commit id: &quot;A3&quot; type: NORMAL
+  checkout main
+  merge feat-init
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main timestamp1&quot; tag: &quot;init v1.2.3&quot;
+  
+  # 签新版本分支，从 main 中
+  branch release-v1.2.3
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.3 init&quot;
+  checkout main
+  merge release-v1.2.3
+  checkout release-v1.2.3
+  
+  # feat-v1.2.3-1, fix-v1.2.3-x 同时进行，一个修复 bug，一个开发新功能
+  branch feat-v1.2.3-1
+  commit id: &quot;feat-v1.2.3-1 init&quot;
+  
+  # release-v1.2.3 开始修复 A 功能 bug
+  branch fix-v1.2.3-x
+  commit id: &quot;fix-v1.2.3-x init&quot;
+  commit id: &quot;Fix A 1&quot;
+  commit id: &quot;Fix A 2&quot;
+  commit id: &quot;Fix A 3&quot;
+  checkout feat-v1.2.3-1
+  
+  # release-v1.2.3 开发 B 功能 
+  commit id: &quot;B1&quot;
+  commit id: &quot;B2&quot;
+  commit id: &quot;B3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-1
+  
+  # release-v1.2.3 提交修复 A 功能 bug
+  merge fix-v1.2.3-x
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp1&quot; tag: &quot;PeriodMerge $timestamp1&quot;
+  checkout release-v1.2.3
+  
+  # release-v1.2.3 开发 C 功能
+  branch feat-v1.2.3-2
+  commit id: &quot;C1&quot;
+  commit id: &quot;C2&quot;
+  commit id: &quot;C3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp2&quot; tag: &quot;PeriodMerge $timestamp2&quot;
+  checkout release-v1.2.3
+  commit id: &quot;something 1&quot;
+  commit id: &quot;something 2&quot;
+  # release-v1.2.3 继续维护 ... 直到维护周期结束
+
+  # 启动一个新版本时先打 tag 方便随后切分支
+  checkout main
+  commit id: &quot;fix branch main timestamp2&quot; tag: &quot;init v1.2.4&quot;
+  
+  # 签版本分支，从 main 中
+  branch release-v1.2.4
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.4 init&quot;
+  checkout main
+  merge release-v1.2.4
+  checkout release-v1.2.4
+
+  # release-v1.2.4 开始开发新功能
+  branch feat-v1.2.4-1
+  commit id: &quot;feat-v1.2.4-1 init&quot;
+  commit id: &quot;D1&quot;
+  commit id: &quot;D2&quot;
+  commit id: &quot;D3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-1
+  
+  # 这时生产 release-v1.2.3 出现 A 功能 bug4
+  
+  # 先紧急解决 release-v1.2.3 问题，验证完合并代码
+  checkout release-v1.2.3
+  branch fix-v1.2.3-y
+  commit id: &quot;fix-v1.2.3-y init&quot;
+  commit id: &quot;Fix A 4 release-v1.2.3&quot;
+  checkout release-v1.2.3
+  merge fix-v1.2.3-y
+  
+  # 再解决现有其他分支问题，目前 main 和 release-v1.2.4 也有同样的问题，想办法将 main 和 release-v1.2.4 分支中 A bug4 解决
+  # 方案：（不一定是这个方案，具体问题具体选择方案解决）合并 release-v1.2.3 和 release-v1.2.4, main 单独解决，定期维护时再解决部分冲突
+  # 方案 一： main release-v1.2.3 release-v1.2.4 关于 A 功能代码相似度较高，就直接合并代码
+  # 方案 二： release-v1.2.3 main 代码相似度低，main release-v1.2.4 相似度高 这种情况用上面方案
+  # 方案 三： release-v1.2.3 main release-v1.2.4 相似度都低，都分别 commit，等定期维护时 merge 分别维护 A 功能代码
+  # 方案 四： release-v1.2.3 release-v1.2.4 相似度高，与 main 相似度低，release 之间 merge，main 单独维护 A 功能代码（甚至去掉 A 功能代码）
+  checkout release-v1.2.4
+  merge release-v1.2.3
+  checkout main
+  branch fix-main-A-4
+  commit id: &quot;fix-main-A-4 init&quot;
+  commit id: &quot;Fix A 4 main&quot;
+  checkout main
+  merge fix-main-A-4
+  
+  # release-v1.2.4 继续开发功能 E
+  checkout release-v1.2.4
+  branch feat-v1.2.4-2
+  commit id: &quot;feat-v1.2.4-2 init&quot;
+  commit id: &quot;E1&quot;
+  commit id: &quot;E2&quot;
+  commit id: &quot;E3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp3&quot; tag: &quot;PeriodMerge $timestamp3&quot;
+  
+  # 切分支继续开发 release-v1.2.4
+  checkout release-v1.2.4
+  branch feat-v1.2.4-3
+  commit id: &quot;feat-v1.2.4-3&quot;
+  commit id: &quot;D4&quot;
+  commit id: &quot;D5&quot;
+  commit id: &quot;D6&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-3
+  commit id: &quot;fix branch3 v1.2.3&quot;
+
+  # 定期维护所有分支 release-v1.2.4 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp4&quot; tag: &quot;PeriodMerge$timestamp4&quot;
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main $timestamp3&quot; tag: &quot;init v1.2.5&quot;
+  
+  # 签分支启动版本 release-v1.2.5
+  branch release-v1.2.5
+  commit id: &quot;release-v1.2.5 init&quot;
+  checkout main
+  merge release-v1.2.5
+  
+  # release-v1.2.5 上开发 F 功能
+  branch feat-v1.2.5-1
+  commit id: &quot;feat-v1.2.5-1 init&quot;
+  commit id: &quot;F1&quot;
+  # ,,,
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/git/" style="color: #ffa2c4">git</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/09/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E5%BC%80%E5%8F%91%E5%88%86%E6%94%AF%E7%BB%B4%E6%8A%A4/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/08/mdstorage/project/sr/%E8%BD%AC%E6%B5%8B%E6%8A%A5%E5%91%8A%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4%E5%86%99%E4%BD%9C%E6%80%9D%E8%B7%AF/">
+        <h2 class="post-title">转测报告影响范围写作思路.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/8
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>影响范围通常描述了改动点可能影响到的系统其他部分，包括与改动点直接或间接相关的模块、功能、接口等。在编写转测报告的测试内容&#x2F;范围时，应包括一部分对可能受到影响的范围进行说明，以便测试团队能够进行充分的回归测试和验证。以下是如何编写影响范围的示例：</p>
+<h3 id="影响范围："><a href="#影响范围：" class="headerlink" title="影响范围："></a>影响范围：</h3><p>本次转测所涉及的改动对以下系统部分可能产生影响：</p>
+<ol>
+<li><strong>前端用户界面：</strong><ul>
+<li>改动的授权流程影响到前端界面交互，新增的授权申请，授权申请文件下载是新的交互方式。</li>
+<li>改动的授权流程影响到前端界面的展示，变更授权文件导入为授权许可文件导入，授权许可文件的内容和授权许可文件导入后的前后端逻辑都发生了改变，务必要参考需求文档对照测试。</li>
+</ul>
+</li>
+<li><strong>后端服务：</strong><ul>
+<li>新增了授权申请，后端数据库新增了多个表来记录相关内容，从而可能影响到系统兼容性。</li>
+<li>将授权文件机制改为授权许可文件机制后，数据结构发生重构，数据库中的字段也发生改变，后端的校验文件的逻辑也变更了，需要对照需求文档对照测试。</li>
+<li>并发操作场景下，正常的功能操作可能会发生未知的结果，需要测试验证。</li>
+</ul>
+</li>
+<li><strong>API接口：</strong><ul>
+<li>优化的软件授权包机制，导致插件下发绑定接口发生了变化，需要测试插件下发绑定系列操作。</li>
+<li>优化的软件授权包机制，导致引擎生成、展示、安装接口发生了变化，需要测试引擎展示、安装、升级包导入、授权许可文件导入系列操作。</li>
+<li>变动的授权流程，导致权限控制的接口发生变更，测试用户权限方面的影响。</li>
+</ul>
+</li>
+<li><strong>其他组件（系统）：</strong><ul>
+<li>会影响到引擎安装组件的逻辑发生变更，需要测试相关组件内容变更。</li>
+<li>会影响到引擎管理面的 webserver 对于引擎授权、插件授权方面。</li>
+</ul>
+</li>
+<li><strong>系统性能：</strong><ul>
+<li>授权流程中会触发系统各项信息采集，理论上增加了一部分计算逻辑和内存少量占用，但是优化了软件授权包的生成机制，所以预期呈现的资源占用表现是降低了。</li>
+</ul>
+</li>
+<li><strong>版本升级兼容性：</strong><ul>
+<li>授权流程调整后，从2.1.9版本升级成2.2.0版本就会立即进入授权失效的状态，要用户使用新的授权流程进行重新授权。不影响到用户的业务使用。</li>
+</ul>
+</li>
+</ol>
+<p>建议测试团队根据上述潜在的影响范围，制定详细的测试计划，并对影响较大的区域进行集中测试。此外，特别注意与这些区域相交互的边缘情况和异常流程，确保系统的健壮性和稳定性。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/sr/" style="color: #03a9f4">sr</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%B5%8B%E8%AF%95/" style="color: #ff7d73">测试</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/08/mdstorage/project/sr/%E8%BD%AC%E6%B5%8B%E6%8A%A5%E5%91%8A%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4%E5%86%99%E4%BD%9C%E6%80%9D%E8%B7%AF/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/08/mdstorage/project/sr/%E8%BF%90%E7%BB%B4%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/">
+        <h2 class="post-title">运维的必要性.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/8
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h4 id="团队运维缺失案例"><a href="#团队运维缺失案例" class="headerlink" title="团队运维缺失案例"></a>团队运维缺失案例</h4><h5 id="团队资产管理"><a href="#团队资产管理" class="headerlink" title="团队资产管理"></a>团队资产管理</h5><ul>
+<li>机器资产：目前是由项目经理和技术部建立一个群，需要提前申请机器，申请机器沟通繁琐。</li>
+<li>证书资产：目前团队需要一个一个团队的证书 CA 机构来统一管理研发团队的证书，多次沟通推进困难。 </li>
+<li>gitlab ：目前 CI&#x2F;CD 无法支持，产品质量降低、团队的自动化测试效率非常低。</li>
+<li>禅道 ： 禅道项目管理无人打理，有很多不合理的地方，如项目版本的概念现在用独立的项目; 缺少风险管理，知识库、禅道的功能也不齐全，现在没人解决。</li>
+</ul>
+<h5 id="技术部某次问题："><a href="#技术部某次问题：" class="headerlink" title="技术部某次问题："></a>技术部某次问题：</h5><ul>
+<li><p>把搭建好的总控和引擎搬到另外一个独立的环境后，总控的控制台无法访问，打不开</p>
+</li>
+<li><p>我需要实现的是这套环境搬到任何地方都可以直接用</p>
+</li>
+</ul>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231108103322506.png" alt="image-20231108103322506"></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/11/08/mdstorage/project/sr/%E8%BF%90%E7%BB%B4%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/08/mdstorage/resource/typora_pandoc_picgo/pandoc%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E5%BA%8A%E5%92%8C%E6%9C%8D%E5%8A%A1/">
+        <h2 class="post-title">pandoc自定义图床和服务.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/resource/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                resource
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/8
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="自定义图床服务"><a href="#自定义图床服务" class="headerlink" title="自定义图床服务"></a>自定义图床服务</h2><ul>
+<li>环境要求<ul>
+<li>linux</li>
+<li>golang</li>
+</ul>
+</li>
+<li>代码</li>
+</ul>
+<pre><code class="golang">package main
+
+import (
+    &quot;io&quot;
+    &quot;log&quot;
+    &quot;net/http&quot;
+    &quot;os&quot;
+)
+
+var (
+    // 文件 key
+    uploadFileKey = &quot;file&quot;
+    // 上传的图片保存根路径
+    filePath = &quot;/data/repo/picpicgo/&quot;
+)
+
+
+func main() &#123;
+    http.HandleFunc(&quot;/&quot;, uploadHandler)
+    if err := http.ListenAndServe(&quot;:12798&quot;, nil); err != nil &#123;
+        log.Fatalf(&quot;error to start http server:%s&quot;, err.Error())
+    &#125;
+&#125;
+
+func uploadHandler(w http.ResponseWriter, r *http.Request) &#123;
+    // 接受文件
+    file, header, err := r.FormFile(uploadFileKey)
+    if err != nil &#123;
+        // ignore the error handler
+    &#125;
+    log.Printf(&quot;selected file name is %s&quot;, header.Filename)
+    authValue := r.Header.Get(&quot;Authorization&quot;)
+    if (authValue != &quot;Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJsb2NhbGUiOiJlbiIsInZpZXdNb2RlIjoibW9zYWljIiwic2luZ2xlQ2xpY2siOmZhbHNlLCJwZXJtIjp7ImFkbWluIjp0cnVlLCJleGVjdXRlIjp0cnVlLCJjcmVhdGUiOnRydWUsInJlbmFtZSI6dHJ1ZSwibW9kaWZ5Ijp0cnVlLCJkZWxldGUiOnRydWUsInNoYXJlIjp0cnVlLCJkb3dubG9hZCI6dHJ1ZX0sImNvbW1hbmRzIjpbXSwibG9ja1Bhc3N3b3JkIjpmYWxzZSwiaGlkZURvdGZpbGVzIjpmYWxzZSwiZGF0ZUZvcm1hdCI6ZmFsc2V9LCJpc3MiOiJGaWxlIEJyb3dzZXIiLCJleHAiOjE2OTkzNTUyNTMsImlhdCI6MTY5OTM0ODA1M30.xOF_H27bkI2qL0ozpDGWCJKOToegAzZjIk6edFWqZC0&quot;) &#123;
+        log.Printf(&quot;auth fail&quot;)
+        return
+    &#125;
+    path := filePath + r.Header.Get(&quot;Uri&quot;)
+    createFile(path)
+    imgPath := path + header.Filename
+    log.Printf(&quot;path is %s&quot;, path)
+
+    // 将文件拷贝到指定路径下，或者其他文件操作
+    dst, err := os.Create(imgPath)
+    if err != nil &#123;
+        log.Fatalf(&quot;create file error :%s&quot;, err.Error())
+        // ignore
+    &#125;
+    _, err = io.Copy(dst, file)
+    if err != nil &#123;
+        log.Fatalf(&quot;copy file error :%s&quot;, err.Error())
+        // ignore
+    &#125;
+    log.Printf(&quot;upload success&quot;)
+    io.WriteString(w, &quot;&#123;\&quot;code\&quot;: 0, \&quot;data\&quot;: &#123;\&quot;url\&quot;: \&quot;&quot; + (r.Header.Get(&quot;ImgHost&quot;) + r.Header.Get(&quot;Uri&quot;) + header.Filename ) + &quot;\&quot;&#125;&#125;&quot;)
+&#125;
+
+
+//调用os.MkdirAll递归创建文件夹
+func createFile(filePath string)  error  &#123;
+    if !isExist(filePath) &#123;
+        err := os.MkdirAll(filePath,os.ModePerm)
+        return err
+    &#125;
+    return nil
+&#125;
+
+// 判断所给路径文件/文件夹是否存在(返回true是存在)
+func isExist(path string) bool &#123;
+    _, err := os.Stat(path)    //os.Stat获取文件信息
+    if err != nil &#123;
+        if os.IsExist(err) &#123;
+            return true
+        &#125;
+        return false
+    &#125;
+    return true
+&#125;
+</code></pre>
+<pre><code class="systemd">[Unit]
+Description=picgo-server
+
+[Service]
+ExecStart=/opt/picgo-server/picgo-server
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<h2 id="pandoc-自定义图床"><a href="#pandoc-自定义图床" class="headerlink" title="pandoc 自定义图床"></a>pandoc 自定义图床</h2><ul>
+<li>web-uploader 1.1.1 下载安装<ul>
+<li>插件设置 -&gt; 搜索下载即可</li>
+</ul>
+</li>
+<li>web-uploader 配置<ul>
+<li><a target="_blank" rel="noopener" href="https://mafgwo.cn/2021/01/16/2010_PicGo%E7%94%A8golang%E5%86%99%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E5%BA%8A%E4%B8%8A%E4%BC%A0%E6%9C%8D%E5%8A%A1/">参考链接</a> </li>
+<li>API 地址 ： <a target="_blank" rel="noopener" href="http://119.91.145.27:12798/">http://119.91.145.27:12798/</a></li>
+<li>POST参数名 ： file</li>
+<li>JSON路径 ： data.url （这个是上传接口返回值的 url 的值，对照上面代码就明白了）</li>
+<li>自定义请求头 ： {“Authorization”:”Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJsb2NhbGUiOiJlbiIsInZpZXdNb2RlIjoibW9zYWljIiwic2luZ2xlQ2xpY2siOmZhbHNlLCJwZXJtIjp7ImFkbWluIjp0cnVlLCJleGVjdXRlIjp0cnVlLCJjcmVhdGUiOnRydWUsInJlbmFtZSI6dHJ1ZSwibW9kaWZ5Ijp0cnVlLCJkZWxldGUiOnRydWUsInNoYXJlIjp0cnVlLCJkb3dubG9hZCI6dHJ1ZX0sImNvbW1hbmRzIjpbXSwibG9ja1Bhc3N3b3JkIjpmYWxzZSwiaGlkZURvdGZpbGVzIjpmYWxzZSwiZGF0ZUZvcm1hdCI6ZmFsc2V9LCJpc3MiOiJGaWxlIEJyb3dzZXIiLCJleHAiOjE2OTkzNTUyNTMsImlhdCI6MTY5OTM0ODA1M30.xOF_H27bkI2qL0ozpDGWCJKOToegAzZjIk6edFWqZC0”, “uri”: “”, “imgHost”: “<a target="_blank" rel="noopener" href="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/%22%7D">http://119.91.145.27:12799/api/public/dl/p8KdAUHH/&quot;}</a>    (对照上面代码就明白了)</li>
+<li>自定义 Body ： 无</li>
+</ul>
+</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/typora/" style="color: #03a9f4">typora</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/08/mdstorage/resource/typora_pandoc_picgo/pandoc%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E5%BA%8A%E5%92%8C%E6%9C%8D%E5%8A%A1/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/04/mdstorage/domain/%E6%96%87%E6%A1%A3/mermaid/">
+        <h2 class="post-title">mermaid.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/4
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="mindmap"><a href="#mindmap" class="headerlink" title="mindmap"></a>mindmap</h2><p>不支持样式微调：如线条颜色、节点颜色</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/markdown/" style="color: #03a9f4">markdown</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/mermaid/" style="color: #00a596">mermaid</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/04/mdstorage/domain/%E6%96%87%E6%A1%A3/mermaid/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/03/mdstorage/project/sr/%E5%91%A8%E4%BC%9A%E8%AE%AE%E7%A8%8B-11.3/">
+        <h2 class="post-title">周会议程-11.3.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/3
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="周会议程"><a href="#周会议程" class="headerlink" title="周会议程"></a>周会议程</h1><h2 id="开场白"><a href="#开场白" class="headerlink" title="开场白"></a>开场白</h2><ul>
+<li><strong>时间</strong>：2023&#x2F;11&#x2F;3</li>
+<li><strong>地点</strong>：培训室</li>
+<li><strong>参与人员</strong>：全体 Golang 组员</li>
+<li><strong>会议主题</strong>：增强团队协作和项目开发管理回顾</li>
+<li><strong>会议时长</strong>：1 小时内</li>
+</ul>
+<h2 id="一、-转测流程培训"><a href="#一、-转测流程培训" class="headerlink" title="一、 转测流程培训"></a>一、 转测流程培训</h2><ul>
+<li><strong>目的</strong>：确保团队成员理解并能够有效实施软件的转测流程。</li>
+<li><strong>内容</strong>：<ul>
+<li>流程概述</li>
+<li>关键步骤详解</li>
+<li>常见问题及解决方案</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、-任务管理与评估"><a href="#二、-任务管理与评估" class="headerlink" title="二、 任务管理与评估"></a>二、 任务管理与评估</h2><h3 id="2-1-任务评估回顾"><a href="#2-1-任务评估回顾" class="headerlink" title="2.1 任务评估回顾"></a>2.1 任务评估回顾</h3><ul>
+<li><strong>目标</strong>：识别评估过程中的问题，减少项目延期。</li>
+<li><strong>议程</strong>：<ul>
+<li>回顾上周的任务评估准确性</li>
+<li>分析延期的任务和原因（不深入讨论个别任务）</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-变动的评估项"><a href="#2-2-变动的评估项" class="headerlink" title="2.2 变动的评估项"></a>2.2 变动的评估项</h3><ul>
+<li><strong>目标</strong>：提高团队评估新变动的能力。</li>
+<li><strong>议程</strong>：<ul>
+<li>梳理新加入的任务和变动<ul>
+<li>授权包改动（需求、合理性决定）</li>
+</ul>
+</li>
+<li>探讨如何准确评估这些变动的影响</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-延期任务回顾"><a href="#2-3-延期任务回顾" class="headerlink" title="2.3 延期任务回顾"></a>2.3 延期任务回顾</h3><ul>
+<li><p><strong>目标</strong>：分析导致延期的因素，寻找解决方案。</p>
+</li>
+<li><p><strong>议程</strong>：</p>
+<ul>
+<li>总结延期原因<ul>
+<li><p>插入新任务（调研和设计时没考虑清楚，决策得不合理）</p>
+</li>
+<li><p>任务没有理清楚</p>
+</li>
+<li><p>人员调动 （插件人员调动）</p>
+</li>
+<li><p>数据面延期导致无法联调延期</p>
+</li>
+<li><p>联调时间没把控好（缺失联调培训和流程）</p>
+</li>
+<li><p>需求变更</p>
+</li>
+<li><p>自测时间未能评估准确</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-4-风险项回顾"><a href="#2-4-风险项回顾" class="headerlink" title="2.4 风险项回顾"></a>2.4 风险项回顾</h3><ul>
+<li><strong>目标</strong>：分析和回顾当前的风险项，提前规划风险应对措施。</li>
+<li><strong>议程</strong>：<ul>
+<li>确定风险清单</li>
+<li>分享风险管理策略</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-5-本周改进点回顾"><a href="#2-5-本周改进点回顾" class="headerlink" title="2.5 本周改进点回顾"></a>2.5 本周改进点回顾</h3><ul>
+<li><strong>目标</strong>：看到问题、争取改进</li>
+<li><ul>
+<li><p>每位团队成员分享两个他们认为本周做得不够好的点，限于描述现象，不涉及原因分析</p>
+</li>
+<li><p>收集所有问题点，用于未来的改进会议讨论</p>
+</li>
+<li><ul>
+<li><p>人员调动，不合理</p>
+</li>
+<li><p>禅道任务项目管理没跟踪-更新</p>
+</li>
+<li><p>需求不合理、产品变更需求文档后未通知项目经理</p>
+</li>
+<li><p>岗位职责未清</p>
+</li>
+<li><p>联调时遇到问题、项目经理也需要反馈给到开发</p>
+</li>
+<li><p>企微已读不回</p>
+</li>
+<li><p>某功能开发的进度管理缺失</p>
+</li>
+<li><p>开发周期太短、评估时间长了会想压缩</p>
+</li>
+<li><p>禅道版本太低、gitlab、CICD、wiki 等基础设施简陋</p>
+</li>
+<li><p>调研拆细、分给大家</p>
+</li>
+<li><p>开发自测还要松达帮忙打包</p>
+</li>
+<li><p>开发不知道这套系统的部署</p>
+</li>
+<li><p>没有整个系统的操作指引</p>
+</li>
+<li><p>项目开发节奏太紧、项目版本的节点设置不合理</p>
+</li>
+<li><p>插件开发周期太紧、测试的 bug 需要排优先级</p>
+</li>
+<li><p>联调插件前期沟通没做好</p>
+</li>
+<li><p>代码不规范</p>
+</li>
+<li><p>代码 review 缺失</p>
+</li>
+<li></li>
+<li><p>大家沟通不够</p>
+<ul>
+<li>反馈</li>
+<li>回应</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="事项宣布"><a href="#事项宣布" class="headerlink" title="事项宣布"></a>事项宣布</h2><ul>
+<li><p>紧急生产任务响应</p>
+<p>当发生生产问题时，不论时间地点，需要及时响应，尽量配合到达公司或是去客户现场。下班时间算调休。（1. 餐补、补助等 2. 值班表是否需要）</p>
+</li>
+<li><p>下发问题项响应</p>
+<p>当下发了问题项时到人后，定位到是自己责任的，反馈给项目经理确定解决时间，定位到非自己责任的，需要反馈项目经理讲明，不能不是自己问题就什么都不回。</p>
+</li>
+<li><p>下版本加强禅道项目周期管理</p>
+</li>
+</ul>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><ul>
+<li><strong>小结</strong>：回顾会议要点，强调学习和改进的重要性。</li>
+<li><strong>行动项</strong>：分配任务，明确下一步行动计划。</li>
+<li><strong>感谢</strong>：对团队的努力和贡献表示感谢。</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%91%A8%E4%BC%9A/" style="color: #ffa2c4">周会</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/03/mdstorage/project/sr/%E5%91%A8%E4%BC%9A%E8%AE%AE%E7%A8%8B-11.3/" class="go-post">阅读全文</a>
+</div>
+
+
+        <div class="page-current">
+    
+    <a class="page-num" href="/page/24/">
+        <i class="fa-solid fa-caret-left fa-fw"></i>
+    </a>
+    <a class="page-num" href="/">1</a>
+    <span class="page-omit">...</span>
+    
+    <span class="current">25</span>
+    
+    <a class="page-num" href="/page/26">
+        26
+    </a>
+    
+    
+    <a class="page-num" href="/page/27">
+        27
+    </a>
+    
+    
+    <span class="page-omit">...</span>
+    <a class="page-num" href="/page/28">28</a>
+    
+    
+    <a class="page-num" href="/page/26/">
+        <i class="fa-solid fa-caret-right fa-fw"></i>
+    </a>
+    
+</div>
+
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">xiaoy</div>
+        <div class="description">
+            <p>Description<br>…</p>
+
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+    </div>
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 Xiaoy
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;xiaoy
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
 </body>
 </html>

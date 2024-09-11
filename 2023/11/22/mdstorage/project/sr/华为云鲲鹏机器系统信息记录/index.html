@@ -1,668 +1,467 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>华为云鲲鹏机器系统信息记录.md | Xiaoy</title>
+    <meta name="author" content="xiaoy" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="xiaoy">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="背景石犀总控系统在一台云主机上没装上，进行问题排查和分析。 主机信息CPU: Huawei Kunpeng… 实例类型： A加速型kai1s 当前规格：A加速型| kai1s.xlarge.1| 4vCPUs | 4GiB 1 HUAWEI Ascend 310   系统信息12345678910111213141516171819Architecture:        aarch64Byte">
-<meta property="og:type" content="article">
-<meta property="og:title" content="华为云鲲鹏机器系统信息记录.md">
-<meta property="og:url" content="https://abrance.github.io/2023/11/22/mdstorage/project/sr/%E5%8D%8E%E4%B8%BA%E4%BA%91%E9%B2%B2%E9%B9%8F%E6%9C%BA%E5%99%A8%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E8%AE%B0%E5%BD%95/index.html">
-<meta property="og:site_name" content="Xiaoy">
-<meta property="og:description" content="背景石犀总控系统在一台云主机上没装上，进行问题排查和分析。 主机信息CPU: Huawei Kunpeng… 实例类型： A加速型kai1s 当前规格：A加速型| kai1s.xlarge.1| 4vCPUs | 4GiB 1 HUAWEI Ascend 310   系统信息12345678910111213141516171819Architecture:        aarch64Byte">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231122143834854.png">
-<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231122143932651.png">
-<meta property="article:published_time" content="2023-11-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-11T02:55:43.733Z">
-<meta property="article:author" content="xiaoy">
-<meta property="article:tag" content="machine">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231122143834854.png">
-  
-  
-  
-  <title>华为云鲲鹏机器系统信息记录.md - Xiaoy</title>
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="/js/lib/preview.js"></script>
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
 
 
-  
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>xiaoy</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XIAOY</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
         
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="华为云鲲鹏机器系统信息记录.md"></span>
-          
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XIAOY</span>
         </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-22 00:00" pubdate>
-          November 22, 2023 am
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          523 words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          5 mins
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">华为云鲲鹏机器系统信息记录.md</h1>
-            
-            
-              <div class="markdown-body">
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
                 
-                <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>石犀总控系统在一台云主机上没装上，进行问题排查和分析。</p>
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>华为云鲲鹏机器系统信息记录.md</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/22
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/machine/" style="color: #ffa2c4">
+                    machine
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>石犀总控系统在一台云主机上没装上，进行问题排查和分析。</p>
 <h4 id="主机信息"><a href="#主机信息" class="headerlink" title="主机信息"></a>主机信息</h4><p>CPU: Huawei Kunpeng…</p>
 <p>实例类型： A加速型kai1s</p>
 <p>当前规格：A加速型| kai1s.xlarge.1| 4vCPUs | 4GiB 1 HUAWEI Ascend 310</p>
-<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231122143834854.png" srcset="/img/loading.gif" lazyload alt="image-20231122143834854"></p>
-<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231122143932651.png" srcset="/img/loading.gif" lazyload alt="image-20231122143932651"></p>
-<h4 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">Architecture:        aarch64<br>Byte Order:          Little Endian<br>CPU(s):              16<br>On-line CPU(s) list: 0-15<br>Thread(s) per core:  1<br>Core(s) per socket:  8<br>Socket(s):           2<br>NUMA node(s):        2<br>Vendor ID:           0x48<br>Model:               0<br>Stepping:            0x1<br>BogoMIPS:            200.00<br>L1d cache:           64K<br>L1i cache:           64K<br>L2 cache:            512K<br>L3 cache:            32768K<br>NUMA node0 CPU(s):   0-7<br>NUMA node1 CPU(s):   8-15<br>Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp<br></code></pre></td></tr></table></figure>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231122143834854.png" alt="image-20231122143834854"></p>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231122143932651.png" alt="image-20231122143932651"></p>
+<h4 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h4><pre><code class="bash">Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              16
+On-line CPU(s) list: 0-15
+Thread(s) per core:  1
+Core(s) per socket:  8
+Socket(s):           2
+NUMA node(s):        2
+Vendor ID:           0x48
+Model:               0
+Stepping:            0x1
+BogoMIPS:            200.00
+L1d cache:           64K
+L1i cache:           64K
+L2 cache:            512K
+L3 cache:            32768K
+NUMA node0 CPU(s):   0-7
+NUMA node1 CPU(s):   8-15
+Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp
+</code></pre>
+<pre><code class="bash"># dmidecode 3.1
+Getting SMBIOS data from sysfs.
+SMBIOS 3.0.0 present.
+Table at 0x23F770000.
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># dmidecode 3.1</span><br>Getting SMBIOS data from sysfs.<br>SMBIOS 3.0.0 present.<br>Table at 0x23F770000.<br><br>Handle 0x0100, DMI <span class="hljs-built_in">type</span> 1, 27 bytes<br>System Information<br>        Manufacturer: OpenStack Foundation<br>        Product Name: OpenStack Nova<br>        Version: 13.2.1-20230609115315_4e0c600<br>        Serial Number: cc7cdba8-401e-428d-837d-41e3336e2e19<br>        UUID: CC7CDBA8-401E-428D-837D-41E3336E2E19<br>        Wake-up Type: Power Switch<br>        SKU Number: Not Specified<br>        Family: Virtual Machine<br><br>Handle 0x0300, DMI <span class="hljs-built_in">type</span> 3, 22 bytes<br>Chassis Information<br>        Manufacturer: Not Specified<br>        Type: Other<br>        Lock: Not Present<br>        Version: 1.0<br>        Serial Number: Not Specified<br>        Asset Tag: HUAWEICLOUD<br>        Boot-up State: Safe<br>        Power Supply State: Safe<br>        Thermal State: Safe<br>        Security Status: Unknown<br>        OEM Information: 0x00000000<br>        Height: Unspecified<br>        Number Of Power Cords: Unspecified<br>        Contained Elements: 0<br>        SKU Number: Not Specified<br><br>Handle 0x0400, DMI <span class="hljs-built_in">type</span> 4, 48 bytes<br>Processor Information<br>        Socket Designation: CPU 0<br>        Type: Central Processor<br>        Family: Other<br>        Manufacturer: QEMU<br>        ID: 00 00 00 00 00 00 00 00<br>        Version: 1.0<br>        Voltage: Unknown<br>        External Clock: Unknown<br>        Max Speed: 2000 MHz<br>        Current Speed: 2000 MHz<br>        Status: Populated, Enabled<br>        Upgrade: Other<br>        L1 Cache Handle: Not Provided<br>        L2 Cache Handle: Not Provided<br>        L3 Cache Handle: Not Provided<br>        Serial Number: Not Specified<br>        Asset Tag: Not Specified<br>        Part Number: Not Specified<br>        Core Count: 8<br>        Core Enabled: 8<br>        Thread Count: 1<br>        Characteristics: None<br><br>Handle 0x0401, DMI <span class="hljs-built_in">type</span> 4, 48 bytes<br>Processor Information<br>        Socket Designation: CPU 1<br>        Type: Central Processor<br>        Family: Other<br>        Manufacturer: QEMU<br>        ID: 00 00 00 00 00 00 00 00<br>        Version: 1.0<br>        Voltage: Unknown<br>        External Clock: Unknown<br>        Max Speed: 2000 MHz<br>        Current Speed: 2000 MHz<br>        Status: Populated, Enabled<br>        Upgrade: Other<br>        L1 Cache Handle: Not Provided<br>        L2 Cache Handle: Not Provided<br>        L3 Cache Handle: Not Provided<br>        Serial Number: Not Specified<br>        Asset Tag: Not Specified<br>        Part Number: Not Specified<br>        Core Count: 8<br>        Core Enabled: 8<br>        Thread Count: 1<br>        Characteristics: None<br><br>Handle 0x1000, DMI <span class="hljs-built_in">type</span> 16, 23 bytes<br>Physical Memory Array<br>        Location: Other<br>        Use: System Memory<br>        Error Correction Type: Multi-bit ECC<br>        Maximum Capacity: 16 GB<br>        Error Information Handle: Not Provided<br>        Number Of Devices: 1<br><br>Handle 0x1100, DMI <span class="hljs-built_in">type</span> 17, 40 bytes<br>Memory Device<br>        Array Handle: 0x1000<br>        Error Information Handle: Not Provided<br>        Total Width: Unknown<br>        Data Width: Unknown<br>        Size: 16384 MB<br>        Form Factor: DIMM<br>        Set: None<br>        Locator: DIMM 0<br>        Bank Locator: Not Specified<br>        Type: RAM<br>        Type Detail: Other<br>        Speed: Unknown<br>        Manufacturer: QEMU<br>        Serial Number: Not Specified<br>        Asset Tag: Not Specified<br>        Part Number: Not Specified<br>        Rank: Unknown<br>        Configured Clock Speed: Unknown<br>        Minimum Voltage: Unknown<br>        Maximum Voltage: Unknown<br>        Configured Voltage: Unknown<br><br>Handle 0x2000, DMI <span class="hljs-built_in">type</span> 32, 11 bytes<br>System Boot Information<br>        Status: No errors detected<br><br>Handle 0x0000, DMI <span class="hljs-built_in">type</span> 0, 26 bytes<br>BIOS Information<br>        Vendor: EFI Development Kit II / OVMF<br>        Version: 0.0.0<br>        Release Date: 02/06/2015<br>        Address: 0xE8000<br>        Runtime Size: 96 kB<br>        ROM Size: 64 kB<br>        Characteristics:<br>                BIOS characteristics not supported<br>                Targeted content distribution is supported<br>                UEFI is supported<br>                System is a virtual machine<br>        BIOS Revision: 0.0<br><br>Handle 0xFEFF, DMI <span class="hljs-built_in">type</span> 127, 4 bytes<br></code></pre></td></tr></table></figure>
+Handle 0x0100, DMI type 1, 27 bytes
+System Information
+        Manufacturer: OpenStack Foundation
+        Product Name: OpenStack Nova
+        Version: 13.2.1-20230609115315_4e0c600
+        Serial Number: cc7cdba8-401e-428d-837d-41e3336e2e19
+        UUID: CC7CDBA8-401E-428D-837D-41E3336E2E19
+        Wake-up Type: Power Switch
+        SKU Number: Not Specified
+        Family: Virtual Machine
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">processor        : 15<br>BogoMIPS        : 200.00<br>Features        : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp<br>CPU implementer        : 0x48<br>CPU architecture: 8<br>CPU variant        : 0x1<br>CPU part        : 0xd01<br>CPU revision        : 0<br></code></pre></td></tr></table></figure>
+Handle 0x0300, DMI type 3, 22 bytes
+Chassis Information
+        Manufacturer: Not Specified
+        Type: Other
+        Lock: Not Present
+        Version: 1.0
+        Serial Number: Not Specified
+        Asset Tag: HUAWEICLOUD
+        Boot-up State: Safe
+        Power Supply State: Safe
+        Thermal State: Safe
+        Security Status: Unknown
+        OEM Information: 0x00000000
+        Height: Unspecified
+        Number Of Power Cords: Unspecified
+        Contained Elements: 0
+        SKU Number: Not Specified
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@ecs-9dfc:~# lsblk<br>NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT<br>vda    252:0    0  100G  0 disk<br>├─vda1 252:1    0  512M  0 part /boot/efi<br>└─vda2 252:2    0 99.5G  0 part /<br>root@ecs-9dfc:~# lspci<br>00:00.0 Host bridge: Red Hat, Inc. QEMU PCIe Host bridge<br>00:01.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:01.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:01.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:01.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:01.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:01.5 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:01.6 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:01.7 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:02.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:02.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:02.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:02.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:02.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:02.5 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:02.6 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:02.7 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:03.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:03.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:03.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:03.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:03.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:03.5 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:03.6 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:03.7 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:04.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:04.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:04.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:04.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>00:04.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port<br>01:00.0 PCI bridge: Red Hat, Inc. Device 000e<br>02:01.0 USB controller: Intel Corporation 82801DB/DBM (ICH4/ICH4-M) USB2 EHCI Controller (rev 10)<br>02:02.0 Unclassified device [00ff]: Red Hat, Inc. Virtio memory balloon<br>02:03.0 Display controller: Red Hat, Inc. Virtio GPU (rev 01)<br>03:00.0 Ethernet controller: Red Hat, Inc. Virtio network device (rev 01)<br>04:00.0 SCSI storage controller: Red Hat, Inc. Virtio block device (rev 01)<br>05:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)<br>06:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)<br>07:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)<br>08:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)<br></code></pre></td></tr></table></figure>
+Handle 0x0400, DMI type 4, 48 bytes
+Processor Information
+        Socket Designation: CPU 0
+        Type: Central Processor
+        Family: Other
+        Manufacturer: QEMU
+        ID: 00 00 00 00 00 00 00 00
+        Version: 1.0
+        Voltage: Unknown
+        External Clock: Unknown
+        Max Speed: 2000 MHz
+        Current Speed: 2000 MHz
+        Status: Populated, Enabled
+        Upgrade: Other
+        L1 Cache Handle: Not Provided
+        L2 Cache Handle: Not Provided
+        L3 Cache Handle: Not Provided
+        Serial Number: Not Specified
+        Asset Tag: Not Specified
+        Part Number: Not Specified
+        Core Count: 8
+        Core Enabled: 8
+        Thread Count: 1
+        Characteristics: None
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@ecs-9dfc:~# fdisk -l<br>Disk /dev/vda: 100 GiB, 107374182400 bytes, 209715200 sectors<br>Units: sectors of 1 * 512 = 512 bytes<br>Sector size (logical/physical): 512 bytes / 512 bytes<br>I/O size (minimum/optimal): 512 bytes / 512 bytes<br>Disklabel <span class="hljs-built_in">type</span>: gpt<br>Disk identifier: 1AAC48CB-BE7A-495D-8BC2-EAECBD2B9071<br><br>Device       Start       End   Sectors  Size Type<br>/dev/vda1     2048   1050623   1048576  512M EFI System<br>/dev/vda2  1050624 209715166 208664543 99.5G Linux filesystem<br></code></pre></td></tr></table></figure>
+Handle 0x0401, DMI type 4, 48 bytes
+Processor Information
+        Socket Designation: CPU 1
+        Type: Central Processor
+        Family: Other
+        Manufacturer: QEMU
+        ID: 00 00 00 00 00 00 00 00
+        Version: 1.0
+        Voltage: Unknown
+        External Clock: Unknown
+        Max Speed: 2000 MHz
+        Current Speed: 2000 MHz
+        Status: Populated, Enabled
+        Upgrade: Other
+        L1 Cache Handle: Not Provided
+        L2 Cache Handle: Not Provided
+        L3 Cache Handle: Not Provided
+        Serial Number: Not Specified
+        Asset Tag: Not Specified
+        Part Number: Not Specified
+        Core Count: 8
+        Core Enabled: 8
+        Thread Count: 1
+        Characteristics: None
 
+Handle 0x1000, DMI type 16, 23 bytes
+Physical Memory Array
+        Location: Other
+        Use: System Memory
+        Error Correction Type: Multi-bit ECC
+        Maximum Capacity: 16 GB
+        Error Information Handle: Not Provided
+        Number Of Devices: 1
 
+Handle 0x1100, DMI type 17, 40 bytes
+Memory Device
+        Array Handle: 0x1000
+        Error Information Handle: Not Provided
+        Total Width: Unknown
+        Data Width: Unknown
+        Size: 16384 MB
+        Form Factor: DIMM
+        Set: None
+        Locator: DIMM 0
+        Bank Locator: Not Specified
+        Type: RAM
+        Type Detail: Other
+        Speed: Unknown
+        Manufacturer: QEMU
+        Serial Number: Not Specified
+        Asset Tag: Not Specified
+        Part Number: Not Specified
+        Rank: Unknown
+        Configured Clock Speed: Unknown
+        Minimum Voltage: Unknown
+        Maximum Voltage: Unknown
+        Configured Voltage: Unknown
 
+Handle 0x2000, DMI type 32, 11 bytes
+System Boot Information
+        Status: No errors detected
 
+Handle 0x0000, DMI type 0, 26 bytes
+BIOS Information
+        Vendor: EFI Development Kit II / OVMF
+        Version: 0.0.0
+        Release Date: 02/06/2015
+        Address: 0xE8000
+        Runtime Size: 96 kB
+        ROM Size: 64 kB
+        Characteristics:
+                BIOS characteristics not supported
+                Targeted content distribution is supported
+                UEFI is supported
+                System is a virtual machine
+        BIOS Revision: 0.0
 
+Handle 0xFEFF, DMI type 127, 4 bytes
+</code></pre>
+<pre><code class="bash">processor        : 15
+BogoMIPS        : 200.00
+Features        : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp
+CPU implementer        : 0x48
+CPU architecture: 8
+CPU variant        : 0x1
+CPU part        : 0xd01
+CPU revision        : 0
+</code></pre>
+<pre><code class="bash">root@ecs-9dfc:~# lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+vda    252:0    0  100G  0 disk
+├─vda1 252:1    0  512M  0 part /boot/efi
+└─vda2 252:2    0 99.5G  0 part /
+root@ecs-9dfc:~# lspci
+00:00.0 Host bridge: Red Hat, Inc. QEMU PCIe Host bridge
+00:01.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.5 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.6 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.7 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.5 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.6 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.7 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.5 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.6 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.7 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:04.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:04.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:04.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:04.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:04.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+01:00.0 PCI bridge: Red Hat, Inc. Device 000e
+02:01.0 USB controller: Intel Corporation 82801DB/DBM (ICH4/ICH4-M) USB2 EHCI Controller (rev 10)
+02:02.0 Unclassified device [00ff]: Red Hat, Inc. Virtio memory balloon
+02:03.0 Display controller: Red Hat, Inc. Virtio GPU (rev 01)
+03:00.0 Ethernet controller: Red Hat, Inc. Virtio network device (rev 01)
+04:00.0 SCSI storage controller: Red Hat, Inc. Virtio block device (rev 01)
+05:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)
+06:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)
+07:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)
+08:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)
+</code></pre>
+<pre><code class="bash">root@ecs-9dfc:~# fdisk -l
+Disk /dev/vda: 100 GiB, 107374182400 bytes, 209715200 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 1AAC48CB-BE7A-495D-8BC2-EAECBD2B9071
 
+Device       Start       End   Sectors  Size Type
+/dev/vda1     2048   1050623   1048576  512M EFI System
+/dev/vda2  1050624 209715166 208664543 99.5G Linux filesystem
+</code></pre>
 
-
-
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/machine/" class="print-no-link">#machine</a>
-      
     </div>
-  
+    
+    
+    
+    
+    
+    
+    
 </div>
 
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>华为云鲲鹏机器系统信息记录.md</div>
-      <div>https://abrance.github.io/2023/11/22/mdstorage/project/sr/华为云鲲鹏机器系统信息记录/</div>
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 Xiaoy
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;xiaoy
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
     </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>Author</div>
-          <div>xiaoy</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>November 22, 2023</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>Licensed under</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                    <i class="iconfont icon-cc-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
+</footer>
 
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/11/22/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%80%E6%9C%AF%E5%92%8C%E7%AE%A1%E7%90%86%E6%80%BB%E4%BC%9A%E6%9C%89%E4%B8%8D%E5%8F%AF%E8%B0%83%E5%92%8C%E7%9A%84%E7%9F%9B%E7%9B%BE/" title="为什么技术和管理总会有不可调和的矛盾.md">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">为什么技术和管理总会有不可调和的矛盾.md</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/11/21/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E6%9C%BA%E5%99%A8%E5%88%9D%E5%A7%8B%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/" title="总控机器初始网络配置文档">
-                        <span class="hidden-mobile">总控机器初始网络配置文档</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
             </div>
-
-            
-          </article>
-        </div>
-      </div>
+        </transition>
+        
     </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
-    mermaid.initialize({"theme":"default"});
-
-    Fluid.utils.listenDOMLoaded(function() {
-      Fluid.events.registerRefreshCallback(function() {
-        if ('mermaid' in window) {
-          mermaid.init();
-        }
-      });
-    });
-  });
-</script>
-
-
+    <script src="/js/main.js"></script>
+    
+    
 
 
 
 
     
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
 </body>
 </html>

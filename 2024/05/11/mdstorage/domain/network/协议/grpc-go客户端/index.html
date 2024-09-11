@@ -1,296 +1,207 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>grpc-go客户端.md | Xiaoy</title>
+    <meta name="author" content="xiaoy" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="xiaoy">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="1 客户端代码示例1.1 main 函数 首先给出 grpc-go 启动客户端的代码示例，核心内容分三块：  调用 grpc.Dial 方法，指定服务端 target，创建 grpc 连接代理对象 ClientConn  调用 proto.NewHelloServiceClient 方法，基于 pb 桩代码构造客户端实例  调用 client.SayHello 方法，真正发起 grpc 请求">
-<meta property="og:type" content="article">
-<meta property="og:title" content="grpc-go客户端.md">
-<meta property="og:url" content="https://abrance.github.io/2024/05/11/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc-go%E5%AE%A2%E6%88%B7%E7%AB%AF/index.html">
-<meta property="og:site_name" content="Xiaoy">
-<meta property="og:description" content="1 客户端代码示例1.1 main 函数 首先给出 grpc-go 启动客户端的代码示例，核心内容分三块：  调用 grpc.Dial 方法，指定服务端 target，创建 grpc 连接代理对象 ClientConn  调用 proto.NewHelloServiceClient 方法，基于 pb 桩代码构造客户端实例  调用 client.SayHello 方法，真正发起 grpc 请求">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://pic2.zhimg.com/v2-0fbd37c1514195654ea09974927530a1_b.jpg">
-<meta property="og:image" content="https://pic2.zhimg.com/v2-c842a0159d6bcee06dcf5772a3443acd_b.jpg">
-<meta property="og:image" content="https://pic2.zhimg.com/v2-d55c7ce48f8ab26c9f0d712e5bb75125_b.jpg">
-<meta property="og:image" content="https://pic1.zhimg.com/v2-2d9d5ced9a49aaeba25003e2b27a4f88_b.jpg">
-<meta property="og:image" content="https://pic3.zhimg.com/v2-3a59f74b043f0c9e9494a4738390eb06_b.jpg">
-<meta property="og:image" content="https://pic3.zhimg.com/v2-0d381d5a8047a3677b7065974dbf43fa_b.png">
-<meta property="og:image" content="https://pic3.zhimg.com/v2-89bca7305f47501e10a753fdff912812_b.png">
-<meta property="og:image" content="https://pic2.zhimg.com/v2-c485ed2672bd1d62f47013e2daad7861_b.png">
-<meta property="og:image" content="https://pic3.zhimg.com/v2-9d474750a20378dbc9a8724c4f20720e_b.jpg">
-<meta property="og:image" content="https://pic4.zhimg.com/v2-ed61d7eba4ac747d8a3077fcb5ed4f9f_b.jpg">
-<meta property="og:image" content="https://pic1.zhimg.com/v2-e0813cacbb7221902ad1f611739f26f0_b.jpg">
-<meta property="og:image" content="https://pic4.zhimg.com/v2-72d8df173eeae16f37bd03ad7e63dd2f_b.jpg">
-<meta property="article:published_time" content="2024-05-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-11T02:55:43.717Z">
-<meta property="article:author" content="xiaoy">
-<meta property="article:tag" content="golang">
-<meta property="article:tag" content="grpc">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pic2.zhimg.com/v2-0fbd37c1514195654ea09974927530a1_b.jpg">
-  
-  
-  
-  <title>grpc-go客户端.md - Xiaoy</title>
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="/js/lib/preview.js"></script>
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
 
 
-  
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>xiaoy</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XIAOY</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
         
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="grpc-go客户端.md"></span>
-          
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XIAOY</span>
         </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-11 00:00" pubdate>
-          May 11, 2024 am
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          4.8k words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          40 mins
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">grpc-go客户端.md</h1>
-            
-            
-              <div class="markdown-body">
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
                 
-                <h2 id="1-客户端代码示例"><a href="#1-客户端代码示例" class="headerlink" title="1 客户端代码示例"></a>1 客户端代码示例</h2><h2 id="1-1-main-函数"><a href="#1-1-main-函数" class="headerlink" title="1.1 main 函数"></a>1.1 main 函数</h2><p><img src="https://pic2.zhimg.com/v2-0fbd37c1514195654ea09974927530a1_b.jpg" srcset="/img/loading.gif" lazyload></p>
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>grpc-go客户端.md</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/5/11
+        </span>
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/golang/" style="color: #03a9f4">
+                    golang
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/grpc/" style="color: #ffa2c4">
+                    grpc
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h2 id="1-客户端代码示例"><a href="#1-客户端代码示例" class="headerlink" title="1 客户端代码示例"></a>1 客户端代码示例</h2><h2 id="1-1-main-函数"><a href="#1-1-main-函数" class="headerlink" title="1.1 main 函数"></a>1.1 main 函数</h2><p><img src="https://pic2.zhimg.com/v2-0fbd37c1514195654ea09974927530a1_b.jpg"></p>
 <p>首先给出 grpc-go 启动客户端的代码示例，核心内容分三块：</p>
 <ul>
 <li><p>调用 grpc.Dial 方法，指定服务端 target，创建 grpc 连接代理对象 ClientConn</p>
@@ -303,7 +214,7 @@
 </li>
 </ul>
 <h2 id="1-2-proto-文件"><a href="#1-2-proto-文件" class="headerlink" title="1.2 proto 文件"></a>1.2 proto 文件</h2><p>对应的 proto 文件定义：</p>
-<pre><code class="hljs">syntax = &quot;proto3&quot;; // 固定语法前缀
+<pre><code>syntax = &quot;proto3&quot;; // 固定语法前缀
 option go_package = &quot;.&quot;;  // 指定生成的Go代码在你项目中的导入路径
 package pb; // 包名
 
@@ -326,7 +237,7 @@ message HelloResp &#123;
     string reply = 1;
 &#125;
 </code></pre>
-<h2 id="2-核心数据结构"><a href="#2-核心数据结构" class="headerlink" title="2 核心数据结构"></a>2 核心数据结构</h2><p><img src="https://pic2.zhimg.com/v2-c842a0159d6bcee06dcf5772a3443acd_b.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-核心数据结构"><a href="#2-核心数据结构" class="headerlink" title="2 核心数据结构"></a>2 核心数据结构</h2><p><img src="https://pic2.zhimg.com/v2-c842a0159d6bcee06dcf5772a3443acd_b.jpg"></p>
 <p>下面对 grpc-go 客户端涉及到的几个核心数据结构以及其间的关联做个介绍.</p>
 <h2 id="2-1-ClientConn"><a href="#2-1-ClientConn" class="headerlink" title="2.1 ClientConn"></a>2.1 ClientConn</h2><p>ClientConn 是广义上的 grpc 连接代理对象，和 grpc 客户端是一对一的关系，内部包含了一个连接池，根据配置可能同时管理多笔连接.<br>其中几个核心字段包括：</p>
 <ul>
@@ -341,7 +252,7 @@ message HelloResp &#123;
 </li>
 </ul>
 <h2 id="2-2-ccBalancerWrapper"><a href="#2-2-ccBalancerWrapper" class="headerlink" title="2.2 ccBalancerWrapper"></a>2.2 ccBalancerWrapper</h2><p>ccBalancerWrapper是在负载均衡器Balancer的基础上做的封装.<br>在ccBalancerWrapper被初始化时，会开启一个守护协程，通过监听 updateCh 中到达的事件，对 ClientConn 和 Subconn<br>的状态进行刷新.</p>
-<pre><code class="hljs">type ccBalancerWrapper struct &#123;
+<pre><code>type ccBalancerWrapper struct &#123;
     // 指向所属的 clientConn
     cc *ClientConn
 
@@ -370,7 +281,7 @@ message HelloResp &#123;
 </li>
 </ul>
 <p>在默认情况下，grpc客户端框架会为我们提供一个默认的负载均衡器 pickfirstBalancer：</p>
-<pre><code class="hljs">type pickfirstBalancer struct &#123;
+<pre><code>type pickfirstBalancer struct &#123;
     state   connectivity.State
     cc      balancer.ClientConn
     subConn balancer.SubConn
@@ -378,7 +289,7 @@ message HelloResp &#123;
 </code></pre>
 <p>与pickfirstBalancer具体的交互流程我们在第3章再作展开.</p>
 <h2 id="2-3-ccResolverWrapper"><a href="#2-3-ccResolverWrapper" class="headerlink" title="2.3 ccResolverWrapper"></a>2.3 ccResolverWrapper</h2><p>ccResolverWrapper的核心是内置的解析器 resolver.</p>
-<pre><code class="hljs">type ccResolverWrapper struct &#123;
+<pre><code>type ccResolverWrapper struct &#123;
     // 指向所属的 clientConn
     cc         *ClientConn
     resolverMu sync.Mutex
@@ -388,7 +299,7 @@ message HelloResp &#123;
 &#125;
 </code></pre>
 <p>resolver通过Builder构造，对应的Buidler是一个interface,用户也可以提供自己的实现版本:</p>
-<pre><code class="hljs">type Builder interface &#123;
+<pre><code>type Builder interface &#123;
     // 构造解析器 resolver
     Build(target Target, cc ClientConn, opts BuildOptions) (Resolver, error)
     // Scheme returns the scheme supported by this resolver.
@@ -397,7 +308,7 @@ message HelloResp &#123;
 &#125;
 </code></pre>
 <p>resolver本身是一个接口，核心的方法是 ResolveNow：通过 target 解析出实际的客户端地址.</p>
-<pre><code class="hljs">type Resolver interface &#123;
+<pre><code>type Resolver interface &#123;
     // 解析 target
     ResolveNow(ResolveNowOptions)
     // 关闭 resolver
@@ -405,14 +316,14 @@ message HelloResp &#123;
 &#125;
 </code></pre>
 <p>grpc客户端为我们提供了一个默认的resolver：passthroughResolver：</p>
-<pre><code class="hljs">type passthroughResolver struct &#123;
+<pre><code>type passthroughResolver struct &#123;
     target resolver.Target
     cc     resolver.ClientConn
 &#125;
 </code></pre>
 <p>passthroughResolver在解析 target 时的策略是直接透传不作处理. 具体交互流程见第3章.</p>
 <h2 id="2-4-ClientStream"><a href="#2-4-ClientStream" class="headerlink" title="2.4 ClientStream"></a>2.4 ClientStream</h2><p>在grpc客户端客户端发起请求时，会首先创建出一个 ClientStream，并依赖其核心方法 SendMsg 和 RecvMsg<br>进行请求的发送和响应的接受.</p>
-<pre><code class="hljs">type ClientStream interface &#123;
+<pre><code>type ClientStream interface &#123;
     // 获取元数据
     Header() (metadata.MD, error)
     // 获取上下文
@@ -424,7 +335,7 @@ message HelloResp &#123;
 &#125;
 </code></pre>
 <p>ClientStream是一个interface，其默认的实现是 clientStream：</p>
-<pre><code class="hljs">type clientStream struct &#123;
+<pre><code>type clientStream struct &#123;
     // ...
     cc       *ClientConn
     desc     *StreamDesc
@@ -444,7 +355,7 @@ message HelloResp &#123;
 &#125;
 </code></pre>
 <h2 id="2-5-csAttempt"><a href="#2-5-csAttempt" class="headerlink" title="2.5 csAttempt"></a>2.5 csAttempt</h2><p>csAttempt 代表了一次 grpc 请求尝试，本身是具有生命周期的.</p>
-<pre><code class="hljs">type csAttempt struct &#123;
+<pre><code>type csAttempt struct &#123;
     ctx        context.Context
     cs         *clientStream
     t          transport.ClientTransport
@@ -462,8 +373,8 @@ message HelloResp &#123;
     // ...
 &#125;
 </code></pre>
-<h2 id="3-grpc-Dial"><a href="#3-grpc-Dial" class="headerlink" title="3 grpc.Dial"></a>3 grpc.Dial</h2><p><img src="https://pic2.zhimg.com/v2-d55c7ce48f8ab26c9f0d712e5bb75125_b.jpg" srcset="/img/loading.gif" lazyload></p>
-<h2 id="3-1-grpc-Dial"><a href="#3-1-grpc-Dial" class="headerlink" title="3.1 grpc.Dial"></a>3.1 grpc.Dial</h2><pre><code class="hljs">func Dial(target string, opts ...DialOption) (*ClientConn, error) &#123;
+<h2 id="3-grpc-Dial"><a href="#3-grpc-Dial" class="headerlink" title="3 grpc.Dial"></a>3 grpc.Dial</h2><p><img src="https://pic2.zhimg.com/v2-d55c7ce48f8ab26c9f0d712e5bb75125_b.jpg"></p>
+<h2 id="3-1-grpc-Dial"><a href="#3-1-grpc-Dial" class="headerlink" title="3.1 grpc.Dial"></a>3.1 grpc.Dial</h2><pre><code>func Dial(target string, opts ...DialOption) (*ClientConn, error) &#123;
     return DialContext(context.Background(), target, opts...)
 &#125;
 func DialContext(ctx context.Context, target string, opts ...DialOption) (conn *ClientConn, err error) &#123;
@@ -506,8 +417,8 @@ func DialContext(ctx context.Context, target string, opts ...DialOption) (conn *
 <li>调用 newCCBalancerWrapper 方法构造出负载均衡器封装对象 ccBalancerWrapper，在内部会开启守护协程感知和处理 ClientConn 和 Subconn 状态变更的事件</li>
 <li>调用 newCCResolverWrapper 方法，内部会调用 resolverBuilder 构造并启动 resolver 实例，同时会通过 ccBalancerWrapper 方法对 ClientConn 的状态进行更新</li>
 </ul>
-<h2 id="3-2-ClientConn-parseTargetAndFindResolver"><a href="#3-2-ClientConn-parseTargetAndFindResolver" class="headerlink" title="3.2 ClientConn.parseTargetAndFindResolver"></a>3.2 ClientConn.parseTargetAndFindResolver</h2><p><img src="https://pic1.zhimg.com/v2-2d9d5ced9a49aaeba25003e2b27a4f88_b.jpg" srcset="/img/loading.gif" lazyload></p>
-<pre><code class="hljs">func (cc *ClientConn) parseTargetAndFindResolver() (resolver.Builder, error) &#123;
+<h2 id="3-2-ClientConn-parseTargetAndFindResolver"><a href="#3-2-ClientConn-parseTargetAndFindResolver" class="headerlink" title="3.2 ClientConn.parseTargetAndFindResolver"></a>3.2 ClientConn.parseTargetAndFindResolver</h2><p><img src="https://pic1.zhimg.com/v2-2d9d5ced9a49aaeba25003e2b27a4f88_b.jpg"></p>
+<pre><code>func (cc *ClientConn) parseTargetAndFindResolver() (resolver.Builder, error) &#123;
     // ...
     var rb resolver.Builder
     parsedTarget, err := parseTarget(cc.target)
@@ -522,7 +433,7 @@ func DialContext(ctx context.Context, target string, opts ...DialOption) (conn *
 </code></pre>
 <p>ClientConn.parseTargetAndFindResolver 方法通过 target 中的 schema，会获取到对应的<br>resolverBuilder，后续用于构建出能解析出服务端地址的 resolver.</p>
 <p>在 grpc-go 的 resolver 包下，会通过一个全局 map 实现 schema 到 resolverBuilder 的映射，同时会暴露出注册方法<br>Register，供用户自定义实现特定 schema 下的 resolverBuilder 和 resolver 并注入到 map 中.</p>
-<pre><code class="hljs">var (
+<pre><code>var (
     m = make(map[string]Builder)
     defaultScheme = &quot;passthrough&quot;
 )
@@ -542,7 +453,7 @@ func Get(scheme string) Builder &#123;
 </code></pre>
 <p>grpc-go 中，默认的 resolverBuilder 和对应的 resolver 是 passthrough 类型，这类 resolver<br>的解析策略是对 target 直接透传，不作解析处理.</p>
 <p>其中，passthroughBuilder.Build 方法中，会执行 passthroughResolver.start<br>方法一键启动解析器，这部分逻辑我们放到 3.4 小节中，在 passthroughBuilder.Build 方法真正被调用时再作展开.</p>
-<pre><code class="hljs">const scheme = &quot;passthrough&quot;
+<pre><code>const scheme = &quot;passthrough&quot;
 
 
 type passthroughBuilder struct&#123;&#125;
@@ -572,7 +483,7 @@ func (r *passthroughResolver) start() &#123;
 
 func (*passthroughResolver) ResolveNow(o resolver.ResolveNowOptions)&#123;&#125;
 </code></pre>
-<h2 id="3-3-newCCBalancerWrapper"><a href="#3-3-newCCBalancerWrapper" class="headerlink" title="3.3 newCCBalancerWrapper"></a>3.3 newCCBalancerWrapper</h2><pre><code class="hljs">func newCCBalancerWrapper(cc *ClientConn, bopts balancer.BuildOptions) *ccBalancerWrapper &#123;
+<h2 id="3-3-newCCBalancerWrapper"><a href="#3-3-newCCBalancerWrapper" class="headerlink" title="3.3 newCCBalancerWrapper"></a>3.3 newCCBalancerWrapper</h2><pre><code>func newCCBalancerWrapper(cc *ClientConn, bopts balancer.BuildOptions) *ccBalancerWrapper &#123;
     ccb := &amp;ccBalancerWrapper&#123;
         cc:       cc,
         updateCh: buffer.NewUnbounded(),
@@ -585,8 +496,8 @@ func (*passthroughResolver) ResolveNow(o resolver.ResolveNowOptions)&#123;&#125;
     return ccb
 &#125;
 </code></pre>
-<p><img src="https://pic3.zhimg.com/v2-3a59f74b043f0c9e9494a4738390eb06_b.jpg" srcset="/img/loading.gif" lazyload></p>
-<pre><code class="hljs">func (ccb *ccBalancerWrapper) watcher() &#123;
+<p><img src="https://pic3.zhimg.com/v2-3a59f74b043f0c9e9494a4738390eb06_b.jpg"></p>
+<pre><code>func (ccb *ccBalancerWrapper) watcher() &#123;
     for &#123;
         select &#123;
         case u := &lt;-ccb.updateCh.Get():
@@ -620,8 +531,8 @@ func (*passthroughResolver) ResolveNow(o resolver.ResolveNowOptions)&#123;&#125;
 </code></pre>
 <p>newCCBalancerWrapper 方法构造了 ccBalancer 实例，然后调用 ccBalancerWrapper.watcher<br>方法开启守护协程，分别监听 ClientConn 状态变更（ccStateUpdate）、Subconn<br>状态变更（scStateUpdate）、设定负载均衡器<br>balancer（switchToUpdate）、连接移除（subConnUpdate）等事件，并分别进行处理.</p>
 <p>在 newCCBalancerWrapper 方法中，还调用了 gracefulswitch.NewBalancer<br>构造了内置负载均衡器的外壳，但真正的负载均衡器 Balancer 此时还未注入，注入实际会在 3.4 小节，resovler 启动的链路当中.</p>
-<h2 id="3-4-newCCResolverWrapper"><a href="#3-4-newCCResolverWrapper" class="headerlink" title="3.4 newCCResolverWrapper"></a>3.4 newCCResolverWrapper</h2><p><img src="https://pic3.zhimg.com/v2-0d381d5a8047a3677b7065974dbf43fa_b.png" srcset="/img/loading.gif" lazyload></p>
-<pre><code class="hljs">func newCCResolverWrapper(cc *ClientConn, rb resolver.Builder) (*ccResolverWrapper, error) &#123;
+<h2 id="3-4-newCCResolverWrapper"><a href="#3-4-newCCResolverWrapper" class="headerlink" title="3.4 newCCResolverWrapper"></a>3.4 newCCResolverWrapper</h2><p><img src="https://pic3.zhimg.com/v2-0d381d5a8047a3677b7065974dbf43fa_b.png"></p>
+<pre><code>func newCCResolverWrapper(cc *ClientConn, rb resolver.Builder) (*ccResolverWrapper, error) &#123;
     ccr := &amp;ccResolverWrapper&#123;
         cc:   cc,
         done: grpcsync.NewEvent(),
@@ -642,7 +553,7 @@ func (*passthroughResolver) ResolveNow(o resolver.ResolveNowOptions)&#123;&#125;
 <p>newCCResolverWrapper 方法构造了 ccResolverWrapper 实例，但真正的核心逻辑是根据传入的 resolverBuilder<br>构造器出对应的 resolver 然后注入到 ccResolverWrapper 当中.</p>
 <p>grpc-go 客户端默认的 resovlerBuilder 和 resolver 是 passthrough 类型，下面我们再一次展开</p>
 <p>passthroughBuilder.Build 方法来看：</p>
-<pre><code class="hljs">func (*passthroughBuilder) Build(target resolver.Target, cc resolver.ClientConn, opts resolver.BuildOptions) (resolver.Resolver, error) &#123;
+<pre><code>func (*passthroughBuilder) Build(target resolver.Target, cc resolver.ClientConn, opts resolver.BuildOptions) (resolver.Resolver, error) &#123;
     // ...
     r := &amp;passthroughResolver&#123;
         target: target,
@@ -653,13 +564,13 @@ func (*passthroughResolver) ResolveNow(o resolver.ResolveNowOptions)&#123;&#125;
 &#125;
 </code></pre>
 <p>在方法中，构造了一个 passthroughResolver 实例，并在返回前调用了 passthroughResolver.start 方法启动了解析器.</p>
-<pre><code class="hljs">func (r *passthroughResolver) start() &#123;
+<pre><code>func (r *passthroughResolver) start() &#123;
     r.cc.UpdateState(resolver.State&#123;Addresses: []resolver.Address&#123;&#123;Addr: r.target.Endpoint()&#125;&#125;&#125;)
 &#125;
 </code></pre>
-<p><img src="https://pic3.zhimg.com/v2-89bca7305f47501e10a753fdff912812_b.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://pic3.zhimg.com/v2-89bca7305f47501e10a753fdff912812_b.png"></p>
 <p>此处直接透传了用户传入的服务端地址 target.Endpoint，经历了 ccResolverWrapper.UpdateState -&gt;<br>ClientConn.updateResolverState 的调用链路，然后分别通过 ccBalancerWrapper.switchTo 和<br>ccBalancerWrapper.updateClientConnState 方法，通过 updateCh 向 ccBalancerWrapper<br>传递了设定 balancer 和更新 ClientConn 的事件.</p>
-<pre><code class="hljs">func (ccr *ccResolverWrapper) UpdateState(s resolver.State) error &#123;
+<pre><code>func (ccr *ccResolverWrapper) UpdateState(s resolver.State) error &#123;
     // ...
     ccr.curState = s
     if err := ccr.cc.updateResolverState(ccr.curState, nil); err == balancer.ErrBadResolverState &#123;
@@ -675,7 +586,7 @@ func (cc *ClientConn) updateResolverState(s resolver.State, err error) error &#1
     // ...
 &#125;
 </code></pre>
-<h3 id="3-4-1-ccBalancerWrapper-switchTo"><a href="#3-4-1-ccBalancerWrapper-switchTo" class="headerlink" title="3.4.1 ccBalancerWrapper.switchTo"></a><strong>3.4.1 ccBalancerWrapper.switchTo</strong></h3><pre><code class="hljs">func (cc *ClientConn) maybeApplyDefaultServiceConfig(addrs []resolver.Address) &#123;
+<h3 id="3-4-1-ccBalancerWrapper-switchTo"><a href="#3-4-1-ccBalancerWrapper-switchTo" class="headerlink" title="3.4.1 ccBalancerWrapper.switchTo"></a><strong>3.4.1 ccBalancerWrapper.switchTo</strong></h3><pre><code>func (cc *ClientConn) maybeApplyDefaultServiceConfig(addrs []resolver.Address) &#123;
     // ...
     cc.applyServiceConfigAndBalancer(emptyServiceConfig, &amp;defaultConfigSelector&#123;emptyServiceConfig&#125;, addrs)
 &#125;
@@ -692,9 +603,9 @@ func (ccb *ccBalancerWrapper) switchTo(name string) &#123;
     ccb.updateCh.Put(&amp;switchToUpdate&#123;name: name&#125;)
 &#125;
 </code></pre>
-<p><img src="https://pic2.zhimg.com/v2-c485ed2672bd1d62f47013e2daad7861_b.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://pic2.zhimg.com/v2-c485ed2672bd1d62f47013e2daad7861_b.png"></p>
 <p>接下来在 ccBalancerWrapper 的守护协程中，一旦接收到 swtichToUpdate 类型的消息后，会执行<br>ccBalancerWrapper.handleSwitchTo 执行负载均衡器 Balancer 的设定.</p>
-<pre><code class="hljs">func (ccb *ccBalancerWrapper) watcher() &#123;
+<pre><code>func (ccb *ccBalancerWrapper) watcher() &#123;
     for &#123;
         select &#123;
         case u := &lt;-ccb.updateCh.Get():
@@ -725,7 +636,7 @@ func (ccb *ccBalancerWrapper) handleSwitchTo(name string) &#123;
 &#125;
 </code></pre>
 <p>在 ccBalancerWrapper.handleSwitchTo 方法中，由于传入的 name 为 pick_first，因此会构造出对应的<br>pickerFirst balancer 并注入到 ccBalancerWrapper 中.</p>
-<pre><code class="hljs">func (gsb *Balancer) SwitchTo(builder balancer.Builder) error &#123;
+<pre><code>func (gsb *Balancer) SwitchTo(builder balancer.Builder) error &#123;
     // ...
     bw := &amp;balancerWrapper&#123;
         gsb: gsb,
@@ -750,7 +661,7 @@ func (ccb *ccBalancerWrapper) handleSwitchTo(name string) &#123;
 &#125;
 </code></pre>
 <p>其中 pickerFirst balancer 定义如下：</p>
-<pre><code class="hljs">const PickFirstBalancerName = &quot;pick_first&quot;
+<pre><code>const PickFirstBalancerName = &quot;pick_first&quot;
 
 
 type pickfirstBuilder struct&#123;&#125;
@@ -772,15 +683,15 @@ type pickfirstBalancer struct &#123;
     subConn balancer.SubConn
 &#125;
 </code></pre>
-<h3 id="3-4-2-ccBalancerWrapper-updateClientConnState"><a href="#3-4-2-ccBalancerWrapper-updateClientConnState" class="headerlink" title="3.4.2 ccBalancerWrapper.updateClientConnState"></a><strong>3.4.2 ccBalancerWrapper.updateClientConnState</strong></h3><p><img src="https://pic3.zhimg.com/v2-9d474750a20378dbc9a8724c4f20720e_b.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-4-2-ccBalancerWrapper-updateClientConnState"><a href="#3-4-2-ccBalancerWrapper-updateClientConnState" class="headerlink" title="3.4.2 ccBalancerWrapper.updateClientConnState"></a><strong>3.4.2 ccBalancerWrapper.updateClientConnState</strong></h3><p><img src="https://pic3.zhimg.com/v2-9d474750a20378dbc9a8724c4f20720e_b.jpg"></p>
 <p>重新回到 ClientConn.updateResolverState 方法中，在处理完 ccBalancerWrapper.switchTo<br>分支完成负载均衡器 Balancer 的创建和设置后，会调用ccBalancerWrapper.updateClientConnState 方法对<br>ClientConn 的状态进行更新.</p>
-<pre><code class="hljs">func (ccb *ccBalancerWrapper) updateClientConnState(ccs *balancer.ClientConnState) error &#123;
+<pre><code>func (ccb *ccBalancerWrapper) updateClientConnState(ccs *balancer.ClientConnState) error &#123;
     ccb.updateCh.Put(&amp;ccStateUpdate&#123;ccs: ccs&#125;)
     // ...
 &#125;
 </code></pre>
 <p>ccBalancerWrapper 的守护协程接收到 ccStateUpdate 消息后，会调用<br>ccBalancerWrapper.handleClientConnStateChange 方法对 ClientConn 的状态进行更新.</p>
-<pre><code class="hljs">func (ccb *ccBalancerWrapper) watcher() &#123;
+<pre><code>func (ccb *ccBalancerWrapper) watcher() &#123;
     for &#123;
         select &#123;
         case u := &lt;-ccb.updateCh.Get():
@@ -806,7 +717,7 @@ func (gsb *Balancer) UpdateClientConnState(state balancer.ClientConnState) error
 &#125;
 </code></pre>
 <p>此处会一路走到负载均衡器 Balancer 的 UpdateClientConnState 方法中. 对应的 Balancer 为 pickFirst<br>类型，我们展开对应的方法源码：</p>
-<pre><code class="hljs">func (b *pickfirstBalancer) UpdateClientConnState(state balancer.ClientConnState) error &#123;
+<pre><code>func (b *pickfirstBalancer) UpdateClientConnState(state balancer.ClientConnState) error &#123;
     // ...
     subConn, err := b.cc.NewSubConn(state.ResolverState.Addresses, balancer.NewSubConnOptions&#123;&#125;)
     // ...
@@ -827,7 +738,7 @@ func (gsb *Balancer) UpdateClientConnState(state balancer.ClientConnState) error
 <li>调用了 subconn.Connect 方法，建立子连接</li>
 </ul>
 <p><strong>（1）ccBalancerWrapper.NewSubConn</strong></p>
-<pre><code class="hljs">func (ccb *ccBalancerWrapper) NewSubConn(addrs []resolver.Address, opts balancer.NewSubConnOptions) (balancer.SubConn, error) &#123;
+<pre><code>func (ccb *ccBalancerWrapper) NewSubConn(addrs []resolver.Address, opts balancer.NewSubConnOptions) (balancer.SubConn, error) &#123;
     // ...
     ac, err := ccb.cc.newAddrConn(addrs, opts)
     // ...
@@ -839,7 +750,7 @@ func (gsb *Balancer) UpdateClientConnState(state balancer.ClientConnState) error
 &#125;
 </code></pre>
 <p>在 ccBalancerWrapper.NewSubConn 方法中，基于 target 的 address 构造了连接 addrConn，并将其封装到<br>balancer.SubConn 具体实现类 acBalancerWrapper 中进行返回.</p>
-<pre><code class="hljs">type acBalancerWrapper struct &#123;
+<pre><code>type acBalancerWrapper struct &#123;
     mu        sync.Mutex
     ac        *addrConn
     // ...
@@ -882,7 +793,7 @@ func (cc *ClientConn) newAddrConn(addrs []resolver.Address, opts balancer.NewSub
 <p>在构造 addrConn 实例的过程中会将其添加到 ClientConn 的连接池集合 ClientConn.conns 当中.</p>
 <p><strong>（2）ccBalancerWrapper.UpdateState</strong></p>
 <p>在 ccBalancerWrapper.UpdateState 方法中，会对连接选择器 picker 进行设定，然后调用<br>connectivityStateManager.updateState 方法将连接状态设定为 connecting 连接中.</p>
-<pre><code class="hljs">func (ccb *ccBalancerWrapper) UpdateState(s balancer.State) &#123;
+<pre><code>func (ccb *ccBalancerWrapper) UpdateState(s balancer.State) &#123;
     // ...
     ccb.cc.blockingpicker.updatePicker(s.Picker)
     ccb.cc.csMgr.updateState(s.ConnectivityState)
@@ -901,7 +812,7 @@ func (pw *pickerWrapper) updatePicker(p balancer.Picker) &#123;
 &#125;
 </code></pre>
 <p>此处设定的连接选择器 picker 的类型默认为 pickFirst picker. 其中内置了唯一一个 pickResult，在 pick<br>时会固定返回这个结果.</p>
-<pre><code class="hljs">type picker struct &#123;
+<pre><code>type picker struct &#123;
     result balancer.PickResult
     err    error
 &#125;
@@ -912,9 +823,9 @@ func (p *picker) Pick(balancer.PickInfo) (balancer.PickResult, error) &#123;
 &#125;
 </code></pre>
 <p><strong>（3）pickfirstBalancer.UpdateClientConnState</strong></p>
-<p><img src="https://pic4.zhimg.com/v2-ed61d7eba4ac747d8a3077fcb5ed4f9f_b.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://pic4.zhimg.com/v2-ed61d7eba4ac747d8a3077fcb5ed4f9f_b.jpg"></p>
 <p>最后，pickfirstBalancer.UpdateClientConnState 方法还会调用 acBalancerWrapper.Connect<br>方法启动子连接. 其中会异步调用 addrConn.connect 方法</p>
-<pre><code class="hljs">func (acbw *acBalancerWrapper) Connect() &#123;
+<pre><code>func (acbw *acBalancerWrapper) Connect() &#123;
     acbw.mu.Lock()
     defer acbw.mu.Unlock()
     go acbw.ac.connect()
@@ -929,7 +840,7 @@ func (ac *addrConn) connect() error &#123;
 &#125;
 </code></pre>
 <p>其中会首先通过 addrConn.updateConnectivityState 暂时先将子连接状态设置为 connecting ，后续<br>addrConn.resetTransport 方法中，经由 addrConn.tryAllAddrs -&gt;<br>addrConn.createTransport -&gt; addrConn.startHealthCheck -&gt;<br>ClientConn.handleSubConnStateChange -&gt; ccBalancerWrapper.updateSubConnState<br>的方法链路，会向 ccBalancerWrapper.updateCh 中发送一条 scStateUpdate 类型的消息，将子连接 subconn<br>状态更新为 ready 添加到 picker 的 pickerResult 当中.</p>
-<pre><code class="hljs">func (ac *addrConn) resetTransport() &#123;
+<pre><code>func (ac *addrConn) resetTransport() &#123;
     // ...
     addrs := ac.addrs
     // ...
@@ -999,7 +910,7 @@ func (ccb *ccBalancerWrapper) updateSubConnState(sc balancer.SubConn, s connecti
 &#125;
 </code></pre>
 <p>ccBalancerWrapper 的守护协程中，监听到 scStateUpdate 事件到达后，会经历<br>ccBalancerWrapper.handleSubConnStateChange -&gt;<br>gracefulswitch.Balancer.UpdateSubConnState -&gt;<br>pickfirstBalancer.UpdateSubConnState -&gt; ccBalancerWrapper.UpdateState<br>的方法链路，完成对 pickfirstPicker 中 pickerResult 的更新.</p>
-<pre><code class="hljs">func (ccb *ccBalancerWrapper) watcher() &#123;
+<pre><code>func (ccb *ccBalancerWrapper) watcher() &#123;
     for &#123;
         select &#123;
         case u := &lt;-ccb.updateCh.Get():
@@ -1048,7 +959,7 @@ func (ccb *ccBalancerWrapper) UpdateState(s balancer.State) &#123;
 &#125;
 </code></pre>
 <p>到这里为止，通过 grpc.Dial 方法构造 ClientConn 对象，为客户端请求进行前置准备的主线链路就已经梳理完毕.</p>
-<h2 id="4-grpc-Invoke"><a href="#4-grpc-Invoke" class="headerlink" title="4 grpc.Invoke"></a>4 grpc.Invoke</h2><p><img src="https://pic1.zhimg.com/v2-e0813cacbb7221902ad1f611739f26f0_b.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="4-grpc-Invoke"><a href="#4-grpc-Invoke" class="headerlink" title="4 grpc.Invoke"></a>4 grpc.Invoke</h2><p><img src="https://pic1.zhimg.com/v2-e0813cacbb7221902ad1f611739f26f0_b.jpg"></p>
 <h2 id="4-1-ClientConn-Invoke"><a href="#4-1-ClientConn-Invoke" class="headerlink" title="4.1 ClientConn.Invoke"></a>4.1 ClientConn.Invoke</h2><p>在grpc-go客户端通过pb桩代码发起请求时，内部会调用 ClientConn.Invoke 方法，核心步骤分为三部分：</p>
 <ul>
 <li><p>调用 newClientStream 方法构造一个 clientStream 用于与服务端的通信交互</p>
@@ -1059,7 +970,7 @@ func (ccb *ccBalancerWrapper) UpdateState(s balancer.State) &#123;
 <p>  func (c *helloServiceClient) SayHello(ctx context.Context, in *HelloReq, opts …grpc.CallOption) (*HelloResp, error) {<br>  out :&#x3D; new(HelloResp)<br>  err :&#x3D; c.cc.Invoke(ctx, “&#x2F;pb.HelloService&#x2F;SayHello”, in, out, opts…)<br>  &#x2F;&#x2F; …<br>  return out, nil<br>  }<br>  func (cc *ClientConn) Invoke(ctx context.Context, method string, args, reply interface{}, opts …CallOption) error {<br>  &#x2F;&#x2F; …<br>  return invoke(ctx, method, args, reply, cc, opts…)<br>  }<br>  func invoke(ctx context.Context, method string, req, reply interface{}, cc *ClientConn, opts …CallOption) error {<br>  cs, err :&#x3D; newClientStream(ctx, unaryStreamDesc, cc, method, opts…)<br>  &#x2F;&#x2F; …<br>  if err :&#x3D; cs.SendMsg(req); err !&#x3D; nil {<br>      return err<br>  }<br>  return cs.RecvMsg(reply)<br>  }</p>
 </li>
 </ul>
-<h2 id="4-2-newClientStream"><a href="#4-2-newClientStream" class="headerlink" title="4.2 newClientStream"></a>4.2 newClientStream</h2><h3 id="4-2-1-newClientStreamWithParams"><a href="#4-2-1-newClientStreamWithParams" class="headerlink" title="4.2.1 newClientStreamWithParams"></a>4.2.1 newClientStreamWithParams</h3><pre><code class="hljs">func newClientStream(ctx context.Context, desc *StreamDesc, cc *ClientConn, method string, opts ...CallOption) (_ ClientStream, err error) &#123;
+<h2 id="4-2-newClientStream"><a href="#4-2-newClientStream" class="headerlink" title="4.2 newClientStream"></a>4.2 newClientStream</h2><h3 id="4-2-1-newClientStreamWithParams"><a href="#4-2-1-newClientStreamWithParams" class="headerlink" title="4.2.1 newClientStreamWithParams"></a>4.2.1 newClientStreamWithParams</h3><pre><code>func newClientStream(ctx context.Context, desc *StreamDesc, cc *ClientConn, method string, opts ...CallOption) (_ ClientStream, err error) &#123;
     // ...
     var newStream = func(ctx context.Context, done func()) (iresolver.ClientStream, error) &#123;
         return newClientStreamWithParams(ctx, desc, cc, method, mc, onCommit, done, opts...)
@@ -1112,7 +1023,7 @@ func newClientStreamWithParams(ctx context.Context, desc *StreamDesc, cc *Client
 &#125;
 </code></pre>
 <h3 id="4-2-2-clientStream-withRetry"><a href="#4-2-2-clientStream-withRetry" class="headerlink" title="4.2.2 clientStream.withRetry"></a>4.2.2 clientStream.withRetry</h3><p>在 clientStream.withRetry 方法中，会针对 op 方法进行重试，直到处理成功或者返回的错误类型为 io.EOF.</p>
-<pre><code class="hljs">func (cs *clientStream) withRetry(op func(a *csAttempt) error, onSuccess func()) error &#123;
+<pre><code>func (cs *clientStream) withRetry(op func(a *csAttempt) error, onSuccess func()) error &#123;
     // ...
     for &#123;
         // ...
@@ -1131,11 +1042,11 @@ func newClientStreamWithParams(ctx context.Context, desc *StreamDesc, cc *Client
     &#125;
 &#125;
 </code></pre>
-<h3 id="4-2-3-csAttempt-getTransport"><a href="#4-2-3-csAttempt-getTransport" class="headerlink" title="4.2.3 csAttempt.getTransport"></a>4.2.3 csAttempt.getTransport</h3><p><img src="https://pic4.zhimg.com/v2-72d8df173eeae16f37bd03ad7e63dd2f_b.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-3-csAttempt-getTransport"><a href="#4-2-3-csAttempt-getTransport" class="headerlink" title="4.2.3 csAttempt.getTransport"></a>4.2.3 csAttempt.getTransport</h3><p><img src="https://pic4.zhimg.com/v2-72d8df173eeae16f37bd03ad7e63dd2f_b.jpg"></p>
 <p>在 csAttempt.getTransport 方法链路中，最终会通过 pickFirstPicker.pick 方法获取到对应的<br>pickResult，拿到用于请求的的子连接 subconn.</p>
 <p>此处呼应了本文 3.4.2 小节第（3）部分，在构建 resolver 过程中，就提前准备并添加到 pickFirstPicker 中的<br>pickResult.</p>
 <p>在获取到子连接 subconn 后，会调用其中的 addrConn.getReadyTranport 获取到通信器 transport.<br>这部分在后续单开的通信篇再作展开.</p>
-<pre><code class="hljs">func (a *csAttempt) getTransport() error &#123;
+<pre><code>func (a *csAttempt) getTransport() error &#123;
     cs := a.cs
 
 
@@ -1177,7 +1088,7 @@ func (p *picker) Pick(balancer.PickInfo) (balancer.PickResult, error) &#123;
 &#125;
 </code></pre>
 <h3 id="4-2-4-csAttempt-newStream"><a href="#4-2-4-csAttempt-newStream" class="headerlink" title="4.2.4 csAttempt.newStream"></a>4.2.4 csAttempt.newStream</h3><p>在 csAttempt.newStream 方法中，会通过 ClientTransport.NewStream 方法创建一个 rpc stream<br>用于后续的请求通信. 这部分放在后续单开的通信篇中再作展开.</p>
-<pre><code class="hljs">func (a *csAttempt) newStream() error &#123;
+<pre><code>func (a *csAttempt) newStream() error &#123;
     cs := a.cs
     // ...
     // 构造一个 grpc stream
@@ -1189,7 +1100,7 @@ func (p *picker) Pick(balancer.PickInfo) (balancer.PickResult, error) &#123;
 &#125;
 </code></pre>
 <h2 id="4-3-clientStream-SendMsg"><a href="#4-3-clientStream-SendMsg" class="headerlink" title="4.3 clientStream.SendMsg"></a>4.3 clientStream.SendMsg</h2><p>发送请求是基于 clientStream.SendMsg -&gt; csAttempt.ClientTransport.sendMsg<br>来执行的，有关通信模块的细节，我们后续单开一个通信篇再作展开.</p>
-<pre><code class="hljs">func (cs *clientStream) SendMsg(m interface&#123;&#125;) (err error) &#123;
+<pre><code>func (cs *clientStream) SendMsg(m interface&#123;&#125;) (err error) &#123;
     // ...
     // 消息前处理，包括编码、压缩等细节
     hdr, payload, data, err := prepareMsg(m, cs.codec, cs.cp, cs.comp)
@@ -1214,7 +1125,7 @@ func (a *csAttempt) sendMsg(m interface&#123;&#125;, hdr, payld, data []byte) er
 </code></pre>
 <h2 id="4-4-clientStream-RecvMsg"><a href="#4-4-clientStream-RecvMsg" class="headerlink" title="4.4 clientStream.RecvMsg"></a>4.4 clientStream.RecvMsg</h2><p>grpc-go客户端接收来自服务端的响应参数时，基于 clientStream.RecvMsg -&gt; csAttempt.recvMsg -&gt; recv<br>的方法链路完成，recv 方法内部会先通过 recvAndDecompress 方法接收响应并进行解压，然后调用 baseCodec.Unmarshal<br>方法，遵循特定的协议对响应进行反序列化.</p>
 <p>这部分通信和编码相关的细节，我们后续单开通信篇章再作展开.</p>
-<pre><code class="hljs">func (cs *clientStream) RecvMsg(m interface&#123;&#125;) error &#123;
+<pre><code>func (cs *clientStream) RecvMsg(m interface&#123;&#125;) error &#123;
     // 通过 csAttempt 接收响应
     err := cs.withRetry(func(a *csAttempt) error &#123;
         return a.recvMsg(m, recvInfo)
@@ -1239,402 +1150,50 @@ func recv(p *parser, c baseCodec, s *transport.Stream, dc Decompressor, m interf
 </code></pre>
 <h2 id="5-小结"><a href="#5-小结" class="headerlink" title="5 小结"></a>5 小结</h2><p>本文从grpc-go客户端视角出发，沿着 grpc.Dial 和 grpc.Invoke<br>两条主线进行了源码走读，整体来说代码量偏大，分析的部分较少，更多是在梳理客户端的主流程框架，为后续grpc-go通信篇的展开打好基础.</p>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
+    </div>
     
-      <span class="category-chain">
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 Xiaoy
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;xiaoy
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
         
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/" class="category-chain-item">network</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/%E5%8D%8F%E8%AE%AE/" class="category-chain-item">协议</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
     </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/golang/" class="print-no-link">#golang</a>
-      
-        <a href="/tags/grpc/" class="print-no-link">#grpc</a>
-      
-    </div>
-  
-</div>
+</footer>
 
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>grpc-go客户端.md</div>
-      <div>https://abrance.github.io/2024/05/11/mdstorage/domain/network/协议/grpc-go客户端/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>Author</div>
-          <div>xiaoy</div>
         </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>May 11, 2024</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>Licensed under</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                    <i class="iconfont icon-cc-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2024/05/11/mdstorage/domain/golang/golang%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B/" title="golang高性能编程.md">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">golang高性能编程.md</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2024/05/10/mdstorage/domain/linux/eventfd%E6%9C%BA%E5%88%B6/" title="eventfd机制.md">
-                        <span class="hidden-mobile">eventfd机制.md</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
             </div>
-
-            
-          </article>
-        </div>
-      </div>
+        </transition>
+        
     </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
-    mermaid.initialize({"theme":"default"});
-
-    Fluid.utils.listenDOMLoaded(function() {
-      Fluid.events.registerRefreshCallback(function() {
-        if ('mermaid' in window) {
-          mermaid.init();
-        }
-      });
-    });
-  });
-</script>
-
-
+    <script src="/js/main.js"></script>
+    
+    
 
 
 
 
     
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
 </body>
 </html>

@@ -1,344 +1,646 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>镜像交付相关资料.md | Xiaoy</title>
+    <meta name="author" content="xiaoy" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="xiaoy">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="Linux 自定义认证背景​	结合https:&#x2F;&#x2F;doc.weixin.qq.com&#x2F;doc&#x2F;w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode&#x3D;ABwA9Qd2ABEQYUs45PARkAWAYlAEQ使用为了限制用户登录到系统的后台随意查看、修改应用程序，通常来说不应该把特权账号的密码泄露给用户，然而使用固定密码始终会有密码泄露的风险，时间长了肯定会泄露。为此，特地调">
-<meta property="og:type" content="article">
-<meta property="og:title" content="镜像交付相关资料.md">
-<meta property="og:url" content="https://abrance.github.io/2024/03/07/mdstorage/domain/linux/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/index.html">
-<meta property="og:site_name" content="Xiaoy">
-<meta property="og:description" content="Linux 自定义认证背景​	结合https:&#x2F;&#x2F;doc.weixin.qq.com&#x2F;doc&#x2F;w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode&#x3D;ABwA9Qd2ABEQYUs45PARkAWAYlAEQ使用为了限制用户登录到系统的后台随意查看、修改应用程序，通常来说不应该把特权账号的密码泄露给用户，然而使用固定密码始终会有密码泄露的风险，时间长了肯定会泄露。为此，特地调">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20240307114725324.png">
-<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image1.png">
-<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image2.png">
-<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image3.png">
-<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image4.png">
-<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image5.png">
-<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image6.png">
-<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image7.png">
-<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image8.png">
-<meta property="article:published_time" content="2024-03-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-11T02:55:43.713Z">
-<meta property="article:author" content="xiaoy">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="镜像交付">
-<meta property="article:tag" content="部署">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20240307114725324.png">
-  
-  
-  
-  <title>镜像交付相关资料.md - Xiaoy</title>
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="/js/lib/preview.js"></script>
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
 
 
-  
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>xiaoy</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XIAOY</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
         
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="镜像交付相关资料.md"></span>
-          
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XIAOY</span>
         </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-07 00:00" pubdate>
-          March 7, 2024 am
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          13k words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          111 mins
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">镜像交付相关资料.md</h1>
-            
-            
-              <div class="markdown-body">
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
                 
-                <h1 id="Linux-自定义认证"><a href="#Linux-自定义认证" class="headerlink" title="Linux 自定义认证"></a>Linux 自定义认证</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​	结合<a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode=ABwA9Qd2ABEQYUs45PARkAWAYlAEQ%E4%BD%BF%E7%94%A8">https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode=ABwA9Qd2ABEQYUs45PARkAWAYlAEQ使用</a><br>为了限制用户登录到系统的后台随意查看、修改应用程序，通常来说不应该把特权账号的密码泄露给用户，然而使用固定密码始终会有密码泄露的风险，时间长了肯定会泄露。为此，特地调研了一下某厂商的D,F,T三个产品是怎么处理这种事情的。<br>产品代号	解决方案	实现难度<br>D	无法打开用户登录界面，自行提供了另一套交互界面，无需登录，也无法登录其他用户。命令行受限	未知<br>F	使用动态密码登录，用厂家提供的APP扫码（或输入token)来获取临时密码登录。只有有售后权限的人才能扫码登录	中，魔改程度小<br>T	提供低权限账户，使用固定密码登录，其余未知（因为全盘加密了，不清楚特权账户是否为固定密码）	中，魔改程度小<br>因为技术栈不统一，三个产品的防护各有不同，这里F产品使用的方法是一种简单有效的办法，所以考虑预研一下，看看效果。</p>
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>镜像交付相关资料.md</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/3/7
+        </span>
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/Linux/" style="color: #00a596">
+                    Linux
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98/" style="color: #ff7d73">
+                    镜像交付
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E9%83%A8%E7%BD%B2/" style="color: #00bcd4">
+                    部署
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="Linux-自定义认证"><a href="#Linux-自定义认证" class="headerlink" title="Linux 自定义认证"></a>Linux 自定义认证</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​	结合<a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode=ABwA9Qd2ABEQYUs45PARkAWAYlAEQ%E4%BD%BF%E7%94%A8">https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode=ABwA9Qd2ABEQYUs45PARkAWAYlAEQ使用</a><br>为了限制用户登录到系统的后台随意查看、修改应用程序，通常来说不应该把特权账号的密码泄露给用户，然而使用固定密码始终会有密码泄露的风险，时间长了肯定会泄露。为此，特地调研了一下某厂商的D,F,T三个产品是怎么处理这种事情的。<br>产品代号	解决方案	实现难度<br>D	无法打开用户登录界面，自行提供了另一套交互界面，无需登录，也无法登录其他用户。命令行受限	未知<br>F	使用动态密码登录，用厂家提供的APP扫码（或输入token)来获取临时密码登录。只有有售后权限的人才能扫码登录	中，魔改程度小<br>T	提供低权限账户，使用固定密码登录，其余未知（因为全盘加密了，不清楚特权账户是否为固定密码）	中，魔改程度小<br>因为技术栈不统一，三个产品的防护各有不同，这里F产品使用的方法是一种简单有效的办法，所以考虑预研一下，看看效果。</p>
 <p>pam demo<br>F产品的实现原理是自己编写了一个linux PAM模块，然后在配置文件中加载这段逻辑，就可以实现扩展linux登录时的验证。<br>这里先写个pam demo验证一下机制</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;security/pam_appl.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;security/pam_modules.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;security/pam_ext.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br>PAM_EXTERN <span class="hljs-type">int</span> <span class="hljs-title function_">pam_sm_authenticate</span><span class="hljs-params">(<span class="hljs-type">pam_handle_t</span> *pamh, <span class="hljs-type">int</span> flags, <span class="hljs-type">int</span> argc, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **argv)</span> &#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span> *username;<br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span> *password;<br>    <span class="hljs-type">int</span> pam_err;<br><br>    pam_err = pam_get_user(pamh, &amp;username, <span class="hljs-string">&quot;Username: &quot;</span>);<br>    <span class="hljs-keyword">if</span> (pam_err != PAM_SUCCESS || username == <span class="hljs-literal">NULL</span>) &#123;<br>        <span class="hljs-keyword">return</span> PAM_AUTH_ERR;<br>    &#125;<br><br>    <span class="hljs-comment">// 获取用户输入的密码</span><br>    pam_err = pam_get_authtok(pamh, PAM_AUTHTOK, &amp;password, <span class="hljs-string">&quot;Password: &quot;</span>);<br>    <span class="hljs-keyword">if</span> (pam_err != PAM_SUCCESS || password == <span class="hljs-literal">NULL</span>) &#123;<br>        <span class="hljs-keyword">return</span> PAM_AUTH_ERR;<br>    &#125;<br><br>    <span class="hljs-comment">// 检查密码是否为预期的值（例如，&quot;123&quot;）</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(password, <span class="hljs-string">&quot;123&quot;</span>) == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span> PAM_SUCCESS; <span class="hljs-comment">// 密码验证成功</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> PAM_AUTH_ERR; <span class="hljs-comment">// 密码验证失败</span><br>    &#125;<br>&#125;<br><br>PAM_EXTERN <span class="hljs-type">int</span> <span class="hljs-title function_">pam_sm_setcred</span><span class="hljs-params">(<span class="hljs-type">pam_handle_t</span> *pamh, <span class="hljs-type">int</span> flags, <span class="hljs-type">int</span> argc, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **argv)</span> &#123;<br>    <span class="hljs-comment">// 在这里实现设置凭据（credential）的逻辑，如果不需要，可以留空</span><br>    <span class="hljs-keyword">return</span> PAM_SUCCESS;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<pre><code class="c">#include &lt;security/pam_appl.h&gt;
+#include &lt;security/pam_modules.h&gt;
+#include &lt;security/pam_ext.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
 
+PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char **argv) &#123;
+    const char *username;
+    const char *password;
+    int pam_err;
 
+    pam_err = pam_get_user(pamh, &amp;username, &quot;Username: &quot;);
+    if (pam_err != PAM_SUCCESS || username == NULL) &#123;
+        return PAM_AUTH_ERR;
+    &#125;
 
+    // 获取用户输入的密码
+    pam_err = pam_get_authtok(pamh, PAM_AUTHTOK, &amp;password, &quot;Password: &quot;);
+    if (pam_err != PAM_SUCCESS || password == NULL) &#123;
+        return PAM_AUTH_ERR;
+    &#125;
 
+    // 检查密码是否为预期的值（例如，&quot;123&quot;）
+    if (strcmp(password, &quot;123&quot;) == 0) &#123;
+        return PAM_SUCCESS; // 密码验证成功
+    &#125; else &#123;
+        return PAM_AUTH_ERR; // 密码验证失败
+    &#125;
+&#125;
 
+PAM_EXTERN int pam_sm_setcred(pam_handle_t *pamh, int flags, int argc, const char **argv) &#123;
+    // 在这里实现设置凭据（credential）的逻辑，如果不需要，可以留空
+    return PAM_SUCCESS;
+&#125;
+</code></pre>
 <p>将代码保存为custom_auth.c 编译并修改sudo的pam配置文件</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"># 编译<br>gcc -fPIC -shared -o custom_auth.so custom_auth.c -lpam<br># 拷贝到正确的位置<br>cp custom_auth.so /usr/lib/x86_64-linux-gnu/security/<br># -rw-r--r-- root:root 不需要执行权限<br>chmod -x /usr/lib/x86_64-linux-gnu/security/custom_auth.so<br><br># 增加测试用户<br>sudo useradd -m testuser<br>sudo usermod -aG sudo testuser<br># 将密码改为和用户名相同<br>passwd testuser<br><br># 修改sudo的PAM配置,在第一行增加 auth  sufficient  custom_auth.so<br>vim /etc/pam.d/sudo<br>su testuser<br><br># 此时输入testuser或者<span class="hljs-number">123</span>都能成功，其他的密码则失败<br>sudo -k cat /etc/passwd <br><br></code></pre></td></tr></table></figure>
+<pre><code class="c"># 编译
+gcc -fPIC -shared -o custom_auth.so custom_auth.c -lpam
+# 拷贝到正确的位置
+cp custom_auth.so /usr/lib/x86_64-linux-gnu/security/
+# -rw-r--r-- root:root 不需要执行权限
+chmod -x /usr/lib/x86_64-linux-gnu/security/custom_auth.so
 
+# 增加测试用户
+sudo useradd -m testuser
+sudo usermod -aG sudo testuser
+# 将密码改为和用户名相同
+passwd testuser
 
+# 修改sudo的PAM配置,在第一行增加 auth  sufficient  custom_auth.so
+vim /etc/pam.d/sudo
+su testuser
 
+# 此时输入testuser或者123都能成功，其他的密码则失败
+sudo -k cat /etc/passwd 
+</code></pre>
 <h2 id="qrcode-demo"><a href="#qrcode-demo" class="headerlink" title="qrcode demo"></a>qrcode demo</h2><p>​	使用二维码输入token不仅方便，还能减少输错的可能，这里是一个简单的验证控制台输出二维码的例子，效果如图（还有多余的边框到时候再修修），能够在控制台、ssh等任意字符界面正常显示。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;qrencode.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> margin;<br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">writeANSI_margin</span><span class="hljs-params">(FILE* fp, <span class="hljs-type">int</span> realwidth, <span class="hljs-type">char</span>* buffer,</span><br><span class="hljs-params">                             <span class="hljs-type">const</span> <span class="hljs-type">char</span>* white, <span class="hljs-type">int</span> white_s)</span> &#123;<br>  <span class="hljs-type">int</span> y;<br><br>  <span class="hljs-built_in">strncpy</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>  <span class="hljs-built_in">memset</span>(buffer + white_s, <span class="hljs-string">&#x27; &#x27;</span>, (<span class="hljs-type">size_t</span>)realwidth * <span class="hljs-number">2</span>);<br>  <span class="hljs-built_in">strcpy</span>(buffer + white_s + realwidth * <span class="hljs-number">2</span>,<br>         <span class="hljs-string">&quot;\033[0m\n&quot;</span>);  <span class="hljs-comment">// reset to default colors</span><br>  <span class="hljs-keyword">for</span> (y = <span class="hljs-number">0</span>; y &lt; margin; y++) &#123;<br>    <span class="hljs-built_in">fputs</span>(buffer, fp);<br>  &#125;<br>&#125;<br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">writeANSI</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* msg,FILE* fp,  <span class="hljs-type">int</span> size)</span> &#123;<br>  <span class="hljs-type">const</span> <span class="hljs-type">char</span> *white, *black;<br>  <span class="hljs-type">char</span>* buffer;<br>  <span class="hljs-type">int</span> white_s, black_s, buffer_s;<br>  <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *row, *p;<br>  <span class="hljs-type">int</span> x, y;<br>  <span class="hljs-type">int</span> realwidth;<br>  <span class="hljs-type">int</span> last;<br>  QRcode* qrcode =<br>      QRcode_encodeString(msg, <span class="hljs-number">0</span>, QR_ECLEVEL_L, QR_MODE_8, <span class="hljs-number">1</span>);<br>	  <br>  <span class="hljs-keyword">if</span> (qrcode == <span class="hljs-literal">NULL</span>) &#123;<br>	  <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;cannot parse msg to qrcode&quot;</span>);<br>	  <span class="hljs-keyword">return</span>;<br>  &#125;<br><br>  white = <span class="hljs-string">&quot;\033[47m&quot;</span>;<br>  white_s = <span class="hljs-number">5</span>;<br>  black = <span class="hljs-string">&quot;\033[40m&quot;</span>;<br>  black_s = <span class="hljs-number">5</span>;<br><br>  realwidth = (qrcode-&gt;width + margin * <span class="hljs-number">2</span>) * size;<br>  buffer_s = (realwidth * white_s) * <span class="hljs-number">2</span>;<br>  buffer = (<span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>((<span class="hljs-type">size_t</span>)buffer_s);<br>  <span class="hljs-keyword">if</span> (buffer == <span class="hljs-literal">NULL</span>) &#123;<br>    <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;Failed to allocate memory.\n&quot;</span>);<br>    <span class="hljs-built_in">exit</span>(EXIT_FAILURE);<br>  &#125;<br><br>  <span class="hljs-comment">/* top margin */</span><br>  writeANSI_margin(fp, realwidth, buffer, white, white_s);<br><br>  <span class="hljs-comment">/* data */</span><br>  p = qrcode-&gt;data;<br>  <span class="hljs-keyword">for</span> (y = <span class="hljs-number">0</span>; y &lt; qrcode-&gt;width; y++) &#123;<br>    row = (p + (y * qrcode-&gt;width));<br><br>    <span class="hljs-built_in">memset</span>(buffer, <span class="hljs-number">0</span>, (<span class="hljs-type">size_t</span>)buffer_s);<br>    <span class="hljs-built_in">strncpy</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; margin; x++) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br>    last = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; qrcode-&gt;width; x++) &#123;<br>      <span class="hljs-keyword">if</span> (*(row + x) &amp; <span class="hljs-number">0x1</span>) &#123;<br>        <span class="hljs-keyword">if</span> (last != <span class="hljs-number">1</span>) &#123;<br>          <span class="hljs-built_in">strncat</span>(buffer, black, (<span class="hljs-type">size_t</span>)black_s);<br>          last = <span class="hljs-number">1</span>;<br>        &#125;<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (last != <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">strncat</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>        last = <span class="hljs-number">0</span>;<br>      &#125;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (last != <span class="hljs-number">0</span>) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>    &#125;<br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; margin; x++) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br>    <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;\033[0m\n&quot;</span>, <span class="hljs-number">5</span>);<br>    <span class="hljs-built_in">fputs</span>(buffer, fp);<br>  &#125;<br><br>  <span class="hljs-comment">/* bottom margin */</span><br>  writeANSI_margin(fp, realwidth, buffer, white, white_s);<br><br>  <span class="hljs-built_in">free</span>(buffer);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> <br>&#123; <br>	margin = <span class="hljs-number">1</span>;<br>	writeANSI(<span class="hljs-string">&quot;token:shrino.ouyrun.cn&quot;</span>,<span class="hljs-built_in">stdout</span>, <span class="hljs-number">3</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre><code class="c">#include &lt;qrencode.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
 
+static int margin;
 
+static void writeANSI_margin(FILE* fp, int realwidth, char* buffer,
+                             const char* white, int white_s) &#123;
+  int y;
 
+  strncpy(buffer, white, (size_t)white_s);
+  memset(buffer + white_s, &#39; &#39;, (size_t)realwidth * 2);
+  strcpy(buffer + white_s + realwidth * 2,
+         &quot;\033[0m\n&quot;);  // reset to default colors
+  for (y = 0; y &lt; margin; y++) &#123;
+    fputs(buffer, fp);
+  &#125;
+&#125;
+
+static void writeANSI(const char* msg,FILE* fp,  int size) &#123;
+  const char *white, *black;
+  char* buffer;
+  int white_s, black_s, buffer_s;
+  unsigned char *row, *p;
+  int x, y;
+  int realwidth;
+  int last;
+  QRcode* qrcode =
+      QRcode_encodeString(msg, 0, QR_ECLEVEL_L, QR_MODE_8, 1);
+      
+  if (qrcode == NULL) &#123;
+      fprintf(stderr, &quot;cannot parse msg to qrcode&quot;);
+      return;
+  &#125;
+
+  white = &quot;\033[47m&quot;;
+  white_s = 5;
+  black = &quot;\033[40m&quot;;
+  black_s = 5;
+
+  realwidth = (qrcode-&gt;width + margin * 2) * size;
+  buffer_s = (realwidth * white_s) * 2;
+  buffer = (char*)malloc((size_t)buffer_s);
+  if (buffer == NULL) &#123;
+    fprintf(stderr, &quot;Failed to allocate memory.\n&quot;);
+    exit(EXIT_FAILURE);
+  &#125;
+
+  /* top margin */
+  writeANSI_margin(fp, realwidth, buffer, white, white_s);
+
+  /* data */
+  p = qrcode-&gt;data;
+  for (y = 0; y &lt; qrcode-&gt;width; y++) &#123;
+    row = (p + (y * qrcode-&gt;width));
+
+    memset(buffer, 0, (size_t)buffer_s);
+    strncpy(buffer, white, (size_t)white_s);
+    for (x = 0; x &lt; margin; x++) &#123;
+      strncat(buffer, &quot;  &quot;, 2);
+    &#125;
+    last = 0;
+
+    for (x = 0; x &lt; qrcode-&gt;width; x++) &#123;
+      if (*(row + x) &amp; 0x1) &#123;
+        if (last != 1) &#123;
+          strncat(buffer, black, (size_t)black_s);
+          last = 1;
+        &#125;
+      &#125; else if (last != 0) &#123;
+        strncat(buffer, white, (size_t)white_s);
+        last = 0;
+      &#125;
+      strncat(buffer, &quot;  &quot;, 2);
+    &#125;
+
+    if (last != 0) &#123;
+      strncat(buffer, white, (size_t)white_s);
+    &#125;
+    for (x = 0; x &lt; margin; x++) &#123;
+      strncat(buffer, &quot;  &quot;, 2);
+    &#125;
+    strncat(buffer, &quot;\033[0m\n&quot;, 5);
+    fputs(buffer, fp);
+  &#125;
+
+  /* bottom margin */
+  writeANSI_margin(fp, realwidth, buffer, white, white_s);
+
+  free(buffer);
+&#125;
+
+int main() 
+&#123; 
+    margin = 1;
+    writeANSI(&quot;token:shrino.ouyrun.cn&quot;,stdout, 3);
+&#125;
+</code></pre>
 <p>编译运行：<br>先安装动态库 apt install libqrencode-dev<br>gcc qrtest.c -lqrencode</p>
 <p>C&#x2F;S demo<br>实现实现随机生成6位数数字密码，然后用RSA加密，将加密后的信息放到二维码，然后售后人员通过将二维码上传到服务器后（这里可以是用手机APP扫码，也可以是拍屏手动处理），服务器用RSA解密后，将结果返回给用户。</p>
 <p>随机密码生成</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">generateRandomPassword</span><span class="hljs-params">()</span> &#123;<br>    srand(time(<span class="hljs-literal">NULL</span>));<br>    <span class="hljs-keyword">return</span> rand() % <span class="hljs-number">1000000</span>; <span class="hljs-comment">// 生成0到999999之间的随机数</span><br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+int generateRandomPassword() &#123;
+    srand(time(NULL));
+    return rand() % 1000000; // 生成0到999999之间的随机数
+&#125;
 
-
-
+</code></pre>
 <p>加密部分</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;openssl/rsa.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;openssl/pem.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">rsaEncryptPassword</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* password, <span class="hljs-type">const</span> <span class="hljs-type">char</span>* publicKeyPath, <span class="hljs-type">const</span> <span class="hljs-type">char</span>* encryptedPath)</span> &#123;<br>    FILE* publicKeyFile = fopen(publicKeyPath, <span class="hljs-string">&quot;rb&quot;</span>);<br>    <span class="hljs-keyword">if</span> (!publicKeyFile) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to open public key file&quot;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    RSA* rsa = PEM_read_RSA_PUBKEY(publicKeyFile, <span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>);<br>    <span class="hljs-keyword">if</span> (!rsa) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to read public key&quot;</span>);<br>        fclose(publicKeyFile);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    fclose(publicKeyFile);<br><br>    <span class="hljs-type">int</span> passwordLen = <span class="hljs-built_in">strlen</span>(password);<br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> encrypted[<span class="hljs-number">256</span>]; <span class="hljs-comment">// 要根据RSA密钥的长度来设置</span><br>    <span class="hljs-type">int</span> encryptedLen = RSA_public_encrypt(passwordLen, (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)password, encrypted, rsa, RSA_PKCS1_PADDING);<br><br>    <span class="hljs-keyword">if</span> (encryptedLen == <span class="hljs-number">-1</span>) &#123;<br>        perror(<span class="hljs-string">&quot;RSA encryption failed&quot;</span>);<br>        RSA_free(rsa);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    FILE* encryptedFile = fopen(encryptedPath, <span class="hljs-string">&quot;wb&quot;</span>);<br>    <span class="hljs-keyword">if</span> (!encryptedFile) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to open encrypted file&quot;</span>);<br>        RSA_free(rsa);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    fwrite(encrypted, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>), encryptedLen, encryptedFile);<br>    fclose(encryptedFile);<br><br>    RSA_free(rsa);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>        rsaEncryptPassword(<span class="hljs-string">&quot;123456&quot;</span>, <span class="hljs-string">&quot;public_key.pem&quot;</span>, <span class="hljs-string">&quot;test_encrypt_out&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;openssl/rsa.h&gt;
+#include &lt;openssl/pem.h&gt;
+#include &lt;string.h&gt;
 
+void rsaEncryptPassword(const char* password, const char* publicKeyPath, const char* encryptedPath) &#123;
+    FILE* publicKeyFile = fopen(publicKeyPath, &quot;rb&quot;);
+    if (!publicKeyFile) &#123;
+        perror(&quot;Failed to open public key file&quot;);
+        return;
+    &#125;
 
+    RSA* rsa = PEM_read_RSA_PUBKEY(publicKeyFile, NULL, NULL, NULL);
+    if (!rsa) &#123;
+        perror(&quot;Failed to read public key&quot;);
+        fclose(publicKeyFile);
+        return;
+    &#125;
 
-<h4 id="安装开发库"><a href="#安装开发库" class="headerlink" title="安装开发库"></a>安装开发库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装开发库</span><br>apt install libssl-dev <br><span class="hljs-comment"># 生成密钥对（这里用1024位</span><br>openssl genrsa -out private_key.pem 1024<br>openssl rsa -pubout -<span class="hljs-keyword">in</span> private_key.pem -out public_key.pem<br><span class="hljs-comment"># 编译</span><br>gcc rsa_enc.c -o rsa_enc -lssl -lcrypto<br></code></pre></td></tr></table></figure>
+    fclose(publicKeyFile);
 
+    int passwordLen = strlen(password);
+    unsigned char encrypted[256]; // 要根据RSA密钥的长度来设置
+    int encryptedLen = RSA_public_encrypt(passwordLen, (unsigned char*)password, encrypted, rsa, RSA_PKCS1_PADDING);
 
+    if (encryptedLen == -1) &#123;
+        perror(&quot;RSA encryption failed&quot;);
+        RSA_free(rsa);
+        return;
+    &#125;
 
+    FILE* encryptedFile = fopen(encryptedPath, &quot;wb&quot;);
+    if (!encryptedFile) &#123;
+        perror(&quot;Failed to open encrypted file&quot;);
+        RSA_free(rsa);
+        return;
+    &#125;
 
+    fwrite(encrypted, sizeof(unsigned char), encryptedLen, encryptedFile);
+    fclose(encryptedFile);
+
+    RSA_free(rsa);
+&#125;
+
+int main()
+&#123;
+        rsaEncryptPassword(&quot;123456&quot;, &quot;public_key.pem&quot;, &quot;test_encrypt_out&quot;);
+        return 0;
+&#125;
+
+</code></pre>
+<h4 id="安装开发库"><a href="#安装开发库" class="headerlink" title="安装开发库"></a>安装开发库</h4><pre><code class="bash"># 安装开发库
+apt install libssl-dev 
+# 生成密钥对（这里用1024位
+openssl genrsa -out private_key.pem 1024
+openssl rsa -pubout -in private_key.pem -out public_key.pem
+# 编译
+gcc rsa_enc.c -o rsa_enc -lssl -lcrypto
+</code></pre>
 <p>生成二维码部分</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;qrencode.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> margin = <span class="hljs-number">1</span>;<br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">writeANSI_margin</span><span class="hljs-params">(FILE* fp, <span class="hljs-type">int</span> realwidth, <span class="hljs-type">char</span>* buffer,</span><br><span class="hljs-params">                             <span class="hljs-type">const</span> <span class="hljs-type">char</span>* white, <span class="hljs-type">int</span> white_s)</span> &#123;<br>  <span class="hljs-type">int</span> y;<br><br>  <span class="hljs-built_in">strncpy</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>  <span class="hljs-built_in">memset</span>(buffer + white_s, <span class="hljs-string">&#x27; &#x27;</span>, (<span class="hljs-type">size_t</span>)realwidth * <span class="hljs-number">2</span>);<br>  <span class="hljs-built_in">strcpy</span>(buffer + white_s + realwidth * <span class="hljs-number">2</span>,<br>         <span class="hljs-string">&quot;\033[0m\n&quot;</span>);  <span class="hljs-comment">// reset to default colors</span><br>  <span class="hljs-keyword">for</span> (y = <span class="hljs-number">0</span>; y &lt; margin; y++) &#123;<br>    <span class="hljs-built_in">fputs</span>(buffer, fp);<br>  &#125;<br>&#125;<br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">writeANSI</span><span class="hljs-params">(QRcode* qrcode,FILE* fp,  <span class="hljs-type">int</span> size)</span> &#123;<br>  <span class="hljs-type">const</span> <span class="hljs-type">char</span> *white, *black;<br>  <span class="hljs-type">char</span>* buffer;<br>  <span class="hljs-type">int</span> white_s, black_s, buffer_s;<br>  <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *row, *p;<br>  <span class="hljs-type">int</span> x, y;<br>  <span class="hljs-type">int</span> realwidth;<br>  <span class="hljs-type">int</span> last;<br>  <br>  <span class="hljs-keyword">if</span> (qrcode == <span class="hljs-literal">NULL</span>) &#123;<br>	  <span class="hljs-keyword">return</span>;<br>  &#125;<br><br>  white = <span class="hljs-string">&quot;\033[47m&quot;</span>;<br>  white_s = <span class="hljs-number">5</span>;<br>  black = <span class="hljs-string">&quot;\033[40m&quot;</span>;<br>  black_s = <span class="hljs-number">5</span>;<br><br>  realwidth = (qrcode-&gt;width + margin * <span class="hljs-number">2</span>) * size;<br>  buffer_s = (realwidth * white_s) * <span class="hljs-number">2</span>;<br>  buffer = (<span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>((<span class="hljs-type">size_t</span>)buffer_s);<br>  <span class="hljs-keyword">if</span> (buffer == <span class="hljs-literal">NULL</span>) &#123;<br>    <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;Failed to allocate memory.\n&quot;</span>);<br>    <span class="hljs-built_in">exit</span>(EXIT_FAILURE);<br>  &#125;<br><br>  <span class="hljs-comment">/* top margin */</span><br>  writeANSI_margin(fp, realwidth, buffer, white, white_s);<br><br>  <span class="hljs-comment">/* data */</span><br>  p = qrcode-&gt;data;<br>  <span class="hljs-keyword">for</span> (y = <span class="hljs-number">0</span>; y &lt; qrcode-&gt;width; y++) &#123;<br>    row = (p + (y * qrcode-&gt;width));<br><br>    <span class="hljs-built_in">memset</span>(buffer, <span class="hljs-number">0</span>, (<span class="hljs-type">size_t</span>)buffer_s);<br>    <span class="hljs-built_in">strncpy</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; margin; x++) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br>    last = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; qrcode-&gt;width; x++) &#123;<br>      <span class="hljs-keyword">if</span> (*(row + x) &amp; <span class="hljs-number">0x1</span>) &#123;<br>        <span class="hljs-keyword">if</span> (last != <span class="hljs-number">1</span>) &#123;<br>          <span class="hljs-built_in">strncat</span>(buffer, black, (<span class="hljs-type">size_t</span>)black_s);<br>          last = <span class="hljs-number">1</span>;<br>        &#125;<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (last != <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">strncat</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>        last = <span class="hljs-number">0</span>;<br>      &#125;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (last != <span class="hljs-number">0</span>) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>    &#125;<br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; margin; x++) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br>    <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;\033[0m\n&quot;</span>, <span class="hljs-number">5</span>);<br>    <span class="hljs-built_in">fputs</span>(buffer, fp);<br>  &#125;<br><br>  <span class="hljs-comment">/* bottom margin */</span><br>  writeANSI_margin(fp, realwidth, buffer, white, white_s);<br><br>  <span class="hljs-built_in">free</span>(buffer);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">generateQRCode</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* encryptedPath)</span> &#123;<br>    FILE* encryptedFile = fopen(encryptedPath, <span class="hljs-string">&quot;rb&quot;</span>);<br>    <span class="hljs-keyword">if</span> (!encryptedFile) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to open encrypted file&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br><br>    fseek(encryptedFile, <span class="hljs-number">0</span>, SEEK_END);<br>    <span class="hljs-type">long</span> encryptedFileSize = ftell(encryptedFile);<br>    rewind(encryptedFile);<br><br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* encryptedData = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(encryptedFileSize);<br>    <span class="hljs-keyword">if</span> (!encryptedData) &#123;<br>        perror(<span class="hljs-string">&quot;Memory allocation failed&quot;</span>);<br>        fclose(encryptedFile);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br><br>    fread(encryptedData, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>), encryptedFileSize, encryptedFile);<br>    fclose(encryptedFile);<br><br>    QRcode* qrcode = QRcode_encodeData(encryptedFileSize, encryptedData, <span class="hljs-number">0</span>,QR_ECLEVEL_L);<br>    <span class="hljs-keyword">if</span> (!qrcode) &#123;<br>        perror(<span class="hljs-string">&quot;QRcode encoding failed&quot;</span>);<br>        <span class="hljs-built_in">free</span>(encryptedData);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>	<br>	writeANSI(qrcode,<span class="hljs-built_in">stdout</span>,<span class="hljs-number">5</span>);<br>   <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>	generateQRCode(<span class="hljs-string">&quot;test_encrypt_out&quot;</span>);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;qrencode.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
 
+static int margin = 1;
 
+static void writeANSI_margin(FILE* fp, int realwidth, char* buffer,
+                             const char* white, int white_s) &#123;
+  int y;
 
+  strncpy(buffer, white, (size_t)white_s);
+  memset(buffer + white_s, &#39; &#39;, (size_t)realwidth * 2);
+  strcpy(buffer + white_s + realwidth * 2,
+         &quot;\033[0m\n&quot;);  // reset to default colors
+  for (y = 0; y &lt; margin; y++) &#123;
+    fputs(buffer, fp);
+  &#125;
+&#125;
+
+static void writeANSI(QRcode* qrcode,FILE* fp,  int size) &#123;
+  const char *white, *black;
+  char* buffer;
+  int white_s, black_s, buffer_s;
+  unsigned char *row, *p;
+  int x, y;
+  int realwidth;
+  int last;
+  
+  if (qrcode == NULL) &#123;
+      return;
+  &#125;
+
+  white = &quot;\033[47m&quot;;
+  white_s = 5;
+  black = &quot;\033[40m&quot;;
+  black_s = 5;
+
+  realwidth = (qrcode-&gt;width + margin * 2) * size;
+  buffer_s = (realwidth * white_s) * 2;
+  buffer = (char*)malloc((size_t)buffer_s);
+  if (buffer == NULL) &#123;
+    fprintf(stderr, &quot;Failed to allocate memory.\n&quot;);
+    exit(EXIT_FAILURE);
+  &#125;
+
+  /* top margin */
+  writeANSI_margin(fp, realwidth, buffer, white, white_s);
+
+  /* data */
+  p = qrcode-&gt;data;
+  for (y = 0; y &lt; qrcode-&gt;width; y++) &#123;
+    row = (p + (y * qrcode-&gt;width));
+
+    memset(buffer, 0, (size_t)buffer_s);
+    strncpy(buffer, white, (size_t)white_s);
+    for (x = 0; x &lt; margin; x++) &#123;
+      strncat(buffer, &quot;  &quot;, 2);
+    &#125;
+    last = 0;
+
+    for (x = 0; x &lt; qrcode-&gt;width; x++) &#123;
+      if (*(row + x) &amp; 0x1) &#123;
+        if (last != 1) &#123;
+          strncat(buffer, black, (size_t)black_s);
+          last = 1;
+        &#125;
+      &#125; else if (last != 0) &#123;
+        strncat(buffer, white, (size_t)white_s);
+        last = 0;
+      &#125;
+      strncat(buffer, &quot;  &quot;, 2);
+    &#125;
+
+    if (last != 0) &#123;
+      strncat(buffer, white, (size_t)white_s);
+    &#125;
+    for (x = 0; x &lt; margin; x++) &#123;
+      strncat(buffer, &quot;  &quot;, 2);
+    &#125;
+    strncat(buffer, &quot;\033[0m\n&quot;, 5);
+    fputs(buffer, fp);
+  &#125;
+
+  /* bottom margin */
+  writeANSI_margin(fp, realwidth, buffer, white, white_s);
+
+  free(buffer);
+&#125;
+
+int generateQRCode(const char* encryptedPath) &#123;
+    FILE* encryptedFile = fopen(encryptedPath, &quot;rb&quot;);
+    if (!encryptedFile) &#123;
+        perror(&quot;Failed to open encrypted file&quot;);
+        return 1;
+    &#125;
+
+    fseek(encryptedFile, 0, SEEK_END);
+    long encryptedFileSize = ftell(encryptedFile);
+    rewind(encryptedFile);
+
+    unsigned char* encryptedData = (unsigned char*)malloc(encryptedFileSize);
+    if (!encryptedData) &#123;
+        perror(&quot;Memory allocation failed&quot;);
+        fclose(encryptedFile);
+        return 1;
+    &#125;
+
+    fread(encryptedData, sizeof(unsigned char), encryptedFileSize, encryptedFile);
+    fclose(encryptedFile);
+
+    QRcode* qrcode = QRcode_encodeData(encryptedFileSize, encryptedData, 0,QR_ECLEVEL_L);
+    if (!qrcode) &#123;
+        perror(&quot;QRcode encoding failed&quot;);
+        free(encryptedData);
+        return 1;
+    &#125;
+    
+    writeANSI(qrcode,stdout,5);
+   
+    return 0;
+&#125;
+
+int main()
+&#123;
+    generateQRCode(&quot;test_encrypt_out&quot;);
+&#125;
+</code></pre>
 <p>服务端解码部分（未验证）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs c">package main<br><br><span class="hljs-title function_">import</span> <span class="hljs-params">(</span><br><span class="hljs-params">	<span class="hljs-string">&quot;fmt&quot;</span></span><br><span class="hljs-params">	<span class="hljs-string">&quot;io/ioutil&quot;</span></span><br><span class="hljs-params">	<span class="hljs-string">&quot;net/http&quot;</span></span><br><span class="hljs-params">	<span class="hljs-string">&quot;strings&quot;</span></span><br><span class="hljs-params"></span><br><span class="hljs-params">	<span class="hljs-string">&quot;github.com/rsc/qr&quot;</span></span><br><span class="hljs-params">	<span class="hljs-string">&quot;github.com/rsc/qr/handy&quot;</span></span><br><span class="hljs-params">)</span><br><br>func <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>	http.HandleFunc(<span class="hljs-string">&quot;/process_qr_code&quot;</span>, func(w http.ResponseWriter, r *http.Request) &#123;<br>		<span class="hljs-comment">// 读取上传的二维码图片</span><br>		file, _, err := r.FormFile(<span class="hljs-string">&quot;qr_code&quot;</span>)<br>		<span class="hljs-keyword">if</span> err != nil &#123;<br>			http.Error(w, <span class="hljs-string">&quot;Failed to read QR code file&quot;</span>, http.StatusBadRequest)<br>			<span class="hljs-keyword">return</span><br>		&#125;<br>		defer file.Close()<br><br>		<span class="hljs-comment">// 解析二维码</span><br>		img, _, err := handy.Decode(file)<br>		<span class="hljs-keyword">if</span> err != nil &#123;<br>			http.Error(w, <span class="hljs-string">&quot;Failed to decode QR code&quot;</span>, http.StatusInternalServerError)<br>			<span class="hljs-keyword">return</span><br>		&#125;<br><br>		<span class="hljs-comment">// 从解析的二维码中提取加密数据</span><br>		encodedData := img.Content<br>		encryptedData := strings.TrimSpace(encodedData)<br><br>		<br>        <span class="hljs-comment">// 加载RSA私钥</span><br>        privateKeyPEM, err := ioutil.ReadFile(<span class="hljs-string">&quot;private_key.pem&quot;</span>)<br>        <span class="hljs-keyword">if</span> err != nil &#123;<br>            http.Error(w, <span class="hljs-string">&quot;Failed to read private key&quot;</span>, http.StatusInternalServerError)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br><br>        privateKeyBlock, _ := pem.Decode(privateKeyPEM)<br>        <span class="hljs-keyword">if</span> privateKeyBlock == nil &#123;<br>            http.Error(w, <span class="hljs-string">&quot;Failed to decode private key&quot;</span>, http.StatusInternalServerError)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br><br>        privateKey, err := x509.ParsePKCS1PrivateKey(privateKeyBlock.Bytes)<br>        <span class="hljs-keyword">if</span> err != nil &#123;<br>            http.Error(w, <span class="hljs-string">&quot;Failed to parse private key&quot;</span>, http.StatusInternalServerError)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br><br>        <span class="hljs-comment">// 解密数据</span><br>        decryptedData, err := rsa.DecryptPKCS1v15(nil, privateKey, encryptedData)<br>        <span class="hljs-keyword">if</span> err != nil &#123;<br>            http.Error(w, <span class="hljs-string">&quot;Failed to decrypt data&quot;</span>, http.StatusInternalServerError)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br>		<span class="hljs-comment">// 返回解密后的数据</span><br>		w.Header().Set(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;text/plain&quot;</span>)<br>		fmt.Fprintf(w, <span class="hljs-string">&quot;Decrypted Data: %s&quot;</span>, decryptedData)<br>	&#125;)<br><br>	http.ListenAndServe(<span class="hljs-string">&quot;:8080&quot;</span>, nil)<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<pre><code class="c">package main
 
+import (
+    &quot;fmt&quot;
+    &quot;io/ioutil&quot;
+    &quot;net/http&quot;
+    &quot;strings&quot;
 
+    &quot;github.com/rsc/qr&quot;
+    &quot;github.com/rsc/qr/handy&quot;
+)
 
+func main() &#123;
+    http.HandleFunc(&quot;/process_qr_code&quot;, func(w http.ResponseWriter, r *http.Request) &#123;
+        // 读取上传的二维码图片
+        file, _, err := r.FormFile(&quot;qr_code&quot;)
+        if err != nil &#123;
+            http.Error(w, &quot;Failed to read QR code file&quot;, http.StatusBadRequest)
+            return
+        &#125;
+        defer file.Close()
 
+        // 解析二维码
+        img, _, err := handy.Decode(file)
+        if err != nil &#123;
+            http.Error(w, &quot;Failed to decode QR code&quot;, http.StatusInternalServerError)
+            return
+        &#125;
 
+        // 从解析的二维码中提取加密数据
+        encodedData := img.Content
+        encryptedData := strings.TrimSpace(encodedData)
+
+        
+        // 加载RSA私钥
+        privateKeyPEM, err := ioutil.ReadFile(&quot;private_key.pem&quot;)
+        if err != nil &#123;
+            http.Error(w, &quot;Failed to read private key&quot;, http.StatusInternalServerError)
+            return
+        &#125;
+
+        privateKeyBlock, _ := pem.Decode(privateKeyPEM)
+        if privateKeyBlock == nil &#123;
+            http.Error(w, &quot;Failed to decode private key&quot;, http.StatusInternalServerError)
+            return
+        &#125;
+
+        privateKey, err := x509.ParsePKCS1PrivateKey(privateKeyBlock.Bytes)
+        if err != nil &#123;
+            http.Error(w, &quot;Failed to parse private key&quot;, http.StatusInternalServerError)
+            return
+        &#125;
+
+        // 解密数据
+        decryptedData, err := rsa.DecryptPKCS1v15(nil, privateKey, encryptedData)
+        if err != nil &#123;
+            http.Error(w, &quot;Failed to decrypt data&quot;, http.StatusInternalServerError)
+            return
+        &#125;
+        // 返回解密后的数据
+        w.Header().Set(&quot;Content-Type&quot;, &quot;text/plain&quot;)
+        fmt.Fprintf(w, &quot;Decrypted Data: %s&quot;, decryptedData)
+    &#125;)
+
+    http.ListenAndServe(&quot;:8080&quot;, nil)
+&#125;
+
+</code></pre>
 <p>参考资料<br>Linux下PAM模块学习总结 - 散尽浮华 - 博客园 <code>https://www.cnblogs.com/kevingrace/p/8671964.html</code></p>
 <p>Linux PAM开发示例二:登录系统时使用自己的PAM模块进行密码认证-CSDN博客</p>
 <h1 id="软件保护"><a href="#软件保护" class="headerlink" title="软件保护"></a>软件保护</h1><p>软件保护目的：防止软件被未授权下载、复制、安装、运行、转让、出租、修改、破解</p>
-<p>软件保护从来都是多方面实现的，不能仅靠软件自身。这里从4个维度讨论一下各个层面可以做的事情。<br><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20240307114725324.png" srcset="/img/loading.gif" lazyload alt="image-20240307114725324"></p>
+<p>软件保护从来都是多方面实现的，不能仅靠软件自身。这里从4个维度讨论一下各个层面可以做的事情。<br><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20240307114725324.png" alt="image-20240307114725324"></p>
 <p>软件授权通常出现在商业软件中，其可以对软件的安装、运行做出限制，例如未授权的用户使用该软件（或者该软件的某些功能）。<br>后台隐藏通常在TOB产品的系统级别产品中，通过WEBUI&#x2F;GUI等隐藏实现细节，常常伴随着系统后台信息隐藏、（售后）角色认证等机制，它防范的是用户进入软件的运行基座——操作系统。而原本操作系统的一些基础功能（如时间日期修改、IP地址修改），则通过UI来提供给用户。<br>售后支持是在软件出现问题时，由特定的售后人员去通过网络直连、远程桌面、线下操作等方式。网络直连通常发生在一些内置了对应模块的软件中，它允许售后人员直接连接到软件的控制台，可以看到用户的配置和软件的信息等。线下操作的形式有多种，简单的可以通过用户界面操作，有些特殊的操作则需要进入系统后台操作，这时，前面提到的”后台隐藏“必须要留下售后人员的入口。<br>加密是一种简单而有效的保护方式，加密的级别有很多，例如文件加密、数据库加密、磁盘加密。加密的算法一般是防护的关键，需要用各种手段降低算法被探测的可能，而密钥的存储比密钥的强度更重要。</p>
 <p>下面讨论一下各个部分的方案细节<br>对于在线使用的软件，让用户自行输入用户名是一种简单有效的机制，而对于允许离线使用的软件，需要收集软件的运行环境信息生成一个和环境相关的ID，这个ID通常成为机器码，收集的信息通常是硬件信息。然而，在虚拟化环境、docker环境下，情况可能略有不同，由于虚拟化环境的硬件信息不准确、容易发生变更，而docker就更加没有硬件信息，所以很多厂商都会采用一种叫授权服务器的东西（例如深信服VLS）来应对，这个后文再讨论。<br>软件厂商通过非对称或者对称加密技术，针对用户提供的ID来提供一段经过加密的序列号&#x2F;授权文件，软件通过特定的算法校验ID和序列号&#x2F;授权文件之间的对应关系。以某个厂商的序列号为例：软件通过计算网卡MAC地址的CRC32得到ID，用户提供ID后，厂商通过DES算法和固定密钥将ID变为一串序列号，这串序列号可以由用户手动输入软件中，软件通过DES算法和代码内置的固定密钥解密序列号，得到的信息和ID比较。<br>为了避免用户进入操作系统后台，通常厂商不会提供系统的特权账号密码，然而特权账号的密码在公司里面很多人都知道，例如研发员工、技术支持员工，这其中存在很多泄密的可能。所以有些厂商会修改操作系统的认证机制，实现自定义的认证逻辑，例如扫码登录、动态密码等。这里以linux系统为例，linux系统有一种叫PAM（Pluggable Authentication Modules)的东西，可以简单理解为认证插件，我们可以用c语言来实现对应的接口，然后把代码编译后以动态链接库的形式放到特定目录，修改配置文件即可，不需要修改操作系统的源代码。<br>相应的，我们虽然阻止了用户对系统后台的访问权限，但是也要给技术支持&#x2F;售后等留下入口。首先是软硬件的信息收集，平常我们可以进入系统后台，手动查看、拷贝日志文件，查看环境信息，在高度封闭系统后，这些信息通常会通过一个界面，允许用户&#x2F;技术支持来采集，有必要的时候，再通过售后系统获取系统的登录口令，进入后台手动操作。<br>有些软件会通过全盘加密的方式阻止用户将磁盘挂载到其他系统进行解析，常规的实现是用LUKS来全盘加密，然后在开机阶段去特定的位置获取密钥，大大增加了破解的难度。</p>
 <h1 id="设计文档"><a href="#设计文档" class="headerlink" title="设计文档"></a>设计文档</h1><p>版本修订记录:</p>
@@ -462,15 +764,15 @@
 </ol>
 <h2 id="5-详细设计"><a href="#5-详细设计" class="headerlink" title="5 详细设计"></a>5 详细设计</h2><h3 id="5-1-设计图"><a href="#5-1-设计图" class="headerlink" title="5.1 设计图"></a>5.1 设计图</h3><p><strong>出包过程图</strong></p>
 <p>本图描述有哪些包，这些包的内容是从哪来的。</p>
-<p><img src="/../../../../home/xiaoy/media/image1.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<p><img src="/../../../../home/xiaoy/media/image1.png" alt="图标 描述已自动生成"></p>
 <p><strong>镜像制作(image-builder)项目结构设计</strong></p>
 <p><strong>安装部署流程</strong></p>
 <p>本图提供安装部署的流程对比，左边是没有做这块需求的时候的逻辑，右边是有了镜像交付之后的逻辑.</p>
-<p><img src="/../../../../home/xiaoy/media/image2.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<p><img src="/../../../../home/xiaoy/media/image2.png" alt="图标 描述已自动生成"></p>
 <p><strong>镜像生命周期</strong></p>
 <p>安装前包括打包的部分、将包上传到网盘、客户下载包、导入包</p>
 <p>安装中主要是导入进度条跑完之后，镜像的安装只需要调整配置，进度条即是上传的进度</p>
-<p><img src="/../../../../home/xiaoy/media/image3.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<p><img src="/../../../../home/xiaoy/media/image3.png" alt="图标 描述已自动生成"></p>
 <h3 id="5-2-各模块详细设计"><a href="#5-2-各模块详细设计" class="headerlink" title="5.2 各模块详细设计"></a>5.2 各模块详细设计</h3><p>对各个模块进行详细阐述，数据之间的关联关系, 使用的何种算法, 明确的接口定义(包含输入&#x2F;输出&#x2F;异常&#x2F;错误码), 尽量明确到代码层级，达到设计文档交给第三个人也可以按照文档要求进行代码开发</p>
 <h4 id="5-2-1-基ISO镜像详细设计"><a href="#5-2-1-基ISO镜像详细设计" class="headerlink" title="5.2.1 基ISO镜像详细设计"></a>5.2.1 基ISO镜像详细设计</h4><p><strong>需求回顾</strong></p>
 <ol>
@@ -614,7 +916,7 @@
 <li><p>用resize2fs将lv的容量应用到ext4分区大小</p>
 </li>
 </ol>
-<p><img src="/../../../../home/xiaoy/media/image4.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<p><img src="/../../../../home/xiaoy/media/image4.png" alt="图标 描述已自动生成"></p>
 <h5 id="5-2-2-3-开机运行实现"><a href="#5-2-2-3-开机运行实现" class="headerlink" title="5.2.2.3 开机运行实现"></a>5.2.2.3 开机运行实现</h5><p>方案一：systemd</p>
 <p>方案二：init.d</p>
 <p>方案二在centos系统用的比较多，本文采用的首选方案为方案一</p>
@@ -641,7 +943,7 @@
 <p>ISO挂载</p>
 <p>ISO解除挂载</p>
 <p>切换根目录</p>
-<h5 id="5-2-3-2-OVA镜像打包方案"><a href="#5-2-3-2-OVA镜像打包方案" class="headerlink" title="5.2.3.2 OVA镜像打包方案"></a>5.2.3.2 OVA镜像打包方案</h5><p><img src="/../../../../home/xiaoy/media/image5.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<h5 id="5-2-3-2-OVA镜像打包方案"><a href="#5-2-3-2-OVA镜像打包方案" class="headerlink" title="5.2.3.2 OVA镜像打包方案"></a>5.2.3.2 OVA镜像打包方案</h5><p><img src="/../../../../home/xiaoy/media/image5.png" alt="图标 描述已自动生成"></p>
 <p>如图，如果采用官方ISO镜像来制作OVA，那么制作出来的是基OVA镜像，它需要一次制作，不断更新。在无法实现制作石犀ISO的背景下，是比较合适的路。</p>
 <p>无论前面的方案如何，最终制作OVA时，都需要一个VMDK文件（虚拟磁盘文件），这个文件的创建有两条路走，一条是使用vmware来操作一遍安装流程，一条是用命令创建一个空的vmdk文件，并通过某种方式挂载到文件系统中，然后通过某种方式来将系统安装到vmdk上。 前者实现简单，但是存在难以自动化的问题，后者实现不确定性比较大，但是是理论上可以自动化的方案。</p>
 <p>综合多方考虑，取两种方案，分别为图中蓝色和绿色两种。绿色是比较理想的情况，它意味着ISO镜像的方案比较成熟，可以很好的支撑其他类型镜像的制作。蓝色是妥协的情况，这里着重说一下。</p>
@@ -698,7 +1000,7 @@
 <p><a target="_blank" rel="noopener" href="https://github.com/covertsh/ubuntu-autoinstall-generator/blob/main/ubuntu-autoinstall-generator.sh">https://github.com/covertsh/ubuntu-autoinstall-generator/blob/main/ubuntu-autoinstall-generator.sh</a></p>
 <p><a target="_blank" rel="noopener" href="http://zenki2001cn.github.io/Wiki/Debian/iso%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6%E5%88%B6%E4%BD%9C.html">iso镜像文件制作</a></p>
 <h5 id="5-2-3-3-main-sh脚本设计"><a href="#5-2-3-3-main-sh脚本设计" class="headerlink" title="5.2.3.3 main.sh脚本设计"></a>5.2.3.3 main.sh脚本设计</h5><p>单纯的文件拷贝，可以由main.sh的各个函数完成，而有些需要在切换root后执行的命令，则作为单独的文件，在guest-install目录管理，将其拷贝到挂载路径后，在切换root后执行对应的脚本</p>
-<p><img src="/../../../../home/xiaoy/media/image6.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<p><img src="/../../../../home/xiaoy/media/image6.png" alt="图标 描述已自动生成"></p>
 <h5 id="5-2-3-4-Makefile设计"><a href="#5-2-3-4-Makefile设计" class="headerlink" title="5.2.3.4 Makefile设计"></a>5.2.3.4 Makefile设计</h5><p>调用<a target="_blank" rel="noopener" href="http://main.sh/">main.sh</a> 传递解压后的总控包，基镜像，以及目标镜像作为参数 。目标镜像就是不同的target</p>
 <p><strong>target依赖关系图</strong></p>
 <ul>
@@ -708,7 +1010,7 @@
 </li>
 </ul>
 <p>红色部分是识别到的难以自动化的步骤，故而ubuntu-ova-m1这个分支当前不具有可行性，导致整个iso分支暂时失去了价值。目前计划仅实现绿色路径的target</p>
-<p><img src="/../../../../home/xiaoy/media/image7.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<p><img src="/../../../../home/xiaoy/media/image7.png" alt="图标 描述已自动生成"></p>
 <h4 id="5-2-4-磁盘分区详细设计"><a href="#5-2-4-磁盘分区详细设计" class="headerlink" title="5.2.4 磁盘分区详细设计"></a>5.2.4 磁盘分区详细设计</h4><h5 id="5-2-4-1-初始分区大小规划"><a href="#5-2-4-1-初始分区大小规划" class="headerlink" title="5.2.4.1 初始分区大小规划"></a>5.2.4.1 初始分区大小规划</h5><p>[TABLE]</p>
 <h5 id="5-2-4-2-LVM设计"><a href="#5-2-4-2-LVM设计" class="headerlink" title="5.2.4.2. LVM设计"></a>5.2.4.2. LVM设计</h5><p>将系统盘分为3个VG+1个普通分区，普通分区是&#x2F;boot分区，使用ext3或ext4文件系统</p>
 <p>3个VG分别和5.2.4.1中描述的分区大小一一对应，每个VG划分一个LV</p>
@@ -1042,7 +1344,7 @@
 <h4 id="7-1-1-商城的生产地址可能不可用"><a href="#7-1-1-商城的生产地址可能不可用" class="headerlink" title="7.1.1 商城的生产地址可能不可用"></a>7.1.1 商城的生产地址可能不可用</h4><p>总控的配置项[shopCenter]下的两个地址，一个用于获取数据，一个用于上报数据。这里的风险是生产的总控不一定可用</p>
 <h4 id="7-1-2-CPU指令集检查"><a href="#7-1-2-CPU指令集检查" class="headerlink" title="7.1.2 CPU指令集检查"></a>7.1.2 CPU指令集检查</h4><p>总控依赖AVX指令，需要检查CPU指令集。</p>
 <p>ISO要在正式安装系统前，进行检查。</p>
-<p><img src="/../../../../home/xiaoy/media/image8.png" srcset="/img/loading.gif" lazyload alt="descript"></p>
+<p><img src="/../../../../home/xiaoy/media/image8.png" alt="descript"></p>
 <p>OVA目前还不确定检查后在哪提示，<del>而且没有AVX好像也装不了ESXI。</del></p>
 <h4 id="7-1-3-总控WEBUI修改IP长时间不能落地"><a href="#7-1-3-总控WEBUI修改IP长时间不能落地" class="headerlink" title="7.1.3 总控WEBUI修改IP长时间不能落地"></a>7.1.3 总控WEBUI修改IP长时间不能落地</h4><p>当前TUI设计成配合WEBUI使用，但是WEBUI的需求都还没完全定下来，只知道1.4.0要做，在WEB界面修改IP实现以前，镜像也还有持久化修改IP的需求，目前的设想是通过一个脚本来代替WEBUI的操作。</p>
 <p>不论是用于代替的脚本还是未来的WEB界面，在安装引擎之前都需要通过他们来设置IP，以便持久化和修改对应应用的配置，否则无法安装引擎。</p>
@@ -1347,397 +1649,50 @@
 <li>新增5.3.1.7到5.3.1.9节</li>
 </ul>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
+    </div>
     
-      <span class="category-chain">
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 Xiaoy
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;xiaoy
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
         
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
     </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
-      
-        <a href="/tags/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98/" class="print-no-link">#镜像交付</a>
-      
-        <a href="/tags/%E9%83%A8%E7%BD%B2/" class="print-no-link">#部署</a>
-      
-    </div>
-  
-</div>
+</footer>
 
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>镜像交付相关资料.md</div>
-      <div>https://abrance.github.io/2024/03/07/mdstorage/domain/linux/镜像交付相关资料/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>Author</div>
-          <div>xiaoy</div>
         </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>March 7, 2024</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>Licensed under</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                    <i class="iconfont icon-cc-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2024/03/07/mdstorage/domain/db/PostgreSQL%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/" title="PostgreSQL相关资料.md">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">PostgreSQL相关资料.md</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2024/03/07/mdstorage/domain/%E6%8B%9B%E8%81%98/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B8%85%E5%8D%95/" title="面试题清单.md">
-                        <span class="hidden-mobile">面试题清单.md</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
             </div>
-
-            
-          </article>
-        </div>
-      </div>
+        </transition>
+        
     </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
-    mermaid.initialize({"theme":"default"});
-
-    Fluid.utils.listenDOMLoaded(function() {
-      Fluid.events.registerRefreshCallback(function() {
-        if ('mermaid' in window) {
-          mermaid.init();
-        }
-      });
-    });
-  });
-</script>
-
-
+    <script src="/js/main.js"></script>
+    
+    
 
 
 
 
     
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
 </body>
 </html>

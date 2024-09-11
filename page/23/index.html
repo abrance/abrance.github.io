@@ -1,855 +1,2243 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>Xiaoy</title>
+    <meta name="author" content="xiaoy" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="xiaoy">
-  <meta name="keywords" content="">
-  
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Xiaoy">
-<meta property="og:url" content="https://abrance.github.io/page/23/index.html">
-<meta property="og:site_name" content="Xiaoy">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="xiaoy">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>Xiaoy</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
 
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="/js/lib/preview.js"></script>
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
+<script src="/js/lib/home.js"></script>
 
+<link rel="stylesheet" href="/css/main.css" />
 
-  
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>xiaoy</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/23/mdstorage/domain/ai/AI%E9%98%85%E8%AF%BB%E6%96%87%E7%AB%A0%E6%A8%A1%E6%9D%BF/" target="_self">
-          AI阅读文章模板
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/23/mdstorage/domain/ai/AI%E9%98%85%E8%AF%BB%E6%96%87%E7%AB%A0%E6%A8%A1%E6%9D%BF/" target="_self">
-        <div>
-          在技术和管理领域，文章类型可以多样化，以下是一些常见的类型：  观点文章：分享个人观点、经验和见解。 教程：提供技能或操作的具体指导。 案例研究：深入分析特定项目或情况。 技术博客：分享技术知识、经验或趋势。 行业报告：提供行业分析、数据和预测。 研究论文：呈现科学研究和实验结果。 访谈：专家或业内人士的问答形式的内容。 新闻报道：报导最新的行业动态和事件。 白皮书：提供深入的技术或政策分析。 产
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-23 00:00" pubdate>
-              2023-11-23
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/ai/" class="category-chain-item">ai</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/">#知识管理</a>
-            
-              <a href="/tags/%E9%98%85%E8%AF%BB/">#阅读</a>
-            
-              <a href="/tags/AI/">#AI</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/23/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%AE%A1%E7%90%86%E7%9A%84%E7%9F%9B%E7%9B%BE/" target="_self">
-          技术与管理的矛盾.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/23/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%AE%A1%E7%90%86%E7%9A%84%E7%9F%9B%E7%9B%BE/" target="_self">
-        <div>
-          文章概述  文章标题: 技术和管理之间不可调和的矛盾 作者: 掘金泥石流 发布日期: 2021-07-02 来源&#x2F;出版物: 掘金网站 链接：https://juejin.cn/post/6980210389531230222 文章主题简介: 文章探讨了技术和管理在职业发展中的矛盾，尤其是在软件开发领域。作者分析了技术和管理目标的根本差异，以及这种差异如何影响技术人员的职业生涯发展。  主
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-23 00:00" pubdate>
-              2023-11-23
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86%E9%A2%86%E5%9F%9F/">#技术管理领域</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/23/mdstorage/project/sr/%E9%83%A8%E9%97%A8%E4%BC%9A%E8%AE%AE%E6%80%BB%E7%BB%93/" target="_self">
-          部门会议总结
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/23/mdstorage/project/sr/%E9%83%A8%E9%97%A8%E4%BC%9A%E8%AE%AE%E6%80%BB%E7%BB%93/" target="_self">
-        <div>
-          道歉与感谢在这次版本发布之际，我想先向一些项目中的同志道歉。回顾这个版本的开发过程，我认识到自己在领导Go二组时出现了一些失误。特别是在风险管理方面，我没有及时收集并上报关键信息，导致问题的严重性没有被上级及时认识到，给团队带来了不必要的压力和挑战。 我要特别向可视化组的向阳、院红、琼婷、育孟，以及引擎安装的贺泽道歉。我的管理和技术上的不足影响了他们的绩效，尤其是在他们向我报告风险并提出解决方案时
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-23 00:00" pubdate>
-              2023-11-23
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%80%BB%E7%BB%93/">#总结</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/22/mdstorage/domain/%E6%8B%9B%E8%81%98/Golang%E5%85%A5%E8%81%8C%E8%80%83%E8%AF%95%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3/" target="_self">
-          Golang入职考试数据库相关.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/22/mdstorage/domain/%E6%8B%9B%E8%81%98/Golang%E5%85%A5%E8%81%8C%E8%80%83%E8%AF%95%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3/" target="_self">
-        <div>
-          Golang入职考试数据库相关关键部分数据库基础与应用 开放参考资料 “Go Programming Language” by Alan A. A. Donovan and Brian W. Kernighan “High Performance MySQL” by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko “Redis in Actio
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-22 00:00" pubdate>
-              2023-11-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%8B%9B%E8%81%98/" class="category-chain-item">招聘</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/db/">#db</a>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">#面试题</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/22/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7%E6%A1%86%E6%9E%B6/" target="_self">
-          安装升级框架.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/22/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7%E6%A1%86%E6%9E%B6/" target="_self">
-        <div>
-          安装升级框架实施方案中长期做安装升级框架，需要：指定一个主要负责人持续推进，横跨多个版本维度才能基本确定框架。 每个组件都在这个框架的范畴，需要贴合此框架的思路来做。所有的文档会在中长期持续补充。 短期内做安装升级框架，需要： 制定统一标准：团队可以协作制定一套统一的编码和设计标准。这些标准应该包括命名规范、代码结构、安装和升级流程等。 设计审查会议：定期举行设计审查会议，讨论和审查当前的设计和实
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-22 00:00" pubdate>
-              2023-11-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
-            
-              <a href="/tags/%E5%AE%89%E8%A3%85/">#安装</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/22/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%80%E6%9C%AF%E5%92%8C%E7%AE%A1%E7%90%86%E6%80%BB%E4%BC%9A%E6%9C%89%E4%B8%8D%E5%8F%AF%E8%B0%83%E5%92%8C%E7%9A%84%E7%9F%9B%E7%9B%BE/" target="_self">
-          为什么技术和管理总会有不可调和的矛盾.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/22/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%80%E6%9C%AF%E5%92%8C%E7%AE%A1%E7%90%86%E6%80%BB%E4%BC%9A%E6%9C%89%E4%B8%8D%E5%8F%AF%E8%B0%83%E5%92%8C%E7%9A%84%E7%9F%9B%E7%9B%BE/" target="_self">
-        <div>
-          今日话题：为什么技术和管理总会有不可调和的矛盾？ 评论一：讲真，技术和管理之间的矛盾，这可是职场里的古老话题了。技术大牛们通常都是专注于代码和产品，梦想着创造下一个炫酷的科技革命。他们的世界里，代码就是诗，算法就是音乐。然而，当管理层出场的时候，事情就变味了。管理者们更关注的是预算、时间表和市场表现，他们的乐谱上写的是利润和成本。于是乎，一场关于理想与现实的拉锯战就此上演。 评论二：技术人呐，天生
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-22 00:00" pubdate>
-              2023-11-22
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AF%9D%E9%A2%98/">#话题</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/22/mdstorage/project/sr/%E5%8D%8E%E4%B8%BA%E4%BA%91%E9%B2%B2%E9%B9%8F%E6%9C%BA%E5%99%A8%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E8%AE%B0%E5%BD%95/" target="_self">
-          华为云鲲鹏机器系统信息记录.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/22/mdstorage/project/sr/%E5%8D%8E%E4%B8%BA%E4%BA%91%E9%B2%B2%E9%B9%8F%E6%9C%BA%E5%99%A8%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E8%AE%B0%E5%BD%95/" target="_self">
-        <div>
-          背景石犀总控系统在一台云主机上没装上，进行问题排查和分析。 主机信息CPU: Huawei Kunpeng… 实例类型： A加速型kai1s 当前规格：A加速型| kai1s.xlarge.1| 4vCPUs | 4GiB 1 HUAWEI Ascend 310   系统信息12345678910111213141516171819Architecture:        aarch64Byte
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-22 00:00" pubdate>
-              2023-11-22
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/machine/">#machine</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/21/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E6%9C%BA%E5%99%A8%E5%88%9D%E5%A7%8B%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/" target="_self">
-          总控机器初始网络配置文档
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/21/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E6%9C%BA%E5%99%A8%E5%88%9D%E5%A7%8B%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/" target="_self">
-        <div>
-          Ubuntu 20.04 Server 初始网络配置文档目录 概述 网络配置步骤 附录  概述本文档提供总控(Ubuntu 20.04 Server版)的基本网络配置指南。它将指导您完成设置静态IP地址、配置DNS服务器和测试网络连接等步骤。 网络配置步骤1. 动态&#x2F;静态IP设置静态IP配置(总控必须确认是 ipv4 静态 IP) 打开Netplan配置文件 1sudo nano /et
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-21 00:00" pubdate>
-              2023-11-21
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/network-configuration/">#network-configuration</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/20/mdstorage/project/sr/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF-11.19/" target="_self">
-          一周看板-11.19.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/20/mdstorage/project/sr/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF-11.19/" target="_self">
-        <div>
-          12345678910111213141516171819202122232425262728293031# 2023/11/13 Task List## Todo- https://github.com/mli/autocut 是什么- on-premise 综述- InfoQ 一周消息速递- 搜书方法、主流格式文档转换方法、以图搜图、学习资料搜索- meituan 对接、价格- 关于授权时间一
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-20 00:00" pubdate>
-              2023-11-20
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/19/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88LOL%E6%AF%94%E8%B5%9B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E2%80%9C%E5%81%87%E4%BA%86%E2%80%9D/" target="_self">
-          为什么LOL比赛越来越“假了”.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/19/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88LOL%E6%AF%94%E8%B5%9B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E2%80%9C%E5%81%87%E4%BA%86%E2%80%9D/" target="_self">
-        <div>
-          今日话题：为什么LOL比赛越来越“假了”？ 评论一：咱们这LOL比赛啊，现在越来越像电视剧了，剧本都能提前猜到一半。有人说，这不仅仅是一场游戏的竞技，更像是利益角逐的战场。听说有些比赛，背后都被某些利益集团操控了。打假赛？这事儿在电竞圈也不是新鲜事，但每次听到还是让人觉得心里不是滋味。原本纯粹的竞技精神，现在被这些利益玷污了。 评论二：再说说咱们的选手们，有的实力挺强，但为了迎合团队的战术风格，不
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-19 00:00" pubdate>
-              2023-11-19
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/22/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/#board">21</a><a class="page-number" href="/page/22/#board">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/#board">24</a><a class="page-number" href="/page/25/#board">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/24/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-              </div>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
             </div>
-          </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XIAOY</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XIAOY</span>
         </div>
-      </div>
-    
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div id="home-head">
+    <div
+        id="home-background"
+        ref="homeBackground"
+        data-images="/images/background.jpg"
+    ></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Xiaoy</h1>
+                <h3>xiaoy blog</h3>
+                <h5></h5>
+            </div>
+        </span>
     </div>
-  </div>
+</div>
+<div
+    id="home-posts-wrap"
+    ref="homePostsWrap"
+    true
+>
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/2023/11/23/mdstorage/project/sr/%E9%83%A8%E9%97%A8%E4%BC%9A%E8%AE%AE%E6%80%BB%E7%BB%93/">
+        <h2 class="post-title">部门会议总结</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/23
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="道歉与感谢"><a href="#道歉与感谢" class="headerlink" title="道歉与感谢"></a>道歉与感谢</h2><p>在这次版本发布之际，我想先向一些项目中的同志道歉。回顾这个版本的开发过程，我认识到自己在领导Go二组时出现了一些失误。特别是在风险管理方面，我没有及时收集并上报关键信息，导致问题的严重性没有被上级及时认识到，给团队带来了不必要的压力和挑战。</p>
+<p>我要特别向可视化组的向阳、院红、琼婷、育孟，以及引擎安装的贺泽道歉。我的管理和技术上的不足影响了他们的绩效，尤其是在他们向我报告风险并提出解决方案时，我未能采取有效措施。他们在问题发生后积极参与解决，为团队做出了巨大贡献，是我学习的榜样。</p>
+<p>同时，我也要向向阳致以深深的歉意。他加入团队后，不仅帮助我领导团队，还在可视化组独立后承担了重担，我相信他会成功完成项目。</p>
+<p>对于C++组、测试组和项目经理们，我也表达我的歉意。在规范开发流程的过程中，我们之间发生了一些不必要的言语冲突，我对此感到十分后悔。我认识到这不是任何个人的过错，而是整个流程中的挑战。</p>
+<p>我还需要向技术部的李福林、王总道歉。由于我的不足，技术部在客户那里面临了挑战，给团队增加了困难。</p>
+<p>最后，我要向老板们道歉。我没能完全达到你们的期望，但请相信，团队中每个人都有出色的潜力和能力。作为组长，我将承担主要的责任。</p>
+<p>在此，我也要感谢那些在困难时刻仍然坚守岗位的团队成员，如志凯、立成、慧军、松达，他们的努力保持了项目的稳定。同时感谢思华、宋燚、周宇、福林、王总、桂华、刘总，给予我许多信息、资源、时间上支持和帮助。</p>
+<h3 id="好和不好的点"><a href="#好和不好的点" class="headerlink" title="好和不好的点"></a>好和不好的点</h3><p>在这个版本期间，为流程规范建立和执行，团队成员都非常配合，让我真正看到团队在齐心协力地改进项目形态，让项目从幼稚走向成熟。</p>
+<p>团队中各成员的配合还不够默契，还有改进的空间。</p>
+<p>任务评估这个环节上还不够全面、准确。</p>
+<p>总结一下，这个版本让我看到每个团队成员都在成长、在突破。</p>
+<h3 id="提一下团队成员的诉求"><a href="#提一下团队成员的诉求" class="headerlink" title="提一下团队成员的诉求"></a>提一下团队成员的诉求</h3><ul>
+<li>打包时间过长<ul>
+<li>之前需要 二、三十分钟，后面我们已经安排做了缓存优化，能优化到 1 分钟。只是生产环境应用的时机问题。</li>
+</ul>
+</li>
+<li>超融合机器有时性能不行<ul>
+<li>这个后面测试团队接手了这部分工作，我相信他们能帮我们提供这方面支持，改善我们用机器的性能问题。</li>
+</ul>
+</li>
+<li>需求改动频繁，临近上线还有需求变更，版本需求临界点不清晰问题<ul>
+<li>已跟产品团队做了信息同步，将在下版本尽量优化改进，大家也要多给团队一些时间、包容，要记住我们是一个团队，荣辱与共的团体。</li>
+</ul>
+</li>
+<li>测试介入有时不及时，已提测比较久后才发现提了BUG<ul>
+<li>跟测试团队联系更紧密</li>
+<li>项目经理优化测试资源调度</li>
+<li>CI&#x2F;CD 流程建立</li>
+</ul>
+</li>
+</ul>
+<p>总的来说，项目确实是越來越庞大，但也越来越好了。</p>
+<p>“海阔凭鱼跃，天高任鸟飞。” 我期待我们所有人在石犀这片蓝天中自由翱翔、不断进取、一往无前。</p>
+<h4 id="自身的问题"><a href="#自身的问题" class="headerlink" title="自身的问题"></a>自身的问题</h4><p>是一个失败的管理者</p>
+<ul>
+<li>整个组织对管理和技术缺乏认知, 让管理者天然被矛盾包围, 又要人成长又要拿结果, 无休止的加班也换不来认可</li>
+<li>单纯的压力传导, 对管理和技术毫无想法, 仅仅是倾斜上层压力给团队</li>
+<li>以架构师, 技术专家的思维方式去对待团队, 把人看成工具和资源, 只考虑结果不考虑过程, 造成团队内耗严重, 长期无法形成战斗力</li>
+</ul>
+<p>是一个失败的架构师</p>
+<ul>
+<li><p>技术规划的两个极端</p>
+<ul>
+<li>在技术规划和设计中忽视人的因素, 没有将其纳入分析范围, 导致落地变形失败</li>
+<li>对效率的认识不足, 过于考虑使用者的所谓成长空间等本不该考虑的问题,导致方案不伦不类</li>
+</ul>
+</li>
+<li><p>想要目标感, 目的不明确, 缺乏理性, 情绪化, 朝令夕改</p>
+</li>
+</ul>
+<p><strong>一、主要成就</strong></p>
+<p>首先，我想与大家分享我们团队在过去一段时间里取得的显著成就。我们的成就不仅仅体现在完成任务上，更在于我们如何高效、创新地完成这些任务。</p>
+<ol>
+<li><p><strong>成功研发1.3.0版本</strong>：我们的团队按照既定的需求任务，成功完成了总控、引擎、插件1.3.0版本的研发工作。这个版本的研发不仅涉及复杂的技术挑战，还需要我们在紧迫的时间线内保持高效率和高质量的输出。我们的团队展现了出色的技术实力和项目管理能力。</p>
+</li>
+<li><p><strong>规范研发流程</strong>：我们不仅关注产品的开发，同样重视研发流程的规范化。我们对部分研发流程进行了规范，并以微盘文档的形式进行记录和分享，这不仅提高了工作效率，还促进了团队内部的知识共享和学习。这些文档为新成员的快速融入和老成员的持续学习提供了极大的便利。</p>
+</li>
+<li><p><strong>流程培训和共享</strong>：我们认识到仅仅规范流程是不够的，团队成员对这些流程的理解和应用同样重要。因此，我们不仅制定了流程，还开展了相关的培训活动。通过这些培训，我们确保每位团队成员都能充分理解并正确应用这些流程，从而提高整个团队的协作效率和产品质量。</p>
+</li>
+<li><p><strong>技术创新和问题解决</strong>：在这个过程中，我们的团队面临了许多技术挑战和问题。我们不仅成功地解决了这些问题，还在此过程中创新了一些新的技术和方法。这些创新不仅提高了我们当前项目的效率和质量，还为我们未来的项目打下了坚实的基础。</p>
+</li>
+</ol>
+<p>这些成就是我们团队共同努力的结果。每一位团队成员的辛勤工作和奉献精神都是我们能够取得这些成就的关键。</p>
+<p><strong>二、挑战与困难</strong></p>
+<p>在我们的旅程中，我们面临了不少挑战和困难，这些问题对我们的工作流程和项目交付产生了影响。</p>
+<h3 id="A-需求管理"><a href="#A-需求管理" class="headerlink" title="A. 需求管理"></a>A. 需求管理</h3><ol>
+<li><p><strong>需求文档质量问题</strong>：我们遇到了需求文档描述不清晰的问题，这导致了流程的不合理性和功能目标的自相矛盾。为了解决这一问题，我们将加强需求文档的评审流程，确保在开发前与需求方达成一致，并且减少不必要的功能和模块的设计，避免界面风格的不统一。</p>
+</li>
+<li><p><strong>需求变动频繁</strong>：频繁的需求变更，特别是在项目接近上线的阶段，对我们的工作计划和资源分配造成了冲击。未来，我们将设立更明确的版本需求临界点，并加强与各方的沟通，以减少临时变更的影响。</p>
+</li>
+</ol>
+<h3 id="B-开发过程"><a href="#B-开发过程" class="headerlink" title="B. 开发过程"></a>B. 开发过程</h3><ol>
+<li><p><strong>设计文档不全</strong>：部分功能模块缺少完整的设计文档，这影响了开发的连贯性和质量。我们计划在未来强化设计文档的完整性，确保每一个功能模块都有详细的设计记录。</p>
+</li>
+<li><p><strong>设计不充分</strong>：我们也面临了设计考虑不周全的问题，尤其是在安全性、性能和影响范围方面。我们将加强设计阶段的评审流程，确保设计的全面性和适应性。</p>
+</li>
+</ol>
+<h3 id="C-安装升级和联调"><a href="#C-安装升级和联调" class="headerlink" title="C. 安装升级和联调"></a>C. 安装升级和联调</h3><ol>
+<li><p><strong>安装升级问题</strong>：我们遇到了依赖性和升级兼容性问题，这导致了安装和升级的困难。解决这个问题的关键是优化依赖管理和测试升级路径。</p>
+</li>
+<li><p><strong>联调协作不足</strong>：我们的项目在多层面的协作中遇到了障碍。我们计划加强团队间的沟通和协作流程，以改善联调效率。</p>
+</li>
+</ol>
+<h3 id="D-测试与部署"><a href="#D-测试与部署" class="headerlink" title="D. 测试与部署"></a>D. 测试与部署</h3><ol>
+<li><p><strong>测试介入时间</strong>：测试可能的延迟介入影响了问题的早期发现。我们将调整测试流程，确保测试团队可以及时介入和提供反馈。</p>
+</li>
+<li><p><strong>打包部署效率低</strong>：打包和部署的周期过长，影响了整体的工作效率。我们将提升打包部署环境的硬件资源，优化资源配置，以加快这一过程。</p>
+</li>
+</ol>
+<h3 id="E-技术支持与资源配置"><a href="#E-技术支持与资源配置" class="headerlink" title="E. 技术支持与资源配置"></a>E. 技术支持与资源配置</h3><ol>
+<li><p><strong>加强技术支持</strong>：为了改善工作环境，我们计划提供更好的硬件资源，包括磁盘、CPU和内存，并确保网络环境能够满足低延迟和高吞吐量的需求。</p>
+</li>
+<li><p><strong>CI&#x2F;CD实践指导</strong>：我们还面临着CI&#x2F;CD实践的挑战。项目经理和开发团队将更紧密地协调人力和资源，确保CI&#x2F;CD流程的有效实施。</p>
+</li>
+</ol>
+<p><strong>三、未来规划</strong></p>
+<ol>
+<li><p><strong>改进需求管理流程</strong>：我们将专注于改进需求管理流程，确保需求文档的质量，并减少临时需求变更的影响。</p>
+</li>
+<li><p><strong>优化开发和设计流程</strong>：我们计划优化开发流程，强化设计文档的完整性，确保设计的全面性和适应性。</p>
+</li>
+<li><p><strong>强化安装升级和联调流程</strong>：我们将专注于解决安装升级的问题，优化依赖管理，并加强团队间的协作，以提高联调效率。</p>
+</li>
+<li><p><strong>提升测试和部署效率</strong>：我们将调整测试流程，以及提升打包部署环境的硬件资源，以加快测试和部署的周期。</p>
+</li>
+<li><p><strong>增强技术支持和资源配置</strong>：为了支持这些改进，我们将加强技术支持，提供更好的硬件资源，并优化CI&#x2F;CD实践。</p>
+</li>
+</ol>
+<p><strong>四、个别成员表现</strong></p>
+<p>在这一阶段的工作中，我们有几位团队成员的表现值得特别提及。他们的贡献不仅体现在完成任务上，还包括在团队中的积极态度和个人品质。</p>
+<ol>
+<li><p><strong>吴松达和贺泽</strong>：他们在工作中展示了复杂情况下的应对能力。尽管在任务反馈的及时性、请假规定的遵守、考勤和日常报告方面存在一些挑战，但他们在承担的任务量和范围方面表现出色。他们积极活泼的态度，以及对问题的提出和解决方案的思考，体现了他们的爱思考、坚韧、社会性和好奇心这四种珍贵品质。在未来，我们将与他们一起努力改进这些方面的不足。</p>
+</li>
+<li><p><strong>韩志凯和范众星</strong>：这两位同事的表现也非常值得肯定。他们在沟通方面表现充分、稳重，确保了负责模块的无纰漏运作。他们的工作可能不总是显眼，但正如“善战者无赫赫之功”一般，他们在日常工作中的卓越表现是团队稳定运行的关键。他们的贡献在维护模块稳定性和高效性方面尤为突出。</p>
+</li>
+</ol>
+<p><strong>五、感谢</strong></p>
+<ol>
+<li><strong>对全体团队成员的感谢</strong>：首先，我要感谢每一位团队成员。无论是面对复杂的技术挑战，还是在紧迫的项目时间线上工作，大家都表现出了非凡的专业能力和坚定的承诺。您们的热情和奉献是我们团队成功的基石。</li>
+<li><strong>对面临挑战同事的感谢</strong>：或多或少我们都经历了挑战，再次感谢特别是面对挑战时坚持不懈的同事，您们展现的韧性和解决问题的能力对于团队的成功至关重要。</li>
+<li><strong>对管理团队的感谢</strong>：我还要特别感谢我们的管理团队，他们在规划和指导中展现了卓越的领导力。在面对各种挑战和变化时，他们的决策和支持为团队提供了坚实的后盾。</li>
+<li><strong>对家庭和亲人的感谢</strong>：最后，我要感谢我们每位团队成员的家庭和亲人。他们的理解和支持使我们能够全身心投入工作。没有他们的支持，我们的成功也不会完整。</li>
+</ol>
+<p><strong>待关注的点</strong></p>
+<h4 id="项目管理"><a href="#项目管理" class="headerlink" title="项目管理"></a>项目管理</h4><ul>
+<li>有时项目紧急，人员抽调不合理</li>
+<li>不是所有禅道任务项目管理都有被跟踪、更新</li>
+<li>项目里程碑、版本设计不合理</li>
+<li>开发节奏太紧、流程、规范要求占用很长时间，但是项目管理上没有时间消耗的意识</li>
+<li>禅道任务拆分粒度过大，原因是大家对其认知不够，导致时间评估上不准</li>
+<li>基础设施 禅道、CI&#x2F;CD、wiki 、团队知识库依然简陋</li>
+</ul>
+<h4 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h4><ul>
+<li>有些开发不知道这套系统整体长什么样，不知道怎么部署环境</li>
+<li>代码不规范、review 缺失，也要注意，做这些前提是给时间</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>人为什么会追求权力、金钱、颜值？因为拥有这些东西的人走到哪里都是众星捧月，本质上，最终追求的还是别人的认同。<br>但是，做事情的人都是孤独的，没有人能照顾到各方利益，得到所有人的认同，总会有各种不和谐的声音存在，也没有人能走出绝对正确的路线，总会有试错、反复试错，并在这个过程中变得越来越好。</p>
+<p>举个例子：</p>
+<p>做事情的过程中，感受各方面的条件限制，各方面的压力，各种睡不着、焦虑。<br>而结果是没法即时验证的，所以这种压力会持续很久，直到时间让人淡忘。<br>有些结果可以短时间内验证，如果证明走错了路，当你埋头思考、总结经验时，你会感受到“墙倒众人推”的滋味。<br>当然，如果走对了路，那大家就会认为你有能力、优秀，不过也别飘，下次失败时，还是会“墙倒众人推”。</p>
+<p>面临这样的压力时，大家会想起什么？我只想送一句话，看透世界的残酷而依然埋头赶路的才是英雄。</p>
+<p>我说完了，看起来我说了很多，其实我什么也没有说，要相信，我说的是错的，有收获是你自己的。</p>
+<h2 id="附录：1-3-0-版本问题整理"><a href="#附录：1-3-0-版本问题整理" class="headerlink" title="附录：1.3.0 版本问题整理"></a>附录：1.3.0 版本问题整理</h2><h3 id="A-需求管理-1"><a href="#A-需求管理-1" class="headerlink" title="A. 需求管理"></a>A. 需求管理</h3><ol>
+<li><p><strong>需求文档质量问题</strong>：</p>
+<ul>
+<li>功能和目标描述不清，导致流程不合理和自相矛盾。</li>
+<li>需求文档应在开发介入前完成评审，确保与需求来源方达成一致。</li>
+<li>避免多个模块界面设计风格不一致，减少无意义功能和模块。</li>
+</ul>
+</li>
+<li><p><strong>需求变动频繁</strong>：</p>
+<ul>
+<li>需求变更频繁，尤其是在接近上线阶段。</li>
+<li>需要设立明确的版本需求临界点，及时沟通变更。</li>
+</ul>
+</li>
+</ol>
+<h3 id="B-开发过程-1"><a href="#B-开发过程-1" class="headerlink" title="B. 开发过程"></a>B. 开发过程</h3><ol>
+<li><p><strong>设计文档不全</strong>：</p>
+<ul>
+<li>缺少部分功能模块的设计文档。</li>
+<li>强化设计文档的完整性和规范性。</li>
+</ul>
+</li>
+<li><p><strong>设计不充分</strong>：</p>
+<ul>
+<li>安全性、性能、影响范围等方面考虑不足。</li>
+<li>加强设计评审，确保全面性和适应性。</li>
+</ul>
+</li>
+</ol>
+<h3 id="C-安装升级和联调-1"><a href="#C-安装升级和联调-1" class="headerlink" title="C. 安装升级和联调"></a>C. 安装升级和联调</h3><ol>
+<li><p><strong>安装升级问题</strong>：</p>
+<ul>
+<li>依赖性和升级兼容性问题。</li>
+<li>优化依赖管理和测试升级路径。</li>
+</ul>
+</li>
+<li><p><strong>联调协作不足</strong>：</p>
+<ul>
+<li>各层面协作问题，如项目经理、开发等。</li>
+<li>加强团队间沟通和协作流程。</li>
+</ul>
+</li>
+</ol>
+<h3 id="D-测试与部署-1"><a href="#D-测试与部署-1" class="headerlink" title="D. 测试与部署"></a>D. 测试与部署</h3><ol>
+<li><p><strong>测试介入时间</strong>：</p>
+<ul>
+<li>测试可能介入太晚。</li>
+<li>调整测试流程，确保及时介入和反馈。</li>
+</ul>
+</li>
+<li><p><strong>打包部署效率低</strong>：</p>
+<ul>
+<li>打包部署周期长，影响工作效率。</li>
+<li>提升打包部署环境，优化资源配置。</li>
+</ul>
+</li>
+</ol>
+<h3 id="E-技术支持与资源配置-1"><a href="#E-技术支持与资源配置-1" class="headerlink" title="E. 技术支持与资源配置"></a>E. 技术支持与资源配置</h3><ol>
+<li><p><strong>加强技术支持</strong>：</p>
+<ul>
+<li>提供更好的硬件资源，如磁盘、CPU、内存。</li>
+<li>确保低延迟高吞吐量的网络环境。</li>
+</ul>
+</li>
+<li><p><strong>CI&#x2F;CD实践指导</strong>：</p>
+<ul>
+<li>需要更有效的CI&#x2F;CD实践。</li>
+<li>项目经理和开发团队应协调人力和资源，确保流程的顺利实施。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>以上内容梳理了1.3.0版本在需求管理、开发过程、安装升级和联调、测试与部署、技术支持与资源配置方面遇到的主要问题，并提出了相应的改进措施。请根据实际情况进一步调整和完善这些内容。</p>
+<pre><code class="tex">1. **团队的主要成就**：在过去的一段时间里，团队取得了哪些显著成果？
+2. **挑战与困难**：团队在工作中遇到了哪些难题，以及是如何克服这些挑战的？
+3. **个别成员表现**：是否有特别需要表扬或提及的团队成员？
+4. **未来规划**：团队接下来有哪些计划或目标？
+5. **感谢与鼓励**：对团队的感谢之词或鼓励的话语。
+6. **其他补充信息**：任何您认为重要的信息，比如团队的特殊事件、重要里程碑等。
+
+
+
+团队的主要成就：
+
+1. 按照需求任务，完成 总控、引擎、插件 1.3.0 版本需求的研发
+2. 规范了部分研发流程，并以微盘文档的形式以供团队学习，部分流程开展了培训。
+
+挑战与困难：
+
+见附录
+
+个别成员表现：
+
+1. 吴松达、贺泽： 安排的任务反馈不及时、请假没有按规定、考勤不好、情绪不稳定、日报周报等常常遗漏。但是承担的任务很多，范围很广，平时积极活泼，常常提出问题，思考解决方案。对应了人类珍贵的四种品质：爱思考 坚韧 社会性 有好奇心。
+2. 韩志凯、范众星：沟通比较充分、稳重，负责的模块不出纰漏，善战者无赫赫之功，维护好一个模块将日常的工作做到极致也是非常值得肯定的。
+
+未来规划：
+
+1. 需要建立更规范的规章制度和流程规范。规章制度流程规范是组织内部管理和操作的核心组成部分，要确保有效性、透明性和适应性：需要做到
+
+   **明确性（Clarity）**：规章制度应该清晰明确，易于理解。避免使用模糊不清的语言，确保所有相关人员都能准确理解其含义和应用方式。
+
+   **一致性（Consistency）**：制度和流程应该在整个组织内保持一致。这有助于减少混淆，确保所有部门和员工按照相同的标准执行。
+
+   **可访问性（Accessibility）**：员工应能轻松访问到相关的规章制度文档。这通常意味着将它们存放在中央、容易访问的位置，如内部网络或手册。
+
+   **适用性（Applicability）**：制度应与组织的运营、文化和目标紧密相连。它们应该针对组织的具体情况设计，而不是简单地复制其他组织的模式。
+
+   **合法性（Legality）**：所有规章制度必须遵守相关的法律和行业标准。它们不应与任何法律条文相冲突。
+
+   **灵活性（Flexibility）**：制度应该有一定的灵活性，以适应不断变化的环境和需求。应当定期审查并根据需要进行调整。
+
+   **可执行性（Enforceability）**：应该有明确的执行机制。员工需要知道，对于不遵守规章制度将会有何种后果。
+
+   **透明性（Transparency）**：制定和修改规章制度的过程应公开透明，以便员工理解制度的目的和重要性。
+
+   **目标导向（Goal-oriented）**：流程和规章应支持组织的总体目标和战略。
+
+   **评估和反馈（Evaluation and Feedback）**：应定期评估制度的有效性，并对员工的反馈做出响应
+
+   
+
+   原因：
+
+- **团队规模增长时**：随着团队规模的增长，原有的非正式或口头沟通方式可能不再有效。规章制度可以帮助确保信息的一致性和准确性，特别是在团队成员之间需要协作的情况下。
+- **面临复杂项目时**：当项目涉及多个部门、多个阶段或高度复杂性时，明确的流程规范有助于保持项目的顺利进行，并确保各个环节协调一致。
+- **引入新技术或方法时**：当团队采用新的技术、工具或开发方法（如敏捷开发）时，建立相关的规章制度可以帮助团队成员理解和适应这些新变化。
+- **遵守行业标准和法律要求时**：在某些行业中，遵守特定的法律法规和标准是必须的。例如，在医疗、金融或政府项目中，规章制度和流程规范可以帮助确保合规。
+- **提高效率和质量时**：为了提高工作效率和产品质量，团队可能需要引入标准化的工作流程和质量控制措施。
+- **面对频繁的变更和迭代时**：在快速变化的市场环境中，规章制度可以帮助团队快速适应变化，同时保持工作的连贯性和效率。
+- **实现知识共享和传承时**：随着团队成员的更迭，重要知识和经验的传承变得尤为重要。规章制度可以帮助新成员快速融入团队，理解工作流程和文化。
+- **远程工作或分布式团队时**：对于远程工作或地理位置分散的团队，明确的规章制度和流程规范对于保持团队协调和高效合作至关重要。
+
+
+
+2. 更细致的分工
+
+研发岗位的组长和组员强调对于技术方面更多的参与，关注代码本身。
+
+对于组长以上，应该做到对规章制度和流程规范，项目管理层面的把控，注意合理、可行、公平
+
+3. 完成 1.4.0 版本需求
+4. 优化端口策略
+
+- 复用
+
+- 尽量连续
+
+  
+
+5. 拥抱信创
+
+- Envoy Polycube waf 等编译
+- MySQL5.7 MongoDB HyperScan
+- so 依赖库问题
+- 组件依赖汇编
+
+
+
+## 附录
+
+### 1.3.0 版本问题整理
+
+### 需求
+
+#### 需求文档质量差
+
+各个模块完成的功能和目标没有梳理清楚，导致流程不合理、自相矛盾的情况屡屡发生。
+
+需求文档应该在开发介入前评审完成，而不是让开发和需求同时进行
+
+产品经理应该和需求来源方达成一致后
+
+多个模块、界面设计风格不一致
+
+存在很多无意义的功能、模块
+
+设计功能、模块时未考虑对系统性能影响，导致影响越来越大，最终系统中部分的业务性能出现瓶颈，导致需要开发设计重构，需求重做。至今尚未解决性能问题。
+
+需求文档没有经过拆分，一个版本一个需求文档，找到某一个功能的需求非常困难
+
+#### 需求变动频繁、随意
+
+需求变动频繁，临近上线还经常看到群里有需求变更，甚至还添加新需求，版本需求临界点不清晰
+
+### 开发
+
+#### 设计文档不全
+
+这版本之前开发的功能模块开发的设计文档都是没有的，相当一部分人没有补齐
+
+#### 设计不充分
+
+有些设计文档也有考虑不周的情况，安全性、性能、影响范围、测试建议、自测实现思路、兼容性（不同组件、不同版本）
+
+#### 安装升级问题
+
+##### 安装升级问题
+
+依赖
+
+升级兼容性
+
+#### 联调
+
+从各个层面，如何协作才能更好完成
+
+##### 主管
+
+#####  项目经理
+
+##### 大组长
+
+##### 开发
+
+### 测试
+
+#### 测试介入时间是否及时
+
+测试是否介入太晚？有时候看到测试提的bug是几周前就已经提测的需求了，这些问题按道理应该是需要提前发现提出的
+
+### 打包部署
+
+#### 打包部署一次周期很长
+
+##### 现象
+
+打包部署一次时间很长，这个现象已经持续很久，急需解决。
+
+超融合机器性能不好，部署周期过长，从打包到升级耗时往往超过1小时，期间如果出现包有问题的情况可能一个上午就过去了，甚至会出现几天没有一个有用包的情况出现
+
+##### 解决
+
+###### 技术支持
+
+更强大的技术支持，如打包机器用更好的磁盘、CPU、更多内存，集测环境机器网络延迟和吞吐量要满足低延迟高吞吐量要求。
+
+###### 架构、研发经理
+
+CI/CD 实践指导
+
+###### 项目经理
+
+指定并协调人力、时间资源
+
+###### 开发
+
+- 开发人员跟打包部署测试人员要做充分沟通（提交新的代码）
+- 在某一功能新开发时就充分考虑功能的扩展性、兼容性，在后续开发时首先在自己组件层面做好数据兼容，逻辑兼容，涉及多个组件交互的模块尽量解耦，尽早识别风险。如果遇到绕不过，需要其他组件配合实现的，在打包时跟相关开发和打包部署测试人员充分沟通后走流程。
+- 数据提供方在设计完成后优先考虑数据结构交互部分的实现，如将 接口请求响应、API文档部分完成。
+
+
+
+## 
+
+
+
+
+
+
+在这次版本发布之际，我首先要向团队中的同事们表达我的歉意。回顾这个版本的开发过程，我认识到自己在领导Go二组和可视化小组时出现了一些失误。特别是在风险管理方面，我没有及时收集并上报关键信息，导致问题的严重性没有被上级及时认识到，给团队带来了不必要的压力和挑战。
+
+我要特别向可视化组的向阳、院红、琼婷、育孟，以及引擎安装的贺泽道歉。我的管理和技术上的不足影响了他们的绩效，尤其是在他们向我报告风险并提出解决方案时，我未能采取有效措施。他们在问题发生后积极参与解决，为团队做出了巨大贡献，是我学习的榜样。
+
+同时，我也要向向阳致以深深的歉意。他加入团队后，不仅帮助我领导团队，还在可视化组独立后承担了重担，我相信他会成功完成项目。
+
+对于C++组、测试组和项目经理们，我也表达我的歉意。在规范开发流程的过程中，我们之间发生了一些冲突，我对此感到后悔。我认识到这不是任何个人的过错，而是整个流程中的挑战。
+
+我还需要向技术部的李福林、王总道歉。由于我的不足，技术部在客户那里面临了挑战，给团队增加了困难。
+
+最后，我要向老板道歉。我没能完全达到您的期望，但请相信，团队中每个人都有出色的潜力和能力。作为领导者，我将承担主要的责任。
+
+在此，我也要感谢那些在困难时刻仍然坚守岗位的团队成员，如志凯、立成、慧军、松达，他们的努力保持了项目的稳定。同时感谢思华、宋燚、周宇、福林、王总、桂华、刘总的支持和帮助。
+
+“海阔凭鱼跃，天高任鸟飞。” 我期待我们所有人在石犀这片蓝天中自由翱翔、不断进取。
+
+
+
+在这个版本发布后，我想先向一些项目中的同志道歉。原因是这样的，在这个版本开始时，我接手的Go二组和可视化小组是包含关系。桂华将小组责任交与我，但是我并未将其按质按量完成，在风险管控上，未让相关人员收集所有信息导致不能早早让上级意识到这是个严重的问题，以至于暴露出的问题让老板都惊讶。
+
+我深切认识到，这确确实实是我的责任。在此，先是可视化组成员：向阳、院红、琼婷、育孟等，再是引擎安装的贺泽，第一，他们因为我能力上的不足导致在绩效上非常受影响。第二，重点道歉院红、琼婷、贺泽，在发现了风险后，他们向我提出过这些问题和详细信息，但是我没有实施有益的措施帮助。而后，他们非常积极的帮助补救形势而努力工作，他们是我学习的榜样。下面也要向向阳道歉：向阳进入团队后，一直为团队摆脱困境协助我带领团队，后面可视化独立成一个组去收拾我留下的烂摊子，我相信他会把项目完成好。第三，向 C++ 组成员、测试组和项目经理们道歉，在这个版本进行中，还有一件大事同步进行，就是规范项目各种开发流程，这期间很多次跟很多人发生冲突，可能表现为语言上冲突很严重，有时说完立刻就觉得很后悔，这可能并不是任何人的错，不应该有人为此承担责任的。第四，向技术部李福林、王总道歉，消耗了许多技术部资源但是我这边交付的需求不达标导致他们在客户那边很难维持关系，给我们技术部团队添了太多麻烦。第五，向老板道歉，我觉得我辜负了老板对我的信任，但是我想澄清的是，团队的表现不佳，并不代表团队中每个人都不好，最大的原因一定是带头实施的人员没做好。最后，我想郑重向我的上级道歉，虽然是我在道歉，但是最终犯错的结果、责任还是落在上级头上。
+
+道歉后，我想感谢一些人，除了刚刚提到的院红、琼婷、贺泽、向阳外，还有一些团队成员，志凯、立成、慧军、松达，他们没有受到我的影响，为维持总控项目的基础稳定进行了出色的工作，是团队中最可敬的人。还有思华、宋燚、周宇、福林、王总、桂华、刘总，他们给予我许多信息上、资源上、时间上非常多的帮助。
+
+海阔凭鱼跃，天高任鸟飞。希望大家在石犀这片蓝天中自由翱翔、一往无前。
+
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%80%BB%E7%BB%93/" style="color: #ffa2c4">总结</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/23/mdstorage/project/sr/%E9%83%A8%E9%97%A8%E4%BC%9A%E8%AE%AE%E6%80%BB%E7%BB%93/" class="go-post">阅读全文</a>
 </div>
 
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+<div class="post">
+    <a href="/2023/11/23/mdstorage/domain/ai/AI%E9%98%85%E8%AF%BB%E6%96%87%E7%AB%A0%E6%A8%A1%E6%9D%BF/">
+        <h2 class="post-title">AI阅读文章模板</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/23
+        </span>
+        
+        
     </div>
-  
-  
-  
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>在技术和管理领域，文章类型可以多样化，以下是一些常见的类型：</p>
+<ol>
+<li><strong>观点文章</strong>：分享个人观点、经验和见解。</li>
+<li><strong>教程</strong>：提供技能或操作的具体指导。</li>
+<li><strong>案例研究</strong>：深入分析特定项目或情况。</li>
+<li><strong>技术博客</strong>：分享技术知识、经验或趋势。</li>
+<li><strong>行业报告</strong>：提供行业分析、数据和预测。</li>
+<li><strong>研究论文</strong>：呈现科学研究和实验结果。</li>
+<li><strong>访谈</strong>：专家或业内人士的问答形式的内容。</li>
+<li><strong>新闻报道</strong>：报导最新的行业动态和事件。</li>
+<li><strong>白皮书</strong>：提供深入的技术或政策分析。</li>
+<li><strong>产品评测</strong>：评估和比较技术产品或服务。</li>
+<li><strong>最佳实践分享</strong>：介绍行业内的成功案例和策略。</li>
+<li><strong>用户手册或指南</strong>：为特定产品或服务提供详细操作指导。</li>
+<li><strong>行业评论</strong>：分析和评价行业趋势或事件。</li>
+<li><strong>技术架构文档</strong>：这种文档通常详细描述一个系统的技术架构，包括使用的技术、数据流程、组件交互方式等。它的目的是为了让技术团队理解和维护系统架构。</li>
+<li><strong>系统分析报告</strong>：这类文档深入分析现有系统的性能和设计，识别潜在问题，并提出改进方案。它通常包含详细的技术分析和重构建议。</li>
+<li><strong>技术教程</strong></li>
+<li><strong>项目规划与管理</strong></li>
+</ol>
+<h3 id="观点文章"><a href="#观点文章" class="headerlink" title="观点文章"></a>观点文章</h3><h4 id="归纳总结模板"><a href="#归纳总结模板" class="headerlink" title="归纳总结模板"></a>归纳总结模板</h4><p>创建一个归纳总结文章内容的文档模板时，可以遵循以下结构：</p>
+<p><strong>文章概述</strong></p>
+<ul>
+<li>文章标题</li>
+<li>作者</li>
+<li>发布日期</li>
+<li>来源&#x2F;出版物</li>
+<li>文章主题简介</li>
+</ul>
+<p><strong>主要观点</strong></p>
+<ul>
+<li>观点一：[详述]</li>
+<li>观点二：[详述]</li>
+<li>…</li>
+</ul>
+<p><strong>支持论据</strong></p>
+<ul>
+<li>观点一的支持论据：[详述]</li>
+<li>观点二的支持论据：[详述]</li>
+<li>…</li>
+</ul>
+<p><strong>逻辑连贯性分析</strong></p>
+<ul>
+<li>论点间的逻辑关系</li>
+<li>文章整体结构分析</li>
+</ul>
+<p><strong>不同视角考量</strong></p>
+<ul>
+<li>其他可能的观点或反驳</li>
+<li>行业或领域内不同专家的意见</li>
+</ul>
+<p><strong>结论与实践意义</strong></p>
+<ul>
+<li>作者的主要结论</li>
+<li>对行业&#x2F;读者的实际意义</li>
+</ul>
+<p><strong>个人观点与反思</strong></p>
+<ul>
+<li>个人对文章的看法</li>
+<li>文章对个人或工作的启发</li>
+</ul>
+<p>这个模板旨在帮助深入分析和归纳文章的主要内容，同时也鼓励批判性思考和个人反思。</p>
+<p>提示词</p>
+<pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章链接，分析后以下面的观点文章范文格式输出内容，必要时引入类比，可视化，实例。
+
+**文章概述**
+- 文章标题
+- 作者
+- 发布日期
+- 链接地址
+- 文章主题简介
+
+**主要观点**
+- 观点一：[详述]
+- 观点二：[详述]
+- ...
+
+**支持论据**
+- 观点一的支持论据：[详述]
+- 观点二的支持论据：[详述]
+- ...
+
+**逻辑连贯性分析**
+- 论点间的逻辑关系
+- 文章整体结构分析
+
+**不同视角考量**
+- 其他可能的观点或反驳
+- 行业或领域内不同专家的意见
+
+**结论与实践意义**
+- 作者的主要结论
+- 对行业/读者的实际意义
+
+**个人观点与反思**
+- 个人对文章的看法
+- 文章对个人或工作的启发
+</code></pre>
+<h3 id="技术架构文档"><a href="#技术架构文档" class="headerlink" title="技术架构文档"></a>技术架构文档</h3><p>基于上述对《可视化技术架构分析设计》文章内容的分析，一个合适的文档模板可以包含以下几个部分：</p>
+<h3 id="1-文档标题"><a href="#1-文档标题" class="headerlink" title="1. 文档标题"></a>1. 文档标题</h3><ul>
+<li>文档名称</li>
+<li>编写日期</li>
+<li>作者&#x2F;团队名称</li>
+</ul>
+<h3 id="2-摘要"><a href="#2-摘要" class="headerlink" title="2. 摘要"></a>2. 摘要</h3><ul>
+<li>简要概述文档目的和主要内容</li>
+</ul>
+<h3 id="3-系统概述"><a href="#3-系统概述" class="headerlink" title="3. 系统概述"></a>3. 系统概述</h3><ul>
+<li>系统目标和背景</li>
+<li>主要功能和用户</li>
+</ul>
+<h3 id="4-数据流程和架构"><a href="#4-数据流程和架构" class="headerlink" title="4. 数据流程和架构"></a>4. 数据流程和架构</h3><ul>
+<li>数据收集和输入</li>
+<li>数据处理流程（清洗、转换、汇总）</li>
+<li>数据存储解决方案</li>
+<li>数据展示和可视化方法</li>
+</ul>
+<h3 id="5-性能和效率分析"><a href="#5-性能和效率分析" class="headerlink" title="5. 性能和效率分析"></a>5. 性能和效率分析</h3><ul>
+<li>系统当前性能评估（瓶颈识别）</li>
+<li>效率问题和挑战</li>
+<li>可能的改进方案</li>
+</ul>
+<h3 id="6-技术堆栈和工具"><a href="#6-技术堆栈和工具" class="headerlink" title="6. 技术堆栈和工具"></a>6. 技术堆栈和工具</h3><ul>
+<li>使用的技术和工具</li>
+<li>技术选型的原因和优势</li>
+<li>技术限制和潜在风险</li>
+</ul>
+<h3 id="7-安全性和可扩展性"><a href="#7-安全性和可扩展性" class="headerlink" title="7. 安全性和可扩展性"></a>7. 安全性和可扩展性</h3><ul>
+<li>当前的安全措施</li>
+<li>数据保护策略</li>
+<li>系统的可扩展性和未来发展规划</li>
+</ul>
+<h3 id="8-用户体验和界面设计"><a href="#8-用户体验和界面设计" class="headerlink" title="8. 用户体验和界面设计"></a>8. 用户体验和界面设计</h3><ul>
+<li>界面设计概述</li>
+<li>可视化效果和用户交互</li>
+<li>用户反馈和使用情况分析</li>
+</ul>
+<h3 id="9-问题和挑战"><a href="#9-问题和挑战" class="headerlink" title="9. 问题和挑战"></a>9. 问题和挑战</h3><ul>
+<li>当前面临的主要问题</li>
+<li>潜在的技术或业务挑战</li>
+</ul>
+<h3 id="10-改进方案和发展规划"><a href="#10-改进方案和发展规划" class="headerlink" title="10. 改进方案和发展规划"></a>10. 改进方案和发展规划</h3><ul>
+<li>针对识别问题的改进措施</li>
+<li>短期和长期的发展规划</li>
+<li>预期的成果和影响</li>
+</ul>
+<h3 id="11-结论"><a href="#11-结论" class="headerlink" title="11. 结论"></a>11. 结论</h3><ul>
+<li>对整个项目的总结和展望</li>
+</ul>
+<h3 id="12-附录"><a href="#12-附录" class="headerlink" title="12. 附录"></a>12. 附录</h3><ul>
+<li>参考文献</li>
+<li>图表和额外数据</li>
+</ul>
+<h3 id="13-审核和批准"><a href="#13-审核和批准" class="headerlink" title="13. 审核和批准"></a>13. 审核和批准</h3><ul>
+<li>文档的审阅人员</li>
+<li>批准日期和签名</li>
+</ul>
+<p>提示词</p>
+<pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面的技术架构文档范文格式输出内容，必要时引入类比，可视化，实例。
+
+### 1. 文档标题
+- 文档名称
+- 编写日期
+- 作者/团队名称
+- 链接地址
+
+### 2. 摘要
+- 简要概述文档目的和主要内容
+
+### 3. 系统概述
+- 系统目标和背景
+- 主要功能和用户
+
+### 4. 数据流程和架构
+- 数据收集和输入
+- 数据处理流程（清洗、转换、汇总）
+- 数据存储解决方案
+- 数据展示和可视化方法
+
+### 5. 性能和效率分析
+- 系统当前性能评估（瓶颈识别）
+- 效率问题和挑战
+- 可能的改进方案
+
+### 6. 技术堆栈和工具
+- 使用的技术和工具
+- 技术选型的原因和优势
+- 技术限制和潜在风险
+
+### 7. 安全性和可扩展性
+- 当前的安全措施
+- 数据保护策略
+- 系统的可扩展性和未来发展规划
+
+### 8. 用户体验和界面设计
+- 界面设计概述
+- 可视化效果和用户交互
+- 用户反馈和使用情况分析
+
+### 9. 问题和挑战
+- 当前面临的主要问题
+- 潜在的技术或业务挑战
+
+### 10. 改进方案和发展规划
+- 针对识别问题的改进措施
+- 短期和长期的发展规划
+- 预期的成果和影响
+
+### 11. 结论
+- 对整个项目的总结和展望
+
+### 12. 附录
+- 参考文献
+- 图表和额外数据
+
+### 13. 审核和批准
+- 文档的审阅人员
+- 批准日期和签名
+</code></pre>
+<h3 id="技术教程"><a href="#技术教程" class="headerlink" title="技术教程"></a>技术教程</h3><p>为了归纳和总结技术教程类文章的内容，你可以使用以下模板：</p>
+<p><strong>文章概述</strong></p>
+<ul>
+<li>标题：文章的标题</li>
+<li>作者：编写教程的作者</li>
+<li>发布日期：文章的发布时间</li>
+<li>摘要：简短描述文章的主要内容和目的</li>
+</ul>
+<p><strong>技术背景与原理</strong></p>
+<ul>
+<li>介绍所涉及的技术背景</li>
+<li>解释文章中使用的关键技术或概念</li>
+</ul>
+<p><strong>详细步骤</strong></p>
+<ul>
+<li>逐步指南：清晰列出完成任务所需的步骤</li>
+<li>截图和示例：提供截图或代码示例以辅助解释</li>
+</ul>
+<p><strong>问题解决与常见问题</strong></p>
+<ul>
+<li>讨论可能遇到的问题及其解决方案</li>
+<li>列出常见问题和解答</li>
+</ul>
+<p><strong>附加资源</strong></p>
+<ul>
+<li>提供进一步阅读的链接或推荐资源</li>
+<li>相关工具或软件的链接</li>
+</ul>
+<p><strong>总结</strong></p>
+<ul>
+<li>总结文章的主要教训或结论</li>
+<li>提供实践建议或后续步骤</li>
+</ul>
+<p>这种模板有助于确保你的总结既全面又有组织，易于理解。</p>
+<pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。
+
+**文章概述**
+- 标题：文章的标题
+- 作者：编写教程的作者
+- 发布日期：文章的发布时间
+- 链接地址：文章链接或其获取方式
+- 摘要：简短描述文章的主要内容和目的
+
+**技术背景与原理**
+- 介绍所涉及的技术背景
+- 解释文章中使用的关键技术或概念
+
+**详细步骤**
+- 逐步指南：清晰列出完成任务所需的步骤
+- 截图和示例：提供截图或代码示例以辅助解释
+
+**问题解决与常见问题**
+- 讨论可能遇到的问题及其解决方案
+- 列出常见问题和解答
+
+**附加资源**
+- 提供进一步阅读的链接或推荐资源
+- 相关工具或软件的链接
+
+**总结**
+- 总结文章的主要教训或结论
+- 提供实践建议或后续步骤
+</code></pre>
+<h3 id="行业报告"><a href="#行业报告" class="headerlink" title="行业报告"></a>行业报告</h3><pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。
+---
+
+**文档标题**: [企业级产品研发管理全流程分析报告]
+
+**作者**: [作者姓名]
+
+**日期**: [撰写日期]
+
+---
+
+### 一、引言
+- **背景简介**: 简要介绍企业产品研发管理的重要性和背景。
+- **文章目的**: 阐述本文档的目的和预期读者。
+
+---
+
+### 二、流程和体系结构
+- **流程概述**: 描述产品研发管理的整体流程。
+- **体系结构**: 详细介绍产品研发管理的体系结构，包括关键组成部分和它们之间的关系。
+
+---
+
+### 三、战略和市场管理
+- **产品战略**: 分析文章中提到的产品战略制定方法和案例。
+- **市场管理**: 探讨市场管理的实践和策略，以及其对产品成功的影响。
+
+---
+
+### 四、技术和产品开发
+- **技术创新**: 讨论技术开发的趋势、挑战和机遇。
+- **产品开发流程**: 分析产品开发的关键阶段和最佳实践。
+
+---
+
+### 五、案例研究
+- **成功案例**: 描述一至两个相关行业的成功案例，分析其成功的关键因素。
+- **教训和启示**: 提取案例中的关键教训和对未来的启示。
+
+---
+
+### 六、挑战与机遇
+- **当前挑战**: 讨论当前面临的主要挑战和难题。
+- **未来机遇**: 探索未来可能的发展机遇和趋势。
+
+---
+
+### 七、结论
+- **主要发现**: 总结文章的主要发现和观点。
+- **建议和策略**: 提出基于分析的建议和策略。
+
+---
+
+### 八、参考文献
+- **引用来源**: 列出所有参考的文献和资源。
+
+---
+
+### 九、附录
+- **额外信息**: 如有必要，提供额外的图表、数据或详细信息。
+</code></pre>
+<h3 id="项目规划和管理"><a href="#项目规划和管理" class="headerlink" title="项目规划和管理"></a>项目规划和管理</h3><pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。
+
+**项目概述**
+- 项目名称
+- 背景和目标
+- 预期成果
+
+**资源规划**
+- 人力资源需求
+- 物资和财务预算
+- 关键资源分配
+
+**时间线与里程碑**
+- 总体时间表
+- 关键里程碑和截止日期
+
+**风险评估**
+- 潜在风险列表
+- 风险应对策略
+
+**团队组织与角色**
+- 团队结构图
+- 成员职责和角色
+
+**实施策略**
+- 执行步骤
+- 方法和工具
+
+**监控与评估机制**
+- 进度监控计划
+- 评估标准和方法
+
+**案例研究/实例**
+- 相关案例分析
+- 学习点和启示
+
+**附录**
+- 参考文献
+- 相关文档链接
+
+**总结**
+- 项目的关键要点
+- 后续步骤和建议
+</code></pre>
+<h3 id="技术博客"><a href="#技术博客" class="headerlink" title="技术博客"></a>技术博客</h3><pre><code class="tex">你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章/链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。
+
+**概述**
+- 文章的简短介绍
+- 主题和目的概述
+
+**算法原理**
+- 相关技术的涉及的算法历史演进概述
+- 适用场景概述
+
+**详细内容**
+- 核心技术概念的详细解释
+- 逐步指南或操作步骤
+
+**实际示例**
+- 代码示例或案例研究
+- 实际应用场景描述
+
+**最佳实践和建议**
+- 实用技巧和技术最佳实践
+- 性能优化建议
+
+**结论**
+- 文章的主要观点总结
+- 对读者的最后建议
+
+**参考资料**
+- 相关文献或资源链接
+</code></pre>
+<h3 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h3><pre><code class="text">### 文章内容归纳总结模板
+
+#### 文章标题：
+- [文章标题]
+
+#### 领域：
+- 软件架构/IT系统设计
+
+#### 主题：
+- 康威定律与组织结构对软件架构的影响
+
+#### 主要观点：
+1. **康威定律简介**：系统的设计结构反映了组织的沟通结构。
+2. **组织与架构的关系**：通过优化沟通方式影响架构设计。
+3. **微服务与单体架构**：架构演进的实例与实践经验。
+4. **反馈与迭代**：通过反馈回路不断优化架构。
+
+#### 关注点：
+- 组织结构如何影响架构决策
+- 实践中的成功案例和教训
+- 架构演进中的关键挑战
+
+#### 类比与实例：
+- 使用实际组织与系统结构的案例，类比公司不同部门间的沟通如何影响项目设计。
+
+#### 总结：
+通过理解康威定律，架构师可以更好地设计符合组织特点的架构，并推动架构和组织结构的同步优化。
+</code></pre>
+<h2 id="提示词"><a href="#提示词" class="headerlink" title="提示词"></a>提示词</h2><p>提示词 1：</p>
+<p>你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章&#x2F;链接，告诉我这篇文章属于什么主题类型的文章，是什么领域的，分析这类文章重点要关注哪些部分。必要时引入类比，可视化，实例。</p>
+<p>提示词 2：</p>
+<p>你是一个软件开发领域的专家并十分擅长文章写作和阅读归纳总结，读取给出的文章&#x2F;链接，分析后以下面范文输出内容，必要时引入类比，可视化，实例。</p>
+<p>提示词 3：</p>
+<p>参考上述的重点，帮我输出归纳总结文章内容需要输出的文档模板。</p>
+<p>提示词 4：</p>
+<p>告诉我xxx这种主题类型的文章，分析在编写或阅读这类文章重点要关注哪些部分。必要时引入类比，可视化，实例</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/" style="color: #03a9f4">知识管理</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E9%98%85%E8%AF%BB/" style="color: #ffa2c4">阅读</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/AI/" style="color: #00bcd4">AI</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/23/mdstorage/domain/ai/AI%E9%98%85%E8%AF%BB%E6%96%87%E7%AB%A0%E6%A8%A1%E6%9D%BF/" class="go-post">阅读全文</a>
 </div>
 
-  </footer>
+<div class="post">
+    <a href="/2023/11/23/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%AE%A1%E7%90%86%E7%9A%84%E7%9F%9B%E7%9B%BE/">
+        <h2 class="post-title">技术与管理的矛盾.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/23
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p><strong>文章概述</strong></p>
+<ul>
+<li><strong>文章标题</strong>: 技术和管理之间不可调和的矛盾</li>
+<li><strong>作者</strong>: 掘金泥石流</li>
+<li><strong>发布日期</strong>: 2021-07-02</li>
+<li><strong>来源&#x2F;出版物</strong>: 掘金网站</li>
+<li><strong>链接</strong>：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6980210389531230222">https://juejin.cn/post/6980210389531230222</a></li>
+<li><strong>文章主题简介</strong>: 文章探讨了技术和管理在职业发展中的矛盾，尤其是在软件开发领域。作者分析了技术和管理目标的根本差异，以及这种差异如何影响技术人员的职业生涯发展。</li>
+</ul>
+<p><strong>主要观点</strong></p>
+<ul>
+<li><strong>观点一</strong>: 技术和管理目标的根本差异。作者指出，尽管技术和管理都旨在解决人的问题，但它们的目标完全不同。管理旨在通过培养更强的个体来增强团队，而技术则通过简化和自动化过程来减少对高技能人员的依赖。</li>
+<li><strong>观点二</strong>: 技术发展对中高级工程师的影响。随着技术的发展，如LowCode平台的兴起，中高级工程师面临着被边缘化的风险。这些平台降低了开发门槛，但同时也限制了工程师的成长空间。</li>
+</ul>
+<p><strong>支持论据</strong></p>
+<ul>
+<li><strong>观点一的支持论据</strong>: 文章通过实际例子，如大厂工作环境中对技术追求和业务支持的要求，展示了管理和技术目标的冲突。</li>
+<li><strong>观点二的支持论据</strong>: 作者提到LowCode平台的使用导致研发人员的角色从创造者转变为操作者，这减少了他们的技术成长机会，从而支持了观点二。</li>
+</ul>
+<p><strong>逻辑连贯性分析</strong></p>
+<ul>
+<li><strong>论点间的逻辑关系</strong>: 文章首先阐述了技术和管理目标的差异，然后基于这种差异探讨了它们对职业发展的影响，特别是对中高级工程师的影响。这种逻辑流程清晰，论点相互支持。</li>
+<li><strong>文章整体结构分析</strong>: 文章结构合理，首先介绍了技术和管理的基本矛盾，然后深入探讨了这种矛盾如何影响技术人员的职业生涯，最后总结了对行业的影响。</li>
+</ul>
+<p><strong>不同视角考量</strong></p>
+<ul>
+<li><strong>其他可能的观点或反驳</strong>: 一些人可能认为技术和管理可以协调发展，认为技术人员可以同时具备强大的技术和管理能力。</li>
+<li><strong>行业或领域内不同专家的意见</strong>: 行业内的其他专家可能会强调技术和管理之间的平衡，或者提出不同的职业发展路径。</li>
+</ul>
+<p><strong>结论与实践意义</strong></p>
+<ul>
+<li><strong>作者的主要结论</strong>: 技术和管理在职业发展中存在根本的矛盾，这对技术人员的职业生涯产生重大影响。</li>
+<li><strong>对行业&#x2F;读者的实际意义</strong>: 对于技术人员而言，理解这种矛盾有助于更好地规划自己的职业生涯，对于行业来说，这提供了对未来技术人才需求和培养方式的洞见。</li>
+</ul>
+<p><strong>个人观点与反思</strong></p>
+<ul>
+<li><strong>个人对文章的看法</strong>: 文章提供了对技术和管理矛盾的深刻洞察，尤其是在软件开发领域。这种分析对于理解行业趋势和个人职业规划非常有价值。</li>
+<li><strong>文章对个人或工作的启发</strong>: 这篇文章强调了在职业规划时考虑技术和管理之间的平衡的重要性，这对于正在考虑未来职业道路的技术人员尤其重要。</li>
+</ul>
 
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86%E9%A2%86%E5%9F%9F/" style="color: #ff7d73">技术管理领域</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/23/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%8A%80%E6%9C%AF%E4%B8%8E%E7%AE%A1%E7%90%86%E7%9A%84%E7%9F%9B%E7%9B%BE/" class="go-post">阅读全文</a>
+</div>
 
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
+<div class="post">
+    <a href="/2023/11/22/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%80%E6%9C%AF%E5%92%8C%E7%AE%A1%E7%90%86%E6%80%BB%E4%BC%9A%E6%9C%89%E4%B8%8D%E5%8F%AF%E8%B0%83%E5%92%8C%E7%9A%84%E7%9F%9B%E7%9B%BE/">
+        <h2 class="post-title">为什么技术和管理总会有不可调和的矛盾.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/22
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>今日话题：为什么技术和管理总会有不可调和的矛盾？</p>
+<p>评论一：讲真，技术和管理之间的矛盾，这可是职场里的古老话题了。技术大牛们通常都是专注于代码和产品，梦想着创造下一个炫酷的科技革命。他们的世界里，代码就是诗，算法就是音乐。然而，当管理层出场的时候，事情就变味了。管理者们更关注的是预算、时间表和市场表现，他们的乐谱上写的是利润和成本。于是乎，一场关于理想与现实的拉锯战就此上演。</p>
+<p>评论二：技术人呐，天生就对“别人告诉我该做什么”有种天然的抗拒。他们热爱自由，追求创新。但管理者们往往要在更大的框架下考虑问题，这就需要规则和秩序。所以，当管理者们试图把技术牛人们的创意“装进盒子里”的时候，冲突就不可避免了。技术人看到的是一幅未完成的艺术品，而管理者看到的是一张还没画完就超出预算的画。</p>
+<p>最后，我想说的是，技术和管理之间的矛盾其实也是一种平衡的体现。创新需要自由，但实现创新又需要资源和规划。这两者之间的矛盾，如果处理得当，反而能激发出更多的创造力和效率。所以，关键是找到一个能让双方都能接受的平衡点，让技术的创新精神和管理的有序性相辅相成，共同推动公司的发展。毕竟，在这个瞬息万变的时代，既有梦想的翅膀，又有脚踏实地的力量，才能飞得更远。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E8%AF%9D%E9%A2%98/" style="color: #00a596">话题</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/22/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%80%E6%9C%AF%E5%92%8C%E7%AE%A1%E7%90%86%E6%80%BB%E4%BC%9A%E6%9C%89%E4%B8%8D%E5%8F%AF%E8%B0%83%E5%92%8C%E7%9A%84%E7%9F%9B%E7%9B%BE/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/22/mdstorage/project/sr/%E5%8D%8E%E4%B8%BA%E4%BA%91%E9%B2%B2%E9%B9%8F%E6%9C%BA%E5%99%A8%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E8%AE%B0%E5%BD%95/">
+        <h2 class="post-title">华为云鲲鹏机器系统信息记录.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/22
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>石犀总控系统在一台云主机上没装上，进行问题排查和分析。</p>
+<h4 id="主机信息"><a href="#主机信息" class="headerlink" title="主机信息"></a>主机信息</h4><p>CPU: Huawei Kunpeng…</p>
+<p>实例类型： A加速型kai1s</p>
+<p>当前规格：A加速型| kai1s.xlarge.1| 4vCPUs | 4GiB 1 HUAWEI Ascend 310</p>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231122143834854.png" alt="image-20231122143834854"></p>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20231122143932651.png" alt="image-20231122143932651"></p>
+<h4 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h4><pre><code class="bash">Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              16
+On-line CPU(s) list: 0-15
+Thread(s) per core:  1
+Core(s) per socket:  8
+Socket(s):           2
+NUMA node(s):        2
+Vendor ID:           0x48
+Model:               0
+Stepping:            0x1
+BogoMIPS:            200.00
+L1d cache:           64K
+L1i cache:           64K
+L2 cache:            512K
+L3 cache:            32768K
+NUMA node0 CPU(s):   0-7
+NUMA node1 CPU(s):   8-15
+Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp
+</code></pre>
+<pre><code class="bash"># dmidecode 3.1
+Getting SMBIOS data from sysfs.
+SMBIOS 3.0.0 present.
+Table at 0x23F770000.
+
+Handle 0x0100, DMI type 1, 27 bytes
+System Information
+        Manufacturer: OpenStack Foundation
+        Product Name: OpenStack Nova
+        Version: 13.2.1-20230609115315_4e0c600
+        Serial Number: cc7cdba8-401e-428d-837d-41e3336e2e19
+        UUID: CC7CDBA8-401E-428D-837D-41E3336E2E19
+        Wake-up Type: Power Switch
+        SKU Number: Not Specified
+        Family: Virtual Machine
+
+Handle 0x0300, DMI type 3, 22 bytes
+Chassis Information
+        Manufacturer: Not Specified
+        Type: Other
+        Lock: Not Present
+        Version: 1.0
+        Serial Number: Not Specified
+        Asset Tag: HUAWEICLOUD
+        Boot-up State: Safe
+        Power Supply State: Safe
+        Thermal State: Safe
+        Security Status: Unknown
+        OEM Information: 0x00000000
+        Height: Unspecified
+        Number Of Power Cords: Unspecified
+        Contained Elements: 0
+        SKU Number: Not Specified
+
+Handle 0x0400, DMI type 4, 48 bytes
+Processor Information
+        Socket Designation: CPU 0
+        Type: Central Processor
+        Family: Other
+        Manufacturer: QEMU
+        ID: 00 00 00 00 00 00 00 00
+        Version: 1.0
+        Voltage: Unknown
+        External Clock: Unknown
+        Max Speed: 2000 MHz
+        Current Speed: 2000 MHz
+        Status: Populated, Enabled
+        Upgrade: Other
+        L1 Cache Handle: Not Provided
+        L2 Cache Handle: Not Provided
+        L3 Cache Handle: Not Provided
+        Serial Number: Not Specified
+        Asset Tag: Not Specified
+        Part Number: Not Specified
+        Core Count: 8
+        Core Enabled: 8
+        Thread Count: 1
+        Characteristics: None
+
+Handle 0x0401, DMI type 4, 48 bytes
+Processor Information
+        Socket Designation: CPU 1
+        Type: Central Processor
+        Family: Other
+        Manufacturer: QEMU
+        ID: 00 00 00 00 00 00 00 00
+        Version: 1.0
+        Voltage: Unknown
+        External Clock: Unknown
+        Max Speed: 2000 MHz
+        Current Speed: 2000 MHz
+        Status: Populated, Enabled
+        Upgrade: Other
+        L1 Cache Handle: Not Provided
+        L2 Cache Handle: Not Provided
+        L3 Cache Handle: Not Provided
+        Serial Number: Not Specified
+        Asset Tag: Not Specified
+        Part Number: Not Specified
+        Core Count: 8
+        Core Enabled: 8
+        Thread Count: 1
+        Characteristics: None
+
+Handle 0x1000, DMI type 16, 23 bytes
+Physical Memory Array
+        Location: Other
+        Use: System Memory
+        Error Correction Type: Multi-bit ECC
+        Maximum Capacity: 16 GB
+        Error Information Handle: Not Provided
+        Number Of Devices: 1
+
+Handle 0x1100, DMI type 17, 40 bytes
+Memory Device
+        Array Handle: 0x1000
+        Error Information Handle: Not Provided
+        Total Width: Unknown
+        Data Width: Unknown
+        Size: 16384 MB
+        Form Factor: DIMM
+        Set: None
+        Locator: DIMM 0
+        Bank Locator: Not Specified
+        Type: RAM
+        Type Detail: Other
+        Speed: Unknown
+        Manufacturer: QEMU
+        Serial Number: Not Specified
+        Asset Tag: Not Specified
+        Part Number: Not Specified
+        Rank: Unknown
+        Configured Clock Speed: Unknown
+        Minimum Voltage: Unknown
+        Maximum Voltage: Unknown
+        Configured Voltage: Unknown
+
+Handle 0x2000, DMI type 32, 11 bytes
+System Boot Information
+        Status: No errors detected
+
+Handle 0x0000, DMI type 0, 26 bytes
+BIOS Information
+        Vendor: EFI Development Kit II / OVMF
+        Version: 0.0.0
+        Release Date: 02/06/2015
+        Address: 0xE8000
+        Runtime Size: 96 kB
+        ROM Size: 64 kB
+        Characteristics:
+                BIOS characteristics not supported
+                Targeted content distribution is supported
+                UEFI is supported
+                System is a virtual machine
+        BIOS Revision: 0.0
+
+Handle 0xFEFF, DMI type 127, 4 bytes
+</code></pre>
+<pre><code class="bash">processor        : 15
+BogoMIPS        : 200.00
+Features        : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp
+CPU implementer        : 0x48
+CPU architecture: 8
+CPU variant        : 0x1
+CPU part        : 0xd01
+CPU revision        : 0
+</code></pre>
+<pre><code class="bash">root@ecs-9dfc:~# lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+vda    252:0    0  100G  0 disk
+├─vda1 252:1    0  512M  0 part /boot/efi
+└─vda2 252:2    0 99.5G  0 part /
+root@ecs-9dfc:~# lspci
+00:00.0 Host bridge: Red Hat, Inc. QEMU PCIe Host bridge
+00:01.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.5 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.6 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:01.7 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.5 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.6 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:02.7 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.5 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.6 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:03.7 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:04.0 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:04.1 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:04.2 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:04.3 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+00:04.4 PCI bridge: Red Hat, Inc. QEMU PCIe Root port
+01:00.0 PCI bridge: Red Hat, Inc. Device 000e
+02:01.0 USB controller: Intel Corporation 82801DB/DBM (ICH4/ICH4-M) USB2 EHCI Controller (rev 10)
+02:02.0 Unclassified device [00ff]: Red Hat, Inc. Virtio memory balloon
+02:03.0 Display controller: Red Hat, Inc. Virtio GPU (rev 01)
+03:00.0 Ethernet controller: Red Hat, Inc. Virtio network device (rev 01)
+04:00.0 SCSI storage controller: Red Hat, Inc. Virtio block device (rev 01)
+05:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)
+06:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)
+07:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)
+08:00.0 Processing accelerators: Huawei Technologies Co., Ltd. Device d100 (rev 20)
+</code></pre>
+<pre><code class="bash">root@ecs-9dfc:~# fdisk -l
+Disk /dev/vda: 100 GiB, 107374182400 bytes, 209715200 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 1AAC48CB-BE7A-495D-8BC2-EAECBD2B9071
+
+Device       Start       End   Sectors  Size Type
+/dev/vda1     2048   1050623   1048576  512M EFI System
+/dev/vda2  1050624 209715166 208664543 99.5G Linux filesystem
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/machine/" style="color: #ff7d73">machine</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/22/mdstorage/project/sr/%E5%8D%8E%E4%B8%BA%E4%BA%91%E9%B2%B2%E9%B9%8F%E6%9C%BA%E5%99%A8%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E8%AE%B0%E5%BD%95/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/22/mdstorage/domain/%E6%8B%9B%E8%81%98/Golang%E5%85%A5%E8%81%8C%E8%80%83%E8%AF%95%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3/">
+        <h2 class="post-title">Golang入职考试数据库相关.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/22
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="Golang入职考试数据库相关"><a href="#Golang入职考试数据库相关" class="headerlink" title="Golang入职考试数据库相关"></a>Golang入职考试数据库相关</h2><h3 id="关键部分"><a href="#关键部分" class="headerlink" title="关键部分"></a>关键部分</h3><p>数据库基础与应用</p>
+<h3 id="开放参考资料"><a href="#开放参考资料" class="headerlink" title="开放参考资料"></a>开放参考资料</h3><ul>
+<li>“Go Programming Language” by Alan A. A. Donovan and Brian W. Kernighan</li>
+<li>“High Performance MySQL” by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko</li>
+<li>“Redis in Action” by Josiah L. Carlson</li>
+<li>“MongoDB: The Definitive Guide” by Kristina Chodorow</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/etcd-io/etcd">Etcd</a></li>
+</ul>
+<h3 id="入职考试范围（考察）"><a href="#入职考试范围（考察）" class="headerlink" title="入职考试范围（考察）"></a>入职考试范围（考察）</h3><ul>
+<li>Golang数据库连接与操作基础</li>
+<li>数据库设计原理</li>
+<li>数据库性能优化</li>
+<li>数据的增删改查（CRUD）操作</li>
+<li>事务管理</li>
+<li>错误处理与调试</li>
+<li>数据库安全性</li>
+</ul>
+<h3 id="入职考试题目"><a href="#入职考试题目" class="headerlink" title="入职考试题目"></a>入职考试题目</h3><h4 id="Etcd"><a href="#Etcd" class="headerlink" title="Etcd"></a>Etcd</h4><ol>
+<li><strong>Etcd使用</strong>: 描述在Golang中使用Etcd进行服务注册和发现的基本步骤。请提供代码示例来演示如何使用Etcd客户端库在Etcd中注册服务，并如何发现已注册的服务。</li>
+<li><strong>Etcd的事务</strong>: 通过Etcd的事务功能解释乐观锁的概念，并提供一个Golang代码示例，说明如何使用Etcd实现分布式锁。</li>
+</ol>
+<h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><ol>
+<li><strong>MySQL性能优化</strong>: 在Golang应用程序中，有哪些方法可以优化MySQL查询的性能？请提供具体的策略和示例。</li>
+<li><strong>MySQL事务处理</strong>: 用Golang编写一个示例程序，展示如何在MySQL中正确地实现事务处理，包括提交和回滚操作。</li>
+</ol>
+<h4 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h4><ol>
+<li><strong>Redis数据结构应用</strong>: 描述如何在Golang中使用Redis的不同数据结构来实现一个简单的排行榜系统。</li>
+<li><strong>Redis持久化</strong>: Redis支持哪些持久化机制？请比较它们的优劣，并提供Golang中配置持久化的代码示例。</li>
+</ol>
+<h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><ol>
+<li><strong>MongoDB查询优化</strong>: 介绍在Golang中如何优化MongoDB的查询性能，包括索引的使用和查询分析器的运用。</li>
+<li><strong>MongoDB的聚合</strong>: 使用Golang提供一个MongoDB聚合操作的示例，如何计算集合中文档的平均值。</li>
+</ol>
+<h3 id="参考答案（伪代码）"><a href="#参考答案（伪代码）" class="headerlink" title="参考答案（伪代码）"></a>参考答案（伪代码）</h3><h4 id="Etcd-1"><a href="#Etcd-1" class="headerlink" title="Etcd"></a>Etcd</h4><p><strong>1. Etcd服务注册与发现：</strong></p>
+<pre><code class="go">package main
+
+import (
+    &quot;context&quot;
+    &quot;log&quot;
+    &quot;time&quot;
+
+    clientv3 &quot;go.etcd.io/etcd/client/v3&quot;
+)
+
+func main() &#123;
+    cli, err := clientv3.New(clientv3.Config&#123;
+        Endpoints:   []string&#123;&quot;localhost:2379&quot;&#125;,
+        DialTimeout: 5 * time.Second,
+    &#125;)
+    if err != nil &#123;
+        log.Fatal(err)
+    &#125;
+    defer cli.Close()
+
+    // 注册服务
+    ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+    _, err = cli.Put(ctx, &quot;services/my-service/instance1&quot;, &quot;http://10.0.0.1:8080&quot;)
+    cancel()
+    if err != nil &#123;
+        log.Fatal(err)
+    &#125;
+
+    // 发现服务
+    ctx, cancel = context.WithTimeout(context.Background(), time.Second)
+    resp, err := cli.Get(ctx, &quot;services/my-service/&quot;, clientv3.WithPrefix())
+    cancel()
+    if err != nil &#123;
+        log.Fatal(err)
+    &#125;
+    for _, ev := range resp.Kvs &#123;
+        log.Printf(&quot;%s : %s\n&quot;, ev.Key, ev.Value)
+    &#125;
+&#125;
+</code></pre>
+<p><strong>2. Etcd乐观锁和分布式锁：</strong></p>
+<pre><code class="go">package main
+
+import (
+    &quot;context&quot;
+    &quot;log&quot;
+    &quot;time&quot;
+
+    clientv3 &quot;go.etcd.io/etcd/client/v3&quot;
+    &quot;go.etcd.io/etcd/client/v3/concurrency&quot;
+)
+
+func main() &#123;
+    cli, err := clientv3.New(clientv3.Config&#123;
+        Endpoints:   []string&#123;&quot;localhost:2379&quot;&#125;,
+        DialTimeout: 5 * time.Second,
+    &#125;)
+    if err != nil &#123;
+        log.Fatal(err)
+    &#125;
+    defer cli.Close()
+
+    // 创建session用于锁
+    s, err := concurrency.NewSession(cli)
+    if err != nil &#123;
+        log.Fatal(err)
+    &#125;
+    defer s.Close()
+
+    // 创建一个分布式锁
+    m := concurrency.NewMutex(s, &quot;/my-lock/&quot;)
+
+    // 尝试获取锁
+    if err := m.Lock(context.Background()); err != nil &#123;
+        log.Fatal(err)
+    &#125;
+    log.Println(&quot;acquired lock&quot;)
+
+    // 执行业务逻辑...
+
+    // 释放锁
+    if err := m.Unlock(context.Background()); err != nil &#123;
+        log.Fatal(err)
+    &#125;
+    log.Println(&quot;released lock&quot;)
+&#125;
+</code></pre>
+<h4 id="MySQL-1"><a href="#MySQL-1" class="headerlink" title="MySQL"></a>MySQL</h4><p><strong>1. MySQL性能优化：</strong></p>
+<p>答案: 优化MySQL查询的性能可以通过以下方法实现：</p>
+<ul>
+<li>使用索引来加快搜索速度。</li>
+<li>编写高效的SQL查询，避免不必要的数据加载。</li>
+<li>使用分页来限制大量数据的检索。</li>
+<li>使用连接池来管理和重用数据库连接。</li>
+</ul>
+<p>代码示例:</p>
+<pre><code class="go">// 假设已有db *sql.DB连接
+// 确保索引已创建，例如：CREATE INDEX idx_name ON users(name);
+
+rows, err := db.Query(&quot;SELECT id, name FROM users WHERE name = ? LIMIT 10&quot;, &quot;John Doe&quot;)
+if err != nil &#123;
+    log.Fatal(err)
+&#125;
+defer rows.Close()
+
+for rows.Next() &#123;
+    // ...
+&#125;
+</code></pre>
+<p><strong>2. MySQL事务处理：</strong></p>
+<pre><code class="go">// 假设已有db *sql.DB连接
+
+tx, err := db.Begin()
+if err != nil &#123;
+    log.Fatal(err)
+&#125;
+
+_, err = tx.Exec(&quot;UPDATE accounts SET balance = balance - ? WHERE id = ?&quot;, 100, 1)
+if err != nil &#123;
+    tx.Rollback()
+    log.Fatal(err)
+&#125;
+
+_, err = tx.Exec(&quot;UPDATE accounts SET balance = balance + ? WHERE id = ?&quot;, 100, 2)
+if err != nil &#123;
+    tx.Rollback()
+    log.Fatal(err)
+&#125;
+
+err = tx.Commit()
+if err != nil &#123;
+    log.Fatal(err)
+&#125;
+</code></pre>
+<h4 id="Redis-1"><a href="#Redis-1" class="headerlink" title="Redis"></a>Redis</h4><p><strong>1. Redis排行榜系统：</strong></p>
+<pre><code class="go">package main
+
+import (
+    &quot;log&quot;
+
+    &quot;github.com/go-redis/redis&quot;
+)
+
+func main() &#123;
+    client := redis.NewClient(&amp;redis.Options&#123;
+        Addr:     &quot;localhost:6379&quot;,
+        Password: &quot;&quot;,
+        DB:       0,
+    &#125;)
+
+    // 添加分数
+   
+
+ client.ZAdd(&quot;leaderboard&quot;, redis.Z&#123;
+        Score:  100,
+        Member: &quot;user123&quot;,
+    &#125;)
+
+    // 获取排行榜
+    result, err := client.ZRevRangeWithScores(&quot;leaderboard&quot;, 0, -1).Result()
+    if err != nil &#123;
+        log.Fatal(err)
+    &#125;
+
+    for _, item := range result &#123;
+        log.Printf(&quot;User: %v, Score: %v\n&quot;, item.Member, item.Score)
+    &#125;
+&#125;
+</code></pre>
+<p><strong>2. Redis持久化：</strong></p>
+<p>答案: Redis支持RDB和AOF两种持久化机制。</p>
+<ul>
+<li>RDB：在指定的时间间隔内生成数据集的时间点快照。</li>
+<li>AOF：记录服务器接收到的每个写操作，重启时通过重新执行这些命令来还原数据集。</li>
+</ul>
+<p>代码示例: 通常在Redis配置文件中设置，例如：</p>
+<pre><code class="conf">appendonly yes
+appendfsync everysec
+</code></pre>
+<h4 id="MongoDB-1"><a href="#MongoDB-1" class="headerlink" title="MongoDB"></a>MongoDB</h4><p><strong>1. MongoDB查询优化：</strong></p>
+<p>答案: 优化MongoDB的查询性能主要通过创建合适的索引来实现，此外还可以通过<code>explain</code>计划来分析查询。</p>
+<p>代码示例:</p>
+<pre><code class="go">// 假设已有collection *mongo.Collection连接
+
+// 创建索引
+indexModel := mongo.IndexModel&#123;
+    Keys: bson.M&#123;
+        &quot;fieldname&quot;: 1, // 正序索引
+    &#125;,
+&#125;
+_, err := collection.Indexes().CreateOne(context.Background(), indexModel)
+if err != nil &#123;
+    log.Fatal(err)
+&#125;
+
+// 查询并解释
+result := collection.FindOne(context.Background(), bson.M&#123;&quot;fieldname&quot;: &quot;value&quot;&#125;).Explain()
+// ...
+</code></pre>
+<p><strong>2. MongoDB聚合操作：</strong></p>
+<pre><code class="go">// 假设已有collection *mongo.Collection连接
+
+pipeline := mongo.Pipeline&#123;
+    bson.D&#123;&#123;"$match", bson.D&#123;&#123;"status", "A"&#125;&#125;&#125;&#125;,
+    bson.D&#123;&#123;"$group", bson.D&#123;&#123;"_id", "$cust_id"&#125;, &#123;"total", bson.D&#123;&#123;"$sum", "$amount"&#125;&#125;&#125;&#125;&#125;&#125;,
+&#125;
+
+cur, err := collection.Aggregate(context.Background(), pipeline)
+if err != nil &#123;
+    log.Fatal(err)
+&#125;
+defer cur.Close(context.Background())
+
+for cur.Next(context.Background()) &#123;
+    // ...
+&#125;
+</code></pre>
+<p>请注意，这些答案需要根据实际应用场景和具体需求进行调整，以满足不同的业务逻辑。同时，实际代码实现需要与使用的Golang数据库驱动和库一致。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/db/" style="color: #03a9f4">db</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="color: #00bcd4">面试题</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/22/mdstorage/domain/%E6%8B%9B%E8%81%98/Golang%E5%85%A5%E8%81%8C%E8%80%83%E8%AF%95%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/22/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7%E6%A1%86%E6%9E%B6/">
+        <h2 class="post-title">安装升级框架.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/22
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h3 id="安装升级框架实施方案"><a href="#安装升级框架实施方案" class="headerlink" title="安装升级框架实施方案"></a>安装升级框架实施方案</h3><h4 id="中长期做安装升级框架，需要："><a href="#中长期做安装升级框架，需要：" class="headerlink" title="中长期做安装升级框架，需要："></a>中长期做安装升级框架，需要：</h4><p>指定一个主要负责人持续推进，横跨多个版本维度才能基本确定框架。</p>
+<p>每个组件都在这个框架的范畴，需要贴合此框架的思路来做。所有的文档会在中长期持续补充。</p>
+<h4 id="短期内做安装升级框架，需要："><a href="#短期内做安装升级框架，需要：" class="headerlink" title="短期内做安装升级框架，需要："></a>短期内做安装升级框架，需要：</h4><ol>
+<li><strong>制定统一标准</strong>：团队可以协作制定一套统一的编码和设计标准。这些标准应该包括命名规范、代码结构、安装和升级流程等。</li>
+<li><strong>设计审查会议</strong>：定期举行设计审查会议，讨论和审查当前的设计和实现，确保所有组件都遵循既定的标准和最佳实践。</li>
+<li><strong>文档化</strong>：将规范和流程详细文档化，并确保所有团队成员都可以轻松访问和理解这些文档。</li>
+<li><strong>使用模板和脚手架</strong>：为常见的任务和组件创建模板和脚手架，以减少重复工作和确保一致性。</li>
+<li><strong>持续集成和自动化测试</strong>：利用持续集成工具和自动化测试来确保新代码的一致性和质量。</li>
+<li><strong>代码审查</strong>：通过代码审查来确保代码遵循既定的标准和实践。</li>
+<li><strong>培训和指导</strong>：对团队成员进行定期培训，确保他们了解和掌握项目规范和最佳实践。</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%9E%B6%E6%9E%84/" style="color: #00a596">架构</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%AE%89%E8%A3%85/" style="color: #ffa2c4">安装</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/22/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7%E6%A1%86%E6%9E%B6/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/21/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E6%9C%BA%E5%99%A8%E5%88%9D%E5%A7%8B%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/">
+        <h2 class="post-title">总控机器初始网络配置文档</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/21
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="Ubuntu-20-04-Server-初始网络配置文档"><a href="#Ubuntu-20-04-Server-初始网络配置文档" class="headerlink" title="Ubuntu 20.04 Server 初始网络配置文档"></a>Ubuntu 20.04 Server 初始网络配置文档</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4">网络配置步骤</a></li>
+<li><a href="#%E9%99%84%E5%BD%95">附录</a></li>
+</ol>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文档提供总控(Ubuntu 20.04 Server版)的基本网络配置指南。它将指导您完成设置静态IP地址、配置DNS服务器和测试网络连接等步骤。</p>
+<h2 id="网络配置步骤"><a href="#网络配置步骤" class="headerlink" title="网络配置步骤"></a>网络配置步骤</h2><h3 id="1-动态-静态IP设置"><a href="#1-动态-静态IP设置" class="headerlink" title="1. 动态&#x2F;静态IP设置"></a>1. <strong>动态&#x2F;静态IP设置</strong></h3><h4 id="静态IP配置-总控必须确认是-ipv4-静态-IP"><a href="#静态IP配置-总控必须确认是-ipv4-静态-IP" class="headerlink" title="静态IP配置(总控必须确认是 ipv4 静态 IP)"></a>静态IP配置(总控必须确认是 ipv4 静态 IP)</h4><ul>
+<li><p>打开Netplan配置文件</p>
+<pre><code class="bash">sudo nano /etc/netplan/01-xxx.yaml
+</code></pre>
+</li>
+<li><p>在文件中设置静态IP地址、网关和DNS</p>
+<pre><code class="yaml">network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: no
+      addresses: [192.168.1.100/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8, 4.4.4.4]
+</code></pre>
+</li>
+<li><p>应用配置：</p>
+<pre><code class="bash">sudo netplan apply
+</code></pre>
+</li>
+</ul>
+<h4 id="静态IP配置"><a href="#静态IP配置" class="headerlink" title="静态IP配置"></a>静态IP配置</h4><ul>
+<li><p>禁用DHCP</p>
+<pre><code class="yaml">dhcp4: no
+</code></pre>
+</li>
+<li><p>应用配置</p>
+<pre><code class="bash">sudo netplan apply
+</code></pre>
+</li>
+</ul>
+<h3 id="2-网卡状态检查"><a href="#2-网卡状态检查" class="headerlink" title="2. 网卡状态检查"></a>2. <strong>网卡状态检查</strong></h3><ul>
+<li><p>查看所有网络接口的状态：</p>
+<pre><code class="bash">ip addr show
+</code></pre>
+</li>
+</ul>
+<h3 id="3-防火墙配置"><a href="#3-防火墙配置" class="headerlink" title="3. 防火墙配置"></a>3. <strong>防火墙配置</strong></h3><h4 id="基本防火墙规则设置"><a href="#基本防火墙规则设置" class="headerlink" title="基本防火墙规则设置"></a>基本防火墙规则设置</h4><ul>
+<li><p>查看当前规则：</p>
+<pre><code class="bash">sudo ufw status verbose
+</code></pre>
+</li>
+<li><p>禁用防火墙：</p>
+<pre><code class="bash">sudo ufw disable
+</code></pre>
+</li>
+<li><p>允许特定端口（例如，SSH）：</p>
+<pre><code class="bash">sudo ufw allow 22/tcp
+</code></pre>
+</li>
+</ul>
+<h3 id="路由配置（可选）"><a href="#路由配置（可选）" class="headerlink" title="路由配置（可选）"></a><strong>路由配置（可选）</strong></h3><ul>
+<li><p>在Netplan配置文件中添加自定义路由（如果需要）：</p>
+<pre><code class="yaml">routes:
+  - to: 0.0.0.0/0
+    via: 192.168.1.1
+    metric: 100
+</code></pre>
+</li>
+<li><p>应用配置：</p>
+<pre><code class="bash">sudo netplan apply
+</code></pre>
+</li>
+</ul>
+<h2 id="总控应用监听地址配置"><a href="#总控应用监听地址配置" class="headerlink" title="总控应用监听地址配置"></a>总控应用监听地址配置</h2><h3 id="sc"><a href="#sc" class="headerlink" title="sc"></a>sc</h3><p>目前总控安装前修改 IP 为正常流程，直接通过网络配置即可。而总控运行时修改 IP 目前并不支持，主要难点在于修改 IP 后，引擎不知道总控 IP 变更，数据推不到总控，sv 会拿不到数据。目前如果直接修改 IP 后，总控组件将运行正常，但 sv 的数据会不准，因为接收不到数据了。</p>
+<p>在 2.2.1 版本会修改通信方向对这部分进行重构并重新形成方案来解决这个问题。  </p>
+<h3 id="5-测试总控网络连接"><a href="#5-测试总控网络连接" class="headerlink" title="5. 测试总控网络连接"></a>5. <strong>测试总控网络连接</strong></h3><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>在修改网络配置之前，请确保您了解当前的网络环境和需求。</li>
+<li>在远程修改网络配置时要特别小心，以免丢失连接。</li>
+<li>在配置防火墙时，确保不要阻止关键服务的端口，如SSH（22端口）。</li>
+<li>备份所有重要的配置文件，以便在出现问题时可以恢复。</li>
+</ul>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="需要了解的命令行工具"><a href="#需要了解的命令行工具" class="headerlink" title="需要了解的命令行工具"></a>需要了解的命令行工具</h3><ul>
+<li><code>ip</code>：用于显示和操纵路由、网络设备、接口和隧道的工具。</li>
+<li><code>nano/vi/vim</code>：简单易用的文本编辑器。</li>
+<li><code>netplan</code>：用于配置网络的工具，特别是在Ubuntu中。</li>
+<li><code>ping</code>：测试网络连接的工具。</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/network-configuration/" style="color: #00a596">network-configuration</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/21/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E6%9C%BA%E5%99%A8%E5%88%9D%E5%A7%8B%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/20/mdstorage/project/sr/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF-11.19/">
+        <h2 class="post-title">一周看板-11.19.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <pre><code class="kanban"># 2023/11/13 Task List
+
+## Todo
+- https://github.com/mli/autocut 是什么
+- on-premise 综述
+- InfoQ 一周消息速递
+- 搜书方法、主流格式文档转换方法、以图搜图、学习资料搜索
+
+- meituan 对接、价格
+- 关于授权时间一致性问题，与松达讨论，给出方案(授权涉及的时间后端接口返回应该做到：商城给到什么就返回什么时间格式)
+
+- 周会 （1. 转测流程 2. 任务进度 3. 说说问题）
+
+## In-Progress
+- 总控软件设计说明书(重要不紧急)
+- 修改IP构想文档、问题解决、文档组织(重要)
+
+- 分支管理文档
+
+- SC后端启动原理，启动协程，常驻协程，与文件系统的交互通道，网络通道，进程通信通道，系统权限使用情况，系统资源占用情况，可能的依赖关系。 中长期规划
+- markdown 文档模板--操作手册
+- 网络配置蓝图
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+
+## Completed
+- AI生成内容的态度及如何让AI生成高质量内容
+- typora crack 
+- mongoDB 时间偏移问题(先调研、布置任务修改配置文件，测试)
+- openai 开发者大会(重要)
+- 网卡工作原理
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/11/20/mdstorage/project/sr/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF/%E4%B8%80%E5%91%A8%E7%9C%8B%E6%9D%BF-11.19/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/11/19/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88LOL%E6%AF%94%E8%B5%9B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E2%80%9C%E5%81%87%E4%BA%86%E2%80%9D/">
+        <h2 class="post-title">为什么LOL比赛越来越“假了”.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/19
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>今日话题：为什么LOL比赛越来越“假了”？</p>
+<p>评论一：咱们这LOL比赛啊，现在越来越像电视剧了，剧本都能提前猜到一半。有人说，这不仅仅是一场游戏的竞技，更像是利益角逐的战场。听说有些比赛，背后都被某些利益集团操控了。打假赛？这事儿在电竞圈也不是新鲜事，但每次听到还是让人觉得心里不是滋味。原本纯粹的竞技精神，现在被这些利益玷污了。</p>
+<p>评论二：再说说咱们的选手们，有的实力挺强，但为了迎合团队的战术风格，不得不改变自己的打法。这就像是把老虎的爪子剪了，变成了家猫。有时候看他们在比赛里束手束脚的，真是让人心疼。原本可以大放异彩的个人技术，现在只能被团队战术所局限，这不仅让选手们失去了状态，也让观众们看得不过瘾。</p>
+<p>评论三：而且，这心理素质啊，真是个大问题。有的选手情绪起伏太大，一会儿天上，一会儿地下。比赛中一个小失误就可能导致整个人崩溃。这不只是技术问题，更是心理问题。电竞选手也是人，压力大了，心理上难免会有波动。但这也影响了比赛的质量和观赏性，有时候看着都替他们捏把汗。</p>
+<p>最后，我想说的是，LOL比赛虽然越来越“假”，但这也从侧面反映了电竞行业的种种问题。从利益操控到选手心理素质，这些都是电竞行业需要正视和解决的问题。只有真正解决了这些问题，我们才能看到更纯粹、更高质量的电竞比赛。毕竟，大家都希望看到的是真刀真枪的较量，而不是事先排练好的戏码。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/11/19/mdstorage/project/%E5%86%99%E4%BD%9C/%E4%B8%BA%E4%BB%80%E4%B9%88LOL%E6%AF%94%E8%B5%9B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E2%80%9C%E5%81%87%E4%BA%86%E2%80%9D/" class="go-post">阅读全文</a>
+</div>
 
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+        <div class="page-current">
+    
+    <a class="page-num" href="/page/22/">
+        <i class="fa-solid fa-caret-left fa-fw"></i>
+    </a>
+    <a class="page-num" href="/">1</a>
+    <span class="page-omit">...</span>
+    
+    <span class="current">23</span>
+    
+    <a class="page-num" href="/page/24">
+        24
+    </a>
+    
+    
+    <a class="page-num" href="/page/25">
+        25
+    </a>
+    
+    
+    <span class="page-omit">...</span>
+    <a class="page-num" href="/page/28">28</a>
+    
+    
+    <a class="page-num" href="/page/24/">
+        <i class="fa-solid fa-caret-right fa-fw"></i>
+    </a>
+    
+</div>
 
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">xiaoy</div>
+        <div class="description">
+            <p>Description<br>…</p>
 
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
 
+    </div>
+    
+</div>
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 Xiaoy
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;xiaoy
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
 
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
 </body>
 </html>

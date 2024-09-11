@@ -1,281 +1,176 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>引擎安装管理.md | Xiaoy</title>
+    <meta name="author" content="xiaoy" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="xiaoy">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="引擎节点管理模块文档背景引擎节点管理的需求最早可追溯到v1.0.x版本，当时是希望实现任意数量的节点管理构成一个集群，但是因为实现过程中遇到了一些无法解决的问题，故以一种很多限制的形式流传了下来。限制有不少，其中最大的限制是：管理节点必须为奇数，且引擎一旦安装成功，管理节点无法以任何一种形式变更数量、机器、IP地址等。管理节点的数量变更需求每个版本都会有人提起，现如今又正式提出了，故对现状和历史状">
-<meta property="og:type" content="article">
-<meta property="og:title" content="引擎安装管理.md">
-<meta property="og:url" content="https://abrance.github.io/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/index.html">
-<meta property="og:site_name" content="Xiaoy">
-<meta property="og:description" content="引擎节点管理模块文档背景引擎节点管理的需求最早可追溯到v1.0.x版本，当时是希望实现任意数量的节点管理构成一个集群，但是因为实现过程中遇到了一些无法解决的问题，故以一种很多限制的形式流传了下来。限制有不少，其中最大的限制是：管理节点必须为奇数，且引擎一旦安装成功，管理节点无法以任何一种形式变更数量、机器、IP地址等。管理节点的数量变更需求每个版本都会有人提起，现如今又正式提出了，故对现状和历史状">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-06-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-11T02:55:43.741Z">
-<meta property="article:author" content="xiaoy">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>引擎安装管理.md - Xiaoy</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
 
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="/js/lib/preview.js"></script>
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
 
 
-  
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>xiaoy</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XIAOY</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
         
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="引擎安装管理.md"></span>
-          
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XIAOY</span>
         </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-17 00:00" pubdate>
-          June 17, 2024 am
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          1.7k words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          15 mins
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">引擎安装管理.md</h1>
-            
-            
-              <div class="markdown-body">
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
                 
-                <h1 id="引擎节点管理模块文档"><a href="#引擎节点管理模块文档" class="headerlink" title="引擎节点管理模块文档"></a>引擎节点管理模块文档</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>引擎节点管理的需求最早可追溯到v1.0.x版本，当时是希望实现任意数量的节点管理构成一个集群，但是因为实现过程中遇到了一些无法解决的问题，故以一种很多限制的形式流传了下来。<br>限制有不少，其中最大的限制是：管理节点必须为奇数，且引擎一旦安装成功，管理节点无法以任何一种形式变更数量、机器、IP地址等。<br>管理节点的数量变更需求每个版本都会有人提起，现如今又正式提出了，故对现状和历史状态进行一次梳理，以便看清前路。</p>
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>引擎安装管理.md</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/6/17
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="引擎节点管理模块文档"><a href="#引擎节点管理模块文档" class="headerlink" title="引擎节点管理模块文档"></a>引擎节点管理模块文档</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>引擎节点管理的需求最早可追溯到v1.0.x版本，当时是希望实现任意数量的节点管理构成一个集群，但是因为实现过程中遇到了一些无法解决的问题，故以一种很多限制的形式流传了下来。<br>限制有不少，其中最大的限制是：管理节点必须为奇数，且引擎一旦安装成功，管理节点无法以任何一种形式变更数量、机器、IP地址等。<br>管理节点的数量变更需求每个版本都会有人提起，现如今又正式提出了，故对现状和历史状态进行一次梳理，以便看清前路。</p>
 <h2 id="名词旧解释"><a href="#名词旧解释" class="headerlink" title="名词旧解释"></a>名词旧解释</h2><ul>
 <li>引擎节点: 一般用来概括称呼管理节点、工作节点、调度节点，不同的类型的节点区别主要是运行的组件不同</li>
 <li>节点添加：为一个全新的OS安装工作节点或调度节点的组件；或者为一个当前引擎其他节点添加工作节点或者调度节点的组件。</li>
@@ -288,12 +183,66 @@
 </ul>
 <h2 id="演变历史"><a href="#演变历史" class="headerlink" title="演变历史"></a>演变历史</h2><p>目前installer-sr-server能追溯的最早代码位于release-v2.0.2分支，其核心功能是引擎组件的安装。对于节点添加的支持，仅支持工作节点的添加。其添加的实现非常简单，和安装是一致的。也就是说，为某个OS添加工作节点的实现为安装所有引擎组件（含非工作节点组件），通过设置systemd的enabled属性来控制是否运行某些组件。<br>后续版本添加了调度节点的节点添加，但是实现上和工作节点添加差异并不大。</p>
 <p>在1.5版本中，对安装逻辑做了一次重构, 在去掉了installer-sr-agent之后，虽然安装的逻辑发生了较多的变化，但是从节点管理这部分逻辑来看，并没有本质变化。都是和引擎安装复用同一个函数，根据节点类型筛选出需要安装的组件列表，依次执行他们的安装脚本。</p>
-<h3 id="整体设计演变"><a href="#整体设计演变" class="headerlink" title="整体设计演变"></a>整体设计演变</h3><h4 id="原设计伪代码描述"><a href="#原设计伪代码描述" class="headerlink" title="原设计伪代码描述"></a>原设计伪代码描述</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// installer-sr-manager</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *Service)</span></span>Install(req InstallReqParam)&#123;<br>    dbGlobalParam := dosomething(req)<br>    s.db.Save(dbGlobalParam)<br><br>    dbGlobalParam = s.db.Query(req.EngineID)<br>    http.PostRequest(install-sr-agent.ip:port, dbGlobalParam)<br>&#125;<br><br><br><span class="hljs-comment">// installer-sr-agent</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *Service)</span></span> Install(req GlobalParam) &#123;<br>    <span class="hljs-comment">// download files from manager</span><br>    http.GetRequest(installer-sr-manager.ip:port/download, req.PackageVersion)<br>    s.SaveLocalFile(packagePath,md5)<br><br>    <span class="hljs-comment">// parse install config </span><br>    installConfig := s.ParseConfig(req,enginePackage)<br>    <br>    <span class="hljs-keyword">for</span> _, elem := <span class="hljs-keyword">range</span> installConfig.ComponentList &#123;<br>        elem.Install()<br>        <span class="hljs-keyword">if</span> elem.Start &#123;<br>            systemctlStart(elem)<br>        &#125;<br>        <span class="hljs-keyword">if</span> elem.Boot &#123;<br>            systemctlEnable(elem)<br>        &#125;<br><br>        s.SaveLocalFile(elem,installed)<br>        http.PostRequest(installer-sr-manager.ip:port/report, Progress++)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="整体设计演变"><a href="#整体设计演变" class="headerlink" title="整体设计演变"></a>整体设计演变</h3><h4 id="原设计伪代码描述"><a href="#原设计伪代码描述" class="headerlink" title="原设计伪代码描述"></a>原设计伪代码描述</h4><pre><code class="go">// installer-sr-manager
+func (s *Service)Install(req InstallReqParam)&#123;
+    dbGlobalParam := dosomething(req)
+    s.db.Save(dbGlobalParam)
 
+    dbGlobalParam = s.db.Query(req.EngineID)
+    http.PostRequest(install-sr-agent.ip:port, dbGlobalParam)
+&#125;
+
+
+// installer-sr-agent
+func (s *Service) Install(req GlobalParam) &#123;
+    // download files from manager
+    http.GetRequest(installer-sr-manager.ip:port/download, req.PackageVersion)
+    s.SaveLocalFile(packagePath,md5)
+
+    // parse install config 
+    installConfig := s.ParseConfig(req,enginePackage)
+    
+    for _, elem := range installConfig.ComponentList &#123;
+        elem.Install()
+        if elem.Start &#123;
+            systemctlStart(elem)
+        &#125;
+        if elem.Boot &#123;
+            systemctlEnable(elem)
+        &#125;
+
+        s.SaveLocalFile(elem,installed)
+        http.PostRequest(installer-sr-manager.ip:port/report, Progress++)
+    &#125;
+&#125;
+</code></pre>
 <h4 id="1-5设计伪代码描述"><a href="#1-5设计伪代码描述" class="headerlink" title="1.5设计伪代码描述"></a>1.5设计伪代码描述</h4><p>1.5的版本里面，进度相关的表已经名存实亡，进度和取消由另外的机制来实现。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// installer-sr-manager</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *Service)</span></span>Install(req InstallReqParam)&#123;<br>    dbGlobalParam := dosomething(req)<br>    s.db.Save(dbGlobalParam)<br><br>    dbGlobalParam = s.db.Query(req.EngineID)<br><br>    sshClient := sshv2.NewClientWithPwd(req)<br>    sshClient.Upload(req.enginePackage)<br><br>    <span class="hljs-keyword">for</span> _, elem := <span class="hljs-keyword">range</span> installConfig.ComponentList &#123;<br>        <span class="hljs-comment">// elem.Install() </span><br>        grpc.PostRequest(webserver.Cmd, <span class="hljs-string">&quot;mv $elem /opt/$elem&quot;</span>)<br>        grpc.PostRequest(webserver.Cmd, <span class="hljs-string">&quot;/opt/$elem/scripts/install.sh&quot;</span>)<br>        s.db.Save(elem)<br>        progress++<br>    &#125;<br>&#125;<br><br><br><span class="hljs-comment">// webserver</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *Service)</span></span> Cmd(req CmdParam) &#123;<br>    cmd := exec.Command(req.Name,req.Args...)<br>    cmd.Run()<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre><code class="go">// installer-sr-manager
+func (s *Service)Install(req InstallReqParam)&#123;
+    dbGlobalParam := dosomething(req)
+    s.db.Save(dbGlobalParam)
+
+    dbGlobalParam = s.db.Query(req.EngineID)
+
+    sshClient := sshv2.NewClientWithPwd(req)
+    sshClient.Upload(req.enginePackage)
+
+    for _, elem := range installConfig.ComponentList &#123;
+        // elem.Install() 
+        grpc.PostRequest(webserver.Cmd, &quot;mv $elem /opt/$elem&quot;)
+        grpc.PostRequest(webserver.Cmd, &quot;/opt/$elem/scripts/install.sh&quot;)
+        s.db.Save(elem)
+        progress++
+    &#125;
+&#125;
 
 
+// webserver
+func (s *Service) Cmd(req CmdParam) &#123;
+    cmd := exec.Command(req.Name,req.Args...)
+    cmd.Run()
+&#125;
+</code></pre>
 <h2 id="依赖问题"><a href="#依赖问题" class="headerlink" title="依赖问题"></a>依赖问题</h2><p>对于将引擎的组件按照类型分割成3部分，并且允许独立安装的做法，最需要考虑的问题是节点与节点间的依赖、组件与组件间的依赖问题。<br>工作节点安装时，其实可以认为是独立的，它不需要依赖管理节点或者调度节点的信息。<br>但是工作节点要想正常工作，那么调度节点就需要知道有哪些工作节点。为了解决信息同步的问题，SX-HA模块从最早开始就介入了节点管理模块，节点的变更的实现对SX-HA模块有较强的依赖，可以认为节点管理是SX-HA和installer-sr-server共同实现的。</p>
 <p>SX-HA主要负责的部分其实是通过k8s+etcd来实现一个动态更新节点列表，并且动态下发配置，并将其称为节点发现模块。它的理念是：SX-HA模块运行时，往公共的注册中心注册自身的节点信息，通过注册中心来保持节点信息的一致性。通过watch机制，来感知注册中心信息的变化，然后更新自身节点的一些配置。<br>在之前的版本实现中，SX-HA还接管了etcd的启动配置生成，这是因为当时也对管理节点的添加删除做了一些尝试，但是以失败告终。</p>
 <h2 id="节点新增"><a href="#节点新增" class="headerlink" title="节点新增"></a>节点新增</h2><p>1.5版本，节点新增支持调度节点新增和工作节点新增。<br>假设有以下引擎</p>
@@ -382,358 +331,50 @@
 <p>替换的流程是先在新的节点执行节点添加逻辑，然后在旧的节点执行节点删除逻辑。</p>
 <h2 id="1-6迭代思路"><a href="#1-6迭代思路" class="headerlink" title="1.6迭代思路"></a>1.6迭代思路</h2><p>首先是节点表的定义和需求匹配度已经不够了，要么重新定义一张表，要么修改原有字段的含义，各有各的做法。不过我认为原来的表定义字段存在一些意义不明的字段，直接重设计可以省去理解上的时间。<br>管理节点的添加、删除应该是主要的障碍，目前没有研究过这方面。调度节点1.5没有支持替换，原因可能只有原开发（贺泽）知道</p>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-  
+    </div>
+    
+    
+    
+    
+    
+    
+    
 </div>
 
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>引擎安装管理.md</div>
-      <div>https://abrance.github.io/2024/06/17/mdstorage/project/sr/基础设施相关/引擎安装管理/</div>
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 Xiaoy
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;xiaoy
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
     </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>Author</div>
-          <div>xiaoy</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>June 17, 2024</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>Licensed under</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                    <i class="iconfont icon-cc-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
+</footer>
 
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="installer目录结构.md">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">installer目录结构.md</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" title="生命周期管理方案.md">
-                        <span class="hidden-mobile">生命周期管理方案.md</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
             </div>
-
-            
-          </article>
-        </div>
-      </div>
+        </transition>
+        
     </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
-    mermaid.initialize({"theme":"default"});
-
-    Fluid.utils.listenDOMLoaded(function() {
-      Fluid.events.registerRefreshCallback(function() {
-        if ('mermaid' in window) {
-          mermaid.init();
-        }
-      });
-    });
-  });
-</script>
-
-
+    <script src="/js/main.js"></script>
+    
+    
 
 
 
 
     
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
 </body>
 </html>

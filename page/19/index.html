@@ -1,992 +1,1969 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>Xiaoy</title>
+    <meta name="author" content="xiaoy" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="xiaoy">
-  <meta name="keywords" content="">
-  
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Xiaoy">
-<meta property="og:url" content="https://abrance.github.io/page/19/index.html">
-<meta property="og:site_name" content="Xiaoy">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="xiaoy">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>Xiaoy</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
 
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="/js/lib/preview.js"></script>
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
+<script src="/js/lib/home.js"></script>
 
+<link rel="stylesheet" href="/css/main.css" />
 
-  
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>xiaoy</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/12/mdstorage/project/sr/%E9%A1%B9%E7%9B%AE%E9%94%80%E5%94%AE%E6%94%AF%E6%8C%81/" target="_self">
-          项目销售支持.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/mdstorage/project/sr/%E9%A1%B9%E7%9B%AE%E9%94%80%E5%94%AE%E6%94%AF%E6%8C%81/" target="_self">
-        <div>
-          主题市场、研发信息对齐 销售不明产品定义见客户时、销售不清楚产品定义： 加强市场与研发沟通交流，每月有固定会议，规划市场策略 销售突破（研发如何协助）场景WAF 这个销售场景，研发支持跟长亭研发有劣势，如何补足 思路研发的输出本质上是产品的：时间、质量、成本 三个维度 寻求必要的各需求方最小集，资源足够的情况下，带着最小集沿着最佳方案实施 资源不足的情况下，评估竞争对手做到什么程度、级别，我们追上
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-12 00:00" pubdate>
-              2024-01-12
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%94%80%E5%94%AE/">#销售</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/12/mdstorage/resource/%E5%BE%AE%E4%BF%A1/Ubuntu%E5%AE%89%E8%A3%85%E5%BE%AE%E4%BF%A1/" target="_self">
-          Ubuntu机器微信安装.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/mdstorage/resource/%E5%BE%AE%E4%BF%A1/Ubuntu%E5%AE%89%E8%A3%85%E5%BE%AE%E4%BF%A1/" target="_self">
-        <div>
-          Ubuntu 机器微信安装下载链接Kylinos weixin amd64 版本v2.1.4 amd64 deb  kylinos 2022-05-23 105M	 安装方式12345678910111213141516171819wget https://archive.ubuntukylin.com/ubuntukylin/pool/partner/weixin_2.1.4_amd64.deb
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-12 00:00" pubdate>
-              2024-01-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/resource/" class="category-chain-item">resource</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/resource/%E5%BE%AE%E4%BF%A1/" class="category-chain-item">微信</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ubuntu/">#ubuntu</a>
-            
-              <a href="/tags/debian/">#debian</a>
-            
-              <a href="/tags/wechat/">#wechat</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/11/mdstorage/project/sr/%E4%BF%A1%E5%88%9B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
-          信创环境搭建.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/11/mdstorage/project/sr/%E4%BF%A1%E5%88%9B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
-        <div>
-          机器配置12345678TaiShan 200( Model 2280)2* Kunpeng 920-32Core@2.6GHz CPU 4*32G内存SR450C-M RAID0/1/5/6/2G Cache12* 4T SATA 4* 1GE 2*900w AC 电源12盘位,3.5寸硬盘服务器
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-11 00:00" pubdate>
-              2024-01-11
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%BF%A1%E5%88%9B/">#信创</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/10/mdstorage/domain/golang/Go%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" target="_self">
-          Go单元测试.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/10/mdstorage/domain/golang/Go%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" target="_self">
-        <div>
-          场景用例依赖外部文件 config.ini 等在使用 Go 的 go test 框架编写单元测试时，如果测试依赖于 config.ini 文件来初始化配置，最佳实践通常包括以下几点：  隔离和模拟配置：避免在单元测试中直接依赖外部文件。可以通过模拟（mocking）配置的方式来提供必要的设置，或者使用临时的配置文件。  测试环境设置：为测试创建专用的配置环境，确保测试不受生产或开发环境配置的影响。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-10 00:00" pubdate>
-              2024-01-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/golang/" class="category-chain-item">golang</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/golang/">#golang</a>
-            
-              <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">#单元测试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/10/mdstorage/domain/golang/Go%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8E%A5%E5%8F%A3%E6%8A%80%E5%B7%A7/" target="_self">
-          Go类型和接口技巧
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/10/mdstorage/domain/golang/Go%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8E%A5%E5%8F%A3%E6%8A%80%E5%B7%A7/" target="_self">
-        <div>
-          编译时检查类型实现接口&#x2F;类型断言在 Go 语言中，这行代码 var _ interfaces.CoreServer = (*serverService)(nil) 是一种常用的编译时类型断言惯用法。这行代码并不会在运行时创建变量，而是起到两个主要作用：  确保类型实现了接口：它断言 serverService 实现了 interfaces.CoreServer 接口。如果 serverS
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-10 00:00" pubdate>
-              2024-01-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/golang/" class="category-chain-item">golang</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/golang/">#golang</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/QARs%E6%A6%82%E8%BF%B0/" target="_self">
-          QARs概述.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/QARs%E6%A6%82%E8%BF%B0/" target="_self">
-        <div>
-          概念“QARs”（Quality Attribute Requirements）指的是软件工程中的质量属性需求。这些需求通常与软件的非功能特性有关，例如性能、安全性、可靠性、可用性、维护性和可扩展性。它们是软件设计和评估的重要组成部分，用于确保软件产品不仅满足其功能需求，还能以满足用户期望的方式运行。 举几个例子：  性能：软件响应时间、处理速度、资源使用效率等。 安全性：保护软件免受未授权访问和
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-10 00:00" pubdate>
-              2024-01-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E8%BD%AF%E4%BB%B6%E5%85%B3%E9%94%AE%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7/" target="_self">
-          软件关键质量属性.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E8%BD%AF%E4%BB%B6%E5%85%B3%E9%94%AE%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7/" target="_self">
-        <div>
-          概述软件的关键质量属性通常涵盖了软件系统不同方面的非功能特性。这些质量属性对于确保软件系统满足用户的需求和预期至关重要。主要的软件关键质量属性包括：  性能：涉及软件的响应时间、处理速度、资源消耗等。性能好的软件能够高效地执行并满足用户对速度和效率的期望。  可靠性：指软件的稳定性和准确性。高可靠性的软件能够在预期的时间和条件下无故障地运行。  可用性：涉及软件的易用性和用户界面的友好性。易于使用
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-10 00:00" pubdate>
-              2024-01-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/04/mdstorage/domain/dart/flutter%E4%BD%BF%E7%94%A8/" target="_self">
-          flutter使用.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/04/mdstorage/domain/dart/flutter%E4%BD%BF%E7%94%A8/" target="_self">
-        <div>
-          概念1. Widgets 基础: 在 Flutter 中，几乎所有东西都是一个 Widget —— 它是构建界面的基本单位。Widgets 描述了它们在当前配置和状态下应该呈现的 UI。 类型: 有两种主要类型的 Widgets —— StatelessWidget 和 StatefulWidget。StatelessWidget 不变，而 StatefulWidget 持有状态，并且可以在其生命
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-04 00:00" pubdate>
-              2024-01-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/dart/" class="category-chain-item">dart</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/dart/">#dart</a>
-            
-              <a href="/tags/flutter/">#flutter</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/04/mdstorage/domain/vsc/git%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
-          git使用问题.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/04/mdstorage/domain/vsc/git%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
-        <div>
-          pushkex_exchange_identification文档标题： 解决通过 SSH 连接 GitHub 时的连接问题 目的： 本文档旨在提供一个清晰的指南，用于解决在通过 SSH 连接到 GitHub 时遇到的连接问题，特别是当出现 “kex_exchange_identification: Connection closed by remote host” 错误时。  问题描述：  很可
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-04 00:00" pubdate>
-              2024-01-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/vsc/" class="category-chain-item">vsc</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/github/">#github</a>
-            
-              <a href="/tags/git/">#git</a>
-            
-              <a href="/tags/gitlab-%E9%97%AE%E9%A2%98/">#gitlab 问题</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/04/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E8%B5%84%E6%96%99/" target="_self">
-          grpc服务调用资料.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/04/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E8%B5%84%E6%96%99/" target="_self">
-        <div>
-          Service 中 rpc 服务在grpc-go中，当客户端调用ChatService的Chat1或Chat2服务时，以下是连接建立的过程：  客户端初始化：客户端创建一个gRPC连接到服务器。这通常是在客户端应用的启动阶段完成的，例如通过grpc.Dial。  服务调用时机：客户端在需要时调用Chat1或Chat2服务。这是根据客户端应用的业务逻辑决定的，可能是用户发起的动作或其他触发条件。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-04 00:00" pubdate>
-              2024-01-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/" class="category-chain-item">network</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/%E5%8D%8F%E8%AE%AE/" class="category-chain-item">协议</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/grpc/">#grpc</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/18/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="page-number" href="/page/18/#board">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/#board">20</a><a class="page-number" href="/page/21/#board">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/20/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-              </div>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
             </div>
-          </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XIAOY</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XIAOY</span>
         </div>
-      </div>
-    
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div id="home-head">
+    <div
+        id="home-background"
+        ref="homeBackground"
+        data-images="/images/background.jpg"
+    ></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Xiaoy</h1>
+                <h3>xiaoy blog</h3>
+                <h5></h5>
+            </div>
+        </span>
     </div>
-  </div>
+</div>
+<div
+    id="home-posts-wrap"
+    ref="homePostsWrap"
+    true
+>
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/2024/01/12/mdstorage/domain/golang/golang%E5%AE%89%E8%A3%85/">
+        <h2 class="post-title">golang安装.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/12
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="golang-安装"><a href="#golang-安装" class="headerlink" title="golang 安装"></a>golang 安装</h2><pre><code class="bash">#!/bin/bash
+
+set -eux
+
+cd $(dirname $0) || exit 1
+
+GO_VERSION=1.22.3
+GO_INSTALL_DIR=/opt/go
+GO_ROOT=$&#123;GO_INSTALL_DIR&#125;/$&#123;GO_VERSION&#125;
+GO_PATH=~/go
+ENV_FILE=/etc/profile
+#GO_INSECURE_LIB=
+
+# Install Golang
+wget -c https://go.dev/dl/go$&#123;GO_VERSION&#125;.linux-amd64.tar.gz
+
+mkdir -p $&#123;GO_INSTALL_DIR&#125;
+rm -rf $&#123;GO_INSTALL_DIR&#125;/*
+tar -zxf go$&#123;GO_VERSION&#125;.linux-amd64.tar.gz -C $&#123;GO_INSTALL_DIR&#125;/
+mv $&#123;GO_INSTALL_DIR&#125;/go $&#123;GO_ROOT&#125;
+
+# Config env for all user
+#sed -i &#39;s/^export GOROOT=.*$//g&#39; $&#123;ENV_FILE&#125;
+#sed -i &#39;$a export GOROOT=&#39;&quot;$&#123;GO_ROOT&#125;&quot;&#39;&#39; $&#123;ENV_FILE&#125;
+#sed -i &#39;s/^export GOPATH=.*$//g&#39; $&#123;ENV_FILE&#125;
+#sed -i &#39;$a export GOPATH=&#39;&quot;$&#123;GO_PATH&#125;&quot;&#39;&#39; $&#123;ENV_FILE&#125;
+sed -i &#39;s/^export PATH=.*\/go\/bin.*$//g&#39; $&#123;ENV_FILE&#125;
+sed -i &#39;$a export PATH=&#39;&quot;$&#123;GO_ROOT&#125;&quot;&#39;/bin:&#39;&quot;$&#123;GO_PATH&#125;&quot;&#39;/bin:$PATH&#39; $&#123;ENV_FILE&#125;
+
+## Remove consecutive blank lines
+sed -i &#39;/^$/&#123;N;/\n$/D&#125;;&#39; $&#123;ENV_FILE&#125;
+
+# Config Golang env for current user
+$&#123;GO_ROOT&#125;/bin/go env -w GO111MODULE=on
+$&#123;GO_ROOT&#125;/bin/go env -w GOPROXY=https://goproxy.cn,direct
+$&#123;GO_ROOT&#125;/bin/go env -w GOROOT=$&#123;GO_ROOT&#125;
+$&#123;GO_ROOT&#125;/bin/go env -w GOPATH=$&#123;GO_PATH&#125;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%AE%89%E8%A3%85/" style="color: #00a596">安装</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/golang/" style="color: #03a9f4">golang</a>
+        </span>
+        
+    </div>
+    <a href="/2024/01/12/mdstorage/domain/golang/golang%E5%AE%89%E8%A3%85/" class="go-post">阅读全文</a>
 </div>
 
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+<div class="post">
+    <a href="/2024/01/12/mdstorage/resource/%E5%BE%AE%E4%BF%A1/Ubuntu%E5%AE%89%E8%A3%85%E5%BE%AE%E4%BF%A1/">
+        <h2 class="post-title">Ubuntu机器微信安装.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/resource/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                resource
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/12
+        </span>
+        
+        
     </div>
-  
-  
-  
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="Ubuntu-机器微信安装"><a href="#Ubuntu-机器微信安装" class="headerlink" title="Ubuntu 机器微信安装"></a>Ubuntu 机器微信安装</h2><h3 id="下载链接"><a href="#下载链接" class="headerlink" title="下载链接"></a>下载链接</h3><p><a target="_blank" rel="noopener" href="https://archive.ubuntukylin.com/ubuntukylin/pool/partner/weixin_2.1.4_amd64.deb">Kylinos weixin amd64</a></p>
+<h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>v2.1.4 amd64 deb  kylinos 2022-05-23 105M	</p>
+<h3 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h3><pre><code class="bash">wget https://archive.ubuntukylin.com/ubuntukylin/pool/partner/weixin_2.1.4_amd64.deb
+sudo apt install -f  weixin_2.1.4_amd64.deb## Ubuntu 机器微信安装
+
+### 下载链接
+
+[Kylinos weixin amd64](https://archive.ubuntukylin.com/ubuntukylin/pool/partner/weixin_2.1.4_amd64.deb)
+
+### 版本
+
+v2.1.4 amd64 deb  kylinos 2022-05-23 105M	
+
+### 安装方式
+
+```bash
+wget https://archive.ubuntukylin.com/ubuntukylin/pool/partner/weixin_2.1.4_amd64.deb
+sudo apt install -f  weixin_2.1.4_amd64.deb
+```
+
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/ubuntu/" style="color: #ffa2c4">ubuntu</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/debian/" style="color: #00a596">debian</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/wechat/" style="color: #03a9f4">wechat</a>
+        </span>
+        
+    </div>
+    <a href="/2024/01/12/mdstorage/resource/%E5%BE%AE%E4%BF%A1/Ubuntu%E5%AE%89%E8%A3%85%E5%BE%AE%E4%BF%A1/" class="go-post">阅读全文</a>
 </div>
 
-  </footer>
+<div class="post">
+    <a href="/2024/01/11/mdstorage/project/sr/%E4%BF%A1%E5%88%9B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+        <h2 class="post-title">信创环境搭建.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/11
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="机器配置"><a href="#机器配置" class="headerlink" title="机器配置"></a>机器配置</h2><pre><code>TaiShan 200( Model 2280)
+2* Kunpeng 920-32Core@2.6GHz CPU 
+4*32G内存
+SR450C-M RAID0/1/5/6/2G Cache
+12* 4T SATA 
+4* 1GE 
+2*900w AC 电源
+12盘位,3.5寸硬盘服务器
+</code></pre>
 
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E4%BF%A1%E5%88%9B/" style="color: #ff7d73">信创</a>
+        </span>
+        
+    </div>
+    <a href="/2024/01/11/mdstorage/project/sr/%E4%BF%A1%E5%88%9B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="go-post">阅读全文</a>
+</div>
 
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
+<div class="post">
+    <a href="/2024/01/10/mdstorage/domain/golang/Go%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+        <h2 class="post-title">Go单元测试.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="场景用例"><a href="#场景用例" class="headerlink" title="场景用例"></a>场景用例</h2><h3 id="依赖外部文件-config-ini-等"><a href="#依赖外部文件-config-ini-等" class="headerlink" title="依赖外部文件 config.ini 等"></a>依赖外部文件 config.ini 等</h3><p>在使用 Go 的 <code>go test</code> 框架编写单元测试时，如果测试依赖于 <code>config.ini</code> 文件来初始化配置，最佳实践通常包括以下几点：</p>
+<ol>
+<li><p><strong>隔离和模拟配置</strong>：避免在单元测试中直接依赖外部文件。可以通过模拟（mocking）配置的方式来提供必要的设置，或者使用临时的配置文件。</p>
+</li>
+<li><p><strong>测试环境设置</strong>：为测试创建专用的配置环境，确保测试不受生产或开发环境配置的影响。</p>
+</li>
+<li><p><strong>清晰的依赖注入</strong>：在代码中明确配置依赖，使其容易在测试中被替换或模拟。这有助于创建更可靠和可维护的测试。</p>
+</li>
+<li><p><strong>使用环境变量</strong>：考虑使用环境变量来传递配置信息，这样可以在测试时轻松地覆盖它们。</p>
+</li>
+</ol>
+<h4 id="隔离和模拟配置"><a href="#隔离和模拟配置" class="headerlink" title="隔离和模拟配置"></a>隔离和模拟配置</h4><p>在 Go 中实现配置的模拟（mocking）通常涉及以下步骤：</p>
+<ol>
+<li><p><strong>定义配置接口</strong>：首先定义一个配置接口，该接口包含用于获取配置的方法。</p>
+</li>
+<li><p><strong>实现接口的模拟版本</strong>：创建一个模拟的配置结构体，它实现了配置接口。这个模拟版本不是从 <code>config.ini</code> 读取数据，而是直接返回硬编码的值或测试时动态设置的值。</p>
+</li>
+<li><p><strong>在测试中使用模拟对象</strong>：在单元测试中，使用这个模拟的配置对象而不是实际的配置读取逻辑。这样，测试不再依赖于外部的 <code>config.ini</code> 文件。</p>
+</li>
+</ol>
+<p>例如：</p>
+<pre><code class="go">type Config interface &#123;
+    GetValue(key string) string
+&#125;
+
+type MockConfig struct &#123;
+    values map[string]string
+&#125;
+
+func (m MockConfig) GetValue(key string) string &#123;
+    return m.values[key]
+&#125;
+
+// 在测试中使用 MockConfig
+func TestSomeFunction(t *testing.T) &#123;
+    mockConfig := MockConfig&#123;
+        values: map[string]string&#123;
+            &quot;key1&quot;: &quot;testValue1&quot;,
+            &quot;key2&quot;: &quot;testValue2&quot;,
+        &#125;,
+    &#125;
+
+    result := SomeFunction(mockConfig)
+    // 断言和验证 result
+&#125;
+</code></pre>
+<p>这种方法有助于使单元测试独立于外部环境，使其更加稳定和可靠。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/golang/" style="color: #00a596">golang</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="color: #03a9f4">单元测试</a>
+        </span>
+        
+    </div>
+    <a href="/2024/01/10/mdstorage/domain/golang/Go%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/01/10/mdstorage/domain/golang/Go%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8E%A5%E5%8F%A3%E6%8A%80%E5%B7%A7/">
+        <h2 class="post-title">Go类型和接口技巧</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="编译时检查类型实现接口-类型断言"><a href="#编译时检查类型实现接口-类型断言" class="headerlink" title="编译时检查类型实现接口&#x2F;类型断言"></a>编译时检查类型实现接口&#x2F;类型断言</h2><p>在 Go 语言中，这行代码 <code>var _ interfaces.CoreServer = (*serverService)(nil)</code> 是一种常用的编译时类型断言惯用法。这行代码并不会在运行时创建变量，而是起到两个主要作用：</p>
+<ol>
+<li><p><strong>确保类型实现了接口</strong>：它断言 <code>serverService</code> 实现了 <code>interfaces.CoreServer</code> 接口。如果 <code>serverService</code> 没有实现 <code>interfaces.CoreServer</code> 接口的所有方法，程序将无法编译。这是一种在编译阶段而非运行时检查接口实现的方式。</p>
+</li>
+<li><p><strong>文档作用</strong>：这行代码还作为明确的文档说明。它向阅读代码的开发人员清楚地显示 <code>serverService</code> 旨在实现 <code>interfaces.CoreServer</code> 接口。在大型代码库中，这种表示方法特别有用，因为接口及其实现之间的关系可能不会立即清楚。</p>
+</li>
+</ol>
+<p>本质上，这是一个静态检查，确保 <code>serverService</code> 正确实现了 <code>interfaces.CoreServer</code> 接口。如果实现缺少任何方法，你将在编译时而不是运行时发现错误。</p>
+<pre><code class="go">type serverService struct &#123;
+    corev1.UnimplementedCoreServiceServer
+    ctx     context.Context
+    options options.SrviceOption
+    streams map[string]corev1.CoreService_AgentServer
+    mu      sync.RWMutex
+&#125;
+
+var _ interfaces.CoreServer = (*serverService)(nil)
+
+func NewServerService(ctx context.Context, options options.SrviceOption) interfaces.CoreServer &#123;
+    return &amp;serverService&#123;
+        ctx:     ctx,
+        options: options,
+        streams: make(map[string]corev1.CoreService_AgentServer),
+    &#125;
+&#125;
+</code></pre>
+<h2 id="接口组合"><a href="#接口组合" class="headerlink" title="接口组合"></a>接口组合</h2><ol>
+<li><p><strong>接口组合</strong>：Go 允许通过组合小的接口来创建更大的接口。这是接口重用和模块化设计的有效方式。</p>
+<pre><code class="go">type Reader interface &#123;
+    Read(p []byte) (n int, err error)
+&#125;
+
+type Writer interface &#123;
+    Write(p []byte) (n int, err error)
+&#125;
+
+type ReadWriter interface &#123;
+    Reader
+    Writer
+&#125;
+</code></pre>
+</li>
+</ol>
+<h2 id="空接口应用"><a href="#空接口应用" class="headerlink" title="空接口应用"></a>空接口应用</h2><p><strong>空接口应用</strong>：空接口 <code>interface&#123;&#125;</code> 可以用来处理未知类型的值。这在处理动态内容时非常有用，类似于其他语言中的泛型。</p>
+<pre><code class="go">func PrintAnything(v interface&#123;&#125;) &#123;
+    fmt.Println(v)
+&#125;
+</code></pre>
+<h2 id="类型选择"><a href="#类型选择" class="headerlink" title="类型选择"></a>类型选择</h2><p><strong>类型选择（Type Switch）</strong>：可以使用类型选择来查询接口值的类型，这在需要根据类型执行不同操作时非常有用。</p>
+<pre><code class="go">switch v := myVar.(type) &#123;
+case int:
+    fmt.Println(&quot;Integer:&quot;, v)
+case string:
+    fmt.Println(&quot;String:&quot;, v)
+default:
+    fmt.Println(&quot;Unknown type&quot;)
+&#125;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/golang/" style="color: #03a9f4">golang</a>
+        </span>
+        
+    </div>
+    <a href="/2024/01/10/mdstorage/domain/golang/Go%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8E%A5%E5%8F%A3%E6%8A%80%E5%B7%A7/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/01/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/QARs%E6%A6%82%E8%BF%B0/">
+        <h2 class="post-title">QARs概述.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>“QARs”（Quality Attribute Requirements）指的是软件工程中的质量属性需求。这些需求通常与软件的非功能特性有关，例如性能、安全性、可靠性、可用性、维护性和可扩展性。它们是软件设计和评估的重要组成部分，用于确保软件产品不仅满足其功能需求，还能以满足用户期望的方式运行。</p>
+<p>举几个例子：</p>
+<ol>
+<li><strong>性能</strong>：软件响应时间、处理速度、资源使用效率等。</li>
+<li><strong>安全性</strong>：保护软件免受未授权访问和攻击。</li>
+<li><strong>可靠性</strong>：软件的稳定性和故障恢复能力。</li>
+<li><strong>可用性</strong>：软件的易用性和用户界面设计。</li>
+<li><strong>维护性</strong>：软件的可维护性，包括代码的可读性和模块化程度。</li>
+<li><strong>可扩展性</strong>：软件的扩展能力，支持未来的增长或变化。</li>
+</ol>
+<p>质量属性需求通常由利益相关者提出，并在软件开发的整个生命周期中进行管理和评估。这些需求帮助团队确定设计选择、技术栈和测试策略。</p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ol>
+<li><p><strong>需求识别与收集</strong>：</p>
+<ul>
+<li>在这个阶段，与项目相关的所有利益相关者（如用户、客户、项目经理、开发者）会一起确定和讨论软件应该达到的质量标准。</li>
+<li>这包括定义性能、安全性、可靠性、可用性等方面的具体需求。</li>
+<li>这些需求通常是基于用户的期望、市场标准或行业规范。</li>
+</ul>
+</li>
+<li><p><strong>分析与规划</strong>：</p>
+<ul>
+<li>在此阶段，对收集到的需求进行分析，确定它们的可行性、优先级和对开发过程的影响。</li>
+<li>然后，将这些需求转化为具体的设计和实施计划。</li>
+<li>这可能涉及技术选择、架构决策、资源分配和时间表的设定。</li>
+</ul>
+</li>
+<li><p><strong>设计</strong>：</p>
+<ul>
+<li>设计阶段涉及将 QARs 融入软件架构和设计决策中。</li>
+<li>设计团队需要确保软件架构支持这些需求，例如通过采用模块化设计来提高可维护性，或者通过合适的数据加密技术来确保安全性。</li>
+</ul>
+</li>
+<li><p><strong>实现</strong>：</p>
+<ul>
+<li>在实现阶段，开发团队编写代码并构建系统，同时确保所有的 QARs 得到满足。</li>
+<li>这可能包括编写特定的代码来处理性能优化、安全性措施等。</li>
+</ul>
+</li>
+<li><p><strong>测试与验证</strong>：</p>
+<ul>
+<li>在这个阶段，软件通过各种测试来验证是否满足 QARs。</li>
+<li>这包括性能测试、安全测试、可用性测试等。</li>
+<li>测试结果用于确认软件是否符合既定的质量标准。</li>
+</ul>
+</li>
+<li><p><strong>部署与维护</strong>：</p>
+<ul>
+<li>软件部署后，将持续监控其性能和其他质量指标，确保它们符合 QARs。</li>
+<li>在维护阶段，可能需要对软件进行更新或改进，以维持或提高质量标准。</li>
+</ul>
+</li>
+<li><p><strong>评估与反馈</strong>：</p>
+<ul>
+<li>最后，定期评估软件的整体质量，收集用户和利益相关者的反馈。</li>
+<li>这些信息可用于未来项目的 QARs 制定和改进。</li>
+</ul>
+</li>
+</ol>
+<h3 id="角色维度"><a href="#角色维度" class="headerlink" title="角色维度"></a>角色维度</h3><ol>
+<li><p><strong>利益相关者（Stakeholders）</strong>：</p>
+<ul>
+<li>需求识别与收集阶段：提供对软件质量的期望和需求，如业务目标、用户体验需求等。</li>
+<li>评估与反馈阶段：对软件的实际性能和质量提供反馈。</li>
+</ul>
+</li>
+<li><p><strong>产品经理（Product Managers）</strong>：</p>
+<ul>
+<li>需求识别与收集阶段：理解和记录业务需求，确保需求与业务目标一致。</li>
+<li>分析与规划阶段：确定需求的优先级，规划产品路线图。</li>
+<li>评估与反馈阶段：确保软件满足市场需求和用户期望，评估用户反馈。</li>
+</ul>
+</li>
+<li><p><strong>系统架构师（System Architects）</strong>：</p>
+<ul>
+<li>分析与规划阶段：基于QARs设计软件架构，确保架构支持所有的质量属性。</li>
+<li>设计阶段：决定技术方案，规划整体系统设计。</li>
+</ul>
+</li>
+<li><p><strong>开发团队（Developers）</strong>：</p>
+<ul>
+<li>设计阶段：根据架构和设计决策进行编码。</li>
+<li>实现阶段：编写代码，实现功能的同时确保符合QARs。</li>
+</ul>
+</li>
+<li><p><strong>质量保证团队（Quality Assurance）</strong>：</p>
+<ul>
+<li>测试与验证阶段：执行各种测试，包括性能测试、安全性测试等，以确保软件符合QARs。</li>
+<li>部署与维护阶段：监控软件性能，识别和报告问题。</li>
+</ul>
+</li>
+<li><p><strong>运维团队（Operations Team）</strong>：</p>
+<ul>
+<li>部署与维护阶段：部署软件，监控运行环境，确保软件的稳定性和性能。</li>
+<li>评估与反馈阶段：提供实际运行中的性能和稳定性反馈。</li>
+</ul>
+</li>
+</ol>
+<h2 id="场景用例"><a href="#场景用例" class="headerlink" title="场景用例"></a>场景用例</h2><p>维护性是软件的一个关键质量属性，它涉及到软件在未来的可支持性、可改进性和可适应性。一个具有高维护性的软件可以更容易、更经济地被修改和更新，这对开发团队来说是一个重要的考虑因素。以下是如何将这个目标融入QARs的几个要点：</p>
+<ol>
+<li><strong>代码质量</strong>：确保代码易于理解和修改。这包括良好的代码结构、清晰的命名约定和充分的注释。</li>
+<li><strong>文档</strong>：提供详细的文档，包括设计决策、代码库的结构和功能描述，以及开发和维护指南。</li>
+<li><strong>模块化设计</strong>：采用模块化设计原则，使得各个部分的代码相对独立，易于管理和维护。</li>
+<li><strong>自动化测试</strong>：实施自动化测试以确保代码更改不会意外破坏现有功能，减少维护时的风险和工作量。</li>
+<li><strong>代码复用和标准化</strong>：鼓励代码复用和遵循编程标准，以减少重复工作和提高代码的一致性。</li>
+<li><strong>技术债务管理</strong>：定期评估和解决技术债务，防止过时的代码和设计决策增加未来的维护负担。</li>
+</ol>
+<p>当产品需求与模块化设计发生冲突时，这通常是一个挑战，因为它涉及到平衡具体功能的实现与保持系统整体架构清晰和可维护性之间的矛盾。在这种情况下，可以采取以下步骤来解决这个问题：</p>
+<ol>
+<li><p><strong>详细评估冲突</strong>：</p>
+<ul>
+<li>准确地识别冲突点。是需求太复杂，无法适应现有的模块结构？还是模块化设计过于严格，限制了功能的实现？</li>
+<li>分析冲突对项目目标和长期维护的影响。</li>
+</ul>
+</li>
+<li><p><strong>利益相关者沟通</strong>：</p>
+<ul>
+<li>将冲突情况和可能的影响清晰地传达给项目利益相关者，包括产品经理、开发团队和客户。</li>
+<li>讨论各种选择的利弊，包括对时间表、成本、产品质量和维护的影响。</li>
+</ul>
+</li>
+<li><p><strong>探索替代方案</strong>：</p>
+<ul>
+<li>寻找能够满足需求同时尽量保持模块化完整性的替代解决方案。</li>
+<li>这可能包括重新设计某些模块、调整需求或找到创新的技术解决方案。</li>
+</ul>
+</li>
+<li><p><strong>权衡与决策</strong>：</p>
+<ul>
+<li>基于详细分析和讨论，进行权衡决策。在某些情况下，可能需要对原有的模块化设计进行调整以适应新的需求。</li>
+<li>在其他情况下，可能需要修改或简化需求以保持系统的模块化和可维护性。</li>
+</ul>
+</li>
+<li><p><strong>实施与监控</strong>：</p>
+<ul>
+<li>实施决定的解决方案，并密切监控其对整个系统的影响。</li>
+<li>确保在实施过程中保持代码质量和系统的整体完整性。</li>
+</ul>
+</li>
+<li><p><strong>持续评估</strong>：</p>
+<ul>
+<li>在后续的开发周期中，持续评估所做决策的效果。</li>
+<li>如果必要，进行调整以确保项目目标的实现和系统的长期可维护性。</li>
+</ul>
+</li>
+</ol>
+<p>关键是在保持系统的整体架构和设计原则的同时，灵活地应对特定需求的挑战。这要求开发团队、产品经理和其他利益相关者之间有良好的沟通和协作。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%9E%B6%E6%9E%84/" style="color: #00a596">架构</a>
+        </span>
+        
+    </div>
+    <a href="/2024/01/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/QARs%E6%A6%82%E8%BF%B0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/01/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E8%BD%AF%E4%BB%B6%E5%85%B3%E9%94%AE%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7/">
+        <h2 class="post-title">软件关键质量属性.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>软件的关键质量属性通常涵盖了软件系统不同方面的非功能特性。这些质量属性对于确保软件系统满足用户的需求和预期至关重要。主要的软件关键质量属性包括：</p>
+<ol>
+<li><p><strong>性能</strong>：涉及软件的响应时间、处理速度、资源消耗等。性能好的软件能够高效地执行并满足用户对速度和效率的期望。</p>
+</li>
+<li><p><strong>可靠性</strong>：指软件的稳定性和准确性。高可靠性的软件能够在预期的时间和条件下无故障地运行。</p>
+</li>
+<li><p><strong>可用性</strong>：涉及软件的易用性和用户界面的友好性。易于使用的软件可以提高用户满意度和生产效率。</p>
+</li>
+<li><p><strong>安全性</strong>：包括数据保护、访问控制和抵御恶意攻击的能力。安全性是特别重要的，尤其是对于处理敏感信息的软件。</p>
+</li>
+<li><p><strong>可维护性</strong>：指的是软件的修改和更新的容易程度。高可维护性的软件可以更快速、成本更低地进行更新和修复。</p>
+</li>
+<li><p><strong>可扩展性</strong>：软件适应增加的负载或功能变化的能力。可扩展的系统能够容纳业务增长和技术变革。</p>
+</li>
+<li><p><strong>兼容性</strong>：软件与其他系统、设备或软件版本之间的兼容性。这对于确保软件在不同环境中的正常运行非常重要。</p>
+</li>
+<li><p><strong>可移植性</strong>：软件从一个环境迁移到另一个环境的能力。这包括不同操作系统、硬件或网络环境的适应性。</p>
+</li>
+<li><p><strong>可测试性</strong>：软件的测试容易程度，包括识别缺陷和验证功能的能力。</p>
+</li>
+<li><p><strong>国际化和本地化</strong>：软件适应不同地区语言和文化的能力，这对于全球市场中的软件尤为重要。</p>
+</li>
+</ol>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ol>
+<li><p><strong>规划阶段</strong>：</p>
+<ul>
+<li>在软件项目的初始阶段，首先要确定关键质量属性的需求和优先级。这包括性能、可靠性、可用性、安全性等。</li>
+<li>在这一阶段，需求分析师和项目经理会与利益相关者协商，确定哪些质量属性对项目最为关键，并据此制定相应的目标和指标。</li>
+</ul>
+</li>
+<li><p><strong>设计阶段</strong>：</p>
+<ul>
+<li>设计团队需要确保软件架构和设计能够支持这些质量属性的要求。例如，为了提高性能，可能需要选择更高效的数据结构和算法。</li>
+<li>安全性、可维护性和可扩展性也是在设计阶段需要考虑的重要因素，通过适当的架构设计来确保这些属性。</li>
+</ul>
+</li>
+<li><p><strong>开发阶段</strong>：</p>
+<ul>
+<li>开发团队在编写代码时，需要遵循既定的编码标准和实践，以确保软件质量。例如，代码的可读性和测试性对于保证可维护性至关重要。</li>
+<li>在这一阶段，对性能和安全性的关注也非常重要，特别是在处理大量数据或敏感信息时。</li>
+</ul>
+</li>
+<li><p><strong>测试阶段</strong>：</p>
+<ul>
+<li>软件测试是验证和确保软件满足其质量属性要求的关键环节。性能测试、安全测试、可用性测试等都是必不可少的。</li>
+<li>测试结果帮助确定是否需要进一步的优化或改进以满足质量标准。</li>
+</ul>
+</li>
+<li><p><strong>部署阶段</strong>：</p>
+<ul>
+<li>在软件部署时，运维团队需确保软件的性能和稳定性符合预期，特别是在不同的部署环境中。</li>
+<li>此阶段还需要考虑到软件的可维护性和可扩展性，以应对未来可能的变更和升级。</li>
+</ul>
+</li>
+<li><p><strong>维护阶段</strong>：</p>
+<ul>
+<li>在软件的维护阶段，持续监控软件性能和稳定性，同时响应用户反馈和需求变更。</li>
+<li>定期的维护和更新有助于保持软件的安全性和兼容性，同时也是可持续性的一个关键方面。</li>
+</ul>
+</li>
+<li><p><strong>退役阶段</strong>：</p>
+<ul>
+<li>当软件到达生命周期的末端时，需要有计划地进行退役，确保数据的安全迁移和资源的有效释放。</li>
+<li>在这个阶段，还要考虑如何处理遗留数据和与其他系统的集成问题。</li>
+</ul>
+</li>
+</ol>
+<h3 id="软件关键质量属性持续进化"><a href="#软件关键质量属性持续进化" class="headerlink" title="软件关键质量属性持续进化"></a>软件关键质量属性持续进化</h3><ol>
+<li><p><strong>持续的需求分析和调整</strong>：</p>
+<ul>
+<li>在项目的每个阶段都重新评估和精细化质量属性的需求。</li>
+<li>适应变化的业务需求、技术环境和用户期望。</li>
+</ul>
+</li>
+<li><p><strong>迭代的设计和开发</strong>：</p>
+<ul>
+<li>采用敏捷或迭代的开发方法，允许在项目周期中不断调整设计和开发工作。</li>
+<li>在每个迭代阶段考虑质量属性，并根据反馈和测试结果进行优化。</li>
+</ul>
+</li>
+<li><p><strong>持续集成和持续部署（CI&#x2F;CD）</strong>：</p>
+<ul>
+<li>实施持续集成和持续部署流程，允许频繁地集成新代码和功能。</li>
+<li>这样可以及时发现和修正影响质量属性的问题。</li>
+</ul>
+</li>
+<li><p><strong>定期的性能和质量测试</strong>：</p>
+<ul>
+<li>定期进行性能测试、安全测试、可用性测试等，确保在整个项目周期中持续满足质量标准。</li>
+<li>利用自动化测试工具来提高测试的效率和频率。</li>
+</ul>
+</li>
+<li><p><strong>反馈循环</strong>：</p>
+<ul>
+<li>从用户和利益相关者那里收集反馈，并将这些反馈整合到项目的下一个迭代或阶段中。</li>
+<li>使用用户故事、反馈会议和评审会议来了解用户的需求和体验。</li>
+</ul>
+</li>
+<li><p><strong>质量度量和监控</strong>：</p>
+<ul>
+<li>利用质量度量工具来持续监控软件的关键质量属性。</li>
+<li>这些度量可以包括性能指标、故障率、用户满意度等。</li>
+</ul>
+</li>
+<li><p><strong>敏捷和灵活的项目管理</strong>：</p>
+<ul>
+<li>采用敏捷的项目管理方法，以灵活地应对变化和挑战。</li>
+<li>保持团队成员之间的密切沟通和协作，以快速响应变化。</li>
+</ul>
+</li>
+<li><p><strong>技术债务管理</strong>：</p>
+<ul>
+<li>定期评估和管理技术债务，确保长期的维护性和可扩展性。</li>
+<li>避免短期的解决方案损害长期的质量目标。</li>
+</ul>
+</li>
+</ol>
+<h3 id="角色和关注维度"><a href="#角色和关注维度" class="headerlink" title="角色和关注维度"></a>角色和关注维度</h3><p>软件关键质量属性的关注点和责任在项目的不同阶段由不同角色承担。以下是各个角色及其在不同项目阶段对软件关键质量属性的关注重点：</p>
+<ol>
+<li><p><strong>需求分析师&#x2F;业务分析师</strong>：</p>
+<ul>
+<li><strong>需求收集阶段</strong>：识别和记录软件的质量属性需求，如性能、安全性、可用性等，确保它们符合业务目标和用户需求。</li>
+</ul>
+</li>
+<li><p><strong>产品经理</strong>：</p>
+<ul>
+<li><strong>规划和定义阶段</strong>：确定产品的目标和愿景，包括质量属性的优先级设定。</li>
+<li><strong>整个项目周期</strong>：确保产品满足市场需求，并且在整个项目生命周期中保持对质量属性的关注。</li>
+</ul>
+</li>
+<li><p><strong>系统架构师&#x2F;软件架构师</strong>：</p>
+<ul>
+<li><strong>设计阶段</strong>：设计软件架构时考虑如何支持和实现这些质量属性，如选择适当的架构模式和技术栈。</li>
+<li><strong>开发阶段</strong>：确保架构决策能够满足预定的质量要求。</li>
+</ul>
+</li>
+<li><p><strong>开发团队（软件开发人员）</strong>：</p>
+<ul>
+<li><strong>实现阶段</strong>：编写代码时考虑如何实现这些质量属性，例如编写高效、可维护的代码。</li>
+<li><strong>测试阶段</strong>：参与单元测试和集成测试，以确保代码质量。</li>
+</ul>
+</li>
+<li><p><strong>质量保证团队（QA工程师）</strong>：</p>
+<ul>
+<li><strong>测试阶段</strong>：通过功能测试、性能测试、安全测试等，确保软件满足既定的质量标准。</li>
+<li><strong>维护阶段</strong>：监控软件性能和稳定性，确保长期满足质量要求。</li>
+</ul>
+</li>
+<li><p><strong>项目经理&#x2F;Scrum主管</strong>：</p>
+<ul>
+<li><strong>整个项目周期</strong>：监控项目进度和资源分配，确保有足够的时间和资源来满足质量目标。</li>
+<li><strong>风险管理阶段</strong>：识别可能影响质量属性的风险并制定应对策略。</li>
+</ul>
+</li>
+<li><p><strong>运维团队（DevOps工程师）</strong>：</p>
+<ul>
+<li><strong>部署和运维阶段</strong>：部署软件并监控其在生产环境中的表现，特别是性能和稳定性方面。</li>
+<li><strong>维护阶段</strong>：及时响应性能下降或安全问题，并实施必要的维护工作。</li>
+</ul>
+</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%9E%B6%E6%9E%84/" style="color: #00a596">架构</a>
+        </span>
+        
+    </div>
+    <a href="/2024/01/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E8%BD%AF%E4%BB%B6%E5%85%B3%E9%94%AE%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/01/04/mdstorage/domain/dart/flutter%E4%BD%BF%E7%94%A8/">
+        <h2 class="post-title">flutter使用.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/4
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="1-Widgets"><a href="#1-Widgets" class="headerlink" title="1. Widgets"></a>1. <strong>Widgets</strong></h3><ul>
+<li><strong>基础</strong>: 在 Flutter 中，几乎所有东西都是一个 Widget —— 它是构建界面的基本单位。Widgets 描述了它们在当前配置和状态下应该呈现的 UI。</li>
+<li><strong>类型</strong>: 有两种主要类型的 Widgets —— StatelessWidget 和 StatefulWidget。StatelessWidget 不变，而 StatefulWidget 持有状态，并且可以在其生命周期内改变。</li>
+</ul>
+<h3 id="2-Widget-树和渲染流程"><a href="#2-Widget-树和渲染流程" class="headerlink" title="2. Widget 树和渲染流程"></a>2. <strong>Widget 树和渲染流程</strong></h3><ul>
+<li><strong>Widget 树</strong>: 应用的界面是由 Widgets 组成的树状结构。每个 Widget 嵌套在其父 Widget 中，并且可能有多个子 Widget。</li>
+<li><strong>渲染流程</strong>: 当 Widget 的状态改变时（在 StatefulWidget 中），Flutter 框架会重建 Widget 树的一部分，这导致界面更新。</li>
+</ul>
+<h3 id="3-状态管理"><a href="#3-状态管理" class="headerlink" title="3. 状态管理"></a>3. <strong>状态管理</strong></h3><ul>
+<li><strong>状态</strong>: 在 Flutter 中，状态是指应用数据或 UI 状态的当前配置。状态管理是指如何创建、显示和维护这些状态。</li>
+<li><strong>方法</strong>: 有多种方式可以管理状态，包括局部状态管理（如 StatefulWidget）和全局状态管理（如 Provider、Bloc、Redux）。</li>
+</ul>
+<h3 id="4-布局和约束"><a href="#4-布局和约束" class="headerlink" title="4. 布局和约束"></a>4. <strong>布局和约束</strong></h3><ul>
+<li><strong>布局</strong>: Flutter 使用一种强大且灵活的布局系统。Widgets 通过它们的父 Widget 提供的约束来确定自己的大小和位置。</li>
+<li><strong>常用布局 Widgets</strong>: 如 <code>Row</code>、<code>Column</code>、<code>Stack</code>、<code>Container</code> 等，它们各自有不同的布局行为。</li>
+</ul>
+<h3 id="5-导航和路由"><a href="#5-导航和路由" class="headerlink" title="5. 导航和路由"></a>5. <strong>导航和路由</strong></h3><ul>
+<li><strong>导航</strong>: 在 Flutter 应用中从一个屏幕（页面）导航到另一个屏幕。</li>
+<li><strong>路由</strong>: 路由是应用的屏幕或页面。Flutter 提供了 <code>Navigator</code> 类来管理路由栈。</li>
+</ul>
+<h3 id="6-异步编程"><a href="#6-异步编程" class="headerlink" title="6. 异步编程"></a>6. <strong>异步编程</strong></h3><ul>
+<li><strong>异步操作</strong>: 如 API 调用或数据库操作，这些操作不会立即完成并返回结果。</li>
+<li><strong>Future 和 Stream</strong>: Dart 的 Future 和 Stream 用于处理异步数据。</li>
+</ul>
+<h3 id="7-动画和动态交互"><a href="#7-动画和动态交互" class="headerlink" title="7. 动画和动态交互"></a>7. <strong>动画和动态交互</strong></h3><ul>
+<li>Flutter 提供了强大的动画库来创建平滑和复杂的动画。</li>
+<li>了解如何使用 <code>AnimationController</code>、<code>Tween</code> 等来创建动画效果。</li>
+</ul>
+<h3 id="8-包和插件"><a href="#8-包和插件" class="headerlink" title="8. 包和插件"></a>8. <strong>包和插件</strong></h3><ul>
+<li>使用外部包和插件来增强应用的功能。</li>
+<li>如何在 <code>pubspec.yaml</code> 中添加依赖，并使用 Dart Packages 中的资源。</li>
+</ul>
+<h3 id="9-测试"><a href="#9-测试" class="headerlink" title="9. 测试"></a>9. <strong>测试</strong></h3><ul>
+<li>测试是确保应用质量和性能的关键部分。Flutter 支持单元测试、组件测试和集成测试。</li>
+</ul>
+<h3 id="10-性能优化"><a href="#10-性能优化" class="headerlink" title="10. 性能优化"></a>10. <strong>性能优化</strong></h3><ul>
+<li>了解如何诊断性能问题并优化 Flutter 应用以提高效率和响应速度。</li>
+</ul>
+<h3 id="11-国际化和本地化"><a href="#11-国际化和本地化" class="headerlink" title="11. 国际化和本地化"></a>11. <strong>国际化和本地化</strong></h3><ul>
+<li>支持多语言和本地文化，确保应用可以在全球范围内使用。</li>
+</ul>
+<h3 id="12-Flutter-2-0-之后的新特性"><a href="#12-Flutter-2-0-之后的新特性" class="headerlink" title="12. Flutter 2.0 之后的新特性"></a>12. <strong>Flutter 2.0 之后的新特性</strong></h3><ul>
+<li>如果你已经是 Flutter 的经验开发者，那么了解自 Flutter 2.0 以来引入的新特性（如空安全、新的渲染引擎等）也很重要。</li>
+</ul>
+<h2 id="StatefulWidget"><a href="#StatefulWidget" class="headerlink" title="StatefulWidget"></a>StatefulWidget</h2><p>在 Flutter 中，<code>StatefulWidget</code> 是一种当其状态可能在其生命周期内发生变化时使用的 Widget。以下是一个<code>StatefulWidget</code>的示例，它演示了一个简单的计数器应用，以及对其各部分的解释：</p>
+<h3 id="示例：简单计数器"><a href="#示例：简单计数器" class="headerlink" title="示例：简单计数器"></a>示例：简单计数器</h3><pre><code class="dart">import &#39;package:flutter/material.dart&#39;;
+
+void main() &#123;
+  runApp(MyApp());
+&#125;
+
+class MyApp extends StatelessWidget &#123;
+  @override
+  Widget build(BuildContext context) &#123;
+    return MaterialApp(
+      title: &#39;Stateful Widget Demo&#39;,
+      home: CounterScreen(),
+    );
+  &#125;
+&#125;
+
+class CounterScreen extends StatefulWidget &#123;
+  @override
+  _CounterScreenState createState() =&gt; _CounterScreenState();
+&#125;
+
+class _CounterScreenState extends State&lt;CounterScreen&gt; &#123;
+  int _counter = 0;
+
+  void _incrementCounter() &#123;
+    setState(() &#123;
+      _counter++;
+    &#125;);
+  &#125;
+
+  @override
+  Widget build(BuildContext context) &#123;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(&#39;Stateful Widget Example&#39;),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: &lt;Widget&gt;[
+            Text(&#39;You have pushed the button this many times:&#39;),
+            Text(
+              &#39;$_counter&#39;,
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: &#39;Increment&#39;,
+        child: Icon(Icons.add),
+      ),
+    );
+  &#125;
+&#125;
+</code></pre>
+<h3 id="解释："><a href="#解释：" class="headerlink" title="解释："></a>解释：</h3><ul>
+<li><p><strong>MyApp 类</strong>:</p>
+<ul>
+<li><code>MyApp</code> 继承自 <code>StatelessWidget</code>，因为它本身不需要维护任何状态。</li>
+<li><code>build</code> 方法返回一个 <code>MaterialApp</code>，其 <code>home</code> 属性设置为 <code>CounterScreen</code>。</li>
+</ul>
+</li>
+<li><p><strong>CounterScreen 类</strong>:</p>
+<ul>
+<li><code>CounterScreen</code> 是一个 <code>StatefulWidget</code>。当你需要根据用户交互或其他因素来改变 Widget 的显示时，你应该使用 <code>StatefulWidget</code>。</li>
+<li>它重写了 <code>createState</code> 方法来创建 <code>_CounterScreenState</code> 的实例。</li>
+</ul>
+</li>
+<li><p><strong>_CounterScreenState 类</strong>:</p>
+<ul>
+<li><code>_CounterScreenState</code> 类包含了 <code>CounterScreen</code> 的状态。</li>
+<li>它定义了一个 <code>_counter</code> 变量来存储计数器的值，并且有一个 <code>_incrementCounter</code> 方法来增加计数器的值。</li>
+<li>每次调用 <code>_incrementCounter</code> 方法时，都会通过调用 <code>setState</code> 来更新界面。<code>setState</code> 会触发框架调用 <code>_CounterScreenState</code> 的 <code>build</code> 方法，从而更新 UI。</li>
+</ul>
+</li>
+<li><p><strong>build 方法</strong>:</p>
+<ul>
+<li><code>build</code> 方法构建并返回一个 <code>Scaffold</code>，包含一个 <code>AppBar</code>、一个显示计数器值的 <code>Text</code>，以及一个用于增加计数器值的 <code>FloatingActionButton</code>。</li>
+<li>每当用户点击 <code>FloatingActionButton</code> 时，都会调用 <code>_incrementCounter</code> 方法。</li>
+</ul>
+</li>
+</ul>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ul>
+<li>将状态逻辑保持在 <code>State</code> 类中，而不是在 <code>StatefulWidget</code> 中。</li>
+<li>使用 <code>setState</code> 来更新状态，这会导致 Flutter 重建 UI。</li>
+<li>尽量保持 <code>State</code> 对象的简洁，避免过度膨胀。</li>
+</ul>
+<p>通过使用 <code>StatefulWidget</code>，你可以创建可以动态改变的交互式界面。在上面的例子中，每次点击按钮，计数器的值都会增加，并且界面会相应地更新显示新的值。</p>
+<h2 id="StatelessWidget"><a href="#StatelessWidget" class="headerlink" title="StatelessWidget"></a>StatelessWidget</h2><p>在 Flutter 中，<code>StatelessWidget</code> 是一种不可变的 widget，它不会改变其状态。它非常适合用于不需要响应任何内部状态改变的 UI 部分。以下是一个简单的 <code>StatelessWidget</code> 最佳实践示例，以及对其各部分的解释：</p>
+<h3 id="显示静态文本的-StatelessWidget"><a href="#显示静态文本的-StatelessWidget" class="headerlink" title="显示静态文本的 StatelessWidget"></a>显示静态文本的 StatelessWidget</h3><pre><code class="dart">import &#39;package:flutter/material.dart&#39;;
+
+void main() &#123;
+  runApp(MyApp());
+&#125;
+
+class MyApp extends StatelessWidget &#123;
+  @override
+  Widget build(BuildContext context) &#123;
+    return MaterialApp(
+      title: &#39;Stateless Widget Demo&#39;,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(&#39;Stateless Widget Example&#39;),
+        ),
+        body: Center(
+          child: GreetingText(),
+        ),
+      ),
+    );
+  &#125;
+&#125;
+
+class GreetingText extends StatelessWidget &#123;
+  @override
+  Widget build(BuildContext context) &#123;
+    return Text(
+      &#39;Hello, Flutter!&#39;,
+      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+    );
+  &#125;
+&#125;
+</code></pre>
+<h3 id="解释：-1"><a href="#解释：-1" class="headerlink" title="解释："></a>解释：</h3><ul>
+<li><p><strong>导入必要的包</strong>:</p>
+<ul>
+<li><code>import &#39;package:flutter/material.dart&#39;;</code> 导入了 Flutter Material 库，这是构建 Material Design 应用的核心库。</li>
+</ul>
+</li>
+<li><p><strong>主函数 (<code>main</code>)</strong>:</p>
+<ul>
+<li><code>void main() &#123; runApp(MyApp()); &#125;</code>: 这是每个 Flutter 应用的入口点。<code>runApp</code> 函数接收一个 <code>Widget</code> 并使其成为 widget 树的根。</li>
+</ul>
+</li>
+<li><p><strong>MyApp 类</strong>:</p>
+<ul>
+<li><code>MyApp</code> 类扩展了 <code>StatelessWidget</code>，这意味着 <code>MyApp</code> 是不可变的，并且其属性不会随时间改变。</li>
+<li><code>build</code> 方法返回一个 <code>MaterialApp</code> 实例，它是 Material Design 应用的根 Widget。</li>
+</ul>
+</li>
+<li><p><strong>MaterialApp</strong>:</p>
+<ul>
+<li><code>MaterialApp</code> 是一个便利的 widget，它封装了多个用于 Material Design 应用程序的 widgets。</li>
+<li><code>title</code> 属性定义了应用的标题。</li>
+<li><code>home</code> 属性是应用的主屏幕，这里是一个 <code>Scaffold</code>。</li>
+</ul>
+</li>
+<li><p><strong>Scaffold</strong>:</p>
+<ul>
+<li><code>Scaffold</code> 是一个提供默认的导航栏、标题和包含主屏幕 widget 树的 body 属性的 widget。</li>
+<li><code>appBar</code> 定义了应用的顶部栏。</li>
+<li><code>body</code> 是一个 <code>Center</code> widget，它包含了自定义的 <code>GreetingText</code> widget。</li>
+</ul>
+</li>
+<li><p><strong>GreetingText 类</strong>:</p>
+<ul>
+<li><code>GreetingText</code> 也是一个 <code>StatelessWidget</code>，它的 <code>build</code> 方法返回一个 <code>Text</code> widget，显示 “Hello, Flutter!”。</li>
+<li><code>TextStyle</code> 用于设置文本的样式，如字体大小和权重。</li>
+</ul>
+</li>
+</ul>
+<h3 id="最佳实践："><a href="#最佳实践：" class="headerlink" title="最佳实践："></a>最佳实践：</h3><ul>
+<li><strong>简洁性</strong>: <code>StatelessWidget</code> 应保持简洁，只包含必要的 UI 元素。</li>
+<li><strong>无状态</strong>: 由于 <code>StatelessWidget</code> 不保存任何状态，它们应用于不需要响应任何状态更改的 UI 部分。</li>
+<li><strong>重用性</strong>: 将常用的 UI 部分封装在 <code>StatelessWidget</code> 中，以提高代码的重用性。</li>
+</ul>
+<p>这个示例展示了如何使用 <code>StatelessWidget</code> 创建基础的静态 UI。理解和熟练使用 <code>StatelessWidget</code> 是学习 Flutter 的重要一步。</p>
+<h2 id="State-类"><a href="#State-类" class="headerlink" title="State 类"></a>State 类</h2><p>在 Flutter 中，<code>State</code> 类是与 <code>StatefulWidget</code> 紧密相关的，用于管理 <code>StatefulWidget</code> 的状态。<code>State</code> 对象存储了状态信息并提供了构建与其关联的 <code>StatefulWidget</code> 的界面的逻辑。以下是一个使用 <code>State</code> 类的示例，包括一个简单的计数器应用及其解释。</p>
+<h3 id="示例：简单计数器-1"><a href="#示例：简单计数器-1" class="headerlink" title="示例：简单计数器"></a>示例：简单计数器</h3><pre><code class="dart">import &#39;package:flutter/material.dart&#39;;
+
+void main() &#123;
+  runApp(MyApp());
+&#125;
+
+class MyApp extends StatelessWidget &#123;
+  @override
+  Widget build(BuildContext context) &#123;
+    return MaterialApp(
+      title: &#39;State Class Demo&#39;,
+      home: CounterScreen(),
+    );
+  &#125;
+&#125;
+
+class CounterScreen extends StatefulWidget &#123;
+  @override
+  _CounterScreenState createState() =&gt; _CounterScreenState();
+&#125;
+
+class _CounterScreenState extends State&lt;CounterScreen&gt; &#123;
+  int _counter = 0;
+
+  void _incrementCounter() &#123;
+    setState(() &#123;
+      _counter++;
+    &#125;);
+  &#125;
+
+  @override
+  Widget build(BuildContext context) &#123;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(&#39;State Class Example&#39;),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: &lt;Widget&gt;[
+            Text(&#39;You have pushed the button this many times:&#39;),
+            Text(
+              &#39;$_counter&#39;,
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: &#39;Increment&#39;,
+        child: Icon(Icons.add),
+      ),
+    );
+  &#125;
+&#125;
+</code></pre>
+<h3 id="解释：-2"><a href="#解释：-2" class="headerlink" title="解释："></a>解释：</h3><ol>
+<li><p><strong><code>CounterScreen</code> 类</strong>:</p>
+<ul>
+<li>这是一个 <code>StatefulWidget</code>。它重写了 <code>createState()</code> 方法来创建 <code>_CounterScreenState</code> 的实例。</li>
+</ul>
+</li>
+<li><p><strong><code>_CounterScreenState</code> 类</strong>:</p>
+<ul>
+<li><code>_CounterScreenState</code> 类扩展了 <code>State&lt;CounterScreen&gt;</code>，表明这是 <code>CounterScreen</code> 的状态。</li>
+<li>它包含一个 <code>_counter</code> 变量，这是它的状态（在这个例子中是计数器的值）。</li>
+<li><code>_incrementCounter()</code> 方法用于递增 <code>_counter</code> 变量。在这个方法中，调用 <code>setState()</code> 会通知 Flutter 框架这个状态对象的状态已改变，导致它重新运行 <code>build()</code> 方法，从而更新 UI。</li>
+<li><code>build()</code> 方法构建并返回一个 <code>Scaffold</code> widget，显示计数器的值并包含一个增加计数器的按钮。</li>
+</ul>
+</li>
+</ol>
+<h3 id="最佳实践：-1"><a href="#最佳实践：-1" class="headerlink" title="最佳实践："></a>最佳实践：</h3><ul>
+<li><strong>封装状态</strong>：将状态封装在 <code>State</code> 类中，而不是直接在 <code>StatefulWidget</code> 中。这有助于代码的组织和可读性。</li>
+<li>**使用 <code>setState()</code>**：当状态改变时，使用 <code>setState()</code> 更新状态。这会通知框架需要重建 UI。</li>
+<li><strong>最小化 <code>build()</code> 方法的工作</strong>：<code>build()</code> 方法可能会频繁调用，因此应避免在其中放置过多的逻辑。将计算和复杂的操作移到 <code>build()</code> 方法之外。</li>
+<li><strong>管理资源</strong>：对于需要监听器或订阅的资源，应在 <code>State</code> 对象的 <code>initState()</code> 中进行初始化，在 <code>dispose()</code> 中进行清理，以避免内存泄漏。</li>
+</ul>
+<p>通过使用 <code>StatefulWidget</code> 和 <code>State</code> 类，您可以创建动态且响应式的用户界面，其内容可以根据用户交互或内部状态的变化而改变。</p>
+<p>要使另一个 <code>StatefulWidget</code> 监听 <code>_counter</code> 变量的变化，我们需要使用一种状态管理解决。在 Flutter 中，有多种方式来实现跨 widget 的状态共享和监听，例如使用 <code>Provider</code>、<code>InheritedWidget</code>、<code>Bloc</code> 或简单的回调。以下是使用回调和 <code>Provider</code> 包的两种方法：</p>
+<h3 id="方法-1-使用回调"><a href="#方法-1-使用回调" class="headerlink" title="方法 1: 使用回调"></a>方法 1: 使用回调</h3><p>如果你只需要简单地在几个 widget 之间共享状态，可以使用回调函数。</p>
+<p>首先，修改 <code>CounterScreen</code>，使它接受一个回调函数，并在 <code>_incrementCounter</code> 方法中调用这个回调：</p>
+<pre><code class="dart">class CounterScreen extends StatefulWidget &#123;
+  final Function(int) onCounterChanged;
+
+  CounterScreen(&#123;this.onCounterChanged&#125;);
+
+  @override
+  _CounterScreenState createState() =&gt; _CounterScreenState();
+&#125;
+
+class _CounterScreenState extends State&lt;CounterScreen&gt; &#123;
+  int _counter = 0;
+
+  void _incrementCounter() &#123;
+    setState(() &#123;
+      _counter++;
+    &#125;);
+    widget.onCounterChanged?.call(_counter);
+  &#125;
+
+  // ... 其他代码保持不变
+&#125;
+</code></pre>
+<p>然后，在创建 <code>CounterScreen</code> 的地方，传递一个处理 <code>_counter</code> 变化的回调函数：</p>
+<pre><code class="dart">CounterScreen(
+  onCounterChanged: (newCounterValue) &#123;
+    // 处理 _counter 变化的逻辑
+  &#125;,
+)
+</code></pre>
+<h3 id="方法-2-使用-Provider"><a href="#方法-2-使用-Provider" class="headerlink" title="方法 2: 使用 Provider"></a>方法 2: 使用 Provider</h3><p>对于更复杂的应用，你可能想要使用 <code>Provider</code> 包来更优雅地管理状态。</p>
+<ol>
+<li><p><strong>添加 Provider 依赖</strong>：<br>在 <code>pubspec.yaml</code> 文件中添加 <code>provider</code> 包的依赖。</p>
+</li>
+<li><p><strong>创建一个 Model 类</strong>：<br>创建一个用于存储 <code>_counter</code> 变量和更改通知的模型类。</p>
+</li>
+</ol>
+<pre><code class="dart">class CounterModel extends ChangeNotifier &#123;
+  int _counter = 0;
+
+  int get counter =&gt; _counter;
+
+  void incrementCounter() &#123;
+    _counter++;
+    notifyListeners();
+  &#125;
+&#125;
+</code></pre>
+<ol start="3">
+<li><strong>在应用顶层使用 ChangeNotifierProvider</strong>：<br>在 <code>main.dart</code> 或最顶层 widget 中，使用 <code>ChangeNotifierProvider</code> 包裹你的应用或特定屏幕。</li>
+</ol>
+<pre><code class="dart">void main() &#123;
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) =&gt; CounterModel(),
+      child: MyApp(),
+    ),
+  );
+&#125;
+</code></pre>
+<ol start="4">
+<li><strong>修改 CounterScreen 以使用 CounterModel</strong>：<br>然后，修改 <code>CounterScreen</code> 以使用 <code>CounterModel</code>。</li>
+</ol>
+<pre><code class="dart">class _CounterScreenState extends State&lt;CounterScreen&gt; &#123;
+  @override
+  Widget build(BuildContext context) &#123;
+    final counterModel = Provider.of&lt;CounterModel&gt;(context, listen: false);
+
+    return Scaffold(
+      // ... UI代码
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =&gt; counterModel.incrementCounter(),
+        tooltip: &#39;Increment&#39;,
+        child: Icon(Icons.add),
+      ),
+    );
+  &#125;
+&#125;
+</code></pre>
+<ol start="5">
+<li><strong>在其他 widget 中监听变化</strong>：<br>在另一个 <code>StatefulWidget</code> 中，你可以使用 <code>Provider.of</code> 来监听 <code>_counter</code> 的变化。</li>
+</ol>
+<pre><code class="dart">@override
+Widget build(BuildContext context) &#123;
+  int counter = Provider.of&lt;CounterModel&gt;(context).counter; // 自动监听变化
+
+  // 使用 counter 构建 UI
+&#125;
+</code></pre>
+<p>使用 <code>Provider</code>，你可以在应用的不同部分中共享和监听 <code>CounterModel</code> 的状态，从而实现跨 widget 的状态同步。这种方法适合于更复杂或更大型的应用，它有助于保持代码的清晰和组织。</p>
+<h2 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h2><p><code>Provider</code> 是 Flutter 中一种流行的状态管理解决方案，它允许数据和状态跨 widget 树高效地共享和更新。以下是使用 <code>Provider</code> 的一个最佳实践示例，以及对其各部分的解释：</p>
+<h3 id="示例：计数器应用"><a href="#示例：计数器应用" class="headerlink" title="示例：计数器应用"></a>示例：计数器应用</h3><p>首先，在你的 Flutter 项目的 <code>pubspec.yaml</code> 文件中添加 <code>provider</code> 作为依赖项：</p>
+<pre><code class="yaml">dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^5.0.0 # 请使用最新版本
+</code></pre>
+<p>然后，创建一个简单的计数器模型：</p>
+<pre><code class="dart">import &#39;package:flutter/foundation.dart&#39;;
+
+class CounterModel with ChangeNotifier &#123;
+  int _count = 0;
+
+  int get count =&gt; _count;
+
+  void increment() &#123;
+    _count++;
+    notifyListeners(); // 通知监听器有更新
+  &#125;
+&#125;
+</code></pre>
+<p><code>CounterModel</code> 类使用 <code>ChangeNotifier</code> 来通知听众（在这种情况下是 widget），当内部状态（这里是 <code>_count</code>）改变时。</p>
+<p>接下来，在应用的顶层使用 <code>ChangeNotifierProvider</code>：</p>
+<pre><code class="dart">import &#39;package:flutter/material.dart&#39;;
+import &#39;package:provider/provider.dart&#39;;
+
+void main() &#123;
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) =&gt; CounterModel(),
+      child: MyApp(),
+    ),
+  );
+&#125;
+
+class MyApp extends StatelessWidget &#123;
+  @override
+  Widget build(BuildContext context) &#123;
+    return MaterialApp(
+      title: &#39;Provider Demo&#39;,
+      home: CounterScreen(),
+    );
+  &#125;
+&#125;
+
+class CounterScreen extends StatelessWidget &#123;
+  @override
+  Widget build(BuildContext context) &#123;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(&#39;Provider Example&#39;),
+      ),
+      body: Center(
+        child: Consumer&lt;CounterModel&gt;(
+          builder: (context, counter, child) &#123;
+            return Text(&#39;Count: $&#123;counter.count&#125;&#39;);
+          &#125;,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =&gt; context.read&lt;CounterModel&gt;().increment(),
+        child: Icon(Icons.add),
+      ),
+    );
+  &#125;
+&#125;
+</code></pre>
+<h3 id="解释：-3"><a href="#解释：-3" class="headerlink" title="解释："></a>解释：</h3><ol>
+<li><p><strong>CounterModel</strong>:</p>
+<ul>
+<li><code>CounterModel</code> 继承自 <code>ChangeNotifier</code>，它允许在模型更改时通知其监听者。</li>
+<li>当调用 <code>increment</code> 方法时，它增加 <code>_count</code> 的值并调用 <code>notifyListeners</code>。</li>
+</ul>
+</li>
+<li><p><strong>ChangeNotifierProvider</strong>:</p>
+<ul>
+<li><code>ChangeNotifierProvider</code> 创建并提供 <code>CounterModel</code> 的一个实例。</li>
+<li>它位于 <code>MyApp</code> 的顶层，确保在整个应用范围内都可以访问到 <code>CounterModel</code>。</li>
+</ul>
+</li>
+<li><p><strong>Consumer<CounterModel></strong>:</p>
+<ul>
+<li><code>Consumer&lt;CounterModel&gt;</code> 用于构建依赖于 <code>CounterModel</code> 的 widget。</li>
+<li>它的 builder 方法会在 <code>CounterModel</code> 发送通知时被重新调用。</li>
+</ul>
+</li>
+<li><p><strong>FloatingActionButton</strong>:</p>
+<ul>
+<li>当按钮被按下时，通过 <code>context.read&lt;CounterModel&gt;().increment()</code> 调用 <code>CounterModel</code> 的 <code>increment</code> 方法。</li>
+</ul>
+</li>
+</ol>
+<h3 id="最佳实践：-2"><a href="#最佳实践：-2" class="headerlink" title="最佳实践："></a>最佳实践：</h3><ul>
+<li><strong>封装状态逻辑</strong>：在模型类（如 <code>CounterModel</code>）中封装状态和状态管理逻辑。</li>
+<li><strong>使用 <code>ChangeNotifier</code> 通知变化</strong>：当模型的状态改变时，通过调用 <code>notifyListeners</code> 通知监听者。</li>
+<li><strong>在 widget 树的合适位置提供模型</strong>：使用 <code>ChangeNotifierProvider</code> 在 widget 树中的适当位置提供模型实例。</li>
+<li><strong>使用 <code>Consumer</code> 或 <code>Provider.of</code> 来访问模型</strong>：在需要接收模型数据的 widget 中，使用 <code>Consumer</code> 或 <code>context.watch/read</code> 来获取并使用模型数据。</li>
+<li><strong>分离 UI 和业务逻辑</strong>：通过将状态管理从 UI 代码中分离出来，让代码更易于维护和测试。</li>
+</ul>
+<p>通过这种方式使用 <code>Provider</code>，你可以在应用中有效地管理和共享状态，同时保持代码的清晰和组织。</p>
+<h2 id="MaterialApp"><a href="#MaterialApp" class="headerlink" title="MaterialApp"></a>MaterialApp</h2><p><code>MaterialApp</code> 是 Flutter 中一个非常重要的 widget，它将多个用于构建 Material Design 应用的 widgets 封装在一起。理解 <code>MaterialApp</code> 的最佳实践和使用场景对于高效地开发 Flutter 应用至关重要。</p>
+<h3 id="最佳实践-1"><a href="#最佳实践-1" class="headerlink" title="最佳实践"></a>最佳实践</h3><ol>
+<li><p><strong>应用的入口</strong>: 将 <code>MaterialApp</code> 作为应用的根 Widget。通常在 <code>main.dart</code> 文件的 <code>main</code> 函数中通过 <code>runApp</code> 方法启动。</p>
+</li>
+<li><p><strong>配置主题</strong>: 使用 <code>MaterialApp</code> 的 <code>theme</code> 属性来全局定义应用的基本风格，如颜色、字体样式、按钮样式等。</p>
+</li>
+<li><p><strong>导航和路由</strong>: 使用 <code>MaterialApp</code> 的 <code>routes</code> 属性来定义应用的顶级路由表，利用 <code>navigatorKey</code> 和 <code>onGenerateRoute</code> 管理更复杂的路由场景。</p>
+</li>
+<li><p><strong>本地化和国际化</strong>: 通过 <code>MaterialApp</code> 的 <code>localizationsDelegates</code> 和 <code>supportedLocales</code> 属性支持多语言。</p>
+</li>
+<li><p><strong>性能监控</strong>: 利用 <code>MaterialApp</code> 的 <code>debugShowCheckedModeBanner</code>、<code>debugShowMaterialGrid</code> 等属性来显示调试信息，帮助优化布局和性能。</p>
+</li>
+<li><p><strong>错误处理</strong>: 使用 <code>MaterialApp</code> 的 <code>onUnknownRoute</code> 和 <code>builder</code> 属性来处理未知路由或生成应用级别的 widget。</p>
+</li>
+</ol>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li><p><strong>标准 Material Design 应用</strong>: 当你需要构建符合 Material Design 指南的应用时，<code>MaterialApp</code> 提供了一套现成的解决方案。</p>
+</li>
+<li><p><strong>多页面路由管理</strong>: 对于拥有多个页面和复杂路由需求的应用，<code>MaterialApp</code> 提供了路由管理的功能，简化了页面间的导航。</p>
+</li>
+<li><p><strong>主题统一管理</strong>: 在需要统一管理应用级别样式和主题时，<code>MaterialApp</code> 允许你在一个地方定义整个应用的外观。</p>
+</li>
+<li><p><strong>国际化应用</strong>: 当应用需要支持多种语言时，<code>MaterialApp</code> 通过本地化代理简化了这个过程。</p>
+</li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre><code class="dart">MaterialApp(
+  title: &#39;My Flutter App&#39;,
+  theme: ThemeData(
+    primarySwatch: Colors.blue,
+    visualDensity: VisualDensity.adaptivePlatformDensity,
+  ),
+  initialRoute: &#39;/&#39;,
+  routes: &#123;
+    &#39;/&#39;: (context) =&gt; HomePage(),
+    &#39;/details&#39;: (context) =&gt; DetailsPage(),
+  &#125;,
+  onUnknownRoute: (settings) =&gt; MaterialPageRoute(
+    builder: (context) =&gt; UnknownPage(),
+  ),
+);
+</code></pre>
+<p>在这个示例中，<code>MaterialApp</code> 定义了应用的标题、主题、初始路由、路由表以及未知路由的处理方式。这样的配置确保了应用具有统一的风格和行为，并且易于维护和扩展。</p>
+<p>总之，<code>MaterialApp</code> 是构建任何基于 Material Design 的 Flutter 应用的基础，理解并熟练使用它对于开发高质量的 Flutter 应用是非常重要的。</p>
+<p><code>MaterialApp</code> 是 Flutter 中的一个非常重要的 widget，提供了许多参数来配置应用程序的各个方面。以下是 <code>MaterialApp</code> 的一些主要参数及其含义的详细说明：</p>
+<h2 id="MaterialApp-参数"><a href="#MaterialApp-参数" class="headerlink" title="MaterialApp 参数"></a>MaterialApp 参数</h2><h3 id="1-title"><a href="#1-title" class="headerlink" title="1. title"></a>1. <code>title</code></h3><ul>
+<li><strong>类型</strong>: <code>String</code></li>
+<li><strong>含义</strong>: 应用程序的标题。通常用于设备任务管理器和浏览器标签页。</li>
+</ul>
+<h3 id="2-theme"><a href="#2-theme" class="headerlink" title="2. theme"></a>2. <code>theme</code></h3><ul>
+<li><strong>类型</strong>: <code>ThemeData</code></li>
+<li><strong>含义</strong>: 应用的默认主题。你可以通过此参数定义应用的基本风格，如颜色、字体样式、按钮样式等。</li>
+</ul>
+<h3 id="3-color"><a href="#3-color" class="headerlink" title="3. color"></a>3. <code>color</code></h3><ul>
+<li><strong>类型</strong>: <code>Color</code></li>
+<li><strong>含义</strong>: 在 Android 中，此颜色用作应用任务管理器中的背景颜色。</li>
+</ul>
+<h3 id="4-home"><a href="#4-home" class="headerlink" title="4. home"></a>4. <code>home</code></h3><ul>
+<li><strong>类型</strong>: <code>Widget</code></li>
+<li><strong>含义</strong>: 应用的首页 widget。它是显示在应用程序启动时的首个屏幕。</li>
+</ul>
+<h3 id="5-routes"><a href="#5-routes" class="headerlink" title="5. routes"></a>5. <code>routes</code></h3><ul>
+<li><strong>类型</strong>: <code>Map&lt;String, WidgetBuilder&gt;</code></li>
+<li><strong>含义</strong>: 应用的路由表。键是路由的名称，值是构建它们的构造器。</li>
+</ul>
+<h3 id="6-initialRoute"><a href="#6-initialRoute" class="headerlink" title="6. initialRoute"></a>6. <code>initialRoute</code></h3><ul>
+<li><strong>类型</strong>: <code>String</code></li>
+<li><strong>含义</strong>: 应用启动时的初始路由名。如果提供了 <code>home</code> 参数，则此参数将被忽略。</li>
+</ul>
+<h3 id="7-onGenerateRoute"><a href="#7-onGenerateRoute" class="headerlink" title="7. onGenerateRoute"></a>7. <code>onGenerateRoute</code></h3><ul>
+<li><strong>类型</strong>: <code>RouteFactory</code></li>
+<li><strong>含义</strong>: 当通过 <code>Navigator.pushNamed</code> 导航到命名路由时，会使用这个函数来生成路由。</li>
+</ul>
+<h3 id="8-onUnknownRoute"><a href="#8-onUnknownRoute" class="headerlink" title="8. onUnknownRoute"></a>8. <code>onUnknownRoute</code></h3><ul>
+<li><strong>类型</strong>: <code>RouteFactory</code></li>
+<li><strong>含义</strong>: 当 <code>onGenerateRoute</code> 无法生成路由时调用，通常用于显示错误视图。</li>
+</ul>
+<h3 id="9-navigatorKey"><a href="#9-navigatorKey" class="headerlink" title="9. navigatorKey"></a>9. <code>navigatorKey</code></h3><ul>
+<li><strong>类型</strong>: <code>GlobalKey&lt;NavigatorState&gt;</code></li>
+<li><strong>含义</strong>: 用于访问应用的 Navigator 的全局键。</li>
+</ul>
+<h3 id="10-builder"><a href="#10-builder" class="headerlink" title="10. builder"></a>10. <code>builder</code></h3><ul>
+<li><strong>类型</strong>: <code>TransitionBuilder</code></li>
+<li><strong>含义</strong>: 一个用于在应用上方插入 widget 的构造器，例如用于插入一个全局的 Overlay 或者 Theme。</li>
+</ul>
+<h3 id="11-debugShowCheckedModeBanner"><a href="#11-debugShowCheckedModeBanner" class="headerlink" title="11. debugShowCheckedModeBanner"></a>11. <code>debugShowCheckedModeBanner</code></h3><ul>
+<li><strong>类型</strong>: <code>bool</code></li>
+<li><strong>含义</strong>: 在调试模式下，在屏幕右上角显示一个横幅。默认为 <code>true</code>。</li>
+</ul>
+<h3 id="12-locale"><a href="#12-locale" class="headerlink" title="12. locale"></a>12. <code>locale</code></h3><ul>
+<li><strong>类型</strong>: <code>Locale</code></li>
+<li><strong>含义</strong>: 应用的区域设置。如果未设置，则根据设备设置决定。</li>
+</ul>
+<h3 id="13-supportedLocales"><a href="#13-supportedLocales" class="headerlink" title="13. supportedLocales"></a>13. <code>supportedLocales</code></h3><ul>
+<li><strong>类型</strong>: <code>Iterable&lt;Locale&gt;</code></li>
+<li><strong>含义</strong>: 应用支持的区域列表。用于国际化。</li>
+</ul>
+<h3 id="14-localizationsDelegates"><a href="#14-localizationsDelegates" class="headerlink" title="14. localizationsDelegates"></a>14. <code>localizationsDelegates</code></h3><ul>
+<li><strong>类型</strong>: <code>Iterable&lt;LocalizationsDelegate&lt;dynamic&gt;&gt;</code></li>
+<li><strong>含义</strong>: 用于生成本地化资源的委托。</li>
+</ul>
+<h3 id="15-localeResolutionCallback"><a href="#15-localeResolutionCallback" class="headerlink" title="15. localeResolutionCallback"></a>15. <code>localeResolutionCallback</code></h3><ul>
+<li><strong>类型</strong>: <code>LocaleResolutionCallback</code></li>
+<li><strong>含义</strong>: 当应用的区域设置与 <code>supportedLocales</code> 不匹配时，可以用此回调来自定义选择匹配的逻辑。</li>
+</ul>
+<h3 id="16-highContrastTheme-和-darkTheme"><a href="#16-highContrastTheme-和-darkTheme" class="headerlink" title="16. highContrastTheme 和 darkTheme"></a>16. <code>highContrastTheme</code> 和 <code>darkTheme</code></h3><ul>
+<li><strong>类型</strong>: <code>ThemeData</code></li>
+<li><strong>含义</strong>: 分别为高对比度和暗色模式指定主题。</li>
+</ul>
+<p>这些参数提供了对 Flutter 应用外观、行为和路由的全面控制。通过合理配置这些参数，可以开发出符合需求且用户体验良好的应用程序。</p>
+<h2 id="pubspec-yaml"><a href="#pubspec-yaml" class="headerlink" title="pubspec.yaml"></a>pubspec.yaml</h2><p><code>pubspec.yaml</code> 是一个在每个 Dart 和 Flutter 项目中都非常关键的文件。它用于定义项目的名称、版本、依赖项以及其他一些重要的元数据。以下是 <code>pubspec.yaml</code> 文件的主要部分及其作用的介绍：</p>
+<h3 id="1-项目名称和描述"><a href="#1-项目名称和描述" class="headerlink" title="1. 项目名称和描述"></a>1. <strong>项目名称和描述</strong></h3><pre><code class="yaml">name: my_flutter_app
+description: A new Flutter project.
+</code></pre>
+<ul>
+<li><code>name</code>: 项目的名称，通常与包名一致。</li>
+<li><code>description</code>: 项目的简短描述。</li>
+</ul>
+<h3 id="2-版本"><a href="#2-版本" class="headerlink" title="2. 版本"></a>2. <strong>版本</strong></h3><pre><code class="yaml">version: 1.0.0+1
+</code></pre>
+<ul>
+<li><code>version</code>: 项目的当前版本号。这通常遵循 <a target="_blank" rel="noopener" href="https://semver.org/">语义化版本控制</a>。<code>+1</code> 是构建号，它通常用于更新程序时不改变版本号的情况。</li>
+</ul>
+<h3 id="3-环境要求"><a href="#3-环境要求" class="headerlink" title="3. 环境要求"></a>3. <strong>环境要求</strong></h3><pre><code class="yaml">environment:
+  sdk: &quot;&gt;=2.7.0 &lt;3.0.0&quot;
+</code></pre>
+<ul>
+<li><code>environment</code>: 指定项目所需的 Dart SDK 版本。</li>
+</ul>
+<h3 id="4-依赖"><a href="#4-依赖" class="headerlink" title="4. 依赖"></a>4. <strong>依赖</strong></h3><pre><code class="yaml">dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+</code></pre>
+<ul>
+<li><code>dependencies</code>: 列出项目需要的所有包依赖。这里包括了 Flutter SDK 本身和其他的包，如 <code>cupertino_icons</code>。</li>
+</ul>
+<h3 id="5-开发依赖"><a href="#5-开发依赖" class="headerlink" title="5. 开发依赖"></a>5. <strong>开发依赖</strong></h3><pre><code class="yaml">dev_dependencies:
+  flutter_test:
+    sdk: flutter
+</code></pre>
+<ul>
+<li><code>dev_dependencies</code>: 列出项目开发过程中需要的依赖，但在生产环境中不需要的。例如，测试框架。</li>
+</ul>
+<h3 id="6-Flutter-特定配置"><a href="#6-Flutter-特定配置" class="headerlink" title="6. Flutter 特定配置"></a>6. <strong>Flutter 特定配置</strong></h3><pre><code class="yaml">flutter:
+  uses-material-design: true
+  assets:
+    - images/a_dot_burr.jpeg
+    - images/a_dot_ham.jpeg
+</code></pre>
+<ul>
+<li><code>flutter</code>: 特定于 Flutter 的配置。<ul>
+<li><code>uses-material-design</code>: 是否在项目中使用 Material Design。</li>
+<li><code>assets</code>: 项目资源的列表，例如图片、字体等。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-其他配置"><a href="#7-其他配置" class="headerlink" title="7. 其他配置"></a>7. <strong>其他配置</strong></h3><p>还可以包括其他配置，如 <code>publish_to</code>（定义是否应将包发布到 pub.dev）、自定义脚本等。</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p><code>pubspec.yaml</code> 文件是项目的核心，用于管理项目的依赖项、版本和其他重要设置。当你运行 <code>flutter pub get</code> 命令时，Flutter 会查看 <code>pubspec.yaml</code> 文件并下载所需的依赖包。这个文件对于项目的构建和打包也至关重要。</p>
+<p>简而言之，<code>pubspec.yaml</code> 是 Dart 和 Flutter 项目的蓝图，它告诉 Flutter 如何正确构建和运行你的应用。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/dart/" style="color: #ffa2c4">dart</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/flutter/" style="color: #00a596">flutter</a>
+        </span>
+        
+    </div>
+    <a href="/2024/01/04/mdstorage/domain/dart/flutter%E4%BD%BF%E7%94%A8/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/01/04/mdstorage/domain/vsc/git%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/">
+        <h2 class="post-title">git使用问题.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/4
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="push"><a href="#push" class="headerlink" title="push"></a>push</h2><h3 id="kex-exchange-identification"><a href="#kex-exchange-identification" class="headerlink" title="kex_exchange_identification"></a>kex_exchange_identification</h3><p><strong>文档标题：</strong> 解决通过 SSH 连接 GitHub 时的连接问题</p>
+<p><strong>目的：</strong> 本文档旨在提供一个清晰的指南，用于解决在通过 SSH 连接到 GitHub 时遇到的连接问题，特别是当出现 “kex_exchange_identification: Connection closed by remote host” 错误时。</p>
+<hr>
+<p><strong>问题描述：</strong></p>
+<ul>
+<li>很可能是由于 github gitee 混用导致的</li>
+<li>执行</li>
+</ul>
+<pre><code class="bash"># 察看详细日志
+ssh -vT git@github.com
+
+# 查看 本地仓库设置
+git config -l
+
+# 查看 git 全局配置
+git config --global -l
+</code></pre>
+<p>在这里基本可以看出来了，可能是 credential 导致的</p>
+<p>可以通过</p>
+<pre><code class="bash"># 切换成 https 拉取
+git remote set-url origin https://github.com/abrance/dairy.git
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/git/" style="color: #ffa2c4">git</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/github/" style="color: #00bcd4">github</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/gitlab-%E9%97%AE%E9%A2%98/" style="color: #ffa2c4">gitlab 问题</a>
+        </span>
+        
+    </div>
+    <a href="/2024/01/04/mdstorage/domain/vsc/git%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/01/04/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E8%B5%84%E6%96%99/">
+        <h2 class="post-title">grpc服务调用资料.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/4
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h3 id="Service-中-rpc-服务"><a href="#Service-中-rpc-服务" class="headerlink" title="Service 中 rpc 服务"></a>Service 中 rpc 服务</h3><p>在<code>grpc-go</code>中，当客户端调用<code>ChatService</code>的<code>Chat1</code>或<code>Chat2</code>服务时，以下是连接建立的过程：</p>
+<ol>
+<li><p><strong>客户端初始化</strong>：客户端创建一个gRPC连接到服务器。这通常是在客户端应用的启动阶段完成的，例如通过<code>grpc.Dial</code>。</p>
+</li>
+<li><p><strong>服务调用时机</strong>：客户端在需要时调用<code>Chat1</code>或<code>Chat2</code>服务。这是根据客户端应用的业务逻辑决定的，可能是用户发起的动作或其他触发条件。</p>
+</li>
+<li><p><strong>建立连接</strong>：在客户端首次调用<code>Chat1</code>或<code>Chat2</code>时，gRPC框架通过之前建立的连接与服务器进行通信。若连接已存在，gRPC会重用该连接。</p>
+</li>
+<li><p><strong>流式通信</strong>：一旦调用开始，客户端和服务器之间就建立了流式通信，可以互发消息。</p>
+</li>
+</ol>
+<p>在这个过程中，<code>Chat1</code>和<code>Chat2</code>服务共享同一个gRPC连接，这是由gRPC的HTTP&#x2F;2基础设施自动处理的。</p>
+<ol>
+<li><strong>定义多个操作的单个RPC服务</strong>：<ul>
+<li><strong>优点</strong>：简化服务发现和管理；更少的网络开销；方便版本控制和API管理。</li>
+<li><strong>劣势</strong>：服务可能变得臃肿，难以维护；服务间耦合度高。</li>
+<li><strong>使用场景</strong>：功能相关性较高，且数量不多的操作。</li>
+</ul>
+</li>
+<li><strong>定义多个RPC服务</strong>：<ul>
+<li><strong>优点</strong>：服务清晰、职责单一；降低耦合，易于维护和扩展。</li>
+<li><strong>劣势</strong>：增加了服务发现和网络交互的复杂性。</li>
+<li><strong>使用场景</strong>：功能模块之间区分明显，服务需要独立扩展和部署。</li>
+</ul>
+</li>
+</ol>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>不要使用多个 rpc 服务封装前面的 sc -&gt; webserver 业务</p>
+<h5 id="标准"><a href="#标准" class="headerlink" title="标准"></a>标准</h5><ul>
+<li><strong>代码行数</strong>：服务代码量巨大，难以管理和理解。</li>
+<li><strong>复杂性</strong>：服务包含多个不相关的功能，导致逻辑复杂。</li>
+<li><strong>维护困难</strong>：频繁的变更导致维护成本高。</li>
+<li><strong>部署和扩展问题</strong>：服务部署和扩展变得笨重和缓慢。</li>
+<li><strong>性能瓶颈</strong>：单一服务成为整个系统的性能瓶颈。</li>
+<li><strong>团队协作障碍</strong>：服务过大导致团队协作困难。</li>
+</ul>
+<h5 id="量级"><a href="#量级" class="headerlink" title="量级"></a>量级</h5><ul>
+<li><strong>代码行数</strong>：上万行代码时可能需要考虑拆分。</li>
+<li><strong>复杂性</strong>：如果功能模块之间的耦合导致理解和修改一个功能需要深入其他多个功能，可能需要拆分。</li>
+<li><strong>维护</strong>：频繁的变更导致回归测试和部署风险增加。</li>
+<li><strong>部署和扩展</strong>：服务启动时间过长或单个服务的资源需求影响到整体系统性能。</li>
+<li><strong>性能</strong>：单个服务成为性能瓶颈，影响用户体验。</li>
+<li><strong>团队协作</strong>：多个团队在同一服务上工作导致协调困难。</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/grpc/" style="color: #00bcd4">grpc</a>
+        </span>
+        
+    </div>
+    <a href="/2024/01/04/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E8%B5%84%E6%96%99/" class="go-post">阅读全文</a>
+</div>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+        <div class="page-current">
+    
+    <a class="page-num" href="/page/18/">
+        <i class="fa-solid fa-caret-left fa-fw"></i>
+    </a>
+    <a class="page-num" href="/">1</a>
+    <span class="page-omit">...</span>
+    
+    <span class="current">19</span>
+    
+    <a class="page-num" href="/page/20">
+        20
+    </a>
+    
+    
+    <a class="page-num" href="/page/21">
+        21
+    </a>
+    
+    
+    <span class="page-omit">...</span>
+    <a class="page-num" href="/page/28">28</a>
+    
+    
+    <a class="page-num" href="/page/20/">
+        <i class="fa-solid fa-caret-right fa-fw"></i>
+    </a>
+    
+</div>
 
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">xiaoy</div>
+        <div class="description">
+            <p>Description<br>…</p>
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
 
+    </div>
+    
+</div>
 
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 Xiaoy
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;xiaoy
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
 
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
 </body>
 </html>

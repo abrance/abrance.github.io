@@ -1,989 +1,1674 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>Xiaoy</title>
+    <meta name="author" content="xiaoy" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="xiaoy">
-  <meta name="keywords" content="">
-  
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Xiaoy">
-<meta property="og:url" content="https://abrance.github.io/index.html">
-<meta property="og:site_name" content="Xiaoy">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="xiaoy">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>Xiaoy</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
 
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="/js/lib/preview.js"></script>
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
+<script src="/js/lib/home.js"></script>
 
+<link rel="stylesheet" href="/css/main.css" />
 
-  
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>xiaoy</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/11/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E8%BE%B9%E7%95%8C%E6%84%9F/" target="_self">
-          架构师的边界感.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/11/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E8%BE%B9%E7%95%8C%E6%84%9F/" target="_self">
-        <div>
-          架构的边界感和架构师的超边界感架构（Architect）一词，起源于建筑，建筑师和架构师的英文翻译都是Architect。在建筑设计中，非常强调一个边界感，比如篱笆圈起了整屋的边界、玄关划分了室内和室外的边界，房间的布局构建了娱乐休息和工作的边界。在软件架构中，边界感同样十分重要。好的架构和坏的架构，相当大的比例就体现在这个边界感上的区别。 架构的边界感，可以包含在三个层次中：顶层设计、模块间以及
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-11 00:00" pubdate>
-              2024-09-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/10/mdstorage/arch/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/%E8%BD%AF%E4%BB%B6%E6%96%87%E6%A1%A3%E7%9B%AE%E5%BD%95%E5%8F%82%E8%80%83%E8%A7%84%E8%8C%83/" target="_self">
-          软件文档目录参考规范.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/10/mdstorage/arch/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/%E8%BD%AF%E4%BB%B6%E6%96%87%E6%A1%A3%E7%9B%AE%E5%BD%95%E5%8F%82%E8%80%83%E8%A7%84%E8%8C%83/" target="_self">
-        <div>
-          参考链接温玉WIKI
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-10 00:00" pubdate>
-              2024-09-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/arch/" class="category-chain-item">arch</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/arch/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" class="category-chain-item">写作规范</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/10/mdstorage/arch/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83/" target="_self">
-          文档编写规范.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/10/mdstorage/arch/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83/" target="_self">
-        <div>
-          参考链接 温玉的WIKI ruanyf的document-style-guide 产品手册中文写作规范, by 华为 写作规范和格式规范, by DaoCloud 技术写作技巧在日汉翻译中的应用, by 刘方 简体中文规范指南, by lengoo 文档风格指南, by LeanCloud 豌豆荚文案风格指南, by 豌豆荚 中文文案排版指北, by sparanoid 中文排版需求, by W3
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-10 00:00" pubdate>
-              2024-09-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/arch/" class="category-chain-item">arch</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/arch/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" class="category-chain-item">写作规范</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/10/mdstorage/domain/ai/%E6%8F%90%E7%A4%BA%E8%AF%AD%E6%94%B6%E9%9B%86/" target="_self">
-          提示语收集.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/10/mdstorage/domain/ai/%E6%8F%90%E7%A4%BA%E8%AF%AD%E6%94%B6%E9%9B%86/" target="_self">
-        <div>
-          blog 使用下面所有问题的答案用 markdown blog 的形式提供, 并且标题级别不要使用1级标题
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-10 00:00" pubdate>
-              2024-09-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/ai/" class="category-chain-item">ai</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/10/mdstorage/domain/pm/%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B/" target="_self">
-          康威定律.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/10/mdstorage/domain/pm/%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B/" target="_self">
-        <div>
-          概述Organizations which design systems are constrained to produce designs which are copies of the communication structures of these organizations. - Melvin Conway(1967)  译文: 设计系统的组织，其产生的设计等同于组织之内、组织之间的沟
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-10 00:00" pubdate>
-              2024-09-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/pm/" class="category-chain-item">pm</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/">#计算机理论</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/10/mdstorage/domain/shell/%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/" target="_self">
-          命令行调试技巧.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/10/mdstorage/domain/shell/%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/" target="_self">
-        <div>
-          1. 使用 if 条件判断Bash 中最常见的条件判断方式是使用 if 语句。你可以直接在命令行中使用以下格式进行条件判断： 1if [ &quot;$var&quot; = &quot;value&quot; ]; then echo &quot;Match&quot;; else echo &quot;No Match&quot;; fi  示例：12var=&quot;hello&quot;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-10 00:00" pubdate>
-              2024-09-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/shell/" class="category-chain-item">shell</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%B7%A5%E4%BD%9C%E5%86%85%E5%AE%B9/" target="_self">
-          架构工作内容.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%B7%A5%E4%BD%9C%E5%86%85%E5%AE%B9/" target="_self">
-        <div>
-          概述架构定义 graph LR     ae[Architecture Element]     ie[Inter-Element Ralationship]     a[Architecture]     system[System]     ad[Architectural Description]     stakeholder[Stakeholder]     view[View]
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-10 00:00" pubdate>
-              2024-09-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/10/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/TLS%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/" target="_self">
-          TLS双向认证.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/10/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/TLS%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/" target="_self">
-        <div>
-          基于 HTTP 认证机制 TLS 双向认证：  优势：  增强的安全性：不仅服务器需要提供有效的证书来证明其身份，客户端也需要做同样的事情，从而增加了安全性。 减少中间人攻击的风险：因为双方都需要验证身份，这大大降低了中间人攻击的可能性。 身份确认：可以确保与预期的客户端进行通信，对于高安全要求的应用尤其重要。   劣势：  部署复杂：需要为每个客户端生成和管理证书，这可能会导致部署和维护上的复杂
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-10 00:00" pubdate>
-              2024-09-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/" class="category-chain-item">network</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/%E5%8D%8F%E8%AE%AE/" class="category-chain-item">协议</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/security/">#security</a>
-            
-              <a href="/tags/network/">#network</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/09/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%BC%81%E4%B8%9A%E6%B3%A8%E5%86%8C/" target="_self">
-          企业注册.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/09/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%BC%81%E4%B8%9A%E6%B3%A8%E5%86%8C/" target="_self">
-        <div>
-          概述在深圳注册一个科技公司需要办理的业务整理 资料公司名查重深圳注册科技公司流程 深圳注册科技公司流程一、企业核名准备3个左右的公司名称在深圳市市场监督管理局网上进行核名，公司名称的组成形式是“深圳+字号+行业+有限公司”，互联网科技公司，名称可为深圳XX互联网科技有限公司。 二、确定经营范围确定科技公司的经营范围，如电子科技公司的经营范围为电子产品技术开发，电子元器件制造；网络科技公司的经营范围
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-09 00:00" pubdate>
-              2024-09-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E5%95%86%E4%B8%9A/" class="category-chain-item">商业</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/06/mdstorage/domain/linux/%E7%AE%A1%E9%81%93%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91/" target="_self">
-          管道和重定向.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/06/mdstorage/domain/linux/%E7%AE%A1%E9%81%93%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91/" target="_self">
-        <div>
-          使用 &lt;&lt;&lt;（Here String）重定向的条件解析在 Bash 中，&lt;&lt;&lt; 是一种 Here String 重定向操作符，用于将字符串作为标准输入传递给命令。在某些情况下，&lt;&lt;&lt; 是处理字符串数据时的简洁方式，但并非所有命令都支持这种用法。本篇文章将详细解析哪些命令能够接受 &lt;&lt;&lt; 形式的重定向以及它的适用场景。 1. &
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-06 00:00" pubdate>
-              2024-09-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/linux/">#linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-              </div>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
             </div>
-          </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XIAOY</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XIAOY</span>
         </div>
-      </div>
-    
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div id="home-head">
+    <div
+        id="home-background"
+        ref="homeBackground"
+        data-images="/images/background.jpg"
+    ></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Xiaoy</h1>
+                <h3>xiaoy blog</h3>
+                <h5></h5>
+            </div>
+        </span>
     </div>
-  </div>
+</div>
+<div
+    id="home-posts-wrap"
+    ref="homePostsWrap"
+    true
+>
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/2024/09/11/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E8%BE%B9%E7%95%8C%E6%84%9F/">
+        <h2 class="post-title">架构师的边界感.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/9/11
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="架构的边界感和架构师的超边界感"><a href="#架构的边界感和架构师的超边界感" class="headerlink" title="架构的边界感和架构师的超边界感"></a>架构的边界感和架构师的超边界感</h1><p>架构（Architect）一词，起源于建筑，建筑师和架构师的英文翻译都是<br>Architect。在建筑设计中，非常强调一个边界感，比如篱笆圈起了整屋的边界、玄关划分了室内和室外的边界，房间的布局构建了娱乐休息和工作的边界。在软件架构中，边界感同样十分重要。好的架构和坏的架构，相当大的比例就体现在这个边界感上的区别。</p>
+<p>架构的边界感，可以包含在三个层次中：顶层设计、模块间以及代码内。</p>
+<h1 id="顶层设计的边界"><a href="#顶层设计的边界" class="headerlink" title="顶层设计的边界"></a>顶层设计的边界</h1><p>首先，在架构的整体规划和顶层设计中，需要考虑架构的边界。这里的边界，主要有两层的含义：</p>
+<ol>
+<li><p>软件系统需要有一个明确的定位，一个 slogan。我们将要创造是一个什么东西，做什么用，是什么不是什么，应该涵盖什么不应该涵盖什么。</p>
+</li>
+<li><p>在系统实现的过程中，严格的遵守边界，抑制住内心的冲动，不要将和定位不符的功能纳入进来。</p>
+</li>
+</ol>
+<p>这个原则适用于应用软件也适用于基础组件。我们来分别阐述。</p>
+<p>对于应用软件，边界感主要体现在功能的取舍上：明确应用系统定位的前提下，区分属于和不属于系统的能力，做出合理的取舍。</p>
+<p>例如，我们要建设一个外汇交易系统，明确系统的职责是为用户提供外汇交易的能力。那么，询价、定价、交易、交割、短款管理等，就很明显的属于系统的范畴。相反，用户资金管理、核算、和渠道的交互等，属于依赖的能力，但不属于本系统的范畴，应该交给其他的系统来实现。</p>
+<p>对于基础组件，同样需要明确本技术组件的定位和涵盖的范畴。对于基础组件，功能的取舍会体现在两个方面：</p>
+<ol>
+<li><p>和应用软件一样，聚焦于本领域，不要去涉及其他技术组件需要提供的服务。比如，我们设计一个消息中间件，首先可以明确职责范围是消息的可靠接收、存储、发送，以及扩展的发布和订阅能力。那么，什么定时消息、邮件短信通知之类的功能就很明显不应该应收尽收。这些应该交给定时任务框架、沟通服务去实施。应用层编排产品功能的时候，可以同时依赖消息中间件、定时任务框架和沟通服务。</p>
+</li>
+<li><p>不要侵入业务概念。基础组件聚焦于基础的技术特性，不应该去理解上层的业务。比如，我们可以实现优先级任务，但是不应该理解业务场景之间的优先级排序，不应该理解同币种需要聚合处理。可以将这些抽象为优先级和分组，具体业务概念和基础组件概念的映射，应该交由上层的业务系统来完成。一些基础组件团队同学说的不理解业务，在架构层面，反而不是一件坏事，是一个正确的“借口”。</p>
+</li>
+</ol>
+<h1 id="应用（模块）的边界"><a href="#应用（模块）的边界" class="headerlink" title="应用（模块）的边界"></a>应用（模块）的边界</h1><p>在微服务架构下，一个系统会由多个应用构成；在单体架构下，一个应用系统会被划分成多个模块。不管是哪种架构，在边界感上都是一致的，在应用和应用之间，或者模块和模块之间，需要有明确的边界划分。</p>
+<p>应用系统的边界，可以体现在四个层面：</p>
+<ol>
+<li><p>服务的边界：一个应用对外的服务，应该涵盖什么样功能，应该 cover 多少场景，应该包含哪些字段（信息）。</p>
+</li>
+<li><p>模型的外部边界：一个应用的模型，应该包括哪些实体，应该维护什么样的关系，外部模型和内部模型的映射应该在界内还是界外。</p>
+</li>
+<li><p>模型的内部边界：如何切分实体，实体应该包含哪些字段（属性）。</p>
+</li>
+<li><p>代码逻辑的边界：代码如何分层。</p>
+</li>
+</ol>
+<p>服务的边界，在 Restful 成为主流的背景下，基本恒等于模型的外部边界。</p>
+<p>代码逻辑的边界，无论是 DDD，还是 MVC&#x2F;MVVM，还是 sofa 框架，已经都切分的比较清楚了，在架构师内部基本有一定的共识。</p>
+<p>所以这里主要聊一下模型的内外边界问题。</p>
+<p>首先，模型的外部边界，就是应用的功能边界，这个和系统的边界是一样的，follow 应用的定位。</p>
+<p>同时，内外模型之间的映射，一般放在使用方。这个逻辑很简单，使用方是发散的，服务提供方是收敛的，按照开闭原则，应该放在发散的一方。</p>
+<p>对于模型的内部边界，就没有这么明显，比较依赖架构师的业务领域能力和架构经验。除了通过领域概念来切分模型边界之外，在实践过程中，我们总结了几个普遍的原则可以一起探讨一下：</p>
+<ul>
+<li><p>数量原则：如果两个模型之间不是一一对应的关系，比如借款和还款、存单和利息，一般会拆分成两个模型。</p>
+</li>
+<li><p>动静原则：如果两个模型的变化频率不同，比如订单和操作日志，一般会拆分成两个模型。</p>
+</li>
+<li><p>时差原则：如果两个模型创建或者消亡的时间点不同，比如正向下单和反向退款，一般可以考虑拆分成两个模型。</p>
+</li>
+<li><p>读写原则：如果两个模型在读和写比率、频率、时间上有比较大的差别，比如用户基本信息和用户认证信息，在分布式系统下，可以考虑拆分成两个模型。</p>
+</li>
+</ul>
+<h1 id="代码的边界"><a href="#代码的边界" class="headerlink" title="代码的边界"></a>代码的边界</h1><p>代码的边界，指类、方法之间的边界。这一部分属于比较微观的架构边界，相对来说影响面和优先级也会低一点。</p>
+<p>对于类的边界，很显然需要 follow 模型的边界，而且需要将模型的属性和方法聚合，贫血模型和属性外露同样不可取。</p>
+<p>对于方法的边界，无非就是功能的聚焦。代码的结构应该同时具备流变和层次的特性：代码从阅读上应该像读自然语言一样顺畅，同一层次应该看到同等级别的方法，更细的力度应该封装在方法的内部逻辑中。</p>
+<h1 id="架构师的超越边界"><a href="#架构师的超越边界" class="headerlink" title="架构师的超越边界"></a>架构师的超越边界</h1><p>前面充分阐述了架构的边界，那么对于架构的创造者架构师，我们是不是也应该 follow<br>这个边界，比如基础组件的架构就不用理解业务，各个业务系统的架构师也不需要跨过边界去接触其他的业务领域呢？</p>
+<p>答案是否定的，和架构的边界感不同，架构师需要一种超越边界的感觉。这里面的道理也比较容易理解，只有从上帝视角，从边界以外去看，才能看清楚全貌，才能明确边界的划分是否合理。</p>
+<p>对于架构师的超边界感，可以体现在三个方面：</p>
+<ol>
+<li><p>架构师的跨越领域能力：基础平台架构师需要熟悉业务，每个领域的应用架构师需要了解周边领域的概念，全局架构师需要去接触相关行业的知识。</p>
+</li>
+<li><p>架构师的超越岗位能力：架构师对于业务的熟悉，不应该仅仅局限于应用系统和代码逻辑，需要从产业政策、业务逻辑、产品概念一路看上去，需要间接具备一定的 BD、PD 甚至财务、法务的基本能力。</p>
+</li>
+<li><p>架构师的穿越时空能力：过去成功的架构师不一定能适应未来的需要，架构能力、技术感觉和业务领域知识需要持续的升级。</p>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/2ee858a0c277f9a6dc30f6157">infoQ 架构师边界感</a></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/09/11/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E8%BE%B9%E7%95%8C%E6%84%9F/" class="go-post">阅读全文</a>
 </div>
 
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+<div class="post">
+    <a href="/2024/09/10/mdstorage/arch/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83/">
+        <h2 class="post-title">文档编写规范.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/arch/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                arch
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/9/10
+        </span>
+        
+        
     </div>
-  
-  
-  
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhaowenyu.com/">温玉的WIKI</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ruanyf/document-style-guide">ruanyf的document-style-guide</a></li>
+<li><a target="_blank" rel="noopener" href="http://wenku.baidu.com/view/23cc1a6527d3240c8447efbf.html">产品手册中文写作规范</a>, by 华为</li>
+<li><a target="_blank" rel="noopener" href="http://guide.daocloud.io/dcs/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83%E5%92%8C%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83-9153803.html">写作规范和格式规范</a>, by DaoCloud</li>
+<li><a target="_blank" rel="noopener" href="http://www.hitachi-tc.co.jp/company/thesis/thesis.pdf">技术写作技巧在日汉翻译中的应用</a>, by 刘方</li>
+<li><a target="_blank" rel="noopener" href="https://www.lengoo.de/documents/styleguides/lengoo_styleguide_ZH.pdf">简体中文规范指南</a>, by lengoo</li>
+<li><a target="_blank" rel="noopener" href="https://open.leancloud.cn/copywriting-style-guide.html">文档风格指南</a>, by LeanCloud</li>
+<li><a target="_blank" rel="noopener" href="https://docs.google.com/document/d/1R8lMCPf6zCD5KEA8ekZ5knK77iw9J-vJ6vEopPemqZM/edit">豌豆荚文案风格指南</a>, by 豌豆荚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sparanoid/chinese-copywriting-guidelines">中文文案排版指北</a>, by sparanoid</li>
+<li><a target="_blank" rel="noopener" href="http://w3c.github.io/clreq/">中文排版需求</a>, by W3C</li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2017/02/filename-should-be-lowercase.html">为什么文件名要小写？</a>, by 阮一峰</li>
+<li><a target="_blank" rel="noopener" href="https://developers.google.com/style/">Google Developer Documentation Style Guide</a>, by Google</li>
+<li><a target="_blank" rel="noopener" href="http://www.moe.gov.cn/ewebeditor/uploadfile/2015/01/13/20150113091154536.pdf">出版物上数字用法的规定（国家标准GBT15835－2011）</a></li>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%9B%BD%E5%AE%B6%E6%A0%87%E5%87%86%E5%87%BA%E7%89%88%E7%89%A9%E6%95%B0%E5%AD%97%E7%94%A8%E6%B3%95">中华人民共和国国家标准出版物数字用法</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikisource.org/zh-hans/GB_3100-1993_%E5%9B%BD%E9%99%85%E5%8D%95%E4%BD%8D%E5%88%B6%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8">GB 3100-1993 国际单位制及其应用</a></li>
+</ul>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><h3 id="层级"><a href="#层级" class="headerlink" title="层级"></a>层级</h3><p>标题分为四级。</p>
+<ul>
+<li>一级标题：文章的标题</li>
+<li>二级标题：文章主要部分的大标题</li>
+<li>三级标题：二级标题下面一级的小标题</li>
+<li>四级标题：三级标题下面某一方面的小标题</li>
+</ul>
+<p>下面是示例。</p>
+<pre><code># 一级标题
+
+## 二级标题
+
+### 三级标题
+
+#### 四级标题
+</code></pre>
+<h3 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h3><p>（1）一级标题下，不能直接出现三级标题。</p>
+<p>示例：下面的文章结构，缺少二级标题。</p>
+<pre><code># 一级标题
+
+### 三级标题
+</code></pre>
+<p>（2）标题要避免孤立编号（即同级标题只有一个）。</p>
+<p>示例：下面的文章结构，<code>二级标题 A</code>只包含一个三级标题，完全可以省略<code>三级标题 A</code>。</p>
+<pre><code>## 二级标题 A
+
+### 三级标题 A
+
+## 二级标题 B
+</code></pre>
+<p>（3）下级标题不重复上一级标题的名字。</p>
+<p>示例：下面的文章结构，二级标题与下属的三级标题同名，建议避免。</p>
+<pre><code>## 概述
+
+### 概述
+</code></pre>
+<p>（4）谨慎使用四级标题，尽量避免出现，保持层级的简单，防止出现过于复杂的章节。</p>
+<p>如果三级标题下有并列性的内容，建议只使用项目列表（Item list）。</p>
+<p>示例：下面的结构二要好于结构一。结构一适用的场景，主要是较长篇幅的内容。</p>
+<pre><code>结构一
+
+### 三级标题
+
+#### 四级标题 A
+
+#### 四级标题 B
+
+#### 四级标题 C
+
+结构二
+
+### 三级标题
+
+**（1）A**
+
+**（2）B**
+
+**（3）C**
+</code></pre>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="字间距"><a href="#字间距" class="headerlink" title="字间距"></a>字间距</h3><p>（1）全角中文字符与半角英文字符之间，应有一个半角空格。</p>
+<pre><code>错误：本文介绍如何快速启动Windows系统。
+
+正确：本文介绍如何快速启动 Windows 系统。 
+</code></pre>
+<p>（2）全角中文字符与半角阿拉伯数字之间，需要有空格。</p>
+<pre><code>正确：2011 年 5 月 15 日，我订购了 5 台笔记本电脑与 10 台平板电脑。 
+</code></pre>
+<p>半角的百分号，视同阿拉伯数字。</p>
+<pre><code>正确：今年我国经济增长率是 6.5%。 
+</code></pre>
+<p>（3）英文单位若不翻译，单位前的阿拉伯数字与单位符号之间，应留出适当的空隙。</p>
+<pre><code>例1：一部容量为 16 GB 的智能手机
+
+例2：1 h = 60 min = 3,600 s 
+</code></pre>
+<p>（4）半角英文字符和半角阿拉伯数字，与全角标点符号之间不留空格。</p>
+<pre><code>错误：他的电脑是 MacBook Air 。
+
+正确：他的电脑是 MacBook Air。 
+</code></pre>
+<h3 id="句子"><a href="#句子" class="headerlink" title="句子"></a>句子</h3><p>（1）避免使用长句。</p>
+<p>不包含任何标点符号的单个句子，或者以逗号分隔的句子构件，长度尽量保持在 20 个字以内；20～29 个字的句子，可以接受；30～39<br>个字的句子，语义必须明确，才能接受；多于 40 个字的句子，任何情况下都不能接受。</p>
+<pre><code>错误：本产品适用于从由一台服务器进行动作控制的单一节点结构到由多台服务器进行动作控制的并行处理程序结构等多种体系结构。
+
+正确：本产品适用于多种体系结构。无论是由一台服务器（单一节点结构），还是由多台服务器（并行处理结构）进行动作控制，均可以使用本产品。 
+</code></pre>
+<p>逗号分割的长句，总长度不应该超过 100 字或者正文的 3 行。</p>
+<p>（2）尽量使用简单句和并列句，避免使用复合句。</p>
+<pre><code>并列句：他昨天生病了，没有参加会议。
+
+复合句：那个昨天生病的人没有参加会议。 
+</code></pre>
+<p>（3）同样一个意思，尽量使用肯定句表达，不使用否定句表达。</p>
+<pre><code>错误：请确认没有接通装置的电源。
+
+正确：请确认装置的电源已关闭。 
+</code></pre>
+<p>（4）避免使用双重否定句。</p>
+<pre><code>错误：没有删除权限的用户，不能删除此文件。
+
+正确：用户必须拥有删除权限，才能删除此文件。 
+</code></pre>
+<h3 id="写作风格"><a href="#写作风格" class="headerlink" title="写作风格"></a>写作风格</h3><p>（1）尽量不使用被动语态，改为使用主动语态。</p>
+<pre><code>错误：假如此软件尚未被安装，
+
+正确：假如尚未安装这个软件， 
+</code></pre>
+<p>（2）不使用非正式的语言风格。</p>
+<pre><code>错误：Lady Gaga 的演唱会真是酷毙了，从没看过这么给力的表演！！！
+
+正确：无法参加本次活动，我深感遗憾。 
+</code></pre>
+<p>（3）不使用冷僻、生造或者文言文的词语，而要使用现代汉语的常用表达方式。</p>
+<pre><code>错误：这是唯二的快速启动的方法。
+
+正确：这是仅有的两种快速启动的方法。 
+</code></pre>
+<p>（4）用对“的”、“地”、“得”。</p>
+<pre><code>她露出了开心的笑容。
+（形容词＋的＋名词）
+
+她开心地笑了。
+（副词＋地＋动词）
+
+她笑得很开心。
+（动词＋得＋副词） 
+</code></pre>
+<p>（5）使用代词时（比如“其”、“该”、“此”、“这”等词），必须明确指代的内容，保证只有一个含义。</p>
+<pre><code>错误：从管理系统可以监视中继系统和受其直接控制的分配系统。
+
+正确：从管理系统可以监视两个系统：中继系统和受中继系统直接控制的分配系统。 
+</code></pre>
+<p>（6）名词前不要使用过多的形容词。</p>
+<pre><code>错误：此设备的使用必须在接受过本公司举办的正式的设备培训的技师的指导下进行。
+
+正确：此设备必须在技师的指导下使用，且指导技师必须接受过由本公司举办的正式设备培训。 
+</code></pre>
+<h3 id="英文处理"><a href="#英文处理" class="headerlink" title="英文处理"></a>英文处理</h3><p>（1）英文原文如果使用了复数形式，翻译成中文时，应该将其还原为单数形式。</p>
+<pre><code>英文：⋯information stored in random access memory (RAMs)⋯
+
+中文：……存储在随机存取存储器（RAM）里的信息…… 
+</code></pre>
+<p>（2）外文缩写可以使用半角圆点(<code>.</code>)表示缩写。</p>
+<pre><code>U.S.A.
+Apple, Inc.
+</code></pre>
+<p>（3）表示中文时，英文省略号（<code>⋯</code>）应改为中文省略号（<code>……</code>）。</p>
+<pre><code>英文：5 minutes later⋯
+
+中文：5 分钟过去了…… 
+</code></pre>
+<p>（4）英文书名或电影名改用中文表达时，双引号应改为书名号。</p>
+<pre><code>英文：He published an article entitled &quot;The Future of the Aviation&quot;.
+
+中文：他发表了一篇名为《航空业的未来》的文章。 
+</code></pre>
+<p>（5）第一次出现英文词汇时，在括号中给出中文标注。此后再次出现时，直接使用英文缩写即可。</p>
+<pre><code>IOC（International Olympic Committee，国际奥林匹克委员会）。这样定义后，便可以直接使用“IOC”了。 
+</code></pre>
+<p>（6）专有名词中每个词第一个字母均应大写，非专有名词则不需要大写。</p>
+<pre><code>“American Association of Physicists in Medicine”（美国医学物理学家协会）是专有名词，需要大写。
+
+“online transaction processing”（在线事务处理）不是专有名词，不应大写。
+</code></pre>
+<h2 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h2><h3 id="半角数字"><a href="#半角数字" class="headerlink" title="半角数字"></a>半角数字</h3><p>阿拉伯数字一律使用半角形式，不得使用全角形式。</p>
+<pre><code>错误： 这件商品的价格是１０００元。
+
+正确： 这件商品的价格是 1000 元。 
+</code></pre>
+<h3 id="千分号"><a href="#千分号" class="headerlink" title="千分号"></a>千分号</h3><p>数值为千位以上，应添加千分号（半角逗号）。</p>
+<pre><code>XXX 公司的实收资本为 ￥1,258,000 人民币。 
+</code></pre>
+<p>对于 4 位以下的数值，千分号是选用的，比如<code>1000</code>和<code>1,000</code>都可以接受。对于 4 位以上的数值，千分号是必须的。</p>
+<h3 id="货币"><a href="#货币" class="headerlink" title="货币"></a>货币</h3><p>货币应为阿拉伯数字，并在数字前写出货币符号，或在数字后写出货币中文名称。</p>
+<pre><code>$1,000
+1,000 美元 
+</code></pre>
+<p>英文的货币名称，建议参考国际标准 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>。</p>
+<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><p>表示数值范围时，用<code>～</code>或<code>——</code>连接。参见《标点符号》一节的“连接号”部分。</p>
+<p>带有单位或百分号时，两个数字建议都要加上单位或百分号。</p>
+<pre><code>132kg～234kg
+
+67%～89%
+</code></pre>
+<h3 id="变化程度的表示法"><a href="#变化程度的表示法" class="headerlink" title="变化程度的表示法"></a>变化程度的表示法</h3><p>数字的增加要使用“增加了”、“增加到”。“了”表示增量，“到”表示定量。</p>
+<pre><code>增加到过去的两倍
+（过去为一，现在为二）
+
+增加了两倍
+（过去为一，现在为三） 
+</code></pre>
+<p>数字的减少要使用“降低了”、“降低到”。“了”表示增量，“到”表示定量。</p>
+<pre><code>降低到百分之八十
+（定额是一百，现在是八十）
+
+降低了百分之八十
+（原来是一百，现在是二十） 
+</code></pre>
+<p>不能用“降低 N 倍”或“减少 N 倍”的表示法，要用“降低百分之几”或“减少百分之几”。因为减少（或降低）一倍表示数值原来为一百，现在等于零。</p>
+<h2 id="标点符号"><a href="#标点符号" class="headerlink" title="标点符号"></a>标点符号</h2><h3 id="原则-1"><a href="#原则-1" class="headerlink" title="原则"></a>原则</h3><p>（1）中文语句的标点符号，均应该采取全角符号，这样可以与全角文字保持视觉的一致。</p>
+<p>（2）如果整句为英文，则该句使用英文&#x2F;半角标点。</p>
+<p>（3）句号、问号、叹号、逗号、顿号、分号和冒号不得出现在一行之首。</p>
+<h3 id="句号"><a href="#句号" class="headerlink" title="句号"></a>句号</h3><p>（1）中文语句的结尾处应该用全角句号（<code>。</code>）。</p>
+<p>（2）句子末尾用括号加注时，句号应在括号之外。</p>
+<pre><code>错误：关于文件的输出，请参照第 1.3 节（见第 26 页。）
+
+正确：关于文件的输出，请参照第 1.3 节（见第 26 页）。 
+</code></pre>
+<h3 id="逗号"><a href="#逗号" class="headerlink" title="逗号"></a>逗号</h3><p>（1）逗号（<code>，</code>）表示句子内部的一般性停顿。</p>
+<p>（2）注意避免“一逗到底”，即整个段落除了结尾，全部停顿都使用逗号。</p>
+<h3 id="顿号"><a href="#顿号" class="headerlink" title="顿号"></a>顿号</h3><p>（1）句子内部的并列词，应该用全角顿号(<code>、</code>) 分隔，而不用逗号，即使并列词是英语也是如此。</p>
+<pre><code>错误：我最欣赏的科技公司有 Google, Facebook, 腾讯, 阿里和百度等。
+
+正确：我最欣赏的科技公司有 Google、Facebook、腾讯、阿里和百度等。 
+</code></pre>
+<p>（2）英文句子中，并列词语之间使用半角逗号（<code>,</code>）分隔。</p>
+<pre><code>例句：Microsoft Office includes Word, Excel, PowerPoint, Outlook and other components.
+</code></pre>
+<p>（3）中文句子内部的并列词，最后一个尽量使用（<code>和</code>）来连接，使句子读起来更加连贯，下面两个句子都可以，第二个更优。</p>
+<pre><code>正确：我最欣赏的科技公司有 Google、Facebook、腾讯、阿里，以及百度等。
+
+正确：我最欣赏的科技公司有 Google、Facebook、腾讯、阿里和百度等。 
+</code></pre>
+<h3 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h3><p>（1）分号（<code>；</code>）表示复句内部并列分句之间的停顿。</p>
+<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>（1）引用时，应该使用全角双引号（<code>“ ”</code>），注意前后双引号不同。</p>
+<pre><code>例句：许多人都认为客户服务的核心是“友好”和“专业”。 
+</code></pre>
+<p>（2）引号里面还要用引号时，外面一层用双引号，里面一层用单引号（<code>‘ ’</code>），注意前后单引号不同。</p>
+<pre><code>例句：鲍勃解释道：“我要放音乐，可萨利说，‘不行！’。” 
+</code></pre>
+<h3 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h3><p>（1）补充说明时，使用全角圆括号（<code>（）</code>），括号前后不加空格。</p>
+<pre><code>例句：请确认所有的连接（电缆和接插件）均安装牢固。 
+</code></pre>
+<p>（2）几种括号的中英文名称。</p>
+<p>|  英文  |  中文<br>—|—|—<br><code>&#123; &#125;</code> |  braces 或 curly brackets  |  大括号<br><code>[ ]</code> |  square brackets 或 brackets  |  方括号<br><code>&lt; &gt;</code> |  angled brackets  |  尖括号<br><code>( )</code> |  parentheses  |  圆括号</p>
+<h3 id="冒号"><a href="#冒号" class="headerlink" title="冒号"></a>冒号</h3><p>（1）全角冒号（<code>：</code>）常用在需要解释的词语后边，引出解释和说明。</p>
+<pre><code>例句：请确认以下几项内容：时间、地点、活动名称和来宾数量。 
+</code></pre>
+<p>（2）表示时间时，应使用半角冒号（<code>:</code>）。</p>
+<pre><code>例句：早上 8:00 
+</code></pre>
+<h3 id="省略号"><a href="#省略号" class="headerlink" title="省略号"></a>省略号</h3><p>（1）省略号（<code>……</code>）表示语句未完、或者语气的不连续。</p>
+<p>（2）省略号占两个汉字空间、包含六个省略点，不要使用<code>。。。</code>或<code>...</code>等非标准形式。</p>
+<p>（3）省略号不应与“等”这个词一起使用。</p>
+<pre><code>错误：我们为会餐准备了香蕉、苹果、梨…等各色水果。
+
+正确：我们为会餐准备了各色水果，有香蕉、苹果、梨……
+
+正确：我们为会餐准备了香蕉、苹果、梨等各色水果。 
+</code></pre>
+<h3 id="感叹号"><a href="#感叹号" class="headerlink" title="感叹号"></a>感叹号</h3><p>（1）应该使用平静的语气叙述，尽量避免使用感叹号（<code>！</code>）。</p>
+<p>（2）不得多个感叹号连用，比如<code>！！</code>和<code>!!!</code>。</p>
+<h3 id="破折号"><a href="#破折号" class="headerlink" title="破折号"></a>破折号</h3><p>（1）破折号<code>————</code>一般用于进一步解释。</p>
+<p>（2）破折号应占两个汉字的位置。如果破折号本身只占一个汉字的位置，那么前后应该留出一个半角空格。</p>
+<pre><code>例句：直觉————尽管它并不总是可靠的————告诉我，这事可能出了些问题。
+
+例句：直觉 —— 尽管它并不总是可靠的 —— 告诉我，这事可能出了些问题。
+</code></pre>
+<h3 id="连接号"><a href="#连接号" class="headerlink" title="连接号"></a>连接号</h3><p>（1）连接号用于连接两个类似的词。</p>
+<p>（2）以下场合应该使用直线连接号（<code>-</code>），占一个半角字符的位置。</p>
+<ul>
+<li><p>两个名词的复合</p>
+</li>
+<li><p>图表编号</p>
+<p>  例句：氧化-还原反应</p>
+<p>  例句：图 1-1</p>
+</li>
+</ul>
+<p>（3）数值范围（例如日期、时间或数字）应该使用波浪连接号（<code>～</code>），占一个全角字符的位置。</p>
+<pre><code>例句：2009 年～2011 年
+</code></pre>
+<p>注意，波浪连接号前后两个值都应该加上单位。</p>
+<p>（4）波浪连接号也可以用汉字“至”代替。</p>
+<pre><code>例句：周围温度：-20°C 至 -10°C
+</code></pre>
+<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><h3 id="原则-2"><a href="#原则-2" class="headerlink" title="原则"></a>原则</h3><ul>
+<li>一个段落只能有一个主题，或一个中心句子。</li>
+<li>段落的中心句子放在段首，对全段内容进行概述。后面陈述的句子为核心句服务。</li>
+<li>一个段落的长度不能超过七行，最佳段落长度小于等于四行。</li>
+<li>段落的句子语气要使用陈述和肯定语气，避免使用感叹语气。</li>
+<li>段落之间使用一个空行隔开。</li>
+<li>段落开头不要留出空白字符。</li>
+</ul>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>引用第三方内容时，应注明出处。</p>
+<pre><code>One man’s constant is another man’s variable. — Alan Perlis
+</code></pre>
+<p>如果是全篇转载，请在全文开头显著位置注明作者和出处，并链接至原文。</p>
+<pre><code>本文转载自 WikiQuote
+</code></pre>
+<p>使用外部图片时，必须在图片下方或文末标明来源。</p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>软件手册是一部完整的书，建议采用下面的结构。</p>
+<ul>
+<li><p><strong>简介</strong> （Introduction）： [必备] [文件] 提供对产品和文档本身的总体的、扼要的说明</p>
+</li>
+<li><p><strong>快速上手</strong> （Getting Started）：[可选] [文件] 如何最快速地使用产品</p>
+</li>
+<li><p><strong>入门篇</strong> （Basics）： [必备] [目录] 又称”使用篇“，提供初级的使用教程</p>
+<ul>
+<li><strong>环境准备</strong> （Prerequisite）：[必备] [文件] 软件使用需要满足的前置条件</li>
+<li><strong>安装</strong> （Installation）：[可选] [文件] 软件的安装方法</li>
+<li><strong>设置</strong> （Configuration）：[必备] [文件] 软件的设置</li>
+</ul>
+</li>
+<li><p><strong>进阶篇</strong> （Advanced)：[可选] [目录] 又称”开发篇“，提供中高级的开发教程</p>
+</li>
+<li><p><strong>API</strong> （Reference）：[可选] [目录][文件] 软件 API 的逐一介绍</p>
+</li>
+<li><p><strong>FAQ</strong> ：[可选] [文件] 常见问题解答</p>
+</li>
+<li><p><strong>附录</strong> （Appendix）：[可选] [目录] 不属于教程本身、但对阅读教程有帮助的内容</p>
+<ul>
+<li><strong>Glossary</strong> ：[可选] [文件] 名词解释</li>
+<li><strong>Recipes</strong> ：[可选] [文件] 最佳实践</li>
+<li><strong>Troubleshooting</strong> ：[可选] [文件] 故障处理</li>
+<li><strong>ChangeLog</strong> ：[可选] [文件] 版本说明</li>
+<li><strong>Feedback</strong> ：[可选] [文件] 反馈方式</li>
+</ul>
+</li>
+</ul>
+<p>下面是两个真实范例，可参考。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://redux.js.org/introduction/getting-started">Redux 手册</a></li>
+<li><a target="_blank" rel="noopener" href="http://flight-manual.atom.io/">Atom 手册</a></li>
+</ul>
+<h3 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h3><p>文档的文件名不得含有空格。</p>
+<p>文件名必须使用半角字符，不得使用全角字符。这也意味着，中文不能用于文件名。</p>
+<pre><code>错误： 名词解释.md
+
+正确： glossary.md
+</code></pre>
+<p>文件名建议只使用小写字母，不使用大写字母。</p>
+<pre><code>错误：TroubleShooting.md
+
+正确：troubleshooting.md
+</code></pre>
+<p>为了醒目，某些说明文件的文件名，可以使用大写字母，比如<code>README</code>、<code>LICENSE</code>。</p>
+<p>文件名包含多个单词时，单词之间建议使用半角的连词线（<code>-</code>）分隔。</p>
+<pre><code>不佳：advanced_usage.md
+
+正确：advanced-usage.md
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/09/10/mdstorage/arch/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83/" class="go-post">阅读全文</a>
 </div>
 
-  </footer>
+<div class="post">
+    <a href="/2024/09/10/mdstorage/arch/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/%E8%BD%AF%E4%BB%B6%E6%96%87%E6%A1%A3%E7%9B%AE%E5%BD%95%E5%8F%82%E8%80%83%E8%A7%84%E8%8C%83/">
+        <h2 class="post-title">软件文档目录参考规范.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/arch/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                arch
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/9/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="noopener" href="https://www.zhaowenyu.com/open-doc-contents/">温玉WIKI</a></p>
 
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/09/10/mdstorage/arch/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/%E8%BD%AF%E4%BB%B6%E6%96%87%E6%A1%A3%E7%9B%AE%E5%BD%95%E5%8F%82%E8%80%83%E8%A7%84%E8%8C%83/" class="go-post">阅读全文</a>
+</div>
 
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
+<div class="post">
+    <a href="/2024/09/10/mdstorage/domain/ai/%E6%8F%90%E7%A4%BA%E8%AF%AD%E6%94%B6%E9%9B%86/">
+        <h2 class="post-title">提示语收集.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/9/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="blog-使用"><a href="#blog-使用" class="headerlink" title="blog 使用"></a>blog 使用</h2><p>下面所有问题的答案用 markdown blog 的形式提供, 并且标题级别不要使用1级标题</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/09/10/mdstorage/domain/ai/%E6%8F%90%E7%A4%BA%E8%AF%AD%E6%94%B6%E9%9B%86/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/09/10/mdstorage/domain/pm/%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B/">
+        <h2 class="post-title">康威定律.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/9/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><pre><code>Organizations which design systems are constrained to produce designs which are copies of the communication structures of these organizations. - Melvin Conway(1967)
+
+译文: 设计系统的组织，其产生的设计等同于组织之内、组织之间的沟通结构。
+</code></pre>
+<p>用通俗的说法就是：组织形式等同系统设计。</p>
+<h2 id="详细介绍"><a href="#详细介绍" class="headerlink" title="详细介绍"></a>详细介绍</h2><ul>
+<li>第一定律</li>
+</ul>
+<p>Communication dictates design<br>组织沟通方式会通过系统设计表达出来</p>
+<ul>
+<li>第二定律</li>
+</ul>
+<p>There is never enough time to do something right, but there is always enough time to do it over<br>时间再多一件事情也不可能做的完美，但总有时间做完一件事情</p>
+<ul>
+<li>第三定律</li>
+</ul>
+<p>There is a homomorphism from the linear graph of a system to the linear graph of its design organization<br>线型系统和线型组织架构间有潜在的异质同态特性</p>
+<ul>
+<li>第四定律</li>
+</ul>
+<p>The structures of large systems tend to disintegrate during development, qualitatively more so than with small systems<br>大的系统组织总是比小系统更倾向于分解</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/8611">微服务架构的理论基础 - 康威定律</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/every-architect-should-study-conway-law/">每个架构师都应该研究下康威定律</a></li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/" style="color: #ff7d73">计算机理论</a>
+        </span>
+        
+    </div>
+    <a href="/2024/09/10/mdstorage/domain/pm/%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/09/10/mdstorage/domain/shell/%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/">
+        <h2 class="post-title">命令行调试技巧.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/9/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h3 id="1-使用-if-条件判断"><a href="#1-使用-if-条件判断" class="headerlink" title="1. 使用 if 条件判断"></a>1. 使用 <code>if</code> 条件判断</h3><p>Bash 中最常见的条件判断方式是使用 <code>if</code> 语句。你可以直接在命令行中使用以下格式进行条件判断：</p>
+<pre><code class="bash">if [ &quot;$var&quot; = &quot;value&quot; ]; then echo &quot;Match&quot;; else echo &quot;No Match&quot;; fi
+</code></pre>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><pre><code class="bash">var=&quot;hello&quot;
+if [ &quot;$var&quot; = &quot;hello&quot; ]; then echo &quot;Variable is hello&quot;; else echo &quot;Variable is not hello&quot;; fi
+</code></pre>
+<h3 id="2-使用-和-运算符"><a href="#2-使用-和-运算符" class="headerlink" title="2. 使用 &amp;&amp; 和 || 运算符"></a>2. 使用 <code>&amp;&amp;</code> 和 <code>||</code> 运算符</h3><p>在命令行中，可以通过 <code>&amp;&amp;</code> 和 <code>||</code> 进行条件判断和执行分支逻辑：</p>
+<ul>
+<li><code>&amp;&amp;</code>：只有在前面的命令成功时（退出码为 0），才会执行后续命令。</li>
+<li><code>||</code>：只有在前面的命令失败时（退出码不为 0），才会执行后续命令。</li>
+</ul>
+<h4 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h4><pre><code class="bash">[ &quot;$var&quot; = &quot;hello&quot; ] &amp;&amp; echo &quot;Variable is hello&quot; || echo &quot;Variable is not hello&quot;
+</code></pre>
+<h3 id="3-使用-case-语句"><a href="#3-使用-case-语句" class="headerlink" title="3. 使用 case 语句"></a>3. 使用 <code>case</code> 语句</h3><p>当你需要判断多个条件时，可以使用 <code>case</code> 语句。这是一种简单的分支结构，适合多条件判断的情况。</p>
+<pre><code class="bash">case &quot;$var&quot; in
+  &quot;value1&quot;)
+    echo &quot;Value is value1&quot;
+    ;;
+  &quot;value2&quot;)
+    echo &quot;Value is value2&quot;
+    ;;
+  *)
+    echo &quot;Value is something else&quot;
+    ;;
+esac
+</code></pre>
+<h4 id="示例：-2"><a href="#示例：-2" class="headerlink" title="示例："></a>示例：</h4><pre><code class="bash">var=&quot;apple&quot;
+case &quot;$var&quot; in
+  &quot;apple&quot;)
+    echo &quot;This is an apple&quot;
+    ;;
+  &quot;banana&quot;)
+    echo &quot;This is a banana&quot;
+    ;;
+  *)
+    echo &quot;Unknown fruit&quot;
+    ;;
+esac
+</code></pre>
+<h3 id="4-结合命令替换进行判断"><a href="#4-结合命令替换进行判断" class="headerlink" title="4. 结合命令替换进行判断"></a>4. 结合命令替换进行判断</h3><p>在命令行中可以使用命令替换来获取某个命令的输出，然后基于该输出进行判断。</p>
+<h4 id="示例：检查某个命令是否存在"><a href="#示例：检查某个命令是否存在" class="headerlink" title="示例：检查某个命令是否存在"></a>示例：检查某个命令是否存在</h4><pre><code class="bash">command -v curl &gt; /dev/null &amp;&amp; echo &quot;curl is installed&quot; || echo &quot;curl is not installed&quot;
+</code></pre>
+<h3 id="5-判断变量是否为空"><a href="#5-判断变量是否为空" class="headerlink" title="5. 判断变量是否为空"></a>5. 判断变量是否为空</h3><p>要判断一个变量是否为空，可以使用以下形式：</p>
+<pre><code class="bash">if [ -z &quot;$var&quot; ]; then echo &quot;Variable is empty&quot;; else echo &quot;Variable is not empty&quot;; fi
+</code></pre>
+<h4 id="示例：-3"><a href="#示例：-3" class="headerlink" title="示例："></a>示例：</h4><pre><code class="bash">var=&quot;&quot;
+if [ -z &quot;$var&quot; ]; then echo &quot;Variable is empty&quot;; else echo &quot;Variable is not empty&quot;; fi
+</code></pre>
+<h3 id="6-判断文件是否存在"><a href="#6-判断文件是否存在" class="headerlink" title="6. 判断文件是否存在"></a>6. 判断文件是否存在</h3><p>如果需要判断文件或目录是否存在，可以使用以下条件判断：</p>
+<pre><code class="bash">if [ -f &quot;/path/to/file&quot; ]; then echo &quot;File exists&quot;; else echo &quot;File does not exist&quot;; fi
+</code></pre>
+<h4 id="示例：-4"><a href="#示例：-4" class="headerlink" title="示例："></a>示例：</h4><pre><code class="bash">if [ -d &quot;/tmp&quot; ]; then echo &quot;/tmp is a directory&quot;; else echo &quot;/tmp is not a directory&quot;; fi
+</code></pre>
+<h3 id="7-在一行中执行多个条件判断"><a href="#7-在一行中执行多个条件判断" class="headerlink" title="7. 在一行中执行多个条件判断"></a>7. 在一行中执行多个条件判断</h3><p>如果你需要在一行中执行多个条件判断，可以使用逻辑操作符：</p>
+<pre><code class="bash">[ &quot;$var1&quot; = &quot;value1&quot; ] &amp;&amp; [ &quot;$var2&quot; = &quot;value2&quot; ] &amp;&amp; echo &quot;Both conditions are true&quot; || echo &quot;At least one condition is false&quot;
+</code></pre>
+<p>在 Bash 命令行中，<code>for</code> 循环可以直接执行，无需编写脚本。这是一种强大的工具，可以用来遍历列表或处理一系列命令。</p>
+<h3 id="基本的-for-循环语法"><a href="#基本的-for-循环语法" class="headerlink" title="基本的 for 循环语法"></a>基本的 <code>for</code> 循环语法</h3><p>Bash 中 <code>for</code> 循环的基本语法如下：</p>
+<pre><code class="bash">for var in list; do
+    command
+done
+</code></pre>
+<p>可以直接在命令行中输入并执行这个循环。</p>
+<h3 id="示例-1：遍历简单的字符串列表"><a href="#示例-1：遍历简单的字符串列表" class="headerlink" title="示例 1：遍历简单的字符串列表"></a>示例 1：遍历简单的字符串列表</h3><pre><code class="bash">for item in apple banana orange; do echo &quot;Fruit: $item&quot;; done
+</code></pre>
+<h4 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h4><pre><code>Fruit: apple
+Fruit: banana
+Fruit: orange
+</code></pre>
+<p>在这个示例中，我们遍历了 <code>apple</code>、<code>banana</code> 和 <code>orange</code>，并输出它们的值。所有的循环逻辑都在一行中执行。</p>
+<h3 id="示例-2：遍历文件列表"><a href="#示例-2：遍历文件列表" class="headerlink" title="示例 2：遍历文件列表"></a>示例 2：遍历文件列表</h3><p>你可以使用 <code>for</code> 循环来遍历一个目录中的文件：</p>
+<pre><code class="bash">for file in /path/to/directory/*; do echo &quot;File: $file&quot;; done
+</code></pre>
+<h4 id="输出：-1"><a href="#输出：-1" class="headerlink" title="输出："></a>输出：</h4><pre><code>File: /path/to/directory/file1
+File: /path/to/directory/file2
+File: /path/to/directory/file3
+</code></pre>
+<p>这个命令会遍历 <code>/path/to/directory/</code> 目录中的所有文件，并打印每个文件的路径。</p>
+<h3 id="示例-3：遍历数值范围"><a href="#示例-3：遍历数值范围" class="headerlink" title="示例 3：遍历数值范围"></a>示例 3：遍历数值范围</h3><p>使用 <code>seq</code> 命令生成数字序列，并通过 <code>for</code> 循环来遍历这些数字：</p>
+<pre><code class="bash">for i in $(seq 1 5); do echo &quot;Number: $i&quot;; done
+</code></pre>
+<h4 id="输出：-2"><a href="#输出：-2" class="headerlink" title="输出："></a>输出：</h4><pre><code>Number: 1
+Number: 2
+Number: 3
+Number: 4
+Number: 5
+</code></pre>
+<p>这个例子中，<code>seq 1 5</code> 生成从 1 到 5 的数字，然后 <code>for</code> 循环遍历这些数字并逐个输出。</p>
+<h3 id="示例-4：处理命令输出"><a href="#示例-4：处理命令输出" class="headerlink" title="示例 4：处理命令输出"></a>示例 4：处理命令输出</h3><p>你可以将命令的输出作为 <code>for</code> 循环的输入。比如遍历当前目录下的文件名：</p>
+<pre><code class="bash">for file in $(ls); do echo &quot;Processing $file&quot;; done
+</code></pre>
+<h4 id="输出：-3"><a href="#输出：-3" class="headerlink" title="输出："></a>输出：</h4><pre><code>Processing file1.txt
+Processing file2.log
+Processing directory1
+</code></pre>
+<p>在这里，<code>$(ls)</code> 执行 <code>ls</code> 命令，并将结果传递给 <code>for</code> 循环进行处理。</p>
+<hr>
+<h3 id="示例-5：嵌套-for-循环"><a href="#示例-5：嵌套-for-循环" class="headerlink" title="示例 5：嵌套 for 循环"></a>示例 5：嵌套 <code>for</code> 循环</h3><p>即使是嵌套的 <code>for</code> 循环，也可以直接在命令行中运行：</p>
+<pre><code class="bash">for i in 1 2 3; do for j in a b c; do echo &quot;$i$j&quot;; done; done
+</code></pre>
+<h4 id="输出：-4"><a href="#输出：-4" class="headerlink" title="输出："></a>输出：</h4><pre><code>1a
+1b
+1c
+2a
+2b
+2c
+3a
+3b
+3c
+</code></pre>
+<p>这个示例中，我们使用两个嵌套的 <code>for</code> 循环，遍历数字和字母的组合。</p>
+<h3 id="示例-6：条件判断与-for-循环结合"><a href="#示例-6：条件判断与-for-循环结合" class="headerlink" title="示例 6：条件判断与 for 循环结合"></a>示例 6：条件判断与 <code>for</code> 循环结合</h3><p>你可以将 <code>if</code> 条件判断与 <code>for</code> 循环结合起来直接在命令行中执行：</p>
+<pre><code class="bash">for i in 1 2 3 4 5; do if [ $i -gt 3 ]; then echo &quot;$i is greater than 3&quot;; else echo &quot;$i is less than or equal to 3&quot;; fi; done
+</code></pre>
+<h4 id="输出：-5"><a href="#输出：-5" class="headerlink" title="输出："></a>输出：</h4><pre><code>1 is less than or equal to 3
+2 is less than or equal to 3
+3 is less than or equal to 3
+4 is greater than 3
+5 is greater than 3
+</code></pre>
+<p>在这个例子中，<code>for</code> 循环遍历数字，<code>if</code> 语句判断数字是否大于 3，并根据结果输出不同的内容。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/09/10/mdstorage/domain/shell/%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/09/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%B7%A5%E4%BD%9C%E5%86%85%E5%AE%B9/">
+        <h2 class="post-title">架构工作内容.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/9/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="架构定义"><a href="#架构定义" class="headerlink" title="架构定义"></a>架构定义</h2><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic2.webp" alt="架构定义"></p>
+<pre><code class="mermaid">graph LR
+    ae[Architecture Element]
+    ie[Inter-Element Ralationship]
+    a[Architecture]
+    system[System]
+    ad[Architectural Description]
+    stakeholder[Stakeholder]
+    view[View]
+    vp[Viewpoint]
+    concert[Concert]
+    
+    ie ---&gt;|relates| ae
+    a --&gt; ae
+    a ---&gt;|comprises| ie
+    system ---&gt; |has an|a
+    system --&gt;|addresses the needs of| stakeholder
+    a --&gt; ad
+    ad ---&gt;|documents architecture for| stakeholder
+    ad --&gt; |comprises| view
+    view --&gt;|conforms to| vp --&gt;|addresses| concert
+    stakeholder --&gt; |has| concert
+</code></pre>
+<ul>
+<li>每个系统都有一个架构</li>
+<li>架构由架构元素以及相互之间的关系构成</li>
+<li>系统是为了满足利益相关者（stakeholder）的需求而构建的</li>
+<li>利益相关者都有自己的关注点（concerns）</li>
+<li>架构由架构文档描述</li>
+<li>架构文档描述了一系列的架构视角</li>
+<li>每个视角都解决并且对应到利益相关者的关注点。</li>
+</ul>
+<h3 id="首要任务"><a href="#首要任务" class="headerlink" title="首要任务"></a>首要任务</h3><p>架构系统前，架构师的首要任务是尽最大可能找出所有利益相关者，业务方，产品经理，客户 &#x2F; 用户，开发经理，工程师，项目经理，测试人员，运维人员，产品运营人员等等都有可能是利益相关者，架构师要充分和利益相关者沟通，深入理解他们的关注点和痛点，并出架构解决这些关注点。架构师常犯错误是漏掉重要的利益相关者，沟通不充分，都会造成架构有欠缺，不能满足利益相关者的需求。利益相关者的关注点是有可能冲突的，比如管理层（可管理性）vs 技术方（性能），业务方（多快好省）vs 技术方（可靠稳定），这需要架构师去灵活平衡，如何平衡体现了架构师的水平和价值。</p>
+<h3 id="abilities"><a href="#abilities" class="headerlink" title="abilities"></a>abilities</h3><p>架构的第二点定义是说架构主要关注非功能性需求（non-functional requirements），即所谓的 -abilities</p>
+<ul>
+<li>easy to separate    -&gt; Autonomy</li>
+<li>easy to understand  -&gt; Understandability</li>
+<li>easy to extend      -&gt; Extensibility</li>
+<li>easy to change      -&gt; Changeability</li>
+<li>easy to replace     -&gt; Replaceability</li>
+<li>easy to deploy      -&gt; Deployability</li>
+<li>easy to scale       -&gt; Scalability</li>
+<li>easy to recover     -&gt; Resilience</li>
+<li>easy to connect     -&gt; Uniform interface</li>
+<li>easy to afford      -&gt; Cost-efficiency</li>
+</ul>
+<p>这个是 slideshare 一个 ppt 里头截取的，两个图都是列出了架构的非功能性关注点；关于架构的水平该如何衡量，去年我看到一句话，对我影响很大。</p>
+<p>Architecture represents the significant design decisions that shape a system, where significant is measured by cost of change.</p>
+<p>翻译为中文就是，架构表示对一个系统的成型起关键作用的设计决策，架构定系统基本就成型了，这里的关键性可以由变化的成本来决定。这句话是 Grady Booch 说的，他是 UML 的创始人之一。</p>
+<p>进一步展开讲，架构的目标是用于管理复杂性、易变性和不确定性，以确保在长期的系统演化过程中，一部分架构的变化不会对架构的其它部分产生不必要的负面影响。这样做可以确保业务和研发效率的敏捷，让应用的易变部分能够频繁地变化，对应用的其它部分的影响尽可能的小。</p>
+<p>我刚入软件开发这个行业之初，谈的架构主要是性能，高可用等等。现在，见过无数遗留系统，特别是国内企业 IT 的现状，无数高耦合的遗留系统，不良的架构像手铐一样牢牢地限制住业务，升级替换成本非常巨大， 所以我更加关注可理解，可维护性，可扩展性，成本 。我想补充一句，创业公司创业之初获得好的架构师或技术 CTO 非常重要。</p>
+<h3 id="架构的迭代和演化性"><a href="#架构的迭代和演化性" class="headerlink" title="架构的迭代和演化性"></a>架构的迭代和演化性</h3><p>RUP，统一软件过程的理念。RUP 的理念对我的架构有很深的影响，RUP 总结起来就是三个特点：</p>
+<p>用例和风险驱动 Use Case and risk driven<br>架构中心 Architecture centric<br>迭代和增量 Iterative and incremental</p>
+<p>RUP 很注重架构，提倡以架构和风险驱动，项目开始一定要做端到端的原型（prototype）；通过压测验证架构可行性，然后在原型基础上持续迭代和增量式开发，开发 -&gt; 测试 -&gt; 调整架构 -&gt; 开发，循环，如下图所示：</p>
+<pre><code class="mermaid">
+graph LR
+    architecture --&gt; code &amp; test
+    test --&gt; architecture &amp; code
+    code --&gt; architecture &amp; test
+    
+    
+</code></pre>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic3.webp" alt="RUP 架构迭代和演化"></p>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic4.webp" alt="最小可用产品"></p>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic5.webp" alt="最小可用产品2"></p>
+<p>从上图可以看出架构师要尽可能写代码，做测试，纸上谈兵式做架构而后丢给团队的作法非常不靠谱（除非是已经非常清晰成熟的领域）。另外，做技术架构的都有点完美主义倾向，一开始往往喜欢求大求全，忽视架构的演化和迭代性，这种倾向易造产品和用户之间不能形成有效快速的反馈，产品不满足最终用户需求。</p>
+<p>第一个图是讲最小可用产品（Minimum Viable Product， MVP）理念，做出最小可用产品，尽快丢给用户试用，快速获取客户反馈，在此基础上不断迭代和演化架构和产品。第二个图是过度工程（Over Engineering）的问题，其实也是讲产品架构和用户之间没有形成有效的反馈闭环，架构师想的和客户想的不在一个方向上，通过最小可用产品，快速迭代反馈的策略，可以避免这种问题。注意，在系统真正地投入生产使用之前，再好的架构都只是假设，产品越晚被使用者使用，失败的成本和风险就越高，而小步行进，通过MVP快速实验，获取客户反馈，迭代演化产品，能有效地减少失败的成本和风险。</p>
+<p>另外，多年的经验告诉我，架构，平台不是买来的，也不是用一个开源就能获得的，也不是设计出来，而是长期演化才能落地生根的。</p>
+<h3 id="构建闭环反馈架构"><a href="#构建闭环反馈架构" class="headerlink" title="构建闭环反馈架构"></a>构建闭环反馈架构</h3><p><strong>必要性</strong></p>
+<ul>
+<li>持续改进与优化：通过实时反馈，开发团队可以快速发现问题，改进架构和代码质量，从而提高软件的稳定性和性能。</li>
+<li>加快交付周期：反馈机制使团队能够在每个迭代中获取用户和系统的实时信息，确保软件能够适应业务需求的快速变化，缩短交付周期。</li>
+<li>降低风险：闭环反馈可以有效减少未知风险，提早发现潜在问题，避免上线后产生重大故障或代价高昂的修复。</li>
+<li>自动化与高效协作：结合自动化工具（如持续集成、持续交付），反馈机制有助于优化整个开发到交付的工作流程，促进开发、测试、运维之间的高效协作，提升软件交付效率。</li>
+<li>数据驱动决策：闭环反馈提供了丰富的数据和洞察，帮助团队在软件开发和交付过程中做出更精确的决策，优化资源配置、提高系统弹性，并根据实际用户行为调整功能。</li>
+</ul>
+<p>通过这些反馈回路，架构师能够确保软件交付过程的高效、可靠与灵活性，并更好地满足不断变化的市场需求。</p>
+<p><strong>系统思维</strong></p>
+<p>第一条道路，系统思维，开发驱动的组织机体，其能力不是制作软件，而是持续的交付客户价值，架构师需要有全局视角和系统思维（System Thinking），深入理解整个价值交付链，从业务需求、研发、测试、集成，到部署运维，这条价值链的效率并不依赖于单个或者几个环节，局部优化的结果往往是全局受损，架构师要站在系统高度去优化整个价值交付链，让企业和客户之间形成快速和高效的价值传递。</p>
+<p>第二条道路，强化反馈环，任何过程改进的目标都是加强和缩短反馈环。刚入行的工程师，也是中国学生的普遍问题，就是生产运维意识不足（监控是系统反馈的重要环节）。有两句号这样讲的：</p>
+<p>no measurement, no improvement 没有测量，就没有改进和提升<br>What your measure is what you get 你测量什么，就得到什么<br>没有监控或者监控不完善的系统相当于裸奔，开车上高速无仪表盘。有一篇很不错的关于测量驱动开发的文章，在 InfoQ 上的，向大家推荐：</p>
+<p><a target="_blank" rel="noopener" href="http://www.infoq.com/cn/articles/metrics-driven-development">http://www.infoq.com/cn/articles/metrics-driven-development</a></p>
+<p>这篇文章提出了度量驱动开发的理念，即所谓 MDD，在系统，应用和业务三个层次，通过三级监控，构建三个反馈环，在监控测量基础上持续改进系统和架构，我最近也在参考这个理念设计一个电商平台的技术架构，见下图：<br><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic1.webp" alt="技术架构图"></p>
+<p>这是一个电商平台的架构，整个体现了闭环架构的思想，右侧是整个平台的反馈监控环节。具体如下：</p>
+<p>系统层监控计算网络存储，构建系统层的反馈环<br>应用服务层，监控业务、应用、服务，甚至整个研发流程，构建应用和服务层的反馈环<br>客户体验层，监控端用户和分析网站用户的行为，构建和客户的反馈环<br>下面这个图展示了系统提升和改进的一般方法：</p>
+<p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/pic6.webp" alt="反馈环"></p>
+<p>收集 -&gt; 测量 -&gt; 调整 -&gt; 闭环重复，在有测量数据和反馈的基础上，系统、应用、流程和客户体验才有可能获得持续的提升和改善，否则没有数据的所谓改进只能靠拍脑袋或者说猜测。</p>
+<p>第三条道路，鼓励勇于承担责任，冒险试错和持续提升的文化。这点是最难的，一般和企业人才密度有关。工具，技术，流程只是一个公司的冰山浮出水面的部分，而真正对企业效能影响大的则是冰山水下的部分，即企业的人和文化，架构师作为技术和架构的布道者，有责任义务鼓励和推动试错文化。</p>
+<p>架构师要深入领会这三条道路，关注整个价值交付链的效率，关注每个环节的闭环反馈，鼓励和推动公司的试错文化，打造全系统的闭环架构（Architecting for closed loop feedback），提升整个系统效能。下图的 DevOps 和每日交付是每一个互联网系统架构师的梦想和努力的方向。</p>
+<h3 id="架构和组织文化关系"><a href="#架构和组织文化关系" class="headerlink" title="架构和组织文化关系"></a>架构和组织文化关系</h3><p>将单块架构解耦成微服务，每个团队开发，测试和发布自己负责的微服务，互不干扰，系统效率得到提升。<br>可见，组织和系统架构之间有一个映射关系（1 ~ 1 mapping），两者不对齐就会出各种各样的问题，一方面，如果你的组织结构和文化结构不支持，你也无法成功建立高效的系统架构，例如集中式和严格职能（业务, Dev, QA, Deployment, Ops）的企业，很难推行微服务和 DevOps，推行 Docker&#x2F;PaaS 平台也会比较困难，这样的组织职能之间都倾向于局部优化（local optimization），无法形成有效的合作和闭环。</p>
+<p>反过来也是成立的，如果你的系统设计或者架构不支持，那么你就无法成功建立一个有效的组织；作为系统架构师，一定要深入领会康威定律，设计系统架构之前，先看清组织结构，也要看组织文化（民主合作式，集权式，丛林法则式，人才密度），再根据情况调整系统架构或者组织架构。</p>
+<p><a target="_blank" rel="noopener" href="https://boardmix.cn/article/6-types-company-organizational-structures/">6种组织结构</a></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/every-architect-should-study-conway-law/">架构分享</a></li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/09/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E5%B7%A5%E4%BD%9C%E5%86%85%E5%AE%B9/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/09/10/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/TLS%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/">
+        <h2 class="post-title">TLS双向认证.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/9/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="基于-HTTP-认证机制"><a href="#基于-HTTP-认证机制" class="headerlink" title="基于 HTTP 认证机制"></a>基于 HTTP 认证机制</h2><ol>
+<li><p><strong>TLS 双向认证</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>增强的安全性</strong>：不仅服务器需要提供有效的证书来证明其身份，客户端也需要做同样的事情，从而增加了安全性。</li>
+<li><strong>减少中间人攻击的风险</strong>：因为双方都需要验证身份，这大大降低了中间人攻击的可能性。</li>
+<li><strong>身份确认</strong>：可以确保与预期的客户端进行通信，对于高安全要求的应用尤其重要。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>部署复杂</strong>：需要为每个客户端生成和管理证书，这可能会导致部署和维护上的复杂性。</li>
+<li><strong>性能开销</strong>：双向认证可能会带来额外的性能开销，尤其是在高并发环境中。</li>
+<li><strong>管理成本</strong>：证书的续期、撤销和更新可能导致额外的管理成本。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>TLS 单向认证</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>简单易部署</strong>：只需要服务器有证书，客户端不需要，简化了部署过程。</li>
+<li><strong>安全</strong>：客户端可以验证服务器的身份，确保与预期的服务器通信。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>安全性较低</strong>：只能验证服务器的身份，无法验证客户端的身份，可能会面临其他安全风险。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>基于 API 密钥的认证</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>部署简单</strong>：通常只需生成一个 API 密钥并在请求中发送。</li>
+<li><strong>跨平台</strong>：API 密钥可以在多种平台和语言中使用，不受特定的协议或库的限制。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>较低的安全性</strong>：如果密钥被泄露，任何人都可以使用该密钥。</li>
+<li><strong>无状态验证</strong>：无法验证请求来源的身份，只能验证请求是否包含有效的 API 密钥。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>基于 token 的认证（如 JWT）</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>状态无关</strong>：服务器不需要存储任何关于客户端的会话信息。</li>
+<li><strong>灵活性</strong>：Token 可以包含多种信息，并且可以轻松地跨多个服务进行验证。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>安全风险</strong>：如果 Token 被截获，攻击者可以冒充用户。</li>
+<li><strong>生命周期管理</strong>：需要一个机制来撤销或刷新 Token。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="TLS-单向认证威胁场景"><a href="#TLS-单向认证威胁场景" class="headerlink" title="TLS 单向认证威胁场景"></a>TLS 单向认证威胁场景</h2><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>黑客已经攻破操作系统或本身拥有系统的高权限，并拥有网络优势位置，可以拦截客户端的出入网络。这种情况可以进行中间人攻击破解单向认证加密的信息。</p>
+<h3 id="攻击步骤"><a href="#攻击步骤" class="headerlink" title="攻击步骤"></a>攻击步骤</h3><p>在拥有客户端主机的 root 权限的情况下，黑客可以部署特定的应用程序来拦截客户端和服务器之间的通信，并伪装成服务端与客户端建立连接。</p>
+<h4 id="步骤-1-拦截网络流量"><a href="#步骤-1-拦截网络流量" class="headerlink" title="步骤 1: 拦截网络流量"></a>步骤 1: 拦截网络流量</h4><ol>
+<li><strong>安装网络监控工具</strong>：使用像 Wireshark Tcpdump 这样的网络监控工具来捕获和分析经过该主机的网络流量。</li>
+<li><strong>配置端口镜像</strong>：如果可能，配置网络设备进行端口镜像（也称为 SPAN），将目标服务器的流量复制到监控的端口。</li>
+</ol>
+<h4 id="步骤-2-伪装成服务器"><a href="#步骤-2-伪装成服务器" class="headerlink" title="步骤 2: 伪装成服务器"></a>步骤 2: 伪装成服务器</h4><ol>
+<li><strong>DNS 欺骗</strong>：通过修改本地 DNS 设置或使用像 DNSChef 这样的工具，将目标服务器的域名解析到一个由黑客控制的 IP 地址上。</li>
+<li><strong>建立伪造服务器</strong>：使用像 Apache、Nginx 或自定义服务器软件，在黑客控制的机器上设置一个伪造的服务器。</li>
+</ol>
+<h4 id="步骤-3-中间人攻击"><a href="#步骤-3-中间人攻击" class="headerlink" title="步骤 3: 中间人攻击"></a>步骤 3: 中间人攻击</h4><ol>
+<li><strong>TLS 拦截代理</strong>：设置一个 TLS 拦截代理（如 mitmproxy），用于解密和重新加密传输的数据。</li>
+<li><strong>生成和使用证书</strong>：使用自签名证书或通过某种方式获取的合法证书来伪装成目标服务器。</li>
+<li><strong>转发请求</strong>：接收来自客户端的请求，解密数据，可以选择性地修改，然后将其加密并转发到真正的服务器。</li>
+</ol>
+<h4 id="步骤-4-伪装和响应客户端"><a href="#步骤-4-伪装和响应客户端" class="headerlink" title="步骤 4: 伪装和响应客户端"></a>步骤 4: 伪装和响应客户端</h4><ol>
+<li><strong>接收服务器响应</strong>：接收来自服务器的响应，解密数据。</li>
+<li><strong>响应客户端</strong>：将响应数据加密并发送回客户端。客户端会认为数据是直接来自目标服务器。</li>
+</ol>
+<h4 id="步骤-5-维护连接"><a href="#步骤-5-维护连接" class="headerlink" title="步骤 5: 维护连接"></a>步骤 5: 维护连接</h4><ol>
+<li><strong>会话管理</strong>：维护与客户端和服务器的会话状态，确保持续的通信。</li>
+<li><strong>数据记录</strong>：可选地记录经过的数据，以供后续分析。</li>
+</ol>
+<h2 id="双向认证对比单向认证的优势"><a href="#双向认证对比单向认证的优势" class="headerlink" title="双向认证对比单向认证的优势"></a>双向认证对比单向认证的优势</h2><p>双向TLS认证（也称为双向SSL或客户端认证）与单向TLS认证相比具有明显的优势，特别是在防御中间人攻击和减轻应用层面认证负担方面。以下是这两个方面的详细分析：</p>
+<h3 id="1-防御中间人攻击"><a href="#1-防御中间人攻击" class="headerlink" title="1. 防御中间人攻击"></a>1. 防御中间人攻击</h3><h4 id="单向认证的局限性"><a href="#单向认证的局限性" class="headerlink" title="单向认证的局限性"></a>单向认证的局限性</h4><ul>
+<li>在单向TLS认证中，只有服务器呈现证书并被客户端验证。客户端本身不提供证书，因此服务器无法验证客户端的身份。</li>
+<li>这种情况下，一个中间人（MITM）可以在客户端和服务器之间建立两个单独的TLS连接。中间人可以与服务器建立一个合法的TLS连接，同时与客户端建立另一个TLS连接，客户端并不知道它实际上是在与中间人通信。</li>
+</ul>
+<h4 id="双向认证的优势"><a href="#双向认证的优势" class="headerlink" title="双向认证的优势"></a>双向认证的优势</h4><ul>
+<li>在双向TLS认证中，客户端也需要提供证书，服务器会验证这个证书。这意味着服务器可以确认它正在直接与合法的客户端通信。</li>
+<li>由于中间人不太可能同时拥有合法的服务器证书和客户端证书，因此双向认证可以有效防止中间人攻击。任何试图插入的中间人都会在认证过程中被发现，因为他们无法同时提供有效的服务器和客户端证书。</li>
+</ul>
+<h3 id="2-减少应用层面认证负担"><a href="#2-减少应用层面认证负担" class="headerlink" title="2. 减少应用层面认证负担"></a>2. 减少应用层面认证负担</h3><h4 id="单向认证的应用层负担"><a href="#单向认证的应用层负担" class="headerlink" title="单向认证的应用层负担"></a>单向认证的应用层负担</h4><ul>
+<li>在只有单向TLS认证的情况下，服务器必须依赖于应用层面的认证机制（如用户名和密码、令牌等）来验证客户端的身份。</li>
+<li>这不仅增加了开发和维护的复杂性，还可能导致安全风险，尤其是在处理凭据管理和存储时。</li>
+</ul>
+<h4 id="双向认证的减负优势"><a href="#双向认证的减负优势" class="headerlink" title="双向认证的减负优势"></a>双向认证的减负优势</h4><ul>
+<li>双向TLS认证通过在传输层提供严格的认证机制，减轻了应用层的认证负担。一旦TLS层确认了客户端的身份，应用层就可以对这一事实有信心，不需要额外的身份验证步骤。</li>
+<li>这种方法减少了在应用层处理和存储敏感认证信息的需要，降低了由于应用层漏洞导致的身份验证信息泄露的风险。</li>
+<li>双向认证提供了更细粒度的访问控制，因为每个客户端证书都可以单独管理和审计。这对于高安全性要求的环境（如金融服务、政府通信等）尤为重要。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>双向TLS认证相比于单向认证，在防御中间人攻击和减轻应用层认证负担方面提供了显著优势。它通过在传输层提供更严格的认证机制，增强了整体通信的安全性，同时降低了应用层面对复杂和潜在不安全的认证机制的依赖。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/security/" style="color: #03a9f4">security</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/network/" style="color: #00bcd4">network</a>
+        </span>
+        
+    </div>
+    <a href="/2024/09/10/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/TLS%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/09/09/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%BC%81%E4%B8%9A%E6%B3%A8%E5%86%8C/">
+        <h2 class="post-title">企业注册.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/9/9
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在深圳注册一个科技公司需要办理的业务整理</p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a target="_blank" rel="noopener" href="https://www.gsxt.gov.cn/">公司名查重</a><br><a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/explore/662781c000000000010322b7?app_platform=android&ignoreEngage=true&app_version=8.48.0&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBCoXxRZaFgJ4n-I6rUydR8JnNPQNE67K18hxOpGclWg0=&author_share=1&xhsshare=WeixinSession&shareRedId=Nz85OUY5NUw7N0g2Szw2PEk3Oz9KSkc7&apptime=1723635664&share_id=847dba8519a54f4996bc4cf8e4b9a029&wechatWid=9992d7d3900c5306f99edb0fcde3f721&wechatOrigin=menu">深圳注册科技公司流程</a></p>
+<h2 id="深圳注册科技公司流程"><a href="#深圳注册科技公司流程" class="headerlink" title="深圳注册科技公司流程"></a>深圳注册科技公司流程</h2><h3 id="一、企业核名"><a href="#一、企业核名" class="headerlink" title="一、企业核名"></a>一、企业核名</h3><p>准备3个左右的公司名称在深圳市市场监督管理局网上进行核名，公司名称的组成形式是“深圳+字号+行业+有限公司”，互联网科技公司，名称可为深圳XX互联网科技有限公司。</p>
+<h3 id="二、确定经营范围"><a href="#二、确定经营范围" class="headerlink" title="二、确定经营范围"></a>二、确定经营范围</h3><p>确定科技公司的经营范围，如电子科技公司的经营范围为电子产品技术开发，电子元器件制造；网络科技公司的经营范围为计算机软硬件的技术开发、技术服务等，还需要确定注册地址、注册资本、法人监事及财务人员的信息等。</p>
+<h3 id="三、提交资料"><a href="#三、提交资料" class="headerlink" title="三、提交资料"></a>三、提交资料</h3><p>在深圳工商网上录入资料，包括注册地址、资本、经营范围、高管信息，然后提交资料，等待审核（1—3个日）。</p>
+<h3 id="四、领取营业执照"><a href="#四、领取营业执照" class="headerlink" title="四、领取营业执照"></a>四、领取营业执照</h3><p>法人或经办人带上准予设立登记通知书、交件人员身份证原件，去工商局拿营业执照正副本。</p>
+<h3 id="五、刻一套章"><a href="#五、刻一套章" class="headerlink" title="五、刻一套章"></a>五、刻一套章</h3><p>带着营业执照去公安机关要求的刻章点刻章，刻一套章：公章、财务章、法人章、发票章。</p>
+<h3 id="六、办理许可证"><a href="#六、办理许可证" class="headerlink" title="六、办理许可证"></a>六、办理许可证</h3><p>如果是互联网科技公司，有经营性质网站，那就要办理ICP许可证。带上身份证件、公司信息、域名证书、服务器备案证明去提交给深圳市网信办。办ICP许可证对注册资本的要求是100万。</p>
+<h3 id="七、银行开户"><a href="#七、银行开户" class="headerlink" title="七、银行开户"></a>七、银行开户</h3><p>带着营业执照、一套章等资料，先预约，再去开户行现场办理公司的基本账户。一般要跑两趟银行，才能办下来，就能领取基本存款账户信息等资料，现在银行审查严格，大多要上门拍照。</p>
+<h3 id="八、记账报税"><a href="#八、记账报税" class="headerlink" title="八、记账报税"></a>八、记账报税</h3><p>先在网上申请税种，然后每个月记得按时记账报税，初次报税的时间是企业注册成立后的下一个月的15日之前。</p>
+<p>【深圳科技公司】申请高新技术企业认定的流程</p>
+<ol>
+<li>自我评价 </li>
+<li>注册登记 </li>
+<li>准备并提交资料 </li>
+<li>审查认定 </li>
+<li>网上公示 </li>
+<li>通知并颁发证书</li>
+</ol>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><h3 id="企业核名"><a href="#企业核名" class="headerlink" title="企业核名"></a>企业核名</h3><ul>
+<li>深圳小歪网络科技有限公司</li>
+<li>深圳小歪星球网络科技有限公司</li>
+<li>深圳小歪星网网络科技有限公司</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/09/09/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%BC%81%E4%B8%9A%E6%B3%A8%E5%86%8C/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/09/06/mdstorage/domain/linux/%E7%AE%A1%E9%81%93%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91/">
+        <h2 class="post-title">管道和重定向.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/9/6
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="使用"><a href="#使用" class="headerlink" title="使用 &lt;&lt;&lt;（Here String）重定向的条件解析"></a>使用 <code>&lt;&lt;&lt;</code>（Here String）重定向的条件解析</h1><p>在 Bash 中，<code>&lt;&lt;&lt;</code> 是一种 <strong>Here String</strong> 重定向操作符，用于将字符串作为标准输入传递给命令。在某些情况下，<code>&lt;&lt;&lt;</code> 是处理字符串数据时的简洁方式，但并非所有命令都支持这种用法。本篇文章将详细解析哪些命令能够接受 <code>&lt;&lt;&lt;</code> 形式的重定向以及它的适用场景。</p>
+<h2 id="1"><a href="#1" class="headerlink" title="1. &lt;&lt;&lt;（Here String）的简介"></a>1. <code>&lt;&lt;&lt;</code>（Here String）的简介</h2><p><code>&lt;&lt;&lt;</code> 是 Bash 中的一种重定向符号，用来将一个字符串作为标准输入传递给命令。它的基本语法是：</p>
+<pre><code class="bash">command &lt;&lt;&lt; &quot;your string&quot;
+</code></pre>
+<p>与 <code>&lt;&lt;</code>（Here Document）不同，<code>&lt;&lt;&lt;</code> 只传递单行字符串作为标准输入，而 <code>&lt;&lt;</code> 通常用于传递多行输入。</p>
+<h2 id="2-什么样的命令可以使用"><a href="#2-什么样的命令可以使用" class="headerlink" title="2. 什么样的命令可以使用 &lt;&lt;&lt;"></a>2. 什么样的命令可以使用 <code>&lt;&lt;&lt;</code></h2><p>只有那些<strong>支持从标准输入读取数据</strong>的命令才能使用 <code>&lt;&lt;&lt;</code> 来传递输入。这些命令通常能够处理管道 (<code>|</code>) 或直接读取标准输入 (<code>stdin</code>) 的数据。</p>
+<h3 id="常见支持"><a href="#常见支持" class="headerlink" title="常见支持 &lt;&lt;&lt; 的命令"></a>常见支持 <code>&lt;&lt;&lt;</code> 的命令</h3><ul>
+<li><p>**<code>cat</code>**：读取并显示标准输入的内容。</p>
+<pre><code class="bash">cat &lt;&lt;&lt; &quot;Hello, World!&quot;
+</code></pre>
+<p>输出：</p>
+<pre><code>Hello, World!
+</code></pre>
+</li>
+<li><p>**<code>grep</code>**：从标准输入中搜索特定的模式。</p>
+<pre><code class="bash">grep &quot;test&quot; &lt;&lt;&lt; &quot;This is a test&quot;
+</code></pre>
+<p>输出：</p>
+<pre><code>This is a test
+</code></pre>
+</li>
+<li><p>**<code>awk</code>**：文本处理工具，可以从标准输入中读取数据。</p>
+<pre><code class="bash">awk &#39;&#123;print $1&#125;&#39; &lt;&lt;&lt; &quot;Hello Bash&quot;
+</code></pre>
+<p>输出：</p>
+<pre><code>Hello
+</code></pre>
+</li>
+<li><p>**<code>sed</code>**：流编辑器，可以从标准输入中进行文本替换。</p>
+<pre><code class="bash">sed &#39;s/Bash/World/&#39; &lt;&lt;&lt; &quot;Hello Bash&quot;
+</code></pre>
+<p>输出：</p>
+<pre><code>Hello World
+</code></pre>
+</li>
+<li><p>**<code>sort</code>**：对标准输入的内容进行排序。</p>
+<pre><code class="bash">sort &lt;&lt;&lt; &quot;banana apple orange&quot;
+</code></pre>
+<p>输出：</p>
+<pre><code>apple
+banana
+orange
+</code></pre>
+</li>
+<li><p>**<code>read</code>**：从标准输入中读取内容并赋值给变量。</p>
+<pre><code class="bash">read var &lt;&lt;&lt; &quot;Hello World&quot;
+echo $var
+</code></pre>
+<p>输出：</p>
+<pre><code>Hello World
+</code></pre>
+</li>
+</ul>
+<h2 id="3-什么样的命令不支持"><a href="#3-什么样的命令不支持" class="headerlink" title="3. 什么样的命令不支持 &lt;&lt;&lt;"></a>3. 什么样的命令不支持 <code>&lt;&lt;&lt;</code></h2><p>并非所有命令都能够处理 <code>&lt;&lt;&lt;</code> 形式的重定向。以下是一些不能使用 <code>&lt;&lt;&lt;</code> 重定向的场景。</p>
+<h3 id="1-只能处理文件的命令"><a href="#1-只能处理文件的命令" class="headerlink" title="1. 只能处理文件的命令"></a>1. 只能处理文件的命令</h3><p>某些命令只能操作文件，它们不接受标准输入，因此无法使用 <code>&lt;&lt;&lt;</code>。</p>
+<ul>
+<li><p>**<code>cp</code>**：只能复制文件，不能从标准输入中读取数据。</p>
+<pre><code class="bash">cp &lt;&lt;&lt; &quot;data&quot; /some/destination  # 会导致错误
+</code></pre>
+</li>
+<li><p>**<code>mv</code>**：只能移动文件，不支持从标准输入获取输入。</p>
+</li>
+<li><p>**<code>rm</code>**：只能删除文件，无法处理标准输入。</p>
+</li>
+</ul>
+<h3 id="2-需要交互式输入的命令"><a href="#2-需要交互式输入的命令" class="headerlink" title="2. 需要交互式输入的命令"></a>2. 需要交互式输入的命令</h3><p>交互式命令（如文本编辑器）不能使用 <code>&lt;&lt;&lt;</code>，因为它们依赖用户输入进行操作。</p>
+<ul>
+<li><p><strong><code>vim</code></strong> 或 **<code>nano</code>**：这些编辑器需要用户手动操作，而不能通过标准输入提供数据。</p>
+<pre><code class="bash">vim &lt;&lt;&lt; &quot;Hello&quot;  # 不会工作
+</code></pre>
+</li>
+</ul>
+<h3 id="3-强制要求文件路径作为输入的命令"><a href="#3-强制要求文件路径作为输入的命令" class="headerlink" title="3. 强制要求文件路径作为输入的命令"></a>3. 强制要求文件路径作为输入的命令</h3><p>一些命令强制要求文件路径作为参数，不能通过标准输入传递信息。</p>
+<ul>
+<li>**<code>ls</code>**：用于列出目录内容，不能从标准输入读取目录名称。<pre><code class="bash">ls &lt;&lt;&lt; &quot;some_directory&quot;  # 会导致错误
+</code></pre>
+</li>
+</ul>
+<h2 id="4-管道-vs"><a href="#4-管道-vs" class="headerlink" title="4. 管道 vs. &lt;&lt;&lt; 重定向"></a>4. 管道 vs. <code>&lt;&lt;&lt;</code> 重定向</h2><p><code>&lt;&lt;&lt;</code> 通常适用于传递单行字符串作为标准输入，而管道 (<code>|</code>) 则用于将一个命令的输出作为另一个命令的输入。如果你需要处理更复杂的输入或者是多行输出，管道更为合适。</p>
+<pre><code class="bash">echo &quot;This is a test&quot; | grep &quot;test&quot;
+</code></pre>
+<p>与：</p>
+<pre><code class="bash">grep &quot;test&quot; &lt;&lt;&lt; &quot;This is a test&quot;
+</code></pre>
+<p>结果是相同的，但使用场景不同。</p>
+<h2 id="5"><a href="#5" class="headerlink" title="5. &lt;&lt;&lt; 的适用场景"></a>5. <code>&lt;&lt;&lt;</code> 的适用场景</h2><ul>
+<li><strong>简化单行输入</strong>：当你有一个简单的单行字符串需要作为输入时，使用 <code>&lt;&lt;&lt;</code> 非常方便。</li>
+<li><strong>快速调试</strong>：<code>&lt;&lt;&lt;</code> 可以快速将字符串传递给命令，便于调试和测试脚本。</li>
+<li>**结合 <code>read</code>**：特别适合与 <code>read</code> 一起使用，轻松将字符串内容赋值给变量。</li>
+</ul>
+<pre><code class="bash">IFS=&#39;,&#39; read -r -a array &lt;&lt;&lt; &quot;one,two,three&quot;
+echo $&#123;array[@]&#125;
+# 输出: one two three
+</code></pre>
+<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a>6. 总结</h2><p>能够接受 <code>&lt;&lt;&lt;</code>（Here String）形式重定向的命令需要具备以下条件：</p>
+<ol>
+<li><strong>支持从标准输入读取数据</strong>：工具必须允许从 <code>stdin</code> 中读取数据，而不是只能接受文件路径作为参数。</li>
+<li><strong>不是交互式工具</strong>：诸如 <code>vim</code>、<code>nano</code> 这类交互式工具无法使用 <code>&lt;&lt;&lt;</code> 来进行输入。</li>
+<li><strong>适合单行输入的场景</strong>：<code>&lt;&lt;&lt;</code> 最适合单行字符串传递给命令，而对于多行数据或文件流，管道或文件重定向更合适。</li>
+</ol>
+<h2 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h2><p><code>xargs</code> 是 Bash 中一个非常强大的命令，它用于将标准输入（或其他命令的输出）转换为命令行参数，从而使你能够对传入的数据执行指定的命令。它通常与其他命令一起使用，尤其是在需要处理大量文件或数据时。</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p><code>xargs</code> 将标准输入的每一行数据作为参数传递给指定的命令：</p>
+<pre><code class="bash">echo &quot;file1 file2 file3&quot; | xargs rm
+</code></pre>
+<h4 id="解释："><a href="#解释：" class="headerlink" title="解释："></a>解释：</h4><ul>
+<li>**<code>echo &quot;file1 file2 file3&quot;</code>**：模拟命令的输出，即需要处理的文件名。</li>
+<li>**<code>xargs rm</code>**：将 <code>echo</code> 的输出传递给 <code>rm</code> 命令，效果等同于执行 <code>rm file1 file2 file3</code>。</li>
+</ul>
+<hr>
+<h3 id="技巧-1：处理命令的输出"><a href="#技巧-1：处理命令的输出" class="headerlink" title="技巧 1：处理命令的输出"></a>技巧 1：处理命令的输出</h3><p>通常，你会结合 <code>find</code> 命令使用 <code>xargs</code>，以批量处理找到的文件。例如，将 <code>find</code> 命令的输出传递给 <code>rm</code> 以删除文件：</p>
+<pre><code class="bash">find /path/to/files -type f -name &quot;*.log&quot; | xargs rm
+</code></pre>
+<h4 id="解释：-1"><a href="#解释：-1" class="headerlink" title="解释："></a>解释：</h4><ul>
+<li>**<code>find</code>**：查找 <code>.log</code> 文件。</li>
+<li>**<code>xargs rm</code>**：删除所有找到的 <code>.log</code> 文件。</li>
+</ul>
+<p>注意：对于带有空格或特殊字符的文件名，建议使用 <code>-print0</code> 和 <code>xargs -0</code> 选项。</p>
+<hr>
+<h3 id="技巧-2：配合-0-处理空格和特殊字符"><a href="#技巧-2：配合-0-处理空格和特殊字符" class="headerlink" title="技巧 2：配合 -0 处理空格和特殊字符"></a>技巧 2：配合 <code>-0</code> 处理空格和特殊字符</h3><p>文件名中可能包含空格或其他特殊字符，这时可以使用 <code>-print0</code> 与 <code>xargs -0</code> 结合，确保文件名被正确处理。</p>
+<pre><code class="bash">find /path/to/files -type f -print0 | xargs -0 rm
+</code></pre>
+<h4 id="解释：-2"><a href="#解释：-2" class="headerlink" title="解释："></a>解释：</h4><ul>
+<li>**<code>-print0</code>**：让 <code>find</code> 使用空字符 (<code>\0</code>) 而不是换行符分隔文件名。</li>
+<li>**<code>xargs -0</code>**：告诉 <code>xargs</code> 以空字符作为输入的分隔符。</li>
+</ul>
+<hr>
+<h3 id="技巧-3：使用-I-指定占位符"><a href="#技巧-3：使用-I-指定占位符" class="headerlink" title="技巧 3：使用 -I 指定占位符"></a>技巧 3：使用 <code>-I</code> 指定占位符</h3><p><code>xargs</code> 的 <code>-I</code> 选项允许你为每个参数指定一个占位符，并灵活地在命令中插入输入数据。</p>
+<pre><code class="bash">echo &quot;file1 file2 file3&quot; | xargs -I &#123;&#125; mv &#123;&#125; /backup/
+</code></pre>
+<h4 id="解释：-3"><a href="#解释：-3" class="headerlink" title="解释："></a>解释：</h4><ul>
+<li>**<code>-I &#123;&#125;</code>**：<code>&#123;&#125;</code> 是占位符，表示每个输入项，<code>xargs</code> 将用输入替换 <code>&#123;&#125;</code>。</li>
+<li>**<code>mv &#123;&#125; /backup/</code>**：<code>xargs</code> 会将 <code>file1 file2 file3</code> 依次传给 <code>mv</code>，执行 <code>mv file1 /backup/</code> 等操作。</li>
+</ul>
+<hr>
+<h3 id="技巧-4：限制每次处理的参数数量"><a href="#技巧-4：限制每次处理的参数数量" class="headerlink" title="技巧 4：限制每次处理的参数数量"></a>技巧 4：限制每次处理的参数数量</h3><p>有时你需要限制一次传递给命令的参数数量，可以使用 <code>-n</code> 选项。</p>
+<pre><code class="bash">echo &quot;file1 file2 file3 file4&quot; | xargs -n 2 echo
+</code></pre>
+<h4 id="解释：-4"><a href="#解释：-4" class="headerlink" title="解释："></a>解释：</h4><ul>
+<li>**<code>-n 2</code>**：每次传递 2 个参数给 <code>echo</code>。</li>
+<li><strong>效果</strong>：<code>xargs</code> 会分两次执行 <code>echo</code>，第一次执行 <code>echo file1 file2</code>，第二次执行 <code>echo file3 file4</code>。</li>
+</ul>
+<hr>
+<h3 id="技巧-5：并行执行命令"><a href="#技巧-5：并行执行命令" class="headerlink" title="技巧 5：并行执行命令"></a>技巧 5：并行执行命令</h3><p>使用 <code>-P</code> 选项，<code>xargs</code> 可以并行执行命令，充分利用多核 CPU 的优势。</p>
+<pre><code class="bash">cat urls.txt | xargs -P 4 -n 1 curl -O
+</code></pre>
+<h4 id="解释：-5"><a href="#解释：-5" class="headerlink" title="解释："></a>解释：</h4><ul>
+<li>**<code>-P 4</code>**：允许 <code>xargs</code> 并行执行 4 个命令。</li>
+<li>**<code>-n 1</code>**：每次传递一个参数给 <code>curl</code>，并行下载多个 URL。</li>
+</ul>
+<p>此命令会并行执行 4 个 <code>curl</code> 命令，分别下载 <code>urls.txt</code> 文件中的 URL。</p>
+<hr>
+<h3 id="技巧-6：与-find-结合删除文件"><a href="#技巧-6：与-find-结合删除文件" class="headerlink" title="技巧 6：与 find 结合删除文件"></a>技巧 6：与 <code>find</code> 结合删除文件</h3><p>你可以使用 <code>find</code> 和 <code>xargs</code> 来删除符合条件的文件。举个例子，删除 7 天前的日志文件：</p>
+<pre><code class="bash">find /var/log -type f -name &quot;*.log&quot; -mtime +7 | xargs rm
+</code></pre>
+<h4 id="解释：-6"><a href="#解释：-6" class="headerlink" title="解释："></a>解释：</h4><ul>
+<li>**<code>find /var/log -type f -name &quot;*.log&quot; -mtime +7</code>**：找到 7 天前的 <code>.log</code> 文件。</li>
+<li>**<code>xargs rm</code>**：删除这些文件。</li>
+</ul>
+<hr>
+<h3 id="技巧-7：交互式执行命令"><a href="#技巧-7：交互式执行命令" class="headerlink" title="技巧 7：交互式执行命令"></a>技巧 7：交互式执行命令</h3><p>结合 <code>xargs</code> 和 <code>-p</code> 选项，<code>xargs</code> 会提示你是否执行每个命令，这在删除文件等危险操作中非常有用。</p>
+<pre><code class="bash">echo &quot;file1 file2&quot; | xargs -p rm
+</code></pre>
+<h4 id="解释：-7"><a href="#解释：-7" class="headerlink" title="解释："></a>解释：</h4><ul>
+<li>**<code>-p</code>**：在执行 <code>rm</code> 命令之前，提示确认。它会输出类似 <code>rm file1 file2 ?...</code>，然后等待用户输入 <code>y</code> 或 <code>n</code>。</li>
+</ul>
+<hr>
+<h3 id="技巧-8：防止-xargs-执行空输入"><a href="#技巧-8：防止-xargs-执行空输入" class="headerlink" title="技巧 8：防止 xargs 执行空输入"></a>技巧 8：防止 <code>xargs</code> 执行空输入</h3><p>如果输入为空时，<code>xargs</code> 默认仍会执行一次命令。你可以使用 <code>-r</code> 选项（有时也称 <code>--no-run-if-empty</code>）来防止这种情况。</p>
+<pre><code class="bash">find /empty/directory -type f | xargs -r rm
+</code></pre>
+<h4 id="解释：-8"><a href="#解释：-8" class="headerlink" title="解释："></a>解释：</h4><ul>
+<li>**<code>-r</code>**：如果 <code>find</code> 没有输出任何文件，<code>xargs</code> 不会运行 <code>rm</code> 命令。</li>
+</ul>
+<hr>
+<h3 id="技巧-9：使用-xargs-从文件中读取参数"><a href="#技巧-9：使用-xargs-从文件中读取参数" class="headerlink" title="技巧 9：使用 xargs 从文件中读取参数"></a>技巧 9：使用 <code>xargs</code> 从文件中读取参数</h3><p>有时你可能有一个文件，其中列出了你想要处理的条目，<code>xargs</code> 可以从文件中读取这些条目。</p>
+<pre><code class="bash">xargs -a filenames.txt rm
+</code></pre>
+<h4 id="解释：-9"><a href="#解释：-9" class="headerlink" title="解释："></a>解释：</h4><ul>
+<li>**<code>-a filenames.txt</code>**：从 <code>filenames.txt</code> 中读取参数，并传递给 <code>rm</code> 命令。</li>
+</ul>
+<hr>
+<h3 id="技巧-10：使用-xargs-搜索多个关键词"><a href="#技巧-10：使用-xargs-搜索多个关键词" class="headerlink" title="技巧 10：使用 xargs 搜索多个关键词"></a>技巧 10：使用 <code>xargs</code> 搜索多个关键词</h3><p>你可以结合 <code>xargs</code> 和 <code>grep</code> 来搜索多个关键词：</p>
+<pre><code class="bash">echo &quot;keyword1 keyword2&quot; | xargs -n 1 grep -r /path/to/search
+</code></pre>
+<h4 id="解释：-10"><a href="#解释：-10" class="headerlink" title="解释："></a>解释：</h4><ul>
+<li>**<code>xargs -n 1 grep -r /path/to/search</code>**：为每个关键词执行一次 <code>grep</code>，在指定路径下递归搜索每个关键词。</li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>xargs</code> 是一个非常强大的工具，可以将标准输入或其他命令的输出转换为参数，并执行命令。通过结合 <code>find</code>、<code>grep</code>、<code>rm</code> 等命令，你可以批量处理文件或数据。掌握 <code>xargs</code> 的技巧可以极大提高你在 Bash 中处理大规模数据或文件时的效率。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/linux/" style="color: #ffa2c4">linux</a>
+        </span>
+        
+    </div>
+    <a href="/2024/09/06/mdstorage/domain/linux/%E7%AE%A1%E9%81%93%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91/" class="go-post">阅读全文</a>
+</div>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+        <div class="page-current">
+    
+    <span class="current">1</span>
+    
+    <a class="page-num" href="/page/2">
+        2
+    </a>
+    
+    
+    <a class="page-num" href="/page/3">
+        3
+    </a>
+    
+    
+    <span class="page-omit">...</span>
+    <a class="page-num" href="/page/28">28</a>
+    
+    
+    <a class="page-num" href="/page/2/">
+        <i class="fa-solid fa-caret-right fa-fw"></i>
+    </a>
+    
+</div>
 
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">xiaoy</div>
+        <div class="description">
+            <p>Description<br>…</p>
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
 
+    </div>
+    
+</div>
 
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 Xiaoy
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;xiaoy
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
 
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
 </body>
 </html>

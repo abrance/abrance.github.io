@@ -1,910 +1,949 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>Xiaoy</title>
+    <meta name="author" content="xiaoy" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="xiaoy">
-  <meta name="keywords" content="">
-  
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Xiaoy">
-<meta property="og:url" content="https://abrance.github.io/page/6/index.html">
-<meta property="og:site_name" content="Xiaoy">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="xiaoy">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>Xiaoy</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
 
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
+<script src="/js/lib/preview.js"></script>
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
+<script src="/js/lib/home.js"></script>
 
+<link rel="stylesheet" href="/css/main.css" />
 
-  
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-
 <body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>xiaoy</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="abrance | xiaoy&#39;s blog"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/22/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%B8%80%E7%A7%8D%E8%BD%AF%E4%BB%B6%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%A6%81/" target="_self">
-          一种软件商业模式概要.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/22/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%B8%80%E7%A7%8D%E8%BD%AF%E4%BB%B6%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%A6%81/" target="_self">
-        <div>
-          TODO概述如果自己研发能力与市场产品差距太大的情况, 不如直接使用现成开源的软件, 通过对一个新的 web 界面进行配置下发, 来达到使用的目的.  优势
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-22 00:00" pubdate>
-              2024-08-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E5%95%86%E4%B8%9A/" class="category-chain-item">商业</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/22/mdstorage/resource/%E6%98%8E%E6%98%9F%E4%BA%A7%E5%93%81/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-Suricata/" target="_self">
-          网络安全-Suricata.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/22/mdstorage/resource/%E6%98%8E%E6%98%9F%E4%BA%A7%E5%93%81/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-Suricata/" target="_self">
-        <div>
-          TODO概述Suricata 是一个高性能的网络入侵检测和防御系统（IDS&#x2F;IPS）。它是由OISF开发，完全开源，并且可以免费使用 Suricata 资料仓库:
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-22 00:00" pubdate>
-              2024-08-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/resource/" class="category-chain-item">resource</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/resource/%E6%98%8E%E6%98%9F%E4%BA%A7%E5%93%81/" class="category-chain-item">明星产品</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/22/mdstorage/domain/ide/idea/%E6%9D%A1%E4%BB%B6%E8%B0%83%E8%AF%95/" target="_self">
-          条件调试.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/22/mdstorage/domain/ide/idea/%E6%9D%A1%E4%BB%B6%E8%B0%83%E8%AF%95/" target="_self">
-        <div>
-          TODO概述条件调试（Conditional Debugging）是一种调试技术，它允许开发者在程序执行过程中设置特定的条件，只有当这些条件满足时，程序才会中断或触发调试操作。这与传统的断点调试有所不同，传统断点是在代码的某一行设置断点，无论任何情况，只要代码执行到那一行，程序就会暂停。而条件调试则是在断点的基础上增加了条件判断，只有当某些特定的条件满足时，断点才会生效。 在多个协程运行的场景下，
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-22 00:00" pubdate>
-              2024-08-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/ide/" class="category-chain-item">ide</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/ide/idea/" class="category-chain-item">idea</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/19/mdstorage/project/sr/%E6%B5%81%E9%87%8F%E5%BC%95%E6%93%8E%E8%8A%82%E7%82%B9%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%96%B9%E6%A1%88/" target="_self">
-          流量引擎节点管理功能方案.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/19/mdstorage/project/sr/%E6%B5%81%E9%87%8F%E5%BC%95%E6%93%8E%E8%8A%82%E7%82%B9%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%96%B9%E6%A1%88/" target="_self">
-        <div>
-          概述流量引擎是一个集群组成的具备流量转发 流量监控 的逻辑组件.1.6 之前, 流量引擎分为三种逻辑组件: 管理节点 调度节点 工作节点, 管理节点 调度节点 工作节点同样由多台机器集群组成.在 1.6 后, 流量引擎重新定义节点概念, 将节点定义为机器, 而管理 调度 工作 的职能定义为服务, 所以一个流量引擎集群现在的描述可能为: 该流量引擎有 3 台节点, 节点 A 中部署了管理 调度 服务
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-19 00:00" pubdate>
-              2024-08-19
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/16/mdstorage/domain/%E4%BA%A7%E5%93%81%E7%BB%8F%E9%AA%8C/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%B1%BB%E5%9E%8B%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%95%86%E4%B8%9A%E6%8E%88%E6%9D%83%E6%96%B9%E6%A1%88/" target="_self">
-          基础设施类型软件的商业授权方案.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/16/mdstorage/domain/%E4%BA%A7%E5%93%81%E7%BB%8F%E9%AA%8C/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%B1%BB%E5%9E%8B%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%95%86%E4%B8%9A%E6%8E%88%E6%9D%83%E6%96%B9%E6%A1%88/" target="_self">
-        <div>
-          概述基础设施即服务型产品 具体过程 商城 发放授权, 上传授权申请文件, 可下载授权文件
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-16 00:00" pubdate>
-              2024-08-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E4%BA%A7%E5%93%81%E7%BB%8F%E9%AA%8C/" class="category-chain-item">产品经验</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/15/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%B8%80%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%9B%88%E5%88%A9%E7%9A%84%E6%A6%82%E8%A6%81%E5%88%86%E6%9E%90/" target="_self">
-          一个软件实现盈利的概要分析.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/15/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%B8%80%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%9B%88%E5%88%A9%E7%9A%84%E6%A6%82%E8%A6%81%E5%88%86%E6%9E%90/" target="_self">
-        <div>
-          概述一个科技公司如何才能实现盈利这个目标 一个软件实现盈利的过程flowchart TD A[概念与市场调研] --&gt; B[需求分析与定义] B --&gt; C[原型设计与验证] C --&gt; D[架构设计与技术选型] D --&gt; E[开发与测试] E --&gt; F[发布与部署] F --&gt; G[市场推广与销售策略] G --&gt; H[用户获取与反馈] H --&g
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-15 00:00" pubdate>
-              2024-08-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E5%95%86%E4%B8%9A/" class="category-chain-item">商业</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/15/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker-golang%E8%AE%BE%E7%BD%AEmodcache%E5%8A%A0%E5%BF%AB%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6/" target="_self">
-          docker-golang设置modcache加快编译速度.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/15/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker-golang%E8%AE%BE%E7%BD%AEmodcache%E5%8A%A0%E5%BF%AB%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6/" target="_self">
-        <div>
-          概述如果每次只提供源码进行 docker build 一个 golang 项目, 那么每次都会拉取依赖仓库, 所以希望能充分利用缓存机制来减少 docker build 的时间. 实践实例go.Dockerfile 1234567891011121314151617181920212223242526FROM golang:1.22.3ARG HTTP_PROXYARG HTTPS_PROXYEN
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-15 00:00" pubdate>
-              2024-08-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/" class="category-chain-item">虚拟化</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/07/mdstorage/project/%E5%AE%9D%E8%B4%B5%E7%BB%8F%E9%AA%8C/strace%E6%8E%92%E6%9F%A5%E5%BC%82%E6%AD%A5shell%E6%89%A7%E8%A1%8C%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" target="_self">
-          strace排查异步shell执行失败问题.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/07/mdstorage/project/%E5%AE%9D%E8%B4%B5%E7%BB%8F%E9%AA%8C/strace%E6%8E%92%E6%9F%A5%E5%BC%82%E6%AD%A5shell%E6%89%A7%E8%A1%8C%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" target="_self">
-        <div>
-          概述经过 golang 中实现 执行命令的方法  123456789101112131415161718192021222324252627282930func (c *Client) Output(name string, arg ...string) ([]byte, error) &#123;	session, err := c.sshClient.NewSession()	if err !
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-07 00:00" pubdate>
-              2024-08-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/project/" class="category-chain-item">project</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/project/%E5%AE%9D%E8%B4%B5%E7%BB%8F%E9%AA%8C/" class="category-chain-item">宝贵经验</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/05/mdstorage/domain/db/Mysql%E5%AE%89%E8%A3%85/" target="_self">
-          Mysql安装.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/05/mdstorage/domain/db/Mysql%E5%AE%89%E8%A3%85/" target="_self">
-        <div>
-          概述下载mysql 8.3 下载 mysql 5.7 安装阿里云下载安装 配置 mysql 启动参数123--user=root/lib/systemd/system/mysql.service    本地设置 root 密码1mysql -uroot -p    第一次不输入密码可以进入  设置远程密码1grant all privileges on *.* to &#x27;root&#x27
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-05 00:00" pubdate>
-              2024-08-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/db/" class="category-chain-item">db</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E6%9C%BA%E5%88%B6/" target="_self">
-          installer机制.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E6%9C%BA%E5%88%B6/" target="_self">
-        <div>
-          概述记录 installer 相关的机制，有的需要整理，有些需要改正的会渐渐改正 机制安装、卸载、进度条，异步任务处理机制使用 redis 分布式锁机制sc 侧使用 redis 逻辑pkg&#x2F;empower&#x2F;redis_lock&#x2F;lock.go:26外部使用的接口 TryLock UnLock ，其他的没有使用到 installer 侧使用 redis 逻辑manage
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-24 00:00" pubdate>
-              2024-06-24
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/#board">28</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-              </div>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
             </div>
-          </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XIAOY</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XIAOY</span>
         </div>
-      </div>
-    
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div id="home-head">
+    <div
+        id="home-background"
+        ref="homeBackground"
+        data-images="/images/background.jpg"
+    ></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Xiaoy</h1>
+                <h3>xiaoy blog</h3>
+                <h5></h5>
+            </div>
+        </span>
     </div>
-  </div>
+</div>
+<div
+    id="home-posts-wrap"
+    ref="homePostsWrap"
+    true
+>
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/2024/08/22/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%B8%80%E7%A7%8D%E8%BD%AF%E4%BB%B6%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%A6%81/">
+        <h2 class="post-title">一种软件商业模式概要.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/22
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>如果自己研发能力与市场产品差距太大的情况, 不如直接使用现成开源的软件, 通过对一个新的 web 界面进行配置下发, 来达到使用的目的. </p>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/22/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%B8%80%E7%A7%8D%E8%BD%AF%E4%BB%B6%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%A6%81/" class="go-post">阅读全文</a>
 </div>
 
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+<div class="post">
+    <a href="/2024/08/22/mdstorage/resource/%E6%98%8E%E6%98%9F%E4%BA%A7%E5%93%81/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-Suricata/">
+        <h2 class="post-title">网络安全-Suricata.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/resource/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                resource
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/22
+        </span>
+        
+        
     </div>
-  
-  
-  
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Suricata 是一个高性能的网络入侵检测和防御系统（IDS&#x2F;IPS）。它是由OISF开发，完全开源，并且可以免费使用</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/smileleooo/p/18169413">Suricata</a></p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p>仓库: </p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/22/mdstorage/resource/%E6%98%8E%E6%98%9F%E4%BA%A7%E5%93%81/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-Suricata/" class="go-post">阅读全文</a>
 </div>
 
-  </footer>
+<div class="post">
+    <a href="/2024/08/22/mdstorage/domain/ide/idea/%E6%9D%A1%E4%BB%B6%E8%B0%83%E8%AF%95/">
+        <h2 class="post-title">条件调试.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/22
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>条件调试</strong>（Conditional Debugging）是一种调试技术，它允许开发者在程序执行过程中设置特定的条件，只有当这些条件满足时，程序才会中断或触发调试操作。这与传统的断点调试有所不同，传统断点是在代码的某一行设置断点，无论任何情况，只要代码执行到那一行，程序就会暂停。而条件调试则是在断点的基础上增加了条件判断，只有当某些特定的条件满足时，断点才会生效。</p>
+<p>在<strong>多个协程运行</strong>的场景下，调试特定的协程是一个常见的挑战。特别是在并发编程中，不同协程可能以不同的顺序执行，且它们之间的交互可能导致复杂的竞态条件和难以预见的错误。<strong>条件调试</strong>在此类场景中也非常有用，尤其是当你需要捕捉满足特定条件的协程来进行调试时。</p>
+<h3 id="多协程运行时捕捉特定条件的场景"><a href="#多协程运行时捕捉特定条件的场景" class="headerlink" title="多协程运行时捕捉特定条件的场景"></a>多协程运行时捕捉特定条件的场景</h3><h4 id="场景描述："><a href="#场景描述：" class="headerlink" title="场景描述："></a>场景描述：</h4><p>假设你有一个并发程序，多个协程（goroutine）正在同时运行。你注意到某个错误或不期望的行为发生在特定的协程上，但问题仅在满足某些条件时才会显现。你需要在这些协程中捕捉到这个特定条件并暂停程序，以便进一步分析。</p>
+<h4 id="示例场景："><a href="#示例场景：" class="headerlink" title="示例场景："></a>示例场景：</h4><p>考虑以下简单的 Go 代码，其中多个协程并发地处理任务：</p>
+<pre><code class="go">package main
 
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+import (
+    &quot;fmt&quot;
+    &quot;sync&quot;
+    &quot;time&quot;
+)
 
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
+func worker(id int, wg *sync.WaitGroup) &#123;
+    defer wg.Done()
+
+    for i := 0; i &lt; 10; i++ &#123;
+        // 模拟某种处理
+        fmt.Printf(&quot;Worker %d processing task %d\n&quot;, id, i)
+        time.Sleep(time.Millisecond * 100)
+    &#125;
+&#125;
+
+func main() &#123;
+    var wg sync.WaitGroup
+    for i := 1; i &lt;= 5; i++ &#123;
+        wg.Add(1)
+        go worker(i, &amp;wg)
+    &#125;
+
+    wg.Wait()
+&#125;
+</code></pre>
+<p>在这个例子中，有 5 个协程同时运行，每个协程都会执行一些任务。如果你发现只有当 <code>id == 3</code> 且 <code>i == 5</code> 时程序出现异常，想要捕捉这个特定的协程并进行调试，条件调试就非常有用。</p>
+<h4 id="解决方法：条件断点配合协程调试"><a href="#解决方法：条件断点配合协程调试" class="headerlink" title="解决方法：条件断点配合协程调试"></a>解决方法：条件断点配合协程调试</h4><p>在 IDE 或调试器中，你可以执行以下步骤：</p>
+<ol>
+<li><p><strong>设置条件断点</strong>:<br>在 <code>fmt.Printf</code> 这一行设置断点，并添加条件，例如 <code>id == 3 &amp;&amp; i == 5</code>。这样，当且仅当该条件为 <code>true</code> 时，程序将会暂停。这允许你在多个协程中仅调试满足特定条件的协程，而不干扰其他协程的执行。</p>
+</li>
+<li><p><strong>使用调试器工具</strong>:<br>如果你在命令行使用调试器（如 GDB），可以使用类似的方法。例如：</p>
+<pre><code class="bash">break main.go:10 if id == 3 &amp;&amp; i == 5
+</code></pre>
+</li>
+<li><p><strong>协程相关信息</strong>:<br>在调试时，查看当前停止的协程（goroutine）的堆栈信息，确认它是否是你关心的那个协程。现代的 Go 调试器（如 GoLand、Delve）通常会支持查看和切换不同的协程，这样你可以进一步确认问题所在的协程。</p>
+</li>
+<li><p><strong>调试协程间的竞态条件</strong>:<br>在并发程序中，竞态条件是常见的问题。通过条件调试，你可以专注于调试那些特定条件下的协程，捕捉问题的根源。例如，如果你怀疑在某些特定条件下两个协程之间发生了竞态问题，你可以在某个协程运行到特定状态时暂停它，然后切换到其他协程进行检查。</p>
+</li>
+</ol>
+<h2 id="具体操作步骤-Goland"><a href="#具体操作步骤-Goland" class="headerlink" title="具体操作步骤(Goland)"></a>具体操作步骤(Goland)</h2><ul>
+<li>打断点</li>
+<li>右键断点(在 condition 中加入符合的条件)</li>
+</ul>
+<h2 id="待整理"><a href="#待整理" class="headerlink" title="待整理"></a>待整理</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7d9dc09fdbe3">Goland 断点调试高级功能</a></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/22/mdstorage/domain/ide/idea/%E6%9D%A1%E4%BB%B6%E8%B0%83%E8%AF%95/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/19/mdstorage/project/sr/%E6%B5%81%E9%87%8F%E5%BC%95%E6%93%8E%E8%8A%82%E7%82%B9%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%96%B9%E6%A1%88/">
+        <h2 class="post-title">流量引擎节点管理功能方案.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/19
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>流量引擎是一个集群组成的具备流量转发 流量监控 的逻辑组件.<br>1.6 之前, 流量引擎分为三种逻辑组件: 管理节点 调度节点 工作节点, 管理节点 调度节点 工作节点同样由多台机器集群组成.<br>在 1.6 后, 流量引擎重新定义节点概念, 将节点定义为机器, 而管理 调度 工作 的职能定义为服务, 所以一个流量引擎集群现在的描述可能为: 该流量引擎有 3 台节点, 节点 A 中部署了管理 调度 服务, 节点 B C 中只部署了 工作 服务.</p>
+<h2 id="产品需求"><a href="#产品需求" class="headerlink" title="产品需求"></a>产品需求</h2><p>此需求重新定义了引擎节点的概念，并对引擎节点管理进行了重新设计。</p>
+<p>主要需求:</p>
+<ul>
+<li>节点列表: </li>
+<li>节点新增: 为已有流量引擎新增节点, 可以批量添加多台, 如果失败则停止, 已经安装成功的节点不卸载</li>
+<li>节点详情</li>
+<li>节点编辑(???)</li>
+<li>节点删除(暂时不做)</li>
+<li>节点替换: 将对已有节点做替换</li>
+<li>节点状态: 点击查看节点状态，跳转『系统管理-运行状态』页面，并将当前引擎、当前节点的数据查询出来</li>
+</ul>
+<h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><p>节点新增功能实现流程图</p>
+<pre><code class="mermaid">graph LR
+    a[数据库操作]
+    b[发布任务]
+    c[返回任务 ID]
+    d(&quot;AddSENodes(req)&quot;)
+    e(&quot;AddMemberIntoCluster(newNode, clusterInfo)&quot;)
+    f(更新任务状态)
+    
+    a---&gt;b---&gt;c
+    b-.-&gt;|异步任务|d--&gt;e
+    e --&gt;|循环| e
+    e --&gt; f
+</code></pre>
+<p>AddSENodes 实现</p>
+<ul>
+<li>查询前面 cluster Info</li>
+<li>遍历要添加的 Nodes , 为每个 Node 调用 AddMemberInfoCluster</li>
+</ul>
+<p>AddMemberInfoCluster 实现</p>
+<ul>
+<li>ssh 连接 node</li>
+<li>组织 InstallConfigV1</li>
+<li>上传 SE 包, 并对 SE 执行 able 安装程序 </li>
+<li>执行成功, 则对 前面 cluster 每个节点执行 able member add newNode</li>
+</ul>
+<h4 id="able-install"><a href="#able-install" class="headerlink" title="able install"></a>able install</h4><p>几乎跟引擎节点安装相同, 但是需要新增 –is-cluster-exist 参数, 标记是加入引擎集群, 在安装中, 会设置 IsClusterExist 的值为 true, 对这个值敏感的程序在自己的 install 程序中可以获取到这个值, 来决定一些特别的操作</p>
+<h4 id="able-member-add-newNode"><a href="#able-member-add-newNode" class="headerlink" title="able member add newNode"></a>able member add newNode</h4><p>执行已安装节点的 member_add action , 如果没有定义这个 action 的组件不执行.<br>在执行 member_add action 时, 会用环境变量表示 newNodeInfo ,  </p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/19/mdstorage/project/sr/%E6%B5%81%E9%87%8F%E5%BC%95%E6%93%8E%E8%8A%82%E7%82%B9%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%96%B9%E6%A1%88/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/16/mdstorage/domain/%E4%BA%A7%E5%93%81%E7%BB%8F%E9%AA%8C/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%B1%BB%E5%9E%8B%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%95%86%E4%B8%9A%E6%8E%88%E6%9D%83%E6%96%B9%E6%A1%88/">
+        <h2 class="post-title">基础设施类型软件的商业授权方案.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/16
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>基础设施即服务型产品</p>
+<h2 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h2><ul>
+<li>商城 发放授权, 上传授权申请文件, 可下载授权文件</li>
+<li></li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/16/mdstorage/domain/%E4%BA%A7%E5%93%81%E7%BB%8F%E9%AA%8C/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%B1%BB%E5%9E%8B%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%95%86%E4%B8%9A%E6%8E%88%E6%9D%83%E6%96%B9%E6%A1%88/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/15/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%B8%80%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%9B%88%E5%88%A9%E7%9A%84%E6%A6%82%E8%A6%81%E5%88%86%E6%9E%90/">
+        <h2 class="post-title">一个软件实现盈利的概要分析.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/15
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>一个科技公司如何才能实现盈利这个目标</p>
+<h2 id="一个软件实现盈利的过程"><a href="#一个软件实现盈利的过程" class="headerlink" title="一个软件实现盈利的过程"></a>一个软件实现盈利的过程</h2><pre><code class="mermaid">flowchart TD
+A[概念与市场调研] --&gt; B[需求分析与定义]
+B --&gt; C[原型设计与验证]
+C --&gt; D[架构设计与技术选型]
+D --&gt; E[开发与测试]
+E --&gt; F[发布与部署]
+F --&gt; G[市场推广与销售策略]
+G --&gt; H[用户获取与反馈]
+H --&gt; I[产品迭代与优化]
+I --&gt; J[用户增长与留存]
+J --&gt; K[收入模式与定价策略]
+K --&gt; L[实现盈利]
+</code></pre>
+<ul>
+<li>概念与市场调研：识别市场需求，进行市场调研，提出软件的初步概念。</li>
+<li>需求分析与定义：明确软件功能需求和用户痛点，制定产品的核心功能和目标。</li>
+<li>原型设计与验证：创建产品原型，与潜在用户或利益相关者进行验证和反馈。</li>
+<li>架构设计与技术选型：制定软件的整体架构和技术方案，选择合适的技术栈。</li>
+<li>开发与测试：进行软件开发，持续集成、测试和修复缺陷，确保产品质量。</li>
+<li>发布与部署：将软件发布到市场上，部署到生产环境，并做好运维准备。</li>
+<li>市场推广与销售策略：通过市场营销活动推广软件，制定销售策略，吸引用户。</li>
+<li>用户获取与反馈：获取初期用户，通过反馈完善产品，改善用户体验。</li>
+<li>产品迭代与优化：根据用户反馈和市场需求不断迭代和优化产品功能。</li>
+<li>用户增长与留存：通过有效的用户增长策略和留存策略扩大用户群体，提升用户粘性。</li>
+<li>收入模式与定价策略：确定软件的收入模式（如订阅、一次性购买、广告等）和定价策略。</li>
+<li>实现盈利：通过稳定的收入流实现软件项目的盈利。</li>
+</ul>
+<h2 id="一个科技公司实现盈利的过程"><a href="#一个科技公司实现盈利的过程" class="headerlink" title="一个科技公司实现盈利的过程"></a>一个科技公司实现盈利的过程</h2><pre><code class="mermaid">flowchart TD
+A[创业构思与公司成立] --&gt; B[产品开发与技术创新]
+B --&gt; C[市场调研与定位]
+C --&gt; D[融资与资金筹措]
+D --&gt; E[产品推出与市场进入]
+E --&gt; F[市场推广与用户获取]
+F --&gt; G[运营优化与用户留存]
+G --&gt; H[收入模式确定与优化]
+H --&gt; I[用户增长与市场扩展]
+I --&gt; J[成本控制与规模效应]
+J --&gt; K[实现盈利]
+</code></pre>
+<p>详细步骤说明：</p>
+<ol>
+<li><p><strong>创业构思与公司成立</strong>：公司创始人根据某个市场痛点或技术创新的构思，成立科技公司，制定愿景和使命。</p>
+</li>
+<li><p><strong>产品开发与技术创新</strong>：公司通过研发推出具有竞争力和差异化的产品，利用技术创新来解决特定问题或创造价值。</p>
+</li>
+<li><p><strong>市场调研与定位</strong>：深入研究市场需求、竞争对手、目标用户等，明确公司的市场定位和战略方向。</p>
+</li>
+<li><p><strong>融资与资金筹措</strong>：通过天使投资、风险投资、股权融资等途径获得初创资金，支持公司的发展和扩张。</p>
+</li>
+<li><p><strong>产品推出与市场进入</strong>：将产品推向市场，进入目标市场领域，并进行初期的市场试探和调整。</p>
+</li>
+<li><p><strong>市场推广与用户获取</strong>：通过营销和推广策略，快速获取用户，建立品牌知名度和市场份额。</p>
+</li>
+<li><p><strong>运营优化与用户留存</strong>：不断优化产品和运营策略，提高用户体验，增强用户留存率。</p>
+</li>
+<li><p><strong>收入模式确定与优化</strong>：明确公司收入模式，如订阅、广告、电商、服务收费等，并不断优化以增加收入。</p>
+</li>
+<li><p><strong>用户增长与市场扩展</strong>：扩大用户基数，进入新的市场或领域，实现用户群体的持续增长。</p>
+</li>
+<li><p><strong>成本控制与规模效应</strong>：通过成本控制和优化运营流程，实现规模效应，降低边际成本，提升利润率。</p>
+</li>
+<li><p><strong>实现盈利</strong>：通过持续增长的收入和有效的成本控制，最终实现公司整体盈利。</p>
+</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/15/mdstorage/domain/%E5%95%86%E4%B8%9A/%E4%B8%80%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%9B%88%E5%88%A9%E7%9A%84%E6%A6%82%E8%A6%81%E5%88%86%E6%9E%90/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/15/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker-golang%E8%AE%BE%E7%BD%AEmodcache%E5%8A%A0%E5%BF%AB%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6/">
+        <h2 class="post-title">docker-golang设置modcache加快编译速度.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/15
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>如果每次只提供源码进行 docker build 一个 golang 项目, 那么每次都会拉取依赖仓库, 所以希望能充分利用缓存机制来减少 docker build 的时间.</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>go.Dockerfile</p>
+<pre><code class="Dockerfile">FROM golang:1.22.3
+
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+
+ENV PROJECT_NAME=installer
+ENV GOMODCACHE=/go/pkg/mod
+
+WORKDIR /$&#123;PROJECT_NAME&#125;
+
+COPY . /$&#123;PROJECT_NAME&#125;
+
+# 拷贝凭证文件到 Docker 容器中, 这里要确保 .git-credentials 存在
+COPY .git-credentials /root/.git-credentials
+
+RUN git config --global credential.helper &#39;store --file=/root/.git-credentials&#39; &amp;&amp; \
+    go env -w GOPRIVATE=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GONOSUMDB=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GONOPROXY=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GOINSECURE=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GOPROXY=&quot;https://goproxy.cn|https://goproxy.io|direct&quot; &amp;&amp; \
+    go mod tidy -x
+
+# 指定容器启动时执行的命令
+CMD go mod download
+</code></pre>
+<p>构建 mod cache</p>
+<ul>
+<li>docker build -t cache_builder -f .&#x2F;go.Dockerfile .</li>
+<li>docker create –name cache_extractor cache_builder</li>
+<li>mkdir temp</li>
+<li>docker cp cache_extractor:&#x2F;go&#x2F;pkg&#x2F;mod .&#x2F;temp&#x2F;</li>
+</ul>
+<p>执行完后 &#x2F;temp 下就会出现 mod, 这时的 mod 目录约 300MB+, 注意会有 open &#x2F;xxxx&#x2F;temp&#x2F;mod&#x2F;cel.dev&#x2F;<a href="mailto:&#x65;&#x78;&#112;&#x72;&#x40;&#x76;&#x30;&#x2e;&#49;&#53;&#x2e;&#x30;">&#x65;&#x78;&#112;&#x72;&#x40;&#x76;&#x30;&#x2e;&#49;&#53;&#x2e;&#x30;</a>&#x2F;.bazelversion: permission denied 的警告字符的目录或者文件,会报文件权限不够,如果用 sudo 执行, 则可以拷贝出来, 会发现这时的 temp 磁盘占用大很多 1GB+ .</p>
+<p>构建Dockerfile:<br>Dockerfile</p>
+<pre><code class="Dockerfile">FROM srmysql
+
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+
+ENV PROJECT_NAME=installer
+ENV SC_IP=127.0.0.1
+ENV GOMODCACHE=/go/pkg/mod
+
+RUN apt update &amp;&amp; apt-get -y install gettext
+
+WORKDIR /$&#123;PROJECT_NAME&#125;
+
+COPY . /$&#123;PROJECT_NAME&#125;
+
+COPY temp/mod /go/pkg/mod
+RUN go mod download
+
+# 拷贝凭证文件到 Docker 容器中, 这里要确保 .git-credentials 存在
+RUN git config --global credential.helper &#39;store --file=/$&#123;PROJECT_NAME&#125;/.git-credentials&#39; &amp;&amp; \
+    go env -w GOPRIVATE=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GONOSUMDB=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GONOPROXY=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GOINSECURE=git.ouryun.cn,192.168.20.12 &amp;&amp; \
+    go env -w GOPROXY=&quot;https://goproxy.cn|https://goproxy.io|direct&quot; &amp;&amp; \
+    go install github.com/go-delve/delve/cmd/dlv@latest &amp;&amp; \
+    go mod tidy -x
+
+# 构建应用
+RUN make release
+# 指定容器启动时执行的命令
+
+RUN mkdir -p /opt/public/ &amp;&amp; echo &quot;SCIP=172.17.0.200&quot; | tee -a /opt/public/.env
+
+EXPOSE 8098
+EXPOSE 2345
+
+ENTRYPOINT [&quot;/lib/systemd/systemd&quot;]
+</code></pre>
+<p>主要起作用的两行:</p>
+<ul>
+<li>COPY temp&#x2F;mod &#x2F;go&#x2F;pkg&#x2F;mod</li>
+<li>RUN go mod download</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/15/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker-golang%E8%AE%BE%E7%BD%AEmodcache%E5%8A%A0%E5%BF%AB%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/07/mdstorage/project/%E5%AE%9D%E8%B4%B5%E7%BB%8F%E9%AA%8C/strace%E6%8E%92%E6%9F%A5%E5%BC%82%E6%AD%A5shell%E6%89%A7%E8%A1%8C%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/">
+        <h2 class="post-title">strace排查异步shell执行失败问题.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/project/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                project
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/7
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="经过"><a href="#经过" class="headerlink" title="经过"></a>经过</h2><ol>
+<li>golang 中实现 执行命令的方法</li>
+</ol>
+<pre><code class="go">func (c *Client) Output(name string, arg ...string) ([]byte, error) &#123;
+    session, err := c.sshClient.NewSession()
+    if err != nil &#123;
+        return nil, fmt.Errorf(&quot;fail to create ssh seesion %w&quot;, err)
+    &#125;
+    defer session.Close()
+
+    //cmdStr := strings.Join(append([]string&#123;name&#125;, arg...), &quot; &quot;)
+    //
+    //logger.Logger.Debugf(&quot;Output executing ssh command %s in %s&quot;, cmdStr, c.addr)
+    //
+    //return session.Output(cmdStr)
+    // Set up output buffers for stdout and stderr
+    var stdoutBuf, stderrBuf strings.Builder
+    session.Stdout = &amp;stdoutBuf
+    session.Stderr = &amp;stderrBuf
+
+    cmdStr := strings.Join(append([]string&#123;name&#125;, arg...), &quot; &quot;)
+
+    // Run the command
+    err = session.Run(cmdStr)
+    if err != nil &#123;
+        // Combine stdout and stderr for detailed error message
+        output := stdoutBuf.String() + &quot;\n&quot; + stderrBuf.String()
+        return nil, fmt.Errorf(&quot;command execution failed: %w ;Output:%s &quot;, err, output)
+    &#125;
+
+    // Return combined output of stdout and stderr
+    return []byte(stdoutBuf.String() + &quot;\n&quot; + stderrBuf.String()), nil
+&#125;
+</code></pre>
+<p>在执行 xxxx &amp; 后, 父进程退出时, 此子进程会退出</p>
+<p>后面 用 strace 跟踪, 才发现打开了一个匿名管道, 因为 golang session.Run 方法里面会为这个命令打开一个匿名管道, 然后异步命令执行后, 父进程退出, 将匿名管道退出, 子进程收到匿名管道退出的信号,结果退出了. </p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/07/mdstorage/project/%E5%AE%9D%E8%B4%B5%E7%BB%8F%E9%AA%8C/strace%E6%8E%92%E6%9F%A5%E5%BC%82%E6%AD%A5shell%E6%89%A7%E8%A1%8C%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/08/05/mdstorage/domain/db/Mysql%E5%AE%89%E8%A3%85/">
+        <h2 class="post-title">Mysql安装.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/domain/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                domain
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/8/5
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/get/Downloads/MySQL-8.3/mysql-8.3.0-linux-glibc2.28-x86_64.tar.xz">mysql 8.3 下载</a></p>
+<h2 id="mysql-5-7-安装"><a href="#mysql-5-7-安装" class="headerlink" title="mysql 5.7 安装"></a>mysql 5.7 安装</h2><p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1519212">阿里云下载安装</a></p>
+<h4 id="配置-mysql-启动参数"><a href="#配置-mysql-启动参数" class="headerlink" title="配置 mysql 启动参数"></a>配置 mysql 启动参数</h4><pre><code>--user=root
+
+/lib/systemd/system/mysql.service
+</code></pre>
+<h4 id="本地设置-root-密码"><a href="#本地设置-root-密码" class="headerlink" title="本地设置 root 密码"></a>本地设置 root 密码</h4><pre><code>mysql -uroot -p    第一次不输入密码可以进入
+</code></pre>
+<h4 id="设置远程密码"><a href="#设置远程密码" class="headerlink" title="设置远程密码"></a>设置远程密码</h4><pre><code class="sql">grant all privileges on *.* to &#39;root&#39; @&#39;%&#39; identified by &#39;$youpassword&#39;;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/08/05/mdstorage/domain/db/Mysql%E5%AE%89%E8%A3%85/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E6%9C%BA%E5%88%B6/">
+        <h2 class="post-title">installer机制.md</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/6/24
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>记录 installer 相关的机制，有的需要整理，有些需要改正的会渐渐改正</p>
+<h2 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h2><h3 id="安装、卸载、进度条，异步任务处理机制"><a href="#安装、卸载、进度条，异步任务处理机制" class="headerlink" title="安装、卸载、进度条，异步任务处理机制"></a>安装、卸载、进度条，异步任务处理机制</h3><h3 id="使用-redis-分布式锁机制"><a href="#使用-redis-分布式锁机制" class="headerlink" title="使用 redis 分布式锁机制"></a>使用 redis 分布式锁机制</h3><h4 id="sc-侧使用-redis-逻辑"><a href="#sc-侧使用-redis-逻辑" class="headerlink" title="sc 侧使用 redis 逻辑"></a>sc 侧使用 redis 逻辑</h4><p>pkg&#x2F;empower&#x2F;redis_lock&#x2F;lock.go:26<br>外部使用的接口 TryLock UnLock ，其他的没有使用到</p>
+<h4 id="installer-侧使用-redis-逻辑"><a href="#installer-侧使用-redis-逻辑" class="headerlink" title="installer 侧使用 redis 逻辑"></a>installer 侧使用 redis 逻辑</h4><p>manager&#x2F;task&#x2F;redis.go:26<br>新的 kvstorage 需要实现<br>使用 flock 实现 ？？？</p>
+<pre><code class="Go">type kvStorage interface &#123;
+    NewWithTTL(key string, ttl time.Duration) Storage
+&#125;
+type Storage interface &#123;
+    Put(any) error
+    Get(any) error
+&#125;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/06/24/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E6%9C%BA%E5%88%B6/" class="go-post">阅读全文</a>
+</div>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+        <div class="page-current">
+    
+    <a class="page-num" href="/page/5/">
+        <i class="fa-solid fa-caret-left fa-fw"></i>
+    </a>
+    <a class="page-num" href="/">1</a>
+    <span class="page-omit">...</span>
+    
+    <span class="current">6</span>
+    
+    <a class="page-num" href="/page/7">
+        7
+    </a>
+    
+    
+    <a class="page-num" href="/page/8">
+        8
+    </a>
+    
+    
+    <span class="page-omit">...</span>
+    <a class="page-num" href="/page/28">28</a>
+    
+    
+    <a class="page-num" href="/page/7/">
+        <i class="fa-solid fa-caret-right fa-fw"></i>
+    </a>
+    
+</div>
 
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">xiaoy</div>
+        <div class="description">
+            <p>Description<br>…</p>
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
 
+    </div>
+    
+</div>
 
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 Xiaoy
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;xiaoy
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
 
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
 </body>
 </html>
