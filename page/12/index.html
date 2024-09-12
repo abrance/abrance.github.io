@@ -227,6 +227,116 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/04/19/mdstorage/project/sr/%E7%BB%84%E4%BB%B6/sc-core/" target="_self">
+          sc-core.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/19/mdstorage/project/sr/%E7%BB%84%E4%BB%B6/sc-core/" target="_self">
+        <div>
+          概述sc-core 是 sc 的通信组件，提供：  建立总控-引擎连接通道 通过通道发送信息  的能力，它是一个 grpc server ，需要建立通道的组件都是 grpc client。 设计目标问题 部署问题：防火墙策略开放不合理；将之前 总控-&gt;引擎 这种开放策略改为 引擎-&gt;总控。原因详见通信链路相关机制讲解 链路繁杂问题：之前组件负责人各自进行开发，没有站在系统角度考虑问题，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-19 00:00" pubdate>
+              2024-04-19
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/sr/">#sr</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/18/mdstorage/domain/linux/find/" target="_self">
+          find.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/18/mdstorage/domain/linux/find/" target="_self">
+        <div>
+          find 概述linux 下查找文件的工具 示例根据日期查找文件123456# 找到 /usr/lib/x86_64-linux-gnu/ 下 昨天到现在 这段时间被find /usr/lib/x86_64-linux-gnu/ -type f -newermt &quot;yesterday&quot; -ls# 找到 当前目录下, 创建时间为今天的文件, 只为当前目录find . -maxde
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-18 00:00" pubdate>
+              2024-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+              <a href="/tags/find/">#find</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/04/18/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/dockerfile/" target="_self">
           dockerfile.md
         </a>
@@ -698,7 +808,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/04/13/mdstorage/sr%E9%83%A8%E7%BD%B2/" target="_self">
         <div>
-          sc 部署打包平台下载 sc 包打包平台 http://172.16.86.52/ sc 包放到 ~ 中解压执行 sc 安装script -&gt; 填写 config -&gt; install.sh (校验不通过，需要修改 check.sh 的内容) 访问80 443 授权获取授权获取方式：http://192.192.101.126/#/login账号：&#x79;&#x61;&#x6e;&
+          sc 部署打包平台下载 sc 包打包平台 http://172.16.86.52/ sc 包放到 ~ 中解压执行 sc 安装script -&gt; 填写 config -&gt; install.sh (校验不通过，需要修改 check.sh 的内容) 访问80 443 授权获取授权获取方式：http://192.192.101.126/#/login账号：&#x79;&#97;&#x6e;&#
         </div>
       </a>
 
@@ -717,149 +827,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/sr/">#sr</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/12/mdstorage/domain/k8s/k8s%E7%BB%84%E4%BB%B6%E7%BC%96%E8%AF%91/" target="_self">
-          k8s组件编译.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/12/mdstorage/domain/k8s/k8s%E7%BB%84%E4%BB%B6%E7%BC%96%E8%AF%91/" target="_self">
-        <div>
-          步骤拉取仓库1git clone https://github.com/kubernetes/kubernetes.git    检查 golang 版本kubernetes 需要按照指示的 golang 版本编译 执行编译12345# linux 全量编译KUBE_BUILD_PLATFORMS=linux/amd64 make # 单独编译 apiservermake kube-apiserv
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-12 00:00" pubdate>
-              2024-04-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/k8s/" class="category-chain-item">k8s</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/kubernetes/">#kubernetes</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/12/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc-go%E8%B5%84%E6%96%99/" target="_self">
-          grpc-go资料.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/12/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc-go%E8%B5%84%E6%96%99/" target="_self">
-        <div>
-          概述函数整理客户端NewClient &#x2F; DialClientConnClientStream服务端NewClient1. ClientConn这是 gRPC 客户端的核心数据结构之一。ClientConn 表示到 gRPC 服务器的连接，用于发起 RPC 调用。对于流式 RPC，ClientConn 管理底层的 HTTP&#x2F;2 连接，它支持多路复用，允许在同一个连接上并行发送多
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-12 00:00" pubdate>
-              2024-04-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/" class="category-chain-item">network</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/%E5%8D%8F%E8%AE%AE/" class="category-chain-item">协议</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/grpc/">#grpc</a>
             
           </div>
         

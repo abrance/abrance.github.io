@@ -1,0 +1,679 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="总控部署适配信创平台技术预研背景客户环境复杂，目前总控平台只适合ubuntu20.04,x86架构。需要研制出适合arm64架构的总控，让总控平台更具生存力。 解决方案找到对应组件的可执行文件进行替换 适用场景arm64的linux平台，例如：麒麟银河系列##难点其他服务的可执行文件都不支持arm架构，都需要找到对应的文件进行替换。 未知因素引擎机器上的组件（envoy等）是不是也得替换？ Mys">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信创改造项目.md">
+<meta property="og:url" content="https://abrance.github.io/2024/09/12/mdstorage/domain/%E4%BF%A1%E5%88%9B/%E4%BF%A1%E5%88%9B%E6%94%B9%E9%80%A0%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="总控部署适配信创平台技术预研背景客户环境复杂，目前总控平台只适合ubuntu20.04,x86架构。需要研制出适合arm64架构的总控，让总控平台更具生存力。 解决方案找到对应组件的可执行文件进行替换 适用场景arm64的linux平台，例如：麒麟银河系列##难点其他服务的可执行文件都不支持arm架构，都需要找到对应的文件进行替换。 未知因素引擎机器上的组件（envoy等）是不是也得替换？ Mys">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-09-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-12T06:28:12.204Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>信创改造项目.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="信创改造项目.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-12 00:00" pubdate>
+          September 12, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">信创改造项目.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="总控部署适配信创平台技术预研"><a href="#总控部署适配信创平台技术预研" class="headerlink" title="总控部署适配信创平台技术预研"></a>总控部署适配信创平台技术预研</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>客户环境复杂，目前总控平台只适合ubuntu20.04,x86架构。需要研制出适合arm64架构的总控，让总控平台更具生存力。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>找到对应组件的可执行文件进行替换</p>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><p>arm64的linux平台，例如：麒麟银河系列<br>##难点<br>其他服务的可执行文件都不支持arm架构，都需要找到对应的文件进行替换。</p>
+<h2 id="未知因素"><a href="#未知因素" class="headerlink" title="未知因素"></a><del>未知因素</del></h2><p><del>引擎机器上的组件（envoy等）是不是也得替换？</del></p>
+<h2 id="Mysql改造-已完成"><a href="#Mysql改造-已完成" class="headerlink" title="Mysql改造-已完成"></a>Mysql改造-已完成</h2><p>提取mysqld 和 mysql文件进行替换。操作步骤如下：</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://obs.cn-north-4.myhuaweicloud.com/obs-mirror-ftp4/database/mysql-5.7.27-aarch64.tar.gz">arm64的mysql安装包链接</a></p>
+</li>
+<li><p>mysql安装目录部分文件替换</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Bash">wget https://obs.cn-north-4.myhuaweicloud.com/obs-mirror-ftp4/database/mysql-5.7.27-aarch64.tar.gz<br>tar -xvf mysql-5.7.27-aarch64.tar.gz -C /data/<br><span class="hljs-built_in">cp</span> -f /data/mysql-5.7.27-aarch64/bin/mysql /opt/mysql/bin/mysql<br><span class="hljs-built_in">cp</span> -f /data/mysql-5.7.27-aarch64/bin/mysqld /opt/mysql/bin/mysqld<br></code></pre></td></tr></table></figure>
+<p> 最后，正常执行安装脚本即可（&#x2F;opt&#x2F;mysql&#x2F;hack&#x2F;install.sh）</p>
+</li>
+<li><p>安装过程有报错误，但不影响安装。解决方式如下：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-built_in">mkdir</span> -p /opt/mysql/share<br><span class="hljs-built_in">cp</span> -f /data/mysql-5.7.27-aarch64/share/english/errmsg.sys /opt/mysql/share/errmsg.sys<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="SC代码-已完成"><a href="#SC代码-已完成" class="headerlink" title="SC代码-已完成"></a>SC代码-已完成</h2><p>util&#x2F;common&#x2F;cpuid.go中存在两个空方法体的函数，目前无法在arm64的linux环境中编译通过。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">cpuid</span><span class="hljs-params">(leaf <span class="hljs-type">uint32</span>)</span></span> (<span class="hljs-type">uint32</span>, <span class="hljs-type">uint32</span>, <span class="hljs-type">uint32</span>, <span class="hljs-type">uint32</span>)<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">IsHypervisor</span><span class="hljs-params">()</span></span> <span class="hljs-type">bool</span><br><br></code></pre></td></tr></table></figure>
+
+<p>解决方案：<br>将util&#x2F;common&#x2F;cpuid_linux_amd64.s 替换，先达到可用，业务逻辑后续再补</p>
+<h2 id="SC所使用的系统命令"><a href="#SC所使用的系统命令" class="headerlink" title="SC所使用的系统命令"></a>SC所使用的系统命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Bash">dmidecode -t processor<br>systemctl daemon-reload<br>pgrep -f <span class="hljs-string">&quot;/opt/sc/bin/sc&quot;</span><br>sed -i -r xxx<br><span class="hljs-built_in">df</span> -h<br></code></pre></td></tr></table></figure>
+
+<h2 id="SC-Makefile文件改造-已完成"><a href="#SC-Makefile文件改造-已完成" class="headerlink" title="SC Makefile文件改造-已完成"></a>SC Makefile文件改造-已完成</h2><p>新增适配目标机器的编译参数：GOARCH&#x3D;arm64 GOOS&#x3D;linux，新增部分代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs Bash">build-sc-arm: pre-build<br>CGO_ENABLED=0 GOARCH=arm64 GOOS=linux go build -trimpath -ldflags $(flags) -o $(BIN_DIR)/sc cmd/main.go<br><span class="hljs-built_in">cp</span> config/config.ini $(TEMPLATE_DIR)<br><span class="hljs-built_in">cp</span> -r config/cert $(CONFIG_DIR)<br><span class="hljs-built_in">cp</span> hack/depends/* $(DEPENDS_DIR)<br><span class="hljs-built_in">cp</span> hack/sc.service $(SYSTEMD_DIR)<br><span class="hljs-built_in">cp</span> hack/mysql-bin-install/cfg_mysqlpkg.sh $(HACK_DIR) &amp;&amp; <span class="hljs-built_in">chmod</span> +x $(HACK_DIR)/cfg_mysqlpkg.sh<br><span class="hljs-built_in">cp</span> hack/mysql-bin-install/uncfg_mysqlpkg.sh $(HACK_DIR) &amp;&amp; <span class="hljs-built_in">chmod</span> +x $(HACK_DIR)/uncfg_mysqlpkg.sh<br><span class="hljs-built_in">cd</span> hack/mysql-bin-install &amp;&amp; CGO_ENABLED=0 GOARCH=arm64 GOOS=linux go build -o reset_mysql main.go<br><span class="hljs-built_in">mv</span> hack/mysql-bin-install/reset_mysql $(HACK_DIR)<br><span class="hljs-built_in">cd</span> hack/reset &amp;&amp; CGO_ENABLED=0 GOARCH=arm64 GOOS=linux go build reset_password.go<br><span class="hljs-built_in">mv</span> hack/reset/reset_password $(BIN_DIR)<br><span class="hljs-built_in">cd</span> hack/deploy &amp;&amp; CGO_ENABLED=0 GOARCH=arm64 GOOS=linux go build -o init_database main.go<br><span class="hljs-built_in">mv</span> hack/deploy/init_database $(HACK_DIR)<br><span class="hljs-built_in">cd</span> hack/deploy &amp;&amp; CGO_ENABLED=0 GOARCH=arm64 GOOS=linux go build -o seeder seeder.go<br><span class="hljs-built_in">mv</span> hack/deploy/seeder $(HACK_DIR)<br><span class="hljs-built_in">cp</span> hack/deploy/install.sh $(HACK_DIR) &amp;&amp; <span class="hljs-built_in">chmod</span> +x $(HACK_DIR)/install.sh<br><span class="hljs-built_in">cp</span> hack/deploy/uninstall.sh $(HACK_DIR) &amp;&amp; <span class="hljs-built_in">chmod</span> +x $(HACK_DIR)/uninstall.sh<br><span class="hljs-built_in">cp</span> hack/deploy/cover.sh $(HACK_DIR) &amp;&amp; <span class="hljs-built_in">chmod</span> +x $(HACK_DIR)/cover.sh<br><span class="hljs-built_in">cp</span> hack/deploy/update_ui.sh $(HACK_DIR) &amp;&amp; <span class="hljs-built_in">chmod</span> +x $(HACK_DIR)/update_ui.sh<br><span class="hljs-built_in">cp</span> hack/deploy/config $(HACK_DIR)<br><span class="hljs-built_in">cp</span> doc/help_document.docx $(DOCS_DIR)<br><span class="hljs-built_in">cp</span> doc/SMTP服务启用帮助文档.pdf $(DOCS_DIR)<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="其他代码服务-已完成"><a href="#其他代码服务-已完成" class="headerlink" title="其他代码服务-已完成"></a>其他代码服务-已完成</h2><p>打包平台机器，编译参数增加：GOARCH&#x3D;arm64 GOOS&#x3D;linux</p>
+<h2 id="NSQ可执行文件改造-已完成"><a href="#NSQ可执行文件改造-已完成" class="headerlink" title="NSQ可执行文件改造-已完成"></a>NSQ可执行文件改造-已完成</h2><p>可执行文件(&#x2F;opt&#x2F;nsq&#x2F;bin&#x2F;nsqd,&#x2F;opt&#x2F;nsq&#x2F;bin&#x2F;nsqlookupd，版本nsqd v1.2.1)，执行报错(格式不支持)。需要改造。<br>Dec 15 10:01:29 IC22-04-007 systemd[43186]: nsqlookupd.service: Failed to execute command: Exec format error<br>Dec 15 10:01:29 IC22-04-007 systemd[43186]: nsqlookupd.service: Failed at step EXEC spawning &#x2F;opt&#x2F;nsq&#x2F;bin&#x2F;nsqlookupd: Exec format error<br>解决方案：<br><a target="_blank" rel="noopener" href="https://github.com/nsqio/nsq/releases/">https://github.com/nsqio/nsq/releases/</a></p>
+<ol>
+<li>下载对应版本的压缩包，解压，将bin目录下的文件全部替换原有文件。</li>
+</ol>
+<h2 id="ETCD可执行文件改造-已完成"><a href="#ETCD可执行文件改造-已完成" class="headerlink" title="ETCD可执行文件改造-已完成"></a>ETCD可执行文件改造-已完成</h2><p>可执行文件(&#x2F;opt&#x2F;etcd&#x2F;bin&#x2F;etcd，版本etcd Version: 3.4.9)，执行报错(格式不支持)。需要改造。<br>解决方案：<br><a target="_blank" rel="noopener" href="https://github.com/etcd-io/etcd/releases/download/v3.4.9/etcd-v3.4.9-linux-arm64.tar.gz">https://github.com/etcd-io/etcd/releases/download/v3.4.9/etcd-v3.4.9-linux-arm64.tar.gz</a></p>
+<ol>
+<li>下载压缩包，解压。替换原有的etcd。</li>
+<li>在&#x2F;opt&#x2F;etcd&#x2F;config&#x2F;etcd.conf文件里面追加：ETCD_UNSUPPORTED_ARCH&#x3D;arm64<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Bash">ETCD_OPTS=<span class="hljs-string">&quot;--name single \</span><br><span class="hljs-string">...</span><br><span class="hljs-string">&quot;</span><br>ETCD_UNSUPPORTED_ARCH=arm64<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Redis可执行文件改造-已完成"><a href="#Redis可执行文件改造-已完成" class="headerlink" title="Redis可执行文件改造-已完成"></a>Redis可执行文件改造-已完成</h2><p>可执行文件(&#x2F;opt&#x2F;redis&#x2F;bin&#x2F;redis-server，版本Redis server v&#x3D;6.2.10)，执行报错(格式不支持)。需要改造。<br>解决方案：<br><a target="_blank" rel="noopener" href="https://download.redis.io/releases/">https://download.redis.io/releases/</a></p>
+<ol>
+<li>下载压缩包，上传至arm架构的linux服务器上。解压。然后 make。</li>
+<li>将得到的redis-server 替换原有的文件即可。<br>Mongodb可执行文件改造-已完成<br>可执行文件(&#x2F;opt&#x2F;mongodb&#x2F;bin&#x2F;mongod，版本db version v5.0.9)，执行报错(格式不支持)。需要改造。<br>Dec 15 10:30:44 IC22-04-007 systemd[46509]: mongod.service: Failed to execute command: Exec format error<br>Dec 15 10:30:44 IC22-04-007 systemd[46509]: mongod.service: Failed at step EXEC spawning &#x2F;opt&#x2F;mongodb&#x2F;bin&#x2F;mongod: Exec format error<br>解决方案：<br><a target="_blank" rel="noopener" href="https://www.mongodb.com/download-center/community/releases/archive">https://www.mongodb.com/download-center/community/releases/archive</a><br>1.下载对应版本和架构的压缩包，解压，将bin目录下的 mongod，mongo替换原有的文件</li>
+</ol>
+<h2 id="api-gov-可执行文件改造-已完成"><a href="#api-gov-可执行文件改造-已完成" class="headerlink" title="api-gov 可执行文件改造-已完成"></a>api-gov 可执行文件改造-已完成</h2><h2 id="hyperscan-可执行文件改造-已完成"><a href="#hyperscan-可执行文件改造-已完成" class="headerlink" title="hyperscan 可执行文件改造-已完成"></a>hyperscan 可执行文件改造-已完成</h2><p>暂时将原有目录拷贝至目标机器</p>
+<h2 id="installer可执行文件改造-已完成"><a href="#installer可执行文件改造-已完成" class="headerlink" title="installer可执行文件改造-已完成"></a>installer可执行文件改造-已完成</h2><p>cd &#x2F;root&#x2F;code&#x2F;installer &amp;&amp; make release</p>
+<h2 id="sv可执行文件改造-已完成"><a href="#sv可执行文件改造-已完成" class="headerlink" title="sv可执行文件改造-已完成"></a>sv可执行文件改造-已完成</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># 安装编译依赖工具和依赖库</span><br>yum install gcc gcc-c++ hyperscan-devel<br><br><span class="hljs-comment"># 进入sv源码目录执行编译</span><br><span class="hljs-built_in">cd</span> /path/to/sv/<br><span class="hljs-built_in">rm</span> -rf 3rdparty/hyperscan<br><span class="hljs-built_in">cp</span> -rf /usr/local/lib/hyperscan 3rdparty/<br><span class="hljs-built_in">cp</span> -fP /usr/lib64/libhs* 3rdparty/hyperscan/lib/<br>make build<br><br><span class="hljs-comment"># 查看编译的sv版本</span><br>./streamvisualization -v<br><span class="hljs-comment"># 查看sv的依赖动态库列表</span><br>ldd streamvisualization<br></code></pre></td></tr></table></figure>
+
+<h2 id="引擎服务改造-待完成"><a href="#引擎服务改造-待完成" class="headerlink" title="引擎服务改造-待完成"></a>引擎服务改造-待完成</h2><p>Dam可执行文件改造 - 已完成<br>可以在本地交叉编译或在目标机器直接编译<br>&#x2F;opt&#x2F;dam&#x2F;bin&#x2F;dam -version</p>
+<p>Kube-apiserver可执行文件改造 - 已完成<br>已在目标机器直接编译<br><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kubernetes/archive/refs/tags/v1.23.4.tar.gz">https://github.com/kubernetes/kubernetes/archive/refs/tags/v1.23.4.tar.gz</a><br>make WHAT&#x3D;cmd&#x2F;kube-apiserver</p>
+<h2 id="webserver可执行文件改造-已完成"><a href="#webserver可执行文件改造-已完成" class="headerlink" title="webserver可执行文件改造-已完成"></a>webserver可执行文件改造-已完成</h2><p>可以在本地交叉编译或在目标机器直接编译<br>&#x2F;opt&#x2F;webserver&#x2F;bin&#x2F;webserver</p>
+<h2 id="nuclei可执行文件改造-已完成"><a href="#nuclei可执行文件改造-已完成" class="headerlink" title="nuclei可执行文件改造-已完成"></a>nuclei可执行文件改造-已完成</h2><p>可以在本地交叉编译或在目标机器直接编译<br>&#x2F;opt&#x2F;nuclei&#x2F;bin&#x2F;nuclei</p>
+<h2 id="风险"><a href="#风险" class="headerlink" title="风险"></a>风险</h2><p>如果整体集成测试出现单个组件问题，该如何解决？<br>SC的命令行依赖需要通过代码审计的方式识别</p>
+<ul>
+<li>如果组件在代码的运行期中嵌入 执行某个 Ubuntu os 有而 kylin os 没有的命令，这种在构建和启动时很可能检查不出来，甚至只有在已经部署上经过测试才发现，应该由每个组件负责人全局检查代码。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>信创改造项目.md</div>
+      <div>https://abrance.github.io/2024/09/12/mdstorage/domain/信创/信创改造项目/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 12, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/09/12/mdstorage/resource/asset/%E5%BA%94%E7%94%A8%E7%AE%A1%E7%90%86%E5%91%98/" title="应用管理员.md">
+                        <span class="hidden-mobile">应用管理员.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

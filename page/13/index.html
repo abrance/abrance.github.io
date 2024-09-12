@@ -227,6 +227,149 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/04/12/mdstorage/domain/k8s/k8s%E7%BB%84%E4%BB%B6%E7%BC%96%E8%AF%91/" target="_self">
+          k8s组件编译.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/12/mdstorage/domain/k8s/k8s%E7%BB%84%E4%BB%B6%E7%BC%96%E8%AF%91/" target="_self">
+        <div>
+          步骤拉取仓库1git clone https://github.com/kubernetes/kubernetes.git    检查 golang 版本kubernetes 需要按照指示的 golang 版本编译 执行编译12345# linux 全量编译KUBE_BUILD_PLATFORMS=linux/amd64 make # 单独编译 apiservermake kube-apiserv
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-12 00:00" pubdate>
+              2024-04-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/k8s/" class="category-chain-item">k8s</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/kubernetes/">#kubernetes</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/12/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc-go%E8%B5%84%E6%96%99/" target="_self">
+          grpc-go资料.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/12/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc-go%E8%B5%84%E6%96%99/" target="_self">
+        <div>
+          概述函数整理客户端NewClient &#x2F; DialClientConnClientStream服务端NewClient1. ClientConn这是 gRPC 客户端的核心数据结构之一。ClientConn 表示到 gRPC 服务器的连接，用于发起 RPC 调用。对于流式 RPC，ClientConn 管理底层的 HTTP&#x2F;2 连接，它支持多路复用，允许在同一个连接上并行发送多
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-12 00:00" pubdate>
+              2024-04-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/" class="category-chain-item">network</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/%E5%8D%8F%E8%AE%AE/" class="category-chain-item">协议</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/grpc/">#grpc</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/04/10/mdstorage/domain/k8s/apiserver%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3/" target="_self">
           apiserver问题和解决.md
         </a>
@@ -746,144 +889,6 @@
               <a href="/tags/mermaid/">#mermaid</a>
             
               <a href="/tags/%E6%97%B6%E5%BA%8F%E5%9B%BE/">#时序图</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/03/27/mdstorage/domain/golang/gomodule%E6%8A%80%E5%B7%A7/" target="_self">
-          gomodule技巧.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/27/mdstorage/domain/golang/gomodule%E6%8A%80%E5%B7%A7/" target="_self">
-        <div>
-          replace 将本地目录映射为 package1234567891011replace (	go.etcd.io/etcd/api/v3 =&gt; ./api	go.etcd.io/etcd/client/pkg/v3 =&gt; ./client/pkg	go.etcd.io/etcd/client/v2 =&gt; ./client/internal/v2	go.etcd.io/etcd/
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-27 00:00" pubdate>
-              2024-03-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/golang/" class="category-chain-item">golang</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/golang/">#golang</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/03/27/mdstorage/domain/k8s/etcd%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD/" target="_self">
-          etcd集群安装卸载.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/27/mdstorage/domain/k8s/etcd%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD/" target="_self">
-        <div>
-          集群安装脚本12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-27 00:00" pubdate>
-              2024-03-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/k8s/" class="category-chain-item">k8s</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/etcd/">#etcd</a>
-            
-              <a href="/tags/cluster/">#cluster</a>
             
           </div>
         
