@@ -27,7 +27,7 @@
 <meta property="og:description" content="TODO概述条件调试（Conditional Debugging）是一种调试技术，它允许开发者在程序执行过程中设置特定的条件，只有当这些条件满足时，程序才会中断或触发调试操作。这与传统的断点调试有所不同，传统断点是在代码的某一行设置断点，无论任何情况，只要代码执行到那一行，程序就会暂停。而条件调试则是在断点的基础上增加了条件判断，只有当某些特定的条件满足时，断点才会生效。 在多个协程运行的场景下，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-08-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-12T06:28:12.200Z">
+<meta property="article:modified_time" content="2024-09-13T06:38:45.565Z">
 <meta property="article:author" content="xiaoy">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          926 words
+          913 words
         
       </span>
     
@@ -276,22 +276,22 @@
               <div class="markdown-body">
                 
                 <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>条件调试</strong>（Conditional Debugging）是一种调试技术，它允许开发者在程序执行过程中设置特定的条件，只有当这些条件满足时，程序才会中断或触发调试操作。这与传统的断点调试有所不同，传统断点是在代码的某一行设置断点，无论任何情况，只要代码执行到那一行，程序就会暂停。而条件调试则是在断点的基础上增加了条件判断，只有当某些特定的条件满足时，断点才会生效。</p>
-<p>在<strong>多个协程运行</strong>的场景下，调试特定的协程是一个常见的挑战。特别是在并发编程中，不同协程可能以不同的顺序执行，且它们之间的交互可能导致复杂的竞态条件和难以预见的错误。<strong>条件调试</strong>在此类场景中也非常有用，尤其是当你需要捕捉满足特定条件的协程来进行调试时。</p>
-<h3 id="多协程运行时捕捉特定条件的场景"><a href="#多协程运行时捕捉特定条件的场景" class="headerlink" title="多协程运行时捕捉特定条件的场景"></a>多协程运行时捕捉特定条件的场景</h3><h4 id="场景描述："><a href="#场景描述：" class="headerlink" title="场景描述："></a>场景描述：</h4><p>假设你有一个并发程序，多个协程（goroutine）正在同时运行。你注意到某个错误或不期望的行为发生在特定的协程上，但问题仅在满足某些条件时才会显现。你需要在这些协程中捕捉到这个特定条件并暂停程序，以便进一步分析。</p>
+<p>在<strong>多个协程运行</strong>的场景下，调试特定的协程是一个常见的挑战。特别是在并发编程中，不同协程可能以不同的顺序执行，且它们之间的交互可能导致复杂的竞态条件和难以预见的错误。<strong>条件调试</strong>在此类场景中也非常有用，尤其是当需要捕捉满足特定条件的协程来进行调试时。</p>
+<h3 id="多协程运行时捕捉特定条件的场景"><a href="#多协程运行时捕捉特定条件的场景" class="headerlink" title="多协程运行时捕捉特定条件的场景"></a>多协程运行时捕捉特定条件的场景</h3><h4 id="场景描述："><a href="#场景描述：" class="headerlink" title="场景描述："></a>场景描述：</h4><p>假设有一个并发程序，多个协程（goroutine）正在同时运行。注意到某个错误或不期望的行为发生在特定的协程上，但问题仅在满足某些条件时才会显现。需要在这些协程中捕捉到这个特定条件并暂停程序，以便进一步分析。</p>
 <h4 id="示例场景："><a href="#示例场景：" class="headerlink" title="示例场景："></a>示例场景：</h4><p>考虑以下简单的 Go 代码，其中多个协程并发地处理任务：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;sync&quot;</span><br>	<span class="hljs-string">&quot;time&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">worker</span><span class="hljs-params">(id <span class="hljs-type">int</span>, wg *sync.WaitGroup)</span></span> &#123;<br>	<span class="hljs-keyword">defer</span> wg.Done()<br><br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ &#123;<br>		<span class="hljs-comment">// 模拟某种处理</span><br>		fmt.Printf(<span class="hljs-string">&quot;Worker %d processing task %d\n&quot;</span>, id, i)<br>		time.Sleep(time.Millisecond * <span class="hljs-number">100</span>)<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> wg sync.WaitGroup<br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">5</span>; i++ &#123;<br>		wg.Add(<span class="hljs-number">1</span>)<br>		<span class="hljs-keyword">go</span> worker(i, &amp;wg)<br>	&#125;<br><br>	wg.Wait()<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>在这个例子中，有 5 个协程同时运行，每个协程都会执行一些任务。如果你发现只有当 <code>id == 3</code> 且 <code>i == 5</code> 时程序出现异常，想要捕捉这个特定的协程并进行调试，条件调试就非常有用。</p>
-<h4 id="解决方法：条件断点配合协程调试"><a href="#解决方法：条件断点配合协程调试" class="headerlink" title="解决方法：条件断点配合协程调试"></a>解决方法：条件断点配合协程调试</h4><p>在 IDE 或调试器中，你可以执行以下步骤：</p>
+<p>在这个例子中，有 5 个协程同时运行，每个协程都会执行一些任务。如果发现只有当 <code>id == 3</code> 且 <code>i == 5</code> 时程序出现异常，想要捕捉这个特定的协程并进行调试，条件调试就非常有用。</p>
+<h4 id="解决方法：条件断点配合协程调试"><a href="#解决方法：条件断点配合协程调试" class="headerlink" title="解决方法：条件断点配合协程调试"></a>解决方法：条件断点配合协程调试</h4><p>在 IDE 或调试器中，可以执行以下步骤：</p>
 <ol>
-<li><p><strong>设置条件断点</strong>:<br>在 <code>fmt.Printf</code> 这一行设置断点，并添加条件，例如 <code>id == 3 &amp;&amp; i == 5</code>。这样，当且仅当该条件为 <code>true</code> 时，程序将会暂停。这允许你在多个协程中仅调试满足特定条件的协程，而不干扰其他协程的执行。</p>
+<li><p><strong>设置条件断点</strong>:<br>在 <code>fmt.Printf</code> 这一行设置断点，并添加条件，例如 <code>id == 3 &amp;&amp; i == 5</code>。这样，当且仅当该条件为 <code>true</code> 时，程序将会暂停。这允许在多个协程中仅调试满足特定条件的协程，而不干扰其他协程的执行。</p>
 </li>
-<li><p><strong>使用调试器工具</strong>:<br>如果你在命令行使用调试器（如 GDB），可以使用类似的方法。例如：</p>
+<li><p><strong>使用调试器工具</strong>:<br>如果在命令行使用调试器（如 GDB），可以使用类似的方法。例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">break</span> main.go:10 <span class="hljs-keyword">if</span> <span class="hljs-built_in">id</span> == 3 &amp;&amp; i == 5<br></code></pre></td></tr></table></figure>
 </li>
-<li><p><strong>协程相关信息</strong>:<br>在调试时，查看当前停止的协程（goroutine）的堆栈信息，确认它是否是你关心的那个协程。现代的 Go 调试器（如 GoLand、Delve）通常会支持查看和切换不同的协程，这样你可以进一步确认问题所在的协程。</p>
+<li><p><strong>协程相关信息</strong>:<br>在调试时，查看当前停止的协程（goroutine）的堆栈信息，确认它是否是关心的那个协程。现代的 Go 调试器（如 GoLand、Delve）通常会支持查看和切换不同的协程，这样可以进一步确认问题所在的协程。</p>
 </li>
-<li><p><strong>调试协程间的竞态条件</strong>:<br>在并发程序中，竞态条件是常见的问题。通过条件调试，你可以专注于调试那些特定条件下的协程，捕捉问题的根源。例如，如果你怀疑在某些特定条件下两个协程之间发生了竞态问题，你可以在某个协程运行到特定状态时暂停它，然后切换到其他协程进行检查。</p>
+<li><p><strong>调试协程间的竞态条件</strong>:<br>在并发程序中，竞态条件是常见的问题。通过条件调试，可以专注于调试那些特定条件下的协程，捕捉问题的根源。例如，如果怀疑在某些特定条件下两个协程之间发生了竞态问题，可以在某个协程运行到特定状态时暂停它，然后切换到其他协程进行检查。</p>
 </li>
 </ol>
 <h2 id="具体操作步骤-Goland"><a href="#具体操作步骤-Goland" class="headerlink" title="具体操作步骤(Goland)"></a>具体操作步骤(Goland)</h2><ul>

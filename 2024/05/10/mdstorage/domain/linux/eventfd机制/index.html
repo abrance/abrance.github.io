@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://pic3.zhimg.com/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.gif">
 <meta property="og:image" content="https://abrance.github.io/eventfd_files/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.jpg">
 <meta property="article:published_time" content="2024-05-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-12T06:28:12.184Z">
+<meta property="article:modified_time" content="2024-09-13T06:38:45.553Z">
 <meta property="article:author" content="xiaoy">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic3.zhimg.com/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.gif">
@@ -287,7 +287,7 @@
 <p>思考一个小问题：我们知道“文件”里是保存东西的，eventfd 既然对应了一个“文件”，那么这个“文件”的内容是什么呢？</p>
 <p><strong>划重点：eventfd 是一个计数相关的fd</strong> 。计数不为零是有<strong>可读事件</strong> 发生，<code>read</code> 之后计数会清零，<code>write</code> 则会递增计数器。</p>
 <p>这个怎么理解？</p>
-<p>在之前自制文件系统系列中提到过：文件系统的“文件”是抽象的概念，你看到的一切知识文件系统想让你看到的东西。比如 hellofs<br>中我们没写过任何数据，也会返回 “hello world” 的内容。这个仅仅 hook 到 read&#x2F;write 调用，然后根据逻辑返回数据而已。</p>
+<p>在之前自制文件系统系列中提到过：文件系统的“文件”是抽象的概念，都是文件系统让你看到的东西。比如 hellofs<br>中我们没写过任何数据，也会返回 “hello world” 的内容。这个仅仅 hook 到 read&#x2F;write 调用，然后根据逻辑返回数据而已。</p>
 <p>eventfd 也是如此，eventfd 实现了 read&#x2F;write 的调用，在调用里面实现了一套计数器的逻辑。write 仅仅是加计数，read<br>是读计数，并且清零。</p>
 <p>长什么样子呢？笔者找了个进程来观摩下。</p>
 <pre><code class="hljs">root@ubuntu:~# ll /proc/14168/fd
@@ -302,7 +302,7 @@ int eventfd(unsigned int initval, int flags);
 if (efd == -1)
     handle_error(&quot;eventfd&quot;);
 </code></pre>
-<p>这样就创建出了一个 eventfd 类型的 fd 啦。会在你的 <code>/proc/$&#123;pid&#125;/fd/</code> 目录中有一个 eventfd 类型的句柄。</p>
+<p>这样就创建出了一个 eventfd 类型的 fd 啦。会在 <code>/proc/$&#123;pid&#125;/fd/</code> 目录中有一个 eventfd 类型的句柄。</p>
 <h3 id="eventfd-api-调用？"><a href="#eventfd-api-调用？" class="headerlink" title="eventfd api 调用？"></a><strong>eventfd api 调用？</strong></h3><p>eventfd new 出来之后，总结来说，可以对它做四个事情：</p>
 <ol>
 <li>可以读这个 fd；</li>
@@ -343,11 +343,11 @@ write(efd, &amp;u /* u = 1 */ , 8)
 write(efd, &amp;u /* u = 2 */ , 8)
 write(efd, &amp;u /* u = 3 */ , 8)
 </code></pre>
-<p>你猜猜读的时候，是多少？</p>
+<p>猜猜读的时候，是多少？</p>
 <pre><code class="hljs">read(ebd, &amp;x, 8)
 </code></pre>
 <p>读到的值是 6（因为 1+2+3），理解了吧。</p>
-<p><img src="https://pic3.zhimg.com/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.gif" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://pic3.zhimg.com/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.gif" srcset="/img/loading.gif" lazyload alt="演示"></p>
 <p><img src="/./eventfd_files/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.jpg" srcset="/img/loading.gif" lazyload alt="动图封面"></p>
 <p>小结：</p>
 <ol>

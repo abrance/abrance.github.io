@@ -27,7 +27,7 @@
 <meta property="og:description" content="编译时检查类型实现接口&#x2F;类型断言在 Go 语言中，这行代码 var _ interfaces.CoreServer &#x3D; (*serverService)(nil) 是一种常用的编译时类型断言惯用法。这行代码并不会在运行时创建变量，而是起到两个主要作用：  确保类型实现了接口：它断言 serverService 实现了 interfaces.CoreServer 接口。如果 serverS">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-12T06:28:12.180Z">
+<meta property="article:modified_time" content="2024-09-13T06:38:45.549Z">
 <meta property="article:author" content="xiaoy">
 <meta property="article:tag" content="golang">
 <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          496 words
+          495 words
         
       </span>
     
@@ -283,7 +283,7 @@
 <li><p><strong>文档作用</strong>：这行代码还作为明确的文档说明。它向阅读代码的开发人员清楚地显示 <code>serverService</code> 旨在实现 <code>interfaces.CoreServer</code> 接口。在大型代码库中，这种表示方法特别有用，因为接口及其实现之间的关系可能不会立即清楚。</p>
 </li>
 </ol>
-<p>本质上，这是一个静态检查，确保 <code>serverService</code> 正确实现了 <code>interfaces.CoreServer</code> 接口。如果实现缺少任何方法，你将在编译时而不是运行时发现错误。</p>
+<p>本质上，这是一个静态检查，确保 <code>serverService</code> 正确实现了 <code>interfaces.CoreServer</code> 接口。如果实现缺少任何方法，将在编译时而不是运行时发现错误。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> serverService <span class="hljs-keyword">struct</span> &#123;<br>	corev1.UnimplementedCoreServiceServer<br>	ctx     context.Context<br>	options options.SrviceOption<br>	streams <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]corev1.CoreService_AgentServer<br>	mu      sync.RWMutex<br>&#125;<br><br><span class="hljs-keyword">var</span> _ interfaces.CoreServer = (*serverService)(<span class="hljs-literal">nil</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewServerService</span><span class="hljs-params">(ctx context.Context, options options.SrviceOption)</span></span> interfaces.CoreServer &#123;<br>	<span class="hljs-keyword">return</span> &amp;serverService&#123;<br>		ctx:     ctx,<br>		options: options,<br>		streams: <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]corev1.CoreService_AgentServer),<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 

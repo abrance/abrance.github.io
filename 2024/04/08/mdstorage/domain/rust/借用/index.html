@@ -19,15 +19,15 @@
   <meta name="author" content="xiaoy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="借用Rust 中的借用（borrowing）是一种使得程序能够通过引用访问数据，而不取得数据的所有权的机制。这对于 Rust 的内存安全特性至关重要。借用分为两种：不可变借用和可变借用。以下是两种借用的简单示例： 不可变借用不可变借用允许你读取数据但不能修改它。你可以有多个不可变引用指向同一数据，因为它们都不会改变数据。 123456789101112131415fn main() &#123;">
+    <meta name="description" content="借用Rust 中的借用（borrowing）是一种使得程序能够通过引用访问数据，而不取得数据的所有权的机制。这对于 Rust 的内存安全特性至关重要。借用分为两种：不可变借用和可变借用。以下是两种借用的简单示例： 不可变借用不可变借用允许读取数据但不能修改它。可以有多个不可变引用指向同一数据，因为它们都不会改变数据。 123456789101112131415fn main() &#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="借用.md">
 <meta property="og:url" content="https://abrance.github.io/2024/04/08/mdstorage/domain/rust/%E5%80%9F%E7%94%A8/index.html">
 <meta property="og:site_name" content="Xiaoy">
-<meta property="og:description" content="借用Rust 中的借用（borrowing）是一种使得程序能够通过引用访问数据，而不取得数据的所有权的机制。这对于 Rust 的内存安全特性至关重要。借用分为两种：不可变借用和可变借用。以下是两种借用的简单示例： 不可变借用不可变借用允许你读取数据但不能修改它。你可以有多个不可变引用指向同一数据，因为它们都不会改变数据。 123456789101112131415fn main() &#123;">
+<meta property="og:description" content="借用Rust 中的借用（borrowing）是一种使得程序能够通过引用访问数据，而不取得数据的所有权的机制。这对于 Rust 的内存安全特性至关重要。借用分为两种：不可变借用和可变借用。以下是两种借用的简单示例： 不可变借用不可变借用允许读取数据但不能修改它。可以有多个不可变引用指向同一数据，因为它们都不会改变数据。 123456789101112131415fn main() &#123;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-07T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-12T06:28:12.200Z">
+<meta property="article:modified_time" content="2024-09-13T06:38:45.565Z">
 <meta property="article:author" content="xiaoy">
 <meta property="article:tag" content="rust">
 <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          503 words
+          499 words
         
       </span>
     
@@ -277,11 +277,11 @@
               <div class="markdown-body">
                 
                 <h2 id="借用"><a href="#借用" class="headerlink" title="借用"></a>借用</h2><p>Rust 中的借用（borrowing）是一种使得程序能够通过引用访问数据，而不取得数据的所有权的机制。这对于 Rust 的内存安全特性至关重要。借用分为两种：不可变借用和可变借用。以下是两种借用的简单示例：</p>
-<h3 id="不可变借用"><a href="#不可变借用" class="headerlink" title="不可变借用"></a>不可变借用</h3><p>不可变借用允许你读取数据但不能修改它。你可以有多个不可变引用指向同一数据，因为它们都不会改变数据。</p>
+<h3 id="不可变借用"><a href="#不可变借用" class="headerlink" title="不可变借用"></a>不可变借用</h3><p>不可变借用允许读取数据但不能修改它。可以有多个不可变引用指向同一数据，因为它们都不会改变数据。</p>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">s</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br><br>    <span class="hljs-comment">// 不可变借用</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">len</span> = <span class="hljs-title function_ invoke__">calculate_length</span>(&amp;s);<br><br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;The length of &#x27;&#123;&#125;&#x27; is &#123;&#125;.&quot;</span>, s, len);<br>&#125;<br><br><span class="hljs-comment">// `s` 是对 `String` 的不可变引用</span><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">calculate_length</span>(s: &amp;<span class="hljs-type">String</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">usize</span> &#123;<br>    s.<span class="hljs-title function_ invoke__">len</span>()<br>    <span class="hljs-comment">// s 在这里离开作用域，但因为它并不拥有所引用的数据，</span><br>    <span class="hljs-comment">// 所以什么也不会发生</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>在这个例子中，<code>calculate_length</code> 函数通过不可变引用接受一个字符串。它可以读取字符串的长度，但不能修改字符串本身。</p>
-<h3 id="可变借用"><a href="#可变借用" class="headerlink" title="可变借用"></a>可变借用</h3><p>与不可变借用不同，可变借用允许你修改数据。在任何给定时刻，你只能拥有一个数据的可变引用（这防止了数据竞争），除非使用特定的并发类型。</p>
+<h3 id="可变借用"><a href="#可变借用" class="headerlink" title="可变借用"></a>可变借用</h3><p>与不可变借用不同，可变借用允许修改数据。在任何给定时刻，只能拥有一个数据的可变引用（这防止了数据竞争），除非使用特定的并发类型。</p>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">s</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br><br>    <span class="hljs-comment">// 可变借用</span><br>    <span class="hljs-title function_ invoke__">change</span>(&amp;<span class="hljs-keyword">mut</span> s);<br><br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Changed string is &#x27;&#123;&#125;&#x27;.&quot;</span>, s);<br>&#125;<br><br><span class="hljs-comment">// `s` 是对 `String` 的可变引用</span><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">change</span>(s: &amp;<span class="hljs-keyword">mut</span> <span class="hljs-type">String</span>) &#123;<br>    s.<span class="hljs-title function_ invoke__">push_str</span>(<span class="hljs-string">&quot;, world&quot;</span>);<br>    <span class="hljs-comment">// s 在这里离开作用域并释放借用，但不会释放数据本身，</span><br>    <span class="hljs-comment">// 因为它并不拥有数据</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>在这个例子中，<code>change</code> 函数通过可变引用接受一个字符串，并修改它。需要注意的是，<code>s</code> 在 <code>main</code> 函数中被声明为可变的（<code>mut s</code>），因为我们需要通过引用修改它。</p>

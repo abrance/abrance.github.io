@@ -27,7 +27,7 @@
 <meta property="og:description" content="概念1. Widgets 基础: 在 Flutter 中，几乎所有东西都是一个 Widget —— 它是构建界面的基本单位。Widgets 描述了它们在当前配置和状态下应该呈现的 UI。 类型: 有两种主要类型的 Widgets —— StatelessWidget 和 StatefulWidget。StatelessWidget 不变，而 StatefulWidget 持有状态，并且可以在其生命">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-12T06:28:12.196Z">
+<meta property="article:modified_time" content="2024-09-13T06:38:45.561Z">
 <meta property="article:author" content="xiaoy">
 <meta property="article:tag" content="dart">
 <meta property="article:tag" content="flutter">
@@ -319,7 +319,7 @@
 <li>支持多语言和本地文化，确保应用可以在全球范围内使用。</li>
 </ul>
 <h3 id="12-Flutter-2-0-之后的新特性"><a href="#12-Flutter-2-0-之后的新特性" class="headerlink" title="12. Flutter 2.0 之后的新特性"></a>12. <strong>Flutter 2.0 之后的新特性</strong></h3><ul>
-<li>如果你已经是 Flutter 的经验开发者，那么了解自 Flutter 2.0 以来引入的新特性（如空安全、新的渲染引擎等）也很重要。</li>
+<li>Flutter 的有经验的开发者，了解自 Flutter 2.0 以来引入的新特性（如空安全、新的渲染引擎等）也很重要。</li>
 </ul>
 <h2 id="StatefulWidget"><a href="#StatefulWidget" class="headerlink" title="StatefulWidget"></a>StatefulWidget</h2><p>在 Flutter 中，<code>StatefulWidget</code> 是一种当其状态可能在其生命周期内发生变化时使用的 Widget。以下是一个<code>StatefulWidget</code>的示例，它演示了一个简单的计数器应用，以及对其各部分的解释：</p>
 <h3 id="示例：简单计数器"><a href="#示例：简单计数器" class="headerlink" title="示例：简单计数器"></a>示例：简单计数器</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/material.dart&#x27;</span>;<br><br><span class="hljs-keyword">void</span> main() &#123;<br>  runApp(MyApp());<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> MaterialApp(<br>      title: <span class="hljs-string">&#x27;Stateful Widget Demo&#x27;</span>,<br>      home: CounterScreen(),<br>    );<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CounterScreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatefulWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  _CounterScreenState createState() =&gt; _CounterScreenState();<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_CounterScreenState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">State</span>&lt;<span class="hljs-title">CounterScreen</span>&gt; </span>&#123;<br>  <span class="hljs-built_in">int</span> _counter = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-keyword">void</span> _incrementCounter() &#123;<br>    setState(() &#123;<br>      _counter++;<br>    &#125;);<br>  &#125;<br><br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> Scaffold(<br>      appBar: AppBar(<br>        title: Text(<span class="hljs-string">&#x27;Stateful Widget Example&#x27;</span>),<br>      ),<br>      body: Center(<br>        child: Column(<br>          mainAxisAlignment: MainAxisAlignment.center,<br>          children: &lt;Widget&gt;[<br>            Text(<span class="hljs-string">&#x27;You have pushed the button this many times:&#x27;</span>),<br>            Text(<br>              <span class="hljs-string">&#x27;<span class="hljs-subst">$_counter</span>&#x27;</span>,<br>              style: Theme.of(context).textTheme.headline4,<br>            ),<br>          ],<br>        ),<br>      ),<br>      floatingActionButton: FloatingActionButton(<br>        onPressed: _incrementCounter,<br>        tooltip: <span class="hljs-string">&#x27;Increment&#x27;</span>,<br>        child: Icon(Icons.add),<br>      ),<br>    );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -333,7 +333,7 @@
 </li>
 <li><p><strong>CounterScreen 类</strong>:</p>
 <ul>
-<li><code>CounterScreen</code> 是一个 <code>StatefulWidget</code>。当你需要根据用户交互或其他因素来改变 Widget 的显示时，你应该使用 <code>StatefulWidget</code>。</li>
+<li><code>CounterScreen</code> 是一个 <code>StatefulWidget</code>。当需要根据用户交互或其他因素来改变 Widget 的显示时，应该使用 <code>StatefulWidget</code>。</li>
 <li>它重写了 <code>createState</code> 方法来创建 <code>_CounterScreenState</code> 的实例。</li>
 </ul>
 </li>
@@ -356,7 +356,7 @@
 <li>使用 <code>setState</code> 来更新状态，这会导致 Flutter 重建 UI。</li>
 <li>尽量保持 <code>State</code> 对象的简洁，避免过度膨胀。</li>
 </ul>
-<p>通过使用 <code>StatefulWidget</code>，你可以创建可以动态改变的交互式界面。在上面的例子中，每次点击按钮，计数器的值都会增加，并且界面会相应地更新显示新的值。</p>
+<p>通过使用 <code>StatefulWidget</code>，可以创建可以动态改变的交互式界面。在上面的例子中，每次点击按钮，计数器的值都会增加，并且界面会相应地更新显示新的值。</p>
 <h2 id="StatelessWidget"><a href="#StatelessWidget" class="headerlink" title="StatelessWidget"></a>StatelessWidget</h2><p>在 Flutter 中，<code>StatelessWidget</code> 是一种不可变的 widget，它不会改变其状态。它非常适合用于不需要响应任何内部状态改变的 UI 部分。以下是一个简单的 <code>StatelessWidget</code> 最佳实践示例，以及对其各部分的解释：</p>
 <h3 id="显示静态文本的-StatelessWidget"><a href="#显示静态文本的-StatelessWidget" class="headerlink" title="显示静态文本的 StatelessWidget"></a>显示静态文本的 StatelessWidget</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/material.dart&#x27;</span>;<br><br><span class="hljs-keyword">void</span> main() &#123;<br>  runApp(MyApp());<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> MaterialApp(<br>      title: <span class="hljs-string">&#x27;Stateless Widget Demo&#x27;</span>,<br>      home: Scaffold(<br>        appBar: AppBar(<br>          title: Text(<span class="hljs-string">&#x27;Stateless Widget Example&#x27;</span>),<br>        ),<br>        body: Center(<br>          child: GreetingText(),<br>        ),<br>      ),<br>    );<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GreetingText</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> Text(<br>      <span class="hljs-string">&#x27;Hello, Flutter!&#x27;</span>,<br>      style: TextStyle(fontSize: <span class="hljs-number">24</span>, fontWeight: FontWeight.bold),<br>    );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -430,14 +430,14 @@
 </ul>
 <p>通过使用 <code>StatefulWidget</code> 和 <code>State</code> 类，您可以创建动态且响应式的用户界面，其内容可以根据用户交互或内部状态的变化而改变。</p>
 <p>要使另一个 <code>StatefulWidget</code> 监听 <code>_counter</code> 变量的变化，我们需要使用一种状态管理解决。在 Flutter 中，有多种方式来实现跨 widget 的状态共享和监听，例如使用 <code>Provider</code>、<code>InheritedWidget</code>、<code>Bloc</code> 或简单的回调。以下是使用回调和 <code>Provider</code> 包的两种方法：</p>
-<h3 id="方法-1-使用回调"><a href="#方法-1-使用回调" class="headerlink" title="方法 1: 使用回调"></a>方法 1: 使用回调</h3><p>如果你只需要简单地在几个 widget 之间共享状态，可以使用回调函数。</p>
+<h3 id="方法-1-使用回调"><a href="#方法-1-使用回调" class="headerlink" title="方法 1: 使用回调"></a>方法 1: 使用回调</h3><p>如果只需要简单地在几个 widget 之间共享状态，可以使用回调函数。</p>
 <p>首先，修改 <code>CounterScreen</code>，使它接受一个回调函数，并在 <code>_incrementCounter</code> 方法中调用这个回调：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CounterScreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatefulWidget</span> </span>&#123;<br>  <span class="hljs-keyword">final</span> <span class="hljs-built_in">Function</span>(<span class="hljs-built_in">int</span>) onCounterChanged;<br><br>  CounterScreen(&#123;<span class="hljs-keyword">this</span>.onCounterChanged&#125;);<br><br>  <span class="hljs-meta">@override</span><br>  _CounterScreenState createState() =&gt; _CounterScreenState();<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_CounterScreenState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">State</span>&lt;<span class="hljs-title">CounterScreen</span>&gt; </span>&#123;<br>  <span class="hljs-built_in">int</span> _counter = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-keyword">void</span> _incrementCounter() &#123;<br>    setState(() &#123;<br>      _counter++;<br>    &#125;);<br>    widget.onCounterChanged?.call(_counter);<br>  &#125;<br><br>  <span class="hljs-comment">// ... 其他代码保持不变</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>然后，在创建 <code>CounterScreen</code> 的地方，传递一个处理 <code>_counter</code> 变化的回调函数：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dart">CounterScreen(<br>  onCounterChanged: (newCounterValue) &#123;<br>    <span class="hljs-comment">// 处理 _counter 变化的逻辑</span><br>  &#125;,<br>)<br></code></pre></td></tr></table></figure>
 
-<h3 id="方法-2-使用-Provider"><a href="#方法-2-使用-Provider" class="headerlink" title="方法 2: 使用 Provider"></a>方法 2: 使用 Provider</h3><p>对于更复杂的应用，你可能想要使用 <code>Provider</code> 包来更优雅地管理状态。</p>
+<h3 id="方法-2-使用-Provider"><a href="#方法-2-使用-Provider" class="headerlink" title="方法 2: 使用 Provider"></a>方法 2: 使用 Provider</h3><p>对于更复杂的应用，可能想要使用 <code>Provider</code> 包来更优雅地管理状态。</p>
 <ol>
 <li><p><strong>添加 Provider 依赖</strong>：<br>在 <code>pubspec.yaml</code> 文件中添加 <code>provider</code> 包的依赖。</p>
 </li>
@@ -447,7 +447,7 @@
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CounterModel</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ChangeNotifier</span> </span>&#123;<br>  <span class="hljs-built_in">int</span> _counter = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-built_in">int</span> <span class="hljs-keyword">get</span> counter =&gt; _counter;<br><br>  <span class="hljs-keyword">void</span> incrementCounter() &#123;<br>    _counter++;<br>    notifyListeners();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ol start="3">
-<li><strong>在应用顶层使用 ChangeNotifierProvider</strong>：<br>在 <code>main.dart</code> 或最顶层 widget 中，使用 <code>ChangeNotifierProvider</code> 包裹你的应用或特定屏幕。</li>
+<li><strong>在应用顶层使用 ChangeNotifierProvider</strong>：<br>在 <code>main.dart</code> 或最顶层 widget 中，使用 <code>ChangeNotifierProvider</code> 包裹的应用或特定屏幕。</li>
 </ol>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main() &#123;<br>  runApp(<br>    ChangeNotifierProvider(<br>      create: (context) =&gt; CounterModel(),<br>      child: MyApp(),<br>    ),<br>  );<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -457,13 +457,13 @@
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_CounterScreenState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">State</span>&lt;<span class="hljs-title">CounterScreen</span>&gt; </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">final</span> counterModel = Provider.of&lt;CounterModel&gt;(context, listen: <span class="hljs-keyword">false</span>);<br><br>    <span class="hljs-keyword">return</span> Scaffold(<br>      <span class="hljs-comment">// ... UI代码</span><br>      floatingActionButton: FloatingActionButton(<br>        onPressed: () =&gt; counterModel.incrementCounter(),<br>        tooltip: <span class="hljs-string">&#x27;Increment&#x27;</span>,<br>        child: Icon(Icons.add),<br>      ),<br>    );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ol start="5">
-<li><strong>在其他 widget 中监听变化</strong>：<br>在另一个 <code>StatefulWidget</code> 中，你可以使用 <code>Provider.of</code> 来监听 <code>_counter</code> 的变化。</li>
+<li><strong>在其他 widget 中监听变化</strong>：<br>在另一个 <code>StatefulWidget</code> 中，可以使用 <code>Provider.of</code> 来监听 <code>_counter</code> 的变化。</li>
 </ol>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-meta">@override</span><br>Widget build(BuildContext context) &#123;<br>  <span class="hljs-built_in">int</span> counter = Provider.of&lt;CounterModel&gt;(context).counter; <span class="hljs-comment">// 自动监听变化</span><br><br>  <span class="hljs-comment">// 使用 counter 构建 UI</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>使用 <code>Provider</code>，你可以在应用的不同部分中共享和监听 <code>CounterModel</code> 的状态，从而实现跨 widget 的状态同步。这种方法适合于更复杂或更大型的应用，它有助于保持代码的清晰和组织。</p>
+<p>使用 <code>Provider</code>，可以在应用的不同部分中共享和监听 <code>CounterModel</code> 的状态，从而实现跨 widget 的状态同步。这种方法适合于更复杂或更大型的应用，它有助于保持代码的清晰和组织。</p>
 <h2 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h2><p><code>Provider</code> 是 Flutter 中一种流行的状态管理解决方案，它允许数据和状态跨 widget 树高效地共享和更新。以下是使用 <code>Provider</code> 的一个最佳实践示例，以及对其各部分的解释：</p>
-<h3 id="示例：计数器应用"><a href="#示例：计数器应用" class="headerlink" title="示例：计数器应用"></a>示例：计数器应用</h3><p>首先，在你的 Flutter 项目的 <code>pubspec.yaml</code> 文件中添加 <code>provider</code> 作为依赖项：</p>
+<h3 id="示例：计数器应用"><a href="#示例：计数器应用" class="headerlink" title="示例：计数器应用"></a>示例：计数器应用</h3><p>首先，在的 Flutter 项目的 <code>pubspec.yaml</code> 文件中添加 <code>provider</code> 作为依赖项：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">dependencies:</span><br>  <span class="hljs-attr">flutter:</span><br>    <span class="hljs-attr">sdk:</span> <span class="hljs-string">flutter</span><br>  <span class="hljs-attr">provider:</span> <span class="hljs-string">^5.0.0</span> <span class="hljs-comment"># 请使用最新版本</span><br></code></pre></td></tr></table></figure>
 
 <p>然后，创建一个简单的计数器模型：</p>
@@ -505,7 +505,7 @@
 <li><strong>使用 <code>Consumer</code> 或 <code>Provider.of</code> 来访问模型</strong>：在需要接收模型数据的 widget 中，使用 <code>Consumer</code> 或 <code>context.watch/read</code> 来获取并使用模型数据。</li>
 <li><strong>分离 UI 和业务逻辑</strong>：通过将状态管理从 UI 代码中分离出来，让代码更易于维护和测试。</li>
 </ul>
-<p>通过这种方式使用 <code>Provider</code>，你可以在应用中有效地管理和共享状态，同时保持代码的清晰和组织。</p>
+<p>通过这种方式使用 <code>Provider</code>，可以在应用中有效地管理和共享状态，同时保持代码的清晰和组织。</p>
 <h2 id="MaterialApp"><a href="#MaterialApp" class="headerlink" title="MaterialApp"></a>MaterialApp</h2><p><code>MaterialApp</code> 是 Flutter 中一个非常重要的 widget，它将多个用于构建 Material Design 应用的 widgets 封装在一起。理解 <code>MaterialApp</code> 的最佳实践和使用场景对于高效地开发 Flutter 应用至关重要。</p>
 <h3 id="最佳实践-1"><a href="#最佳实践-1" class="headerlink" title="最佳实践"></a>最佳实践</h3><ol>
 <li><p><strong>应用的入口</strong>: 将 <code>MaterialApp</code> 作为应用的根 Widget。通常在 <code>main.dart</code> 文件的 <code>main</code> 函数中通过 <code>runApp</code> 方法启动。</p>
@@ -522,11 +522,11 @@
 </li>
 </ol>
 <h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
-<li><p><strong>标准 Material Design 应用</strong>: 当你需要构建符合 Material Design 指南的应用时，<code>MaterialApp</code> 提供了一套现成的解决方案。</p>
+<li><p><strong>标准 Material Design 应用</strong>: 当需要构建符合 Material Design 指南的应用时，<code>MaterialApp</code> 提供了一套现成的解决方案。</p>
 </li>
 <li><p><strong>多页面路由管理</strong>: 对于拥有多个页面和复杂路由需求的应用，<code>MaterialApp</code> 提供了路由管理的功能，简化了页面间的导航。</p>
 </li>
-<li><p><strong>主题统一管理</strong>: 在需要统一管理应用级别样式和主题时，<code>MaterialApp</code> 允许你在一个地方定义整个应用的外观。</p>
+<li><p><strong>主题统一管理</strong>: 在需要统一管理应用级别样式和主题时，<code>MaterialApp</code> 允许在一个地方定义整个应用的外观。</p>
 </li>
 <li><p><strong>国际化应用</strong>: 当应用需要支持多种语言时，<code>MaterialApp</code> 通过本地化代理简化了这个过程。</p>
 </li>
@@ -542,7 +542,7 @@
 </ul>
 <h3 id="2-theme"><a href="#2-theme" class="headerlink" title="2. theme"></a>2. <code>theme</code></h3><ul>
 <li><strong>类型</strong>: <code>ThemeData</code></li>
-<li><strong>含义</strong>: 应用的默认主题。你可以通过此参数定义应用的基本风格，如颜色、字体样式、按钮样式等。</li>
+<li><strong>含义</strong>: 应用的默认主题。可以通过此参数定义应用的基本风格，如颜色、字体样式、按钮样式等。</li>
 </ul>
 <h3 id="3-color"><a href="#3-color" class="headerlink" title="3. color"></a>3. <code>color</code></h3><ul>
 <li><strong>类型</strong>: <code>Color</code></li>
@@ -638,8 +638,8 @@
 </li>
 </ul>
 <h3 id="7-其他配置"><a href="#7-其他配置" class="headerlink" title="7. 其他配置"></a>7. <strong>其他配置</strong></h3><p>还可以包括其他配置，如 <code>publish_to</code>（定义是否应将包发布到 pub.dev）、自定义脚本等。</p>
-<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p><code>pubspec.yaml</code> 文件是项目的核心，用于管理项目的依赖项、版本和其他重要设置。当你运行 <code>flutter pub get</code> 命令时，Flutter 会查看 <code>pubspec.yaml</code> 文件并下载所需的依赖包。这个文件对于项目的构建和打包也至关重要。</p>
-<p>简而言之，<code>pubspec.yaml</code> 是 Dart 和 Flutter 项目的蓝图，它告诉 Flutter 如何正确构建和运行你的应用。</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p><code>pubspec.yaml</code> 文件是项目的核心，用于管理项目的依赖项、版本和其他重要设置。当运行 <code>flutter pub get</code> 命令时，Flutter 会查看 <code>pubspec.yaml</code> 文件并下载所需的依赖包。这个文件对于项目的构建和打包也至关重要。</p>
+<p>简而言之，<code>pubspec.yaml</code> 是 Dart 和 Flutter 项目的蓝图，它告诉 Flutter 如何正确构建和运行的应用。</p>
 
                 
               </div>

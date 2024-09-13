@@ -27,7 +27,7 @@
 <meta property="og:description" content="概述僵尸进程：在 Unix&#x2F;Linux 系统中，当一个进程终止时，它的父进程还没有通过调用 wait() 系统调用读取其退出状态，那么这个进程就会成为僵尸进程。僵尸进程本身已经停止运行，但仍然在进程表中占据一个条目，以便父进程能够读取其退出状态。 &lt;defunct&gt;：在 ps 的输出中，&lt;defunct&gt; 表示该进程已经终止，但是它的父进程还没有读取并处理它的退出状态。此时">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-09-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-12T06:28:12.188Z">
+<meta property="article:modified_time" content="2024-09-13T06:38:45.553Z">
 <meta property="article:author" content="xiaoy">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          392 words
+          391 words
         
       </span>
     
@@ -281,7 +281,7 @@
 </code></pre>
 <h2 id="如何处理僵尸进程"><a href="#如何处理僵尸进程" class="headerlink" title="如何处理僵尸进程"></a>如何处理僵尸进程</h2><pre><code class="hljs">自动清理：一般情况下，僵尸进程会在父进程通过 wait() 函数获取它的退出状态后被清理掉。如果父进程在不久后结束，僵尸进程也会随之被清理。
 手动处理：
-    终止父进程：如果父进程没有正确处理僵尸进程，你可以尝试终止父进程。这样，init 进程（PID 1）会继承这些僵尸进程，并会立即清理它们。
+    终止父进程：如果父进程没有正确处理僵尸进程，可以尝试终止父进程。这样，init 进程（PID 1）会继承这些僵尸进程，并会立即清理它们。
     检查父进程是否卡住：如果有大量僵尸进程，可能意味着其父进程卡住或陷入了某种错误状态。你可能需要调查和解决父进程的问题。
 </code></pre>
 
