@@ -1,0 +1,922 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概述整理 installer-sr-server 使用的数据库逻辑 数据库managerclassDiagram direction LR class card_ip_mask &#123;    varchar(32) engine_serial  &#x2F;* 引擎序列号 *&#x2F;    varchar(16) node_ip  &#x2F;* 节点ip *&#x2F;    text ip_masks    datetim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="installer db整理.md">
+<meta property="og:url" content="https://abrance.github.io/2024/06/24/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%20db%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="概述整理 installer-sr-server 使用的数据库逻辑 数据库managerclassDiagram direction LR class card_ip_mask &#123;    varchar(32) engine_serial  &#x2F;* 引擎序列号 *&#x2F;    varchar(16) node_ip  &#x2F;* 节点ip *&#x2F;    text ip_masks    datetim">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-14T23:05:16.823Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>installer db整理.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="installer db整理.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-24 00:00" pubdate>
+          June 24, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">installer db整理.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>整理 installer-sr-server 使用的数据库逻辑</p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="manager"><a href="#manager" class="headerlink" title="manager"></a>manager</h3><pre><code class=" mermaid">classDiagram
+direction LR
+class card_ip_mask &#123;
+   varchar(32) engine_serial  /* 引擎序列号 */
+   varchar(16) node_ip  /* 节点ip */
+   text ip_masks
+   datetime create_at
+   bigint id
+&#125;
+class t_agent &#123;
+   varchar(100) name
+   varchar(45) ip
+   bigint mirror_id
+   varchar(320) capture_iface
+   text iface
+   text capture_filter
+   varchar(10) filter_mode
+   tinyint(1) auto_suspend
+   tinyint system_cpu_overlimit
+   tinyint system_cpu_recover
+   tinyint system_mem_overlimit
+   tinyint system_mem_recover
+   tinyint agent_cpu_overlimit
+   tinyint agent_mem_overlimit
+   bigint access_time
+   bigint install_time
+   varchar(20) running_status
+   int reason
+   varchar(36) uuid
+&#125;
+class t_cert &#123;
+   varchar(32) name  /* 名称 */
+   varchar(32) key_name  /* 私钥名称 */
+   varchar(32) cert_name  /* 证书名称 */
+   text key
+   text cert
+   datetime create_at
+   bigint id
+&#125;
+class t_engine &#123;
+   install_type  /* 安装类型(1 代表在线 2 代表离线) */ tinyint
+   engine_type  /* 引擎类型(1 代表默认的引擎，2 代表边车引擎) */ tinyint
+   varchar(64) serial_number  /* 引擎序列号 */
+   datetime expire_time  /* 过期时间 */
+   varchar(64) engine_name  /* 引擎名称 */
+   varchar(64) engine_name_in_license  /* 授权文件中的引擎名 */
+   varchar(64) latest_version  /* 可升级包版本 */
+   varchar(64) current_version  /* 当前引擎版本 */
+   varchar(64) source  /* 来源 */
+   varchar(64) public_time  /* 发布时间 */
+   int major  /* 主版本号 */
+   int minor  /* 次版本号 */
+   int build  /* 内部版本号 */
+   tinyint delete_flag  /* 删除标记 0 未删除 1 删除 */
+   datetime create_at  /* 创建时间 */
+   datetime update_at  /* 更新时间 */
+   status  /* 状态(0 未定义,1 正常,2 已撤销) */ tinyint
+   varchar(1024) machine_code  /* 机器码 */
+   varchar(16) machine_ip  /* 机器ip */
+   bigint id
+&#125;
+class t_engine_global_param &#123;
+   bigint engine  /* 所属引擎 */
+   tinyint deploy_mode  /* 安装模式 1 默认模式 2 透明部署 3 路由模式 */
+   bigint process_id  /* 归属安装进程id */
+   int admin_virtual_router_id  /* 管理端虚拟路由id */
+   int data_virtual_router_id  /* 数据段虚拟路由id */
+   varchar(128) vip  /* 管理面浮动ip */
+   varchar(128) gateway_ip  /* 网关ip */
+   bridge_ip  /* 网桥ip(透明部署) */ varchar(128)
+   bridge_gateway  /* 网桥网关(透明部署) */ varchar(128)
+   network_device1  /* 网卡设备1(透明部署) */ varchar(128)
+   network_device2  /* 网卡设备2(透明部署) */ varchar(128)
+   varchar(128) upstream_bind_source_address  /* 上游绑定地址 */
+   is_transparent_deployment  /* 是否透明部署(2 否 1 是) */ tinyint
+   tinyint is_straight_through  /* 是否开通直通 2 否 1 是 */
+   tinyint mode  /* 节点模式, 0/1 单节点/三节点 */
+   varchar(255) cert_name  /* 证书名称 */
+   varchar(1024) cert_path  /* 证书路径 */
+   varchar(1024) cert_url  /* 证书url */
+   varchar(128) cert_hash  /* 证书hash */
+   int master_node_id  /* 安装时选定的管理面主节点，不一定永远是主节点 */
+   varchar(2048) token  /* 用来访问apiserver */
+   varchar(2048) token_csv  /* tokencsv */
+   varchar(4096) ca_base64  /* caBase64 */
+   varchar(2048) salt  /* 盐 */
+   varchar(2048) secret
+   varchar(32) sky_working_oap_addr  /* skyWorking地址 */
+   text bound_tls_key  /* 业务私钥 */
+   text bound_tls_cert  /* 业务公钥 */
+   varchar(32) tls_key_name  /* 私钥名称 */
+   varchar(32) tls_cert_name  /* 公钥名称 */
+   text out_bound_tls_key  /* 业务私钥 */
+   text out_bound_tls_cert  /* 业务公钥 */
+   varchar(32) out_tls_key_name  /* 私钥名称 */
+   varchar(32) out_tls_cert_name  /* 公钥名称 */
+   text cluster_info  /* 集群信息 */
+   tinyint version_tag
+   datetime create_at  /* 创建时间 */
+   datetime update_at  /* 更新时间 */
+   bigint id
+&#125;
+class t_engine_install_processes &#123;
+   action_type  /* 执行动作类型(1 安装 2 添加节点 3 升级 4 回退 5 卸载 6 删除节点) */ tinyint
+   int engine  /* 归属引擎id */
+   varchar(64) name  /* 安装进程名 */
+   tinyint status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
+   varchar(64) se_version  /* 引擎版本 */
+   int major  /* 主版本号 */
+   int minor  /* 次版本号 */
+   int build  /* 内部版本号 */
+   datetime create_at  /* 创建时间 */
+   datetime update_at  /* 更新时间 */
+   bigint id
+&#125;
+class t_engine_nodes &#123;
+   varchar(16) ipv4  /* 节点ip */
+   varchar(20) ip_mask  /* ip加子网掩码 */
+   int engine  /* 归属引擎的id */
+   int ssh_port  /* ssh端口 */
+   varchar(255) ssh_username  /* ssh用户 */
+   varchar(255) ssh_password  /* ssh密码 */
+   is_se_m  /* 是否是管理面节点 (2 不是 1 是) */ tinyint
+   tinyint sem_delete_flag  /* sem删除标记 */
+   is_se_s  /* 是否是数据面高可用节点(2 不是 1 是) */ tinyint
+   tinyint ses_delete_flag  /* ses删除标记 */
+   is_se_w  /* 是否是工作节点(2 不是 1 是) */ tinyint
+   tinyint sew_delete_flag  /* sew删除标记 */
+   tinyint is_side_car  /* 是否是边车引擎节点 */
+   tinyint is_sew_route  /* 是否是路由模式工作节点 */
+   tinyint sew_route_delete_flag  /* sewRoute删除标记 */
+   varchar(128) se_m_network_card  /* 管理面节点网卡 */
+   varchar(128) se_m_network_card_all  /* 管里面节点网卡加ip */
+   varchar(128) se_s_network_card  /* 数据面节点网卡 */
+   varchar(128) se_s_network_card_all  /* 数据面节点网卡加ip */
+   varchar(128) se_w_network_card  /* 工作节点网卡 */
+   varchar(128) se_w_network_card_all  /* 工作节点网卡加ip */
+   varchar(128) sew_route_network_card  /* 路由模式工作节点网卡 */
+   varchar(128) sew_route_network_card_all  /* 路由模式工作节点网卡加ip */
+   varchar(255) sew_package_serial  /* sew包序列号 */
+   tinyint is_agent_installed  /* 是否已安装agent */
+   varchar(255) name  /* 节点名称 */
+   varchar(64) uuid  /* 节点UUID */
+   int delete_flag
+   text business_port
+   text export_traffic_port
+   varchar(64) os_version  /* 节点操作系统版本 */
+   varchar(255) package_os_version  /* 包归属操作系统版本 */
+   bigint package_id  /* 包id */
+   datetime create_at  /* 创建时间 */
+   datetime update_at  /* 更新时间 */
+   varchar(128) data_nic_ip  /* 数据面业务口ip */
+   bigint id
+&#125;
+class t_engine_packages &#123;
+   int engine_id  /* 所属引擎的id */
+   is_use_replication  /* 包是否可复用 (1 可复用 2 不可 3 其他) */ tinyint
+   int used  /* 已经使用次数 */
+   max_use  /* 最大使用次数(0 不限制使用次数) 默认值为1 */ int
+   package_type  /* 包类型(0 未知 1 SE-M 2 SE-S 3 SE-W) */ tinyint
+   varchar(64) serial_number  /* 序列号 */
+   varchar(255) name  /* 授权包名称 */
+   varchar(255) display_name  /* 显示名称 */
+   varchar(64) version  /* 版本号 */
+   varchar(1024) path  /* 包路径 */
+   varchar(1024) url  /* 包url */
+   varchar(128) hash  /* hash值 */
+   varchar(128) license_hash  /* license hash */
+   varchar(64) source  /* 来源 */
+   datetime expire_time  /* 过期时间 */
+   text require  /* agent.require文件内容 */
+   use_flag  /* (1 未使用 2 已使用 3 正在使用 4 未知) */ tinyint
+   process_id  /* 归属安装进程id (0 代表任何安装进程可使用) */ int
+   node_ip  /* 归属节点ip (0 代表任何节点可使用) */ varchar(20)
+   status  /* 状态(0 未定义,1 正常,2 已撤销) */ tinyint
+   int step_all  /* 安装总步骤 */
+   varchar(255) os  /* 适配操作系统 */
+   text support_os_version  /* 支持的操作系统版本 */
+   datetime create_at  /* 创建时间 */
+   datetime update_at  /* 更新时间 */
+   bigint id
+&#125;
+class t_fail_table &#123;
+   varchar(16) node_ip  /* 失败节点 */
+   int engine
+   tinyint package_type
+   tinyint status  /* 失败状态 */
+   tinyint action  /* 执行动作 */
+   text message  /* 失败描述 */
+   datetime create_at
+   bigint id
+&#125;
+class t_mirror &#123;
+   varchar(36) uuid
+   varchar(16) install_type
+   varchar(100) name
+   varchar(100) license_name
+   varchar(16) sn
+   varchar(16) version
+   varchar(16) installed_version
+   smallint agent_max_license
+   smallint agent_access_count
+   smallint agent_active_count
+   varchar(20) status
+   varchar(45) ip
+   varchar(20) running_status
+   bigint install_time
+   text mgnt_iface
+   text data_iface
+   varchar(300) ssh
+   varchar(255) os
+   varchar(36) task_uid
+   bigint component_bitmap
+   tinyint(1) invalid_license
+   text mirror_filter
+   int id
+&#125;
+class t_node_record &#123;
+   int install_process_id  /* 安装进程id */
+   int node_id  /* 节点id */
+   tinyint is_se_m  /* 是否是se-m节点 */
+   tinyint se_m_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
+   tinyint is_se_s  /* 是否是se-s节点 */
+   tinyint se_s_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
+   tinyint is_se_w  /* 是否是se-w节点 */
+   tinyint se_w_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
+   varchar(16) se_version  /* 引擎版本 */
+   datetime create_at  /* 创建时间 */
+   datetime update_at  /* 更新时间 */
+   bigint id
+&#125;
+class t_process_node &#123;
+   varchar(20) node_ip  /* 用于查询节点的静态信息 */
+   int process_id  /* 归属安装进程的id */
+   action_type  /* 执行动作类型(1 安装 2 添加节点 3 升级 4 回退 5 卸载 6 删除节点) */ tinyint
+   is_install_se_m  /* 是否是安装SE-M (0 不是 1 是) */ tinyint
+   int se_m_steplevel1  /* se-m已安装的步骤 */
+   int se_m_steplevel_all  /* se-m总的安装步骤 */
+   tinyint se_m_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
+   tinyint is_install_side_car  /* 是否安装边车引擎 */
+   is_install_se_s  /* 是否是安装SE-S (0 不是 1是) */ tinyint
+   int se_s_steplevel1  /* se-s已安装的步骤 */
+   int se_s_steplevel_all  /* se-s总的安装步骤 */
+   tinyint se_s_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
+   is_install_se_w  /* 是否是安装SE-W (0 不是 1 是) */ tinyint
+   int se_w_steplevel1  /* se-w已安装的步骤 */
+   int se_w_steplevel_all  /* se-w总的安装步骤 */
+   int se_w_status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
+   int step_all  /* 引擎所有组件 */
+   int step_level1  /* 安装步骤 */
+   tinyint status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
+   text message  /* 错误信息 */
+   datetime create_at  /* 创建时间 */
+   datetime update_at  /* 更新时间 */
+   bigint component_bitmap  /* 安装了哪些组件 */
+   bigint id
+&#125;
+class t_replace_record &#123;
+   varchar(20) engine_id  /* 引擎id */
+   int process_id  /* 归属安装进程的id */
+   varchar(16) old_ipv4  /* 被替换节点 */
+   varchar(16) new_ipv4  /* 替换的目标节点 */
+   int package_type  /* 替换类型 */
+   tinyint status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
+   bigint id
+&#125;
+
+</code></pre>
+
+
+<h3 id="表详解"><a href="#表详解" class="headerlink" title="表详解"></a>表详解</h3><p>安装进程表，安装、卸载、升级时使用。开始安装时，创建一条记录，查询安装状态时，查询此表</p>
+<pre><code class=" mermaid">classDiagram
+    direction LR
+    
+    class t_engine_install_processes &#123;
+       action_type  /* 执行动作类型(1 安装 2 添加节点 3 升级 4 回退 5 卸载 6 删除节点) */ tinyint
+       int engine  /* 归属引擎id */
+       varchar(64) name  /* 安装进程名 */
+       tinyint status  /* 状态 0 未安装 1 安装中 2 已安装 3 安装失败 4 升级中 5 升级成功 6 升级失败 7 卸载中 8 卸载成功 ... */
+       varchar(64) se_version  /* 引擎版本 */
+       int major  /* 主版本号 */
+       int minor  /* 次版本号 */
+       int build  /* 内部版本号 */
+       datetime create_at  /* 创建时间 */
+       datetime update_at  /* 更新时间 */
+       bigint id
+    &#125;
+
+</code></pre>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>installer db整理.md</div>
+      <div>https://abrance.github.io/2024/06/24/project/sr/基础设施相关/installer db整理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 24, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/06/24/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E6%9C%BA%E5%88%B6/" title="installer机制.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">installer机制.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/24/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/sr%E9%80%9A%E4%BF%A1%E7%AB%AF%E5%8F%A3%E3%80%81%E9%93%BE%E8%B7%AF%E6%95%B4%E7%90%86/" title="sr通信端口、链路整理.md">
+                        <span class="hidden-mobile">sr通信端口、链路整理.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

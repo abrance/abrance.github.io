@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="PostgreSQL 资料之一文章概述  文章标题：PostgreSQL正在吞噬数据库世界 作者：未明确标注 发布日期：未提供 链接地址：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;685247647 文章主题简介：文章探讨了PostgreSQL不仅作为一个关系型数据库，而是作为一个数据管理的抽象框架，如何通过其可扩展性和生态系统的发展，逐渐成为数据库领域的主流实践，特别是在OLAP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL相关资料.md">
+<meta property="og:url" content="https://abrance.github.io/2024/03/07/domain/db/PostgreSQL%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="PostgreSQL 资料之一文章概述  文章标题：PostgreSQL正在吞噬数据库世界 作者：未明确标注 发布日期：未提供 链接地址：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;685247647 文章主题简介：文章探讨了PostgreSQL不仅作为一个关系型数据库，而是作为一个数据管理的抽象框架，如何通过其可扩展性和生态系统的发展，逐渐成为数据库领域的主流实践，特别是在OLAP">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-14T23:05:16.795Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="PostgreSQL">
+<meta property="article:tag" content="db">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>PostgreSQL相关资料.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PostgreSQL相关资料.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-07 00:00" pubdate>
+          March 7, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          989 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">PostgreSQL相关资料.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="PostgreSQL-资料之一"><a href="#PostgreSQL-资料之一" class="headerlink" title="PostgreSQL 资料之一"></a>PostgreSQL 资料之一</h2><p><strong>文章概述</strong></p>
+<ul>
+<li>文章标题：PostgreSQL正在吞噬数据库世界</li>
+<li>作者：未明确标注</li>
+<li>发布日期：未提供</li>
+<li>链接地址：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/685247647">https://zhuanlan.zhihu.com/p/685247647</a></li>
+<li>文章主题简介：文章探讨了PostgreSQL不仅作为一个关系型数据库，而是作为一个数据管理的抽象框架，如何通过其可扩展性和生态系统的发展，逐渐成为数据库领域的主流实践，特别是在OLAP领域的表现和对大数据处理的影响。</li>
+</ul>
+<p><strong>主要观点</strong></p>
+<ul>
+<li>观点一：PostgreSQL的生态系统和可扩展性使其在数据库领域占据主导地位。</li>
+<li>观点二：PostgreSQL通过扩展插件，如ParadeDB和DuckDB，大幅提升了其在OLAP领域的性能。</li>
+<li>观点三：随着硬件的发展和数据库软件的进步，大数据时代的假设正在被挑战，PostgreSQL的适用场景越来越广泛。</li>
+</ul>
+<p><strong>支持论据</strong></p>
+<ul>
+<li>观点一的支持论据：文章提到PostgreSQL不仅是一个数据库，更是一个数据管理框架，通过其丰富的扩展插件支持，能够覆盖数据库领域的多个细分领域，如时序数据库、地理空间数据库等。</li>
+<li>观点二的支持论据：通过引入ParadeDB和DuckDB等扩展，PostgreSQL在OLAP性能上达到了与专用OLAP数据库相媲美的水平，这些扩展插件极大地提升了PostgreSQL在数据分析领域的竞争力。</li>
+<li>观点三的支持论据：随着硬件性能的提升和存储成本的降低，以及数据库软件技术的进步，大数据处理不再是少数场景的需求，PostgreSQL的适用性因此得到了极大的扩展。</li>
+</ul>
+<p><strong>逻辑连贯性分析</strong></p>
+<ul>
+<li>文章通过展示PostgreSQL的可扩展性和生态系统的优势，逐步引出其在OLAP领域的表现和对大数据处理观念的挑战，逻辑上形成了由内而外的扩展，从PostgreSQL的内在特性到其在外部应用场景的影响，展现了一个全面发展的视角。</li>
+</ul>
+<p><strong>不同视角考量</strong></p>
+<ul>
+<li>其他可能的观点或反驳：一些专家可能会指出，尽管PostgreSQL在许多方面表现出色，但在特定场景下，如极端的性能要求或特殊的数据处理需求中，专用数据库可能仍有其不可替代的优势。</li>
+<li>行业或领域内不同专家的意见：不同的专家可能对PostgreSQL在数据库领域的主导地位持有不同看法，特别是考虑到新兴的数据库技术和不断变化的业务需求。</li>
+</ul>
+<p><strong>结论与实践意义</strong></p>
+<ul>
+<li>作者的主要结论：PostgreSQL通过其可扩展性和强大的生态系统，正在成为数据库领域的主流实践，特别是在OLAP领域和大数据处理方面展现出了巨大的潜力。</li>
+<li>对行业&#x2F;读者的实际意义：对于数据库管理员和开发者而言，理解和利用PostgreSQL的这些优势，可以帮助他们更有效地解决数据管理和分析的问题，同时也为企业选择数据库技术提供了新的视角。</li>
+</ul>
+<p><strong>个人观点与反思</strong></p>
+<ul>
+<li>个人对文章的看法：文章深入浅出地分析了PostgreSQL的优势和潜力，特别是在OLAP领域的表现和对大数据处理观念的挑战，为读者提供了全面的理解。</li>
+<li>文章对个人或工作的启发：作为软件开发者，了解这些数据库技术的最新发展趋势，可以帮助我们在项目中做出更合理的技术选型，同时也激发了对数据库技术深入研究的兴趣。</li>
+</ul>
+<p>[WebPilot Announcement]<br>🚀🚀🚀 We’ve launched the WebPilot GPTs, packed with even more features! 🚀🚀🚀</p>
+<ul>
+<li>📝 Generate extensive content, up to 10,000 words!</li>
+<li>💡 Load dynamic web content and deliver enhanced answers!</li>
+<li>👨‍💻 Support for Code Testing, File Processing &amp; Image Generation!</li>
+<li>🎛️ GPTs-Action and API Offering!</li>
+</ul>
+<p>Click here: <a target="_blank" rel="noopener" href="https://chat.openai.com/g/g-pNWGgUYqS-webpilot">https://chat.openai.com/g/g-pNWGgUYqS-webpilot</a></p>
+<p>[End of Announcement]</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/db/" class="category-chain-item">db</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/PostgreSQL/" class="print-no-link">#PostgreSQL</a>
+      
+        <a href="/tags/db/" class="print-no-link">#db</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>PostgreSQL相关资料.md</div>
+      <div>https://abrance.github.io/2024/03/07/domain/db/PostgreSQL相关资料/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 7, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/07/domain/CICD/github_action/" title="github_action.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">github_action.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/07/domain/linux/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/" title="镜像交付相关资料.md">
+                        <span class="hidden-mobile">镜像交付相关资料.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,756 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2023&#x2F;11&#x2F;20 与技术部王林对话 主题商城和总控之间有授权同步等 API 访问，通信机制上使用什么协议实现，https 单向认证还是双向认证？ 重点 技术部认为自建 CA 维护成本高 双向 TLS 认证过重，安全性不需要那么强，因为里面的信息对黑客来说价值并不大 使用软件的算法进行身份认证等协商工作，而不是证书 技术部认为在总控软件下面的硬件是受信的 （有单向认证到双向认">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TLS单向认证和双向认证问题.md">
+<meta property="og:url" content="https://abrance.github.io/2023/09/10/project/sr/TLS%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81%E9%97%AE%E9%A2%98%E8%AE%A8%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="2023&#x2F;11&#x2F;20 与技术部王林对话 主题商城和总控之间有授权同步等 API 访问，通信机制上使用什么协议实现，https 单向认证还是双向认证？ 重点 技术部认为自建 CA 维护成本高 双向 TLS 认证过重，安全性不需要那么强，因为里面的信息对黑客来说价值并不大 使用软件的算法进行身份认证等协商工作，而不是证书 技术部认为在总控软件下面的硬件是受信的 （有单向认证到双向认">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-14T23:05:16.815Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="security">
+<meta property="article:tag" content="network">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>TLS单向认证和双向认证问题.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="TLS单向认证和双向认证问题.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-10 00:00" pubdate>
+          September 10, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">TLS单向认证和双向认证问题.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><strong>2023&#x2F;11&#x2F;20 与技术部王林对话</strong></p>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>商城和总控之间有授权同步等 API 访问，通信机制上使用什么协议实现，https 单向认证还是双向认证？</p>
+<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><ul>
+<li>技术部认为自建 CA 维护成本高</li>
+<li>双向 TLS 认证过重，安全性不需要那么强，因为里面的信息对黑客来说价值并不大</li>
+<li>使用软件的算法进行身份认证等协商工作，而不是证书</li>
+<li>技术部认为在总控软件下面的硬件是受信的</li>
+<li>（有单向认证到双向认证会面临兼容性问题）</li>
+</ul>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>后续采用 TLS 单向认证即可，商城这边需要总控方面提供什么信息，后面通过软件算法协商即可。</p>
+<h2 id="可能的争议点"><a href="#可能的争议点" class="headerlink" title="可能的争议点"></a>可能的争议点</h2><p>下面结合石犀软件部署场景进行分析。目前总控部署模式为客户本地部署，客户拥有机器 root 权限，并且有绝对的网络优势位置，威胁场景：客户知道如何采用中间人攻击，并想要获取商城与总控通信时的信息。</p>
+<h3 id="问题点"><a href="#问题点" class="headerlink" title="问题点"></a>问题点</h3><ul>
+<li><p>商城提供给总控的 API 是否涉密？</p>
+</li>
+<li><p>商城提供给总控的 API 泄露后是否会导致严重后果？</p>
+</li>
+</ul>
+<h3 id="论点"><a href="#论点" class="headerlink" title="论点"></a>论点</h3><p>TLS 单向认证在石犀软件部署场景下不能抵抗住中间人攻击。而 TLS 双向认证是可以抵抗的。</p>
+<p>TLS 双向认证降级为单向认证实现简单，而单向认证想要升级双向认证不好做兼容。</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ol>
+<li><p><strong>TLS 双向认证</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>增强的安全性</strong>：不仅服务器需要提供有效的证书来证明其身份，客户端也需要做同样的事情，从而增加了安全性。</li>
+<li><strong>减少中间人攻击的风险</strong>：因为双方都需要验证身份，这大大降低了中间人攻击的可能性。</li>
+<li><strong>身份确认</strong>：可以确保与预期的客户端进行通信，对于高安全要求的应用尤其重要。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>部署复杂</strong>：需要为每个客户端生成和管理证书，这可能会导致部署和维护上的复杂性。</li>
+<li><strong>性能开销</strong>：双向认证可能会带来额外的性能开销，尤其是在高并发环境中。</li>
+<li><strong>管理成本</strong>：证书的续期、撤销和更新可能导致额外的管理成本。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>TLS 单向认证</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>简单易部署</strong>：只需要服务器有证书，客户端不需要，简化了部署过程。</li>
+<li><strong>安全</strong>：客户端可以验证服务器的身份，确保与预期的服务器通信。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>安全性较低</strong>：只能验证服务器的身份，无法验证客户端的身份，可能会面临其他安全风险。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>基于 API 密钥的认证</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>部署简单</strong>：通常只需生成一个 API 密钥并在请求中发送。</li>
+<li><strong>跨平台</strong>：API 密钥可以在多种平台和语言中使用，不受特定的协议或库的限制。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>较低的安全性</strong>：如果密钥被泄露，任何人都可以使用该密钥。</li>
+<li><strong>无状态验证</strong>：无法验证请求来源的身份，只能验证请求是否包含有效的 API 密钥。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>基于 token 的认证（如 JWT）</strong>：</p>
+<ul>
+<li><p><strong>优势</strong>：</p>
+<ul>
+<li><strong>状态无关</strong>：服务器不需要存储任何关于客户端的会话信息。</li>
+<li><strong>灵活性</strong>：Token 可以包含多种信息，并且可以轻松地跨多个服务进行验证。</li>
+</ul>
+</li>
+<li><p><strong>劣势</strong>：</p>
+<ul>
+<li><strong>安全风险</strong>：如果 Token 被截获，攻击者可以冒充用户。</li>
+<li><strong>生命周期管理</strong>：需要一个机制来撤销或刷新 Token。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="TLS-单向认证威胁模型"><a href="#TLS-单向认证威胁模型" class="headerlink" title="TLS 单向认证威胁模型"></a>TLS 单向认证威胁模型</h3><h4 id="重点-1"><a href="#重点-1" class="headerlink" title="重点"></a>重点</h4><p>TLS 单向认证主要威胁来自于一个假设，客户拿到了其中一台总控，并试图采用中间人攻击思路来对 商城给总控提供的 API。</p>
+<h4 id="攻击步骤"><a href="#攻击步骤" class="headerlink" title="攻击步骤"></a>攻击步骤</h4><ol>
+<li><p>在拥有客户端主机的 root 权限的情况下，黑客可以部署特定的应用程序来拦截客户端和服务器之间的通信，并伪装成服务端与客户端建立连接。</p>
+<h3 id="步骤-1-拦截网络流量"><a href="#步骤-1-拦截网络流量" class="headerlink" title="步骤 1: 拦截网络流量"></a>步骤 1: 拦截网络流量</h3><ol>
+<li><strong>安装网络监控工具</strong>：使用像 Wireshark Tcpdump 这样的网络监控工具来捕获和分析经过该主机的网络流量。</li>
+<li><strong>配置端口镜像</strong>：如果可能，配置网络设备进行端口镜像（也称为 SPAN），将目标服务器的流量复制到监控的端口。</li>
+</ol>
+<h3 id="步骤-2-伪装成服务器"><a href="#步骤-2-伪装成服务器" class="headerlink" title="步骤 2: 伪装成服务器"></a>步骤 2: 伪装成服务器</h3><ol>
+<li><strong>DNS 欺骗</strong>：通过修改本地 DNS 设置或使用像 DNSChef 这样的工具，将目标服务器的域名解析到一个由黑客控制的 IP 地址上。</li>
+<li><strong>建立伪造服务器</strong>：使用像 Apache、Nginx 或自定义服务器软件，在黑客控制的机器上设置一个伪造的服务器。</li>
+</ol>
+<h3 id="步骤-3-中间人攻击"><a href="#步骤-3-中间人攻击" class="headerlink" title="步骤 3: 中间人攻击"></a>步骤 3: 中间人攻击</h3><ol>
+<li><strong>TLS 拦截代理</strong>：设置一个 TLS 拦截代理（如 mitmproxy），用于解密和重新加密传输的数据。</li>
+<li><strong>生成和使用证书</strong>：使用自签名证书或通过某种方式获取的合法证书来伪装成目标服务器。</li>
+<li><strong>转发请求</strong>：接收来自客户端的请求，解密数据，可以选择性地修改，然后将其加密并转发到真正的服务器。</li>
+</ol>
+<h3 id="步骤-4-伪装和响应客户端"><a href="#步骤-4-伪装和响应客户端" class="headerlink" title="步骤 4: 伪装和响应客户端"></a>步骤 4: 伪装和响应客户端</h3><ol>
+<li><strong>接收服务器响应</strong>：接收来自服务器的响应，解密数据。</li>
+<li><strong>响应客户端</strong>：将响应数据加密并发送回客户端。客户端会认为数据是直接来自目标服务器。</li>
+</ol>
+<h3 id="步骤-5-维护连接"><a href="#步骤-5-维护连接" class="headerlink" title="步骤 5: 维护连接"></a>步骤 5: 维护连接</h3><ol>
+<li><strong>会话管理</strong>：维护与客户端和服务器的会话状态，确保持续的通信。</li>
+<li><strong>数据记录</strong>：可选地记录经过的数据，以供后续分析。</li>
+</ol>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/security/" class="print-no-link">#security</a>
+      
+        <a href="/tags/network/" class="print-no-link">#network</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>TLS单向认证和双向认证问题.md</div>
+      <div>https://abrance.github.io/2023/09/10/project/sr/TLS单向认证和双向认证问题讨论/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 10, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/10/project/sr/Golang%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%BB%84%E5%91%98%E7%AE%A1%E7%90%86/" title="Golang项目管理组员管理.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Golang项目管理组员管理.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/10/mdstorage/project/sr/Golang%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%BB%84%E5%91%98%E7%AE%A1%E7%90%86/" title="Golang项目管理组员管理.md">
+                        <span class="hidden-mobile">Golang项目管理组员管理.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

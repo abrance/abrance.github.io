@@ -1,0 +1,1743 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux 自定义认证背景​	结合https:&#x2F;&#x2F;doc.weixin.qq.com&#x2F;doc&#x2F;w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode&#x3D;ABwA9Qd2ABEQYUs45PARkAWAYlAEQ使用为了限制用户登录到系统的后台随意查看、修改应用程序，通常来说不应该把特权账号的密码泄露给用户，然而使用固定密码始终会有密码泄露的风险，时间长了肯定会泄露。为此，特地调">
+<meta property="og:type" content="article">
+<meta property="og:title" content="镜像交付相关资料.md">
+<meta property="og:url" content="https://abrance.github.io/2024/03/07/domain/linux/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="Linux 自定义认证背景​	结合https:&#x2F;&#x2F;doc.weixin.qq.com&#x2F;doc&#x2F;w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode&#x3D;ABwA9Qd2ABEQYUs45PARkAWAYlAEQ使用为了限制用户登录到系统的后台随意查看、修改应用程序，通常来说不应该把特权账号的密码泄露给用户，然而使用固定密码始终会有密码泄露的风险，时间长了肯定会泄露。为此，特地调">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20240307114725324.png">
+<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image1.png">
+<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image2.png">
+<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image3.png">
+<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image4.png">
+<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image5.png">
+<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image6.png">
+<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image7.png">
+<meta property="og:image" content="https://abrance.github.io/home/xiaoy/media/image8.png">
+<meta property="article:published_time" content="2024-03-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-14T23:05:16.799Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="镜像交付">
+<meta property="article:tag" content="部署">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20240307114725324.png">
+  
+  
+  
+  <title>镜像交付相关资料.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="镜像交付相关资料.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-07 00:00" pubdate>
+          March 7, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          111 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">镜像交付相关资料.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Linux-自定义认证"><a href="#Linux-自定义认证" class="headerlink" title="Linux 自定义认证"></a>Linux 自定义认证</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​	结合<a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode=ABwA9Qd2ABEQYUs45PARkAWAYlAEQ%E4%BD%BF%E7%94%A8">https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQRlVumzgDTgeXJMzBBa?scode=ABwA9Qd2ABEQYUs45PARkAWAYlAEQ使用</a><br>为了限制用户登录到系统的后台随意查看、修改应用程序，通常来说不应该把特权账号的密码泄露给用户，然而使用固定密码始终会有密码泄露的风险，时间长了肯定会泄露。为此，特地调研了一下某厂商的D,F,T三个产品是怎么处理这种事情的。<br>产品代号	解决方案	实现难度<br>D	无法打开用户登录界面，自行提供了另一套交互界面，无需登录，也无法登录其他用户。命令行受限	未知<br>F	使用动态密码登录，用厂家提供的APP扫码（或输入token)来获取临时密码登录。只有有售后权限的人才能扫码登录	中，魔改程度小<br>T	提供低权限账户，使用固定密码登录，其余未知（因为全盘加密了，不清楚特权账户是否为固定密码）	中，魔改程度小<br>因为技术栈不统一，三个产品的防护各有不同，这里F产品使用的方法是一种简单有效的办法，所以考虑预研一下，看看效果。</p>
+<p>pam demo<br>F产品的实现原理是自己编写了一个linux PAM模块，然后在配置文件中加载这段逻辑，就可以实现扩展linux登录时的验证。<br>这里先写个pam demo验证一下机制</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;security/pam_appl.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;security/pam_modules.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;security/pam_ext.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br>PAM_EXTERN <span class="hljs-type">int</span> <span class="hljs-title function_">pam_sm_authenticate</span><span class="hljs-params">(<span class="hljs-type">pam_handle_t</span> *pamh, <span class="hljs-type">int</span> flags, <span class="hljs-type">int</span> argc, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **argv)</span> &#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span> *username;<br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span> *password;<br>    <span class="hljs-type">int</span> pam_err;<br><br>    pam_err = pam_get_user(pamh, &amp;username, <span class="hljs-string">&quot;Username: &quot;</span>);<br>    <span class="hljs-keyword">if</span> (pam_err != PAM_SUCCESS || username == <span class="hljs-literal">NULL</span>) &#123;<br>        <span class="hljs-keyword">return</span> PAM_AUTH_ERR;<br>    &#125;<br><br>    <span class="hljs-comment">// 获取用户输入的密码</span><br>    pam_err = pam_get_authtok(pamh, PAM_AUTHTOK, &amp;password, <span class="hljs-string">&quot;Password: &quot;</span>);<br>    <span class="hljs-keyword">if</span> (pam_err != PAM_SUCCESS || password == <span class="hljs-literal">NULL</span>) &#123;<br>        <span class="hljs-keyword">return</span> PAM_AUTH_ERR;<br>    &#125;<br><br>    <span class="hljs-comment">// 检查密码是否为预期的值（例如，&quot;123&quot;）</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(password, <span class="hljs-string">&quot;123&quot;</span>) == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span> PAM_SUCCESS; <span class="hljs-comment">// 密码验证成功</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> PAM_AUTH_ERR; <span class="hljs-comment">// 密码验证失败</span><br>    &#125;<br>&#125;<br><br>PAM_EXTERN <span class="hljs-type">int</span> <span class="hljs-title function_">pam_sm_setcred</span><span class="hljs-params">(<span class="hljs-type">pam_handle_t</span> *pamh, <span class="hljs-type">int</span> flags, <span class="hljs-type">int</span> argc, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **argv)</span> &#123;<br>    <span class="hljs-comment">// 在这里实现设置凭据（credential）的逻辑，如果不需要，可以留空</span><br>    <span class="hljs-keyword">return</span> PAM_SUCCESS;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>将代码保存为custom_auth.c 编译并修改sudo的pam配置文件</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"># 编译<br>gcc -fPIC -shared -o custom_auth.so custom_auth.c -lpam<br># 拷贝到正确的位置<br>cp custom_auth.so /usr/lib/x86_64-linux-gnu/security/<br># -rw-r--r-- root:root 不需要执行权限<br>chmod -x /usr/lib/x86_64-linux-gnu/security/custom_auth.so<br><br># 增加测试用户<br>sudo useradd -m testuser<br>sudo usermod -aG sudo testuser<br># 将密码改为和用户名相同<br>passwd testuser<br><br># 修改sudo的PAM配置,在第一行增加 auth  sufficient  custom_auth.so<br>vim /etc/pam.d/sudo<br>su testuser<br><br># 此时输入testuser或者<span class="hljs-number">123</span>都能成功，其他的密码则失败<br>sudo -k cat /etc/passwd <br><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="qrcode-demo"><a href="#qrcode-demo" class="headerlink" title="qrcode demo"></a>qrcode demo</h2><p>​	使用二维码输入token不仅方便，还能减少输错的可能，这里是一个简单的验证控制台输出二维码的例子，效果如图（还有多余的边框到时候再修修），能够在控制台、ssh等任意字符界面正常显示。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;qrencode.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> margin;<br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">writeANSI_margin</span><span class="hljs-params">(FILE* fp, <span class="hljs-type">int</span> realwidth, <span class="hljs-type">char</span>* buffer,</span><br><span class="hljs-params">                             <span class="hljs-type">const</span> <span class="hljs-type">char</span>* white, <span class="hljs-type">int</span> white_s)</span> &#123;<br>  <span class="hljs-type">int</span> y;<br><br>  <span class="hljs-built_in">strncpy</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>  <span class="hljs-built_in">memset</span>(buffer + white_s, <span class="hljs-string">&#x27; &#x27;</span>, (<span class="hljs-type">size_t</span>)realwidth * <span class="hljs-number">2</span>);<br>  <span class="hljs-built_in">strcpy</span>(buffer + white_s + realwidth * <span class="hljs-number">2</span>,<br>         <span class="hljs-string">&quot;\033[0m\n&quot;</span>);  <span class="hljs-comment">// reset to default colors</span><br>  <span class="hljs-keyword">for</span> (y = <span class="hljs-number">0</span>; y &lt; margin; y++) &#123;<br>    <span class="hljs-built_in">fputs</span>(buffer, fp);<br>  &#125;<br>&#125;<br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">writeANSI</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* msg,FILE* fp,  <span class="hljs-type">int</span> size)</span> &#123;<br>  <span class="hljs-type">const</span> <span class="hljs-type">char</span> *white, *black;<br>  <span class="hljs-type">char</span>* buffer;<br>  <span class="hljs-type">int</span> white_s, black_s, buffer_s;<br>  <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *row, *p;<br>  <span class="hljs-type">int</span> x, y;<br>  <span class="hljs-type">int</span> realwidth;<br>  <span class="hljs-type">int</span> last;<br>  QRcode* qrcode =<br>      QRcode_encodeString(msg, <span class="hljs-number">0</span>, QR_ECLEVEL_L, QR_MODE_8, <span class="hljs-number">1</span>);<br>	  <br>  <span class="hljs-keyword">if</span> (qrcode == <span class="hljs-literal">NULL</span>) &#123;<br>	  <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;cannot parse msg to qrcode&quot;</span>);<br>	  <span class="hljs-keyword">return</span>;<br>  &#125;<br><br>  white = <span class="hljs-string">&quot;\033[47m&quot;</span>;<br>  white_s = <span class="hljs-number">5</span>;<br>  black = <span class="hljs-string">&quot;\033[40m&quot;</span>;<br>  black_s = <span class="hljs-number">5</span>;<br><br>  realwidth = (qrcode-&gt;width + margin * <span class="hljs-number">2</span>) * size;<br>  buffer_s = (realwidth * white_s) * <span class="hljs-number">2</span>;<br>  buffer = (<span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>((<span class="hljs-type">size_t</span>)buffer_s);<br>  <span class="hljs-keyword">if</span> (buffer == <span class="hljs-literal">NULL</span>) &#123;<br>    <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;Failed to allocate memory.\n&quot;</span>);<br>    <span class="hljs-built_in">exit</span>(EXIT_FAILURE);<br>  &#125;<br><br>  <span class="hljs-comment">/* top margin */</span><br>  writeANSI_margin(fp, realwidth, buffer, white, white_s);<br><br>  <span class="hljs-comment">/* data */</span><br>  p = qrcode-&gt;data;<br>  <span class="hljs-keyword">for</span> (y = <span class="hljs-number">0</span>; y &lt; qrcode-&gt;width; y++) &#123;<br>    row = (p + (y * qrcode-&gt;width));<br><br>    <span class="hljs-built_in">memset</span>(buffer, <span class="hljs-number">0</span>, (<span class="hljs-type">size_t</span>)buffer_s);<br>    <span class="hljs-built_in">strncpy</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; margin; x++) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br>    last = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; qrcode-&gt;width; x++) &#123;<br>      <span class="hljs-keyword">if</span> (*(row + x) &amp; <span class="hljs-number">0x1</span>) &#123;<br>        <span class="hljs-keyword">if</span> (last != <span class="hljs-number">1</span>) &#123;<br>          <span class="hljs-built_in">strncat</span>(buffer, black, (<span class="hljs-type">size_t</span>)black_s);<br>          last = <span class="hljs-number">1</span>;<br>        &#125;<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (last != <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">strncat</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>        last = <span class="hljs-number">0</span>;<br>      &#125;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (last != <span class="hljs-number">0</span>) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>    &#125;<br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; margin; x++) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br>    <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;\033[0m\n&quot;</span>, <span class="hljs-number">5</span>);<br>    <span class="hljs-built_in">fputs</span>(buffer, fp);<br>  &#125;<br><br>  <span class="hljs-comment">/* bottom margin */</span><br>  writeANSI_margin(fp, realwidth, buffer, white, white_s);<br><br>  <span class="hljs-built_in">free</span>(buffer);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> <br>&#123; <br>	margin = <span class="hljs-number">1</span>;<br>	writeANSI(<span class="hljs-string">&quot;token:shrino.ouyrun.cn&quot;</span>,<span class="hljs-built_in">stdout</span>, <span class="hljs-number">3</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>编译运行：<br>先安装动态库 apt install libqrencode-dev<br>gcc qrtest.c -lqrencode</p>
+<p>C&#x2F;S demo<br>实现实现随机生成6位数数字密码，然后用RSA加密，将加密后的信息放到二维码，然后售后人员通过将二维码上传到服务器后（这里可以是用手机APP扫码，也可以是拍屏手动处理），服务器用RSA解密后，将结果返回给用户。</p>
+<p>随机密码生成</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">generateRandomPassword</span><span class="hljs-params">()</span> &#123;<br>    srand(time(<span class="hljs-literal">NULL</span>));<br>    <span class="hljs-keyword">return</span> rand() % <span class="hljs-number">1000000</span>; <span class="hljs-comment">// 生成0到999999之间的随机数</span><br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+<p>加密部分</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;openssl/rsa.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;openssl/pem.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">rsaEncryptPassword</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* password, <span class="hljs-type">const</span> <span class="hljs-type">char</span>* publicKeyPath, <span class="hljs-type">const</span> <span class="hljs-type">char</span>* encryptedPath)</span> &#123;<br>    FILE* publicKeyFile = fopen(publicKeyPath, <span class="hljs-string">&quot;rb&quot;</span>);<br>    <span class="hljs-keyword">if</span> (!publicKeyFile) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to open public key file&quot;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    RSA* rsa = PEM_read_RSA_PUBKEY(publicKeyFile, <span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>);<br>    <span class="hljs-keyword">if</span> (!rsa) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to read public key&quot;</span>);<br>        fclose(publicKeyFile);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    fclose(publicKeyFile);<br><br>    <span class="hljs-type">int</span> passwordLen = <span class="hljs-built_in">strlen</span>(password);<br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> encrypted[<span class="hljs-number">256</span>]; <span class="hljs-comment">// 要根据RSA密钥的长度来设置</span><br>    <span class="hljs-type">int</span> encryptedLen = RSA_public_encrypt(passwordLen, (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)password, encrypted, rsa, RSA_PKCS1_PADDING);<br><br>    <span class="hljs-keyword">if</span> (encryptedLen == <span class="hljs-number">-1</span>) &#123;<br>        perror(<span class="hljs-string">&quot;RSA encryption failed&quot;</span>);<br>        RSA_free(rsa);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    FILE* encryptedFile = fopen(encryptedPath, <span class="hljs-string">&quot;wb&quot;</span>);<br>    <span class="hljs-keyword">if</span> (!encryptedFile) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to open encrypted file&quot;</span>);<br>        RSA_free(rsa);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    fwrite(encrypted, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>), encryptedLen, encryptedFile);<br>    fclose(encryptedFile);<br><br>    RSA_free(rsa);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>        rsaEncryptPassword(<span class="hljs-string">&quot;123456&quot;</span>, <span class="hljs-string">&quot;public_key.pem&quot;</span>, <span class="hljs-string">&quot;test_encrypt_out&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装开发库"><a href="#安装开发库" class="headerlink" title="安装开发库"></a>安装开发库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装开发库</span><br>apt install libssl-dev <br><span class="hljs-comment"># 生成密钥对（这里用1024位</span><br>openssl genrsa -out private_key.pem 1024<br>openssl rsa -pubout -<span class="hljs-keyword">in</span> private_key.pem -out public_key.pem<br><span class="hljs-comment"># 编译</span><br>gcc rsa_enc.c -o rsa_enc -lssl -lcrypto<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p>生成二维码部分</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;qrencode.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> margin = <span class="hljs-number">1</span>;<br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">writeANSI_margin</span><span class="hljs-params">(FILE* fp, <span class="hljs-type">int</span> realwidth, <span class="hljs-type">char</span>* buffer,</span><br><span class="hljs-params">                             <span class="hljs-type">const</span> <span class="hljs-type">char</span>* white, <span class="hljs-type">int</span> white_s)</span> &#123;<br>  <span class="hljs-type">int</span> y;<br><br>  <span class="hljs-built_in">strncpy</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>  <span class="hljs-built_in">memset</span>(buffer + white_s, <span class="hljs-string">&#x27; &#x27;</span>, (<span class="hljs-type">size_t</span>)realwidth * <span class="hljs-number">2</span>);<br>  <span class="hljs-built_in">strcpy</span>(buffer + white_s + realwidth * <span class="hljs-number">2</span>,<br>         <span class="hljs-string">&quot;\033[0m\n&quot;</span>);  <span class="hljs-comment">// reset to default colors</span><br>  <span class="hljs-keyword">for</span> (y = <span class="hljs-number">0</span>; y &lt; margin; y++) &#123;<br>    <span class="hljs-built_in">fputs</span>(buffer, fp);<br>  &#125;<br>&#125;<br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">writeANSI</span><span class="hljs-params">(QRcode* qrcode,FILE* fp,  <span class="hljs-type">int</span> size)</span> &#123;<br>  <span class="hljs-type">const</span> <span class="hljs-type">char</span> *white, *black;<br>  <span class="hljs-type">char</span>* buffer;<br>  <span class="hljs-type">int</span> white_s, black_s, buffer_s;<br>  <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *row, *p;<br>  <span class="hljs-type">int</span> x, y;<br>  <span class="hljs-type">int</span> realwidth;<br>  <span class="hljs-type">int</span> last;<br>  <br>  <span class="hljs-keyword">if</span> (qrcode == <span class="hljs-literal">NULL</span>) &#123;<br>	  <span class="hljs-keyword">return</span>;<br>  &#125;<br><br>  white = <span class="hljs-string">&quot;\033[47m&quot;</span>;<br>  white_s = <span class="hljs-number">5</span>;<br>  black = <span class="hljs-string">&quot;\033[40m&quot;</span>;<br>  black_s = <span class="hljs-number">5</span>;<br><br>  realwidth = (qrcode-&gt;width + margin * <span class="hljs-number">2</span>) * size;<br>  buffer_s = (realwidth * white_s) * <span class="hljs-number">2</span>;<br>  buffer = (<span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>((<span class="hljs-type">size_t</span>)buffer_s);<br>  <span class="hljs-keyword">if</span> (buffer == <span class="hljs-literal">NULL</span>) &#123;<br>    <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;Failed to allocate memory.\n&quot;</span>);<br>    <span class="hljs-built_in">exit</span>(EXIT_FAILURE);<br>  &#125;<br><br>  <span class="hljs-comment">/* top margin */</span><br>  writeANSI_margin(fp, realwidth, buffer, white, white_s);<br><br>  <span class="hljs-comment">/* data */</span><br>  p = qrcode-&gt;data;<br>  <span class="hljs-keyword">for</span> (y = <span class="hljs-number">0</span>; y &lt; qrcode-&gt;width; y++) &#123;<br>    row = (p + (y * qrcode-&gt;width));<br><br>    <span class="hljs-built_in">memset</span>(buffer, <span class="hljs-number">0</span>, (<span class="hljs-type">size_t</span>)buffer_s);<br>    <span class="hljs-built_in">strncpy</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; margin; x++) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br>    last = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; qrcode-&gt;width; x++) &#123;<br>      <span class="hljs-keyword">if</span> (*(row + x) &amp; <span class="hljs-number">0x1</span>) &#123;<br>        <span class="hljs-keyword">if</span> (last != <span class="hljs-number">1</span>) &#123;<br>          <span class="hljs-built_in">strncat</span>(buffer, black, (<span class="hljs-type">size_t</span>)black_s);<br>          last = <span class="hljs-number">1</span>;<br>        &#125;<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (last != <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">strncat</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>        last = <span class="hljs-number">0</span>;<br>      &#125;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (last != <span class="hljs-number">0</span>) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, white, (<span class="hljs-type">size_t</span>)white_s);<br>    &#125;<br>    <span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>; x &lt; margin; x++) &#123;<br>      <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br>    <span class="hljs-built_in">strncat</span>(buffer, <span class="hljs-string">&quot;\033[0m\n&quot;</span>, <span class="hljs-number">5</span>);<br>    <span class="hljs-built_in">fputs</span>(buffer, fp);<br>  &#125;<br><br>  <span class="hljs-comment">/* bottom margin */</span><br>  writeANSI_margin(fp, realwidth, buffer, white, white_s);<br><br>  <span class="hljs-built_in">free</span>(buffer);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">generateQRCode</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* encryptedPath)</span> &#123;<br>    FILE* encryptedFile = fopen(encryptedPath, <span class="hljs-string">&quot;rb&quot;</span>);<br>    <span class="hljs-keyword">if</span> (!encryptedFile) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to open encrypted file&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br><br>    fseek(encryptedFile, <span class="hljs-number">0</span>, SEEK_END);<br>    <span class="hljs-type">long</span> encryptedFileSize = ftell(encryptedFile);<br>    rewind(encryptedFile);<br><br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* encryptedData = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(encryptedFileSize);<br>    <span class="hljs-keyword">if</span> (!encryptedData) &#123;<br>        perror(<span class="hljs-string">&quot;Memory allocation failed&quot;</span>);<br>        fclose(encryptedFile);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br><br>    fread(encryptedData, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>), encryptedFileSize, encryptedFile);<br>    fclose(encryptedFile);<br><br>    QRcode* qrcode = QRcode_encodeData(encryptedFileSize, encryptedData, <span class="hljs-number">0</span>,QR_ECLEVEL_L);<br>    <span class="hljs-keyword">if</span> (!qrcode) &#123;<br>        perror(<span class="hljs-string">&quot;QRcode encoding failed&quot;</span>);<br>        <span class="hljs-built_in">free</span>(encryptedData);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>	<br>	writeANSI(qrcode,<span class="hljs-built_in">stdout</span>,<span class="hljs-number">5</span>);<br>   <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>	generateQRCode(<span class="hljs-string">&quot;test_encrypt_out&quot;</span>);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p>服务端解码部分（未验证）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs c">package main<br><br><span class="hljs-title function_">import</span> <span class="hljs-params">(</span><br><span class="hljs-params">	<span class="hljs-string">&quot;fmt&quot;</span></span><br><span class="hljs-params">	<span class="hljs-string">&quot;io/ioutil&quot;</span></span><br><span class="hljs-params">	<span class="hljs-string">&quot;net/http&quot;</span></span><br><span class="hljs-params">	<span class="hljs-string">&quot;strings&quot;</span></span><br><span class="hljs-params"></span><br><span class="hljs-params">	<span class="hljs-string">&quot;github.com/rsc/qr&quot;</span></span><br><span class="hljs-params">	<span class="hljs-string">&quot;github.com/rsc/qr/handy&quot;</span></span><br><span class="hljs-params">)</span><br><br>func <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>	http.HandleFunc(<span class="hljs-string">&quot;/process_qr_code&quot;</span>, func(w http.ResponseWriter, r *http.Request) &#123;<br>		<span class="hljs-comment">// 读取上传的二维码图片</span><br>		file, _, err := r.FormFile(<span class="hljs-string">&quot;qr_code&quot;</span>)<br>		<span class="hljs-keyword">if</span> err != nil &#123;<br>			http.Error(w, <span class="hljs-string">&quot;Failed to read QR code file&quot;</span>, http.StatusBadRequest)<br>			<span class="hljs-keyword">return</span><br>		&#125;<br>		defer file.Close()<br><br>		<span class="hljs-comment">// 解析二维码</span><br>		img, _, err := handy.Decode(file)<br>		<span class="hljs-keyword">if</span> err != nil &#123;<br>			http.Error(w, <span class="hljs-string">&quot;Failed to decode QR code&quot;</span>, http.StatusInternalServerError)<br>			<span class="hljs-keyword">return</span><br>		&#125;<br><br>		<span class="hljs-comment">// 从解析的二维码中提取加密数据</span><br>		encodedData := img.Content<br>		encryptedData := strings.TrimSpace(encodedData)<br><br>		<br>        <span class="hljs-comment">// 加载RSA私钥</span><br>        privateKeyPEM, err := ioutil.ReadFile(<span class="hljs-string">&quot;private_key.pem&quot;</span>)<br>        <span class="hljs-keyword">if</span> err != nil &#123;<br>            http.Error(w, <span class="hljs-string">&quot;Failed to read private key&quot;</span>, http.StatusInternalServerError)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br><br>        privateKeyBlock, _ := pem.Decode(privateKeyPEM)<br>        <span class="hljs-keyword">if</span> privateKeyBlock == nil &#123;<br>            http.Error(w, <span class="hljs-string">&quot;Failed to decode private key&quot;</span>, http.StatusInternalServerError)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br><br>        privateKey, err := x509.ParsePKCS1PrivateKey(privateKeyBlock.Bytes)<br>        <span class="hljs-keyword">if</span> err != nil &#123;<br>            http.Error(w, <span class="hljs-string">&quot;Failed to parse private key&quot;</span>, http.StatusInternalServerError)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br><br>        <span class="hljs-comment">// 解密数据</span><br>        decryptedData, err := rsa.DecryptPKCS1v15(nil, privateKey, encryptedData)<br>        <span class="hljs-keyword">if</span> err != nil &#123;<br>            http.Error(w, <span class="hljs-string">&quot;Failed to decrypt data&quot;</span>, http.StatusInternalServerError)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br>		<span class="hljs-comment">// 返回解密后的数据</span><br>		w.Header().Set(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;text/plain&quot;</span>)<br>		fmt.Fprintf(w, <span class="hljs-string">&quot;Decrypted Data: %s&quot;</span>, decryptedData)<br>	&#125;)<br><br>	http.ListenAndServe(<span class="hljs-string">&quot;:8080&quot;</span>, nil)<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>参考资料<br>Linux下PAM模块学习总结 - 散尽浮华 - 博客园 <code>https://www.cnblogs.com/kevingrace/p/8671964.html</code></p>
+<p>Linux PAM开发示例二:登录系统时使用自己的PAM模块进行密码认证-CSDN博客</p>
+<h1 id="软件保护"><a href="#软件保护" class="headerlink" title="软件保护"></a>软件保护</h1><p>软件保护目的：防止软件被未授权下载、复制、安装、运行、转让、出租、修改、破解</p>
+<p>软件保护从来都是多方面实现的，不能仅靠软件自身。这里从4个维度讨论一下各个层面可以做的事情。<br><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/image-20240307114725324.png" srcset="/img/loading.gif" lazyload alt="image-20240307114725324"></p>
+<p>软件授权通常出现在商业软件中，其可以对软件的安装、运行做出限制，例如未授权的用户使用该软件（或者该软件的某些功能）。<br>后台隐藏通常在TOB产品的系统级别产品中，通过WEBUI&#x2F;GUI等隐藏实现细节，常常伴随着系统后台信息隐藏、（售后）角色认证等机制，它防范的是用户进入软件的运行基座——操作系统。而原本操作系统的一些基础功能（如时间日期修改、IP地址修改），则通过UI来提供给用户。<br>售后支持是在软件出现问题时，由特定的售后人员去通过网络直连、远程桌面、线下操作等方式。网络直连通常发生在一些内置了对应模块的软件中，它允许售后人员直接连接到软件的控制台，可以看到用户的配置和软件的信息等。线下操作的形式有多种，简单的可以通过用户界面操作，有些特殊的操作则需要进入系统后台操作，这时，前面提到的”后台隐藏“必须要留下售后人员的入口。<br>加密是一种简单而有效的保护方式，加密的级别有很多，例如文件加密、数据库加密、磁盘加密。加密的算法一般是防护的关键，需要用各种手段降低算法被探测的可能，而密钥的存储比密钥的强度更重要。</p>
+<p>下面讨论一下各个部分的方案细节<br>对于在线使用的软件，让用户自行输入用户名是一种简单有效的机制，而对于允许离线使用的软件，需要收集软件的运行环境信息生成一个和环境相关的ID，这个ID通常成为机器码，收集的信息通常是硬件信息。然而，在虚拟化环境、docker环境下，情况可能略有不同，由于虚拟化环境的硬件信息不准确、容易发生变更，而docker就更加没有硬件信息，所以很多厂商都会采用一种叫授权服务器的东西（例如深信服VLS）来应对，这个后文再讨论。<br>软件厂商通过非对称或者对称加密技术，针对用户提供的ID来提供一段经过加密的序列号&#x2F;授权文件，软件通过特定的算法校验ID和序列号&#x2F;授权文件之间的对应关系。以某个厂商的序列号为例：软件通过计算网卡MAC地址的CRC32得到ID，用户提供ID后，厂商通过DES算法和固定密钥将ID变为一串序列号，这串序列号可以由用户手动输入软件中，软件通过DES算法和代码内置的固定密钥解密序列号，得到的信息和ID比较。<br>为了避免用户进入操作系统后台，通常厂商不会提供系统的特权账号密码，然而特权账号的密码在公司里面很多人都知道，例如研发员工、技术支持员工，这其中存在很多泄密的可能。所以有些厂商会修改操作系统的认证机制，实现自定义的认证逻辑，例如扫码登录、动态密码等。这里以linux系统为例，linux系统有一种叫PAM（Pluggable Authentication Modules)的东西，可以简单理解为认证插件，我们可以用c语言来实现对应的接口，然后把代码编译后以动态链接库的形式放到特定目录，修改配置文件即可，不需要修改操作系统的源代码。<br>相应的，我们虽然阻止了用户对系统后台的访问权限，但是也要给技术支持&#x2F;售后等留下入口。首先是软硬件的信息收集，平常我们可以进入系统后台，手动查看、拷贝日志文件，查看环境信息，在高度封闭系统后，这些信息通常会通过一个界面，允许用户&#x2F;技术支持来采集，有必要的时候，再通过售后系统获取系统的登录口令，进入后台手动操作。<br>有些软件会通过全盘加密的方式阻止用户将磁盘挂载到其他系统进行解析，常规的实现是用LUKS来全盘加密，然后在开机阶段去特定的位置获取密钥，大大增加了破解的难度。</p>
+<h1 id="设计文档"><a href="#设计文档" class="headerlink" title="设计文档"></a>设计文档</h1><p>版本修订记录:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>日期</td>
+<td>版本</td>
+<td>修订人</td>
+<td>修改内容</td>
+<td>备注</td>
+</tr>
+<tr>
+<td>2023-11-1</td>
+<td>0.1</td>
+<td>岑思华</td>
+<td>方案定型，文档基本完成</td>
+<td></td>
+</tr>
+<tr>
+<td>2023-11-6</td>
+<td>0.2</td>
+<td>岑思华</td>
+<td>补充打包项目代码设计</td>
+<td>Makefile</td>
+</tr>
+<tr>
+<td>2023-11-7</td>
+<td>0.3</td>
+<td>岑思华</td>
+<td>补充对其他模块影响；调整项目结构设计</td>
+<td>已评审</td>
+</tr>
+<tr>
+<td>2023-11-9</td>
+<td>0.4</td>
+<td>岑思华</td>
+<td>1.微调；2. 确定磁盘显示方案</td>
+<td></td>
+</tr>
+<tr>
+<td>2023-11-14</td>
+<td>0.5</td>
+<td>岑思华</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2023-11-15</td>
+<td>0.6</td>
+<td>袁菘壑</td>
+<td>添加5.2.1.2章节</td>
+<td></td>
+</tr>
+<tr>
+<td>2023-11-22</td>
+<td>0.7</td>
+<td>岑思华</td>
+<td>添加5.2.5章节</td>
+<td></td>
+</tr>
+<tr>
+<td>2023-12</td>
+<td>0.8</td>
+<td>吴松达</td>
+<td>补充7.2.5的mongo动态配置实现</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="1-项目背景"><a href="#1-项目背景" class="headerlink" title="1 项目背景"></a>1 项目背景</h2><p>安装包交付背景下，操作系统由用户提供，用户拥有最高权限，能够随意对软件进行查看、修改、复制等，极大的增加了反破解的难度。</p>
+<p>镜像交付是友商广泛使用的一种做法，它除了体积比较大之外，能够提供比安装包交付更加标准、便捷的过程。</p>
+<h2 id="2-项目目标"><a href="#2-项目目标" class="headerlink" title="2 项目目标"></a>2 项目目标</h2><p>提供镜像交付，将操作系统和石犀软件作为一个交付整体，不再让用户提供操作系统。</p>
+<p>适配主流的虚拟化平台的交付。</p>
+<p>闭环镜像交付各个环节可能需要解决的技术问题</p>
+<p>TUI部分的设计在另一篇文档里面 <a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_AcwAzgacAIciuwXMHlQRMqme1AmWW?scode=ABwA9Qd2ABEOAPeCbsAcwAzgacAIc">TUI模块设计说明书</a></p>
+<h2 id="3-名词解释"><a href="#3-名词解释" class="headerlink" title="3 名词解释"></a>3 名词解释</h2><p><strong>镜像：</strong>本文泛指ISO镜像文件、OVA镜像文件、QCOW2镜像文件</p>
+<p><strong>ISO映像：</strong>即符合ISO 9660标准的文件系统，这个标准定义了目录结构、文件名规则、目录深度、文件属性等一系列东西。对于本文而言，ISO映像包含用于安装的引导程序、操作系统本身、其他附加应用，是一个文件。</p>
+<p><strong>ISO镜像：</strong>和ISO映像是一个概念。</p>
+<p><strong>系统安装：</strong>本文的系统安装指的是，将ISO文件挂载成虚拟DVD设备来引导操作系统的安装。</p>
+<p><strong>镜像导入：</strong>将特定格式的镜像文件上传到虚拟化平台称为镜像导入，不同的平台使用不同格式的文件，例如OVA。</p>
+<p><strong>VMDK：</strong> 是一种文件格式，用来作为虚拟磁盘的容器，最初是由vmware开发使用，后来发布OVF标准后，成为开放格式，为大多数虚拟化平台所支持。</p>
+<p><strong>QCOW2：</strong>即qcow的第二个版本,和vmdk类似，qcow也是一种虚拟磁盘容器。qcow目前有三个版本，国内大部分公有云支持的都是qcow2格式。</p>
+<p><strong>OVF文件：</strong>一种用于打包虚拟机配置信息（如CPU，内存，磁盘，网卡)的文件，它也是一种比较主流的规范，大多数虚拟化平台都支持。</p>
+<p><strong>OVA：</strong>一种打包格式，和tar是同一种标准，相当于tar包改了后缀名。里面包含至少两个文件：ovf和vmdk，还有一个可选的mf文件（存储其他文件的哈希值）</p>
+<p><strong>分区扩容：</strong>指在现有的分区上扩大分区空间，虽然虚拟磁盘可以调整大小，但是调整后的大小并不会直接反应到分区上，需要对分区进行扩容以适配新的磁盘大小。</p>
+<p><strong>关机扩容：</strong>即分区扩容需要关机或者重启，扩容才能生效。</p>
+<p><strong>开机扩容：</strong>即热扩容，分区扩容不需要重启就能生效。</p>
+<p><strong>包：</strong>包原本指将总控和引擎的二进制、配置、依赖等压缩在一起的一个可用于安装、升级的包。在本文中将其含义进一步泛化，将镜像文件也归类到包的范畴，会以镜像包指代镜像。</p>
+<p><strong>精简置备：</strong>精简置备是一种动态分配存储空间的技术，它允许在创建时仅分配必要的存储空间，而不是预先分配整个空间。这意味着虚拟磁盘的实际大小可以根据需要动态地增长，直到达到预设的上限。精简置备技术可以有效地提高存储利用率，因为它可以避免为未来可能用不上的空间预留存储容量。</p>
+<p><strong>厚置备：</strong>厚置备是一种静态分配存储空间的技术，它会在虚拟磁盘创建时立即分配整个设定空间。这意味着虚拟磁盘会占用所分配的空间，即使实际上并没有使用全部空间。厚置备会提供更高的性能，因为存储空间已经被预先分配并保留，但会导致低效的存储利用率。</p>
+<h2 id="4-总体设计"><a href="#4-总体设计" class="headerlink" title="4 总体设计"></a>4 总体设计</h2><h3 id="4-1-概要设计"><a href="#4-1-概要设计" class="headerlink" title="4.1 概要设计"></a>4.1 概要设计</h3><h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4><h4 id="4-1-1-实现的功能"><a href="#4-1-1-实现的功能" class="headerlink" title="4.1.1 实现的功能"></a>4.1.1 实现的功能</h4><p>概要描述该模块要实现的功能。列出要实现的功能点及子功能点，并对每一个功能点进行详细说明。功能点之间的层级和关联关系要明晰。这里仅描述功能，不需要涉及实现方案、功能取舍等问题。</p>
+<ol>
+<li><p>实现自动化镜像制作</p>
+</li>
+<li><p>镜像按照需求的描述，统一各项系统设置，安装过程自动化</p>
+<ol>
+<li><p>按照需求进行分区</p>
+</li>
+<li><p>按照需求定制grub引导</p>
+</li>
+</ol>
+</li>
+<li><p>实现分区的关机扩容</p>
+</li>
+</ol>
+<h4 id="-2"><a href="#-2" class="headerlink" title=""></a></h4><h4 id="4-1-2-设计的性能指标"><a href="#4-1-2-设计的性能指标" class="headerlink" title="4.1.2 设计的性能指标"></a>4.1.2 设计的性能指标</h4><p>无</p>
+<h4 id="4-2-覆盖范围"><a href="#4-2-覆盖范围" class="headerlink" title="4.2 覆盖范围"></a>4.2 覆盖范围</h4><p>描述本次项目覆盖的范围，为了降低风险，建议项目上线前做好灰度范围控制</p>
+<ol>
+<li><p>打包平台-出包流程</p>
+</li>
+<li><p>总控安装、部署、升级</p>
+</li>
+</ol>
+<h2 id="5-详细设计"><a href="#5-详细设计" class="headerlink" title="5 详细设计"></a>5 详细设计</h2><h3 id="5-1-设计图"><a href="#5-1-设计图" class="headerlink" title="5.1 设计图"></a>5.1 设计图</h3><p><strong>出包过程图</strong></p>
+<p>本图描述有哪些包，这些包的内容是从哪来的。</p>
+<p><img src="/../../../../home/xiaoy/media/image1.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<p><strong>镜像制作(image-builder)项目结构设计</strong></p>
+<p><strong>安装部署流程</strong></p>
+<p>本图提供安装部署的流程对比，左边是没有做这块需求的时候的逻辑，右边是有了镜像交付之后的逻辑.</p>
+<p><img src="/../../../../home/xiaoy/media/image2.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<p><strong>镜像生命周期</strong></p>
+<p>安装前包括打包的部分、将包上传到网盘、客户下载包、导入包</p>
+<p>安装中主要是导入进度条跑完之后，镜像的安装只需要调整配置，进度条即是上传的进度</p>
+<p><img src="/../../../../home/xiaoy/media/image3.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<h3 id="5-2-各模块详细设计"><a href="#5-2-各模块详细设计" class="headerlink" title="5.2 各模块详细设计"></a>5.2 各模块详细设计</h3><p>对各个模块进行详细阐述，数据之间的关联关系, 使用的何种算法, 明确的接口定义(包含输入&#x2F;输出&#x2F;异常&#x2F;错误码), 尽量明确到代码层级，达到设计文档交给第三个人也可以按照文档要求进行代码开发</p>
+<h4 id="5-2-1-基ISO镜像详细设计"><a href="#5-2-1-基ISO镜像详细设计" class="headerlink" title="5.2.1 基ISO镜像详细设计"></a>5.2.1 基ISO镜像详细设计</h4><p><strong>需求回顾</strong></p>
+<ol>
+<li><p>禁用snap包管理器</p>
+</li>
+<li><p>禁用系统自动更新</p>
+</li>
+<li><p>系统参数预定义（含账户、分区、语言等）</p>
+</li>
+</ol>
+<p><del>由于基镜像难以自动化制作，所以基镜像需要尽可能做到少更新，里面不包含总控应用，总控由打包流程集成到基镜像中作为正式镜像。</del></p>
+<p>后续引擎也需要考虑镜像交付，所以基镜像既是总控的基镜像，也是引擎的基镜像。不管是总控还是引擎，都应该能够顺利的在该镜像里面安装，不会出现系统版本、内核版本问题，不会出现底层依赖缺失问题。</p>
+<p>目前的设计仅考虑Legacy BIOS模式即可，不需要考虑UEFI模式。</p>
+<p><strong>方案一</strong>：使用cubic+seed制作</p>
+<p><strong>方案二</strong>：使用xorrios+cloud-init制作</p>
+<p>方案一在ubuntu20.04不可行，故使用方案二</p>
+<h5 id="5-2-1-1-使用cubic制作基镜像流程"><a href="#5-2-1-1-使用cubic制作基镜像流程" class="headerlink" title="5.2.1.1 使用cubic制作基镜像流程"></a>5.2.1.1 使用cubic制作基镜像流程</h5><ol>
+<li><p>下载一个官方的ISO镜像，这里使用ubuntu 20.04.6</p>
+</li>
+<li><p>用cubic打开官方ISO镜像</p>
+</li>
+<li><p>定制发行版名字</p>
+</li>
+<li><p>进入chroot环境，通过命令行进行定制</p>
+<ol>
+<li><p>删除不需要的包管理器（snap）</p>
+</li>
+<li><p><del>关闭系统自动更新（unattended-upgrades）</del>(可以在preseed里搞定)</p>
+</li>
+</ol>
+</li>
+<li><p>选择内核（如果有多个）</p>
+</li>
+<li><p>编写preseed文件，设定参数</p>
+<ol>
+<li><p>定制网络配置</p>
+</li>
+<li><p>定制磁盘分区</p>
+</li>
+<li><p>定制语言及键盘</p>
+</li>
+<li><p>定制用户名密码、主机名</p>
+</li>
+<li><p>定制预装的软件（ssh server)</p>
+</li>
+<li><p>定制GRUB密码</p>
+</li>
+</ol>
+</li>
+<li><p>修改&#x2F;isolinux&#x2F;txt.cfg，指向preseed文件</p>
+</li>
+</ol>
+<p><strong>preseed文件详细设计</strong></p>
+<p><strong>参考资料</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37579176/article/details/112492277">【精选】使用 “Cubic” 制作自定义 “ubuntu” 系统镜像_cubic制作镜像_此木子的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/sexibytes/packer-sexigraf/blob/master/preseed.cfg">https://github.com/sexibytes/packer-sexigraf/blob/master/preseed.cfg</a></p>
+<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1228909/preseed-config-using-cubic-is-ignored-during-installation">18.04 - Preseed config (using cubic) is ignored during installation - Ask Ubuntu</a></p>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/styblope/2cf93a41662608f924de71fd0e91e0d1">https://gist.github.com/styblope/2cf93a41662608f924de71fd0e91e0d1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.debian.org/releases/bullseye/amd64/apbs04.en.html">B.4.Contents of the preconfiguration file (for bullseye)</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1234791">使用preseed一键安装Ubuntu Server 1604-阿里云开发者社区</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhangguanzhang.github.io/2019/08/06/preseed/">ubuntu preseed无人应答安装 · zhangguanzhang&#39;s Blog</a></p>
+<p><a target="_blank" rel="noopener" href="https://sysin.org/blog/disable-ubuntu-auto-update/">https://sysin.org/blog/disable-ubuntu-auto-update/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/covertsh/ubuntu-autoinstall-generator/tree/main">GitHub - covertsh&#x2F;ubuntu-autoinstall-generator: Generate a fully-automated Ubuntu ISO for unattended installations.</a></p>
+<h5 id="5-2-1-2-使用xorriso制作基镜像流程"><a href="#5-2-1-2-使用xorriso制作基镜像流程" class="headerlink" title="5.2.1.2 使用xorriso制作基镜像流程"></a>5.2.1.2 使用xorriso制作基镜像流程</h5><ol>
+<li><p>下载一个官方的ISO镜像，这里使用ubuntu 20.04.6</p>
+</li>
+<li><p>使用xorriso解压镜像文件</p>
+</li>
+<li><p>通过unsquash将解压出来的文件filesystem.squashfs进行反编译</p>
+</li>
+<li><p>通过chroot操作解压出来的filesystem.squashfs文件系统，对应安装后的ubuntu根目录，执行完毕后，将squashfs文件重新打包成filesystem.squashfs文件，放入解压的镜像目录中。</p>
+</li>
+<li><p>ubuntu20.04及其之后都使用cloud-init方式实现自动化安装，将自动安装参数autoinstall ds&#x3D;nocloud;s&#x3D;&#x2F;cdrom&#x2F;cloud_init&#x2F;添加到isolinux&#x2F;txt.cfg文件中quiet之前，然后将必要的文件user-data, meta-data复制到制定文件路径 &#x2F;cloud_init目录下。在user-data和meta-data中即可开启自动安装设置，不设置即走默认的安装设置。</p>
+<ol>
+<li><p>定制网络配置 &#x2F;&#x2F; 已完成</p>
+</li>
+<li><p>前置资源检查 &#x2F;&#x2F; 如何告诉用户？</p>
+</li>
+<li><p>定制磁盘分区 &#x2F;&#x2F; 已完成</p>
+</li>
+<li><p>定制语言及键盘 &#x2F;&#x2F; 已完成</p>
+</li>
+<li><p>定制用户名密码、主机名 &#x2F;&#x2F; 已完成</p>
+</li>
+<li><p>定制预装的软件（ssh server) &#x2F;&#x2F; 已完成</p>
+</li>
+<li><p>定制GRUB密码 &#x2F;&#x2F; 已完成</p>
+</li>
+<li><p>修改grub菜单选项</p>
+</li>
+</ol>
+</li>
+<li><p>镜像修改完成之后，通过xorriso再将文件打包成iso镜像。</p>
+</li>
+</ol>
+<p><strong>user-data文件配置</strong></p>
+<p><strong>制作镜像shell脚本(大概流程，实现与此不同)</strong></p>
+<p>参考资料</p>
+<p><a target="_blank" rel="noopener" href="https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html">ubuntu nocloud-init文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://netplan.readthedocs.io/en/stable/netplan-yaml/#properties-for-device-type-ethernets">网络配置</a></p>
+<p><a target="_blank" rel="noopener" href="https://curtin.readthedocs.io/en/latest/topics/storage.html#lvm-partition-command">curtin设置文件系统分区</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.gnu.org/software/grub/manual/grub/html_node/Authentication-and-authorisation.html">grub密码设置文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://michlstechblog.info/blog/linux-disable-assignment-of-new-names-for-network-interfaces/">网卡名称兼容</a></p>
+<h4 id="5-2-2-扩容脚本详细设计"><a href="#5-2-2-扩容脚本详细设计" class="headerlink" title="5.2.2 扩容脚本详细设计"></a>5.2.2 扩容脚本详细设计</h4><p><strong>目的</strong></p>
+<p>镜像交付下的磁盘是已经分好区的，是确定的大小，而客户有不同的目的，需要的磁盘空间是不确定的。脚本的目的是自动调整文件系统的配置，跟踪物理磁盘的容量变化（只增不减）。</p>
+<h5 id="5-2-2-1-可选方案"><a href="#5-2-2-1-可选方案" class="headerlink" title="5.2.2.1 可选方案"></a>5.2.2.1 可选方案</h5><p><strong>方案一 单磁盘设计</strong></p>
+<p>思路: 监控特定的硬盘&#x2F;dev&#x2F;sda的物理容量是否发生变化, 变化后则调整数据分区大小</p>
+<p>特点: 适用于虚拟化环境和带RAID卡的物理机环境，只能关机扩容。</p>
+<p>要求: 以虚拟机为例, 编辑虚拟机的磁盘配置,调大磁盘大小即可。以物理机为例，插入一块新的硬盘，然后在BIOS里面调整RAID配置。</p>
+<p><strong>方案二 多磁盘设计</strong></p>
+<p>思路: 监控新增的磁盘，如果识别到多了一块没使用的硬盘，则将其容量增加到数据分区</p>
+<p>特点：适用于虚拟化环境和不带RAID卡（或者RAID处于IT模式）的物理机环境，可以开机扩容</p>
+<p>要求：以虚拟机为例，增加一个块任意大小的虚拟磁盘即可。以物理机为例，插入一个新的硬盘即可。</p>
+<p>本节中，假定<strong>方案二</strong>更常见，并以此做进一步设计。</p>
+<h5 id="5-2-2-2-检测原理"><a href="#5-2-2-2-检测原理" class="headerlink" title="5.2.2.2 检测原理"></a>5.2.2.2 检测原理</h5><p>考虑关机扩容，那么假设有一个脚本，它在开机后执行</p>
+<p>基于单磁盘方案（<strong>方案一</strong>）：</p>
+<ol>
+<li><p>关机，修改硬盘大小</p>
+</li>
+<li><p>使用pvresize 调整pv大小</p>
+</li>
+<li><p>使用lvextend扩容lv到当前vg大小</p>
+</li>
+<li><p>使用resize2fs调整ext4分区大小</p>
+</li>
+</ol>
+<p>基于多磁盘方案（<strong>方案二</strong>）：</p>
+<p>遍历磁盘列表，如果发现有没有登记过的磁盘，则将其添加到vg中，然后再调整lv</p>
+<p>手动操作过程：</p>
+<ol>
+<li><p>添加一块磁盘</p>
+</li>
+<li><p>人肉判断哪个盘是新加的盘</p>
+</li>
+<li><p>用pvcreate将该盘添加到pv</p>
+</li>
+<li><p>用vgextend将pv添加到vg</p>
+</li>
+<li><p>用lvextend将lv扩容到当前vg的大小</p>
+</li>
+<li><p>用resize2fs将lv的容量应用到ext4分区大小</p>
+</li>
+</ol>
+<p><img src="/../../../../home/xiaoy/media/image4.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<h5 id="5-2-2-3-开机运行实现"><a href="#5-2-2-3-开机运行实现" class="headerlink" title="5.2.2.3 开机运行实现"></a>5.2.2.3 开机运行实现</h5><p>方案一：systemd</p>
+<p>方案二：init.d</p>
+<p>方案二在centos系统用的比较多，本文采用的首选方案为方案一</p>
+<h4 id="5-2-3-打包模块详细设计"><a href="#5-2-3-打包模块详细设计" class="headerlink" title="5.2.3 打包模块详细设计"></a>5.2.3 打包模块详细设计</h4><h5 id="5-2-3-1-ISO镜像打包方案"><a href="#5-2-3-1-ISO镜像打包方案" class="headerlink" title="5.2.3.1 ISO镜像打包方案"></a>5.2.3.1 ISO镜像打包方案</h5><p>概述</p>
+<p>在基ISO镜像的基础上，按照总控安装的流程，将二进制文件、配置文件、依赖的库拷贝到安装后的目录。基ISO镜像的制作使用了cubic，但cubic是一个图形化工具，不利于自动化，为此我们需要使用到命令行工具来达成目的。</p>
+<p>相关工具</p>
+<ul>
+<li><p>xorriso 用于解包和打包ISO</p>
+</li>
+<li><p>unsquashfs 用于展开casper压缩文件</p>
+</li>
+<li><p>mksquashfs 用于将文件系统压缩成casper</p>
+</li>
+<li><p>fakeroot 用于实现chroot，切换根目录，方便进行apt安装等操作</p>
+</li>
+</ul>
+<p>关键步骤实现</p>
+<ul>
+<li><p>文件拷贝</p>
+</li>
+<li><p>系统初始化</p>
+</li>
+</ul>
+<p>ISO挂载</p>
+<p>ISO解除挂载</p>
+<p>切换根目录</p>
+<h5 id="5-2-3-2-OVA镜像打包方案"><a href="#5-2-3-2-OVA镜像打包方案" class="headerlink" title="5.2.3.2 OVA镜像打包方案"></a>5.2.3.2 OVA镜像打包方案</h5><p><img src="/../../../../home/xiaoy/media/image5.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<p>如图，如果采用官方ISO镜像来制作OVA，那么制作出来的是基OVA镜像，它需要一次制作，不断更新。在无法实现制作石犀ISO的背景下，是比较合适的路。</p>
+<p>无论前面的方案如何，最终制作OVA时，都需要一个VMDK文件（虚拟磁盘文件），这个文件的创建有两条路走，一条是使用vmware来操作一遍安装流程，一条是用命令创建一个空的vmdk文件，并通过某种方式挂载到文件系统中，然后通过某种方式来将系统安装到vmdk上。 前者实现简单，但是存在难以自动化的问题，后者实现不确定性比较大，但是是理论上可以自动化的方案。</p>
+<p>综合多方考虑，取两种方案，分别为图中蓝色和绿色两种。绿色是比较理想的情况，它意味着ISO镜像的方案比较成熟，可以很好的支撑其他类型镜像的制作。蓝色是妥协的情况，这里着重说一下。</p>
+<p>蓝色的制作步骤为：</p>
+<ol>
+<li><p>获取官方ISO镜像</p>
+</li>
+<li><p>手工操作vmware，创建虚拟机，然后安装该镜像</p>
+</li>
+<li><p>安装完成后，不要重启，直接关机，避免进入系统</p>
+</li>
+<li><p>此时得到的vmdk可以认为是基OVA，下面步骤要实现自动化，否则全手操效率极低</p>
+</li>
+<li><p>将基OVA拷贝，挂载到其他系统</p>
+<ol>
+<li><p>ovftool将ova里的vmdk转化为可读写的vmdk</p>
+</li>
+<li><p>guestmount挂载vmdk里的文件系统到某个目录</p>
+</li>
+</ol>
+</li>
+<li><p>将一些定制化的内容放到该磁盘中（这一步可以前移到基镜像）</p>
+</li>
+<li><p>将总控安装到该磁盘中</p>
+<ol>
+<li><p>文件校验</p>
+</li>
+<li><p>拷贝二进制、配置到&#x2F;$挂载目录&#x2F;opt&#x2F;xxx（不含systemd)</p>
+</li>
+<li><p>拷贝systemd配置到&#x2F;$挂载目录&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;</p>
+</li>
+<li><p>chroot + 依赖安装 + 添加自启动</p>
+</li>
+<li><p>初始化mysql,mongo</p>
+</li>
+</ol>
+</li>
+<li><p>解除挂载，将vmdk和ovf封装成ova</p>
+</li>
+</ol>
+<p>相关工具</p>
+<ul>
+<li><p>guestmount</p>
+</li>
+<li><p>ovftool</p>
+</li>
+</ul>
+<p>ovftool解包</p>
+<p>ovftool打包</p>
+<p>OVA挂载</p>
+<p>OVA解除挂载</p>
+<p>参考资料</p>
+<p><a target="_blank" rel="noopener" href="https://dev.to/otomato_io/how-to-create-custom-debian-based-iso-4g37">How to Create Custom Debian BasedISO - DEV Community</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/covertsh/ubuntu-autoinstall-generator/blob/main/ubuntu-autoinstall-generator.sh">https://github.com/covertsh/ubuntu-autoinstall-generator/blob/main/ubuntu-autoinstall-generator.sh</a></p>
+<p><a target="_blank" rel="noopener" href="http://zenki2001cn.github.io/Wiki/Debian/iso%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6%E5%88%B6%E4%BD%9C.html">iso镜像文件制作</a></p>
+<h5 id="5-2-3-3-main-sh脚本设计"><a href="#5-2-3-3-main-sh脚本设计" class="headerlink" title="5.2.3.3 main.sh脚本设计"></a>5.2.3.3 main.sh脚本设计</h5><p>单纯的文件拷贝，可以由main.sh的各个函数完成，而有些需要在切换root后执行的命令，则作为单独的文件，在guest-install目录管理，将其拷贝到挂载路径后，在切换root后执行对应的脚本</p>
+<p><img src="/../../../../home/xiaoy/media/image6.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<h5 id="5-2-3-4-Makefile设计"><a href="#5-2-3-4-Makefile设计" class="headerlink" title="5.2.3.4 Makefile设计"></a>5.2.3.4 Makefile设计</h5><p>调用<a target="_blank" rel="noopener" href="http://main.sh/">main.sh</a> 传递解压后的总控包，基镜像，以及目标镜像作为参数 。目标镜像就是不同的target</p>
+<p><strong>target依赖关系图</strong></p>
+<ul>
+<li><p>ubuntu-iso-20-official是官方镜像，使用Ubuntu 20.04.6</p>
+</li>
+<li><p>srhino-package是打包平台出的tar.gz包</p>
+</li>
+</ul>
+<p>红色部分是识别到的难以自动化的步骤，故而ubuntu-ova-m1这个分支当前不具有可行性，导致整个iso分支暂时失去了价值。目前计划仅实现绿色路径的target</p>
+<p><img src="/../../../../home/xiaoy/media/image7.png" srcset="/img/loading.gif" lazyload alt="图标 描述已自动生成"></p>
+<h4 id="5-2-4-磁盘分区详细设计"><a href="#5-2-4-磁盘分区详细设计" class="headerlink" title="5.2.4 磁盘分区详细设计"></a>5.2.4 磁盘分区详细设计</h4><h5 id="5-2-4-1-初始分区大小规划"><a href="#5-2-4-1-初始分区大小规划" class="headerlink" title="5.2.4.1 初始分区大小规划"></a>5.2.4.1 初始分区大小规划</h5><p>[TABLE]</p>
+<h5 id="5-2-4-2-LVM设计"><a href="#5-2-4-2-LVM设计" class="headerlink" title="5.2.4.2. LVM设计"></a>5.2.4.2. LVM设计</h5><p>将系统盘分为3个VG+1个普通分区，普通分区是&#x2F;boot分区，使用ext3或ext4文件系统</p>
+<p>3个VG分别和5.2.4.1中描述的分区大小一一对应，每个VG划分一个LV</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VG(卷组)</td>
+<td>PV(物理卷)</td>
+<td>Size</td>
+</tr>
+<tr>
+<td>vg_root</td>
+<td>&#x2F;dev&#x2F;sdaX</td>
+<td>28G</td>
+</tr>
+<tr>
+<td>vg_app</td>
+<td>&#x2F;dev&#x2F;sdaX</td>
+<td>10G</td>
+</tr>
+<tr>
+<td>vg_data</td>
+<td>&#x2F;dev&#x2F;sdaX &#x2F;dev&#x2F;sdbX …</td>
+<td>60G+n</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LV(逻辑卷)</td>
+<td>VG(卷组)</td>
+</tr>
+<tr>
+<td>lv_root</td>
+<td>vg_root</td>
+</tr>
+<tr>
+<td>lv_app</td>
+<td>vg_app</td>
+</tr>
+<tr>
+<td>lv_data</td>
+<td>vg_data</td>
+</tr>
+</tbody></table>
+<h5 id="5-2-4-3-软链接"><a href="#5-2-4-3-软链接" class="headerlink" title="5.2.4.3. 软链接"></a>5.2.4.3. 软链接</h5><p>在当前版本的镜像里面，创建好以下的软连接，将占用空间比较大的，且非固定大小的目录都链接到数据分区，如：数据库文件、用户上传的文件。</p>
+<p>软连接目前仅用于兼容原有设计，后续需要将各个程序的路径改为目的地所在的路径</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>软链接</td>
+<td>目的地</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;mongodb&#x2F;data</td>
+<td>&#x2F;data&#x2F;mongodb&#x2F;data</td>
+<td>mongodb数据存储目录</td>
+</tr>
+<tr>
+<td><del>&#x2F;opt&#x2F;mongodb&#x2F;log&#x2F;</del></td>
+<td><del>&#x2F;data&#x2F;mongodb&#x2F;log</del></td>
+<td><del>mongo日志（有轮转）</del></td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;etcd&#x2F;data</td>
+<td>&#x2F;data&#x2F;etcd&#x2F;data</td>
+<td>etcd数据</td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;etcd&#x2F;wal</td>
+<td>&#x2F;data&#x2F;etcd&#x2F;wal</td>
+<td>etcd预写</td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;nsq&#x2F;data</td>
+<td>&#x2F;data&#x2F;nsq&#x2F;data</td>
+<td>mq数据</td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;redis&#x2F;data</td>
+<td>&#x2F;data&#x2F;redis&#x2F;data</td>
+<td>redis数据</td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;sv&#x2F;cache</td>
+<td>&#x2F;data&#x2F;sv&#x2F;cache</td>
+<td>可视化数据</td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;mysql&#x2F;data</td>
+<td>&#x2F;data&#x2F;mysql&#x2F;data</td>
+<td>mysql数据</td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;repo</td>
+<td>&#x2F;data&#x2F;repo</td>
+<td>插件包&#x2F;原始包</td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;sc&#x2F;data</td>
+<td>&#x2F;data&#x2F;sc&#x2F;data</td>
+<td>备份目录</td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;data</td>
+<td>&#x2F;data&#x2F;installer&#x2F;data</td>
+<td>引擎的证书</td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;installer&#x2F;data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&#x2F;opt&#x2F;os&#x2F;data</td>
+<td>&#x2F;data&#x2F;os&#x2F;data</td>
+<td>系统定制程序的数据</td>
+</tr>
+</tbody></table>
+<h5 id="5-2-4-4-OEM分区文件"><a href="#5-2-4-4-OEM分区文件" class="headerlink" title="5.2.4.4. OEM分区文件"></a>5.2.4.4. OEM分区文件</h5><p>文件格式为INI格式</p>
+<p>位于&#x2F;oem&#x2F;info，权限设计为rw——-</p>
+<p>文件内容的管理目前为手动更新，其托管在git上，集成到基镜像中</p>
+<p>注：关于SP版本，原设计是专注于系统内部程序补丁版本，现在既然把TUI和扩容集成进来，未来SP版本也会受到TUI和扩容脚本的版本影响。</p>
+<h4 id="5-2-5-预处理脚本详细设计"><a href="#5-2-5-预处理脚本详细设计" class="headerlink" title="5.2.5 预处理脚本详细设计"></a>5.2.5 预处理脚本详细设计</h4><p>当前总控打出的包感觉格式不统一，在统一规范未实现之前，本项目通过一个脚本来修正一些不合理的文件、配置、布局。镜像制作程序会按照预处理后的格式进行编码，为了不出现维护问题，以后的打包脚本应该满足下面的规范，满足后通知镜像这边，镜像这边再移除相应的逻辑。</p>
+<h5 id="5-2-5-1-统一systemd文件"><a href="#5-2-5-1-统一systemd文件" class="headerlink" title="5.2.5.1 统一systemd文件"></a>5.2.5.1 统一systemd文件</h5><p><strong>原则：</strong></p>
+<ul>
+<li><p>在总控通过systemd托管的程序，其service文件都要放到systemd子目录下</p>
+</li>
+<li><p>service文件必须是LF换行符</p>
+</li>
+</ul>
+<p><strong>当前实现：</strong></p>
+<ul>
+<li><p>api-gov&#x2F;hack&#x2F;*.service -&gt; api-gov&#x2F;systemd&#x2F;</p>
+</li>
+<li><p>sv&#x2F;hack&#x2F;sv.service -&gt; sv&#x2F;systemd&#x2F;sv.service</p>
+</li>
+<li><p>将nsq&#x2F;systemd&#x2F;nsqlookupd.service的换行符改为LF</p>
+</li>
+</ul>
+<h5 id="5-2-5-2-统一配置文件层级"><a href="#5-2-5-2-统一配置文件层级" class="headerlink" title="5.2.5.2 统一配置文件层级"></a>5.2.5.2 统一配置文件层级</h5><p><strong>原则：</strong></p>
+<ul>
+<li><p>在总控运行的程序，其配置文件在config子目录下</p>
+</li>
+<li><p>职责分明，依赖的处理应该由安装&#x2F;升级阶段解决</p>
+</li>
+</ul>
+<p><strong>当前实现：</strong></p>
+<ul>
+<li><p>删除mysql&#x2F;template目录</p>
+</li>
+<li><p>移除mysqld.service的`ExecStartPre&#x3D;&#x2F;opt&#x2F;mysql&#x2F;bin&#x2F;mysql-systemd-start pre`</p>
+</li>
+<li><p>删除etcd&#x2F;work目录</p>
+</li>
+<li><p>修改etcd.service的`EnvironmentFile&#x3D;&#x2F;opt&#x2F;etcd&#x2F;config&#x2F;etcd.conf`PI</p>
+</li>
+<li><p>将redis&#x2F;etc改为redis&#x2F;confg</p>
+</li>
+<li><p>修改redis.service的`ExecStart&#x3D;&#x2F;opt&#x2F;redis&#x2F;bin&#x2F;redis-server &#x2F;opt&#x2F;redis&#x2F;config&#x2F;redis-stack.conf`</p>
+</li>
+<li><p>&#x2F;etc&#x2F;mysql&#x2F;my.cnf从拷贝改为创建链接到&#x2F;opt&#x2F;mysql&#x2F;config&#x2F;my.cnf</p>
+</li>
+</ul>
+<p><strong>暂时仅限于镜像：</strong></p>
+<p>有些东西暂时要求不了，仅放镜像这边，后面再看情况(2023-11-23)</p>
+<ul>
+<li><p>删除mongod.service的`ExecStartPre&#x3D;ln -sf ……..`</p>
+</li>
+<li><p>删除mongod.service的`Environment&#x3D;”LD_LIBRARY_PATH&#x3D;…`</p>
+</li>
+</ul>
+<h5 id="5-2-5-3-统一data目录"><a href="#5-2-5-3-统一data目录" class="headerlink" title="5.2.5.3 统一data目录"></a>5.2.5.3 统一data目录</h5><p>TODO</p>
+<h3 id="5-3-功能实现"><a href="#5-3-功能实现" class="headerlink" title="5.3 功能实现"></a>5.3 功能实现</h3><h4 id="5-3-1-镜像制作相关实现"><a href="#5-3-1-镜像制作相关实现" class="headerlink" title="5.3.1 镜像制作相关实现"></a>5.3.1 镜像制作相关实现</h4><h5 id="5-3-1-1-系统定制相关说明"><a href="#5-3-1-1-系统定制相关说明" class="headerlink" title="5.3.1.1 系统定制相关说明"></a>5.3.1.1 系统定制相关说明</h5><ul>
+<li>root用户密码设置</li>
+</ul>
+<p>cloud-init不支持直接使用在identity中设置的root用户，需要手动修改root用户的相关权限</p>
+<p>首先解锁root用户后，设置相关密码</p>
+<p>密码使用openssl passwd -6 -stdin &lt;&lt;&lt; 123.com生成</p>
+<ul>
+<li>关闭swap文件</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>关闭第一次开机sshinit信息</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>禁用系统自动更新</li>
+</ul>
+<h5 id="5-3-1-2-grub定制相关说明"><a href="#5-3-1-2-grub定制相关说明" class="headerlink" title="5.3.1.2 grub定制相关说明"></a>5.3.1.2 grub定制相关说明</h5><ul>
+<li>设置重启后进入grub界面</li>
+</ul>
+<p>通过设置grub菜单选择超时时间，重启默认进入grub，即使没有多个启动选项</p>
+<ul>
+<li>开启grub菜单编辑密码保护</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>修改grub菜单显示样式</li>
+</ul>
+<h5 id="5-3-1-3-内核启动参数定制说明"><a href="#5-3-1-3-内核启动参数定制说明" class="headerlink" title="5.3.1.3 内核启动参数定制说明"></a>5.3.1.3 内核启动参数定制说明</h5><ul>
+<li>设置网卡默认名称</li>
+</ul>
+<p>网卡名称通常分为两类(en卓和eth)，这里全部默认为eth0</p>
+<h5 id="5-3-1-4-离线apt仓库制作"><a href="#5-3-1-4-离线apt仓库制作" class="headerlink" title="5.3.1.4 离线apt仓库制作"></a>5.3.1.4 离线apt仓库制作</h5><ol>
+<li><p>生成gpg密钥，用于离线apt仓库的签名。</p>
+</li>
+<li><p>制作离线仓库包</p>
+</li>
+<li><p>基础镜像添加离线源</p>
+</li>
+<li><p>使用echo输入密码</p>
+</li>
+<li><p>打包deb依赖到离线仓库</p>
+</li>
+</ol>
+<h5 id="5-3-1-5-容器初始化数据库"><a href="#5-3-1-5-容器初始化数据库" class="headerlink" title="5.3.1.5 容器初始化数据库"></a>5.3.1.5 容器初始化数据库</h5><ol>
+<li>利用docker实现</li>
+</ol>
+<p>需要编写dockerFile 将文件映射到docker中，利用docker中的应用运行来初始化相关数据文件。优点: 不需要手动维护相关系统资源。缺点：打包需要引入docker组件，和一个dockerFile文件。</p>
+<ol start="2">
+<li>利用linux自带的命名空间实现</li>
+</ol>
+<p>通过unshare来隔离主机中的各个命名空间实现资源隔离，为docker的实现原理，但是需要手动管理相关的隔离资源。优点：不需要引入第三方依赖，直接在squashfs文件中运行，不需要做数据文件拷贝。缺点：在使用上可能会出现一些问题需要手动解决。</p>
+<ol start="3">
+<li>使用systemd-nspawn实现</li>
+</ol>
+<p>暂未调研</p>
+<h5 id="5-3-1-6-关闭cloud-init服务的ssh输出"><a href="#5-3-1-6-关闭cloud-init服务的ssh输出" class="headerlink" title="5.3.1.6 关闭cloud-init服务的ssh输出"></a>5.3.1.6 关闭cloud-init服务的ssh输出</h5><h5 id="5-3-1-7-系统启动信息输出服务"><a href="#5-3-1-7-系统启动信息输出服务" class="headerlink" title="5.3.1.7 系统启动信息输出服务"></a>5.3.1.7 系统启动信息输出服务</h5><p>系统启动信息输出是操作系统开机时输出的系统相关的信息，主要为用户了解当前的开机情况，其中包含系统基础信息输出，以及石犀组件状态在开机过程中的输出。</p>
+<ol>
+<li><p>ubuntu的开机过程主要托管到了systemd服务中，我们包含的cpu、lvm、内存、网卡信息以及总控组件的相关状态输出</p>
+</li>
+<li><p>该服务不阻塞系统的正常启动，仅仅只是为了添加系统启动的一个输出画面，该服务在TUI服务启动之前完成，避免将console信息输出到TUI界面上造成混乱。</p>
+</li>
+</ol>
+<ul>
+<li>实现</li>
+</ul>
+<p>通过读取config&#x2F;srhino_service获取当前总控所在机器的所有组件信息，然后进行服务状态输出。后续总控升级时添加了组件也需要将组件信息新增到这个配置文件。</p>
+<h5 id="5-3-1-8-添加服务状态菜单选项"><a href="#5-3-1-8-添加服务状态菜单选项" class="headerlink" title="5.3.1.8 添加服务状态菜单选项"></a>5.3.1.8 添加服务状态菜单选项</h5><p>将原来TUI第五个技术支持选项修改为服务状态选项，能够获取当前总控的各个组件的对应状态，在组件的右边如果是绿色则表示该组件是正常的，如果是红色则表示该组件是不正常的。</p>
+<ul>
+<li>实现</li>
+</ul>
+<p>在TUI的菜单中显示组件状态，依然使用config&#x2F;srhino_serivce文件中的配置信息。且考虑到组件可能是动态变化的，这里的TUI使用动态行高来展示组件状态。</p>
+<h5 id="5-3-1-9-系统硬件信息展示"><a href="#5-3-1-9-系统硬件信息展示" class="headerlink" title="5.3.1.9 系统硬件信息展示"></a>5.3.1.9 系统硬件信息展示</h5><p>在命令行选项里面，新增了一个hardware_info的命令，该命令能够展示当前系统的cpu，memory，disk的相关使用情况，该命令依赖于free, df命令。</p>
+<ul>
+<li>实现</li>
+</ul>
+<p>获取系统硬件信息的时候，主要通过df和free命令获取相关内存信息和分区信息。</p>
+<ol>
+<li><p>内存信息的使用为free -h中的used这一栏，目前没有展示剩余可用内存。</p>
+</li>
+<li><p>磁盘主要展示石犀自定义的三个分区相关使用情况(&#x2F; , &#x2F;data, &#x2F;opt)</p>
+</li>
+<li><p>cpu的使用率为间隔一秒读取&#x2F;proc&#x2F;cpuinfo计算得到。目前仅仅只有当前cpu使用率。</p>
+</li>
+</ol>
+<h4 id="5-3-2-iso自动化制作ova文件"><a href="#5-3-2-iso自动化制作ova文件" class="headerlink" title="5.3.2 iso自动化制作ova文件"></a>5.3.2 iso自动化制作ova文件</h4><h5 id="5-3-2-1-虚拟机的相关配置"><a href="#5-3-2-1-虚拟机的相关配置" class="headerlink" title="5.3.2.1 虚拟机的相关配置"></a>5.3.2.1 虚拟机的相关配置</h5><p>这个是srhino.vmx配置文件，通常用来描述一个虚拟机的配置，这里用于ovftool导出时，导出对应的虚拟机配置。</p>
+<h5 id="5-3-2-2-qemu启动参数"><a href="#5-3-2-2-qemu启动参数" class="headerlink" title="5.3.2.2 qemu启动参数"></a>5.3.2.2 qemu启动参数</h5><p>通过qemu挂载iso镜像之后启动镜像安装到指定vmdk磁盘</p>
+<p>然后通过ovftool导出ova磁盘文件</p>
+<p>5.3.2.3 镜像启动失败备用方案</p>
+<h2 id="6-自测"><a href="#6-自测" class="headerlink" title="6 自测"></a>6 自测</h2><p>当前工程下自己需要自测的模块以及自测方法</p>
+<h3 id="6-1-自测模块"><a href="#6-1-自测模块" class="headerlink" title="6.1 自测模块"></a>6.1 自测模块</h3><p>包含当前设计的模块与依赖的周边组件&#x2F;模块</p>
+<h3 id="-3"><a href="#-3" class="headerlink" title=""></a></h3><h3 id="6-2-自测方式"><a href="#6-2-自测方式" class="headerlink" title="6.2 自测方式"></a>6.2 自测方式</h3><p>进行测试验证的方法, 使用的工具, 请求的参数, 预期响应的结果</p>
+<ul>
+<li><p>扩容脚本自测方式</p>
+<ul>
+<li><p>增加一块SATA磁盘，10GB</p>
+</li>
+<li><p>增加一块IDE&#x2F;SCSI&#x2F;NVME磁盘，10GB</p>
+</li>
+<li><p>增加一块virtio磁盘，10GB</p>
+</li>
+<li><p>误调系统盘大小测试</p>
+</li>
+</ul>
+</li>
+<li><p>ISO镜像自测方式</p>
+<ul>
+<li><p>在vmware平台安装测试，需要提前准备ESXI6.5环境</p>
+</li>
+<li><p>在HCI平台安装测试</p>
+</li>
+</ul>
+</li>
+<li><p>OVA镜像自测方式</p>
+<ul>
+<li><p>参考部署文档，在不同平台测试</p>
+</li>
+<li><p>需要测试引擎安装</p>
+</li>
+</ul>
+</li>
+<li><p>分区自测方式</p>
+<ul>
+<li>人肉判断，使用命令lsblk， df等</li>
+</ul>
+</li>
+<li><p><del>单元测试</del></p>
+</li>
+</ul>
+<h2 id="7-风险评估及对其它模块-系统影响"><a href="#7-风险评估及对其它模块-系统影响" class="headerlink" title="7 风险评估及对其它模块&#x2F;系统影响"></a>7 风险评估及对其它模块&#x2F;系统影响</h2><p>实现当前设计存在什么已知风险</p>
+<ul>
+<li><p>分区后，可能会存在遗漏的其他模块仍在使用系统分区（根分区），在清理策略不起效的情况下，可能会导致OS异常</p>
+</li>
+<li><p>软连接可能有遗漏或者被应用程序误删导致有些大数据使用到了应用分区的空间</p>
+</li>
+<li><p>OVA和ISO镜像可能会比较大，估计大小为3~4GB，由于公司没有私有网盘，可能会对实施造成一些影响</p>
+</li>
+</ul>
+<h3 id="7-1-已知的或可预知的风险"><a href="#7-1-已知的或可预知的风险" class="headerlink" title="7.1 已知的或可预知的风险"></a>7.1 已知的或可预知的风险</h3><p>在这里加上已经知道的或可能会发生的风险，包括技术、业务等方面。最好针对每个风险，列出相应的应对措施。</p>
+<h4 id="7-1-1-商城的生产地址可能不可用"><a href="#7-1-1-商城的生产地址可能不可用" class="headerlink" title="7.1.1 商城的生产地址可能不可用"></a>7.1.1 商城的生产地址可能不可用</h4><p>总控的配置项[shopCenter]下的两个地址，一个用于获取数据，一个用于上报数据。这里的风险是生产的总控不一定可用</p>
+<h4 id="7-1-2-CPU指令集检查"><a href="#7-1-2-CPU指令集检查" class="headerlink" title="7.1.2 CPU指令集检查"></a>7.1.2 CPU指令集检查</h4><p>总控依赖AVX指令，需要检查CPU指令集。</p>
+<p>ISO要在正式安装系统前，进行检查。</p>
+<p><img src="/../../../../home/xiaoy/media/image8.png" srcset="/img/loading.gif" lazyload alt="descript"></p>
+<p>OVA目前还不确定检查后在哪提示，<del>而且没有AVX好像也装不了ESXI。</del></p>
+<h4 id="7-1-3-总控WEBUI修改IP长时间不能落地"><a href="#7-1-3-总控WEBUI修改IP长时间不能落地" class="headerlink" title="7.1.3 总控WEBUI修改IP长时间不能落地"></a>7.1.3 总控WEBUI修改IP长时间不能落地</h4><p>当前TUI设计成配合WEBUI使用，但是WEBUI的需求都还没完全定下来，只知道1.4.0要做，在WEB界面修改IP实现以前，镜像也还有持久化修改IP的需求，目前的设想是通过一个脚本来代替WEBUI的操作。</p>
+<p>不论是用于代替的脚本还是未来的WEB界面，在安装引擎之前都需要通过他们来设置IP，以便持久化和修改对应应用的配置，否则无法安装引擎。</p>
+<p>脚本路径为&#x2F;user&#x2F;sbin&#x2F;quickstart_network_set</p>
+<h3 id="7-2-与其它模块-系统可能的影响"><a href="#7-2-与其它模块-系统可能的影响" class="headerlink" title="7.2 与其它模块&#x2F;系统可能的影响"></a>7.2 与其它模块&#x2F;系统可能的影响</h3><p>在详细设计中描述了该模块与其它模块的依赖关系。在这里描述这些依赖关系可能带来的影响。包括本模块对其它模块可能造成的影响以及其它模块可能给本模块造成的影响两个方面。</p>
+<h4 id="7-2-1-对总控监控体系的影响"><a href="#7-2-1-对总控监控体系的影响" class="headerlink" title="7.2.1 对总控监控体系的影响"></a>7.2.1 对总控监控体系的影响</h4><p>UI目录：</p>
+<ul>
+<li><p>系统管理-运行状态-硬盘</p>
+</li>
+<li><p>系统管理-日志管理-系统日志配置</p>
+</li>
+</ul>
+<p><strong>描述：</strong></p>
+<p>分区之后，原有磁盘空间使用率不能适应分区后的实际情况，也就是说显示的不准确，并且这块会被清理策略依赖，会产生进一步的影响。</p>
+<p>原因：</p>
+<p>分区之后，本质上是相当于将一个硬盘分为多个硬盘，但是UI显示上还是按照一个硬盘来显示。</p>
+<p><strong>解决方案：</strong></p>
+<p>方案1. 调整UI，将硬盘改为系统盘+数据盘双显。系统盘涵括根分区、应用分区和启动分区</p>
+<p>方案2. 调整算法，显示数据盘的使用率</p>
+<p>方案3. 调整算法，显示为（硬盘1使用+硬盘2使用+….+硬盘n使用)&#x2F;（硬盘1+硬盘2+….+硬盘n)</p>
+<p>方案4. 调整UI，每个盘（分区）分别显示</p>
+<p><strong>优缺点：</strong></p>
+<p>方案1. 优点：适配实现，能够减少对用户的误导，数据盘允许磁盘使用率低达1%；缺点：需要调整UI，清理策略UI文案也需要区分系统盘和数据盘。</p>
+<p>方案2. 优点：实现简单，允许磁盘使用率低达1%；缺点：如果哪天需要显示硬盘的具体容量，这里显示的数据盘容量会引起用户的困惑（容量小于分区前的磁盘），另外，如果哪个应用不小心把数据写到数据盘，并且还写满了，界面上也无法反应出来。</p>
+<p>方案3. 优点：相比其他方案相对中庸，没有明显的优点；缺点：磁盘使用率误导性强，无法反映用户最关心的指标，数据区满了也不会显示100%，数据区空了显示的可能是20%</p>
+<p>放哪4. 优点：显示的最为精确，能够发现任意分区使用率过高，对排查问题比较友好；缺点：暴露系统细节、用户认知不便，不知道这些分区是什么</p>
+<p><strong>结论</strong>：</p>
+<ul>
+<li><p>选择方案2：显示数据盘的使用率</p>
+</li>
+<li><p>双机主从同步等未来场景不受分区影响</p>
+</li>
+</ul>
+<h4 id="7-2-2-对文件目录规范的影响"><a href="#7-2-2-对文件目录规范的影响" class="headerlink" title="7.2.2 对文件目录规范的影响"></a>7.2.2 对文件目录规范的影响</h4><p>原本各个应用的文件目录规范为：</p>
+<ol>
+<li><p>每个应用一个文件夹，称为应用文件夹</p>
+</li>
+<li><p>应用文件夹下放置bin,config,data等多个目录，用于存储二进制、配置、数据等</p>
+</li>
+</ol>
+<p>这种方式对于数据分类存储不利，直接限制了分区的使用，调整后的目录规范为：</p>
+<p>原有规范基本不变，将data目录调整到数据分区</p>
+<p>调整前：${应用目录}&#x2F;${应用名}&#x2F;data</p>
+<p>调整后：${数据目录}&#x2F;${应用名}&#x2F;data</p>
+<ol start="3">
+<li><del>用户上传的文件，在tmp目录暂存后，移动到合适的位置</del></li>
+</ol>
+<p>调整前：&#x2F;tmp&#x2F;${tmpdir}&#x2F;uploadxxx</p>
+<p>调整后：&#x2F;data&#x2F;${tmpdir}&#x2F;uploadxxx</p>
+<p><del>另一个可选调整是，应用目录使用专有标识，不再使用opt（待评审确定）<br>调整前：${应用目录} &#x3D;&#x3D; &#x2F;opt</del></p>
+<p><del>调整后：${应用目录} &#x3D;&#x3D; &#x2F;srhino</del></p>
+<p><del>这样做的好处是，做清理类操作时，可以直接rm -rf &#x2F;srhino&#x2F;* 而不用小心翼翼的删除每个opt下的文件。但是清理这个需求理论上不应该出现在客户的场景里，特别是镜像交付的场景，唯一有用的场景可能是内部自测的时候，意义不太明确。</del></p>
+<p>上面说的都是理论上的场景，实际考察发现原有目录规范并不是每个应用都能遵守的，并且出于过渡期的考量，不会马上切到新的规范</p>
+<p>当前版本设计的是按照【5.2.4.3 软链接】描述，在制作镜像的时候，会将对应的软连接创建好。这样做有一些要求，主要是升级和重装的时候会有影响，在下面两节会有详细描述。</p>
+<p>结论：</p>
+<p>不需要&#x2F;srhino,,需要一个规范文档</p>
+<h4 id="7-2-3-对升级的影响"><a href="#7-2-3-对升级的影响" class="headerlink" title="7.2.3 对升级的影响"></a>7.2.3 对升级的影响</h4><p>导入过程：</p>
+<ul>
+<li><p>浏览器&gt;&gt;&gt;&gt;&#x2F;tmp&#x2F;${tmpdir}&#x2F;xxx.tar.gz</p>
+</li>
+<li><p>&#x2F;tmp&#x2F;${tmpdir}&#x2F;xxx.tar.gz &gt;&gt;&gt; sc &gt;&gt;&gt; 校验 &gt;&gt; 解压 &gt;&gt;&gt; &#x2F;opt&#x2F;repo</p>
+</li>
+</ul>
+<p>升级过程：</p>
+<ul>
+<li><p>启动&#x2F;opt&#x2F;repo&#x2F;sc&#x2F;sc&#x2F;bin&#x2F;sc (简称sc_new)，接管tcp listener socket</p>
+</li>
+<li><p>sc_new 拷贝&#x2F;opt&#x2F;repo&#x2F;部分文件到&#x2F;opt&#x2F;对应的程序下，替换二进制和配置</p>
+</li>
+<li><p>sc_new 执行&#x2F;opt&#x2F;sc&#x2F;hack&#x2F;seeder，这里会涉及数据迁移等各种复杂处理</p>
+</li>
+</ul>
+<p>要求：</p>
+<p><strong>整体约束：</strong></p>
+<p>升级过程执行流比较不确定，需要确保过程中不会删除&#x2F;opt下的目录，否则可能会导致软链接失效。</p>
+<p><strong>升级前约束：</strong></p>
+<p>升级前，检查&#x2F;oem&#x2F;info文件，如果不存在，则判定为软件部署</p>
+<p>如果文件存在，则检查OS.os-release和OS.os-patch，当前版本仅判断os-release是否为srhino focal即可，以后如果有其他类型的系统，则需要在升级前匹配好。</p>
+<p><strong>系统升级包：</strong></p>
+<p>在操作系统也归我们管后，对于操作系统的安全更新也需要通过升级包的方式发布。系统更新主要是系统软件的更新，理论上来说应该是把对应的deb包打包，并且制作升级脚本即可。对于系统升级而言，需要更新&#x2F;oem&#x2F;info文件的SP版本</p>
+<p><strong>升级包和安装包分离：</strong></p>
+<p>目前升级包和安装包都是同一个包，经了解，该包用作升级用途时，是不需要安装脚本（install.sh)的，所以我认为应该将两个包分离开来，对外以后不发布安装包，仅发布镜像和升级包，升级包里面不包含安装脚本和卸载脚本。</p>
+<p>结论：</p>
+<p>分离</p>
+<p>添加版本标识提升兼容性</p>
+<h4 id="7-2-4-对重装的影响"><a href="#7-2-4-对重装的影响" class="headerlink" title="7.2.4 对重装的影响"></a>7.2.4 对重装的影响</h4><p>重装应该仅发生在公司内部，外部要么用镜像重新部署，要么用升级包升级。</p>
+<p>卸载脚本删的比较彻底，软链接是一定会被删除的，所以要调整的是安装脚本，安装脚本需要</p>
+<p>在启动各个进程之前，先把解压后的一些文件夹挪到&#x2F;data目录(不存在则创建），然后创建好对应的软连接</p>
+<h4 id="7-2-5-mongodb的动态配置"><a href="#7-2-5-mongodb的动态配置" class="headerlink" title="7.2.5 mongodb的动态配置"></a>7.2.5 mongodb的动态配置</h4><h5 id="7-2-5-1-mongodb使用的机器资源限制"><a href="#7-2-5-1-mongodb使用的机器资源限制" class="headerlink" title="7.2.5.1 mongodb使用的机器资源限制"></a>7.2.5.1 mongodb使用的机器资源限制</h5><p><strong>CPU资源限制</strong></p>
+<ul>
+<li><p>根据 CPU 核心数量（CPU_NUM）计算核心最大利用率：</p>
+<ul>
+<li><p><strong>CPU_NUM ≤ 1</strong>：每核最大利用率 20%</p>
+</li>
+<li><p><strong>1 &lt; CPU_NUM &lt; 4</strong>：每核最大利用率 40%</p>
+</li>
+<li><p><strong>4 ≤ CPU_NUM &lt; 8</strong>：每核最大利用率 60%</p>
+</li>
+<li><p><strong>8 ≤ CPU_NUM &lt; 10</strong>：每核最大利用率 80%</p>
+</li>
+<li><p><strong>10 ≤ CPU_NUM &lt; 32</strong>：每核最大利用率 85%</p>
+</li>
+<li><p><strong>CPU_NUM ≥ 32</strong>：每核最大利用率 90%</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>内存资源限制</strong></p>
+<ul>
+<li>MongoDB 限制为使用最多机器实际内存的 30%。</li>
+</ul>
+<h5 id="7-2-5-2-实现MongoDB-机器资源限制的方法"><a href="#7-2-5-2-实现MongoDB-机器资源限制的方法" class="headerlink" title="7.2.5.2 实现MongoDB 机器资源限制的方法"></a>7.2.5.2 实现MongoDB 机器资源限制的方法</h5><ul>
+<li><p>CPU使用率限制：利用 systemd 配置的 CPUQuota 参数来限制 CPU 总使用率。</p>
+</li>
+<li><p>内存使用率限制：通过 systemd 配置中的 MemoryLimit（旧版）和 MemoryMax（新版）参数设置 MongoDB 内存使用上限。使用mongod的启动参数wiredTigerCacheSizeGB，来限制mongodb的缓冲区大小。</p>
+</li>
+<li><p>Mongodb缓冲区大小限制：使用 MongoDB 启动参数 wiredTigerCacheSizeGB 来限制缓冲区大小。</p>
+</li>
+</ul>
+<h5 id="7-2-5-3-mongodb的service文件内容计算"><a href="#7-2-5-3-mongodb的service文件内容计算" class="headerlink" title="7.2.5.3 mongodb的service文件内容计算"></a>7.2.5.3 mongodb的service文件内容计算</h5><p><strong>目标：</strong>根据当前机器资源信息生成 mongod.service 文件。</p>
+<p><strong>内容包括：</strong></p>
+<ul>
+<li><p>计算出CPU 和内存使用的限制配置。</p>
+</li>
+<li><p>计算出MongoDB 启动参数，如 wiredTigerCacheSizeGB，以控制缓冲区大小。</p>
+</li>
+</ul>
+<p><strong>具体实现：</strong></p>
+<ol>
+<li><p><strong>CPU使用率的计算：</strong></p>
+<ol>
+<li><p><del>使用 grep -c “processor” &#x2F;proc&#x2F;cpuinfo 命令得到当前CPU的核心数，并给 cpu_num 赋值</del></p>
+</li>
+<li><p>使用 nproc 命令得到当前CPU的核心数，并给 cpu_num 赋值</p>
+</li>
+<li><p>判断CPU的核心数所对应的核心使用率，并给quotient赋值</p>
+</li>
+<li><p>计算出CPUQuota的值：cpu_quota&#x3D;$((${cpu_num} * $quotient))</p>
+</li>
+</ol>
+</li>
+<li><p><strong>内存限制计算：</strong></p>
+<ol>
+<li>根据&#x2F;proc&#x2F;meminfo文件中的MemTotal字段的值得到总内存，并计算出总内存30%的大小：$(($(awk ‘&#x2F;MemTotal&#x2F; {print $2}’ &#x2F;proc&#x2F;meminfo) * 30 &#x2F; 100))，并赋值给mongodb_limit_mem</li>
+</ol>
+</li>
+<li><p><strong>mongo缓冲区大小计算：</strong></p>
+<ol>
+<li><p>将mongodb_limit_mem由原来的KB转换成以GB为单位，并向上取整</p>
+</li>
+<li><p>具体实现：</p>
+<ol>
+<li><p>1 GB &#x3D; 1048576 KB</p>
+</li>
+<li><p>让KB的值加上1048575，让它达到下一个GB的阈值，或达到当前GB的最大值</p>
+</li>
+<li><p>再让KB的值除以1048576，利用计算自动向下取整的机制得到KB转换成GB然后向上取整的值</p>
+</li>
+<li><p>mongodb_limit_mem_GB&#x3D;$(( (mongodb_limit_mem + 1048575) &#x2F; 1048576 ))</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>将计算好的值填入mongodb的模板service中并得到最终的service文件内容</strong></p>
+</li>
+</ol>
+<p><strong>mongo的service模板：</strong></p>
+<h5 id="-4"><a href="#-4" class="headerlink" title=""></a></h5><h5 id="7-2-5-4-动态配置的实现"><a href="#7-2-5-4-动态配置的实现" class="headerlink" title="7.2.5.4 动态配置的实现"></a>7.2.5.4 动态配置的实现</h5><p><strong>概要</strong>：</p>
+<ol>
+<li><p>在mongodb启动的时候设置一个前置执行脚本</p>
+</li>
+<li><p>前置脚本的作用使根据当前机器环境生成mongo的service内容，并与当前被配置到systemd的service内容比较，如果有差异，则更新systemd上的service内容，并调用systemd的配置重载操作，如果没有差异，则不作操作。</p>
+</li>
+</ol>
+<p><strong>具体实现：</strong></p>
+<h2 id="8-附件及参考资料"><a href="#8-附件及参考资料" class="headerlink" title="8 附件及参考资料"></a>8 附件及参考资料</h2><p>填写文档相关的附件或参考资料。</p>
+<p>【企微文档】研发参与流程</p>
+<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/sheet/e3_AYEAsQYMALY1HrUK7yXQsqdy4wf7K?scode=ABwA9Qd2ABEY9IZnbYAYEAsQYMALY&tab=819xxa">研发参与流程</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQthA0ZiCxTuOexfXksQ?scode=ABwA9Qd2ABEpJroZxqARkAWAYlAEQ">ubuntu server 20.04 安装流程</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQAyAAmu0ZTH29vNPcWA?scode=ABwA9Qd2ABE4iZqsuzARkAWAYlAEQ">基于官方镜像制作基OVA过程</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/mind/m4_ARkAWAYlAEQwHM912uWR3e72MrE63?scode=ABwA9Qd2ABEbo5nbAUARkAWAYlAEQ">CPU指令集调研</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_AcwAzgacAIcdOkk7yyKQeOwsSOL0X?scode=ABwA9Qd2ABELAP25QwAcwAzgacAIc">LVM介绍及使用</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQJVecguFrTkaXWFm2Jg?scode=ABwA9Qd2ABE9IioVr6ARkAWAYlAEQ">软件保护需求文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.weixin.qq.com/doc/w3_ARkAWAYlAEQk8xh84ZXSBmbtHNEYm?scode=ABwA9Qd2ABEJpM0tXrARkAWAYlAEQ">镜像交付培训资料</a></p>
+<h3 id="8-1-详细修改历史"><a href="#8-1-详细修改历史" class="headerlink" title="8.1 详细修改历史"></a>8.1 详细修改历史</h3><p>2023-11-6，岑思华：</p>
+<ul>
+<li><p>增加5.2.3.3-5.2.3.5 三个小章节，描述打包项目的代码设计</p>
+</li>
+<li><p>增加7.2.1-7.2.3 三个小章节，描述对其他模块产生的影响</p>
+</li>
+<li><p>增加5.2.4.2一节，描述关于LVM的设计</p>
+</li>
+</ul>
+<p>2023-11-7， 岑思华:</p>
+<ul>
+<li><p>将保留分区显式的挂载为&#x2F;oem，存储一些oem信息</p>
+</li>
+<li><p>继续完善7.2部分的内容</p>
+</li>
+<li><p>修改项目结构，去掉install.sh和init.sh，增加main.sh，补充main.sh的细节</p>
+</li>
+</ul>
+<p>2023-11-9，岑思华</p>
+<ul>
+<li><p>补充扩容脚本的目的</p>
+</li>
+<li><p>补充附件及参考资料</p>
+</li>
+<li><p>产品和技术部沟通后，确定磁盘百分比显示采用方案2（显示数据盘占用）</p>
+</li>
+</ul>
+<p>2023-11-14，岑思华</p>
+<ul>
+<li><p>补充mongodb配置文件的风险</p>
+</li>
+<li><p>细化ova构建细节</p>
+</li>
+</ul>
+<p>2023-11-15，岑思华</p>
+<ul>
+<li>更新7.2.5的新方案与结论</li>
+</ul>
+<p>2023-11-15，袁菘壑</p>
+<ul>
+<li>新增5.2.1.2章节</li>
+</ul>
+<p>2023-11-18，沙汉路</p>
+<ul>
+<li>增加LVM相关参考资料</li>
+</ul>
+<p>2023-11-20，岑思华</p>
+<ul>
+<li>更新5.2.3.2关于ova文件的处理方案：ovftool</li>
+</ul>
+<p>2023-11-22，岑思华</p>
+<ul>
+<li><p>将数据分区从固定的60G改为使用剩余所有空间（60G+）</p>
+</li>
+<li><p>增加5.2.5章节</p>
+</li>
+</ul>
+<p>2023-11-29 袁菘壑</p>
+<ul>
+<li>增加5.3功能实现章节 包含5.3.1镜像制作的相关实现</li>
+</ul>
+<p>2023-11-30，岑思华</p>
+<ul>
+<li>更新5.2.4.4, 设定oem文件的管理位置和管理方式</li>
+</ul>
+<p>2023-12-7，吴松达</p>
+<ul>
+<li>增加7.2.5，增加mongodb动态配置的实现</li>
+</ul>
+<p>2023-12-7，袁菘壑</p>
+<ul>
+<li>增加5.3.1.5，增加容器初始化数据库实现</li>
+</ul>
+<p>2023-12-8，岑思华</p>
+<ul>
+<li><p>更新基镜像的需求说明</p>
+</li>
+<li><p>增加oem文件SP版本的含义备注</p>
+</li>
+<li><p>增加7.1.3章节</p>
+</li>
+</ul>
+<p>2023-12-11，岑思华</p>
+<ul>
+<li>更新关于ISO镜像的UEFI补充说明，不支持UEFI</li>
+</ul>
+<p>2023-12-12，袁菘壑</p>
+<ul>
+<li><p>更新关于grub密码兼容问题，在5.3.1.2章</p>
+</li>
+<li><p>更新gpg禁用ui输入密码，在5.3.1.4章</p>
+</li>
+<li><p>添加grub静默启动，在5.3.1.3章</p>
+</li>
+<li><p>删除ssh初始化打印脚本，在5.3.1.6章</p>
+</li>
+<li><p>修改7.1.3脚本路径</p>
+</li>
+</ul>
+<p>2023-12-14，岑思华</p>
+<ul>
+<li><p>&#x2F;user&#x2F;sbin&#x2F;quickstart_network_set.sh改为&#x2F;user&#x2F;sbin&#x2F;quickstart_network_set</p>
+</li>
+<li><p>grub密码易混淆的小写L和数字1，改为大写L</p>
+</li>
+</ul>
+<p>2024-01-02，袁菘壑</p>
+<ul>
+<li>添加iso制作ova流程，在5.3.2章</li>
+</ul>
+<p>2024-01-03，袁菘壑</p>
+<ul>
+<li>增加镜像启动不了后的备用方案</li>
+</ul>
+<p>2024-01-15，袁菘壑</p>
+<ul>
+<li>新增5.3.1.7到5.3.1.9节</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/%E9%95%9C%E5%83%8F%E4%BA%A4%E4%BB%98/" class="print-no-link">#镜像交付</a>
+      
+        <a href="/tags/%E9%83%A8%E7%BD%B2/" class="print-no-link">#部署</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>镜像交付相关资料.md</div>
+      <div>https://abrance.github.io/2024/03/07/domain/linux/镜像交付相关资料/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 7, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/07/domain/db/PostgreSQL%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/" title="PostgreSQL相关资料.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">PostgreSQL相关资料.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/07/domain/%E6%8B%9B%E8%81%98/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B8%85%E5%8D%95/" title="面试题清单.md">
+                        <span class="hidden-mobile">面试题清单.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
