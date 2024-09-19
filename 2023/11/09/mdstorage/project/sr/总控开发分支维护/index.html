@@ -1,0 +1,1452 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概述 目前石犀总控引擎软件系统中，只认为存在一条主线产品在往后演进，其中这个主线产品的发布即会对应发布分支，在多次发布后，即会产生多条发布分支，这就是主要的分支形态。 类似演示平台其实认为它是一个客户定制产品，每个客户定制产品和主线产品是同级关系，也就是说，假设客户定制产品和主线产品的发布频率完全一致的情况下，同一个组件的一个版本开发，将有多个发布分支在演进，如 release-v1.2.3 、z">
+<meta property="og:type" content="article">
+<meta property="og:title" content="总控开发分支维护.md">
+<meta property="og:url" content="https://abrance.github.io/2023/11/09/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E5%BC%80%E5%8F%91%E5%88%86%E6%94%AF%E7%BB%B4%E6%8A%A4/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="概述 目前石犀总控引擎软件系统中，只认为存在一条主线产品在往后演进，其中这个主线产品的发布即会对应发布分支，在多次发布后，即会产生多条发布分支，这就是主要的分支形态。 类似演示平台其实认为它是一个客户定制产品，每个客户定制产品和主线产品是同级关系，也就是说，假设客户定制产品和主线产品的发布频率完全一致的情况下，同一个组件的一个版本开发，将有多个发布分支在演进，如 release-v1.2.3 、z">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-11-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-19T01:18:33.405Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>总控开发分支维护.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="总控开发分支维护.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-09 00:00" pubdate>
+          November 9, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          60 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">总控开发分支维护.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ol>
+<li>目前石犀总控引擎软件系统中，只认为存在一条<strong>主线产品</strong>在往后演进，其中这个主线产品的发布即会对应发布分支，在多次发布后，即会产生多条发布分支，这就是主要的分支形态。</li>
+<li>类似<strong>演示平台</strong>其实认为它是一个<strong>客户定制产品</strong>，每个客户定制产品和主线产品是同级关系，也就是说，假设客户定制产品和主线产品的发布频率完全一致的情况下，同一个组件的一个版本开发，将有多个发布分支在演进，如 release-v1.2.3 、zsj-release-v1.2.3。</li>
+<li>注意总控、引擎的发布版本规则是不同的。</li>
+<li>展望：当一个客户定制产品已经和主线产品异化太严重时，应该将属于它的 release 分支抽取独立为新组件。</li>
+</ol>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ol>
+<li><strong>主分支（main）</strong>：主分支应始终保持可部署状态。所有从主分支衍生的分支最终都应合并回主分支。</li>
+<li><strong>特性分支（feature branches）</strong>：用于开发新功能。每个特性分支应只关注一个具体的功能或修复。</li>
+<li><strong>修复分支（fix branches）</strong>：用于处理生产环境中的紧急问题。修复后，应该将更改合并回主分支和所有受影响的当前活动分支。</li>
+<li><strong>发布分支（release branches）</strong>：用于准备即将发布的版本。在此分支上，可以进行最后的调整、测试和 bug 修复。</li>
+<li><strong>标签（tags）</strong>：用于标记重要的开发里程碑，如新版本发布。</li>
+</ol>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
+<li><strong>合并策略</strong>：在主分支和特性分支之间定期合并可以减少合并冲突。但应避免不必要的合并，因为它们可能带来问题而不是解决问题。</li>
+<li><strong>版本控制</strong>：给新版本打标签（tag）可以帮助团队更好地管理版本和历史。标签创建后不应更改，以保持历史的准确性。</li>
+<li><strong>分支生命周期</strong>：每个分支应有明确的创建和终结时间。长期存在的分支可能难以维护，容易产生过时的代码和合并冲突。</li>
+<li><strong>紧急修复</strong>：紧急修复应在专门的分支上进行，并尽快合并回主要分支。这有助于快速部署修复，同时保持主要分支的稳定。</li>
+<li><strong>代码审查</strong>：所有合并操作之前应有代码审查机制，确保新合并的代码符合质量标准。</li>
+<li><strong>测试</strong>：每次合并之后都应执行自动化测试，以保证新代码的加入不会破坏现有功能。</li>
+</ol>
+<h2 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h2><h3 id="创建版本"><a href="#创建版本" class="headerlink" title="创建版本"></a>创建版本</h3><ul>
+<li>每个版本必须从 main 中签出</li>
+<li>每个版本从 main 中签出后需要做此版本初始化维护工作，包括维护后需要和 main merge 一次，防止后续merge 难度太大，因为 main 保存的框架是多个 release 分支共同所有的，很有可能很多代码需要废弃掉或是需要新增工具库</li>
+</ul>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li><strong>一致性基础</strong>：从 <code>main</code> 分支签出每个版本确保了所有版本都基于统一的代码基础，这有助于保持代码库的一致性。</li>
+<li><strong>稳定性</strong>：通常，<code>main</code> 分支被视为最稳定的分支，用作创建新 <code>release</code> 的基础可以减少引入未测试或不稳定代码的风险。</li>
+<li><strong>追踪简单</strong>：从 <code>main</code> 分支签出版本意味着所有版本的起点都是明确和统一的，便于追踪每个版本的变更。</li>
+<li><strong>集中管理</strong>：需要废弃或新增的代码和工具库的维护可以在 <code>main</code> 分支上进行，避免了在多个分支上重复相同的工作。</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li><strong>可能的初期不稳定</strong>：虽然 <code>main</code> 应该是稳定的，但如果存在频繁的合并，<code>main</code> 可能会暂时包含一些尚未完全验证的代码，这可能导致从 <code>main</code> 签出的新版本需要更多的初期维护。</li>
+<li><strong>维护工作量</strong>：如果 <code>main</code> 分支经常接收来自多个 <code>release</code> 分支的合并，那么每次从 <code>main</code> 创建新版本时都可能需要进行显著的清理和初始化工作。</li>
+<li><strong>分支膨胀</strong>：如果每个新版本都从 <code>main</code> 签出，并且版本更新频繁，可能会导致大量的分支存在，增加了管理的复杂性。</li>
+</ol>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><ol>
+<li><strong>保持 <code>main</code> 的纯净</strong>：尽可能只在 <code>main</code> 分支上进行稳定性和性能改进，而不是功能添加，这样新签出的版本就需要较少的初始化维护。</li>
+<li><strong>清晰的版本策略</strong>：确保有一个清晰的策略来决定何时和为什么需要创建新版本，避免不必要的版本创建。</li>
+<li><strong>自动化初始化工作</strong>：开发脚本或工具来自动化版本创建后的初始化工作，如代码清理、库更新等，以减轻人工负担。</li>
+<li><strong>详细的变更日志</strong>：维护一个详尽的变更日志，记录从上一个稳定点到当前 <code>main</code> 分支的所有变更，这样在签出新版本时，开发者可以迅速识别和处理那些需要被废弃或新增的代码。</li>
+<li><strong>代码审查和测试</strong>：在代码合并到 <code>main</code> 分支之前，实施严格的代码审查和测试流程，确保引入的变更都是稳定和可靠的。</li>
+</ol>
+<h3 id="定期合并"><a href="#定期合并" class="headerlink" title="定期合并"></a>定期合并</h3><ul>
+<li>定一个周期，一个周期内每个 release 分支至少要和 main merge 一次，否则将导致 main 与众多分支太不一致</li>
+</ul>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><pre><code class="hljs">保持一致性：定期合并有助于确保 main 分支与所有活跃的 release 分支保持一致，减少分支间的差异。
+简化合并：频繁的合并可以减小每次合并的规模，理论上可以减少合并冲突的可能性。
+及时发现问题：通过定期将更改合并回 main，可以更早地发现并解决集成问题。
+流程规范化：这种策略强制实施了一个规范化的流程，要求团队成员按时完成任务，这有助于保持项目进度。
+</code></pre>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><pre><code class="hljs">可能的过度集成：如果 release 分支还不稳定或者包含尚未准备好合并的功能，频繁的合并可能会导致 main 分支的不稳定。
+合并负担：定期合并可能会增加团队的工作负担，特别是如果存在多个活跃的 release 分支时。
+自动化测试的压力：频繁的合并需要强大的自动化测试支持，以确保不会引入新的错误。
+过度的流程化：过度的流程化可能会限制某些情况下的灵活性，因为并非所有的工作流程都能适应这种定期合并的模式。
+</code></pre>
+<h4 id="结论与展望"><a href="#结论与展望" class="headerlink" title="结论与展望"></a>结论与展望</h4><ul>
+<li><strong>灵活应用</strong>：应该根据实际情况灵活应用这个规则。如果某个 <code>release</code> 分支包含的是一个大变更，可能需要特别的处理，而不是简单的定期合并。</li>
+<li><strong>强化自动化</strong>：增强自动化测试和构建流程，确保合并的过程尽可能无痛，并及时发现问题。</li>
+<li><strong>监控分支差异</strong>：监控不同分支之间的差异，确保没有太大的偏离。</li>
+<li><strong>及时通讯</strong>：确保团队成员之间有良好的沟通机制，合并时遇到的任何问题都应及时通知并寻求解决。</li>
+</ul>
+<h3 id="新版本启动前-tagging"><a href="#新版本启动前-tagging" class="headerlink" title="新版本启动前 tagging"></a>新版本启动前 tagging</h3><h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ol>
+<li><strong>版本追踪</strong>：标签为版本提供了明确的锚点，使得在项目的生命周期中能够轻松地检出特定的发布版本。</li>
+<li><strong>回溯方便</strong>：如果在新版本发布之后发现问题，可以方便地回退到标签所指的提交进行 bug 修复。</li>
+<li><strong>文档记录</strong>：标签可以包括额外的发布信息，如版本号、发布日期等，提供了更丰富的历史信息。</li>
+<li><strong>构建和部署</strong>：自动化的构建和部署系统可以利用标签来触发特定版本的构建和部署。</li>
+<li><strong>非线性开发流程</strong>：在采用 Git 流或其他分支策略时，标签帮助维护了一个清晰的、非线性的开发历史。</li>
+<li><strong>热修复（Hotfixes）</strong>：如果需要对特定版本进行热修复，可以从相应的标签签出一个热修复分支，修复后再合并回主分支。</li>
+</ol>
+<h3 id="定期同步-tagging"><a href="#定期同步-tagging" class="headerlink" title="定期同步 tagging"></a>定期同步 tagging</h3><h4 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h4><ol>
+<li><strong>维持代码同步</strong>：周期性地将 <code>release</code> 分支合并回 <code>main</code> 可以保持各个分支间的同步，减少未来合并时的冲突概率。</li>
+<li><strong>固定集成点</strong>：这样做提供了一个固定的集成点，团队成员可以期待这些时间点，并准备他们的代码以确保合并时没有问题。</li>
+<li><strong>改进稳定性</strong>：通过定期的合并和标记，<code>main</code> 分支始终保持最新且稳定的代码状态，确保了 <code>main</code> 分支的代码质量。</li>
+<li><strong>简化版本追踪</strong>：每次合并后对 <code>main</code> 分支打标签，可以方便地跟踪各个周期的代码状态，这在识别问题和理解特定时间点的代码变更时特别有用。</li>
+<li><strong>自动化触发点</strong>：标签可以作为自动化构建和部署流程的触发点，比如当你在 <code>main</code> 上打上标签时，可以自动开始构建和部署到测试环境。</li>
+<li><strong>审计和合规性</strong>：在企业环境中，定期合并和标记可以提供审计跟踪，证明代码已经按照规定的流程进行了合并和测试。</li>
+<li><strong>快速回滚</strong>：如果新引入的代码导致问题，可以使用标签快速找到稳定状态的代码进行回滚。</li>
+<li><strong>里程碑文档化</strong>：对 <code>main</code> 分支的标记可以作为项目进度的里程碑，有助于文档化项目的发展历程。</li>
+</ol>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><strong>过度合并</strong>：如果 <code>release</code> 分支还不稳定或包含未完成的特性，过度频繁的合并可能会向 <code>main</code> 分支引入不稳定的代码。</li>
+</ul>
+<h2 id="事务和时机"><a href="#事务和时机" class="headerlink" title="事务和时机"></a>事务和时机</h2><h3 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h3><p><strong>现设定有下面关于分支管理的事务，并在下面对每个事务执行的时机和注意事项进行说明</strong></p>
+<ol>
+<li><strong>打标签</strong>：在每个重要的发行版或里程碑完成时打标签，比如完成一个稳定的开发周期或准备发布一个新版本。</li>
+<li><strong>创建分支</strong>：当开始新功能开发、预备新版本发布，或需要紧急修复时创建新的分支。</li>
+<li><strong>合并分支</strong>：功能完成且经过充分测试时，将特性分支合并到主分支；紧急修复完成后，立即合并到主分支和其他相关分支。</li>
+<li><strong>定期维护</strong>：定期评估现有分支，删除不再需要的分支，合并长时间未更新的分支，以保持代码库的整洁和可管理性。</li>
+<li><strong>紧急修复</strong>：一旦在生产环境中发现紧急问题，立即创建修复分支，开始修复工作，并按照紧急情况处理合并和部署。</li>
+</ol>
+<h3 id="时机"><a href="#时机" class="headerlink" title="时机"></a>时机</h3><h4 id="打标签（tagging）"><a href="#打标签（tagging）" class="headerlink" title="打标签（tagging）"></a>打标签（tagging）</h4><h5 id="main"><a href="#main" class="headerlink" title="main"></a>main</h5><ul>
+<li>启动一个新版本时先打 tag， tag content: init version $version</li>
+<li>定期维护所有发布分支和 main 分支，一次整体维护完之后打 tag</li>
+</ul>
+<h2 id="图表和图像"><a href="#图表和图像" class="headerlink" title="图表和图像"></a>图表和图像</h2><h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><pre><code class=" mermaid">    %%&#123;init: &#123; &#x27;logLevel&#x27;: &#x27;debug&#x27;, &#x27;theme&#x27;: &#x27;default&#x27; , &#x27;themeVariables&#x27;: &#123;
+        &#x27;gitBranchLabel0&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel1&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel2&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel3&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel4&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel5&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel6&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel7&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel8&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel9&#x27;: &#x27;#ffffff&#x27;
+  &#125; &#125; &#125;%%
+
+gitGraph
+  # 初始化组件代码仓库
+  checkout main
+  commit
+  branch feat-init
+  commit id: &quot;A1&quot; type: NORMAL
+  commit id: &quot;A2&quot; type: NORMAL
+  commit id: &quot;A3&quot; type: NORMAL
+  checkout main
+  merge feat-init
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main timestamp1&quot; tag: &quot;init v1.2.3&quot;
+  
+  # 签新版本分支，从 main 中
+  branch release-v1.2.3
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.3 init&quot;
+  checkout main
+  merge release-v1.2.3
+  checkout release-v1.2.3
+  
+  # feat-v1.2.3-1, fix-v1.2.3-x 同时进行，一个修复 bug，一个开发新功能
+  branch feat-v1.2.3-1
+  commit id: &quot;feat-v1.2.3-1 init&quot;
+  
+  # release-v1.2.3 开始修复 A 功能 bug
+  branch fix-v1.2.3-x
+  commit id: &quot;fix-v1.2.3-x init&quot;
+  commit id: &quot;Fix A 1&quot;
+  commit id: &quot;Fix A 2&quot;
+  commit id: &quot;Fix A 3&quot;
+  checkout feat-v1.2.3-1
+  
+  # release-v1.2.3 开发 B 功能 
+  commit id: &quot;B1&quot;
+  commit id: &quot;B2&quot;
+  commit id: &quot;B3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-1
+  
+  # release-v1.2.3 提交修复 A 功能 bug
+  merge fix-v1.2.3-x
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp1&quot; tag: &quot;PeriodMerge $timestamp1&quot;
+  checkout release-v1.2.3
+  
+  # release-v1.2.3 开发 C 功能
+  branch feat-v1.2.3-2
+  commit id: &quot;C1&quot;
+  commit id: &quot;C2&quot;
+  commit id: &quot;C3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp2&quot; tag: &quot;PeriodMerge $timestamp2&quot;
+  checkout release-v1.2.3
+  commit id: &quot;something 1&quot;
+  commit id: &quot;something 2&quot;
+  # release-v1.2.3 继续维护 ... 直到维护周期结束
+
+  # 启动一个新版本时先打 tag 方便随后切分支
+  checkout main
+  commit id: &quot;fix branch main timestamp2&quot; tag: &quot;init v1.2.4&quot;
+  
+  # 签版本分支，从 main 中
+  branch release-v1.2.4
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.4 init&quot;
+  checkout main
+  merge release-v1.2.4
+  checkout release-v1.2.4
+
+  # release-v1.2.4 开始开发新功能
+  branch feat-v1.2.4-1
+  commit id: &quot;feat-v1.2.4-1 init&quot;
+  commit id: &quot;D1&quot;
+  commit id: &quot;D2&quot;
+  commit id: &quot;D3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-1
+  
+  # 这时生产 release-v1.2.3 出现 A 功能 bug4
+  
+  # 先紧急解决 release-v1.2.3 问题，验证完合并代码
+  checkout release-v1.2.3
+  branch fix-v1.2.3-y
+  commit id: &quot;fix-v1.2.3-y init&quot;
+  commit id: &quot;Fix A 4 release-v1.2.3&quot;
+  checkout release-v1.2.3
+  merge fix-v1.2.3-y
+  
+  # 再解决现有其他分支问题，目前 main 和 release-v1.2.4 也有同样的问题，想办法将 main 和 release-v1.2.4 分支中 A bug4 解决
+  # 方案：（不一定是这个方案，具体问题具体选择方案解决）直接合并 release-v1.2.3 和 release-v1.2.4 main 代码
+  # 方案 一： main release-v1.2.3 release-v1.2.4 关于 A 功能代码相似度较高，就直接合并代码
+  # 方案 二： release-v1.2.3 main 代码相似度低，main release-v1.2.4 相似度高 这种情况用上面方案
+  # 方案 三： release-v1.2.3 main release-v1.2.4 相似度都低，都分别 commit，等定期维护时 merge 分别维护 A 功能代码
+  # 方案 四： release-v1.2.3 release-v1.2.4 相似度高，与 main 相似度低，release 之间 merge，main 单独维护 A 功能代码（甚至去掉 A 功能代码）
+  checkout main
+  merge release-v1.2.3
+  merge release-v1.2.4
+  
+  # release-v1.2.4 继续开发功能 E
+  checkout release-v1.2.4
+  branch feat-v1.2.4-2
+  commit id: &quot;feat-v1.2.4-2 init&quot;
+  commit id: &quot;E1&quot;
+  commit id: &quot;E2&quot;
+  commit id: &quot;E3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp3&quot; tag: &quot;PeriodMerge $timestamp3&quot;
+  
+  # 切分支继续开发 release-v1.2.4
+  checkout release-v1.2.4
+  branch feat-v1.2.4-3
+  commit id: &quot;feat-v1.2.4-3&quot;
+  commit id: &quot;D4&quot;
+  commit id: &quot;D5&quot;
+  commit id: &quot;D6&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-3
+  commit id: &quot;fix branch3 v1.2.3&quot;
+
+  # 定期维护所有分支 release-v1.2.4 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp4&quot; tag: &quot;PeriodMerge$timestamp4&quot;
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main $timestamp3&quot; tag: &quot;init v1.2.5&quot;
+  
+  # 签分支启动版本 release-v1.2.5
+  branch release-v1.2.5
+  commit id: &quot;release-v1.2.5 init&quot;
+  checkout main
+  merge release-v1.2.5
+  
+  # release-v1.2.5 上开发 F 功能
+  branch feat-v1.2.5-1
+  commit id: &quot;feat-v1.2.5-1 init&quot;
+  commit id: &quot;F1&quot;
+  # ,,,
+</code></pre>
+
+
+
+<h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><pre><code class=" mermaid">    %%&#123;init: &#123; &#x27;logLevel&#x27;: &#x27;debug&#x27;, &#x27;theme&#x27;: &#x27;default&#x27; , &#x27;themeVariables&#x27;: &#123;
+        &#x27;gitBranchLabel0&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel1&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel2&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel3&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel4&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel5&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel6&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel7&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel8&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel9&#x27;: &#x27;#ffffff&#x27;
+  &#125; &#125; &#125;%%
+
+
+gitGraph
+  # 初始化组件代码仓库
+  checkout main
+  commit
+  branch feat-init
+  commit id: &quot;A1&quot; type: NORMAL
+  commit id: &quot;A2&quot; type: NORMAL
+  commit id: &quot;A3&quot; type: NORMAL
+  checkout main
+  merge feat-init
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main timestamp1&quot; tag: &quot;init v1.2.3&quot;
+  
+  # 签新版本分支，从 main 中
+  branch release-v1.2.3
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.3 init&quot;
+  checkout main
+  merge release-v1.2.3
+  checkout release-v1.2.3
+  
+  # feat-v1.2.3-1, fix-v1.2.3-x 同时进行，一个修复 bug，一个开发新功能
+  branch feat-v1.2.3-1
+  commit id: &quot;feat-v1.2.3-1 init&quot;
+  
+  # release-v1.2.3 开始修复 A 功能 bug
+  branch fix-v1.2.3-x
+  commit id: &quot;fix-v1.2.3-x init&quot;
+  commit id: &quot;Fix A 1&quot;
+  commit id: &quot;Fix A 2&quot;
+  commit id: &quot;Fix A 3&quot;
+  checkout feat-v1.2.3-1
+  
+  # release-v1.2.3 开发 B 功能 
+  commit id: &quot;B1&quot;
+  commit id: &quot;B2&quot;
+  commit id: &quot;B3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-1
+  
+  # release-v1.2.3 提交修复 A 功能 bug
+  merge fix-v1.2.3-x
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp1&quot; tag: &quot;PeriodMerge $timestamp1&quot;
+  checkout release-v1.2.3
+  
+  # release-v1.2.3 开发 C 功能
+  branch feat-v1.2.3-2
+  commit id: &quot;C1&quot;
+  commit id: &quot;C2&quot;
+  commit id: &quot;C3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp2&quot; tag: &quot;PeriodMerge $timestamp2&quot;
+  checkout release-v1.2.3
+  commit id: &quot;something 1&quot;
+  commit id: &quot;something 2&quot;
+  # release-v1.2.3 继续维护 ... 直到维护周期结束
+
+  # 启动一个新版本时先打 tag 方便随后切分支
+  checkout main
+  commit id: &quot;fix branch main timestamp2&quot; tag: &quot;init v1.2.4&quot;
+  
+  # 签版本分支，从 main 中
+  branch release-v1.2.4
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.4 init&quot;
+  checkout main
+  merge release-v1.2.4
+  checkout release-v1.2.4
+
+  # release-v1.2.4 开始开发新功能
+  branch feat-v1.2.4-1
+  commit id: &quot;feat-v1.2.4-1 init&quot;
+  commit id: &quot;D1&quot;
+  commit id: &quot;D2&quot;
+  commit id: &quot;D3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-1
+  
+  # 这时生产 release-v1.2.3 出现 A 功能 bug4
+  
+  # 先紧急解决 release-v1.2.3 问题，验证完合并代码
+  checkout release-v1.2.3
+  branch fix-v1.2.3-y
+  commit id: &quot;fix-v1.2.3-y init&quot;
+  commit id: &quot;Fix A 4 release-v1.2.3&quot;
+  checkout release-v1.2.3
+  merge fix-v1.2.3-y
+  
+  # 再解决现有其他分支问题，目前 main 和 release-v1.2.4 也有同样的问题，想办法将 main 和 release-v1.2.4 分支中 A bug4 解决
+  # 方案：（不一定是这个方案，具体问题具体选择方案解决）先解决 main 问题，再合并到 release-v1.2.4
+  # 方案 一： main release-v1.2.3 release-v1.2.4 关于 A 功能代码相似度较高，就直接合并代码
+  # 方案 二： release-v1.2.3 main 代码相似度低，main release-v1.2.4 相似度高 这种情况用上面方案
+  # 方案 三： release-v1.2.3 main release-v1.2.4 相似度都低，都分别 commit，等定期维护时 merge 分别维护 A 功能代码
+  # 方案 四： release-v1.2.3 release-v1.2.4 相似度高，与 main 相似度低，release 之间 merge，main 单独维护 A 功能代码（甚至去掉 A 功能代码）
+  checkout main
+  branch fix-main-A-4
+  commit id: &quot;fix-main-A-4 init&quot;
+  commit id: &quot;Fix A 4 main&quot;
+  checkout main
+  merge fix-main-A-4
+  merge release-v1.2.4
+  
+  # release-v1.2.4 继续开发功能 E
+  checkout release-v1.2.4
+  branch feat-v1.2.4-2
+  commit id: &quot;feat-v1.2.4-2 init&quot;
+  commit id: &quot;E1&quot;
+  commit id: &quot;E2&quot;
+  commit id: &quot;E3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp3&quot; tag: &quot;PeriodMerge $timestamp3&quot;
+  
+  # 切分支继续开发 release-v1.2.4
+  checkout release-v1.2.4
+  branch feat-v1.2.4-3
+  commit id: &quot;feat-v1.2.4-3&quot;
+  commit id: &quot;D4&quot;
+  commit id: &quot;D5&quot;
+  commit id: &quot;D6&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-3
+  commit id: &quot;fix branch3 v1.2.3&quot;
+
+  # 定期维护所有分支 release-v1.2.4 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp4&quot; tag: &quot;PeriodMerge$timestamp4&quot;
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main $timestamp3&quot; tag: &quot;init v1.2.5&quot;
+  
+  # 签分支启动版本 release-v1.2.5
+  branch release-v1.2.5
+  commit id: &quot;release-v1.2.5 init&quot;
+  checkout main
+  merge release-v1.2.5
+  
+  # release-v1.2.5 上开发 F 功能
+  branch feat-v1.2.5-1
+  commit id: &quot;feat-v1.2.5-1 init&quot;
+  commit id: &quot;F1&quot;
+  # ,,,
+  
+  
+
+</code></pre>
+
+
+
+<h3 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h3><pre><code class=" mermaid">    %%&#123;init: &#123; &#x27;logLevel&#x27;: &#x27;debug&#x27;, &#x27;theme&#x27;: &#x27;default&#x27; , &#x27;themeVariables&#x27;: &#123;
+        &#x27;gitBranchLabel0&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel1&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel2&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel3&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel4&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel5&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel6&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel7&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel8&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel9&#x27;: &#x27;#ffffff&#x27;
+  &#125; &#125; &#125;%%
+
+
+gitGraph
+  # 初始化组件代码仓库
+  checkout main
+  commit
+  branch feat-init
+  commit id: &quot;A1&quot; type: NORMAL
+  commit id: &quot;A2&quot; type: NORMAL
+  commit id: &quot;A3&quot; type: NORMAL
+  checkout main
+  merge feat-init
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main timestamp1&quot; tag: &quot;init v1.2.3&quot;
+  
+  # 签新版本分支，从 main 中
+  branch release-v1.2.3
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.3 init&quot;
+  checkout main
+  merge release-v1.2.3
+  checkout release-v1.2.3
+  
+  # feat-v1.2.3-1, fix-v1.2.3-x 同时进行，一个修复 bug，一个开发新功能
+  branch feat-v1.2.3-1
+  commit id: &quot;feat-v1.2.3-1 init&quot;
+  
+  # release-v1.2.3 开始修复 A 功能 bug
+  branch fix-v1.2.3-x
+  commit id: &quot;fix-v1.2.3-x init&quot;
+  commit id: &quot;Fix A 1&quot;
+  commit id: &quot;Fix A 2&quot;
+  commit id: &quot;Fix A 3&quot;
+  checkout feat-v1.2.3-1
+  
+  # release-v1.2.3 开发 B 功能 
+  commit id: &quot;B1&quot;
+  commit id: &quot;B2&quot;
+  commit id: &quot;B3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-1
+  
+  # release-v1.2.3 提交修复 A 功能 bug
+  merge fix-v1.2.3-x
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp1&quot; tag: &quot;PeriodMerge $timestamp1&quot;
+  checkout release-v1.2.3
+  
+  # release-v1.2.3 开发 C 功能
+  branch feat-v1.2.3-2
+  commit id: &quot;C1&quot;
+  commit id: &quot;C2&quot;
+  commit id: &quot;C3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp2&quot; tag: &quot;PeriodMerge $timestamp2&quot;
+  checkout release-v1.2.3
+  commit id: &quot;something 1&quot;
+  commit id: &quot;something 2&quot;
+  # release-v1.2.3 继续维护 ... 直到维护周期结束
+
+  # 启动一个新版本时先打 tag 方便随后切分支
+  checkout main
+  commit id: &quot;fix branch main timestamp2&quot; tag: &quot;init v1.2.4&quot;
+  
+  # 签版本分支，从 main 中
+  branch release-v1.2.4
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.4 init&quot;
+  checkout main
+  merge release-v1.2.4
+  checkout release-v1.2.4
+
+  # release-v1.2.4 开始开发新功能
+  branch feat-v1.2.4-1
+  commit id: &quot;feat-v1.2.4-1 init&quot;
+  commit id: &quot;D1&quot;
+  commit id: &quot;D2&quot;
+  commit id: &quot;D3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-1
+  
+  # 这时生产 release-v1.2.3 出现 A 功能 bug4
+  
+  # 先紧急解决 release-v1.2.3 问题，验证完合并代码
+  checkout release-v1.2.3
+  branch fix-v1.2.3-y
+  commit id: &quot;fix-v1.2.3-y init&quot;
+  commit id: &quot;Fix A 4 release-v1.2.3&quot;
+  checkout release-v1.2.3
+  merge fix-v1.2.3-y
+  
+  # 再解决现有其他分支问题，目前 main 和 release-v1.2.4 也有同样的问题，想办法将 main 和 release-v1.2.4 分支中 A bug4 解决
+  # 方案：（不一定是这个方案，具体问题具体选择方案解决）分别 commit，定期维护时维护 A 功能代码合并
+  # 方案 一： main release-v1.2.3 release-v1.2.4 关于 A 功能代码相似度较高，就直接合并代码
+  # 方案 二： release-v1.2.3 main 代码相似度低，main release-v1.2.4 相似度高 这种情况用上面方案
+  # 方案 三： release-v1.2.3 main release-v1.2.4 相似度都低，都分别 commit，等定期维护时 merge 分别维护 A 功能代码
+  # 方案 四： release-v1.2.3 release-v1.2.4 相似度高，与 main 相似度低，release 之间 merge，main 单独维护 A 功能代码（甚至去掉 A 功能代码）
+  checkout main
+  branch fix-main-A-4
+  commit id: &quot;fix-main-A-4 init&quot;
+  commit id: &quot;Fix A 4 main&quot;
+  checkout main
+  merge fix-main-A-4
+  
+  checkout release-v1.2.4
+  branch fix-v1.2.4-x
+  commit id: &quot;fix-v1.2.4-x init&quot;
+  commit id: &quot;Fix A 4 v1.2.4&quot;
+  checkout release-v1.2.4
+  merge fix-v1.2.4-x
+  
+  # release-v1.2.4 继续开发功能 E
+  checkout release-v1.2.4
+  branch feat-v1.2.4-2
+  commit id: &quot;feat-v1.2.4-2 init&quot;
+  commit id: &quot;E1&quot;
+  commit id: &quot;E2&quot;
+  commit id: &quot;E3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp3&quot; tag: &quot;PeriodMerge $timestamp3&quot;
+  
+  # 切分支继续开发 release-v1.2.4
+  checkout release-v1.2.4
+  branch feat-v1.2.4-3
+  commit id: &quot;feat-v1.2.4-3&quot;
+  commit id: &quot;D4&quot;
+  commit id: &quot;D5&quot;
+  commit id: &quot;D6&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-3
+  commit id: &quot;fix branch3 v1.2.3&quot;
+
+  # 定期维护所有分支 release-v1.2.4 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp4&quot; tag: &quot;PeriodMerge$timestamp4&quot;
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main $timestamp3&quot; tag: &quot;init v1.2.5&quot;
+  
+  # 签分支启动版本 release-v1.2.5
+  branch release-v1.2.5
+  commit id: &quot;release-v1.2.5 init&quot;
+  checkout main
+  merge release-v1.2.5
+  
+  # release-v1.2.5 上开发 F 功能
+  branch feat-v1.2.5-1
+  commit id: &quot;feat-v1.2.5-1 init&quot;
+  commit id: &quot;F1&quot;
+  # ,,,
+  
+</code></pre>
+
+
+
+<h3 id="方案四"><a href="#方案四" class="headerlink" title="方案四"></a>方案四</h3><pre><code class=" mermaid">    %%&#123;init: &#123; &#x27;logLevel&#x27;: &#x27;debug&#x27;, &#x27;theme&#x27;: &#x27;default&#x27; , &#x27;themeVariables&#x27;: &#123;
+        &#x27;gitBranchLabel0&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel1&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel2&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel3&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel4&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel5&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel6&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel7&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel8&#x27;: &#x27;#ffffff&#x27;,
+        &#x27;gitBranchLabel9&#x27;: &#x27;#ffffff&#x27;
+  &#125; &#125; &#125;%%
+
+
+gitGraph
+  # 初始化组件代码仓库
+  checkout main
+  commit
+  branch feat-init
+  commit id: &quot;A1&quot; type: NORMAL
+  commit id: &quot;A2&quot; type: NORMAL
+  commit id: &quot;A3&quot; type: NORMAL
+  checkout main
+  merge feat-init
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main timestamp1&quot; tag: &quot;init v1.2.3&quot;
+  
+  # 签新版本分支，从 main 中
+  branch release-v1.2.3
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.3 init&quot;
+  checkout main
+  merge release-v1.2.3
+  checkout release-v1.2.3
+  
+  # feat-v1.2.3-1, fix-v1.2.3-x 同时进行，一个修复 bug，一个开发新功能
+  branch feat-v1.2.3-1
+  commit id: &quot;feat-v1.2.3-1 init&quot;
+  
+  # release-v1.2.3 开始修复 A 功能 bug
+  branch fix-v1.2.3-x
+  commit id: &quot;fix-v1.2.3-x init&quot;
+  commit id: &quot;Fix A 1&quot;
+  commit id: &quot;Fix A 2&quot;
+  commit id: &quot;Fix A 3&quot;
+  checkout feat-v1.2.3-1
+  
+  # release-v1.2.3 开发 B 功能 
+  commit id: &quot;B1&quot;
+  commit id: &quot;B2&quot;
+  commit id: &quot;B3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-1
+  
+  # release-v1.2.3 提交修复 A 功能 bug
+  merge fix-v1.2.3-x
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp1&quot; tag: &quot;PeriodMerge $timestamp1&quot;
+  checkout release-v1.2.3
+  
+  # release-v1.2.3 开发 C 功能
+  branch feat-v1.2.3-2
+  commit id: &quot;C1&quot;
+  commit id: &quot;C2&quot;
+  commit id: &quot;C3&quot;
+  checkout release-v1.2.3
+  merge feat-v1.2.3-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  commit id: &quot;PeriodMerge $timestamp2&quot; tag: &quot;PeriodMerge $timestamp2&quot;
+  checkout release-v1.2.3
+  commit id: &quot;something 1&quot;
+  commit id: &quot;something 2&quot;
+  # release-v1.2.3 继续维护 ... 直到维护周期结束
+
+  # 启动一个新版本时先打 tag 方便随后切分支
+  checkout main
+  commit id: &quot;fix branch main timestamp2&quot; tag: &quot;init v1.2.4&quot;
+  
+  # 签版本分支，从 main 中
+  branch release-v1.2.4
+  
+  # 签版本分支后先进行新分支的维护，并与 main 进行一次初步合并
+  commit id: &quot;v1.2.4 init&quot;
+  checkout main
+  merge release-v1.2.4
+  checkout release-v1.2.4
+
+  # release-v1.2.4 开始开发新功能
+  branch feat-v1.2.4-1
+  commit id: &quot;feat-v1.2.4-1 init&quot;
+  commit id: &quot;D1&quot;
+  commit id: &quot;D2&quot;
+  commit id: &quot;D3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-1
+  
+  # 这时生产 release-v1.2.3 出现 A 功能 bug4
+  
+  # 先紧急解决 release-v1.2.3 问题，验证完合并代码
+  checkout release-v1.2.3
+  branch fix-v1.2.3-y
+  commit id: &quot;fix-v1.2.3-y init&quot;
+  commit id: &quot;Fix A 4 release-v1.2.3&quot;
+  checkout release-v1.2.3
+  merge fix-v1.2.3-y
+  
+  # 再解决现有其他分支问题，目前 main 和 release-v1.2.4 也有同样的问题，想办法将 main 和 release-v1.2.4 分支中 A bug4 解决
+  # 方案：（不一定是这个方案，具体问题具体选择方案解决）合并 release-v1.2.3 和 release-v1.2.4, main 单独解决，定期维护时再解决部分冲突
+  # 方案 一： main release-v1.2.3 release-v1.2.4 关于 A 功能代码相似度较高，就直接合并代码
+  # 方案 二： release-v1.2.3 main 代码相似度低，main release-v1.2.4 相似度高 这种情况用上面方案
+  # 方案 三： release-v1.2.3 main release-v1.2.4 相似度都低，都分别 commit，等定期维护时 merge 分别维护 A 功能代码
+  # 方案 四： release-v1.2.3 release-v1.2.4 相似度高，与 main 相似度低，release 之间 merge，main 单独维护 A 功能代码（甚至去掉 A 功能代码）
+  checkout release-v1.2.4
+  merge release-v1.2.3
+  checkout main
+  branch fix-main-A-4
+  commit id: &quot;fix-main-A-4 init&quot;
+  commit id: &quot;Fix A 4 main&quot;
+  checkout main
+  merge fix-main-A-4
+  
+  # release-v1.2.4 继续开发功能 E
+  checkout release-v1.2.4
+  branch feat-v1.2.4-2
+  commit id: &quot;feat-v1.2.4-2 init&quot;
+  commit id: &quot;E1&quot;
+  commit id: &quot;E2&quot;
+  commit id: &quot;E3&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-2
+  
+  # 定期维护 release-v1.2.3 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp3&quot; tag: &quot;PeriodMerge $timestamp3&quot;
+  
+  # 切分支继续开发 release-v1.2.4
+  checkout release-v1.2.4
+  branch feat-v1.2.4-3
+  commit id: &quot;feat-v1.2.4-3&quot;
+  commit id: &quot;D4&quot;
+  commit id: &quot;D5&quot;
+  commit id: &quot;D6&quot;
+  checkout release-v1.2.4
+  merge feat-v1.2.4-3
+  commit id: &quot;fix branch3 v1.2.3&quot;
+
+  # 定期维护所有分支 release-v1.2.4 和 main 的关系，进行一次 merge
+  checkout main
+  merge release-v1.2.3
+  merge release-v1.2.4
+  commit id: &quot;PeriodMerge $timestamp4&quot; tag: &quot;PeriodMerge$timestamp4&quot;
+  
+  # 启动一个新版本时先打 tag 方便随后切分支
+  commit id: &quot;fix branch main $timestamp3&quot; tag: &quot;init v1.2.5&quot;
+  
+  # 签分支启动版本 release-v1.2.5
+  branch release-v1.2.5
+  commit id: &quot;release-v1.2.5 init&quot;
+  checkout main
+  merge release-v1.2.5
+  
+  # release-v1.2.5 上开发 F 功能
+  branch feat-v1.2.5-1
+  commit id: &quot;feat-v1.2.5-1 init&quot;
+  commit id: &quot;F1&quot;
+  # ,,,
+</code></pre>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/git/" class="print-no-link">#git</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>总控开发分支维护.md</div>
+      <div>https://abrance.github.io/2023/11/09/mdstorage/project/sr/总控开发分支维护/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 9, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/11/09/project/sr/%E6%80%BB%E6%8E%A7%E5%BC%80%E5%8F%91%E5%88%86%E6%94%AF%E7%BB%B4%E6%8A%A4/" title="总控开发分支维护.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">总控开发分支维护.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/08/project/sr/%E8%BD%AC%E6%B5%8B%E6%8A%A5%E5%91%8A%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4%E5%86%99%E4%BD%9C%E6%80%9D%E8%B7%AF/" title="转测报告影响范围写作思路.md">
+                        <span class="hidden-mobile">转测报告影响范围写作思路.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

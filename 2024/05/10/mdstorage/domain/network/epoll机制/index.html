@@ -1,0 +1,683 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="epoll机制:epoll_create、epoll_ctl、epoll_wait、close 的使用在linux的网络编程中，很长的时间都在使用select来做事件触发。在linux新的内核中，有了一种替换它的机制，就是epoll。相比于select，epoll最大的好处在于它不会随着监听fd数目的增长而降低效率。因为在内核中的select实现中，它是采用轮询来处理的，轮询的fd数目越多，自然耗">
+<meta property="og:type" content="article">
+<meta property="og:title" content="epoll机制.md">
+<meta property="og:url" content="https://abrance.github.io/2024/05/10/mdstorage/domain/network/epoll%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="epoll机制:epoll_create、epoll_ctl、epoll_wait、close 的使用在linux的网络编程中，很长的时间都在使用select来做事件触发。在linux新的内核中，有了一种替换它的机制，就是epoll。相比于select，epoll最大的好处在于它不会随着监听fd数目的增长而降低效率。因为在内核中的select实现中，它是采用轮询来处理的，轮询的fd数目越多，自然耗">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-19T01:18:33.385Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>epoll机制.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="epoll机制.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-10 00:00" pubdate>
+          May 10, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">epoll机制.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="epoll机制-epoll-create、epoll-ctl、epoll-wait、close-的使用"><a href="#epoll机制-epoll-create、epoll-ctl、epoll-wait、close-的使用" class="headerlink" title="epoll机制:epoll_create、epoll_ctl、epoll_wait、close 的使用"></a>epoll机制:epoll_create、epoll_ctl、epoll_wait、close 的使用</h1><p>在linux的网络编程中，很长的时间都在使用select来做事件触发。在linux新的内核中，有了一种替换它的机制，就是epoll。相比于select，epoll最大的好处在于它不会随着监听fd数目的增长而降低效率。因为在内核中的select实现中，它是采用轮询来处理的，轮询的fd数目越多，自然耗时越多。并且，linux&#x2F;posix_types.h头文件有这样的声明：<br>#define__FD_SETSIZE 1024<br><strong>表示select最多同时监听1024个fd，当然，可以通过修改头文件再重编译内核来扩大这个数目，但这似乎并不治本。</strong></p>
+<p><strong>epoll的接口非常简单，一共就三个函数：</strong><br>1.<strong>创建epoll句柄</strong><br>int epfd &#x3D; epoll_create(intsize);</p>
+<p>创建一个epoll的句柄，<strong>size用来告诉内核这个监听的数目一共有多大</strong><br>。<strong>这个参数不同于select()中的第一个参数，给出最大监听的fd+1的值</strong><br>。需要注意的是，当创建好epoll句柄后，它就是会占用一个fd值，在linux下如果查看&#x2F;proc&#x2F;进程id&#x2F;fd&#x2F;，是能够看到这个fd的，<strong>所以在使用完epoll后，必须调用close()关闭，否则可能导致fd被耗尽。</strong><br>函数声明：int epoll_create(int size)<br>该 函数生成一个epoll专用的文件描述符。它其实是在内核申请一空间，用来存放想关注的socket<br>fd上是否发生以及发生了什么事件。size就是在这个epoll fd上能关注的最大socket<br>fd数。可以随便定，只要有空间。可参见上面与select之不同<br>2.<strong>将被监听的描述符添加到epoll句柄或从epool句柄中删除或者对监听事件进行修改。</strong></p>
+<p>*<em>函数声明：int epoll_ctl(int epfd, int op, int fd, struct epoll_event <em>event)</em></em><br><strong>该函数用于控制某个epoll文件描述符上的事件，可以注册事件，修改事件，删除事件。</strong><br><strong>参数：</strong><br><strong>epfd：由 epoll_create 生成的epoll专用的文件描述符；</strong><br><strong>op：要进行的操作例如注册事件，可能的取值EPOLL_CTL_ADD 注册、EPOLL_CTL_MOD 修 改、EPOLL_CTL_DEL 删除</strong></p>
+<p><strong>fd：关联的文件描述符；</strong><br><strong>event：指向epoll_event的指针；</strong><br><strong>如果调用成功返回0,不成功返回-1</strong></p>
+<p>int epoll_ctl(int epfd, int<strong>op</strong> , int fd, struct epoll_event*event);</p>
+<p>epoll的事件注册函数，它不同与select()是在监听事件时告诉内核要监听什么类型的事件，而是在这里先注册要监听的事件类型。</p>
+<p>第一个参数是epoll_create()的返回值，</p>
+<p>第二个参数表示动作，用三个宏来表示：<br>EPOLL_CTL_ADD： 注册新的fd到epfd中；<br>EPOLL_CTL_MOD： 修改已经注册的fd的监听事件；<br>EPOLL_CTL_DEL： 从epfd中删除一个fd；<br>第三个参数是需要监听的fd，</p>
+<p>第四个参数是告诉内核需要监听什么事件，struct epoll_event结构如下：</p>
+<p>typedef union epoll_data {<br>void *ptr;<br>int fd;<br>__uint32_t u32;<br>__uint64_t u64;<br>} epoll_data_t;</p>
+<p>struct epoll_event {<br>__uint32_t events; <em>&#x2F;* Epoll events *&#x2F;</em><br>epoll_data_t data; <em>&#x2F;* User data variable *&#x2F;</em><br>};</p>
+<p>events可以是以下几个宏的集合：<br>EPOLLIN： 触发该事件，表示对应的文件描述符上有可读数据。(包括对端SOCKET正常关闭)；<br>EPOLLOUT： 触发该事件，表示对应的文件描述符上可以写数据；<br>EPOLLPRI： 表示对应的文件描述符有紧急的数据可读（这里应该表示有带外数据到来）；<br>EPOLLERR： 表示对应的文件描述符发生错误；<br>EPOLLHUP： 表示对应的文件描述符被挂断；<br>EPOLLET： 将EPOLL设为边缘触发(Edge Triggered)模式，这是相对于水平触发(Level Triggered)来说的。<br>EPOLLONESHOT： 只监听一次事件，当监听完这次事件之后，如果还需要继续监听这个socket的话，需要再次把这个socket加入到EPOLL队列里。<br>如：<br>struct epoll_event ev;<br>&#x2F;&#x2F;设置与要处理的事件相关的文件描述符<br>ev.data.fd&#x3D;listenfd;<br>&#x2F;&#x2F;设置要处理的事件类型<br>ev.events&#x3D;EPOLLIN|EPOLLET;<br>&#x2F;&#x2F;注册epoll事件<br>epoll_ctl(epfd,EPOLL_CTL_ADD,listenfd,&amp;ev);<br><strong>3.等待事件触发，当超过timeout还没有事件触发时，就超时。</strong></p>
+<p><strong>int epoll_wait(int epfd, struct epoll_event * events, intmaxevents, int<br>timeout);</strong><br>等待事件的产生，类似于select()调用。参数events用来从内核得到事件的集合，maxevents告之内核这个events有多大(数组成员的个数)，这个maxevents的值不能大于创建epoll_create()时的size，参数timeout是超时时间（毫秒，0会立即返回，-1将不确定，也有说法说是永久阻塞）。</p>
+<p>该函数返回需要处理的事件数目，如返回0表示已超时。</p>
+<h2 id="返回的事件集合在events数组中，数组中实际存放的成员个数是函数的返回值。返回0表示已经超时。函数声明-int-epoll-wait-int-epfd-struct-epoll-event-events-int-maxevents-inttimeout-该函数用于轮询I-O事件的发生；参数：epfd-由epoll-create-生成的epoll专用的文件描述符；epoll-event-用于回传代处理事件的数组；maxevents-每次能处理的事件数；timeout-等待I-O事件发生的超时值-单位我也不太清楚-；-1相当于阻塞，0相当于非阻塞。一般用-1即可返回发生事件数。epoll-wait运行的原理是等侍注册在epfd上的socket-fd的事件的发生，如果发生则将发生的sokct-fd和事件类型放入到events数组中。并-且将注册在epfd上的socket-fd的事件类型给清空-，所以如果下一个循环还要关注这个socketfd的话，则需要用epoll-ctl-epfd-EPOLL-CTL-MOD-listenfd-ev-来重新设置socketfd的事件类型。这时不用EPOLL-CTL-ADD-因为socket-fd并未清空，只是事件类型清空。这一步非常重要。"><a href="#返回的事件集合在events数组中，数组中实际存放的成员个数是函数的返回值。返回0表示已经超时。函数声明-int-epoll-wait-int-epfd-struct-epoll-event-events-int-maxevents-inttimeout-该函数用于轮询I-O事件的发生；参数：epfd-由epoll-create-生成的epoll专用的文件描述符；epoll-event-用于回传代处理事件的数组；maxevents-每次能处理的事件数；timeout-等待I-O事件发生的超时值-单位我也不太清楚-；-1相当于阻塞，0相当于非阻塞。一般用-1即可返回发生事件数。epoll-wait运行的原理是等侍注册在epfd上的socket-fd的事件的发生，如果发生则将发生的sokct-fd和事件类型放入到events数组中。并-且将注册在epfd上的socket-fd的事件类型给清空-，所以如果下一个循环还要关注这个socketfd的话，则需要用epoll-ctl-epfd-EPOLL-CTL-MOD-listenfd-ev-来重新设置socketfd的事件类型。这时不用EPOLL-CTL-ADD-因为socket-fd并未清空，只是事件类型清空。这一步非常重要。" class="headerlink" title="返回的事件集合在events数组中，数组中实际存放的成员个数是函数的返回值。返回0表示已经超时。函数声明:int epoll_wait(int epfd,struct epoll_event * events,int maxevents,inttimeout)该函数用于轮询I&#x2F;O事件的发生；参数：epfd:由epoll_create 生成的epoll专用的文件描述符；epoll_event:用于回传代处理事件的数组；maxevents:每次能处理的事件数；timeout:等待I&#x2F;O事件发生的超时值(单位我也不太清楚)；-1相当于阻塞，0相当于非阻塞。一般用-1即可返回发生事件数。epoll_wait运行的原理是等侍注册在epfd上的socket fd的事件的发生，如果发生则将发生的sokct fd和事件类型放入到events数组中。并 且将注册在epfd上的socket fd的事件类型给清空 ，所以如果下一个循环还要关注这个socketfd的话，则需要用epoll_ctl(epfd,EPOLL_CTL_MOD,listenfd,&amp;ev)来重新设置socketfd的事件类型。这时不用EPOLL_CTL_ADD,因为socket fd并未清空，只是事件类型清空。这一步非常重要。  "></a>返回的事件集合在events数组中，数组中实际存放的成员个数是函数的返回值。返回0表示已经超时。<br>函数声明:int epoll_wait(int epfd,struct epoll_event * events,int maxevents,int<br>timeout)<br>该函数用于轮询I&#x2F;O事件的发生；<br>参数：<br>epfd:由epoll_create 生成的epoll专用的文件描述符；<br>epoll_event:用于回传代处理事件的数组；<br>maxevents:每次能处理的事件数；<br>timeout:等待I&#x2F;O事件发生的超时值(单位我也不太清楚)；-1相当于阻塞，0相当于非阻塞。一般用-1即可<br>返回发生事件数。<br>epoll_wait运行的原理是<br>等侍注册在epfd上的socket fd的事件的发生，如果发生则将发生的sokct fd和事件类型放入到events数组中。<br><strong>并 且将注册在epfd上的socket fd的事件类型给清空</strong> ，所以如果下一个循环还要关注这个socket<br>fd的话，则需要用epoll_ctl(epfd,EPOLL_CTL_MOD,listenfd,&amp;ev)来重新设置socket<br>fd的事件类型。这时不用EPOLL_CTL_ADD,因为socket fd并未清空，只是事件类型清空。这一步非常重要。  </h2><p>从man手册中，得到ET和LT的具体描述如下<br>EPOLL事件有两种模型：<br>Edge Triggered(ET) &#x2F;&#x2F;<strong>高速工作方式，错误率比较大，只支持no_block socket (非阻塞socket)</strong><br>LevelTriggered(LT) &#x2F;&#x2F;<strong>缺省工作方式，即默认的工作方式,支持blocksocket和no_blocksocket，错误率比较小。</strong></p>
+<p>假如有这样一个例子：(LT方式，即默认方式下，内核会继续通知，可以读数据，ET方式，内核不会再通知，可以读数据)<br>1.我们已经把一个用来从管道中读取数据的文件句柄(RFD)添加到epoll描述符<br>2. 这个时候从管道的另一端被写入了2KB的数据<br>3. 调用epoll_wait(2)，并且它会返回RFD，说明它已经准备好读取操作<br>4. 然后我们读取了1KB的数据<br>5. 调用epoll_wait(2)……</p>
+<p><strong>Edge Triggered工作模式：</strong><br>如果我们在第1步将RFD添加到epoll描述符的时候使用了EPOLLET标志，那么在第5步调用epoll_wait(2)之后将有可能会挂起，因为剩余的数据还存在于文件的输入缓冲区内，而且数据发出端还在等待一个针对已经发出数据的反馈信息。只有在监视的文件句柄上发生了某个事件的时候ET工作模式才会汇报事件。因此在第5步的时候，调用者可能会放弃等待仍在存在于文件输入缓冲区内的剩余数据。在上面的例子中，会有一个事件产生在RFD句柄上，因为在第2步执行了一个写操作，然后，事件将会在第3步被销毁。因为第4步的读取操作没有读空文件输入缓冲区内的数据，因此我们在第5步调用epoll_wait(2)完成后，是否挂起是不确定的。epoll工作在ET模式的时候，必须使用非阻塞套接口，以避免由于一个文件句柄的阻塞读&#x2F;阻塞写操作把处理多个文件描述符的任务饿死。最好以下面的方式调用ET模式的epoll接口，<strong>在后面会介绍避免可能的缺陷。(LT方式可以解决这种缺陷)</strong>  </p>
+<p>i 基于非阻塞文件句柄<br>ii 只有当read(2)或者write(2)返回EAGAIN时(认为读完)才需要挂起，等待。<strong>但这并不是说每次read()时都需要循环读，直到读到产生一个EAGAIN才认为此次事件处理完成，当read()返回的读到的数据长度小于请求的数据长度时(即小于sizeof(buf))，就可以确定此时缓冲中已没有数据了，也就可以认为此事读事件已处理完成。</strong></p>
+<p><strong>Level Triggered工作模式 (默认的工作方式)</strong><br>相反的，以LT方式调用epoll接口的时候，它就相当于一个速度比较快的poll(2)，并且无论后面的数据是否被使用，因此他们具有同样的职能。因为即使使用ET模式的epoll，在收到多个chunk的数据的时候仍然会产生多个事件。调用者可以设定EPOLLONESHOT标志，在epoll_wait(2)收到事件后epoll会与事件关联的文件句柄从epoll描述符中禁止掉。因此当EPOLLONESHOT设定后，使用带有EPOLL_CTL_MOD标志的epoll_ctl(2)处理文件句柄就成为调用者必须作的事情。</p>
+<p><strong>然后详细解释ET, LT:</strong><br><strong>&#x2F;&#x2F;没有对就绪的fd进行IO操作，内核会不断的通知。</strong><br>LT(leveltriggered)是缺省的工作方式，并且同时支持block和no-<br>blocksocket。在这种做法中，内核告诉你一个文件描述符是否就绪了，然后你可以对这个就绪的fd进行IO操作。如果你不作任何操作，<strong>内核还是会继续通知你的</strong><br>，所以，这种模式编程出错误可能性要小一点。传统的select&#x2F;poll都是这种模型的代表。<br><strong>&#x2F;&#x2F;没有对就绪的fd进行IO操作，内核不会再进行通知。</strong><br>ET(edge-triggered)是高速工作方式，只支持no-blocksocket。在这种模式下，当描述符从未就绪变为就绪时，内核通过epoll告诉你。然后它会假设你知道文件描述符已经就绪，并且不会再为那个文件描述符发送更多的就绪通知，直到你做了某些操作导致那个文件描述符不再为就绪状态了(<strong>比如，你在发送，接收或者接收请求，或者发送接收的数据少于一定量时导致了一个EWOULDBLOCK错误）。但是请注意，如果一直不</strong><br>对这个fd作IO操作(从而导致它再次变成未就绪)，内核不会发送更多的通知(only<br>once),<strong><em>不过在TCP协议中，ET模式的加速效用仍需要更多的benchmark确认（这句话不理解）。</em></strong></p>
+<p>另外，当使用epoll的ET模型(epoll的非默认工作方式)来工作时，当产生了一个EPOLLIN事件后，<br>读数据的时候需要考虑的是当recv()返回的大小如果等于要求的大小，即sizeof(buf)，那么很有可能是缓冲区还有数据未读完，也意味着该次事件还没有处理完，所以还需要再次读取：<br>while(rs) &#x2F;&#x2F;ET模型<br>{<br>buflen &#x3D; recv(activeevents[i].data.fd, buf, sizeof(buf), 0);<br>if(buflen &lt; 0)<br>{<br>&#x2F;&#x2F;由于是非阻塞的模式,所以当errno为EAGAIN时,表示当前缓冲区已无数据可读<br>&#x2F;&#x2F; 在这里就当作是该次事件已处理处.<br>if(errno&#x3D;&#x3D; EAGAIN || errno &#x3D;&#x3D; EINT)<br>&#x2F;&#x2F;即当buflen&lt;0且errno&#x3D;EAGAIN时，表示没有数据了。(读&#x2F;写都是这样)<br>break;<br>else</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/" class="category-chain-item">network</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>epoll机制.md</div>
+      <div>https://abrance.github.io/2024/05/10/mdstorage/domain/network/epoll机制/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 10, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/10/mdstorage/domain/linux/eventfd%E6%9C%BA%E5%88%B6/" title="eventfd机制.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">eventfd机制.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/09/domain/network/conn%E7%9A%84%E5%B0%81%E8%A3%85%E5%92%8C%E5%AE%9E%E7%8E%B0/" title="conn的封装和实现.md">
+                        <span class="hidden-mobile">conn的封装和实现.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
