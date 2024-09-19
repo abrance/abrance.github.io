@@ -227,15 +227,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/07/project/%E5%86%99%E4%BD%9C/%E9%BA%A6%E5%85%8B%E9%98%BF%E7%91%9F/" target="_self">
-          麦克阿瑟.md
+        <a href="/2023/12/07/project/sr/CICD%E5%9B%A2%E9%98%9F%E8%BF%90%E7%BB%B4/" target="_self">
+          CICD团队运维.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/07/project/%E5%86%99%E4%BD%9C/%E9%BA%A6%E5%85%8B%E9%98%BF%E7%91%9F/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/07/project/sr/CICD%E5%9B%A2%E9%98%9F%E8%BF%90%E7%BB%B4/" target="_self">
         <div>
-          文案碎片开头中间结尾此言一出，便迅速引起世界各地广泛关注。那么，到底究竟如何呢，敬请收看大型纪录片xxx
+          标准的构建和部署流程1. 源代码管理 版本控制系统设置：如 Git，用于追踪代码变更历史。 分支策略：确定如何使用分支来管理功能开发、修复和发布。  2. 构建环境搭建 选择和配置构建服务器：如 Jenkins, TeamCity 或 GitLab CI。 环境依赖：确保所有必要的编译器、库和工具都已安装和配置。  3. 代码变更触发 代码提交：开发者提交代码到版本控制系统。 触发构建：代码提交自
         </div>
       </a>
 
@@ -253,7 +253,53 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/media/">#media</a>
+              <a href="/tags/CI-CD/">#CI/CD</a>
+            
+              <a href="/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
+            
+              <a href="/tags/%E4%BA%A4%E4%BB%98/">#交付</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/07/project/sr/%E5%8D%8E%E4%B8%BA%E9%B2%B2%E9%B9%8F%E4%BF%A1%E5%88%9B%E5%B9%B3%E5%8F%B0%E5%88%86%E6%9E%90/" target="_self">
+          华为鲲鹏信创平台分析.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/07/project/sr/%E5%8D%8E%E4%B8%BA%E9%B2%B2%E9%B9%8F%E4%BF%A1%E5%88%9B%E5%B9%B3%E5%8F%B0%E5%88%86%E6%9E%90/" target="_self">
+        <div>
+          连接华为VPN客户端 平台分析/proc/cpuinfo Processor: 63  这表示您正在查看的是第 64 个逻辑处理器的信息（处理器编号从 0 开始计数）。   Model Name: HUAWEI, Kunpeng 920  这是处理器的型号和品牌。Kunpeng 920 是华为开发的处理器，主要用于服务器和高性能计算。   BogoMIPS: 200.00  BogoMIPS 是一
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-07 00:00" pubdate>
+              2023-12-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BF%A1%E5%88%9B/">#信创</a>
+            
+              <a href="/tags/%E5%8D%8E%E4%B8%BA/">#华为</a>
             
           </div>
         
@@ -610,74 +656,6 @@
           </div>
         
         
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/30/mdstorage/domain/network/%E6%85%A2%E9%80%9F%E6%8B%92%E7%BB%9D%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
-          慢速拒绝和解决方案.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/30/mdstorage/domain/network/%E6%85%A2%E9%80%9F%E6%8B%92%E7%BB%9D%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
-        <div>
-          HTTP慢速拒绝服务防御方案 一、背景与问题描述慢速拒绝服务攻击（LDOS）区别于传统的DDOS或CC攻击。它通过以极低的速度发送数据，旨在耗尽服务器资源。现有的安全插件（如WAF、Anti-CC、流量限速等）主要针对高频次攻击，但对于低频次的慢速拒绝服务攻击防御能力不足。这些插件工作在应用层（L7），处理由envoy解析后的HTTP消息，因此缺少一些关键的“元数据”，如连接时间、请求发起时间等，
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-30 00:00" pubdate>
-              2023-11-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/" class="category-chain-item">network</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">#网络安全</a>
-            
-          </div>
         
       </div>
     </article>
