@@ -1,0 +1,961 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概述总控 (P2)总控安装相关需求安装脚本中加入IP设置的交互：文档+编码 工时评估：2.4d  打总控包时需要将安装脚本挪到安装包的第一层目录下 工时评估：0.34d  需要调整安装脚本的默认工作目录 工时评估：0.34d  安装的残留清除：文档+编码 工时评估：2.4d  在总控安装时需要将上次残留的总控给清除干净，并进行安装 工时评估：2.2d  环境检测时将内存、CPU核心数、磁盘存储空间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.6任务评估">
+<meta property="og:url" content="https://abrance.github.io/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="概述总控 (P2)总控安装相关需求安装脚本中加入IP设置的交互：文档+编码 工时评估：2.4d  打总控包时需要将安装脚本挪到安装包的第一层目录下 工时评估：0.34d  需要调整安装脚本的默认工作目录 工时评估：0.34d  安装的残留清除：文档+编码 工时评估：2.4d  在总控安装时需要将上次残留的总控给清除干净，并进行安装 工时评估：2.2d  环境检测时将内存、CPU核心数、磁盘存储空间">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-20T00:52:33.799Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>1.6任务评估 - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1.6任务评估"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-12 00:00" pubdate>
+          June 12, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          26 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">1.6任务评估</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="总控-P2"><a href="#总控-P2" class="headerlink" title="总控 (P2)"></a>总控 (P2)</h2><h3 id="总控安装相关需求"><a href="#总控安装相关需求" class="headerlink" title="总控安装相关需求"></a>总控安装相关需求</h3><h4 id="安装脚本中加入IP设置的交互：文档-编码"><a href="#安装脚本中加入IP设置的交互：文档-编码" class="headerlink" title="安装脚本中加入IP设置的交互：文档+编码"></a>安装脚本中加入IP设置的交互：文档+编码</h4><ul>
+<li><strong>工时评估</strong>：2.4d</li>
+</ul>
+<h4 id="打总控包时需要将安装脚本挪到安装包的第一层目录下"><a href="#打总控包时需要将安装脚本挪到安装包的第一层目录下" class="headerlink" title="打总控包时需要将安装脚本挪到安装包的第一层目录下"></a>打总控包时需要将安装脚本挪到安装包的第一层目录下</h4><ul>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h4 id="需要调整安装脚本的默认工作目录"><a href="#需要调整安装脚本的默认工作目录" class="headerlink" title="需要调整安装脚本的默认工作目录"></a>需要调整安装脚本的默认工作目录</h4><ul>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h4 id="安装的残留清除：文档-编码"><a href="#安装的残留清除：文档-编码" class="headerlink" title="安装的残留清除：文档+编码"></a>安装的残留清除：文档+编码</h4><ul>
+<li><strong>工时评估</strong>：2.4d</li>
+</ul>
+<h4 id="在总控安装时需要将上次残留的总控给清除干净，并进行安装"><a href="#在总控安装时需要将上次残留的总控给清除干净，并进行安装" class="headerlink" title="在总控安装时需要将上次残留的总控给清除干净，并进行安装"></a>在总控安装时需要将上次残留的总控给清除干净，并进行安装</h4><ul>
+<li><strong>工时评估</strong>：2.2d</li>
+</ul>
+<h4 id="环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件"><a href="#环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件" class="headerlink" title="环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件"></a>环境检测时将内存、CPU核心数、磁盘存储空间的资源校验调整为非硬性要求的安装检测条件</h4><ul>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h4 id="总控数据初始化调整：纯执行"><a href="#总控数据初始化调整：纯执行" class="headerlink" title="总控数据初始化调整：纯执行"></a>总控数据初始化调整：纯执行</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h3 id="总控卸载相关的需求"><a href="#总控卸载相关的需求" class="headerlink" title="总控卸载相关的需求"></a>总控卸载相关的需求</h3><h4 id="打包时将总控的卸载脚本的调整到第一层目录"><a href="#打包时将总控的卸载脚本的调整到第一层目录" class="headerlink" title="打包时将总控的卸载脚本的调整到第一层目录"></a>打包时将总控的卸载脚本的调整到第一层目录</h4><ul>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h4 id="卸载脚本需要调整默认的工作目录位置"><a href="#卸载脚本需要调整默认的工作目录位置" class="headerlink" title="卸载脚本需要调整默认的工作目录位置"></a>卸载脚本需要调整默认的工作目录位置</h4><ul>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h3 id="总控升级相关的需求"><a href="#总控升级相关的需求" class="headerlink" title="总控升级相关的需求"></a>总控升级相关的需求</h3><h4 id="总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）"><a href="#总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）" class="headerlink" title="总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）"></a>总控包、插件包的打包拆分：纯执行（需要前置完成—-组件与结构与定义）</h4><ul>
+<li><strong>工时评估</strong>：5.6d</li>
+</ul>
+<h4 id="在总控数据初始化的时候插件包数据初始化的代码需要做相关调整"><a href="#在总控数据初始化的时候插件包数据初始化的代码需要做相关调整" class="headerlink" title="在总控数据初始化的时候插件包数据初始化的代码需要做相关调整"></a>在总控数据初始化的时候插件包数据初始化的代码需要做相关调整</h4><ul>
+<li><strong>工时评估</strong>：2.2d</li>
+</ul>
+<h4 id="在总控升级包导入的时候需要对插件包导入逻辑做相关的调整"><a href="#在总控升级包导入的时候需要对插件包导入逻辑做相关的调整" class="headerlink" title="在总控升级包导入的时候需要对插件包导入逻辑做相关的调整"></a>在总控升级包导入的时候需要对插件包导入逻辑做相关的调整</h4><ul>
+<li><strong>工时评估</strong>：4.2d</li>
+</ul>
+<h4 id="增加对插件增量包导入的支持"><a href="#增加对插件增量包导入的支持" class="headerlink" title="增加对插件增量包导入的支持"></a>增加对插件增量包导入的支持</h4><ul>
+<li><strong>工时评估</strong>：1.4d</li>
+</ul>
+<h4 id="新增升级管理模块：升级包导入"><a href="#新增升级管理模块：升级包导入" class="headerlink" title="新增升级管理模块：升级包导入"></a>新增升级管理模块：升级包导入</h4><ul>
+<li><strong>工时评估</strong>：4.2d</li>
+<li><strong>细节</strong>：<ul>
+<li>在升级包导入时需要拆分、校验、与记录各个升级单位的数据，如：总控、流量引擎、某个插件。</li>
+<li>需要展示升级包导入状态。</li>
+<li>各个升级单位的版本识别。</li>
+</ul>
+</li>
+</ul>
+<h4 id="新增升级管理模块：展示每个升级单位的版本日志（插件升级，由-sc-调用插件管理程序实现）"><a href="#新增升级管理模块：展示每个升级单位的版本日志（插件升级，由-sc-调用插件管理程序实现）" class="headerlink" title="新增升级管理模块：展示每个升级单位的版本日志（插件升级，由 sc 调用插件管理程序实现）"></a>新增升级管理模块：展示每个升级单位的版本日志（插件升级，由 sc 调用插件管理程序实现）</h4><ul>
+<li><strong>工时评估</strong>：1.4d</li>
+</ul>
+<h4 id="新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）"><a href="#新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）" class="headerlink" title="新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）"></a>新增升级管理模块：各个升级单位的版本日志维护（文案由产品维护，写到包中，导入包时写入一张表中维护）</h4><h4 id="新增升级管理模块：聚合已安装-绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表"><a href="#新增升级管理模块：聚合已安装-绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表" class="headerlink" title="新增升级管理模块：聚合已安装&#x2F;绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表"></a>新增升级管理模块：聚合已安装&#x2F;绑定的流量引擎、边车引擎、镜像引擎、插件的数据以展示升级列表</h4><ul>
+<li><strong>工时评估</strong>：3.2d</li>
+</ul>
+<h4 id="新增升级管理模块：升级状态与进度的展示"><a href="#新增升级管理模块：升级状态与进度的展示" class="headerlink" title="新增升级管理模块：升级状态与进度的展示"></a>新增升级管理模块：升级状态与进度的展示</h4><ul>
+<li><strong>工时评估</strong>：1.4d</li>
+</ul>
+<h4 id="总控升级核心功能：总控各个组件的升级调度逻辑"><a href="#总控升级核心功能：总控各个组件的升级调度逻辑" class="headerlink" title="总控升级核心功能：总控各个组件的升级调度逻辑"></a>总控升级核心功能：总控各个组件的升级调度逻辑</h4><ul>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h4 id="总控升级核心功能：升级进度的反馈逻辑"><a href="#总控升级核心功能：升级进度的反馈逻辑" class="headerlink" title="总控升级核心功能：升级进度的反馈逻辑"></a>总控升级核心功能：升级进度的反馈逻辑</h4><ul>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h4 id="总控升级核心功能：升级失败信息的反馈"><a href="#总控升级核心功能：升级失败信息的反馈" class="headerlink" title="总控升级核心功能：升级失败信息的反馈"></a>总控升级核心功能：升级失败信息的反馈</h4><ul>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h4 id="总控升级核心功能：升级失败的回滚调度"><a href="#总控升级核心功能：升级失败的回滚调度" class="headerlink" title="总控升级核心功能：升级失败的回滚调度"></a>总控升级核心功能：升级失败的回滚调度</h4><ul>
+<li><strong>工时评估</strong>：2.2d</li>
+</ul>
+<h4 id="总控升级核心功能：升级成功的确认调度"><a href="#总控升级核心功能：升级成功的确认调度" class="headerlink" title="总控升级核心功能：升级成功的确认调度"></a>总控升级核心功能：升级成功的确认调度</h4><ul>
+<li><strong>工时评估</strong>：2.2d</li>
+</ul>
+<h2 id="流量引擎-P1"><a href="#流量引擎-P1" class="headerlink" title="流量引擎 (P1)"></a>流量引擎 (P1)</h2><h3 id="引擎安装界面相关"><a href="#引擎安装界面相关" class="headerlink" title="引擎安装界面相关"></a>引擎安装界面相关</h3><h4 id="引擎安装界面新增授权状态过滤选项"><a href="#引擎安装界面新增授权状态过滤选项" class="headerlink" title="引擎安装界面新增授权状态过滤选项"></a>引擎安装界面新增授权状态过滤选项</h4><ul>
+<li><strong>分析</strong>：这个需要 installer 这边查询授权接口，聚合查询。</li>
+<li><strong>关键词</strong>：总控联调、前后端联调</li>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h4 id="引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点"><a href="#引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点" class="headerlink" title="引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点"></a>引擎安装界面新增可用节点、调出待安装工作节点、已安装工作节点</h4><ul>
+<li><strong>分析</strong>：这里设计前端修改较大，后端改动不多。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：0.4d</li>
+</ul>
+<h4 id="引擎安装、卸载失败原因后端记录、展示"><a href="#引擎安装、卸载失败原因后端记录、展示" class="headerlink" title="引擎安装、卸载失败原因后端记录、展示"></a>引擎安装、卸载失败原因后端记录、展示</h4><ul>
+<li><strong>分析</strong>：需要加一张引擎生命周期操作表，记录某引擎下的操作，失败原因，时间等信息，便于查询展示。</li>
+<li><strong>关键词</strong>：表结构设计、前后端联调、引擎联调</li>
+<li><strong>工时评估</strong>：1.3d</li>
+</ul>
+<h4 id="已到期、未到期引擎工作节点展示"><a href="#已到期、未到期引擎工作节点展示" class="headerlink" title="已到期、未到期引擎工作节点展示"></a>已到期、未到期引擎工作节点展示</h4><ul>
+<li><strong>分析</strong>：installer 各个工作节点查询授权，聚合展示。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：0.8d</li>
+</ul>
+<h3 id="节点新增"><a href="#节点新增" class="headerlink" title="节点新增"></a>节点新增</h3><h4 id="节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段"><a href="#节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段" class="headerlink" title="节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段"></a>节点扩容新增校验逻辑：管理节点只能是技术，节点名称不允许重复，业务口网卡不与总控同网段</h4><ul>
+<li><strong>分析</strong>：新增检测项目。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：1.3d</li>
+</ul>
+<h4 id="允许管理节点扩容，技术调研"><a href="#允许管理节点扩容，技术调研" class="headerlink" title="允许管理节点扩容，技术调研"></a>允许管理节点扩容，技术调研</h4><ul>
+<li><strong>分析</strong>：需要做技术调研，测试，查看相关代码。</li>
+<li><strong>关键词</strong>：技术难点</li>
+<li><strong>工时评估</strong>：3d (做不到)</li>
+</ul>
+<h4 id="管理节点扩容，实现"><a href="#管理节点扩容，实现" class="headerlink" title="管理节点扩容，实现"></a>管理节点扩容，实现</h4><ul>
+<li><strong>分析</strong>：实现管理节点新增。</li>
+<li><strong>关键词</strong>：引擎配合</li>
+<li><strong>工时评估</strong>：3d (做不到)</li>
+</ul>
+<h3 id="引擎安装资源检测"><a href="#引擎安装资源检测" class="headerlink" title="引擎安装资源检测"></a>引擎安装资源检测</h3><h4 id="硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更"><a href="#硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更" class="headerlink" title="硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更"></a>硬件检测是否满足基础要求，去掉标准要求，结果展示逻辑变更</h4><ul>
+<li><strong>分析</strong>：检测逻辑变更，展示逻辑变更。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：2.6d</li>
+</ul>
+<h4 id="程序冲突检测，冲突则不符合"><a href="#程序冲突检测，冲突则不符合" class="headerlink" title="程序冲突检测，冲突则不符合"></a>程序冲突检测，冲突则不符合</h4><ul>
+<li><strong>分析</strong>：统一程序冲突检测定义逻辑，出相应文档。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：1.3d</li>
+</ul>
+<h4 id="多节点安装并行执行"><a href="#多节点安装并行执行" class="headerlink" title="多节点安装并行执行"></a>多节点安装并行执行</h4><ul>
+<li><strong>分析</strong>：已实现。</li>
+<li><strong>工时评估</strong>：0</li>
+</ul>
+<h4 id="多节点安装，安装失败的引擎节点触发清理操作，卸载干净"><a href="#多节点安装，安装失败的引擎节点触发清理操作，卸载干净" class="headerlink" title="多节点安装，安装失败的引擎节点触发清理操作，卸载干净"></a>多节点安装，安装失败的引擎节点触发清理操作，卸载干净</h4><ul>
+<li><strong>分析</strong>：触发卸载操作，难点在可靠性的保证，当作一个新脚本实现，<code>uninstall --force</code>。</li>
+<li><strong>关键词</strong>：引擎联调、技术方案</li>
+<li><strong>工时评估</strong>：4.2d</li>
+</ul>
+<h4 id="多账户引擎安装操作时，提示引擎正在安装中"><a href="#多账户引擎安装操作时，提示引擎正在安装中" class="headerlink" title="多账户引擎安装操作时，提示引擎正在安装中"></a>多账户引擎安装操作时，提示引擎正在安装中</h4><ul>
+<li><strong>分析</strong>：当重入时，返回相应异常信息。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：1.4d</li>
+</ul>
+<h4 id="引擎编辑页名称重复校验"><a href="#引擎编辑页名称重复校验" class="headerlink" title="引擎编辑页名称重复校验"></a>引擎编辑页名称重复校验</h4><ul>
+<li><strong>分析</strong>：接口处做重复校验。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：0.4d</li>
+</ul>
+<h4 id="引擎安装详情优化"><a href="#引擎安装详情优化" class="headerlink" title="引擎安装详情优化"></a>引擎安装详情优化</h4><ul>
+<li><strong>分析</strong>：前端去掉了一些字段，增加了跳转。</li>
+<li><strong>关键词</strong>：前后端联调</li>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h3 id="卸载优化"><a href="#卸载优化" class="headerlink" title="卸载优化"></a>卸载优化</h3><h4 id="引擎离线时可以强制卸载，（删除对此节点授权）"><a href="#引擎离线时可以强制卸载，（删除对此节点授权）" class="headerlink" title="引擎离线时可以强制卸载，（删除对此节点授权）"></a>引擎离线时可以强制卸载，（删除对此节点授权）</h4><ul>
+<li><strong>分析</strong>：技术难点在于当引擎恢复后，是否影响引擎和总控的工作，需要将所有引擎与总控的通信机制整理出来后，修改机制，当没有获得总控认可，流量不被处理。</li>
+<li><strong>关键词</strong>：前后端联调、技术难点、技术方案</li>
+<li><strong>工时评估</strong>：6.8d</li>
+</ul>
+<h4 id="新增引擎节点离线卸载脚本（执行后该节点会释放资源）"><a href="#新增引擎节点离线卸载脚本（执行后该节点会释放资源）" class="headerlink" title="新增引擎节点离线卸载脚本（执行后该节点会释放资源）"></a>新增引擎节点离线卸载脚本（执行后该节点会释放资源）</h4><ul>
+<li><strong>分析</strong>：每个组件实现节点卸载脚本，卸载脚本执行节点卸载。</li>
+<li><strong>关键词</strong>：引擎联调</li>
+<li><strong>工时评估</strong>：2.6d</li>
+</ul>
+<h4 id="界面卸载交互确认密码"><a href="#界面卸载交互确认密码" class="headerlink" title="界面卸载交互确认密码"></a>界面卸载交互确认密码</h4><ul>
+<li><strong>分析</strong>：确认密码接口。</li>
+<li><strong>关键词</strong>：前后端联调、总控联调</li>
+<li><strong>工时评估</strong>：0.34d</li>
+</ul>
+<h2 id="边车引擎-P1"><a href="#边车引擎-P1" class="headerlink" title="边车引擎 (P1)"></a>边车引擎 (P1)</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="边车引擎安装列表优化"><a href="#边车引擎安装列表优化" class="headerlink" title="边车引擎安装列表优化"></a>边车引擎安装列表优化</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="安装弹窗优化"><a href="#安装弹窗优化" class="headerlink" title="安装弹窗优化"></a>安装弹窗优化</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="安装详情页优化"><a href="#安装详情页优化" class="headerlink" title="安装详情页优化"></a>安装详情页优化</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="编辑页面优化"><a href="#编辑页面优化" class="headerlink" title="编辑页面优化"></a>编辑页面优化</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="边车引擎资源检测前优化"><a href="#边车引擎资源检测前优化" class="headerlink" title="边车引擎资源检测前优化"></a>边车引擎资源检测前优化</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="安装失败回滚"><a href="#安装失败回滚" class="headerlink" title="安装失败回滚"></a>安装失败回滚</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><h4 id="提供后台强制卸载脚本"><a href="#提供后台强制卸载脚本" class="headerlink" title="提供后台强制卸载脚本"></a>提供后台强制卸载脚本</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="新增强制卸载功能"><a href="#新增强制卸载功能" class="headerlink" title="新增强制卸载功能"></a>新增强制卸载功能</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><h4 id="边车升级包导入"><a href="#边车升级包导入" class="headerlink" title="边车升级包导入"></a>边车升级包导入</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="边车正常升级功能（需要C-组配合提供polycube和envoy升级脚本）"><a href="#边车正常升级功能（需要C-组配合提供polycube和envoy升级脚本）" class="headerlink" title="边车正常升级功能（需要C++组配合提供polycube和envoy升级脚本）"></a>边车正常升级功能（需要C++组配合提供polycube和envoy升级脚本）</h4><ul>
+<li><strong>工时评估</strong>：3d</li>
+</ul>
+<h4 id="升级失败回滚"><a href="#升级失败回滚" class="headerlink" title="升级失败回滚"></a>升级失败回滚</h4><ul>
+<li><strong>工时评估</strong>：3d</li>
+<li><strong>细节</strong>：实现方案或许可以在升级前把<code>/opt</code>目录下的组件先备份，升级失败后恢复相应目录，重启相关组件进程；升级成功则把备份数据删掉。</li>
+</ul>
+<h2 id="镜像引擎-P2"><a href="#镜像引擎-P2" class="headerlink" title="镜像引擎 (P2)"></a>镜像引擎 (P2)</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><h4 id="引擎授权状态查询（暂定调总控接口后聚合）"><a href="#引擎授权状态查询（暂定调总控接口后聚合）" class="headerlink" title="引擎授权状态查询（暂定调总控接口后聚合）"></a>引擎授权状态查询（暂定调总控接口后聚合）</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="名称重复校验（只对已安装的检测）"><a href="#名称重复校验（只对已安装的检测）" class="headerlink" title="名称重复校验（只对已安装的检测）"></a>名称重复校验（只对已安装的检测）</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="名称限制在63长度以下"><a href="#名称限制在63长度以下" class="headerlink" title="名称限制在63长度以下"></a>名称限制在63长度以下</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）"><a href="#安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）" class="headerlink" title="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）"></a>安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）</h4><ul>
+<li><strong>工时评估</strong>：3d</li>
+</ul>
+<h4 id="多账号安装时要加锁"><a href="#多账号安装时要加锁" class="headerlink" title="多账号安装时要加锁"></a>多账号安装时要加锁</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="相关日志要做记录（中间件或统一一种记录方式）"><a href="#相关日志要做记录（中间件或统一一种记录方式）" class="headerlink" title="相关日志要做记录（中间件或统一一种记录方式）"></a>相关日志要做记录（中间件或统一一种记录方式）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）"><a href="#离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）" class="headerlink" title="离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）"></a>离线安装：生成对应的安装包（拆包再修改再打包，CPU和磁盘性能差时会影响效率，需新增接口）</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="离线安装：系统资源可用性检测，判断是否满足安装要求"><a href="#离线安装：系统资源可用性检测，判断是否满足安装要求" class="headerlink" title="离线安装：系统资源可用性检测，判断是否满足安装要求"></a>离线安装：系统资源可用性检测，判断是否满足安装要求</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="离线安装：卸载残留检测"><a href="#离线安装：卸载残留检测" class="headerlink" title="离线安装：卸载残留检测"></a>离线安装：卸载残留检测</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="离线安装：安装包下载接口（新增接口）"><a href="#离线安装：安装包下载接口（新增接口）" class="headerlink" title="离线安装：安装包下载接口（新增接口）"></a>离线安装：安装包下载接口（新增接口）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="离线安装：失败重试-回滚（大概率也会失败，次数和形式待定，是否需要交互）"><a href="#离线安装：失败重试-回滚（大概率也会失败，次数和形式待定，是否需要交互）" class="headerlink" title="离线安装：失败重试&#x2F;回滚（大概率也会失败，次数和形式待定，是否需要交互）"></a>离线安装：失败重试&#x2F;回滚（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）"><a href="#离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）" class="headerlink" title="离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）"></a>离线安装：安装后向总控（installer）注册（成功失败都需要；需总控实现一个注册接口）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h3 id="卸载-1"><a href="#卸载-1" class="headerlink" title="卸载"></a>卸载</h3><h4 id="强制卸载，清除相关注册信息"><a href="#强制卸载，清除相关注册信息" class="headerlink" title="强制卸载，清除相关注册信息"></a>强制卸载，清除相关注册信息</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="被强制卸载的引擎若再次重连则不做处理"><a href="#被强制卸载的引擎若再次重连则不做处理" class="headerlink" title="被强制卸载的引擎若再次重连则不做处理"></a>被强制卸载的引擎若再次重连则不做处理</h4><ul>
+<li><strong>工时评估</strong>：5d</li>
+</ul>
+<h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-1"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-1" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"><a href="#失败重试（大概率也会失败，次数和形式待定，是否需要交互）" class="headerlink" title="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"></a>失败重试（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h3 id="升级-1"><a href="#升级-1" class="headerlink" title="升级"></a>升级</h3><h4 id="升级包导入、取消导入（需新增接口，或共用接口）"><a href="#升级包导入、取消导入（需新增接口，或共用接口）" class="headerlink" title="升级包导入、取消导入（需新增接口，或共用接口）"></a>升级包导入、取消导入（需新增接口，或共用接口）</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="changelog（生成方式、内容和存放位置待定）"><a href="#changelog（生成方式、内容和存放位置待定）" class="headerlink" title="changelog（生成方式、内容和存放位置待定）"></a>changelog（生成方式、内容和存放位置待定）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）"><a href="#升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）" class="headerlink" title="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）"></a>升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="多账号升级时要加锁"><a href="#多账号升级时要加锁" class="headerlink" title="多账号升级时要加锁"></a>多账号升级时要加锁</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="卸载升级中的引擎时要报错"><a href="#卸载升级中的引擎时要报错" class="headerlink" title="卸载升级中的引擎时要报错"></a>卸载升级中的引擎时要报错</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="升级时禁止对相关agent操作"><a href="#升级时禁止对相关agent操作" class="headerlink" title="升级时禁止对相关agent操作"></a>升级时禁止对相关agent操作</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="升级包要做依赖记录（需约定记录方式）"><a href="#升级包要做依赖记录（需约定记录方式）" class="headerlink" title="升级包要做依赖记录（需约定记录方式）"></a>升级包要做依赖记录（需约定记录方式）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）"><a href="#升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）" class="headerlink" title="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）"></a>升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h2 id="流量-Agent-P2"><a href="#流量-Agent-P2" class="headerlink" title="流量 Agent (P2)"></a>流量 Agent (P2)</h2><h3 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h3><h4 id="Agent授权状态查询（暂定调总控接口后聚合）"><a href="#Agent授权状态查询（暂定调总控接口后聚合）" class="headerlink" title="Agent授权状态查询（暂定调总控接口后聚合）"></a>Agent授权状态查询（暂定调总控接口后聚合）</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="名称重复校验（只对已安装的检测）-1"><a href="#名称重复校验（只对已安装的检测）-1" class="headerlink" title="名称重复校验（只对已安装的检测）"></a>名称重复校验（只对已安装的检测）</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="名称限制在63长度以下-1"><a href="#名称限制在63长度以下-1" class="headerlink" title="名称限制在63长度以下"></a>名称限制在63长度以下</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-2"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-2" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）-1"><a href="#安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）-1" class="headerlink" title="安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）"></a>安装过程中点击取消安装（速度很快，可能还没点击就安装完了）（需新增接口，可新增一个状态）</h4><ul>
+<li><strong>工时评估</strong>：3d</li>
+</ul>
+<h4 id="多账号安装时要加锁-1"><a href="#多账号安装时要加锁-1" class="headerlink" title="多账号安装时要加锁"></a>多账号安装时要加锁</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="相关日志要做记录（中间件或统一一种记录方式）（给总控做）"><a href="#相关日志要做记录（中间件或统一一种记录方式）（给总控做）" class="headerlink" title="相关日志要做记录（中间件或统一一种记录方式）（给总控做）"></a>相关日志要做记录（中间件或统一一种记录方式）（给总控做）</h4><h4 id="组件要加版本号并记录（信息存放位置及内容不确定）"><a href="#组件要加版本号并记录（信息存放位置及内容不确定）" class="headerlink" title="组件要加版本号并记录（信息存放位置及内容不确定）"></a>组件要加版本号并记录（信息存放位置及内容不确定）</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h3 id="卸载-2"><a href="#卸载-2" class="headerlink" title="卸载"></a>卸载</h3><h4 id="强制卸载，清除相关注册信息-1"><a href="#强制卸载，清除相关注册信息-1" class="headerlink" title="强制卸载，清除相关注册信息"></a>强制卸载，清除相关注册信息</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="被强制卸载的Agent若再次重连则不做处理（需要C-组处理）"><a href="#被强制卸载的Agent若再次重连则不做处理（需要C-组处理）" class="headerlink" title="被强制卸载的Agent若再次重连则不做处理（需要C++组处理）"></a>被强制卸载的Agent若再次重连则不做处理（需要C++组处理）</h4><h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-3"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-3" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="失败重试（大概率也会失败，次数和形式待定，是否需要交互）-1"><a href="#失败重试（大概率也会失败，次数和形式待定，是否需要交互）-1" class="headerlink" title="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"></a>失败重试（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h3 id="卸载-3"><a href="#卸载-3" class="headerlink" title="卸载"></a>卸载</h3><h4 id="强制卸载，清除相关注册信息-2"><a href="#强制卸载，清除相关注册信息-2" class="headerlink" title="强制卸载，清除相关注册信息"></a>强制卸载，清除相关注册信息</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="被强制卸载的Agent若再次重连则不做处理（需要C-组处理）-1"><a href="#被强制卸载的Agent若再次重连则不做处理（需要C-组处理）-1" class="headerlink" title="被强制卸载的Agent若再次重连则不做处理（需要C++组处理）"></a>被强制卸载的Agent若再次重连则不做处理（需要C++组处理）</h4><h4 id="进度条（与前端约定或自行计算（可能要修改返回字段））-4"><a href="#进度条（与前端约定或自行计算（可能要修改返回字段））-4" class="headerlink" title="进度条（与前端约定或自行计算（可能要修改返回字段））"></a>进度条（与前端约定或自行计算（可能要修改返回字段））</h4><ul>
+<li><strong>工时评估</strong>：1.5d</li>
+</ul>
+<h4 id="失败重试（大概率也会失败，次数和形式待定，是否需要交互）-2"><a href="#失败重试（大概率也会失败，次数和形式待定，是否需要交互）-2" class="headerlink" title="失败重试（大概率也会失败，次数和形式待定，是否需要交互）"></a>失败重试（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h3 id="升级-2"><a href="#升级-2" class="headerlink" title="升级"></a>升级</h3><h4 id="升级包导入、取消导入（需新增接口，或共用接口）-1"><a href="#升级包导入、取消导入（需新增接口，或共用接口）-1" class="headerlink" title="升级包导入、取消导入（需新增接口，或共用接口）"></a>升级包导入、取消导入（需新增接口，或共用接口）</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="changelog（生成方式、内容和存放位置待定）-1"><a href="#changelog（生成方式、内容和存放位置待定）-1" class="headerlink" title="changelog（生成方式、内容和存放位置待定）"></a>changelog（生成方式、内容和存放位置待定）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）-1"><a href="#升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）-1" class="headerlink" title="升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）"></a>升级包合法性、版本、依赖校验（需约定包结构和内容和检测方式）</h4><ul>
+<li><strong>工时评估</strong>：2d</li>
+</ul>
+<h4 id="多账号升级时要加锁-1"><a href="#多账号升级时要加锁-1" class="headerlink" title="多账号升级时要加锁"></a>多账号升级时要加锁</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="卸载升级中的引擎时要报错-1"><a href="#卸载升级中的引擎时要报错-1" class="headerlink" title="卸载升级中的引擎时要报错"></a>卸载升级中的引擎时要报错</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="升级时禁止编辑挂起等等操作"><a href="#升级时禁止编辑挂起等等操作" class="headerlink" title="升级时禁止编辑挂起等等操作"></a>升级时禁止编辑挂起等等操作</h4><ul>
+<li><strong>工时评估</strong>：0.5d</li>
+</ul>
+<h4 id="升级包要做依赖记录（需约定记录方式）-1"><a href="#升级包要做依赖记录（需约定记录方式）-1" class="headerlink" title="升级包要做依赖记录（需约定记录方式）"></a>升级包要做依赖记录（需约定记录方式）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+<h4 id="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）-1"><a href="#升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）-1" class="headerlink" title="升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）"></a>升级失败回滚（大概率也会失败，次数和形式待定，是否需要交互）</h4><ul>
+<li><strong>工时评估</strong>：1d</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>1.6任务评估</div>
+      <div>https://abrance.github.io/2024/06/12/mdstorage/project/sr/基础设施相关/1.6任务评估/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 12, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/06/12/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0v2/" title="1.6任务评估v2.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">1.6任务评估v2.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0v2/" title="1.6任务评估v2.md">
+                        <span class="hidden-mobile">1.6任务评估v2.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

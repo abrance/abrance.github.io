@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="API 网关的历史流量治理和 API 网关之间的关系密切且互补。它们在网络和软件架构领域中的应用可以增强系统的稳定性、可用性和性能。以下是流量治理和 API 网关之间的主要关系及其在网络和软件开发领域中的应用：  功能交叉：  API 网关 提供了一个集中的入口点，用于处理进出微服务架构的所有请求。它可以执行请求的路由、认证、授权、监控以及其他一些功能。 流量治理 是管理网络流量的一种方法，它包括">
+<meta property="og:type" content="article">
+<meta property="og:title" content="api网关综述.md">
+<meta property="og:url" content="https://abrance.github.io/2023/11/01/mdstorage/domain/cloud/apigateway/api%E7%BD%91%E5%85%B3%E7%BB%BC%E8%BF%B0/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="API 网关的历史流量治理和 API 网关之间的关系密切且互补。它们在网络和软件架构领域中的应用可以增强系统的稳定性、可用性和性能。以下是流量治理和 API 网关之间的主要关系及其在网络和软件开发领域中的应用：  功能交叉：  API 网关 提供了一个集中的入口点，用于处理进出微服务架构的所有请求。它可以执行请求的路由、认证、授权、监控以及其他一些功能。 流量治理 是管理网络流量的一种方法，它包括">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-1-1589273542703.jpg">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-3-1589273542183.jpg">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-4-1589273541821.jpg">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-5-1589273542447.jpg">
+<meta property="og:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-6-1589273541384.jpg">
+<meta property="article:published_time" content="2023-10-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-20T00:52:33.771Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-1-1589273542703.jpg">
+  
+  
+  
+  <title>api网关综述.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="api网关综述.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-01 00:00" pubdate>
+          November 1, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">api网关综述.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="API-网关的历史"><a href="#API-网关的历史" class="headerlink" title="API 网关的历史"></a>API 网关的历史</h2><p>流量治理和 API 网关之间的关系密切且互补。它们在网络和软件架构领域中的应用可以增强系统的稳定性、可用性和性能。以下是流量治理和 API 网关之间的主要关系及其在网络和软件开发领域中的应用：</p>
+<ol>
+<li><p><strong>功能交叉</strong>：</p>
+<ul>
+<li><strong>API 网关</strong> 提供了一个集中的入口点，用于处理进出微服务架构的所有请求。它可以执行请求的路由、认证、授权、监控以及其他一些功能。</li>
+<li><strong>流量治理</strong> 是管理网络流量的一种方法，它包括负载均衡、流量分配、限流、熔断和流量监控等功能。</li>
+</ul>
+</li>
+<li><p><strong>流量控制</strong>：</p>
+<ul>
+<li><strong>API 网关</strong> 可以实现流量治理的某些功能，例如通过限流和负载均衡来管理不同服务之间的流量，确保系统的稳定运行。</li>
+<li><strong>流量治理</strong> 通常在 API 网关中实现，以确保对服务的访问是可控且合理的，防止系统过载并保持高可用性。</li>
+</ul>
+</li>
+<li><p><strong>安全和监控</strong>：</p>
+<ul>
+<li><strong>API 网关</strong> 能够提供一定的安全防护，例如通过身份验证和授权来保护后端服务。同时，它也可以通过日志和监控来提供对系统流量的实时视图。</li>
+<li><strong>流量治理</strong> 通过监控网络流量和实施安全策略，也能够增强系统的安全性。</li>
+</ul>
+</li>
+<li><p><strong>性能优化</strong>：</p>
+<ul>
+<li><strong>API 网关</strong> 和 <strong>流量治理</strong> 可以通过缓存、请求优化和响应转换等方式，帮助优化系统的性能。</li>
+</ul>
+</li>
+<li><p><strong>故障处理</strong>：</p>
+<ul>
+<li>通过在 <strong>API 网关</strong> 中实现 <strong>流量治理</strong> 的熔断机制，可以在后端服务发生故障时保持系统的可用性，通过重试、回退和重定向等策略来处理失败的请求。</li>
+</ul>
+</li>
+<li><p><strong>集中式管理</strong>：</p>
+<ul>
+<li>通过 <strong>API 网关</strong>，可以实现对多个服务和流量的集中式管理，这在微服务架构中尤为重要。</li>
+</ul>
+</li>
+</ol>
+<p>综上所述，流量治理和 API 网关是相互补充的，它们共同作用于网络和软件架构领域，以确保系统的稳定性、可用性和性能。在实际应用中，API 网关通常会集成流量治理的功能，为微服务架构提供统一、可控且高效的网络流量管理解决方案。</p>
+<h2 id="API-网关的过去、现在和未来"><a href="#API-网关的过去、现在和未来" class="headerlink" title="API 网关的过去、现在和未来"></a>API 网关的过去、现在和未来</h2><ol>
+<li><p><strong>标题和源头</strong>:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.infoq.com/articles/past-present-future-api-gateways/">infoQ</a></li>
+</ul>
+</li>
+<li><p><strong>日期和作者</strong>:</p>
+<ul>
+<li>记录资讯的发布日期和作者，以了解资讯的时效性和作者的背景。</li>
+</ul>
+</li>
+<li><p><strong>摘要</strong>:</p>
+<ul>
+<li>创建一个简短的摘要，概述资讯的主要内容和观点。这将帮助您快速回顾资讯的核心信息。</li>
+</ul>
+</li>
+<li><p><strong>关键点和数据</strong>:</p>
+<p>早期的互联网</p>
+<ul>
+<li>web 应用的体系结构为经典的 n 层体系结构，由数据库层、应用程序层和表示层组成。n 层体系结构是水平可扩展的 – 随着流量的增加，可以添加更多应用程序体系结构和表示层的实例。</li>
+<li>将应用程序或表示层的多个实例连接到 Internet 需要数据中心边缘的第一次迭代：负载平衡器。在这个时代，负载均衡器负责在应用程序的不同实例之间路由流量，确保高可用性和可扩展性。负载平衡器通常是一种硬件设备。</li>
+<li>2001 年 HAProxy 的发布开始普及软件负载平衡器的概念</li>
+</ul>
+<p>网络 2.0</p>
+<ul>
+<li>Darcy DiNucci 在 2 年创造了 Web 0.1999 一词，指的是互联网从单向媒介演变为用户参与网站的双向媒介。Web 2.0 网站不是被动的内容消费者，而是让用户积极贡献和相互参与。AJAX（异步 JavaScript 和 XML）开发技术变得无处不在。通过将数据交换与表示分离，AJAX 为最终用户创造了更丰富的用户体验。这种架构还创建了许多“聊天”客户端，因为这些客户端会不断地从 Web 应用程序发送和接收数据。</li>
+<li>电子商务开始起飞，信用卡信息的安全传输首次成为主要问题。Netscape 引入了安全套接字层 （SSL），后来演变为传输层安全 （TLS），以确保客户端和服务器之间的安全连接。</li>
+<li>网络的这些转变 - 加密通信和许多长期连接请求 - 推动了边缘从标准硬件&#x2F;软件负载平衡器向更专业的应用交付控制器（ADC）的演变。ADC 包括各种所谓的应用程序加速功能，包括 SSL 卸载、缓存和压缩。这种功能的增加意味着配置复杂性的增加。出现了各种专有配置标准，例如 VCL、SSI。负载均衡器不再只是负载均衡！</li>
+</ul>
+<p>网络规模时代</p>
+<ul>
+<li><strong>扩展问题</strong>：2010 年代初期，许多云优先公司的用户群呈指数级增长。这些公司背后的软件最初是使用易于使用的 Web 框架（如 Ruby on Rails 和 Django）构建为单体 Web 应用程序。随着他们的用户群膨胀到天文数字，这些公司发现网络规模问题确实是一种不同类型的问题，它决定了不同的架构。</li>
+<li><strong>单体架构重构</strong>： Twitter、Facebook 和 New Relic 等公司开始将关键功能从其单体架构中重构为独立部署的服务。通过将关键业务功能部署为服务，这些组织能够独立扩展和管理其整个应用程序的不同方面。流向这些独立服务的流量通过单体架构进行路由。对路由的任何更改都意味着开发人员经常不得不重新部署整个单体。这成为变革速度的瓶颈。</li>
+</ul>
+<p>API 网关的兴起</p>
+<ul>
+<li><strong>从单体到微服务</strong>：早期的技术公司在从单体应用向微服务架构转变时，发现原先的单体应用主要承担路由功能。</li>
+<li><strong>API 网关的诞生</strong>：这个观察促成了 API 网关的开发，API 网关承担了原单体中的路由功能，并为整个应用提供了一个共同的外观（facade）。</li>
+<li><strong>集中化跨服务功能</strong>：API 网关集中了跨应用的公共功能，如速率限制、身份验证和路由。</li>
+<li><strong>减少重复功能</strong>：这种集中化减少了在每个单独服务中所需的重复功能的数量，优化了整个服务架构。</li>
+</ul>
+<p>云原生时代：微服务</p>
+<ul>
+<li><p>API 网关为适应微服务架构的需求而不断演进，其现代化的关键点包括：</p>
+<ul>
+<li><strong>支持跨应用层面的关注点</strong>：如身份验证、速率限制、API 发布和指标收集。</li>
+<li><strong>集成了流量管理功能</strong>：这些功能在传统的应用交付控制器中常见，包括高级负载均衡、缓存以及自动重试和超时等。</li>
+<li><strong>支持实时服务发现</strong>：在诸如 Kubernetes 或无服务器环境这样短暂的环境中部署微服务时，实时发现每个微服务实例的网络位置至关重要。</li>
+</ul>
+</li>
+</ul>
+<p>全周期开发：云原生工作流</p>
+<ul>
+<li><strong>拥抱全生命周期开发</strong><ul>
+<li><strong>缩放发布和部署</strong><ul>
+<li>部署是在生产基础结构上安装代码更新的过程。发布是向实际生产用户公开代码更新的过程。虽然组织可以将部署和发布视为一个操作（所谓的“就地发布”模型），但这会向生产用户暴露实际的部署风险。例如，缺少必需的配置参数可能会导致最终用户在就地释放模型中出现可见的中断。通过将这两个阶段分开，部署风险永远不会暴露给最终用户。</li>
+<li>数据中心网关在发布中起着至关重要的作用。通过控制流向特定版本微服务的流量，网关负责向最终用户实际发布更新。此外，网关服务支持增量发布策略，例如金丝雀发布（随着时间的推移，一定比例的流量用于新的更新）或蓝&#x2F;绿部署。全周期开发团队需要对网关进行控制，以便编排发布。这些控制包括路由（哪个版本的服务应该接收生产流量）以及更细粒度的控制，例如加权路由（金丝雀版本需要）和流量镜像（为测试目的创建服务测试版本的流量副本）。通过使开发团队能够管理发布和部署，组织能够扩展这些流程以支持高度复杂的应用程序。</li>
+</ul>
+</li>
+<li><strong>监视服务范围</strong><ul>
+<li>网关通过分析流入和流出微服务的所有流量，提供对微服务行为的可视化分析。这使网关能够报告延迟、吞吐量和错误率等指标，从而深入了解应用程序运行状况。通过使用 OpenTracing 等标准在请求数据上引入相关标识符，实现了这种功能。最后，网关堆栈收集的所有这些指标都可配置的可视化工具向这些全周期开发团队公开。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>网关策略管理</p>
+<ul>
+<li><p>关键点和重点概述：</p>
+<ul>
+<li><strong>网关管理传统问题</strong>：传统上，网关的所有组件都由运维管理，而运维界面对于全周期开发团队中的应用开发者并不友好。</li>
+<li><strong>独立操作的网关组件</strong>：网关组件通常独立操作，缺乏统一的操作界面。</li>
+<li><strong>全周期开发者的需求</strong>：全周期开发者不是全职运维人员，他们需要能够为特定需求操作网关设备。</li>
+<li><strong>Kubernetes 生态系统的指导</strong>：Kubernetes 模型中，用户用通用的 YAML 配置语言声明他们的意图，通过声明性模型实现策略的代码化，可通过源代码控制系统（如 GitOps）进行管理。</li>
+<li><strong>声明性模型的好处</strong>：提供审计能力、版本控制和透明性。</li>
+<li><strong>分散的策略支持</strong>：多个策略文件被聚合为整个集群的全局策略配置。</li>
+<li><strong>API 网关模型的采纳</strong>：API 网关采纳了这种模型，例如 Azure Application Gateway 和 Kong 的入口控制器。</li>
+<li><strong>向边缘扩展声明性配置模型</strong>：对于全周期开发团队至关重要，每个团队可以独立维护自己的网关策略，并与微服务代码一起在源代码控制中进行管理。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>图表和图片</strong>:</p>
+<ul>
+<li><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-1-1589273542703.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-3-1589273542183.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-4-1589273541821.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-5-1589273542447.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p><img src="http://119.91.145.27:12799/api/public/dl/p8KdAUHH/1past-present-future-api-gateways-6-1589273541384.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>个人评价和思考</strong>:</p>
+<ul>
+<li>这篇文章是关于对 API 网关的综述性文档，对其发展历史中重要的节点部分作了简要描述，通过部分事例使读者能窥见 API网关所要解决的问题和发展的因果，写作思路和内容都非常有参考价值。</li>
+</ul>
+</li>
+<li><p><strong>相关链接和参考资料</strong>:</p>
+<ul>
+<li>无</li>
+</ul>
+</li>
+<li><p><strong>标签和分类</strong>:</p>
+<ul>
+<li>API网关</li>
+<li>API gateway</li>
+</ul>
+</li>
+<li><p><strong>后续行动和提醒</strong>:</p>
+<ul>
+<li>后续整理现代 API网关方面的模块清单</li>
+</ul>
+</li>
+<li><p><strong>保存和归档</strong>:</p>
+<ul>
+<li>略</li>
+</ul>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/cloud-apigateway/" class="category-chain-item">cloud/apigateway</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>api网关综述.md</div>
+      <div>https://abrance.github.io/2023/11/01/mdstorage/domain/cloud/apigateway/api网关综述/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 1, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/11/01/domain/cloud/apigateway/api%E7%BD%91%E5%85%B3%E7%BB%BC%E8%BF%B0/" title="api网关综述.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">api网关综述.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/10/project/sr/Golang%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%BB%84%E5%91%98%E7%AE%A1%E7%90%86/" title="Golang项目管理组员管理.md">
+                        <span class="hidden-mobile">Golang项目管理组员管理.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

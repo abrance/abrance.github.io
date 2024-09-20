@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux fd 系列 — eventfd 是什么？一切皆文件，但 fd 区分类型？Linux 一切皆文件，但这个文件 fd 也是有类型的，绝大部分人都知道“文件 fd”，知道 socket fd，甚至知道 pipe fd，可能都不知道fd 还有这么一种叫做 eventfd 的类型。 eventfd 是什么的？不妨拆开来看，event fd ，也就是事件 fd 类型。故名思义，就是专门用于事件通知">
+<meta property="og:type" content="article">
+<meta property="og:title" content="eventfd机制.md">
+<meta property="og:url" content="https://abrance.github.io/2024/05/10/mdstorage/domain/linux/eventfd%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="Linux fd 系列 — eventfd 是什么？一切皆文件，但 fd 区分类型？Linux 一切皆文件，但这个文件 fd 也是有类型的，绝大部分人都知道“文件 fd”，知道 socket fd，甚至知道 pipe fd，可能都不知道fd 还有这么一种叫做 eventfd 的类型。 eventfd 是什么的？不妨拆开来看，event fd ，也就是事件 fd 类型。故名思义，就是专门用于事件通知">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.gif">
+<meta property="og:image" content="https://abrance.github.io/eventfd_files/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.jpg">
+<meta property="article:published_time" content="2024-05-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-20T00:52:33.779Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic3.zhimg.com/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.gif">
+  
+  
+  
+  <title>eventfd机制.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="eventfd机制.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-10 00:00" pubdate>
+          May 10, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          19 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">eventfd机制.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Linux-fd-系列-—-eventfd-是什么？"><a href="#Linux-fd-系列-—-eventfd-是什么？" class="headerlink" title="Linux fd 系列 — eventfd 是什么？"></a>Linux fd 系列 — eventfd 是什么？</h1><h2 id="一切皆文件，但-fd-区分类型？"><a href="#一切皆文件，但-fd-区分类型？" class="headerlink" title="一切皆文件，但 fd 区分类型？"></a><strong>一切皆文件，但 fd 区分类型？</strong></h2><p>Linux 一切皆文件，但这个文件 fd 也是有类型的，绝大部分人都知道“文件 fd”，知道 socket fd，甚至知道 pipe fd，可能都不知道<br>fd 还有这么一种叫做 <code>eventfd</code> 的类型。</p>
+<h2 id="eventfd-是什么的？"><a href="#eventfd-是什么的？" class="headerlink" title="eventfd 是什么的？"></a><strong>eventfd 是什么的？</strong></h2><p>不妨拆开来看，event fd ，也就是事件 fd 类型。故名思义，就是专门用于事件通知的文件描述符（ fd ）。很多人可能没怎么用，但是用过的人都说：香<br>！</p>
+<p>哪个版本引入的？</p>
+<p>Linux 2.6.22</p>
+<p>代码位于：<code>fs/eventfd.c</code></p>
+<p>“事件传递”就是通信嘛。eventfd 不仅可以用于进程间的通信，还能用于用户态和内核态的通信。</p>
+<p>思考一个小问题：我们知道“文件”里是保存东西的，eventfd 既然对应了一个“文件”，那么这个“文件”的内容是什么呢？</p>
+<p><strong>划重点：eventfd 是一个计数相关的fd</strong> 。计数不为零是有<strong>可读事件</strong> 发生，<code>read</code> 之后计数会清零，<code>write</code> 则会递增计数器。</p>
+<p>这个怎么理解？</p>
+<p>在之前自制文件系统系列中提到过：文件系统的“文件”是抽象的概念，都是文件系统让你看到的东西。比如 hellofs<br>中我们没写过任何数据，也会返回 “hello world” 的内容。这个仅仅 hook 到 read&#x2F;write 调用，然后根据逻辑返回数据而已。</p>
+<p>eventfd 也是如此，eventfd 实现了 read&#x2F;write 的调用，在调用里面实现了一套计数器的逻辑。write 仅仅是加计数，read<br>是读计数，并且清零。</p>
+<p>长什么样子呢？笔者找了个进程来观摩下。</p>
+<pre><code class="hljs">root@ubuntu:~# ll /proc/14168/fd
+lrwx------ 1 root root 64 Jul 10 22:12 3 -&gt; anon_inode:[eventfd]
+</code></pre>
+<p>在 Linux 的 <code>/proc</code> 下每个进程都会有个目录，目录名为进程 ID 号，在这个目录能看到使用的资源信息，其中有个 fd<br>目录，就是进程打开的所有文件。看出猫腻了不？有个叫做 <code>[eventfd]</code> 的 fd 句柄。</p>
+<h2 id="怎么使用它呢？"><a href="#怎么使用它呢？" class="headerlink" title="怎么使用它呢？"></a><strong>怎么使用它呢？</strong></h2><h3 id="句柄创建"><a href="#句柄创建" class="headerlink" title="句柄创建"></a><strong>句柄创建</strong></h3><pre><code class="hljs">#include &lt;sys/eventfd.h&gt;
+int eventfd(unsigned int initval, int flags);
+</code></pre>
+<p>举个栗子：</p>
+<pre><code class="hljs">efd = eventfd(0, 0);
+if (efd == -1)
+    handle_error(&quot;eventfd&quot;);
+</code></pre>
+<p>这样就创建出了一个 eventfd 类型的 fd 啦。会在 <code>/proc/$&#123;pid&#125;/fd/</code> 目录中有一个 eventfd 类型的句柄。</p>
+<h3 id="eventfd-api-调用？"><a href="#eventfd-api-调用？" class="headerlink" title="eventfd api 调用？"></a><strong>eventfd api 调用？</strong></h3><p>eventfd new 出来之后，总结来说，可以对它做四个事情：</p>
+<ol>
+<li>可以读这个 fd；</li>
+<li>可以写这个 fd；</li>
+<li>可以监听这个 fd；</li>
+<li>可以关闭这个 fd；</li>
+</ol>
+<p>我怎么知道这个知识点的？</p>
+<p>因为在 Linux 内核代码中，我看到了呀。eventfd 就实现了这几个调用。</p>
+<pre><code class="hljs">static const struct file_operations eventfd_fops = &#123;
+#ifdef CONFIG_PROC_FS
+    .show_fdinfo = eventfd_show_fdinfo,
+#endif
+    .release = eventfd_release,
+    .poll  = eventfd_poll,
+    .read  = eventfd_read,
+    .write  = eventfd_write,
+    .llseek  = noop_llseek,
+&#125;;
+</code></pre>
+<p>很明显就能看到以上实现的几个调用就是 eventfd 全部的内容所在。</p>
+<h3 id="读写-fd"><a href="#读写-fd" class="headerlink" title="读写 fd"></a><strong>读写 fd</strong></h3><p>简单看下 eventfd 的读写究竟做了什么？</p>
+<p>eventfd 对应的文件内容是一个 8 字节的数字，这个数字是 read&#x2F;write 操作维护的计数。</p>
+<p>首先，write 的时候，累加计数，read 的时候读取计数，并且清零。</p>
+<pre><code class="hljs">uint64_t u;
+ssize_t n;
+
+// 写 eventfd，内部 buffer 必须是 8 字节大小；
+n = write(efd, &amp;u, sizeof(uint64_t));
+
+// 读 eventfd
+n = read(efd, &amp;u, sizeof(uint64_t));
+</code></pre>
+<p>读写也就是 read&#x2F;write，读写这个 fd 很容易理解，但是请注意了，只能 8 个字节。这个读写的内容其实是计数。</p>
+<p>举个栗子：如下，我们连续写 3 次</p>
+<pre><code class="hljs">// 写 3 次
+write(efd, &amp;u /* u = 1 */ , 8)
+write(efd, &amp;u /* u = 2 */ , 8)
+write(efd, &amp;u /* u = 3 */ , 8)
+</code></pre>
+<p>猜猜读的时候，是多少？</p>
+<pre><code class="hljs">read(ebd, &amp;x, 8)
+</code></pre>
+<p>读到的值是 6（因为 1+2+3），理解了吧。</p>
+<p><img src="https://pic3.zhimg.com/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.gif" srcset="/img/loading.gif" lazyload alt="演示"></p>
+<p><img src="/./eventfd_files/v2-1aeeec8d6878ce1c1d4502a52ff01c6e_b.jpg" srcset="/img/loading.gif" lazyload alt="动图封面"></p>
+<p>小结：</p>
+<ol>
+<li>写的时候，写进去一个 8 字节的整数，eventfd 实现的逻辑是累计计数；</li>
+<li>读的时候，读到总计数，并且会清零；</li>
+<li>实现在 <code>eventfd_write</code> 和 <code>eventfd_read</code> 函数中；</li>
+</ol>
+<h3 id="监听-fd"><a href="#监听-fd" class="headerlink" title="监听 fd"></a><strong>监听 fd</strong></h3><p>在 <strong><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/write">深入理解 Linux Epoll 池</a></strong> 提到过，不是所有的 fd<br>类型都可用 epoll 池来监听事件的，只有实现了 <code>file_operation-&gt;poll</code> 的调用的“文件” fd 才能被 epoll<br>管理。eventfd 刚好就实现了这个接口。</p>
+<p>eventfd 是专门用来传递事件的 fd ，而 epoll 池则是专门用来管理事件的池子，它们两结合就妙了。</p>
+<p>我们知道 epoll 监听的是<strong>可读可写事件</strong> 。那么你想过 eventfd 的可读可写事件是啥吗？</p>
+<p>“<strong>可读可写事件</strong> ”这是个有趣的问题，我们可以去发散下，对比思考下 socket fd，文件 fd：</p>
+<ul>
+<li>socket fd：可以写入发送数据，那么触发可写事件，网卡数据来了，可以读，触发可读事件；</li>
+<li>文件 fd：文件 fd 的可读可写事件就更有意思了，因为文件一直是可写的，所以一直都触发可写事件，文件里的数据也一直是可读的，所以一直触发可读事件。这个也是为什么类似 ext4 这种文件不实现 poll 接口的原因。<strong>因为文件 fd 一直是可读可写的，poll 监听没有任何意义；</strong></li>
+</ul>
+<p>回到最初问题：eventfd 呢？它的可读可写事件是什么？</p>
+<p>我们之前说过，eventfd 实现的是计数的功能。所以 eventfd 计数不为 0 ，那么 fd 是可读的。</p>
+<p>由于 eventfd 一直可写（可以一直累计计数），所以一直有可写事件。</p>
+<p>所以，这里有个什么隐藏知识点呢？</p>
+<p><strong>eventfd 如果用 epoll 监听事件，那么都是监听读事件，因为监听写事件无意义。</strong></p>
+<h3 id="关闭-fd"><a href="#关闭-fd" class="headerlink" title="关闭 fd"></a><strong>关闭 fd</strong></h3><p>关闭这个很容里理解，就是不需要这个 fd 了，主动调用一把 Close ，当没有人使用的时候，内核会释放这个 fd 的资源。</p>
+<h3 id="fd-的阻塞属性"><a href="#fd-的阻塞属性" class="headerlink" title="fd 的阻塞属性"></a><strong>fd 的阻塞属性</strong></h3><p>我们知道读写 fd 的时候，可能会遇到阻塞，对于 socket fd 来说，没有数据的时候来读，则会阻塞。写 buffer 满了的时候来写，则会阻塞。</p>
+<p>那么对于 eventfd 呢？它的阻塞有可能是怎么样的？</p>
+<p>read eventfd 的时候，<strong>如果计数器的值为 0，就会阻塞</strong> （这种就等同于没“文件”内容）。</p>
+<p>这种可以设置 fd 的属性为非阻塞类型，这样读的时候，如果计数器为 0 ，返回 EAGAIN 即可，这样就不会阻塞整个系统。</p>
+<h2 id="通常的用途"><a href="#通常的用途" class="headerlink" title="通常的用途"></a><strong>通常的用途</strong></h2><p>单独的 eventfd 看似平平无奇，但其实有非常重要的应用。下面列举几个小例子：</p>
+<h3 id="磁盘的异步-IO（-libaio-）"><a href="#磁盘的异步-IO（-libaio-）" class="headerlink" title="磁盘的异步 IO（ libaio ）"></a><strong>磁盘的异步 IO（ libaio ）</strong></h3><p>我们之前说过，类似于 ext4 这种文件系统的文件 fd ，其实是不能用 epoll 来管理的，网络 fd 才可以。因为磁盘文件一直可读可写。</p>
+<p>难道文件就自绝于此吗？用不了事件机制吗？只能同步 IO 吗？</p>
+<p>非也。Linux 内核提供了一个叫做 libaio 的机制，能够同时提交多个 io 请求给内核（这种批量递交能提高优化的概率，大量IO堆积到设备的队列中时,<br>内核可以发挥 IO 调度算法的优势,比如合并 IO 等）。</p>
+<p>aio 请求完成之后，走异步的事件通知。这个事件通知的原理就是把一个 eventfd 和这个 aio 的上下文绑定起来。aio 完成，就会往 eventfd<br>里面写计数，从而触发可读事件。</p>
+<h3 id="kvm-的-ioeventfd-机制"><a href="#kvm-的-ioeventfd-机制" class="headerlink" title="kvm 的 ioeventfd 机制"></a><strong>kvm 的 ioeventfd 机制</strong></h3><p>QEMU 可以将 VM 特定地址关联一个 eventfd，对进行监听，当Guest 进行 IO 操作 exit 到 kvm 后，kvm 可以判断本次exit<br>是否发生在这段特定地址中，如果是则会通过使用 eventfd 进行事件通知，进行 IO 操作，这种方式对比能节省一些时间。</p>
+<h3 id="还有什么朴实的用法？"><a href="#还有什么朴实的用法？" class="headerlink" title="还有什么朴实的用法？"></a><strong>还有什么朴实的用法？</strong></h3><p>最简单的例子，一个消费者和多个生产者，这种就可以借助 eventfd 优雅的完成事件通知。</p>
+<p>生产者：</p>
+<p>是多个线程，会把请求投递到一个 list 中，然后唤醒生产者。</p>
+<pre><code class="hljs">producer:
+    // 投递请求到链表
+    list_add( global_list, request )
+    // 唤醒消费者处理
+    write(eventfd, &amp;cnt /* 1 */ , 8)
+</code></pre>
+<p>消费者：</p>
+<p>是一个线程，后台 loop 处理。使用 epoll 监听 eventfd 的可读事件，这样能做到一旦有请求入队，消费者就立马唤醒处理。</p>
+<pre><code class="hljs">consumer 
+    // 添加 eventfd 到监听池
+    epoll_ctl(ep, EPOLL_CTL_ADD, eventfd, &amp;ee);
+
+loop:
+    // 等待唤醒
+    epoll_wait(ep, ... );
+    
+    // 读取新添加到列表里的元素个数，并且进行处理；
+    n = read(eventfd, ... )
+    // 遍历链表处理
+    for each global_list:
+        // do something
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><ol>
+<li>Linux 一切皆文件，但 fd 各有不同；</li>
+<li>eventfd 实现了 read&#x2F;write 的接口，本质是一个计数器的实现；</li>
+<li>eventfd 实现了 poll 接口，所以可以和 epoll 双剑合璧，实现事件的通知管理；</li>
+<li>eventfd 可以和 libaio &amp; epoll 一起，实现 Linux 下的纯异步 IO；</li>
+<li>eventfd 监听可读事件才有意义；</li>
+<li>ext4 这种文件 fd 一直可读可写，所以实现 poll 毫无意义。eventfd 一直可写，所以监听可写毫无意义；</li>
+<li>eventfd 可以结合业务，做一个事件通知的通信机制，非常巧妙；</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>eventfd机制.md</div>
+      <div>https://abrance.github.io/2024/05/10/mdstorage/domain/linux/eventfd机制/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 10, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/10/domain/network/epoll%E6%9C%BA%E5%88%B6/" title="epoll机制.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">epoll机制.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/10/mdstorage/domain/network/epoll%E6%9C%BA%E5%88%B6/" title="epoll机制.md">
+                        <span class="hidden-mobile">epoll机制.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

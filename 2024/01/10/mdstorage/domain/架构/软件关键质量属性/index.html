@@ -1,0 +1,830 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概述软件的关键质量属性通常涵盖了软件系统不同方面的非功能特性。这些质量属性对于确保软件系统满足用户的需求和预期至关重要。主要的软件关键质量属性包括：  性能：涉及软件的响应时间、处理速度、资源消耗等。性能好的软件能够高效地执行并满足用户对速度和效率的期望。  可靠性：指软件的稳定性和准确性。高可靠性的软件能够在预期的时间和条件下无故障地运行。  可用性：涉及软件的易用性和用户界面的友好性。易于使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件关键质量属性.md">
+<meta property="og:url" content="https://abrance.github.io/2024/01/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E8%BD%AF%E4%BB%B6%E5%85%B3%E9%94%AE%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="概述软件的关键质量属性通常涵盖了软件系统不同方面的非功能特性。这些质量属性对于确保软件系统满足用户的需求和预期至关重要。主要的软件关键质量属性包括：  性能：涉及软件的响应时间、处理速度、资源消耗等。性能好的软件能够高效地执行并满足用户对速度和效率的期望。  可靠性：指软件的稳定性和准确性。高可靠性的软件能够在预期的时间和条件下无故障地运行。  可用性：涉及软件的易用性和用户界面的友好性。易于使用">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-20T00:52:33.783Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="架构">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>软件关键质量属性.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="软件关键质量属性.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-10 00:00" pubdate>
+          January 10, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">软件关键质量属性.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>软件的关键质量属性通常涵盖了软件系统不同方面的非功能特性。这些质量属性对于确保软件系统满足用户的需求和预期至关重要。主要的软件关键质量属性包括：</p>
+<ol>
+<li><p><strong>性能</strong>：涉及软件的响应时间、处理速度、资源消耗等。性能好的软件能够高效地执行并满足用户对速度和效率的期望。</p>
+</li>
+<li><p><strong>可靠性</strong>：指软件的稳定性和准确性。高可靠性的软件能够在预期的时间和条件下无故障地运行。</p>
+</li>
+<li><p><strong>可用性</strong>：涉及软件的易用性和用户界面的友好性。易于使用的软件可以提高用户满意度和生产效率。</p>
+</li>
+<li><p><strong>安全性</strong>：包括数据保护、访问控制和抵御恶意攻击的能力。安全性是特别重要的，尤其是对于处理敏感信息的软件。</p>
+</li>
+<li><p><strong>可维护性</strong>：指的是软件的修改和更新的容易程度。高可维护性的软件可以更快速、成本更低地进行更新和修复。</p>
+</li>
+<li><p><strong>可扩展性</strong>：软件适应增加的负载或功能变化的能力。可扩展的系统能够容纳业务增长和技术变革。</p>
+</li>
+<li><p><strong>兼容性</strong>：软件与其他系统、设备或软件版本之间的兼容性。这对于确保软件在不同环境中的正常运行非常重要。</p>
+</li>
+<li><p><strong>可移植性</strong>：软件从一个环境迁移到另一个环境的能力。这包括不同操作系统、硬件或网络环境的适应性。</p>
+</li>
+<li><p><strong>可测试性</strong>：软件的测试容易程度，包括识别缺陷和验证功能的能力。</p>
+</li>
+<li><p><strong>国际化和本地化</strong>：软件适应不同地区语言和文化的能力，这对于全球市场中的软件尤为重要。</p>
+</li>
+</ol>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ol>
+<li><p><strong>规划阶段</strong>：</p>
+<ul>
+<li>在软件项目的初始阶段，首先要确定关键质量属性的需求和优先级。这包括性能、可靠性、可用性、安全性等。</li>
+<li>在这一阶段，需求分析师和项目经理会与利益相关者协商，确定哪些质量属性对项目最为关键，并据此制定相应的目标和指标。</li>
+</ul>
+</li>
+<li><p><strong>设计阶段</strong>：</p>
+<ul>
+<li>设计团队需要确保软件架构和设计能够支持这些质量属性的要求。例如，为了提高性能，可能需要选择更高效的数据结构和算法。</li>
+<li>安全性、可维护性和可扩展性也是在设计阶段需要考虑的重要因素，通过适当的架构设计来确保这些属性。</li>
+</ul>
+</li>
+<li><p><strong>开发阶段</strong>：</p>
+<ul>
+<li>开发团队在编写代码时，需要遵循既定的编码标准和实践，以确保软件质量。例如，代码的可读性和测试性对于保证可维护性至关重要。</li>
+<li>在这一阶段，对性能和安全性的关注也非常重要，特别是在处理大量数据或敏感信息时。</li>
+</ul>
+</li>
+<li><p><strong>测试阶段</strong>：</p>
+<ul>
+<li>软件测试是验证和确保软件满足其质量属性要求的关键环节。性能测试、安全测试、可用性测试等都是必不可少的。</li>
+<li>测试结果帮助确定是否需要进一步的优化或改进以满足质量标准。</li>
+</ul>
+</li>
+<li><p><strong>部署阶段</strong>：</p>
+<ul>
+<li>在软件部署时，运维团队需确保软件的性能和稳定性符合预期，特别是在不同的部署环境中。</li>
+<li>此阶段还需要考虑到软件的可维护性和可扩展性，以应对未来可能的变更和升级。</li>
+</ul>
+</li>
+<li><p><strong>维护阶段</strong>：</p>
+<ul>
+<li>在软件的维护阶段，持续监控软件性能和稳定性，同时响应用户反馈和需求变更。</li>
+<li>定期的维护和更新有助于保持软件的安全性和兼容性，同时也是可持续性的一个关键方面。</li>
+</ul>
+</li>
+<li><p><strong>退役阶段</strong>：</p>
+<ul>
+<li>当软件到达生命周期的末端时，需要有计划地进行退役，确保数据的安全迁移和资源的有效释放。</li>
+<li>在这个阶段，还要考虑如何处理遗留数据和与其他系统的集成问题。</li>
+</ul>
+</li>
+</ol>
+<h3 id="软件关键质量属性持续进化"><a href="#软件关键质量属性持续进化" class="headerlink" title="软件关键质量属性持续进化"></a>软件关键质量属性持续进化</h3><ol>
+<li><p><strong>持续的需求分析和调整</strong>：</p>
+<ul>
+<li>在项目的每个阶段都重新评估和精细化质量属性的需求。</li>
+<li>适应变化的业务需求、技术环境和用户期望。</li>
+</ul>
+</li>
+<li><p><strong>迭代的设计和开发</strong>：</p>
+<ul>
+<li>采用敏捷或迭代的开发方法，允许在项目周期中不断调整设计和开发工作。</li>
+<li>在每个迭代阶段考虑质量属性，并根据反馈和测试结果进行优化。</li>
+</ul>
+</li>
+<li><p><strong>持续集成和持续部署（CI&#x2F;CD）</strong>：</p>
+<ul>
+<li>实施持续集成和持续部署流程，允许频繁地集成新代码和功能。</li>
+<li>这样可以及时发现和修正影响质量属性的问题。</li>
+</ul>
+</li>
+<li><p><strong>定期的性能和质量测试</strong>：</p>
+<ul>
+<li>定期进行性能测试、安全测试、可用性测试等，确保在整个项目周期中持续满足质量标准。</li>
+<li>利用自动化测试工具来提高测试的效率和频率。</li>
+</ul>
+</li>
+<li><p><strong>反馈循环</strong>：</p>
+<ul>
+<li>从用户和利益相关者那里收集反馈，并将这些反馈整合到项目的下一个迭代或阶段中。</li>
+<li>使用用户故事、反馈会议和评审会议来了解用户的需求和体验。</li>
+</ul>
+</li>
+<li><p><strong>质量度量和监控</strong>：</p>
+<ul>
+<li>利用质量度量工具来持续监控软件的关键质量属性。</li>
+<li>这些度量可以包括性能指标、故障率、用户满意度等。</li>
+</ul>
+</li>
+<li><p><strong>敏捷和灵活的项目管理</strong>：</p>
+<ul>
+<li>采用敏捷的项目管理方法，以灵活地应对变化和挑战。</li>
+<li>保持团队成员之间的密切沟通和协作，以快速响应变化。</li>
+</ul>
+</li>
+<li><p><strong>技术债务管理</strong>：</p>
+<ul>
+<li>定期评估和管理技术债务，确保长期的维护性和可扩展性。</li>
+<li>避免短期的解决方案损害长期的质量目标。</li>
+</ul>
+</li>
+</ol>
+<h3 id="角色和关注维度"><a href="#角色和关注维度" class="headerlink" title="角色和关注维度"></a>角色和关注维度</h3><p>软件关键质量属性的关注点和责任在项目的不同阶段由不同角色承担。以下是各个角色及其在不同项目阶段对软件关键质量属性的关注重点：</p>
+<ol>
+<li><p><strong>需求分析师&#x2F;业务分析师</strong>：</p>
+<ul>
+<li><strong>需求收集阶段</strong>：识别和记录软件的质量属性需求，如性能、安全性、可用性等，确保它们符合业务目标和用户需求。</li>
+</ul>
+</li>
+<li><p><strong>产品经理</strong>：</p>
+<ul>
+<li><strong>规划和定义阶段</strong>：确定产品的目标和愿景，包括质量属性的优先级设定。</li>
+<li><strong>整个项目周期</strong>：确保产品满足市场需求，并且在整个项目生命周期中保持对质量属性的关注。</li>
+</ul>
+</li>
+<li><p><strong>系统架构师&#x2F;软件架构师</strong>：</p>
+<ul>
+<li><strong>设计阶段</strong>：设计软件架构时考虑如何支持和实现这些质量属性，如选择适当的架构模式和技术栈。</li>
+<li><strong>开发阶段</strong>：确保架构决策能够满足预定的质量要求。</li>
+</ul>
+</li>
+<li><p><strong>开发团队（软件开发人员）</strong>：</p>
+<ul>
+<li><strong>实现阶段</strong>：编写代码时考虑如何实现这些质量属性，例如编写高效、可维护的代码。</li>
+<li><strong>测试阶段</strong>：参与单元测试和集成测试，以确保代码质量。</li>
+</ul>
+</li>
+<li><p><strong>质量保证团队（QA工程师）</strong>：</p>
+<ul>
+<li><strong>测试阶段</strong>：通过功能测试、性能测试、安全测试等，确保软件满足既定的质量标准。</li>
+<li><strong>维护阶段</strong>：监控软件性能和稳定性，确保长期满足质量要求。</li>
+</ul>
+</li>
+<li><p><strong>项目经理&#x2F;Scrum主管</strong>：</p>
+<ul>
+<li><strong>整个项目周期</strong>：监控项目进度和资源分配，确保有足够的时间和资源来满足质量目标。</li>
+<li><strong>风险管理阶段</strong>：识别可能影响质量属性的风险并制定应对策略。</li>
+</ul>
+</li>
+<li><p><strong>运维团队（DevOps工程师）</strong>：</p>
+<ul>
+<li><strong>部署和运维阶段</strong>：部署软件并监控其在生产环境中的表现，特别是性能和稳定性方面。</li>
+<li><strong>维护阶段</strong>：及时响应性能下降或安全问题，并实施必要的维护工作。</li>
+</ul>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9E%B6%E6%9E%84/" class="print-no-link">#架构</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>软件关键质量属性.md</div>
+      <div>https://abrance.github.io/2024/01/10/mdstorage/domain/架构/软件关键质量属性/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>January 10, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/10/mdstorage/domain/%E6%9E%B6%E6%9E%84/QARs%E6%A6%82%E8%BF%B0/" title="QARs概述.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">QARs概述.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/04/domain/dart/flutter%E4%BD%BF%E7%94%A8/" title="flutter使用.md">
+                        <span class="hidden-mobile">flutter使用.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
