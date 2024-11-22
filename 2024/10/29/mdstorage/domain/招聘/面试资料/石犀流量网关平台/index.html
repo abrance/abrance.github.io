@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在 XX流量治理平台 项目中，我担任团队的技术负责人，主要负责 系统架构设计、团队组建与管理、技术突破和代码审核，并承担重难点技术问题的快速解决。下面我来详细回顾这个项目的关键内容： 项目背景与目标XX流量治理平台是为了帮助大型企业应对复杂的网络流量需求而设计的，它提供了一个统一的解决方案来接管企业内外的各种流量。平台支持在物理机、虚拟机、云主机以及容器化平台上进行部署，以确保在不同基础设施环境下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="石犀流量网关平台.md">
+<meta property="og:url" content="https://abrance.github.io/2024/10/29/mdstorage/domain/%E6%8B%9B%E8%81%98/%E9%9D%A2%E8%AF%95%E8%B5%84%E6%96%99/%E7%9F%B3%E7%8A%80%E6%B5%81%E9%87%8F%E7%BD%91%E5%85%B3%E5%B9%B3%E5%8F%B0/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="在 XX流量治理平台 项目中，我担任团队的技术负责人，主要负责 系统架构设计、团队组建与管理、技术突破和代码审核，并承担重难点技术问题的快速解决。下面我来详细回顾这个项目的关键内容： 项目背景与目标XX流量治理平台是为了帮助大型企业应对复杂的网络流量需求而设计的，它提供了一个统一的解决方案来接管企业内外的各种流量。平台支持在物理机、虚拟机、云主机以及容器化平台上进行部署，以确保在不同基础设施环境下">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-22T08:56:56.489Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>石犀流量网关平台.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="石犀流量网关平台.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-29 00:00" pubdate>
+          October 29, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">石犀流量网关平台.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在 <strong>XX流量治理平台</strong> 项目中，我担任团队的技术负责人，主要负责 <strong>系统架构设计、团队组建与管理、技术突破和代码审核</strong>，并承担重难点技术问题的快速解决。下面我来详细回顾这个项目的关键内容：</p>
+<h3 id="项目背景与目标"><a href="#项目背景与目标" class="headerlink" title="项目背景与目标"></a>项目背景与目标</h3><p>XX流量治理平台是为了帮助大型企业应对复杂的网络流量需求而设计的，它提供了一个统一的解决方案来接管企业内外的各种流量。平台支持在物理机、虚拟机、云主机以及容器化平台上进行部署，以确保在不同基础设施环境下的 <strong>兼容性和灵活性</strong>。平台主要提供了 <strong>API 网关和旁路由</strong> 功能，同时针对 <strong>边缘网络</strong> 功能持续进行研究和集成。</p>
+<ul>
+<li><strong>API 网关</strong>：允许用户自定义配置，提供 <strong>路由转换、身份验证和授权、负载均衡、缓存和安全等功能</strong>。</li>
+<li><strong>旁路由</strong>：用户能够直接将流量传递给后端服务，以提升服务的响应速度。</li>
+</ul>
+<h3 id="我的角色与职责"><a href="#我的角色与职责" class="headerlink" title="我的角色与职责"></a>我的角色与职责</h3><p>作为技术负责人，我的主要职责包括：</p>
+<ul>
+<li><strong>架构设计与技术选型</strong>：设计整个系统的架构，并撰写详细的架构文档。</li>
+<li><strong>团队管理</strong>：负责团队的组建和人员招聘，带领团队进行代码评审，提升整体代码质量。</li>
+<li><strong>代码实现与调优</strong>：参与关键模块的代码实现，进行性能调优。</li>
+<li><strong>技术问题解决</strong>：对项目中的重难点技术进行方案突破，排查解决疑难问题。</li>
+<li><strong>付费授权流程设计</strong>：保障项目的营收需求。</li>
+</ul>
+<h3 id="采用的技术栈"><a href="#采用的技术栈" class="headerlink" title="采用的技术栈"></a>采用的技术栈</h3><ul>
+<li><strong>云原生技术</strong>：Golang、Kubernetes Operator 开发、Envoy、Linux 网络协议栈。</li>
+<li><strong>数据存储</strong>：MongoDB、MySQL、Redis、Etcd。</li>
+<li><strong>消息队列</strong>：NSQ。</li>
+<li><strong>负载均衡</strong>：LVS。</li>
+<li><strong>编程语言与脚本</strong>：Python、Shell。</li>
+</ul>
+<h3 id="项目成果"><a href="#项目成果" class="headerlink" title="项目成果"></a>项目成果</h3><ol>
+<li><p><strong>全平台兼容的统一部署</strong><br>基于 Golang 和 Kubernetes Operator 的开发模型，解决了在 <strong>物理机、虚拟机、云主机和容器平台</strong> 间的兼容性问题，实现了 <strong>全平台统一的安装部署</strong>。除了初始组件需要执行 Shell 脚本外，其余部分都可以通过界面进行部署，并且具备 <strong>热升级功能</strong>，在升级时不影响业务。</p>
+</li>
+<li><p><strong>API 网关的实现</strong><br>利用 <strong>Gin + Proto + CRD 和代码生成器 + Envoy</strong>，实现了 API 网关的核心功能，包括 <strong>路由转换、身份验证和授权、负载均衡、缓存和安全</strong>，帮助用户建立了 <strong>更安全、更可靠、更快捷</strong> 的 API 管控体系。</p>
+</li>
+<li><p><strong>流量可视化与监控</strong><br>通过 <strong>NSQ 和数据库</strong> 实现了流量可视化组件，提供用户流量的 <strong>实时统计与分析</strong>，并确保服务的 <strong>高性能和高可用性</strong>。</p>
+</li>
+<li><p><strong>旁路由的实现</strong><br>利用 <strong>Envoy</strong> 实现旁路由功能，使得服务之间的通信 <strong>透明化</strong>，显著提升了 <strong>服务的透明性、可观察性、安全性和可扩展性</strong>。</p>
+</li>
+<li><p><strong>高可用架构的搭建</strong><br>搭建了一套高可用的系统架构，保证了整个平台的可靠性。</p>
+</li>
+<li><p><strong>企业私有 GitLab 代码仓库的部署维护</strong><br>负责搭建和维护企业私有的 GitLab 代码仓库，确保开发流程的安全和稳定。</p>
+</li>
+<li><p><strong>解决关键技术问题</strong><br>成功解决了 IP 地址冲突、配置下发给 Envoy 的效率低、可视化数据存储查询慢、总控引擎与商城的通信不安全等多个技术问题。</p>
+</li>
+</ol>
+<h3 id="团队合作与成长"><a href="#团队合作与成长" class="headerlink" title="团队合作与成长"></a>团队合作与成长</h3><p>作为团队的负责人，我以 <strong>循序渐进的方式</strong> 培养团队成员的 <strong>技术能力和协作能力</strong>，组织了定期的 <strong>代码评审和技术分享</strong>，并通过 <strong>实操实战</strong> 来提升大家的 <strong>动手能力和逻辑思维</strong>。我带领的团队在企业的表彰中多次获得 <strong>最佳优秀员工奖</strong>，这体现了团队成员的成长和整体项目的成功。</p>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><h3 id="Python、Shell-进行-K8s-等基础平台组件的部署"><a href="#Python、Shell-进行-K8s-等基础平台组件的部署" class="headerlink" title="Python、Shell 进行 K8s 等基础平台组件的部署"></a>Python、Shell 进行 K8s 等基础平台组件的部署</h3><ol>
+<li>不同硬件平台的适配</li>
+<li>第三方软件对这些平台的适配版本或源码编译安装</li>
+<li>基础资源的获取和初始化</li>
+<li>CPU、内存、磁盘、操作系统内核是否满足最小安装</li>
+<li>操作系统镜像交付和镜像安装，xorrios+cloud-init制作</li>
+</ol>
+<h3 id="Go-负责云原生应用的开发"><a href="#Go-负责云原生应用的开发" class="headerlink" title="Go 负责云原生应用的开发"></a>Go 负责云原生应用的开发</h3><h3 id="用-Envoy-实现流量治理、可视化、API-分析"><a href="#用-Envoy-实现流量治理、可视化、API-分析" class="headerlink" title="用 Envoy 实现流量治理、可视化、API 分析"></a>用 Envoy 实现流量治理、可视化、API 分析</h3><ol>
+<li>基于 GRPC 协议，改进 fetch xDS server 而采用 delta xDS server</li>
+<li>双向流通信：使用 gRPC 的双向流通信来处理动态更新。这意味着 xDS server 需要持续监听来自 Envoy 的请求，并根据资源的变化动态生成响应。<br>差量更新的生成：xDS server 需要跟踪各个资源的状态和版本变化，并在每次生成响应时，只发送那些新增或已更改的资源，同时标记需要移除的资源。<br>高效的数据管理：可以使用高效的数据存储和缓存（如 Etcd、Redis）来管理资源的动态状态，以便能够快速响应变化请求。<br>订阅管理：处理 DeltaDiscoveryRequest 中的 resource_names_subscribe 和 resource_names_unsubscribe 字段，灵活管理 Envoy 对不同资源的订阅。</li>
+</ol>
+<h3 id="用-GRPC-开发网络"><a href="#用-GRPC-开发网络" class="headerlink" title="用 GRPC 开发网络"></a>用 GRPC 开发网络</h3>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E6%8B%9B%E8%81%98-%E9%9D%A2%E8%AF%95%E8%B5%84%E6%96%99/" class="category-chain-item">招聘/面试资料</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>石犀流量网关平台.md</div>
+      <div>https://abrance.github.io/2024/10/29/mdstorage/domain/招聘/面试资料/石犀流量网关平台/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 29, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/07/mdstorage/arch/sr/%E6%B5%81%E9%87%8F%E7%AE%A1%E6%8E%A7%E5%B9%B3%E5%8F%B0/" title="流量管控平台.md">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">流量管控平台.md</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/29/mdstorage/domain/%E6%8B%9B%E8%81%98/%E9%9D%A2%E8%AF%95%E8%B5%84%E6%96%99/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86/" title="项目经历.md">
+                        <span class="hidden-mobile">项目经历.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

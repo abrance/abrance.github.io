@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、引言 背景简介:随着数字化转型的加速推进，网络安全已成为企业和国家安全的核心议题。网络攻击、数据泄露和信息篡改事件层出不穷，如何有效保护信息系统安全成为迫切需求。中国的《网络安全等级保护制度》（等保）作为一项强制性国家标准，为信息系统安全提供了统一的框架和实施指南。  文章目的:本文旨在全面介绍网络安全等级保护的基本概念、实施流程、技术要求和实际应用场景，帮助企业和技术人员快速理解等保的核心内">
+<meta property="og:type" content="article">
+<meta property="og:title" content="等保.md">
+<meta property="og:url" content="https://abrance.github.io/2024/11/22/mdstorage/domain/%E5%AE%89%E5%85%A8/%E7%AD%89%E4%BF%9D/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="一、引言 背景简介:随着数字化转型的加速推进，网络安全已成为企业和国家安全的核心议题。网络攻击、数据泄露和信息篡改事件层出不穷，如何有效保护信息系统安全成为迫切需求。中国的《网络安全等级保护制度》（等保）作为一项强制性国家标准，为信息系统安全提供了统一的框架和实施指南。  文章目的:本文旨在全面介绍网络安全等级保护的基本概念、实施流程、技术要求和实际应用场景，帮助企业和技术人员快速理解等保的核心内">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-22T08:56:56.497Z">
+<meta property="article:author" content="xiaoy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>等保.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="等保.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-22 00:00" pubdate>
+          November 22, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">等保.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h3><ul>
+<li><p><strong>背景简介</strong>:<br>随着数字化转型的加速推进，网络安全已成为企业和国家安全的核心议题。网络攻击、数据泄露和信息篡改事件层出不穷，如何有效保护信息系统安全成为迫切需求。中国的《网络安全等级保护制度》（等保）作为一项强制性国家标准，为信息系统安全提供了统一的框架和实施指南。</p>
+</li>
+<li><p><strong>文章目的</strong>:<br>本文旨在全面介绍网络安全等级保护的基本概念、实施流程、技术要求和实际应用场景，帮助企业和技术人员快速理解等保的核心内容，并为合规实施提供参考。</p>
+</li>
+</ul>
+<hr>
+<h3 id="二、流程和体系结构"><a href="#二、流程和体系结构" class="headerlink" title="二、流程和体系结构"></a>二、流程和体系结构</h3><ul>
+<li><p><strong>流程概述</strong>:<br>等保的实施包括五个核心阶段：<strong>定级</strong>、<strong>备案</strong>、<strong>安全建设整改</strong>、<strong>测评</strong>和<strong>监督检查</strong>。这些阶段形成了一个闭环流程，从系统的分类保护到动态监测，确保信息系统在整个生命周期内的安全性。</p>
+</li>
+<li><p><strong>体系结构</strong>:<br>等保的核心体系分为技术和管理两个维度。技术维度包括<strong>物理安全</strong>、<strong>网络安全</strong>、<strong>主机安全</strong>、<strong>应用安全</strong>和<strong>数据安全</strong>；管理维度则涵盖了<strong>安全管理制度</strong>、<strong>安全组织管理</strong>和<strong>人员安全管理</strong>。以下图示形象化展示了等保的体系结构：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-code">+-------------------+</span><br><span class="hljs-section">|   数据安全保护    |</span><br><span class="hljs-section">+-------------------+</span><br><span class="hljs-section">        ↑</span><br><span class="hljs-section">+-------------------+</span><br><span class="hljs-section">|   应用安全保护    |</span><br><span class="hljs-section">+-------------------+</span><br><span class="hljs-section">        ↑</span><br><span class="hljs-section">+-------------------+</span><br><span class="hljs-section">|   主机安全保护    |</span><br><span class="hljs-section">+-------------------+</span><br><span class="hljs-section">        ↑</span><br><span class="hljs-section">+-------------------+</span><br><span class="hljs-section">|   网络安全保护    |</span><br><span class="hljs-section">+-------------------+</span><br><span class="hljs-section">        ↑</span><br><span class="hljs-section">+-------------------+</span><br><span class="hljs-section">|   物理安全保护    |</span><br><span class="hljs-section">+-------------------+</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="三、战略和市场管理"><a href="#三、战略和市场管理" class="headerlink" title="三、战略和市场管理"></a>三、战略和市场管理</h3><ul>
+<li><p><strong>网络安全战略</strong>:<br>等保制度的核心战略是通过等级划分引导资源配置。一个企业的关键资产如核心数据库、客户信息系统需被评为三级或以上，而一般业务系统可以评为二级或一级。这样的分级管理方式确保了资源优化配置，提高整体防护能力。</p>
+</li>
+<li><p><strong>市场管理</strong>:<br>通过合规的等保认证，企业不仅能规避法律风险，还可以获得更高的市场信任度。例如，在金融、医疗等行业，通过等保测评已经成为行业准入的必要条件。</p>
+</li>
+</ul>
+<hr>
+<h3 id="四、技术和产品开发"><a href="#四、技术和产品开发" class="headerlink" title="四、技术和产品开发"></a>四、技术和产品开发</h3><ul>
+<li><p><strong>技术创新</strong>:<br>随着等保 2.0 的引入，技术创新聚焦于云计算、大数据、物联网和工业互联网的安全保护。这些技术的特点要求等保从静态防护拓展到动态监测、威胁情报共享和应急响应。</p>
+</li>
+<li><p><strong>产品开发流程</strong>:<br>等保技术产品的开发需要结合等保的关键要求。以银行系统为例，开发过程中需明确数据加密、访问控制、日志审计等功能，以满足等保三级的合规要求。</p>
+</li>
+</ul>
+<hr>
+<h3 id="五、案例研究"><a href="#五、案例研究" class="headerlink" title="五、案例研究"></a>五、案例研究</h3><ul>
+<li><p><strong>成功案例</strong>:<br>某银行在实施等保三级认证时，通过引入动态防护技术、强化访问控制以及建立定期测评机制，实现了系统的安全性显著提升，并通过了公安部门的测评备案，成功规避了潜在的法律和运营风险。</p>
+</li>
+<li><p><strong>教训和启示</strong>:<br>某制造企业因忽视系统定级的重要性，导致其生产控制系统在安全审查中被评为四级，但其实际防护措施仅达到二级水平，结果不得不追加大量成本进行改造。这表明，<strong>正确的定级和早期的安全规划至关重要</strong>。</p>
+</li>
+</ul>
+<hr>
+<h3 id="六、挑战与机遇"><a href="#六、挑战与机遇" class="headerlink" title="六、挑战与机遇"></a>六、挑战与机遇</h3><ul>
+<li><p><strong>当前挑战</strong>:</p>
+<ol>
+<li>等保实施成本较高，尤其对中小企业而言是一项负担。</li>
+<li>新兴技术的安全需求复杂，传统等保框架在部分场景下适用性不足。</li>
+</ol>
+</li>
+<li><p><strong>未来机遇</strong>:</p>
+<ol>
+<li>动态监测与人工智能技术结合将成为等保创新的关键方向。</li>
+<li>等保的全球化趋势将使更多国际企业关注中国网络安全市场。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="七、结论"><a href="#七、结论" class="headerlink" title="七、结论"></a>七、结论</h3><ul>
+<li><p><strong>主要发现</strong>:<br>网络安全等级保护制度为信息系统的安全防护提供了科学的框架，覆盖了技术和管理两大领域。从等保 1.0 到 2.0，其保护范围和技术深度显著提升。</p>
+</li>
+<li><p><strong>建议和策略</strong>:<br>企业应根据业务系统的重要性进行准确定级，并在项目初期引入等保合规规划，充分利用专业第三方机构的测评服务，降低整改成本。</p>
+</li>
+</ul>
+<hr>
+<h3 id="八、参考文献"><a href="#八、参考文献" class="headerlink" title="八、参考文献"></a>八、参考文献</h3><ol>
+<li>《中华人民共和国网络安全法》</li>
+<li>《信息安全等级保护基本要求》</li>
+<li>某企业成功实施等保的案例分析报告</li>
+</ol>
+<hr>
+<h3 id="九、附录"><a href="#九、附录" class="headerlink" title="九、附录"></a>九、附录</h3><ul>
+<li><strong>图表与术语表</strong>:<ul>
+<li>图表展示等保五个等级的划分标准及关键要求。</li>
+<li>术语表：定级、备案、动态防护等关键术语的解释。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>如果需要进一步优化或细化某部分内容，请随时告知！</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E5%AE%89%E5%85%A8/" class="category-chain-item">安全</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>等保.md</div>
+      <div>https://abrance.github.io/2024/11/22/mdstorage/domain/安全/等保/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 22, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/22/mdstorage/domain/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%92%8C%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/" title="开发环境和生产环境逻辑分离.md">
+                        <span class="hidden-mobile">开发环境和生产环境逻辑分离.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
