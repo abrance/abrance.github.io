@@ -1,0 +1,858 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="使用 pytest.fixture 生成用例数据1. 动态生成不同的输入数据尽管你的 user_data() 示例中返回的是静态数据，但 fixture 并不局限于返回静态值。你可以在 fixture 中用编程逻辑、随机生成器或数据库查询等方式生成测试所需的动态数据。例如： 12345678import random@pytest.fixturedef user_data():     # 动态生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pytest测试用例编写">
+<meta property="og:url" content="https://abrance.github.io/2025/04/03/mdstorage/domain/python/pytest%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%BC%96%E5%86%99/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="使用 pytest.fixture 生成用例数据1. 动态生成不同的输入数据尽管你的 user_data() 示例中返回的是静态数据，但 fixture 并不局限于返回静态值。你可以在 fixture 中用编程逻辑、随机生成器或数据库查询等方式生成测试所需的动态数据。例如： 12345678import random@pytest.fixturedef user_data():     # 动态生">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-03T04:29:31.867Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="pytest">
+<meta property="article:tag" content="testing">
+<meta property="article:tag" content="fixture">
+<meta property="article:tag" content="parametrize">
+<meta property="article:tag" content="patch">
+<meta property="article:tag" content="mock">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>pytest测试用例编写 - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="pytest测试用例编写"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-03 00:00" pubdate>
+          April 3, 2025 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">pytest测试用例编写</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="使用-pytest-fixture-生成用例数据"><a href="#使用-pytest-fixture-生成用例数据" class="headerlink" title="使用 pytest.fixture 生成用例数据"></a>使用 pytest.fixture 生成用例数据</h2><h3 id="1-动态生成不同的输入数据"><a href="#1-动态生成不同的输入数据" class="headerlink" title="1. 动态生成不同的输入数据"></a>1. 动态生成不同的输入数据</h3><p>尽管你的 <code>user_data()</code> 示例中返回的是静态数据，但 <strong>fixture 并不局限于返回静态值</strong>。你可以在 <code>fixture</code> 中用编程逻辑、随机生成器或数据库查询等方式生成测试所需的动态数据。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">user_data</span>(): <br>    <span class="hljs-comment"># 动态生成用户数据</span><br>    user_id = random.randint(<span class="hljs-number">1</span>, <span class="hljs-number">1000</span>)  <span class="hljs-comment"># 动态生成随机用户 ID</span><br>    username = <span class="hljs-string">f&quot;user_<span class="hljs-subst">&#123;user_id&#125;</span>&quot;</span><br>    <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;user_id&quot;</span>: user_id, <span class="hljs-string">&quot;username&quot;</span>: username&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在上面的例子中，<code>user_data</code> 中的 <code>user_id</code> 和 <code>username</code> 是动态生成的，每次运行测试时其值都不同。</p>
+<hr>
+<h3 id="2-提供动态依赖：从外部数据源加载"><a href="#2-提供动态依赖：从外部数据源加载" class="headerlink" title="2. 提供动态依赖：从外部数据源加载"></a>2. 提供动态依赖：从外部数据源加载</h3><p><code>pytest.fixture</code> 可以动态地从文件、数据库或外部服务加载内容。这非常有用，尤其在复杂测试环境中。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">user_data_from_db</span>():<br>    <span class="hljs-comment"># 从数据库动态读取用户信息</span><br>    user = get_user_from_database(user_id=<span class="hljs-number">1</span>)  <span class="hljs-comment"># 假设这是某个动态查询函数</span><br>    <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;user_id&quot;</span>: user.<span class="hljs-built_in">id</span>, <span class="hljs-string">&quot;username&quot;</span>: user.name&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里的 <code>user_data_from_db</code> 会根据数据库中的内容动态生成用户数据。</p>
+<hr>
+<h3 id="3-支持参数化动态生成"><a href="#3-支持参数化动态生成" class="headerlink" title="3. 支持参数化动态生成"></a>3. 支持参数化动态生成</h3><p><code>pytest.fixture</code> 是高度可扩展的，可以通过 <code>request</code> 对象实现 <strong>动态参数化生成</strong>。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">user_data</span>(<span class="hljs-params">request</span>):<br>    <span class="hljs-comment"># 根据测试需求动态生成不同的用户数据</span><br>    user_id = request.param<br>    <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;user_id&quot;</span>: user_id, <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">f&quot;user_<span class="hljs-subst">&#123;user_id&#125;</span>&quot;</span>&#125;<br><br><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;user_data&quot;</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], indirect=<span class="hljs-literal">True</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_user</span>(<span class="hljs-params">user_data</span>):<br>    <span class="hljs-keyword">assert</span> <span class="hljs-string">&quot;user_id&quot;</span> <span class="hljs-keyword">in</span> user_data<br>    <span class="hljs-keyword">assert</span> user_data[<span class="hljs-string">&quot;user_id&quot;</span>] <span class="hljs-keyword">in</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+
+<p>在这个例子里，<code>user_data</code> 中的值是由参数化动态生成的。</p>
+<hr>
+<h3 id="4-提供上下文和多次初始化"><a href="#4-提供上下文和多次初始化" class="headerlink" title="4. 提供上下文和多次初始化"></a>4. 提供上下文和多次初始化</h3><p>Fixture 可以模拟「创建上下文-清理资源」的机制，比如打开网络连接、创建 HTTP 会话或初始化 mock 数据。在这种场景下，动态生成就十分重要：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">api_client</span>():<br>    <span class="hljs-comment"># 动态初始化 HTTP 客户端</span><br>    client = APIClient(base_url=<span class="hljs-string">&quot;http://example.com&quot;</span>)  <span class="hljs-comment"># 假设这是某个 HTTP 客户端类</span><br>    <span class="hljs-keyword">yield</span> client  <span class="hljs-comment"># 提供给测试用例使用</span><br>    client.close()  <span class="hljs-comment"># 测试结束后自动释放资源</span><br></code></pre></td></tr></table></figure>
+
+<p>动态生成的 HTTP 客户端 <code>api_client</code> 可以被每个测试用例独立复用。</p>
+<hr>
+<h3 id="5-提供共享的动态数据"><a href="#5-提供共享的动态数据" class="headerlink" title="5. 提供共享的动态数据"></a>5. 提供共享的动态数据</h3><p>如果不使用 <code>pytest.fixture</code>，你可能在不同测试函数中会对相同测试数据重复编码，而使用 fixture，则只需要定义一次逻辑，动态值可复用。</p>
+<h3 id="fixture-优势对比"><a href="#fixture-优势对比" class="headerlink" title="fixture 优势对比"></a>fixture 优势对比</h3><ol>
+<li>fixture 对比定义常量优势，fixture 生成的数据每个用例调用时都重新生成了一遍，这样就可以支持在 fixture 修饰函数内部加入动态的逻辑，如 <code>random.randint</code></li>
+<li>fixture 对比定义函数优势，1. fixture 定义的函数后面使用时不需要加 <code>()</code>  2. fixture 支持上下文管理和多次初始化</li>
+</ol>
+<h2 id="Parametrize-参数化测试用例"><a href="#Parametrize-参数化测试用例" class="headerlink" title="Parametrize 参数化测试用例"></a>Parametrize 参数化测试用例</h2><p>在 pytest 中，<code>pytest.mark.parametrize</code> 可以用来参数化测试用例，使得同一个测试函数可以使用不同的输入参数运行多次。对于简单的常量参数，可以直接传递常量值。而对于复杂的场景，比如参数化的值是 fixture 的名称，则需要使用 <code>request.getfixturevalue</code> 来动态获取这些 fixture 的值。</p>
+<figure class="highlight python"><figcaption><span>name</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pytest<br><br><span class="hljs-comment"># 基本用法：参数化测试用例，使用常量值</span><br><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;sample_data,expected&quot;</span>, [</span></span><br><span class="hljs-params"><span class="hljs-meta">    (<span class="hljs-params"><span class="hljs-number">1</span>, <span class="hljs-number">2</span></span>),</span></span><br><span class="hljs-params"><span class="hljs-meta">    (<span class="hljs-params"><span class="hljs-number">2</span>, <span class="hljs-number">3</span></span>),</span></span><br><span class="hljs-params"><span class="hljs-meta">    (<span class="hljs-params"><span class="hljs-number">3</span>, <span class="hljs-number">4</span></span>),</span></span><br><span class="hljs-params"><span class="hljs-meta">]</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_basic_parametrize</span>(<span class="hljs-params">sample_data, expected</span>):<br>    <span class="hljs-keyword">assert</span> sample_data + <span class="hljs-number">1</span> == expected<br><br><span class="hljs-comment"># 定义多个数据源 Fixture</span><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">data_source_a</span>():<br>    <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;source&quot;</span>: <span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;data&quot;</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]&#125;<br><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">data_source_b</span>():<br>    <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;source&quot;</span>: <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;data&quot;</span>: [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]&#125;<br><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">data_source_c</span>():<br>    <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;source&quot;</span>: <span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-string">&quot;data&quot;</span>: [<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]&#125;<br><br><span class="hljs-comment"># 高级用法：参数化测试用例，使用 fixture 名称</span><br><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"></span></span><br><span class="hljs-params"><span class="hljs-meta">    <span class="hljs-string">&quot;data_source_fixture&quot;</span>,</span></span><br><span class="hljs-params"><span class="hljs-meta">    [</span></span><br><span class="hljs-params"><span class="hljs-meta">        <span class="hljs-string">&quot;data_source_a&quot;</span>,</span></span><br><span class="hljs-params"><span class="hljs-meta">        <span class="hljs-string">&quot;data_source_b&quot;</span>,</span></span><br><span class="hljs-params"><span class="hljs-meta">        <span class="hljs-string">&quot;data_source_c&quot;</span>,</span></span><br><span class="hljs-params"><span class="hljs-meta">    ]</span></span><br><span class="hljs-params"><span class="hljs-meta"></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_dynamic_fixture</span>(<span class="hljs-params">data_source_fixture, request</span>):<br>    <span class="hljs-comment"># 使用 request.getfixturevalue 方法动态获取 fixture 的值</span><br>    data_source = request.getfixturevalue(data_source_fixture)<br>    <span class="hljs-keyword">assert</span> <span class="hljs-string">&quot;source&quot;</span> <span class="hljs-keyword">in</span> data_source<br>    <span class="hljs-keyword">assert</span> <span class="hljs-string">&quot;data&quot;</span> <span class="hljs-keyword">in</span> data_source<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Using data source: <span class="hljs-subst">&#123;data_source[<span class="hljs-string">&#x27;source&#x27;</span>]&#125;</span> with data: <span class="hljs-subst">&#123;data_source[<span class="hljs-string">&#x27;data&#x27;</span>]&#125;</span>&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><ol>
+<li><p><strong>基本用法</strong>:</p>
+<ul>
+<li><code>test_basic_parametrize</code> 函数被参数化为三个测试用例，分别使用 <code>(1, 2)</code>、<code>(2, 3)</code> 和 <code>(3, 4)</code> 作为参数。</li>
+<li>每次运行测试函数时，<code>sample_data</code> 和 <code>expected</code> 会被赋值为参数列表中的一对值。</li>
+</ul>
+</li>
+<li><p><strong>高级用法</strong>:</p>
+<ul>
+<li><code>data_source_a</code>、<code>data_source_b</code> 和 <code>data_source_c</code> 是三个不同的数据源 fixture。</li>
+<li><code>test_dynamic_fixture</code> 函数被参数化为三个测试用例，分别使用 <code>&quot;data_source_a&quot;</code>、<code>&quot;data_source_b&quot;</code> 和 <code>&quot;data_source_c&quot;</code> 作为参数。</li>
+<li>在测试函数中，使用 <code>request.getfixturevalue(data_source_fixture)</code> 动态获取对应的 fixture 实例，然后对其进行断言和操作。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Dataclass-使用"><a href="#Dataclass-使用" class="headerlink" title="Dataclass 使用"></a>Dataclass 使用</h2><p>在使用 <code>dataclass</code> 的情况下，确实可能会出现使用 <code>parametrize</code> 用 fixture 名作为参数输入的情况，特别是在测试用例需要动态获取 fixture 的值时。这种情况下，<code>dataclass</code> 可以帮助更好地组织和管理数据，而 <code>parametrize</code> 和 <code>request.getfixturevalue</code> 可以帮助动态获取和使用这些数据。</p>
+<p>以下是一个完整的示例，展示了如何在使用 <code>dataclass</code> 的情况下，使用 <code>parametrize</code> 和 fixture 名作为参数输入的情况：</p>
+<figure class="highlight python"><figcaption><span>name</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> dataclasses <span class="hljs-keyword">import</span> dataclass<br><span class="hljs-keyword">import</span> pytest<br><br><span class="hljs-comment"># 定义数据类</span><br><span class="hljs-meta">@dataclass</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span>:<br>    <span class="hljs-built_in">id</span>: <span class="hljs-built_in">int</span><br>    username: <span class="hljs-built_in">str</span><br>    email: <span class="hljs-built_in">str</span><br><br><span class="hljs-meta">@dataclass</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestCase</span>:<br>    user_fixture: <span class="hljs-built_in">str</span><br>    expected_username: <span class="hljs-built_in">str</span><br>    expected_email: <span class="hljs-built_in">str</span><br><br><span class="hljs-comment"># 定义多个用户数据的 fixture</span><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">user_a</span>():<br>    <span class="hljs-keyword">return</span> User(<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>, username=<span class="hljs-string">&quot;testuser1&quot;</span>, email=<span class="hljs-string">&quot;test1@example.com&quot;</span>)<br><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">user_b</span>():<br>    <span class="hljs-keyword">return</span> User(<span class="hljs-built_in">id</span>=<span class="hljs-number">2</span>, username=<span class="hljs-string">&quot;testuser2&quot;</span>, email=<span class="hljs-string">&quot;test2@example.com&quot;</span>)<br><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">user_c</span>():<br>    <span class="hljs-keyword">return</span> User(<span class="hljs-built_in">id</span>=<span class="hljs-number">3</span>, username=<span class="hljs-string">&quot;testuser3&quot;</span>, email=<span class="hljs-string">&quot;test3@example.com&quot;</span>)<br><br><span class="hljs-comment"># 定义测试用例</span><br>test_cases = [<br>    TestCase(user_fixture=<span class="hljs-string">&quot;user_a&quot;</span>, expected_username=<span class="hljs-string">&quot;testuser1&quot;</span>, expected_email=<span class="hljs-string">&quot;test1@example.com&quot;</span>),<br>    TestCase(user_fixture=<span class="hljs-string">&quot;user_b&quot;</span>, expected_username=<span class="hljs-string">&quot;testuser2&quot;</span>, expected_email=<span class="hljs-string">&quot;test2@example.com&quot;</span>),<br>    TestCase(user_fixture=<span class="hljs-string">&quot;user_c&quot;</span>, expected_username=<span class="hljs-string">&quot;testuser3&quot;</span>, expected_email=<span class="hljs-string">&quot;test3@example.com&quot;</span>),<br>]<br><br><span class="hljs-comment"># 参数化测试用例</span><br><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;case&quot;</span>, test_cases</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_user</span>(<span class="hljs-params"><span class="hljs-keyword">case</span>, request</span>):<br>    <span class="hljs-comment"># 动态获取 fixture 的值</span><br>    user = request.getfixturevalue(<span class="hljs-keyword">case</span>.user_fixture)<br>    <br>    <span class="hljs-comment"># 执行断言</span><br>    <span class="hljs-keyword">assert</span> user.username == <span class="hljs-keyword">case</span>.expected_username<br>    <span class="hljs-keyword">assert</span> user.email == <span class="hljs-keyword">case</span>.expected_email<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Using user: <span class="hljs-subst">&#123;user.username&#125;</span> with email: <span class="hljs-subst">&#123;user.email&#125;</span>&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h3><ol>
+<li><strong>定义数据类</strong>: 使用 <code>dataclass</code> 定义 <code>User</code> 和 <code>TestCase</code> 数据类。<code>User</code> 类用于表示用户信息，<code>TestCase</code> 类用于表示测试用例，包含一个 fixture 名称和预期的用户名和电子邮件。</li>
+<li><strong>定义用户数据的 fixture</strong>: 创建多个 fixture，分别返回不同的 <code>User</code> 实例。</li>
+<li><strong>定义测试用例</strong>: 创建一个包含多个 <code>TestCase</code> 实例的列表，每个实例包含一个 fixture 名称和相应的预期值。</li>
+<li><strong>参数化测试用例</strong>: 使用 <code>pytest.mark.parametrize</code> 将 <code>test_user</code> 函数参数化，使其能够接收不同的 <code>TestCase</code> 实例。</li>
+<li><strong>动态获取 fixture 的值</strong>: 在 <code>test_user</code> 函数中，使用 <code>request.getfixturevalue(case.user_fixture)</code> 动态获取对应的 fixture 实例，然后对其进行断言和操作。</li>
+</ol>
+<h2 id="request-param-和-indirect-，根据参数动态修改-fixture-值"><a href="#request-param-和-indirect-，根据参数动态修改-fixture-值" class="headerlink" title="request.param 和 indirect ，根据参数动态修改 fixture 值"></a>request.param 和 indirect ，根据参数动态修改 fixture 值</h2><p>在 pytest 中，<code>request.param</code> 和 <code>indirect</code> 参数用于参数化测试用例时提供更高级的功能和灵活性。</p>
+<h3 id="request-param"><a href="#request-param" class="headerlink" title="request.param"></a><code>request.param</code></h3><p><code>request.param</code> 是 pytest 内置的 <code>request</code> fixture 的一个属性，用于在参数化 fixture 中获取当前参数的值。它通常与 <code>pytest.mark.parametrize</code> 结合使用，用于在 fixture 中动态生成测试数据。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight python"><figcaption><span>name</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pytest<br><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">sample_data</span>(<span class="hljs-params">request</span>):<br>    <span class="hljs-comment"># 使用 request.param 获取参数化的值</span><br>    <span class="hljs-keyword">return</span> request.param * <span class="hljs-number">2</span><br><br><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;sample_data&quot;</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], indirect=<span class="hljs-literal">True</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_sample_data</span>(<span class="hljs-params">sample_data</span>):<br>    <span class="hljs-keyword">assert</span> sample_data <span class="hljs-keyword">in</span> [<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>]<br></code></pre></td></tr></table></figure>
+
+<p>在这个示例中：</p>
+<ol>
+<li><code>sample_data</code> fixture 使用 <code>request.param</code> 获取参数化的值，并根据该值生成测试数据。</li>
+<li><code>pytest.mark.parametrize</code> 对 <code>sample_data</code> 进行参数化，传递 [1, 2, 3] 作为参数。</li>
+<li><code>indirect=True</code> 表示参数化的值将被传递给 fixture，而不是直接传递给测试函数。</li>
+</ol>
+<h3 id="indirect-参数"><a href="#indirect-参数" class="headerlink" title="indirect 参数"></a><code>indirect</code> 参数</h3><p><code>indirect</code> 参数用于告诉 pytest 参数化的值应传递给 fixture 而不是直接传递给测试函数。它可以是布尔值（对所有参数生效）或字典（对特定参数生效）。</p>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><figure class="highlight python"><figcaption><span>name</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pytest<br><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">sample_data</span>(<span class="hljs-params">request</span>):<br>    <span class="hljs-comment"># 使用 request.param 获取参数化的值</span><br>    <span class="hljs-keyword">return</span> request.param * <span class="hljs-number">2</span><br><br><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;sample_data&quot;</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], indirect=<span class="hljs-literal">True</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_sample_data</span>(<span class="hljs-params">sample_data</span>):<br>    <span class="hljs-keyword">assert</span> sample_data <span class="hljs-keyword">in</span> [<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>]<br><br><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;sample_data&quot;</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], indirect=&#123;<span class="hljs-string">&quot;sample_data&quot;</span>: <span class="hljs-literal">True</span>&#125;</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_sample_data_specific</span>(<span class="hljs-params">sample_data</span>):<br>    <span class="hljs-keyword">assert</span> sample_data <span class="hljs-keyword">in</span> [<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>]<br></code></pre></td></tr></table></figure>
+
+<p>在这个示例中：</p>
+<ol start="4">
+<li><code>indirect=True</code> 表示参数化的值将被传递给所有 fixture。</li>
+<li><code>indirect=&#123;&quot;sample_data&quot;: True&#125;</code> 表示参数化的值将被传递给特定的 fixture <code>sample_data</code>。</li>
+</ol>
+<h3 id="更复杂的示例"><a href="#更复杂的示例" class="headerlink" title="更复杂的示例"></a>更复杂的示例</h3><p>下面是一个更复杂的示例，展示了如何结合使用 <code>request.param</code> 和 <code>indirect</code> 参数：</p>
+<figure class="highlight python"><figcaption><span>name</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> dataclasses <span class="hljs-keyword">import</span> dataclass<br><span class="hljs-keyword">import</span> pytest<br><br><span class="hljs-meta">@dataclass</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span>:<br>    <span class="hljs-built_in">id</span>: <span class="hljs-built_in">int</span><br>    username: <span class="hljs-built_in">str</span><br>    email: <span class="hljs-built_in">str</span><br><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">user_data</span>(<span class="hljs-params">request</span>):<br>    <span class="hljs-comment"># 使用 request.param 获取参数化的值，并返回 User 对象</span><br>    user_info = request.param<br>    <span class="hljs-keyword">return</span> User(<span class="hljs-built_in">id</span>=user_info[<span class="hljs-string">&#x27;id&#x27;</span>], username=user_info[<span class="hljs-string">&#x27;username&#x27;</span>], email=user_info[<span class="hljs-string">&#x27;email&#x27;</span>])<br><br><span class="hljs-comment"># 定义测试用例</span><br>test_cases = [<br>    &#123;<span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;testuser1&quot;</span>, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;test1@example.com&quot;</span>&#125;,<br>    &#123;<span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;testuser2&quot;</span>, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;test2@example.com&quot;</span>&#125;,<br>    &#123;<span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-number">3</span>, <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;testuser3&quot;</span>, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;test3@example.com&quot;</span>&#125;,<br>]<br><br><span class="hljs-comment"># 参数化测试用例</span><br><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;user_data&quot;</span>, test_cases, indirect=<span class="hljs-literal">True</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_user_data</span>(<span class="hljs-params">user_data</span>):<br>    <span class="hljs-keyword">assert</span> user_data.username.startswith(<span class="hljs-string">&quot;testuser&quot;</span>)<br>    <span class="hljs-keyword">assert</span> user_data.email.endswith(<span class="hljs-string">&quot;@example.com&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Using user: <span class="hljs-subst">&#123;user_data.username&#125;</span> with email: <span class="hljs-subst">&#123;user_data.email&#125;</span>&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<p>在这个示例中：</p>
+<ol start="6">
+<li><code>user_data</code> fixture 使用 <code>request.param</code> 获取参数化的值，并返回一个 <code>User</code> 对象。</li>
+<li><code>pytest.mark.parametrize</code> 对 <code>user_data</code> 进行参数化，传递 <code>test_cases</code> 作为参数。</li>
+<li><code>indirect=True</code> 表示参数化的值将被传递给 <code>user_data</code> fixture，而不是直接传递给测试函数。</li>
+</ol>
+<h2 id="patch-使用，模拟替换注入函数行为"><a href="#patch-使用，模拟替换注入函数行为" class="headerlink" title="patch 使用，模拟替换注入函数行为"></a>patch 使用，模拟替换注入函数行为</h2><p><code>patch</code> 作为 <code>unittest.mock</code> 模块的一部分，通常会与 <code>pytest</code> 一起使用。这是因为 <code>pytest</code> 是一个非常流行的测试框架，而 <code>unittest.mock</code> 提供了强大的模拟和替换功能，两者结合使用可以编写更强大和灵活的测试。</p>
+<p>以下是一个完整的示例文件，展示了如何结合使用 <code>patch</code> 和 <code>pytest</code> 编写测试用例：</p>
+<figure class="highlight python"><figcaption><span>name</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pytest<br><span class="hljs-keyword">from</span> unittest.mock <span class="hljs-keyword">import</span> patch<br><br><span class="hljs-comment"># 假设这是一个我们要测试的函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">is_path_exists</span>(<span class="hljs-params">path</span>):<br>    <span class="hljs-keyword">import</span> os<br>    <span class="hljs-keyword">return</span> os.path.exists(path)<br><br><span class="hljs-comment"># 使用 patch 作为装饰器</span><br><span class="hljs-meta">@patch(<span class="hljs-params"><span class="hljs-string">&#x27;os.path.exists&#x27;</span>, return_value=<span class="hljs-literal">True</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_is_path_exists</span>(<span class="hljs-params">mock_exists</span>):<br>    result = is_path_exists(<span class="hljs-string">&#x27;some_path&#x27;</span>)<br>    <span class="hljs-keyword">assert</span> result <span class="hljs-keyword">is</span> <span class="hljs-literal">True</span><br>    mock_exists.assert_called_once_with(<span class="hljs-string">&#x27;some_path&#x27;</span>)<br><br><span class="hljs-comment"># 使用 patch 作为上下文管理器</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_is_path_exists_with_context</span>():<br>    <span class="hljs-keyword">with</span> patch(<span class="hljs-string">&#x27;os.path.exists&#x27;</span>, return_value=<span class="hljs-literal">True</span>) <span class="hljs-keyword">as</span> mock_exists:<br>        result = is_path_exists(<span class="hljs-string">&#x27;some_path&#x27;</span>)<br>        <span class="hljs-keyword">assert</span> result <span class="hljs-keyword">is</span> <span class="hljs-literal">True</span><br>        mock_exists.assert_called_once_with(<span class="hljs-string">&#x27;some_path&#x27;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    pytest.main()<br></code></pre></td></tr></table></figure>
+
+<h3 id="解释-2"><a href="#解释-2" class="headerlink" title="解释"></a>解释</h3><ol>
+<li><p><strong>定义被测试函数</strong>:</p>
+<ul>
+<li><code>is_path_exists</code> 函数检查给定路径是否存在。</li>
+</ul>
+</li>
+<li><p><strong>使用 <code>patch</code> 作为装饰器</strong>:</p>
+<ul>
+<li><code>@patch(&#39;os.path.exists&#39;, return_value=True)</code> 替换 <code>os.path.exists</code> 方法，使其在测试期间总是返回 <code>True</code>。</li>
+<li><code>mock_exists</code> 是模拟对象，在测试中用于验证 <code>os.path.exists</code> 的调用。</li>
+</ul>
+</li>
+<li><p><strong>使用 <code>patch</code> 作为上下文管理器</strong>:</p>
+<ul>
+<li><code>with patch(&#39;os.path.exists&#39;, return_value=True) as mock_exists:</code> 在上下文管理器中替换 <code>os.path.exists</code> 方法，使其在测试期间总是返回 <code>True</code>。</li>
+<li><code>mock_exists</code> 同样是模拟对象，用于验证 <code>os.path.exists</code> 的调用。</li>
+</ul>
+</li>
+</ol>
+<h2 id="request-addfinalizer"><a href="#request-addfinalizer" class="headerlink" title="request.addfinalizer"></a>request.addfinalizer</h2><p><code>request.addfinalizer</code> 用于在调用的测试用例执行完毕后执行清理操作。适用于需要在特定测试用例结束后进行资源清理的情况。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-variable">@pytest</span>.fixture<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">dump_to_yaml_stream_file</span>(<span class="hljs-params">request</span>):<br>    file_path = <span class="hljs-string">&quot;./test.yaml&quot;</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">remove_test_file</span>():<br>        <span class="hljs-keyword">if</span> os.path.exists(file_path):<br>            os.remove(file_path)<br><br>    <span class="hljs-comment"># 添加清理操作到 finalizer</span><br>        request.addfinalizer(remove_test_file)<br>    <span class="hljs-keyword">return</span> file_path<br>    <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_dump_yaml</span>(<span class="hljs-params">dump_to_yaml_stream_clean_rule, dump_to_yaml_stream_file</span>):<br>    dict_to_yaml_stream(<br>        dump_to_yaml_stream_clean_rule.dict(), file_path=dump_to_yaml_stream_file, multiline_keys=[<span class="hljs-string">&quot;source&quot;</span>]<br>    )<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="定义-Test-类"><a href="#定义-Test-类" class="headerlink" title="定义 Test 类"></a>定义 Test 类</h2><p>在使用 pytest 定义测试类时，有一些规则和注意事项可以帮助确保测试用例能够被正确识别和执行。以下是一些关键点：</p>
+<h3 id="定义测试类的规则和注意事项"><a href="#定义测试类的规则和注意事项" class="headerlink" title="定义测试类的规则和注意事项"></a>定义测试类的规则和注意事项</h3><ol>
+<li><p><strong>测试类名</strong>:</p>
+<ul>
+<li>测试类名应以 <code>Test</code> 开头，以便 pytest 能够自动识别它们。这是 pytest 的命名约定。</li>
+<li>示例: <code>class TestMyFeature:</code></li>
+</ul>
+</li>
+<li><p><strong>测试方法名</strong>:</p>
+<ul>
+<li>测试方法名应以 <code>test_</code> 开头，以便 pytest 能够识别它们为测试方法。</li>
+<li>示例: <code>def test_example(self):</code></li>
+</ul>
+</li>
+<li><p><strong>实例方法</strong>:</p>
+<ul>
+<li>测试方法应为实例方法，而不是类方法（即不使用 <code>@classmethod</code> 装饰器）。Pytest 期望测试方法是实例方法。</li>
+<li>不要使用 <code>@classmethod</code> 装饰器。</li>
+</ul>
+</li>
+<li><p><strong>Fixture 的使用</strong>:</p>
+<ul>
+<li>Fixture 可以在模块级别或类级别定义。模块级别的 fixture 可以在整个模块中重用，类级别的 fixture 仅在类内部可用。</li>
+<li>使用 <code>@pytest.fixture</code> 装饰器定义 fixture。</li>
+<li>如果需要在类内部定义 fixture，可以使用 <code>self</code> 作为第一个参数。</li>
+</ul>
+</li>
+<li><p><del><strong>Fixture 的作用范围</strong>:</del>（不确定这个 scope 有效）</p>
+<ul>
+<li>Fixture 的作用范围可以通过 <code>scope</code> 参数指定，如 <code>&quot;function&quot;</code>（默认）、<code>&quot;class&quot;</code>、<code>&quot;module&quot;</code> 或 <code>&quot;session&quot;</code>。</li>
+<li>示例: <code>@pytest.fixture(scope=&quot;class&quot;)</code></li>
+</ul>
+</li>
+<li><p><strong>资源清理</strong>:</p>
+<ul>
+<li>可以使用 <code>request.addfinalizer</code> 或 <code>yield</code> 关键字在 fixture 中定义清理操作。</li>
+<li>示例: 使用 <code>request.addfinalizer</code> 添加清理操作。</li>
+</ul>
+</li>
+</ol>
+<h3 id="示例文件"><a href="#示例文件" class="headerlink" title="示例文件"></a>示例文件</h3><p>以下是一个完整的示例文件，展示了如何定义一个测试类及其 fixture，并遵循上述规则和注意事项：</p>
+<figure class="highlight python"><figcaption><span>name</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pytest<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">from</span> unittest.mock <span class="hljs-keyword">import</span> patch, MagicMock<br><span class="hljs-keyword">from</span> etl.vector.convert.proto_2_vector <span class="hljs-keyword">import</span> to_vector_config_clean, CleanRule, VectorConfig<br><span class="hljs-keyword">from</span> etl.vector.manage.manage <span class="hljs-keyword">import</span> dict_to_yaml_stream<br><br><span class="hljs-comment"># 模块级别的 fixture</span><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">dump_to_yaml_stream_file</span>(<span class="hljs-params">request</span>):<br>    file_path = <span class="hljs-string">&quot;./test.yaml&quot;</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">remove_test_file</span>():<br>        <span class="hljs-keyword">if</span> os.path.exists(file_path):<br>            os.remove(file_path)<br><br>    <span class="hljs-comment"># 添加清理操作到 finalizer</span><br>    request.addfinalizer(remove_test_file)<br>    <span class="hljs-keyword">return</span> file_path<br><br><span class="hljs-meta">@pytest.fixture(<span class="hljs-params">scope=<span class="hljs-string">&quot;class&quot;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">preview_assign_data</span>():<br>    rule = MagicMock(spec=CleanRule)<br>    rule.data_sources = [<span class="hljs-string">&#x27;source1&#x27;</span>]<br>    rule.data_sinks = [<span class="hljs-string">&#x27;sink1&#x27;</span>]<br>    <span class="hljs-keyword">return</span> rule<br><br><span class="hljs-comment"># 定义测试类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestDumpToYamlStream</span>:<br><span class="hljs-meta">    @pytest.fixture(<span class="hljs-params">scope=<span class="hljs-string">&quot;class&quot;</span></span>)</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">clean_rule</span>(<span class="hljs-params">self, preview_assign_data</span>):<br>        <span class="hljs-keyword">return</span> to_vector_config_clean(preview_assign_data)<br><br><span class="hljs-meta">    @patch(<span class="hljs-params"><span class="hljs-string">&#x27;etl.vector.manage.manage.dict_to_yaml_stream&#x27;</span>, return_value=<span class="hljs-literal">True</span></span>)</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">test_dump_yaml</span>(<span class="hljs-params">self, mock_dict_to_yaml_stream, clean_rule, dump_to_yaml_stream_file</span>):<br>        dict_to_yaml_stream(<br>            clean_rule.<span class="hljs-built_in">dict</span>(), file_path=dump_to_yaml_stream_file, multiline_keys=[<span class="hljs-string">&quot;source&quot;</span>]<br>        )<br>        <span class="hljs-keyword">assert</span> os.path.exists(dump_to_yaml_stream_file)<br><br><span class="hljs-comment"># 类外部使用模块级别的 fixture 的测试用例</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_dump_yaml_outside_class</span>(<span class="hljs-params">dump_to_yaml_stream_file, preview_assign_data</span>):<br>    clean_rule = to_vector_config_clean(preview_assign_data)<br>    dict_to_yaml_stream(<br>        clean_rule.<span class="hljs-built_in">dict</span>(), file_path=dump_to_yaml_stream_file, multiline_keys=[<span class="hljs-string">&quot;source&quot;</span>]<br>    )<br>    <span class="hljs-keyword">assert</span> os.path.exists(dump_to_yaml_stream_file)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    pytest.main()<br></code></pre></td></tr></table></figure>
+
+<h3 id="解释-3"><a href="#解释-3" class="headerlink" title="解释"></a>解释</h3><ol>
+<li><p><strong>模块级别的 fixture</strong>:</p>
+<ul>
+<li><code>dump_to_yaml_stream_file</code> 和 <code>preview_assign_data</code> 是模块级别的 fixture，可以在整个模块中重用。</li>
+</ul>
+</li>
+<li><p><strong>类内部定义 fixture</strong>:</p>
+<ul>
+<li><code>clean_rule</code> fixture 定义在类内部，并使用 <code>self</code> 作为第一个参数，以便在类内部的测试用例中使用。</li>
+</ul>
+</li>
+<li><p><strong>测试方法</strong>:</p>
+<ul>
+<li><code>test_dump_yaml</code> 是一个实例方法（没有使用 <code>@classmethod</code> 装饰器），并且方法名以 <code>test_</code> 开头，符合 pytest 的命名约定。</li>
+</ul>
+</li>
+<li><p><strong>类外部的测试用例</strong>:</p>
+<ul>
+<li><code>test_dump_yaml_outside_class</code> 是一个类外部的测试用例，使用了模块级别的 fixture <code>dump_to_yaml_stream_file</code> 和 <code>preview_assign_data</code>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="Pytest-mock"><a href="#Pytest-mock" class="headerlink" title="Pytest-mock"></a>Pytest-mock</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/goldsunshine/p/15265187.html">pytest-mock</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/python/" class="category-chain-item">python</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/pytest/" class="print-no-link">#pytest</a>
+      
+        <a href="/tags/testing/" class="print-no-link">#testing</a>
+      
+        <a href="/tags/fixture/" class="print-no-link">#fixture</a>
+      
+        <a href="/tags/parametrize/" class="print-no-link">#parametrize</a>
+      
+        <a href="/tags/patch/" class="print-no-link">#patch</a>
+      
+        <a href="/tags/mock/" class="print-no-link">#mock</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>pytest测试用例编写</div>
+      <div>https://abrance.github.io/2025/04/03/mdstorage/domain/python/pytest测试用例编写/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 3, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/04/03/mdstorage/arch/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/markdown%E6%A8%A1%E6%9D%BF/" title="[object Object]">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">[object Object]</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/03/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E5%8F%AF%E6%89%A9%E5%B1%95%E6%9E%B6%E6%9E%84/" title="可扩展架构">
+                        <span class="hidden-mobile">可扩展架构</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
