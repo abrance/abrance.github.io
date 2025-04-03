@@ -227,15 +227,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/11/25/mdstorage/domain/rust/Rust%20Result/" target="_self">
-          Rust Result
+        <a href="/2024/11/28/mdstorage/domain/rust/derive/" target="_self">
+          derive.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/25/mdstorage/domain/rust/Rust%20Result/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/28/mdstorage/domain/rust/derive/" target="_self">
         <div>
-          Rust 函数返回 Result 类型的主要原因：  强制显式处理错误，避免忽略错误。 提供安全的错误传播机制，防止异常引发的隐式控制流问题。 通过 Result 泛型灵活定义错误类型，为复杂场景提供扩展性。 支持函数式编程风格，提供丰富的链式操作方法。 避免全局异常带来的副作用，确保代码的可读性和安全性。  1. 显式的错误处理Rust 强调显式处理错误，而不是像某些语言（如 C 或 C++）通
+          在 Rust 中，#[derive(...)] 是一种用于自动生成实现的属性宏。它可以为结构体或枚举自动实现某些常见的 trait（特性）。这样做可以避免手动实现这些 trait 的冗长代码，提高代码的可维护性和简洁性。 在你的例子中，结构体 Access 上的 #[derive(...)] 宏实现了多个 trait。下面我会详细解释每个 trait 的意义和作用。 1. serde::Deser
         </div>
       </a>
 
@@ -243,8 +243,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-11-25 00:00" pubdate>
-              2024-11-25
+            <time datetime="2024-11-28 00:00" pubdate>
+              2024-11-28
             </time>
           </div>
         
@@ -304,6 +304,74 @@
       <a class="index-excerpt index-excerpt__noimg" href="/2024/11/25/mdstorage/domain/rust/cargo%20build%20%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA/" target="_self">
         <div>
           cargo build 的默认行为1. 编译项目 编译当前项目的 代码 和 依赖。 如果项目的代码或依赖没有变化，Cargo 会跳过重新编译。  2. 生成调试构建 默认情况下，cargo build 会生成 调试构建，即未进行优化的构建。生成的二进制文件体积较大，执行效率相对较低，但编译速度更快。  输出的目标文件位于：   1target/debug/   示例：   1target/debu
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-25 00:00" pubdate>
+              2024-11-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/rust/" class="category-chain-item">rust</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Rust/">#Rust</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/25/mdstorage/domain/rust/Rust%20Result/" target="_self">
+          Rust Result
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/25/mdstorage/domain/rust/Rust%20Result/" target="_self">
+        <div>
+          Rust 函数返回 Result 类型的主要原因：  强制显式处理错误，避免忽略错误。 提供安全的错误传播机制，防止异常引发的隐式控制流问题。 通过 Result 泛型灵活定义错误类型，为复杂场景提供扩展性。 支持函数式编程风格，提供丰富的链式操作方法。 避免全局异常带来的副作用，确保代码的可读性和安全性。  1. 显式的错误处理Rust 强调显式处理错误，而不是像某些语言（如 C 或 C++）通
         </div>
       </a>
 
@@ -494,67 +562,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/11/22/mdstorage/domain/%E5%AE%89%E5%85%A8/%E7%AD%89%E4%BF%9D/" target="_self">
-          等保.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/22/mdstorage/domain/%E5%AE%89%E5%85%A8/%E7%AD%89%E4%BF%9D/" target="_self">
-        <div>
-          一、引言 背景简介:随着数字化转型的加速推进，网络安全已成为企业和国家安全的核心议题。网络攻击、数据泄露和信息篡改事件层出不穷，如何有效保护信息系统安全成为迫切需求。中国的《网络安全等级保护制度》（等保）作为一项强制性国家标准，为信息系统安全提供了统一的框架和实施指南。  文章目的:本文旨在全面介绍网络安全等级保护的基本概念、实施流程、技术要求和实际应用场景，帮助企业和技术人员快速理解等保的核心内
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-11-22 00:00" pubdate>
-              2024-11-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E5%AE%89%E5%85%A8/" class="category-chain-item">安全</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/2024/11/22/mdstorage/domain/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%92%8C%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/" target="_self">
           开发环境和生产环境逻辑分离.md
         </a>
@@ -677,6 +684,67 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/11/22/mdstorage/domain/%E5%AE%89%E5%85%A8/%E7%AD%89%E4%BF%9D/" target="_self">
+          等保.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/22/mdstorage/domain/%E5%AE%89%E5%85%A8/%E7%AD%89%E4%BF%9D/" target="_self">
+        <div>
+          一、引言 背景简介:随着数字化转型的加速推进，网络安全已成为企业和国家安全的核心议题。网络攻击、数据泄露和信息篡改事件层出不穷，如何有效保护信息系统安全成为迫切需求。中国的《网络安全等级保护制度》（等保）作为一项强制性国家标准，为信息系统安全提供了统一的框架和实施指南。  文章目的:本文旨在全面介绍网络安全等级保护的基本概念、实施流程、技术要求和实际应用场景，帮助企业和技术人员快速理解等保的核心内
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-22 00:00" pubdate>
+              2024-11-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/%E5%AE%89%E5%85%A8/" class="category-chain-item">安全</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/11/14/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/QEMU%E8%99%9A%E6%8B%9F%E7%BD%91%E7%BB%9C/" target="_self">
           QEMU虚拟网络.md
         </a>
@@ -774,72 +842,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/29/mdstorage/domain/%E6%8B%9B%E8%81%98/%E9%9D%A2%E8%AF%95%E8%B5%84%E6%96%99/%E7%9F%B3%E7%8A%80%E6%B5%81%E9%87%8F%E7%BD%91%E5%85%B3%E5%B9%B3%E5%8F%B0/" target="_self">
-          石犀流量网关平台.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/29/mdstorage/domain/%E6%8B%9B%E8%81%98/%E9%9D%A2%E8%AF%95%E8%B5%84%E6%96%99/%E7%9F%B3%E7%8A%80%E6%B5%81%E9%87%8F%E7%BD%91%E5%85%B3%E5%B9%B3%E5%8F%B0/" target="_self">
-        <div>
-          在 XX流量治理平台 项目中，我担任团队的技术负责人，主要负责 系统架构设计、团队组建与管理、技术突破和代码审核，并承担重难点技术问题的快速解决。下面我来详细回顾这个项目的关键内容： 项目背景与目标XX流量治理平台是为了帮助大型企业应对复杂的网络流量需求而设计的，它提供了一个统一的解决方案来接管企业内外的各种流量。平台支持在物理机、虚拟机、云主机以及容器化平台上进行部署，以确保在不同基础设施环境下
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-29 00:00" pubdate>
-              2024-10-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%8B%9B%E8%81%98-%E9%9D%A2%E8%AF%95%E8%B5%84%E6%96%99/" class="category-chain-item">招聘/面试资料</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/#board">62</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/63/#board">63</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
