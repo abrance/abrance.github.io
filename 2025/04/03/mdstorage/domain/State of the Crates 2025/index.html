@@ -1,0 +1,868 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="One of the best things about Rust is that there are so many high-quality crates for everything and anything you want.It can be hard to choose, so I wanted to …">
+<meta property="og:type" content="article">
+<meta property="og:title" content="State of the Crates 2025">
+<meta property="og:url" content="https://abrance.github.io/2025/04/03/mdstorage/domain/State%20of%20the%20Crates%202025/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="One of the best things about Rust is that there are so many high-quality crates for everything and anything you want.It can be hard to choose, so I wanted to …">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-03T04:09:58.268Z">
+<meta property="article:modified_time" content="2025-04-03T04:09:58.268Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="clippings">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>State of the Crates 2025 - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="State of the Crates 2025"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-03 12:09" pubdate>
+          April 3, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">State of the Crates 2025</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>One of the best things about Rust is that there are so many high-quality crates for everything and anything you want.</p>
+<p>It can be hard to choose, so I wanted to share some of the crates I used this year at $work and explain why.</p>
+<p>You can also jump to the end for the <a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#tldr">final <code>Cargo.toml</code></a>.</p>
+<p>For context, we’re a small-ish Rust &amp; Python shop handling compute-heavy workloads on-prem. Our system is split into a reasonable number of services that talk to each other mostly over RabbitMQ or HTTP.</p>
+<p><strong>Table of Contents</strong>:</p>
+<ul>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#connectivity">Connectivity</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#serialization">Serialization</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#error-handling">Error Handling</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#testing">Testing</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#lightning-round-i">Lightning Round I</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#non-cryptographic-hashing">(Non Cryptographic) Hashing</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#allocators">Allocators</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#cli">CLI</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#date-and-time">Date and Time</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#lightning-round-ii">Lightning Round II</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#sql--orms">SQL &amp; ORMs</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#rip">RIP</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#logging-tracing-and-metrics">Logging, Tracing and Metrics</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#vectors-arrays-ml">Vectors, Arrays, ML</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#editions-nightly-vs-stable">Editions, nightly vs stable</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#wrapping-up">Wrapping up</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2024-12-state-of-the-crates/#tldr">TL;DR</a></li>
+</ul>
+<h2 id="Connectivity"><a href="#Connectivity" class="headerlink" title="Connectivity"></a>Connectivity</h2><p>Everything (<code>async</code>) is <code>tokio</code>.</p>
+<p>For building HTTP(S) servers, <code>axum</code> is both flexible and simple, yet still scales nicely to handle advanced, complex workflows (you can merge routers, extract routers to functions, share state using a simple mutex, write custom “extractors”, integrate tracing, …).</p>
+<p>We use it for everything, from small debug&#x2F;metric servers to heavy data ingress.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">app</span> = Router::<span class="hljs-title function_ invoke__">new</span>()<br>    .<span class="hljs-title function_ invoke__">route</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-title function_ invoke__">get</span>(root))<br>    .<span class="hljs-title function_ invoke__">route</span>(<span class="hljs-string">&quot;/users&quot;</span>, <span class="hljs-title function_ invoke__">post</span>(create_user));<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">root</span>() <span class="hljs-punctuation">-&gt;</span> &amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span> &#123;<br>    <span class="hljs-string">&quot;Hello, 2025!&quot;</span><br>&#125;<br><br><span class="hljs-meta">#[derive(Deserialize)]</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">CreateUser</span> &#123;<br>    username: <span class="hljs-type">String</span>,<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">create_user</span>(<br>    <span class="hljs-title function_ invoke__">Json</span>(payload): Json&lt;CreateUser&gt;,<br>) <span class="hljs-punctuation">-&gt;</span> (StatusCode, Json&lt;<span class="hljs-type">u64</span>&gt;) &#123;<br>    <span class="hljs-comment">// ...</span><br>    (StatusCode::CREATED, <span class="hljs-title function_ invoke__">Json</span>(<span class="hljs-number">1337</span>))<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>There was a time when combining routers was cumbersome (RIP <code>BoxRoute</code>) but these days everything is a breeze and <code>axum</code> is really a one-size-fits-all solution.</p>
+<p>For example sharing state (which can be anything from <code>HashMap</code>s to a DB connection) is a call to <code>with_state</code> and another parameter to the handler.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::collections::&#123;hash_map::Entry, HashMap&#125;;<br><span class="hljs-keyword">use</span> axum::extract::State;<br><span class="hljs-keyword">use</span> serde_json::json;<br><span class="hljs-keyword">use</span> std::sync::&#123;Arc, Mutex&#125;;<br><br><span class="hljs-keyword">type</span> <span class="hljs-title class_">UsersDB</span> = HashMap&lt;<span class="hljs-type">String</span>, <span class="hljs-type">u64</span>&gt;;<br><br><span class="hljs-keyword">let</span> <span class="hljs-variable">app</span> = Router::<span class="hljs-title function_ invoke__">new</span>()<br>    <span class="hljs-comment">/* .. snip */</span><br>    .<span class="hljs-title function_ invoke__">with_state</span>(Arc::<span class="hljs-title function_ invoke__">new</span>(Mutex::<span class="hljs-title function_ invoke__">new</span>(UsersDB::<span class="hljs-title function_ invoke__">new</span>())));<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">create_user</span>(<br>    <span class="hljs-title function_ invoke__">State</span>(state): State&lt;Arc&lt;Mutex&lt;UsersDB&gt;&gt;&gt;,<br>    <span class="hljs-title function_ invoke__">Json</span>(payload): Json&lt;CreateUser&gt;,<br>) <span class="hljs-punctuation">-&gt;</span> (StatusCode, Json&lt;serde_json::Value&gt;) &#123;<br>    <span class="hljs-keyword">match</span> state.<span class="hljs-title function_ invoke__">lock</span>().<span class="hljs-title function_ invoke__">unwrap</span>().<span class="hljs-title function_ invoke__">entry</span>(payload.username) &#123;<br>        Entry::<span class="hljs-title function_ invoke__">Occupied</span>(_) =&gt; (<br>            StatusCode::CONFLICT,<br>            <span class="hljs-title function_ invoke__">Json</span>(json!(&#123; <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;User already exists&quot;</span> &#125;)),<br>        ),<br>        Entry::<span class="hljs-title function_ invoke__">Vacant</span>(entry) =&gt; &#123;<br>            entry.<span class="hljs-title function_ invoke__">insert</span>(<span class="hljs-number">1337</span>);<br>            (StatusCode::CREATED, <span class="hljs-title function_ invoke__">Json</span>(json!(<span class="hljs-number">1337</span>)))<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>And <code>tower-http</code> has useful middlewares that can be added with a call to <code>layer</code>.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">app</span> = Router::<span class="hljs-title function_ invoke__">new</span>()<br>    <span class="hljs-comment">/* .. snip */</span><br>    .<span class="hljs-title function_ invoke__">layer</span>(ValidateRequestHeaderLayer::<span class="hljs-title function_ invoke__">bearer</span>(<span class="hljs-string">&quot;hello2025&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<p>We do use <code>warp</code> from time to time, usually when we need a “one-off” HTTP server for a test or something similar.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs rust">warp::<span class="hljs-title function_ invoke__">post</span>()<br>    .<span class="hljs-title function_ invoke__">and</span>(warp::<span class="hljs-title function_ invoke__">path</span>(<span class="hljs-string">&quot;users&quot;</span>))<br>    .<span class="hljs-title function_ invoke__">and</span>(warp::body::<span class="hljs-title function_ invoke__">json</span>())<br>    .<span class="hljs-title function_ invoke__">map</span>(|<span class="hljs-keyword">mut</span> payload: CreateUser| &#123;<br>        warp::reply::<span class="hljs-title function_ invoke__">json</span>(&amp;<span class="hljs-number">1337</span>)<br>    &#125;);<br></code></pre></td></tr></table></figure>
+
+<p>As for HTTP(S) clients, we use <code>reqwest</code>, and we use the <code>rustls</code> backend (mostly to avoid OpenSSL, both during build and deployment).</p>
+<p>One-off requests are what you would expect.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">body</span> = reqwest::<span class="hljs-title function_ invoke__">get</span>(<span class="hljs-string">&quot;https://www.rust-lang.org&quot;</span>)<br>    .<span class="hljs-keyword">await</span>?<br>    .<span class="hljs-title function_ invoke__">text</span>()<br>    .<span class="hljs-keyword">await</span>?;<br></code></pre></td></tr></table></figure>
+
+<p>But for production use-cases, you mostly want to use <code>ClientBuilder</code>.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">client</span> = reqwest::ClientBuilder::<span class="hljs-title function_ invoke__">new</span>()<br>    .<span class="hljs-title function_ invoke__">http1_only</span>()<br>    .<span class="hljs-title function_ invoke__">tcp_keepalive</span>(<span class="hljs-title function_ invoke__">Some</span>(Duration::<span class="hljs-title function_ invoke__">from_secs</span>(<span class="hljs-number">30</span>)))<br>    .<span class="hljs-title function_ invoke__">connect_timeout</span>(Duration::<span class="hljs-title function_ invoke__">from_secs</span>(<span class="hljs-number">5</span>))<br>    .<span class="hljs-title function_ invoke__">pool_idle_timeout</span>(Duration::<span class="hljs-title function_ invoke__">from_secs</span>(<span class="hljs-number">180</span>))<br>    .<span class="hljs-title function_ invoke__">user_agent</span>(<span class="hljs-built_in">concat!</span>(<br>        <span class="hljs-built_in">env!</span>(<span class="hljs-string">&quot;CARGO_PKG_NAME&quot;</span>),<br>        <span class="hljs-string">&quot;/&quot;</span>,<br>        <span class="hljs-built_in">env!</span>(<span class="hljs-string">&quot;CARGO_PKG_VERSION&quot;</span>),<br>    ))<br>    .<span class="hljs-title function_ invoke__">build</span>()?;<br></code></pre></td></tr></table></figure>
+
+<p>And you can do pretty much anything HTTP-related (including multipart, body streaming and more) with the many methods of <code>RequestBuilder</code>.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">body</span> = client.<span class="hljs-title function_ invoke__">post</span>(<span class="hljs-string">&quot;http://localhost:3000/users&quot;</span>)<br>    .<span class="hljs-title function_ invoke__">bearer_auth</span>(<span class="hljs-string">&quot;hello2025&quot;</span>)<br>    .<span class="hljs-title function_ invoke__">json</span>(&amp;json!(&#123; <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;root&quot;</span> &#125;))<br>    .<span class="hljs-title function_ invoke__">timeout</span>(Duration::<span class="hljs-title function_ invoke__">from_secs</span>(<span class="hljs-number">5</span>))<br>    .<span class="hljs-title function_ invoke__">send</span>()<br>    .<span class="hljs-keyword">await</span>?;<br></code></pre></td></tr></table></figure>
+
+<p>Side note: We usually disable HTTP2 because multiple servers and clients (in Rust, NodeJS and Python) have problems with sessions hanging indefinitely at random.</p>
+<p>Sometimes you must to use <code>protobufs</code> (🙄).</p>
+<p><code>prost</code> is the crate to generate and consume <code>protobufs</code> data, and <code>tonic</code> is the crate for building gRPC clients and servers (which use <code>prost</code> for the <code>protobufs</code> part).</p>
+<p>For RabbitMQ, we use the <code>lapin</code> crate (we use the official <code>rabbitmq-stream-client</code> for streams, but we are moving away from them entirely).</p>
+<p>Side note 2: Most of our workloads would be fine with plain synchronous I&#x2F;O. But the highest quality libraries are <code>async</code>-first (<code>tonic</code> and <code>reqwest</code> are good examples of this), and for the few cases we do care about it, it is easier to lean into the <code>async</code> lifestyle for everything.</p>
+<h2 id="Serialization"><a href="#Serialization" class="headerlink" title="Serialization"></a>Serialization</h2><p>Almost everything serialization-related is covered by <code>serde</code>, and we tend to use JSON as the serialization format (and <code>serde_json</code> to generate&#x2F;consume it).</p>
+<p>Sometimes JSON isn’t really a good fit (binary data, size constraints), and using <code>bincode</code> with <code>serde</code> is great for such use cases.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> serde::&#123;Deserialize, Serialize&#125;;<br><br><span class="hljs-meta">#[derive(Serialize, Deserialize, PartialEq, Debug)]</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Entity</span> &#123;<br>    x: <span class="hljs-type">f32</span>,<br>    y: <span class="hljs-type">f32</span>,<br>&#125;<br><br><span class="hljs-meta">#[derive(Serialize, Deserialize, PartialEq, Debug)]</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">World</span>(<span class="hljs-type">Vec</span>&lt;Entity&gt;);<br><br><span class="hljs-keyword">let</span> <span class="hljs-variable">json</span> = serde_json::<span class="hljs-title function_ invoke__">to_string</span>(&amp;world).<span class="hljs-title function_ invoke__">unwrap</span>();<br><span class="hljs-keyword">let</span> <span class="hljs-variable">encoded</span>: <span class="hljs-type">Vec</span>&lt;<span class="hljs-type">u8</span>&gt; = bincode::<span class="hljs-title function_ invoke__">serialize</span>(&amp;world).<span class="hljs-title function_ invoke__">unwrap</span>();<br><br><span class="hljs-built_in">assert_eq!</span>(json.<span class="hljs-title function_ invoke__">len</span>(), <span class="hljs-number">32</span>);<br><span class="hljs-built_in">assert_eq!</span>(encoded.<span class="hljs-title function_ invoke__">len</span>(), <span class="hljs-number">16</span>);<br></code></pre></td></tr></table></figure>
+
+<p>There are a few additions worth noting:</p>
+<ul>
+<li><code>serde_with</code> is helpful when small tweaks to the serialization&#x2F;deserialization are needed</li>
+<li><code>humantime-serde</code> is very handy for human APIs that accept durations (config file, CLI parameters)</li>
+<li><code>serde_qs</code> for dealing with querystrings</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-meta">#[derive(Serialize, Deserialize)]</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Config</span> &#123;<br>    <span class="hljs-meta">#[serde(with = <span class="hljs-string">&quot;humantime_serde&quot;</span>)]</span><br>    timeout: Duration,<br>&#125;<br><br><span class="hljs-keyword">let</span> <span class="hljs-variable">config</span>: Config = serde_json::<span class="hljs-title function_ invoke__">from_str</span>(<span class="hljs-string">r#&quot;&#123;&quot;timeout&quot;:&quot;3m&quot;&#125;&quot;#</span>).<span class="hljs-title function_ invoke__">unwrap</span>();<br><span class="hljs-built_in">assert_eq!</span>(config.timeout, Duration::<span class="hljs-title function_ invoke__">from_secs</span>(<span class="hljs-number">180</span>));<br></code></pre></td></tr></table></figure>
+
+<h2 id="Error-Handling"><a href="#Error-Handling" class="headerlink" title="Error Handling"></a>Error Handling</h2><p>For libraries, use <code>thiserror</code>. For apps, use <code>anyhow</code>.</p>
+<p>Using <code>thiserror</code> allows you to expose an API of possible errors, which requires more effort and is usually only really worth it for libs (do you want to match on specific types of errors and handle them differently?).</p>
+<p>You can still use the <code>#[from]</code> attribute to get a nice <code>?</code> behavior in the library, but you will need to manually construct the more nuanced errors.</p>
+<p>For applications, using <code>anyhow</code> with its <code>.context(..)</code> function removes a lot of the friction of error handling while generating rich error messages.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> anyhow::Context;<br><span class="hljs-keyword">use</span> thiserror::Error;<br><br><span class="hljs-meta">#[derive(Error, Debug)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">MyLibError</span> &#123;<br>    <span class="hljs-meta">#[error(<span class="hljs-string">&quot;io error: &#123;0&#125;&quot;</span>)]</span><br>    <span class="hljs-title function_ invoke__">IoError</span>(<span class="hljs-meta">#[from]</span> std::io::Error),<br>    <span class="hljs-meta">#[error(<span class="hljs-string">&quot;got an invalid code \`&#123;0&#125;\`&quot;</span>)]</span><br>    <span class="hljs-title function_ invoke__">InvalidCode</span>(<span class="hljs-type">u32</span>),<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">my_lib_function</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;<span class="hljs-type">u32</span>, MyLibError&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">hosts</span> = std::fs::<span class="hljs-title function_ invoke__">read_to_string</span>(<span class="hljs-string">&quot;/etc/hosts&quot;</span>)?;<br>    <span class="hljs-title function_ invoke__">Err</span>(MyLibError::<span class="hljs-title function_ invoke__">InvalidCode</span>(<span class="hljs-number">42</span>))<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">my_app_function</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;(), anyhow::Error&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">res</span> = <span class="hljs-title function_ invoke__">my_lib_function</span>();<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">res</span> = <span class="hljs-keyword">match</span> res &#123;<br>        <span class="hljs-title function_ invoke__">Err</span>(MyLibError::<span class="hljs-title function_ invoke__">IoError</span>(_)) =&gt; todo!(<span class="hljs-string">&quot;implement retry logic&quot;</span>),<br>        res =&gt; res,<br>    &#125;;<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">_valid_code</span> = res.<span class="hljs-title function_ invoke__">context</span>(<span class="hljs-string">&quot;Failed to get a valid code from my_lib_function&quot;</span>)?;<br><br>    <span class="hljs-title function_ invoke__">Ok</span>(())<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Calling <code>my_app_function().unwrap()</code> will print:</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lasso"><span class="hljs-keyword">thread</span> <span class="hljs-string">&#x27;main&#x27;</span> panicked at src/error_handling.rs:<span class="hljs-number">30</span>:<span class="hljs-number">23</span>:<br>called \<span class="hljs-string">`Result::unwrap()\`</span> <span class="hljs-keyword">on</span> an \<span class="hljs-string">`Err\`</span> value: Failed <span class="hljs-keyword">to</span> get a valid code from my_lib_function<br><br>Caused <span class="hljs-keyword">by</span>:<br>    got an invalid code \<span class="hljs-string">`42\`</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h2><p>While the built-in <code>#[test]</code> attribute is great, the <code>rstest</code> crate brings in a bunch of features I missed after working for years with Python’s <code>pytest</code>.</p>
+<p>Re-using tedious-to-construct data and validating the same test against multiple inputs are the backbone of adequate test coverage (even though it can be tempting to overuse <code>case</code>s).</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> rstest::&#123;fixture, rstest&#125;;<br><br><span class="hljs-meta">#[fixture]</span><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">username</span>() <span class="hljs-punctuation">-&gt;</span> &amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span> &#123;<br>    <span class="hljs-string">&quot;zelda&quot;</span><br>&#125;<br><br><span class="hljs-meta">#[fixture]</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">db</span>() <span class="hljs-punctuation">-&gt;</span> SqlitePool &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">pool</span> = SqlitePool::<span class="hljs-title function_ invoke__">connect</span>(<span class="hljs-string">&quot;:memory:&quot;</span>).<span class="hljs-keyword">await</span>.<span class="hljs-title function_ invoke__">unwrap</span>();<br><br>    sqlx::<span class="hljs-title function_ invoke__">query</span>(<br>        <span class="hljs-string">r#&quot;</span><br><span class="hljs-string">        CREATE TABLE users (</span><br><span class="hljs-string">            username TEXT PRIMARY KEY,</span><br><span class="hljs-string">            fullname TEXT</span><br><span class="hljs-string">        )</span><br><span class="hljs-string">        &quot;#</span>,<br>    )<br>    .<span class="hljs-title function_ invoke__">execute</span>(&amp;pool)<br>    .<span class="hljs-keyword">await</span><br>    .<span class="hljs-title function_ invoke__">unwrap</span>();<br><br>    pool<br>&#125;<br><br><span class="hljs-meta">#[fixture]</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">db_with_user</span>(username: &amp;<span class="hljs-type">str</span>, <span class="hljs-meta">#[future]</span> db: SqlitePool) <span class="hljs-punctuation">-&gt;</span> SqlitePool &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">db</span> = db.<span class="hljs-keyword">await</span>;<br><br>    sqlx::<span class="hljs-title function_ invoke__">query</span>(<br>        <span class="hljs-string">r#&quot;</span><br><span class="hljs-string">        INSERT INTO users (username, fullname)</span><br><span class="hljs-string">        VALUES ($1, $2)</span><br><span class="hljs-string">        &quot;#</span>,<br>    )<br>    .<span class="hljs-title function_ invoke__">bind</span>(username.<span class="hljs-title function_ invoke__">to_string</span>())<br>    .<span class="hljs-title function_ invoke__">bind</span>(<span class="hljs-built_in">format!</span>(<span class="hljs-string">&quot;Test User &#123;username&#125;&quot;</span>))<br>    .<span class="hljs-title function_ invoke__">execute</span>(&amp;db)<br>    .<span class="hljs-keyword">await</span><br>    .<span class="hljs-title function_ invoke__">unwrap</span>();<br><br>    db<br>&#125;<br><br><span class="hljs-meta">#[rstest]</span><br><span class="hljs-meta">#[tokio::test]</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">test_fetch_profile</span>(username: &amp;<span class="hljs-type">str</span>, <span class="hljs-meta">#[future]</span> db_with_user: SqlitePool) &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">db</span> = db_with_user.<span class="hljs-keyword">await</span>;<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">res</span> = <span class="hljs-title function_ invoke__">fetch_profile</span>(username, &amp;db).<span class="hljs-keyword">await</span>;<br>    <span class="hljs-built_in">assert!</span>(res.<span class="hljs-title function_ invoke__">is_ok</span>());<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">res</span> = <span class="hljs-title function_ invoke__">fetch_profile</span>(<span class="hljs-string">&quot;link&quot;</span>, &amp;db).<span class="hljs-keyword">await</span>;<br>    <span class="hljs-built_in">assert!</span>(res.<span class="hljs-title function_ invoke__">is_err</span>());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Lightning-Round-I"><a href="#Lightning-Round-I" class="headerlink" title="Lightning Round I"></a>Lightning Round I</h2><h3 id="Non-Cryptographic-Hashing"><a href="#Non-Cryptographic-Hashing" class="headerlink" title="(Non Cryptographic) Hashing"></a>(Non Cryptographic) Hashing</h3><p>Cryptography is hard, but non cryptographic hashing can be useful in a lot of situations (<em>but only when you have trusted inputs</em>).</p>
+<p>If you need a usize &#x2F; <code>HashMap</code>-style hash, <code>rustc-hash</code> is a solid choice. It’s much faster than the default hasher.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">hashmap</span> = HashMap::&lt;&amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span>, <span class="hljs-type">usize</span>, rustc_hash::FxBuildHasher&gt;::<span class="hljs-title function_ invoke__">default</span>(); <br><span class="hljs-comment">// or, \`use rustc_hash::FxHashMap as HashMap\`.</span><br><br>hashmap.<span class="hljs-title function_ invoke__">insert</span>(<span class="hljs-string">&quot;black&quot;</span>, <span class="hljs-number">0</span>);<br>hashmap.<span class="hljs-title function_ invoke__">insert</span>(<span class="hljs-string">&quot;white&quot;</span>, <span class="hljs-number">255</span>);<br></code></pre></td></tr></table></figure>
+
+<p>If you need to hash some medium-to-large string or bytes, and you want it to be consistent everywhere, <code>sha1_smol</code> is my go-to: easy to recreate the results in the terminal, no dependencies (other than <code>serde</code> if you want to).</p>
+<p>Again, NOT cryptographic!</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">m</span> = sha1_smol::Sha1::<span class="hljs-title function_ invoke__">new</span>();<br>m.<span class="hljs-title function_ invoke__">update</span>(<span class="hljs-string">b&quot;Hello 2025!&quot;</span>);<br><span class="hljs-keyword">let</span> <span class="hljs-variable">hash</span> = m.<span class="hljs-title function_ invoke__">digest</span>().<span class="hljs-title function_ invoke__">to_string</span>();<br><span class="hljs-built_in">assert_eq!</span>(hash, <span class="hljs-string">&quot;68a0e44442b100a1698afa962aa590cc5e1cbb71&quot;</span>); <br><span class="hljs-comment">// Same as \`echo -n &#x27;Hello 2025!&#x27; | sha1sum\`, if you trust your terminal.</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Allocators"><a href="#Allocators" class="headerlink" title="Allocators"></a>Allocators</h3><p>Generally, Rust programs tend to allocate memory pretty liberally, and it’s common to write a server that allocate some memory for each request.</p>
+<p>Systems allocators don’t always like this, and problems like memory fragmentation or unexplained high memory usage got us a few times over years.</p>
+<p>For memory-intensive workloads, we switch to <code>jemalloc</code> using the <code>tikv-jemallocator</code> crate.</p>
+<p>We can build a small server that does some non trivial work like resizing JPEG images using the <code>image</code> crate, and overload it with <code>vegeta</code>.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">app</span> = Router::<span class="hljs-title function_ invoke__">new</span>().<span class="hljs-title function_ invoke__">route</span>(<span class="hljs-string">&quot;/resize/w/:w/h/:h&quot;</span>, <span class="hljs-title function_ invoke__">post</span>(resize_image));<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">resize_image</span>(<span class="hljs-title function_ invoke__">Path</span>((width, height)): Path&lt;(<span class="hljs-type">u32</span>, <span class="hljs-type">u32</span>)&gt;, body: Body) <span class="hljs-punctuation">-&gt;</span> Bytes &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">body</span> = body.<span class="hljs-title function_ invoke__">into_data_stream</span>();<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">data</span> = <span class="hljs-built_in">vec!</span>[];<br><br>    <span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(bytes) = body.<span class="hljs-title function_ invoke__">next</span>().<span class="hljs-keyword">await</span> &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">bytes</span> = bytes.<span class="hljs-title function_ invoke__">unwrap</span>();<br>        data.<span class="hljs-title function_ invoke__">extend</span>(bytes);<br>    &#125;<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">resized_image</span> = tokio::task::<span class="hljs-title function_ invoke__">spawn_blocking</span>(<span class="hljs-keyword">move</span> || &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">img</span> = image::ImageReader::<span class="hljs-title function_ invoke__">with_format</span>(Cursor::<span class="hljs-title function_ invoke__">new</span>(data), image::ImageFormat::Jpeg)<br>            .<span class="hljs-title function_ invoke__">decode</span>()<br>            .<span class="hljs-title function_ invoke__">unwrap</span>();<br>        img.<span class="hljs-title function_ invoke__">resize</span>(width, height, image::imageops::FilterType::Lanczos3)<br>            .<span class="hljs-title function_ invoke__">into_bytes</span>()<br>    &#125;)<br>    .<span class="hljs-keyword">await</span><br>    .<span class="hljs-title function_ invoke__">unwrap</span>();<br><br>    Bytes::<span class="hljs-title function_ invoke__">from</span>(resized_image)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> &#123;1..100&#125;; <span class="hljs-keyword">do</span><br>    WIDTH=$((RANDOM % <span class="hljs-number">500</span> + <span class="hljs-number">50</span>))<br>    HEIGHT=$((RANDOM % <span class="hljs-number">500</span> + <span class="hljs-number">50</span>))<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;POST http://localhost:3000/resize/w/<span class="hljs-variable">$WIDTH</span>/h/<span class="hljs-variable">$HEIGHT</span>&quot;</span> &gt;&gt; targets.txt<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Content-Type: multipart/form-data&quot;</span> &gt;&gt; targets.txt<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;@./example.jpg&quot;</span> &gt;&gt; targets.txt<br><span class="hljs-keyword">done</span><br><span class="hljs-built_in">cat</span> targets.txt | vegeta attack -duration=30s -rate=500 | vegeta report<br></code></pre></td></tr></table></figure>
+
+<p>On my machine, using <code>jemallocator</code> reduces the peak memory consumption from 2.1GB to 1.6GB, while also going back down to a ~300MB once the load is over.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> tikv_jemallocator::Jemalloc;<br><br><span class="hljs-meta">#[global_allocator]</span><br><span class="hljs-keyword">static</span> GLOBAL: Jemalloc = Jemalloc;<br></code></pre></td></tr></table></figure>
+
+<h2 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h2><p>While <code>clap</code> is the more contemporary choice, I really like <code>argh</code> (and our code base is something like 50&#x2F;50 between both).</p>
+<p>My CLI stuff is usually a script for running some part of a thing I’m working on, and I’ll usually delay actually having a CLI as much as possible (and edit the params inline and recompile).</p>
+<p>You can slap <code>argh</code> on a struct and get a nice interface, and go back to the task at hand.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> argh::FromArgs;<br><br><span class="hljs-meta">#[derive(FromArgs)]</span><br><span class="hljs-comment">/// Reach new heights.</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Hello</span> &#123;<br>    <span class="hljs-comment">/// turn on verbose output</span><br>    <span class="hljs-meta">#[argh(switch, short = &#x27;v&#x27;)]</span><br>    verbose: <span class="hljs-type">bool</span>,<br><br>    <span class="hljs-comment">/// year to hello to</span><br>    <span class="hljs-meta">#[argh(option)]</span><br>    year: <span class="hljs-type">i32</span>,<br>&#125;<br><br><span class="hljs-keyword">let</span> <span class="hljs-variable">hello</span>: Hello = argh::<span class="hljs-title function_ invoke__">from_env</span>();<br></code></pre></td></tr></table></figure>
+
+<p>Sometimes less is less; if you are building a CLI-first thing, <code>clap</code> is a safer choice.</p>
+<h2 id="Date-and-Time"><a href="#Date-and-Time" class="headerlink" title="Date and Time"></a>Date and Time</h2><p>We deal exclusively with UTC timestamps, so we use <code>chrono</code>.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> chrono::prelude::*;<br><span class="hljs-keyword">let</span> <span class="hljs-variable">dt</span> = Utc.<span class="hljs-title function_ invoke__">with_ymd_and_hms</span>(<span class="hljs-number">2025</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>).<span class="hljs-title function_ invoke__">unwrap</span>();<br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Hello &#123;&#125;!&quot;</span>, dt);<br><br><span class="hljs-keyword">let</span> <span class="hljs-variable">last_second</span> = dt - chrono::Duration::<span class="hljs-title function_ invoke__">seconds</span>(<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+
+<p>If you care about timezones, <code>jiff</code> is the new kid on the block and has a more complete story for them (see <a target="_blank" rel="noopener" href="https://github.com/BurntSushi/jiff/blob/master/COMPARE.md"><code>jiff</code> vs <code>chrono</code>, <code>time</code>, and more</a>).</p>
+<h2 id="Lightning-Round-II"><a href="#Lightning-Round-II" class="headerlink" title="Lightning Round II"></a>Lightning Round II</h2><p>Sometimes you need to customize the <code>Debug</code> impl of some struct, and <code>derivative</code> is useful if you don’t want to manually implement it:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> derivative::Derivative;<br><br><span class="hljs-meta">#[derive(Derivative)]</span><br><span class="hljs-meta">#[derivative(Debug)]</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Auth</span> &#123;<br>    <span class="hljs-keyword">pub</span> api_key: <span class="hljs-type">String</span>,<br>    <span class="hljs-meta">#[derivative(Debug=<span class="hljs-string">&quot;ignore&quot;</span>)]</span><br>    <span class="hljs-keyword">pub</span> api_secret: <span class="hljs-type">String</span>,<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>For running benchmarks, <code>criterion</code> has nice reporting, is flexible with generating inputs to functions (for example with <code>iter_batched</code>), and profiling is painless with <code>cargo flamegraph</code> (install with <code>cargo install flamegraph</code>).</p>
+<p>For everything Python-related, use <code>pyo3</code> (I also wrote an <a target="_blank" rel="noopener" href="https://ohadravid.github.io/posts/2023-03-rusty-python/">entire blog post</a> about it).</p>
+<p>If you work with UUIDs, the <code>uuid</code> crate supports anything you need: creating them, parsing them (including <code>serde</code> integration) and with support for all versions.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">uuid</span> = uuid::Uuid::<span class="hljs-title function_ invoke__">from_u128</span>(<span class="hljs-number">0x1337_0042</span>);<br><span class="hljs-built_in">assert_eq!</span>(uuid.<span class="hljs-title function_ invoke__">to_string</span>(), <span class="hljs-string">&quot;00000000-0000-0000-0000-000013370042&quot;</span>);<br><span class="hljs-built_in">assert_eq!</span>(uuid, uuid::uuid!(<span class="hljs-string">&quot;00000000-0000-0000-0000-000013370042&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<h2 id="SQL-ORMs"><a href="#SQL-ORMs" class="headerlink" title="SQL &amp; ORMs"></a>SQL &amp; ORMs</h2><p>Just Use Postgres for Everything, amirite? But for that, you still need a bunch of client-side stuff - managing connections, running queries, building queries, handling migrations, etc etc.</p>
+<p>The <code>SeaQL</code> ecosystem of crates (<code>sea-query</code>, <code>sea-orm</code>, <code>sea-orm-migration</code>) has everything you need, and more. We use them with the <code>sqlx</code> integration.</p>
+<p>Check out their full <a target="_blank" rel="noopener" href="https://github.com/SeaQL/sea-orm/tree/master/examples/axum_example"><code>axum_example</code></a>, but here’s a taste:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">update_post_by_id</span>(<br>    db: &amp;DbConn,<br>    id: <span class="hljs-type">i32</span>,<br>    post_data: post::Model,<br>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;post::Model, DbErr&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">post</span>: post::ActiveModel = post::Entity::<span class="hljs-title function_ invoke__">find_by_id</span>(id)<br>        .<span class="hljs-title function_ invoke__">one</span>(db)<br>        .<span class="hljs-keyword">await</span>?<br>        .<span class="hljs-title function_ invoke__">ok_or</span>(DbErr::<span class="hljs-title function_ invoke__">Custom</span>(<span class="hljs-string">&quot;Cannot find post.&quot;</span>.<span class="hljs-title function_ invoke__">to_owned</span>()))<br>        .<span class="hljs-title function_ invoke__">map</span>(<span class="hljs-built_in">Into</span>::into)?;<br><br>    post::ActiveModel &#123;<br>        id: post.id,<br>        title: <span class="hljs-title function_ invoke__">Set</span>(post_data.title.<span class="hljs-title function_ invoke__">to_owned</span>()),<br>        text: <span class="hljs-title function_ invoke__">Set</span>(post_data.text.<span class="hljs-title function_ invoke__">to_owned</span>()),<br>    &#125;<br>    .<span class="hljs-title function_ invoke__">update</span>(db)<br>    .<span class="hljs-keyword">await</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="RIP"><a href="#RIP" class="headerlink" title="RIP"></a>RIP</h2><p>Some crates that are with us no longer (except where we forgot to replace them):</p>
+<ul>
+<li><code>lazy_static</code> - If you need a complex struct that is also <code>static</code>, now <code>LazyLock</code> is part of the standard library:</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::collections::HashMap;<br><span class="hljs-keyword">use</span> std::sync::LazyLock;<br><br><span class="hljs-keyword">static</span> HASHMAP: LazyLock&lt;HashMap&lt;<span class="hljs-type">u32</span>, &amp;<span class="hljs-symbol">&#x27;static</span> <span class="hljs-type">str</span>&gt;&gt; = LazyLock::<span class="hljs-title function_ invoke__">new</span>(|| &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">m</span> = HashMap::<span class="hljs-title function_ invoke__">new</span>();<br>    m.<span class="hljs-title function_ invoke__">insert</span>(<span class="hljs-number">0</span>, <span class="hljs-string">&quot;foo&quot;</span>);<br>    m.<span class="hljs-title function_ invoke__">insert</span>(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;bar&quot;</span>);<br>    m.<span class="hljs-title function_ invoke__">insert</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;baz&quot;</span>);<br>    m<br>&#125;);<br><br>dbg!(&amp;*HASHMAP);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>once_cell</code> - Similarly, if you need a global that is only initialized once, you can now use <code>OnceLock</code>:</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::sync::OnceLock;<br><span class="hljs-keyword">static</span> CELL: OnceLock&lt;<span class="hljs-type">usize</span>&gt; = OnceLock::<span class="hljs-title function_ invoke__">new</span>();<br><br><span class="hljs-keyword">let</span> <span class="hljs-variable">value</span> = CELL.<span class="hljs-title function_ invoke__">get_or_init</span>(|| <span class="hljs-number">12345</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>async_trait</code> - Almost RIP. Before Rust 1.75 you couldn’t have <code>async</code> functions in traits at all, and now you can <em>almost</em> always have them. And even when you can, you’ll still get fun <code>use of async fn in public traits</code> warning. So just slap <code>#[async_trait::async_trait]</code> on them for a bit longer!</li>
+</ul>
+<h2 id="Logging-Tracing-and-Metrics"><a href="#Logging-Tracing-and-Metrics" class="headerlink" title="Logging, Tracing and Metrics"></a>Logging, Tracing and Metrics</h2><p>The <code>tracing</code> crate is wonderful: basic usage is simplicity incarnate, but the possibilities are endless.</p>
+<p>Set the env var <code>RUST_LOG=debug</code> and off you go.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> tracing::&#123;info, debug&#125;;<br><br><span class="hljs-meta">#[tracing::instrument]</span><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">hello</span>(year: <span class="hljs-type">usize</span>) &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Hello, &#123;&#125;!&quot;</span>, year);<br>    info!(<span class="hljs-string">&quot;Done saying hello&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    tracing_subscriber::<span class="hljs-title function_ invoke__">fmt</span>()<br>        .<span class="hljs-title function_ invoke__">with_env_filter</span>(tracing_subscriber::EnvFilter::<span class="hljs-title function_ invoke__">from_default_env</span>())<br>        .<span class="hljs-title function_ invoke__">init</span>();<br><br>    <span class="hljs-title function_ invoke__">hello</span>(<span class="hljs-number">2025</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>You can <code>instrument</code> async calls dynamically which can be useful for injecting request-level data.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">goodbye</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Goodbye!&quot;</span>);<br>    debug!(<span class="hljs-string">&quot;Done saying goodbye&quot;</span>);<br>&#125;<br><br><span class="hljs-meta">#[tokio::main]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-comment">// .. snip ..</span><br>    <span class="hljs-title function_ invoke__">goodbye</span>()<br>        .<span class="hljs-title function_ invoke__">instrument</span>(info_span!(<span class="hljs-string">&quot;goodbye&quot;</span>, year = <span class="hljs-number">2024</span>))<br>        .<span class="hljs-keyword">await</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>For metrics, we use the <code>prometheus</code> crate.</p>
+<p>Defining and using metrics is straightforward.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> prometheus::&#123;register_int_counter, register_int_counter_vec, IntCounter, IntCounterVec&#125;;<br><span class="hljs-keyword">use</span> std::sync::LazyLock;<br><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">static</span> REQUEST_COUNT: LazyLock&lt;IntCounter&gt; = LazyLock::<span class="hljs-title function_ invoke__">new</span>(|| &#123;<br>    register_int_counter!(<span class="hljs-string">&quot;request_count&quot;</span>, <span class="hljs-string">&quot;Number of requests received&quot;</span>).<span class="hljs-title function_ invoke__">unwrap</span>()<br>&#125;);<br><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">static</span> ERROR_COUNT: LazyLock&lt;IntCounterVec&gt; = LazyLock::<span class="hljs-title function_ invoke__">new</span>(|| &#123;<br>    register_int_counter_vec!(<span class="hljs-string">&quot;error_count&quot;</span>, <span class="hljs-string">&quot;Number of errors by type&quot;</span>, &amp;[<span class="hljs-string">&quot;type&quot;</span>]).<span class="hljs-title function_ invoke__">unwrap</span>()<br>&#125;);<br><br><span class="hljs-comment">// In some function:</span><br>REQUEST_COUNT.<span class="hljs-title function_ invoke__">inc</span>();<br><br><span class="hljs-comment">// In an error flow:</span><br>ERROR_COUNT.<span class="hljs-title function_ invoke__">with_label_values</span>(&amp;[<span class="hljs-string">&quot;conflict&quot;</span>]).<span class="hljs-title function_ invoke__">inc</span>();<br></code></pre></td></tr></table></figure>
+
+<p>We serve metrics using <code>axum</code>.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> axum::&#123;routing::get, Router&#125;;<br><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">metrics_router</span>() <span class="hljs-punctuation">-&gt;</span> Router &#123;<br>    Router::<span class="hljs-title function_ invoke__">new</span>().<span class="hljs-title function_ invoke__">route</span>(<span class="hljs-string">&quot;/metrics&quot;</span>, <span class="hljs-title function_ invoke__">get</span>(metrics))<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">metrics</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">String</span> &#123;<br>    prometheus::TextEncoder::<span class="hljs-title function_ invoke__">new</span>()<br>        .<span class="hljs-title function_ invoke__">encode_to_string</span>(&amp;prometheus::<span class="hljs-title function_ invoke__">gather</span>())<br>        .<span class="hljs-title function_ invoke__">unwrap</span>()<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Either running on a dedicated HTTP server, or merged to the main router (if the service is an internal HTTP server).</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">app</span> = Router::<span class="hljs-title function_ invoke__">new</span>()<br>    .<span class="hljs-title function_ invoke__">route</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-title function_ invoke__">get</span>(root))<br>    .<span class="hljs-title function_ invoke__">route</span>(<span class="hljs-string">&quot;/users&quot;</span>, <span class="hljs-title function_ invoke__">post</span>(create_user))<br>    <span class="hljs-comment">/* .. snip .. */</span><br>    .<span class="hljs-title function_ invoke__">merge</span>(metrics::<span class="hljs-title function_ invoke__">metrics_router</span>());<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ curl -H <span class="hljs-string">&quot;Authorization: Bearer hello2025&quot;</span> http://localhost:3000/metrics<br><span class="hljs-comment"># HELP error_count Number of errors by type</span><br><span class="hljs-comment"># TYPE error_count counter</span><br>error_count&#123;<span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;conflict&quot;</span>&#125; 1<br><span class="hljs-comment"># HELP request_count Number of requests received</span><br><span class="hljs-comment"># TYPE request_count counter</span><br>request_count 3<br></code></pre></td></tr></table></figure>
+
+<h2 id="Vectors-Arrays-ML"><a href="#Vectors-Arrays-ML" class="headerlink" title="Vectors, Arrays, ML"></a>Vectors, Arrays, ML</h2><p>For us, most of the ML workloads use NVIDIA’s Triton server (using <code>tonic</code> for the gRPC client and <code>half</code> for creating <code>f16</code>-type inputs), for which we compile ONNX models to TensorRT engines.</p>
+<p>When testing with floats, <code>approx</code> is useful for quick comparisons:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> approx::assert_abs_diff_eq;<br><span class="hljs-keyword">use</span> half::f16;<br><br><span class="hljs-keyword">let</span> <span class="hljs-variable">res</span> = f16::<span class="hljs-title function_ invoke__">from_f32</span>(<span class="hljs-number">0.1</span>) + f16::<span class="hljs-title function_ invoke__">from_f32</span>(<span class="hljs-number">0.2</span>);<br><br>assert_abs_diff_eq!(<span class="hljs-type">f32</span>::<span class="hljs-title function_ invoke__">from</span>(res), <span class="hljs-number">0.3</span>, epsilon = <span class="hljs-number">1e-3</span>);<br><span class="hljs-built_in">assert_eq!</span>(res.<span class="hljs-title function_ invoke__">to_le_bytes</span>(), [<span class="hljs-number">0xcc</span>, <span class="hljs-number">0x34</span>]);<br></code></pre></td></tr></table></figure>
+
+<p>There are a few cases where running a model on the CPU makes more sense, and this is where we use <code>ort</code> crate to run the ONNX models directly (currently on version <code>2.0.0-rc.9</code>).</p>
+<p>For actual input&#x2F;output related work, we use <code>ndarray</code> which is the <code>numpy</code> equivalent for Rust (<a target="_blank" rel="noopener" href="https://docs.rs/ndarray/latest/ndarray/doc/ndarray_for_numpy_users/index.html">ndarray::doc::ndarray_for_numpy_users</a>).</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> ndarray::&#123;array, s, Array&#125;;<br><span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = array![[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]];<br><br><span class="hljs-built_in">assert_eq!</span>(a.<span class="hljs-title function_ invoke__">slice</span>(s![.., <span class="hljs-number">1</span>]), Array::<span class="hljs-title function_ invoke__">from_vec</span>(<span class="hljs-built_in">vec!</span>[<span class="hljs-number">2</span>, <span class="hljs-number">4</span>]));<br></code></pre></td></tr></table></figure>
+
+<p>For the more geometric code, the <code>nalgebra</code> crate has all the needed <code>Matrix</code> and <code>Vector</code> operations.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> nalgebra::Matrix2;<br><br><span class="hljs-keyword">let</span> <span class="hljs-variable">m</span> = Matrix2::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">1</span>., <span class="hljs-number">2</span>.,<br>                     <span class="hljs-number">3</span>., <span class="hljs-number">4</span>.);<br><br><span class="hljs-built_in">assert_eq!</span>(m.<span class="hljs-title function_ invoke__">determinant</span>(), -<span class="hljs-number">2</span>.);<br><span class="hljs-built_in">assert_eq!</span>(m.<span class="hljs-title function_ invoke__">is_invertible</span>(), <span class="hljs-literal">true</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="Editions-nightly-vs-stable"><a href="#Editions-nightly-vs-stable" class="headerlink" title="Editions, nightly vs stable"></a>Editions, nightly vs stable</h2><p>We use the 2021 edition for all our code, and the transition from 2018 was completely smooth.</p>
+<p>We only use the <code>stable</code> compiler, which wasn’t true when I started using Rust at $work^1.</p>
+<p>Both of these seem obvious, which only makes it an even bigger success of the Rust project.</p>
+<p>We do use <code>Bazel</code> as our build system (primarily because we mix Rust and Python), but that’s a topic for a different post.</p>
+<h2 id="Wrapping-up"><a href="#Wrapping-up" class="headerlink" title="Wrapping up"></a>Wrapping up</h2><p>I hope you found this helpful! I wonder how much this list will change next year? In five?<br>And of course, there are so many other awesome crates.<br>What are some of yours? Discuss on <a target="_blank" rel="noopener" href="https://www.reddit.com/r/rust/comments/1hafdai/state_of_the_crates_2025/">r&#x2F;rust</a> 🦀.</p>
+<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2><p><strong>Connectivity</strong></p>
+<ul>
+<li><strong>axum</strong>: HTTP(S) servers with flexible routing and integration</li>
+<li><strong>reqwest (with rustls)</strong>: Modern HTTP client with configuration options</li>
+<li><strong>prost &#x2F; tonic</strong>: Protobuf and gRPC ecosystem support</li>
+<li><strong>lapin</strong>: AMQP (RabbitMQ) client</li>
+</ul>
+<p><strong>Error Handling</strong></p>
+<ul>
+<li><strong>thiserror</strong>: Errors for libraries</li>
+<li><strong>anyhow</strong>: Errors for applications</li>
+</ul>
+<p><strong>Testing</strong></p>
+<ul>
+<li><strong>rstest</strong>: Parametric tests and fixtures (familiar if you know <code>pytest</code>)</li>
+</ul>
+<p><strong>Serialization &amp; Data</strong></p>
+<ul>
+<li><strong>serde &#x2F; serde_json</strong>: General-purpose serialization and JSON handling</li>
+<li><strong>bincode</strong>: Compact binary format when JSON is too large</li>
+<li><strong>humantime-serde</strong>: Human-readable durations</li>
+</ul>
+<p><strong>Utilities</strong></p>
+<ul>
+<li><strong>rustc-hash &#x2F; sha1_smol</strong>: Faster and predictable non-crypto hashing</li>
+<li><strong>tikv-jemallocator</strong>: Improved memory allocation performance</li>
+<li><strong>uuid</strong>: UUID creation and parsing</li>
+<li><strong>chrono</strong>: UTC-based time handling</li>
+<li><strong>derivative</strong>: Customize derived trait implementations</li>
+<li><strong>image</strong>: Working with images</li>
+</ul>
+<p><strong>CLI &amp; Logging</strong></p>
+<ul>
+<li><strong>argh &#x2F; clap</strong>: Lightweight vs. feature-rich CLI parsing</li>
+<li><strong>tracing</strong>: Structured logging and tracing</li>
+<li><strong>prometheus</strong>: Metrics</li>
+</ul>
+<p><strong>SQL &amp; ORMs</strong></p>
+<ul>
+<li><strong>sea-orm &#x2F; sea-query &#x2F; sqlx</strong>: Async-friendly ORM and query building</li>
+</ul>
+<p><strong>ML &amp; Advanced</strong></p>
+<ul>
+<li><strong>half</strong>: Half-sized float types</li>
+<li><strong>approx</strong>: Approximate comparisons for floats</li>
+<li><strong>ndarray &#x2F; nalgebra</strong>: Arrays and linear algebra ops</li>
+<li><strong>ort</strong>: ONNX runtime for local model inference</li>
+</ul>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[package]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;sotc&quot;</span><br><span class="hljs-attr">version</span> = <span class="hljs-string">&quot;0.1.0&quot;</span><br><span class="hljs-attr">edition</span> = <span class="hljs-string">&quot;2021&quot;</span><br><br><span class="hljs-section">[dependencies]</span><br><span class="hljs-comment"># Connectivity</span><br><span class="hljs-attr">tokio</span> = &#123; version = <span class="hljs-string">&quot;1.0&quot;</span>, features = [<span class="hljs-string">&quot;full&quot;</span>] &#125;<br><span class="hljs-attr">axum</span> = &#123; version = <span class="hljs-string">&quot;0.7&quot;</span>, features = [<span class="hljs-string">&quot;macros&quot;</span>] &#125;<br><span class="hljs-attr">tower-http</span> = &#123; version =  <span class="hljs-string">&quot;0.6&quot;</span>, features = [<span class="hljs-string">&quot;auth&quot;</span>, <span class="hljs-string">&quot;validate-request&quot;</span>] &#125;<br><span class="hljs-attr">reqwest</span> = &#123; version = <span class="hljs-string">&quot;0.11&quot;</span>, default-features = <span class="hljs-literal">false</span>, features = [<br>    <span class="hljs-string">&quot;rustls-tls&quot;</span>,<br>    <span class="hljs-string">&quot;json&quot;</span>,<br>    <span class="hljs-string">&quot;stream&quot;</span>,<br>] &#125;<br><span class="hljs-attr">warp</span> = <span class="hljs-string">&quot;0.3&quot;</span><br><span class="hljs-attr">async-trait</span> = <span class="hljs-string">&quot;0.1&quot;</span><br><br><span class="hljs-comment"># Logging, Tracing and Metrics</span><br><span class="hljs-attr">tracing</span> = <span class="hljs-string">&quot;0.1&quot;</span><br><span class="hljs-attr">tracing-subscriber</span> = &#123; version = <span class="hljs-string">&quot;0.3&quot;</span>, features = [<span class="hljs-string">&quot;env-filter&quot;</span>] &#125;<br><span class="hljs-attr">prometheus</span> = <span class="hljs-string">&quot;0.13&quot;</span><br><br><span class="hljs-comment"># Error Handling</span><br><span class="hljs-attr">thiserror</span> = <span class="hljs-string">&quot;2&quot;</span><br><span class="hljs-attr">anyhow</span> = <span class="hljs-string">&quot;1&quot;</span><br><br><span class="hljs-comment"># Serialization</span><br><span class="hljs-attr">serde</span> = &#123; version = <span class="hljs-string">&quot;1.0&quot;</span>, features = [<span class="hljs-string">&quot;derive&quot;</span>] &#125;<br><span class="hljs-attr">serde_json</span> = <span class="hljs-string">&quot;1&quot;</span><br><span class="hljs-attr">humantime-serde</span> = <span class="hljs-string">&quot;1&quot;</span><br><span class="hljs-attr">bincode</span> = <span class="hljs-string">&quot;1&quot;</span><br><br><span class="hljs-comment"># CLI</span><br><span class="hljs-attr">argh</span> = <span class="hljs-string">&quot;0.1&quot;</span><br><br><span class="hljs-comment"># SQL and ORMs</span><br><span class="hljs-attr">sea-orm</span> = &#123; version = <span class="hljs-string">&quot;1&quot;</span>, features = [<br>    <span class="hljs-string">&quot;macros&quot;</span>,<br>    <span class="hljs-string">&quot;sqlx-postgres&quot;</span>,<br>    <span class="hljs-string">&quot;runtime-tokio-rustls&quot;</span>,<br>] &#125;<br><span class="hljs-attr">sea-query</span> = <span class="hljs-string">&quot;0.32&quot;</span><br><span class="hljs-attr">sqlx</span> = &#123; version = <span class="hljs-string">&quot;0.8&quot;</span>, features = [ <span class="hljs-string">&quot;sqlite&quot;</span>, <span class="hljs-string">&quot;runtime-tokio&quot;</span> ] &#125;<br><br><span class="hljs-comment"># Vectors, Arrays, ML</span><br><span class="hljs-attr">ndarray</span> = <span class="hljs-string">&quot;0.16&quot;</span><br><span class="hljs-attr">nalgebra</span> = <span class="hljs-string">&quot;0.33&quot;</span><br><span class="hljs-attr">half</span> = <span class="hljs-string">&quot;2&quot;</span><br><br><span class="hljs-comment"># Misc: (Non Cryptographic) Hashing, Allocators, UUIDs, Date and Time, Image Processing</span><br><span class="hljs-attr">rustc-hash</span> = <span class="hljs-string">&quot;2&quot;</span><br><span class="hljs-attr">sha1_smol</span> = <span class="hljs-string">&quot;1&quot;</span><br><span class="hljs-attr">tikv-jemallocator</span> = <span class="hljs-string">&quot;0.6&quot;</span><br><span class="hljs-attr">uuid</span> = &#123; version = <span class="hljs-string">&quot;1&quot;</span>, features = [<br>    <span class="hljs-string">&quot;v4&quot;</span>,<br>    <span class="hljs-string">&quot;fast-rng&quot;</span>,<br>    <span class="hljs-string">&quot;macro-diagnostics&quot;</span>,<br>] &#125;<br><span class="hljs-attr">chrono</span> = &#123; version = <span class="hljs-string">&quot;0.4&quot;</span>, features = [<span class="hljs-string">&quot;serde&quot;</span>] &#125;<br><span class="hljs-attr">derivative</span> = <span class="hljs-string">&quot;2&quot;</span><br><span class="hljs-attr">image</span> = &#123; version = <span class="hljs-string">&quot;0.25&quot;</span>, features = [<span class="hljs-string">&quot;jpeg&quot;</span>, <span class="hljs-string">&quot;png&quot;</span>, <span class="hljs-string">&quot;tiff&quot;</span>] &#125;<br><br><span class="hljs-section">[dev-dependencies]</span><br><span class="hljs-attr">rstest</span> = <span class="hljs-string">&quot;0.23&quot;</span><br><span class="hljs-attr">criterion</span> = &#123; version = <span class="hljs-string">&quot;0.5&quot;</span>, features = [<span class="hljs-string">&quot;html_reports&quot;</span>] &#125;<br><span class="hljs-attr">approx</span> = <span class="hljs-string">&quot;0.5&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>The only crates I mentioned but didn’t include here are <code>lapin</code> and <code>ort</code>.</p>
+<p>Even though we end up building almost 500 crates, a clean <code>cargo build</code> on my M3 MacBook Pro takes less than 40 seconds (with a prebuilt jemalloc), and <code>cargo check</code> is instant.</p>
+<p>The rest of the code is also available on GitHub at <a target="_blank" rel="noopener" href="https://github.com/ohadravid/state-of-the-crates">ohadravid&#x2F;state-of-the-crates</a>.</p>
+<p>Special thanks to <a target="_blank" rel="noopener" href="https://github.com/omerbenamram">Omer</a> and <a target="_blank" rel="noopener" href="https://github.com/yogevyuval">Yuval</a> for reviewing earlier drafts of this article.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/clippings/" class="print-no-link">#clippings</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>State of the Crates 2025</div>
+      <div>https://abrance.github.io/2025/04/03/mdstorage/domain/State of the Crates 2025/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 3, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/04/03/mdstorage/domain/ide/vscode/vscode%E9%85%8D%E7%BD%AE/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/03/mdstorage/domain/linux/fcitx%E9%85%8D%E7%BD%AE/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

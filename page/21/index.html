@@ -227,15 +227,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/05/09/domain/network/%E4%B8%BB%E6%9C%BA%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91qemu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C/" target="_self">
-          主机路由转发qemu虚拟机网络.md
+        <a href="/2024/06/17/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/" target="_self">
+          引擎安装管理.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/09/domain/network/%E4%B8%BB%E6%9C%BA%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91qemu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/" target="_self">
         <div>
-          概述将 机器 B 的 虚拟机网络 192.168.122.1&#x2F;24 路由转发出去提供给 机器 A 进行访问 步骤 保证 B 机器可以访问 A ，wlp2s0 网卡状态 UP B 配置 sysctl 参数 B 配置 路由伪装 A 配置 路由规则  B 配置 sysctl 参数123sudo sysctl -w net.ipv4.icmp_echo_ignore_all=0sudo sysc
+          引擎节点管理模块文档背景引擎节点管理的需求最早可追溯到v1.0.x版本，当时是希望实现任意数量的节点管理构成一个集群，但是因为实现过程中遇到了一些无法解决的问题，故以一种很多限制的形式流传了下来。限制有不少，其中最大的限制是：管理节点必须为奇数，且引擎一旦安装成功，管理节点无法以任何一种形式变更数量、机器、IP地址等。管理节点的数量变更需求每个版本都会有人提起，现如今又正式提出了，故对现状和历史状
         </div>
       </a>
 
@@ -243,109 +243,11 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-09 00:00" pubdate>
-              2024-05-09
+            <time datetime="2024-06-17 00:00" pubdate>
+              2024-06-17
             </time>
           </div>
         
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/" class="category-chain-item">network</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/linux/">#linux</a>
-            
-              <a href="/tags/network/">#network</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/05/09/mdstorage/domain/network/conn%E7%9A%84%E5%B0%81%E8%A3%85%E5%92%8C%E5%AE%9E%E7%8E%B0/" target="_self">
-          conn的封装和实现.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/09/mdstorage/domain/network/conn%E7%9A%84%E5%B0%81%E8%A3%85%E5%92%8C%E5%AE%9E%E7%8E%B0/" target="_self">
-        <div>
-          概述经典 Conn 的封装和实现解析 conn 的解析conn 实现基于流的 网络连接，通用的面向流的网络连接，多个Goroutine可以同时调用Conn上的方法。主要通过Read(b []byte)读取数据，Write(b [byte]) 写数据 及Close() 关闭连接。 Conn 接口定义 12345678910111213141516171819202122232425262728293
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-09 00:00" pubdate>
-              2024-05-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/" class="category-chain-item">network</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
         
         
       </div>
@@ -358,15 +260,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/05/09/mdstorage/domain/network/%E4%B8%BB%E6%9C%BA%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91qemu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C/" target="_self">
-          主机路由转发qemu虚拟机网络.md
+        <a href="/2024/06/17/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" target="_self">
+          生命周期管理方案.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/09/mdstorage/domain/network/%E4%B8%BB%E6%9C%BA%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91qemu%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" target="_self">
         <div>
-          概述将 机器 B 的 虚拟机网络 192.168.122.1&#x2F;24 路由转发出去提供给 机器 A 进行访问 步骤 保证 B 机器可以访问 A ，wlp2s0 网卡状态 UP B 配置 sysctl 参数 B 配置 路由伪装 A 配置 路由规则  B 配置 sysctl 参数123sudo sysctl -w net.ipv4.icmp_echo_ignore_all=0sudo sysc
+          引擎生命周期管理方案整理1. 生命周期管理框架和组件依赖的常量、变量的约定配置文件（config.env）： 配置文件用于管理节点初始化时的常量和变量，所有组件的生命周期脚本均从该配置文件中读取必要的参数。 示例配置文件内容： 1234567891011121314Version=1 LogPath=/opt/private/log# MetaInfoVIRD=211Mode=1GS=f8fb61
         </div>
       </a>
 
@@ -374,109 +276,11 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-09 00:00" pubdate>
-              2024-05-09
+            <time datetime="2024-06-17 00:00" pubdate>
+              2024-06-17
             </time>
           </div>
         
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/" class="category-chain-item">network</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/linux/">#linux</a>
-            
-              <a href="/tags/network/">#network</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/05/09/mdstorage/domain/network/Socket%E7%9A%84%E5%B0%81%E8%A3%85/" target="_self">
-          Socket的封装.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/09/mdstorage/domain/network/Socket%E7%9A%84%E5%B0%81%E8%A3%85/" target="_self">
-        <div>
-          [ Socket与系统调用深度分析 ](https://www.cnblogs.com/RichardTAO/p/12070548.html “发布于2019-12-19 22:08”) 目录  系统调用 系统调用的过程 示例分析 Socket系统调用分析 sock_map_fd sock_create     实验代码分析 服务器端 InitializeService方法 ServiceStar
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-09 00:00" pubdate>
-              2024-05-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/" class="category-chain-item">network</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
         
         
       </div>
@@ -489,15 +293,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/05/08/domain/python/conda/" target="_self">
-          conda.md
+        <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" target="_self">
+          installer目录结构.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/08/domain/python/conda/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/installer%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" target="_self">
         <div>
-          安装第 1 步 – 准备 Anaconda 安装程序使用 cd 命令，进入/tmp目录： cd /tmp   接下来，使用 curl 命令从官网下载 Anaconda 安装程序脚本。访问 Anaconda安装程序脚本下载页面，以检查最新版本。执行命令下载脚本： # 示例 curl --output anaconda.sh https://repo.anaconda.com/archive/Anac
+          概述逻辑入口流量引擎安装 InstallProcessmanager&#x2F;manager_route.go:6 流量引擎资源检测 ResourceCheckmanager&#x2F;manager.go:1380 名词解释sxctl 镜像引擎 逻辑整理每个组件已有的取消安装逻辑
         </div>
       </a>
 
@@ -505,51 +309,12 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-08 00:00" pubdate>
-              2024-05-08
+            <time datetime="2024-06-17 00:00" pubdate>
+              2024-06-17
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/python/" class="category-chain-item">python</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/conda/">#conda</a>
-            
-              <a href="/tags/Anaconda/">#Anaconda</a>
-            
-              <a href="/tags/python/">#python</a>
-            
-          </div>
         
       </div>
     </article>
@@ -561,15 +326,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/05/08/mdstorage/domain/python/conda/" target="_self">
-          conda.md
+        <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/" target="_self">
+          引擎安装管理.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/08/mdstorage/domain/python/conda/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E5%BC%95%E6%93%8E%E5%AE%89%E8%A3%85%E7%AE%A1%E7%90%86/" target="_self">
         <div>
-          安装第 1 步 – 准备 Anaconda 安装程序使用 cd 命令，进入/tmp目录： cd /tmp   接下来，使用 curl 命令从官网下载 Anaconda 安装程序脚本。访问 Anaconda安装程序脚本下载页面，以检查最新版本。执行命令下载脚本： # 示例 curl --output anaconda.sh https://repo.anaconda.com/archive/Anac
+          引擎节点管理模块文档背景引擎节点管理的需求最早可追溯到v1.0.x版本，当时是希望实现任意数量的节点管理构成一个集群，但是因为实现过程中遇到了一些无法解决的问题，故以一种很多限制的形式流传了下来。限制有不少，其中最大的限制是：管理节点必须为奇数，且引擎一旦安装成功，管理节点无法以任何一种形式变更数量、机器、IP地址等。管理节点的数量变更需求每个版本都会有人提起，现如今又正式提出了，故对现状和历史状
         </div>
       </a>
 
@@ -577,51 +342,12 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-08 00:00" pubdate>
-              2024-05-08
+            <time datetime="2024-06-17 00:00" pubdate>
+              2024-06-17
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/python/" class="category-chain-item">python</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/conda/">#conda</a>
-            
-              <a href="/tags/Anaconda/">#Anaconda</a>
-            
-              <a href="/tags/python/">#python</a>
-            
-          </div>
         
       </div>
     </article>
@@ -633,15 +359,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/05/07/domain/linux/%E6%9C%89%E7%BA%BF%E8%BF%9E%E6%8E%A5%E4%B8%A4%E5%8F%B0ubuntu/" target="_self">
-          有线连接两台ubuntu.md
+        <a href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" target="_self">
+          生命周期管理方案.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/07/domain/linux/%E6%9C%89%E7%BA%BF%E8%BF%9E%E6%8E%A5%E4%B8%A4%E5%8F%B0ubuntu/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/" target="_self">
         <div>
-          概述通过网线连接两台物理机使相连 步骤 网线连接 设置机器A 设置机器B  机器设置 设置 -&gt; 网络 -&gt; 选择网卡 mac -&gt; ipv4 选择手动，不需要设置网关
+          引擎生命周期管理方案整理1. 生命周期管理框架和组件依赖的常量、变量的约定配置文件（config.env）： 配置文件用于管理节点初始化时的常量和变量，所有组件的生命周期脚本均从该配置文件中读取必要的参数。 示例配置文件内容： 1234567891011121314Version=1 LogPath=/opt/private/log# MetaInfoVIRD=211Mode=1GS=f8fb61
         </div>
       </a>
 
@@ -649,49 +375,12 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-07 00:00" pubdate>
-              2024-05-07
+            <time datetime="2024-06-17 00:00" pubdate>
+              2024-06-17
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ubuntu/">#ubuntu</a>
-            
-              <a href="/tags/network/">#network</a>
-            
-          </div>
         
       </div>
     </article>
@@ -703,15 +392,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/05/07/domain/network/%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/" target="_self">
-          网络扫描工具.md
+        <a href="/2024/06/12/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/" target="_self">
+          1.6任务评估
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/07/domain/network/%E7%BD%91%E7%BB%9C%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/12/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/" target="_self">
         <div>
-          概述工具fping1234# apt install fping# 扫描局域网 192.168.1.1/24 存活的主机fping -a -g 192.168.1.1/24
+          概述总控 (P2)总控安装相关需求安装脚本中加入IP设置的交互：文档+编码 工时评估：2.4d  打总控包时需要将安装脚本挪到安装包的第一层目录下 工时评估：0.34d  需要调整安装脚本的默认工作目录 工时评估：0.34d  安装的残留清除：文档+编码 工时评估：2.4d  在总控安装时需要将上次残留的总控给清除干净，并进行安装 工时评估：2.2d  环境检测时将内存、CPU核心数、磁盘存储空间
         </div>
       </a>
 
@@ -719,49 +408,12 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-07 00:00" pubdate>
-              2024-05-07
+            <time datetime="2024-06-12 00:00" pubdate>
+              2024-06-12
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/network/" class="category-chain-item">network</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/network/">#network</a>
-            
-              <a href="/tags/scan/">#scan</a>
-            
-          </div>
         
       </div>
     </article>
@@ -773,15 +425,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/05/07/domain/%E6%96%87%E6%A1%A3/editorconfig/" target="_self">
-          editorconfig.md
+        <a href="/2024/06/12/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0v2/" target="_self">
+          1.6任务评估v2.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/07/domain/%E6%96%87%E6%A1%A3/editorconfig/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/12/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0v2/" target="_self">
         <div>
-          概述编辑器配置，放入到 项目根目录中 参考editor config 官网 实例123456789101112131415161718192021222324; https://editorconfig.org/root = true[*]insert_final_newline = truecharset = utf-8trim_trailing_whitespace = trueindent_
+          需求 子任务 优先级 负责人 工时评估 计划开始时间 计划完成时间 岗位组别 任务状态 前置任务 备注    总控安装相关需求 安装脚本中加入IP设置的交互：文档+编码 P2  2.4    未开始     总控安装相关需求 打总控包时需要将安装脚本挪到安装包的第一层目录下 P2  0.34    未开始     总控安装相关需求 需要调整安装脚本的默认工作目录 P2  0.34    未开
         </div>
       </a>
 
@@ -789,47 +441,12 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-07 00:00" pubdate>
-              2024-05-07
+            <time datetime="2024-06-12 00:00" pubdate>
+              2024-06-12
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/domain/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/editor-config/">#editor config</a>
-            
-          </div>
         
       </div>
     </article>
@@ -841,15 +458,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/05/07/domain/%E6%96%87%E6%A1%A3/html2markdown/" target="_self">
-          html2markdown.md
+        <a href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/" target="_self">
+          1.6任务评估
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/07/domain/%E6%96%87%E6%A1%A3/html2markdown/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0/" target="_self">
         <div>
-          概述html to markdown 安装见 github 使用（从获取 html） 浏览器打开目标 html C-s 保存 html 到本地 执行 html2text xxx.html utf-8
+          概述总控 (P2)总控安装相关需求安装脚本中加入IP设置的交互：文档+编码 工时评估：2.4d  打总控包时需要将安装脚本挪到安装包的第一层目录下 工时评估：0.34d  需要调整安装脚本的默认工作目录 工时评估：0.34d  安装的残留清除：文档+编码 工时评估：2.4d  在总控安装时需要将上次残留的总控给清除干净，并进行安装 工时评估：2.2d  环境检测时将内存、CPU核心数、磁盘存储空间
         </div>
       </a>
 
@@ -857,47 +474,78 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-07 00:00" pubdate>
-              2024-05-07
+            <time datetime="2024-06-12 00:00" pubdate>
+              2024-06-12
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
         
-  <a href="/categories/domain/" class="category-chain-item">domain</a>
-  
-  
-    <span>></span>
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
     
-  <a href="/categories/domain/%E6%96%87%E6%A1%A3/" class="category-chain-item">文档</a>
-  
-  
-
-  
-
-      </span>
     
-  
-</span>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0v2/" target="_self">
+          1.6任务评估v2.md
+        </a>
+      </h2>
 
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/12/mdstorage/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/1.6%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0v2/" target="_self">
+        <div>
+          需求 子任务 优先级 负责人 工时评估 计划开始时间 计划完成时间 岗位组别 任务状态 前置任务 备注    总控安装相关需求 安装脚本中加入IP设置的交互：文档+编码 P2  2.4    未开始     总控安装相关需求 打总控包时需要将安装脚本挪到安装包的第一层目录下 P2  0.34    未开始     总控安装相关需求 需要调整安装脚本的默认工作目录 P2  0.34    未开
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-12 00:00" pubdate>
+              2024-06-12
+            </time>
           </div>
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/tool/">#tool</a>
-            
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/07/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/sr%E5%AE%89%E8%A3%85/" target="_self">
+          sr安装.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/07/project/sr/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9B%B8%E5%85%B3/sr%E5%AE%89%E8%A3%85/" target="_self">
+        <div>
+          概述需求文档存在问题对象 定义不明，功能边界不清晰 需求理解困难： 歧义与误解：研发团队可能会对需求产生不同的理解，导致开发出的功能不符合用户的实际需求。 需求变更频繁：由于最初的需求不明确，在开发过程中可能会频繁调整和变更需求，增加开发成本和时间。  设计与架构挑战： 设计难度增加：不明确的需求使得设计团队无法确定系统的边界和行为，从而难以进行有效的系统设计。 架构不稳定：功能边界不清晰可能导致
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-07 00:00" pubdate>
+              2024-06-07
+            </time>
           </div>
+        
+        
         
       </div>
     </article>
@@ -907,7 +555,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/20/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/#board">19</a><a class="page-number" href="/page/20/#board">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/#board">22</a><a class="page-number" href="/page/23/#board">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/58/#board">58</a><a class="extend next" rel="next" href="/page/22/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/20/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/#board">19</a><a class="page-number" href="/page/20/#board">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/#board">22</a><a class="page-number" href="/page/23/#board">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/#board">62</a><a class="extend next" rel="next" href="/page/22/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

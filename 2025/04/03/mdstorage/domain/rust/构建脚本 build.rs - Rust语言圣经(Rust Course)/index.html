@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="build.rs构建脚本的生命周期构建脚本的输入构建脚本的输出构建脚本的依赖links覆盖构建脚本 构建脚本( Build Scripts)一些项目希望编译第三方的非 Rust 代码，例如 C 依赖库；一些希望链接本地或者基于源码构建的 C 依赖库；还有一些项目需要功能性的工具，例如在构建之间执行一些代码生成的工作等。 对于这些目标，社区已经提供了一些工具来很好的解决，Cargo 并不想替代它们，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="构建脚本 build.rs - Rust语言圣经(Rust Course)">
+<meta property="og:url" content="https://abrance.github.io/2025/04/03/mdstorage/domain/rust/%E6%9E%84%E5%BB%BA%E8%84%9A%E6%9C%AC%20build.rs%20-%20Rust%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F(Rust%20Course)/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="build.rs构建脚本的生命周期构建脚本的输入构建脚本的输出构建脚本的依赖links覆盖构建脚本 构建脚本( Build Scripts)一些项目希望编译第三方的非 Rust 代码，例如 C 依赖库；一些希望链接本地或者基于源码构建的 C 依赖库；还有一些项目需要功能性的工具，例如在构建之间执行一些代码生成的工作等。 对于这些目标，社区已经提供了一些工具来很好的解决，Cargo 并不想替代它们，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://visitor-badge.glitch.me/badge?page_id=/cargo/reference/build-script/intro.html">
+<meta property="article:published_time" content="2025-04-03T04:09:58.272Z">
+<meta property="article:modified_time" content="2025-04-03T04:09:58.272Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="clippings">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://visitor-badge.glitch.me/badge?page_id=/cargo/reference/build-script/intro.html">
+  
+  
+  
+  <title>构建脚本 build.rs - Rust语言圣经(Rust Course) - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="构建脚本 build.rs - Rust语言圣经(Rust Course)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-03 12:09" pubdate>
+          April 3, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          19 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">构建脚本 build.rs - Rust语言圣经(Rust Course)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><a target="_blank" rel="noopener" href="https://course.rs/cargo/reference/build-script/intro.html#buildrs">build.rs</a><a target="_blank" rel="noopener" href="https://course.rs/cargo/reference/build-script/intro.html#%E6%9E%84%E5%BB%BA%E8%84%9A%E6%9C%AC%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">构建脚本的生命周期</a><a target="_blank" rel="noopener" href="https://course.rs/cargo/reference/build-script/intro.html#%E6%9E%84%E5%BB%BA%E8%84%9A%E6%9C%AC%E7%9A%84%E8%BE%93%E5%85%A5">构建脚本的输入</a><a target="_blank" rel="noopener" href="https://course.rs/cargo/reference/build-script/intro.html#%E6%9E%84%E5%BB%BA%E8%84%9A%E6%9C%AC%E7%9A%84%E8%BE%93%E5%87%BA">构建脚本的输出</a><a target="_blank" rel="noopener" href="https://course.rs/cargo/reference/build-script/intro.html#%E6%9E%84%E5%BB%BA%E8%84%9A%E6%9C%AC%E7%9A%84%E4%BE%9D%E8%B5%96">构建脚本的依赖</a><a target="_blank" rel="noopener" href="https://course.rs/cargo/reference/build-script/intro.html#links">links</a><a target="_blank" rel="noopener" href="https://course.rs/cargo/reference/build-script/intro.html#%E8%A6%86%E7%9B%96%E6%9E%84%E5%BB%BA%E8%84%9A%E6%9C%AC">覆盖构建脚本</a></p>
+<h2 id="构建脚本-Build-Scripts"><a href="#构建脚本-Build-Scripts" class="headerlink" title="构建脚本( Build Scripts)"></a>构建脚本( Build Scripts)</h2><p>一些项目希望编译第三方的非 Rust 代码，例如 C 依赖库；一些希望链接本地或者基于源码构建的 C 依赖库；还有一些项目需要功能性的工具，例如在构建之间执行一些代码生成的工作等。</p>
+<p>对于这些目标，社区已经提供了一些工具来很好的解决，Cargo 并不想替代它们，但是为了给用户带来一些便利，Cargo 提供了自定义构建脚本的方式，来帮助用户更好的解决类似的问题。</p>
+<p>若要创建构建脚本，我们只需在项目的根目录下添加一个 <code>build.rs</code> 文件即可。这样一来， Cargo 就会先编译和执行该构建脚本，然后再去构建整个项目。</p>
+<p>以下是一个非常简单的脚本示例:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-comment">// 以下代码告诉 Cargo ，一旦指定的文件 \`src/hello.c\` 发生了改变，就重新运行当前的构建脚本</span><br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;cargo:rerun-if-changed=src/hello.c&quot;</span>);<br>    <span class="hljs-comment">// 使用 \`cc\` 来构建一个 C 文件，然后进行静态链接</span><br>    cc::Build::<span class="hljs-title function_ invoke__">new</span>()<br>        .<span class="hljs-title function_ invoke__">file</span>(<span class="hljs-string">&quot;src/hello.c&quot;</span>)<br>        .<span class="hljs-title function_ invoke__">compile</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>关于构建脚本的一些使用场景如下：</p>
+<ul>
+<li>构建 C 依赖库</li>
+<li>在操作系统中寻找指定的 C 依赖库</li>
+<li>根据某个说明描述文件生成一个 Rust 模块</li>
+<li>执行一些平台相关的配置</li>
+</ul>
+<p>下面的部分我们一起来看看构建脚本具体是如何工作的，然后在<a target="_blank" rel="noopener" href="https://course.rs/cargo/reference/build-script/examples.html">下个章节</a>中还提供了一些关于如何编写构建脚本的示例。</p>
+<blockquote>
+<p>Note: <a target="_blank" rel="noopener" href="https://course.rs/cargo/reference/manifest.html#build"><code>package.build</code></a> 可以用于改变构建脚本的名称，或者直接禁用该功能</p>
+</blockquote>
+<h2 id="构建脚本的生命周期"><a href="#构建脚本的生命周期" class="headerlink" title="构建脚本的生命周期"></a>构建脚本的生命周期</h2><p>在项目被构建之前，Cargo 会将构建脚本编译成一个可执行文件，然后运行该文件并执行相应的任务。</p>
+<p>在运行的过程中，<strong>脚本可以使用之前 <code>println</code> 的方式跟 Cargo 进行通信</strong>：通信内容是以 <code>cargo:</code> 开头的格式化字符串。</p>
+<p>需要注意的是，Cargo 也不是每次都会重新编译构建脚本，只有当脚本的内容或依赖发生变化时才会。默认情况下，任何文件变化都会触发重新编译，如果你希望对其进行定制，可以使用 <code>rerun-if</code>命令，后文会讲。</p>
+<p>在构建脚本成功执行后，我们的项目就会开始进行编译。如果构建脚本的运行过程中发生错误，脚本应该通过返回一个非 0 码来立刻退出，在这种情况下，构建脚本的输出会被打印到终端中。</p>
+<h2 id="构建脚本的输入"><a href="#构建脚本的输入" class="headerlink" title="构建脚本的输入"></a>构建脚本的输入</h2><p>我们可以通过<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-build-scripts">环境变量</a>的方式给构建脚本提供一些输入值，除此之外，构建脚本所在的当前目录也可以。</p>
+<h2 id="构建脚本的输出"><a href="#构建脚本的输出" class="headerlink" title="构建脚本的输出"></a>构建脚本的输出</h2><p>构建脚本如果会产出文件，那么这些文件需要放在统一的目录中，该目录可以通过 <a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-build-scripts"><code>OUT_DIR</code> 环境变量</a>来指定，<strong>构建脚本不应该修改该目录之外的任何文件！</strong></p>
+<p>在之前提到过，构建脚本可以通过 <code>println!</code> 输出内容跟 Cargo 进行通信：Cargo 会将每一行带有 <code>cargo:</code> 前缀的输出解析为一条指令，其它的输出内容会自动被忽略。</p>
+<p>通过 <code>println!</code> 输出的内容在构建过程中默认是隐藏的，如果大家想要在终端中看到这些内容，你可以使用 <code>-vv</code> 来调用，以下 <code>build.rs</code> ：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;hello, build.rs&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>将输出:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">cargo run -vv</span><br>[study_cargo 0.1.0] hello, build.rs<br></code></pre></td></tr></table></figure>
+
+<p>构建脚本打印到标准输出 <code>stdout</code> 的所有内容将保存在文件 <code>target/debug/build/&lt;pkg&gt;/output</code> 中 (具体的位置可能取决于你的配置)，<code>stderr</code> 的输出内容也将保存在同一个目录中。</p>
+<p>以下是 Cargo 能识别的通信指令以及简介，如果大家希望深入了解每个命令，可以点击具体的链接查看官方文档的说明。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rerun-if-changed"><code>cargo:rerun-if-changed=PATH</code></a> — 当指定路径的文件发生变化时，Cargo 会重新运行脚本</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rerun-if-env-changed"><code>cargo:rerun-if-env-changed=VAR</code></a> — 当指定的环境变量发生变化时，Cargo 会重新运行脚本</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-link-arg"><code>cargo:rustc-link-arg=FLAG</code></a> – 将自定义的 flags 传给 linker，用于后续的基准性能测试 benchmark、 可执行文件 binary,、<code>cdylib</code> 包、示例和测试</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-link-arg-bin"><code>cargo:rustc-link-arg-bin=BIN=FLAG</code></a> – 自定义的 flags 传给 linker，用于可执行文件 <code>BIN</code></li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-link-arg-bins"><code>cargo:rustc-link-arg-bins=FLAG</code></a> – 自定义的 flags 传给 linker，用于可执行文件</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-link-arg-tests"><code>cargo:rustc-link-arg-tests=FLAG</code></a> – 自定义的 flags 传给 linker，用于测试</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-link-arg-examples"><code>cargo:rustc-link-arg-examples=FLAG</code></a> – 自定义的 flags 传给 linker，用于示例</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-link-arg-benches"><code>cargo:rustc-link-arg-benches=FLAG</code></a> – 自定义的 flags 传给 linker，用于基准性能测试 benchmark</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-cdylib-link-arg"><code>cargo:rustc-cdylib-link-arg=FLAG</code></a> — 自定义的 flags 传给 linker，用于 <code>cdylib</code> 包</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-link-lib"><code>cargo:rustc-link-lib=[KIND=]NAME</code></a> — 告知 Cargo 通过 <code>-l</code> 去链接一个指定的库，往往用于链接一个本地库，通过 FFI</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-link-search"><code>cargo:rustc-link-search=[KIND=]PATH</code></a> — 告知 Cargo 通过 <code>-L</code> 将一个目录添加到依赖库的搜索路径中</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-flags"><code>cargo:rustc-flags=FLAGS</code></a> — 将特定的 flags 传给编译器</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-cfg"><code>cargo:rustc-cfg=KEY[=&quot;VALUE&quot;]</code></a> — 开启编译时 <code>cfg</code> 设置</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-env"><code>cargo:rustc-env=VAR=VALUE</code></a> — 设置一个环境变量</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#cargo-warning"><code>cargo:warning=MESSAGE</code></a> — 在终端打印一条 warning 信息</li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#the-links-manifest-key"><code>cargo:KEY=VALUE</code></a> — <code>links</code> 脚本使用的元数据</li>
+</ul>
+<h2 id="构建脚本的依赖"><a href="#构建脚本的依赖" class="headerlink" title="构建脚本的依赖"></a>构建脚本的依赖</h2><p>构建脚本也可以引入其它基于 Cargo 的依赖包，只需要在 <code>Cargo.toml</code> 中添加或修改以下内容:</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[build-dependencies]</span><br><span class="hljs-attr">cc</span> = <span class="hljs-string">&quot;1.0.46&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>需要这么配置的原因在于构建脚本无法使用通过 <code>[dependencies]</code> 或 <code>[dev-dependencies]</code> 引入的依赖包，因为构建脚本的编译运行过程跟项目本身的编译过程是分离的的，且前者先于后者发生。同样的，我们项目也无法使用 <code>[build-dependencies]</code> 中的依赖包。</p>
+<p><strong>大家在引入依赖的时候，需要仔细考虑它会给编译时间、开源协议和维护性等方面带来什么样的影响</strong>。如果你在 <code>[build-dependencies]</code> 和 <code>[dependencies]</code> 引入了同样的包，这种情况下 Cargo 也许会对依赖进行复用，也许不会，例如在交叉编译时，如果不会，那编译速度自然会受到不小的影响。</p>
+<h2 id="links"><a href="#links" class="headerlink" title="links"></a>links</h2><p>在 <code>Cargo.toml</code> 中可以配置 <code>package.links</code> 选项，它的目的是告诉 Cargo 当前项目所链接的本地库，同时提供了一种方式可以在项目构建脚本之间传递元信息。</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[package]</span><br><span class="hljs-comment"># ...</span><br><span class="hljs-attr">links</span> = <span class="hljs-string">&quot;foo&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>以上配置表明项目链接到一个 <code>libfoo</code> 本地库，当使用 <code>links</code> 时，项目必须拥有一个构建脚本，并且该脚本需要使用 <a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#rustc-link-lib"><code>rustc-link-lib</code></a> 指令来链接目标库。</p>
+<p>Cargo 要求一个本地库最多只能被一个项目所链接，换而言之，你无法让两个项目链接到同一个本地库，但是有一种方法可以降低这种限制，感兴趣的同学可以看看<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/stable/cargo/reference/build-scripts.html#-sys-packages">官方文档</a>。</p>
+<p>假设 A 项目的构建脚本生成任意数量的 kv 形式的元数据，那这些元数据将传递给 A 用作依赖包的项目的构建脚本。例如，如果包 <code>bar</code> 依赖于 <code>foo</code>，当 <code>foo</code> 生成 <code>key=value</code> 形式的构建脚本元数据时，那么 <code>bar</code> 的构建脚本就可以通过环境变量的形式使用该元数据：<code>DEP_FOO_KEY=value</code>。</p>
+<p>需要注意的是，该元数据只能传给直接相关者，对于间接的，例如依赖的依赖，就无能为力了。</p>
+<h2 id="覆盖构建脚本"><a href="#覆盖构建脚本" class="headerlink" title="覆盖构建脚本"></a>覆盖构建脚本</h2><p>当 <code>Cargo.toml</code> 设置了 <code>links</code> 时， Cargo 就允许我们使用自定义库对现有的构建脚本进行覆盖。在 <a target="_blank" rel="noopener" href="https://course.rs/cargo/reference/configuration.html">Cargo 使用的配置文件</a>中添加以下内容：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[target.x86_64-unknown-linux-gnu.foo]</span><br><span class="hljs-attr">rustc-link-lib</span> = [<span class="hljs-string">&quot;foo&quot;</span>]<br><span class="hljs-attr">rustc-link-search</span> = [<span class="hljs-string">&quot;/path/to/foo&quot;</span>]<br><span class="hljs-attr">rustc-flags</span> = <span class="hljs-string">&quot;-L /some/path&quot;</span><br><span class="hljs-attr">rustc-cfg</span> = [<span class="hljs-string">&#x27;key=&quot;value&quot;&#x27;</span>]<br><span class="hljs-attr">rustc-env</span> = &#123;key = <span class="hljs-string">&quot;value&quot;</span>&#125;<br><span class="hljs-attr">rustc-cdylib-link-arg</span> = [<span class="hljs-string">&quot;…&quot;</span>]<br><span class="hljs-attr">metadata_key1</span> = <span class="hljs-string">&quot;value&quot;</span><br><span class="hljs-attr">metadata_key2</span> = <span class="hljs-string">&quot;value&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>增加这个配置后，在未来，一旦我们的某个项目声明了它链接到 <code>foo</code> ，那项目的构建脚本将不会被编译和运行，替代的是这里的配置将被使用。</p>
+<p><code>warning</code>, <code>rerun-if-changed</code> 和 <code>rerun-if-env-changed</code> 这三个 key 在这里不应该被使用，就算用了也会被忽略。</p>
+<p><img src="https://visitor-badge.glitch.me/badge?page_id=/cargo/reference/build-script/intro.html" srcset="/img/loading.gif" lazyload></p>
+<hr>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/clippings/" class="print-no-link">#clippings</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>构建脚本 build.rs - Rust语言圣经(Rust Course)</div>
+      <div>https://abrance.github.io/2025/04/03/mdstorage/domain/rust/构建脚本 build.rs - Rust语言圣经(Rust Course)/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 3, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/04/03/mdstorage/domain/rust/rust%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E5%92%8C%E5%B8%B8%E7%94%A8%E5%BA%93/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/03/mdstorage/domain/rust/%E6%9E%84%E5%BB%BA%E8%84%9A%E6%9C%ACbuild.rs/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

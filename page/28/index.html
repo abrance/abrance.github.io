@@ -227,15 +227,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/04/10/domain/k8s/apiserver%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3/" target="_self">
-          apiserver问题和解决.md
+        <a href="/2024/04/30/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc/" target="_self">
+          grpc.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/10/domain/k8s/apiserver%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/30/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc/" target="_self">
         <div>
-          问题apiserver cr 的 size 由什么决定？kube-apiserver 的参数主要集中在API行为的配置、认证授权、日志记录、以及与其他组件的交互等方面。 对于控制请求大小，Kubernetes 主要依靠的是请求超时设置、客户端请求限速（Rate Limiting）、以及其他API服务器的高级配置，但没有直接限制请求体大小的参数。这种控制机制更多地依赖于整体架构设计和在Ingress
+          概述Golang grpc实现原理和 proxy 实现原理 grpc-go 服务端使用介绍及源码分析 protoc安装1234567# 下载并安装# https://link.zhihu.com/?target=https%3A//github.com/google/protobuf/releasesgo install google.golang.org/protobuf/cmd/protoc-
         </div>
       </a>
 
@@ -243,8 +243,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-10 00:00" pubdate>
-              2024-04-10
+            <time datetime="2024-04-30 00:00" pubdate>
+              2024-04-30
             </time>
           </div>
         
@@ -264,8 +264,15 @@
   
     <span>></span>
     
-  <a href="/categories/domain/k8s/" class="category-chain-item">k8s</a>
+  <a href="/categories/domain/network/" class="category-chain-item">network</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/%E5%8D%8F%E8%AE%AE/" class="category-chain-item">协议</a>
+  
+  
+
   
 
   
@@ -281,9 +288,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/apiserver/">#apiserver</a>
+              <a href="/tags/golang/">#golang</a>
             
-              <a href="/tags/etcd/">#etcd</a>
+              <a href="/tags/grpc/">#grpc</a>
+            
+              <a href="/tags/rpc/">#rpc</a>
             
           </div>
         
@@ -297,15 +306,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/04/10/domain/%E9%AB%98%E5%8F%AF%E7%94%A8/ipvs/" target="_self">
-          ipvs.md
+        <a href="/2024/04/29/domain/golang/gopackage/" target="_self">
+          gopackage.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/10/domain/%E9%AB%98%E5%8F%AF%E7%94%A8/ipvs/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/29/domain/golang/gopackage/" target="_self">
         <div>
-          1 VS&#x2F;DR 模式参考链接 http://zh.linuxvirtualserver.org/node/28 描述的是使用虚拟服务器&#x2F;直接路由（VS&#x2F;DR）模式的网络体系结构。在这种模式下，负载均衡的实现依赖于一个调度器（通常是一个专用设备或服务器，负责流量的分发）和多个实际的后端服务器（组成服务器组，用于处理请求）。下面是对这段描述的逐句解读：  调度器和服务器组
+          概述存放 golang 的 package 使用技巧 并发errgroup提供多个协程间同步机制，一个协程出错，其他协程可以被同步到这个错误 12345678910111213141516171819202122232425262728293031323334353637383940414243package mainimport (    &quot;context&quot;    &quot
         </div>
       </a>
 
@@ -313,8 +322,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-10 00:00" pubdate>
-              2024-04-10
+            <time datetime="2024-04-29 00:00" pubdate>
+              2024-04-29
             </time>
           </div>
         
@@ -334,7 +343,7 @@
   
     <span>></span>
     
-  <a href="/categories/domain/%E9%AB%98%E5%8F%AF%E7%94%A8/" class="category-chain-item">高可用</a>
+  <a href="/categories/domain/golang/" class="category-chain-item">golang</a>
   
   
 
@@ -351,11 +360,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/lvs/">#lvs</a>
-            
-              <a href="/tags/ipvs/">#ipvs</a>
-            
-              <a href="/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/">#高可用</a>
+              <a href="/tags/golang/">#golang</a>
             
           </div>
         
@@ -369,15 +374,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/04/10/mdstorage/domain/k8s/apiserver%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3/" target="_self">
-          apiserver问题和解决.md
+        <a href="/2024/04/29/mdstorage/domain/golang/gopackage/" target="_self">
+          gopackage.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/10/mdstorage/domain/k8s/apiserver%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/29/mdstorage/domain/golang/gopackage/" target="_self">
         <div>
-          问题apiserver cr 的 size 由什么决定？kube-apiserver 的参数主要集中在API行为的配置、认证授权、日志记录、以及与其他组件的交互等方面。 对于控制请求大小，Kubernetes 主要依靠的是请求超时设置、客户端请求限速（Rate Limiting）、以及其他API服务器的高级配置，但没有直接限制请求体大小的参数。这种控制机制更多地依赖于整体架构设计和在Ingress
+          概述存放 golang 的 package 使用技巧 并发errgroup提供多个协程间同步机制，一个协程出错，其他协程可以被同步到这个错误 12345678910111213141516171819202122232425262728293031323334353637383940414243package mainimport (    &quot;context&quot;    &quot
         </div>
       </a>
 
@@ -385,8 +390,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-10 00:00" pubdate>
-              2024-04-10
+            <time datetime="2024-04-29 00:00" pubdate>
+              2024-04-29
             </time>
           </div>
         
@@ -406,7 +411,7 @@
   
     <span>></span>
     
-  <a href="/categories/domain/k8s/" class="category-chain-item">k8s</a>
+  <a href="/categories/domain/golang/" class="category-chain-item">golang</a>
   
   
 
@@ -423,9 +428,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/apiserver/">#apiserver</a>
-            
-              <a href="/tags/etcd/">#etcd</a>
+              <a href="/tags/golang/">#golang</a>
             
           </div>
         
@@ -439,15 +442,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/04/10/mdstorage/domain/%E9%AB%98%E5%8F%AF%E7%94%A8/ipvs/" target="_self">
-          ipvs.md
+        <a href="/2024/04/25/my/" target="_self">
+          my.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/10/mdstorage/domain/%E9%AB%98%E5%8F%AF%E7%94%A8/ipvs/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/25/my/" target="_self">
         <div>
-          1 VS&#x2F;DR 模式参考链接 http://zh.linuxvirtualserver.org/node/28 描述的是使用虚拟服务器&#x2F;直接路由（VS&#x2F;DR）模式的网络体系结构。在这种模式下，负载均衡的实现依赖于一个调度器（通常是一个专用设备或服务器，负责流量的分发）和多个实际的后端服务器（组成服务器组，用于处理请求）。下面是对这段描述的逐句解读：  调度器和服务器组
+          概述Linux 配置软件安装edge 安装firefox 安装clash 安装dida 安装listen1 安装snipaste 安装virt-manager 安装fcitx5 安装桌面美化定时脚本定时提交10 2 * * * /opt/mystorage/github/dairy/script/commit_cron.sh   快捷键配置Jetbrains keymapkeymap emacs
         </div>
       </a>
 
@@ -455,8 +458,92 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-10 00:00" pubdate>
-              2024-04-10
+            <time datetime="2024-04-25 00:00" pubdate>
+              2024-04-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/my/">#my</a>
+            
+              <a href="/tags/me/">#me</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/25/mdstorage/my/" target="_self">
+          my.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/25/mdstorage/my/" target="_self">
+        <div>
+          概述Linux 配置软件安装edge 安装firefox 安装clash 安装dida 安装listen1 安装snipaste 安装virt-manager 安装fcitx5 安装桌面美化定时脚本定时提交10 2 * * * /opt/mystorage/github/dairy/script/commit_cron.sh   快捷键配置Jetbrains keymapkeymap emacs
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-25 00:00" pubdate>
+              2024-04-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/my/">#my</a>
+            
+              <a href="/tags/me/">#me</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/25/domain/linux/gnome%E6%A1%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/" target="_self">
+          gnome桌面美化.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/25/domain/linux/gnome%E6%A1%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/" target="_self">
+        <div>
+          概述任务栏美化dash to dock注意要选择 gnome 版本，不然存在不兼容情况 搜索 扩展 应用，里面将 Dash to Dock 进行设置即可 12345bashsudo apt updatesudo apt install gnome-shell-extension-prefs
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-25 00:00" pubdate>
+              2024-04-25
             </time>
           </div>
         
@@ -476,7 +563,7 @@
   
     <span>></span>
     
-  <a href="/categories/domain/%E9%AB%98%E5%8F%AF%E7%94%A8/" class="category-chain-item">高可用</a>
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
   
   
 
@@ -493,11 +580,13 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/lvs/">#lvs</a>
+              <a href="/tags/Linux/">#Linux</a>
             
-              <a href="/tags/ipvs/">#ipvs</a>
+              <a href="/tags/gnome/">#gnome</a>
             
-              <a href="/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/">#高可用</a>
+              <a href="/tags/Ubuntu/">#Ubuntu</a>
+            
+              <a href="/tags/Debian/">#Debian</a>
             
           </div>
         
@@ -511,15 +600,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/04/09/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker/" target="_self">
-          容器.md
+        <a href="/2024/04/25/domain/python/python%E5%AE%89%E8%A3%85/" target="_self">
+          python
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/09/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/25/domain/python/python%E5%AE%89%E8%A3%85/" target="_self">
         <div>
-          安装参考链接：https://u.sb/debian-install-docker/ 命令run常用 –rm     运行后自动删除，常用于测试 –net&#x3D;host     使用宿主机网络拓扑 -e $env_opt&#x3D;$value      设置环境变量 -d          后台运行，避免退出 -it          开启交互式命令行 -v $host_dir:$cont
+          概述python3 Linux 安装 安装python3 安装 12345678910111213141516171819202122232425262728293031323334#! /bin/bash# debian安装python3# openssl-devel libffi-devel gcc 如果不安装，将会导致后面出问题；其他的没试过sudo apt-get install apti
         </div>
       </a>
 
@@ -527,8 +616,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-09 00:00" pubdate>
-              2024-04-09
+            <time datetime="2024-04-25 00:00" pubdate>
+              2024-04-25
             </time>
           </div>
         
@@ -548,7 +637,7 @@
   
     <span>></span>
     
-  <a href="/categories/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/" class="category-chain-item">虚拟化</a>
+  <a href="/categories/domain/python/" class="category-chain-item">python</a>
   
   
 
@@ -565,9 +654,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%AE%89%E8%A3%85/">#安装</a>
+              <a href="/tags/python/">#python</a>
             
-              <a href="/tags/docker/">#docker</a>
+              <a href="/tags/pip/">#pip</a>
             
           </div>
         
@@ -581,15 +670,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/04/09/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker/" target="_self">
-          容器.md
+        <a href="/2024/04/25/mdstorage/domain/linux/gnome%E6%A1%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/" target="_self">
+          gnome桌面美化.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/09/mdstorage/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/docker/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/25/mdstorage/domain/linux/gnome%E6%A1%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/" target="_self">
         <div>
-          安装参考链接：https://u.sb/debian-install-docker/ 命令run常用 –rm     运行后自动删除，常用于测试 –net&#x3D;host     使用宿主机网络拓扑 -e $env_opt&#x3D;$value      设置环境变量 -d          后台运行，避免退出 -it          开启交互式命令行 -v $host_dir:$cont
+          概述任务栏美化dash to dock注意要选择 gnome 版本，不然存在不兼容情况 搜索 扩展 应用，里面将 Dash to Dock 进行设置即可 12345bashsudo apt updatesudo apt install gnome-shell-extension-prefs
         </div>
       </a>
 
@@ -597,8 +686,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-09 00:00" pubdate>
-              2024-04-09
+            <time datetime="2024-04-25 00:00" pubdate>
+              2024-04-25
             </time>
           </div>
         
@@ -618,7 +707,7 @@
   
     <span>></span>
     
-  <a href="/categories/domain/%E8%99%9A%E6%8B%9F%E5%8C%96/" class="category-chain-item">虚拟化</a>
+  <a href="/categories/domain/linux/" class="category-chain-item">linux</a>
   
   
 
@@ -635,9 +724,13 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%AE%89%E8%A3%85/">#安装</a>
+              <a href="/tags/Linux/">#Linux</a>
             
-              <a href="/tags/docker/">#docker</a>
+              <a href="/tags/gnome/">#gnome</a>
+            
+              <a href="/tags/Ubuntu/">#Ubuntu</a>
+            
+              <a href="/tags/Debian/">#Debian</a>
             
           </div>
         
@@ -651,15 +744,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/04/08/domain/rust/%E5%80%9F%E7%94%A8/" target="_self">
-          借用.md
+        <a href="/2024/04/25/mdstorage/domain/python/python%E5%AE%89%E8%A3%85/" target="_self">
+          python
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/domain/rust/%E5%80%9F%E7%94%A8/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/25/mdstorage/domain/python/python%E5%AE%89%E8%A3%85/" target="_self">
         <div>
-          借用Rust 中的借用（borrowing）是一种使得程序能够通过引用访问数据，而不取得数据的所有权的机制。这对于 Rust 的内存安全特性至关重要。借用分为两种：不可变借用和可变借用。以下是两种借用的简单示例： 不可变借用不可变借用允许读取数据但不能修改它。可以有多个不可变引用指向同一数据，因为它们都不会改变数据。 123456789101112131415fn main() &#123;
+          概述python3 Linux 安装 安装python3 安装 12345678910111213141516171819202122232425262728293031323334#! /bin/bash# debian安装python3# openssl-devel libffi-devel gcc 如果不安装，将会导致后面出问题；其他的没试过sudo apt-get install apti
         </div>
       </a>
 
@@ -667,8 +760,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 00:00" pubdate>
-              2024-04-08
+            <time datetime="2024-04-25 00:00" pubdate>
+              2024-04-25
             </time>
           </div>
         
@@ -688,7 +781,7 @@
   
     <span>></span>
     
-  <a href="/categories/domain/rust/" class="category-chain-item">rust</a>
+  <a href="/categories/domain/python/" class="category-chain-item">python</a>
   
   
 
@@ -705,7 +798,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/rust/">#rust</a>
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/pip/">#pip</a>
             
           </div>
         
@@ -719,15 +814,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/04/08/mdstorage/domain/rust/%E5%80%9F%E7%94%A8/" target="_self">
-          借用.md
+        <a href="/2024/04/24/domain/golang/delve/" target="_self">
+          delve.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/mdstorage/domain/rust/%E5%80%9F%E7%94%A8/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/24/domain/golang/delve/" target="_self">
         <div>
-          借用Rust 中的借用（borrowing）是一种使得程序能够通过引用访问数据，而不取得数据的所有权的机制。这对于 Rust 的内存安全特性至关重要。借用分为两种：不可变借用和可变借用。以下是两种借用的简单示例： 不可变借用不可变借用允许读取数据但不能修改它。可以有多个不可变引用指向同一数据，因为它们都不会改变数据。 123456789101112131415fn main() &#123;
+          概述Go 的调试工具 安装1go install github.com/go-delve/delve/cmd/dlv@latest   Goland 配合本地调试（本地 Ubuntu）本地执行 dlv debug --headless --listen=:2345 --api-version=2 --accept-multiclient $main_path Goland Debug -&gt;
         </div>
       </a>
 
@@ -735,8 +830,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 00:00" pubdate>
-              2024-04-08
+            <time datetime="2024-04-24 00:00" pubdate>
+              2024-04-24
             </time>
           </div>
         
@@ -756,7 +851,7 @@
   
     <span>></span>
     
-  <a href="/categories/domain/rust/" class="category-chain-item">rust</a>
+  <a href="/categories/domain/golang/" class="category-chain-item">golang</a>
   
   
 
@@ -773,91 +868,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/rust/">#rust</a>
+              <a href="/tags/delve/">#delve</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/07/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E7%AE%A1%E7%90%86%E9%9D%A2HA%E6%94%B9%E9%80%A0%E7%AD%94%E7%96%91/" target="_self">
-          管理面HA改造答疑.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/07/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E7%AE%A1%E7%90%86%E9%9D%A2HA%E6%94%B9%E9%80%A0%E7%AD%94%E7%96%91/" target="_self">
-        <div>
-          Keepalived 概述Keepalived 为 Linux 系统提供了负载均衡和高可用能力。负载均衡的能力来自 Linux 内核中的 LVS 项目模块 IPVS（IP Virtual Server）。 Keepalived 运行在 Linux 系统中，它会启动内核中的 LVS 服务来创建虚拟服务器。比如我们在两台服务器上都启动了一个 Keepalived 服务，然后 LVS 会虚拟化出来一个
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-07 00:00" pubdate>
-              2024-04-07
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/sr/">#sr</a>
-            
-              <a href="/tags/ha/">#ha</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/07/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E7%AE%A1%E7%90%86%E9%9D%A2HA%E6%94%B9%E9%80%A0%E7%AD%94%E7%96%91/" target="_self">
-          管理面HA改造答疑.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/07/mdstorage/project/sr/%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E6%94%B9%E9%80%A0/%E7%AE%A1%E7%90%86%E9%9D%A2HA%E6%94%B9%E9%80%A0%E7%AD%94%E7%96%91/" target="_self">
-        <div>
-          Keepalived 概述Keepalived 为 Linux 系统提供了负载均衡和高可用能力。负载均衡的能力来自 Linux 内核中的 LVS 项目模块 IPVS（IP Virtual Server）。 Keepalived 运行在 Linux 系统中，它会启动内核中的 LVS 服务来创建虚拟服务器。比如我们在两台服务器上都启动了一个 Keepalived 服务，然后 LVS 会虚拟化出来一个
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-07 00:00" pubdate>
-              2024-04-07
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/sr/">#sr</a>
-            
-              <a href="/tags/ha/">#ha</a>
+              <a href="/tags/dlv/">#dlv</a>
             
           </div>
         
@@ -869,7 +882,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/27/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/#board">26</a><a class="page-number" href="/page/27/#board">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/#board">29</a><a class="page-number" href="/page/30/#board">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/58/#board">58</a><a class="extend next" rel="next" href="/page/29/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/27/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/#board">26</a><a class="page-number" href="/page/27/#board">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/#board">29</a><a class="page-number" href="/page/30/#board">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/#board">62</a><a class="extend next" rel="next" href="/page/29/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

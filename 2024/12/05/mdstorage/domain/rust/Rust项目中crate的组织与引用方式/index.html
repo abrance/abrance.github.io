@@ -1,0 +1,714 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="技术背景与原理Rust 的项目结构中，crate 是构建模块化代码的基本单元。通常，我们可以将多个相关功能封装成不同的 crate，然后在主项目或其他 crate 中引用它们。通过这种方式，项目可以更加模块化，易于维护和扩展。 crate 的基本概念 crate 是 Rust 编译的基本单位，包含了一个或多个模块（mod）。 crate 可以是库类型（lib）或者可执行类型（bin）。 Cargo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust项目中crate的组织与引用方式">
+<meta property="og:url" content="https://abrance.github.io/2024/12/05/mdstorage/domain/rust/Rust%E9%A1%B9%E7%9B%AE%E4%B8%ADcrate%E7%9A%84%E7%BB%84%E7%BB%87%E4%B8%8E%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="技术背景与原理Rust 的项目结构中，crate 是构建模块化代码的基本单元。通常，我们可以将多个相关功能封装成不同的 crate，然后在主项目或其他 crate 中引用它们。通过这种方式，项目可以更加模块化，易于维护和扩展。 crate 的基本概念 crate 是 Rust 编译的基本单位，包含了一个或多个模块（mod）。 crate 可以是库类型（lib）或者可执行类型（bin）。 Cargo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-12-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-03T04:09:58.272Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="Rust">
+<meta property="article:tag" content="crate">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Rust项目中crate的组织与引用方式 - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Rust项目中crate的组织与引用方式"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-12-05 00:00" pubdate>
+          December 5, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          945 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Rust项目中crate的组织与引用方式</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="技术背景与原理"><a href="#技术背景与原理" class="headerlink" title="技术背景与原理"></a>技术背景与原理</h2><p>Rust 的项目结构中，<code>crate</code> 是构建模块化代码的基本单元。通常，我们可以将多个相关功能封装成不同的 <code>crate</code>，然后在主项目或其他 <code>crate</code> 中引用它们。通过这种方式，项目可以更加模块化，易于维护和扩展。</p>
+<h3 id="crate-的基本概念"><a href="#crate-的基本概念" class="headerlink" title="crate 的基本概念"></a><code>crate</code> 的基本概念</h3><ul>
+<li><strong><code>crate</code></strong> 是 Rust 编译的基本单位，包含了一个或多个模块（<code>mod</code>）。</li>
+<li><code>crate</code> 可以是库类型（<code>lib</code>）或者可执行类型（<code>bin</code>）。</li>
+<li><code>Cargo.toml</code> 是每个 <code>crate</code> 的配置文件，包含了该 <code>crate</code> 的依赖、版本信息、构建指令等。</li>
+</ul>
+<h3 id="多-crate-的优势"><a href="#多-crate-的优势" class="headerlink" title="多 crate 的优势"></a>多 <code>crate</code> 的优势</h3><ul>
+<li><strong>模块化</strong>：将不同功能封装到独立的 <code>crate</code> 中，使代码更加清晰和易于维护。</li>
+<li><strong>依赖管理</strong>：可以明确地管理每个 <code>crate</code> 之间的依赖关系。</li>
+<li><strong>可重用性</strong>：将公共功能提取到独立的 <code>crate</code> 中，便于在其他项目中重用。</li>
+</ul>
+<h2 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h2><h3 id="1-创建多个-crate"><a href="#1-创建多个-crate" class="headerlink" title="1. 创建多个 crate"></a>1. 创建多个 <code>crate</code></h3><p>在一个 Rust 项目中，你可能需要将不同的功能模块拆分成多个 <code>crate</code>，以便更好地组织代码。</p>
+<h4 id="创建库-crate"><a href="#创建库-crate" class="headerlink" title="创建库 crate"></a>创建库 <code>crate</code></h4><p>假设你要创建三个库 <code>crate</code>，分别是 <code>controller/client</code>、<code>controller/runtime</code> 和 <code>controller/derive</code>，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">cargo new controller/client --lib<br>cargo new controller/runtime --lib<br>cargo new controller/derive --lib<br></code></pre></td></tr></table></figure>
+
+<p>这将分别创建三个库类型的 <code>crate</code>，并将它们放置在项目的 <code>controller</code> 目录下。</p>
+<h3 id="2-组织项目结构"><a href="#2-组织项目结构" class="headerlink" title="2. 组织项目结构"></a>2. 组织项目结构</h3><p>创建完成后，项目目录结构大致如下：</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs axapta">my_project<br>│<br>├── controller<br>│   ├── <span class="hljs-keyword">client</span><br>│   ├── runtime<br>│   └── derive<br>│<br>├── Cargo.toml  <span class="hljs-comment">// 主项目配置</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-引用-crate"><a href="#3-引用-crate" class="headerlink" title="3. 引用 crate"></a>3. 引用 <code>crate</code></h3><p>在 Rust 中，如果你想要在一个 <code>crate</code> 中引用另一个 <code>crate</code>，只需要在目标 <code>crate</code> 的 <code>Cargo.toml</code> 中添加依赖项。</p>
+<h4 id="示例：在-controller-client-中引用-controller-runtime-和-controller-derive"><a href="#示例：在-controller-client-中引用-controller-runtime-和-controller-derive" class="headerlink" title="示例：在 controller/client 中引用 controller/runtime 和 controller/derive"></a>示例：在 <code>controller/client</code> 中引用 <code>controller/runtime</code> 和 <code>controller/derive</code></h4><p>假设你想要在 <code>controller/client</code> 中使用 <code>controller/runtime</code> 和 <code>controller/derive</code> 的功能，你需要在 <code>controller/client/Cargo.toml</code> 中添加如下依赖：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[dependencies]</span><br><span class="hljs-attr">runtime</span> = &#123; path = <span class="hljs-string">&quot;../runtime&quot;</span> &#125;<br><span class="hljs-attr">derive</span> = &#123; path = <span class="hljs-string">&quot;../derive&quot;</span> &#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样，<code>controller/client</code> 就能够访问 <code>controller/runtime</code> 和 <code>controller/derive</code> 中的模块和功能。</p>
+<h3 id="4-在代码中使用其他-crate-的功能"><a href="#4-在代码中使用其他-crate-的功能" class="headerlink" title="4. 在代码中使用其他 crate 的功能"></a>4. 在代码中使用其他 <code>crate</code> 的功能</h3><p>引用了其他 <code>crate</code> 之后，你就可以在代码中使用它们了。</p>
+<h4 id="示例：在-controller-client-中使用-controller-runtime-和-controller-derive"><a href="#示例：在-controller-client-中使用-controller-runtime-和-controller-derive" class="headerlink" title="示例：在 controller/client 中使用 controller/runtime 和 controller/derive"></a>示例：在 <code>controller/client</code> 中使用 <code>controller/runtime</code> 和 <code>controller/derive</code></h4><p>在 <code>controller/client/src/lib.rs</code> 文件中，你可以像下面这样使用 <code>runtime</code> 和 <code>derive</code> 中的功能：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 引用 runtime crate 中的功能</span><br><span class="hljs-keyword">use</span> runtime::some_runtime_function;<br><span class="hljs-comment">// 引用 derive crate 中的功能</span><br><span class="hljs-keyword">use</span> derive::some_derive_function;<br><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">client_function</span>() &#123;<br>    <span class="hljs-comment">// 使用 runtime crate 的功能</span><br>    <span class="hljs-title function_ invoke__">some_runtime_function</span>();<br>    <br>    <span class="hljs-comment">// 使用 derive crate 的功能</span><br>    <span class="hljs-title function_ invoke__">some_derive_function</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-配置工作空间"><a href="#5-配置工作空间" class="headerlink" title="5. 配置工作空间"></a>5. 配置工作空间</h3><p>如果你的项目由多个 <code>crate</code> 组成，并且这些 <code>crate</code> 在同一个工作空间下，可以在项目根目录的 <code>Cargo.toml</code> 中配置工作空间，方便管理和构建这些 <code>crate</code>。</p>
+<p>在 <code>Cargo.toml</code> 中配置工作空间如下：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[workspace]</span><br><span class="hljs-attr">members</span> = [<br>    <span class="hljs-string">&quot;controller/client&quot;</span>,<br>    <span class="hljs-string">&quot;controller/runtime&quot;</span>,<br>    <span class="hljs-string">&quot;controller/derive&quot;</span><br>]<br></code></pre></td></tr></table></figure>
+
+<p>通过这种方式，<code>cargo</code> 就会自动识别这些 <code>crate</code>，并且在构建时一并处理。</p>
+<h3 id="6-构建和运行"><a href="#6-构建和运行" class="headerlink" title="6. 构建和运行"></a>6. 构建和运行</h3><p>使用 <code>cargo build</code> 构建整个工作空间时，Rust 会自动构建 <code>controller/client</code>、<code>controller/runtime</code> 和 <code>controller/derive</code> 这三个 <code>crate</code>。你也可以使用 <code>cargo run</code> 直接运行 <code>controller/client</code> 中的主程序（如果它有主程序的话）。</p>
+<h2 id="问题解决与常见问题"><a href="#问题解决与常见问题" class="headerlink" title="问题解决与常见问题"></a>问题解决与常见问题</h2><h3 id="1-引用路径错误"><a href="#1-引用路径错误" class="headerlink" title="1. 引用路径错误"></a>1. 引用路径错误</h3><p>如果你遇到找不到 <code>crate</code> 的问题，请检查 <code>Cargo.toml</code> 中的路径是否正确。<code>path</code> 参数应该指向正确的相对路径。例如，<code>controller/client</code> 引用 <code>controller/runtime</code> 时，应该使用相对路径 <code>&quot;../runtime&quot;</code>。</p>
+<h3 id="2-工作空间配置错误"><a href="#2-工作空间配置错误" class="headerlink" title="2. 工作空间配置错误"></a>2. 工作空间配置错误</h3><p>确保在根 <code>Cargo.toml</code> 中配置了 <code>[workspace]</code> 和正确的 <code>members</code>。如果忘记配置，<code>cargo</code> 将无法识别并构建这些 <code>crate</code>。</p>
+<h3 id="3-循环依赖问题"><a href="#3-循环依赖问题" class="headerlink" title="3. 循环依赖问题"></a>3. 循环依赖问题</h3><p>如果两个 <code>crate</code> 之间有依赖关系，确保避免循环依赖。Rust 不允许出现这种情况，否则会导致编译失败。</p>
+<h2 id="附加资源"><a href="#附加资源" class="headerlink" title="附加资源"></a>附加资源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/cargo/">Rust 官方文档：Cargo</a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">Rust 官方文档：工作空间</a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/cargo/reference/manifest.html">Cargo.toml 文件详解</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/rust/" class="category-chain-item">rust</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Rust/" class="print-no-link">#Rust</a>
+      
+        <a href="/tags/crate/" class="print-no-link">#crate</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Rust项目中crate的组织与引用方式</div>
+      <div>https://abrance.github.io/2024/12/05/mdstorage/domain/rust/Rust项目中crate的组织与引用方式/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 5, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/12/05/mdstorage/domain/makefile/task/" title="task">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">task</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/29/mdstorage/domain/rust/Crate/" title="Crate">
+                        <span class="hidden-mobile">Crate</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

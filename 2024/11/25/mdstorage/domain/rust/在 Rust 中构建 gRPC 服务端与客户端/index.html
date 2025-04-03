@@ -1,0 +1,973 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="文章概述  标题：在 Rust 中构建 gRPC 服务端与客户端（使用自定义 tonic_build 配置） 作者：Rust 技术教练 发布日期：2024 年 11 月 25 日 链接地址：待发布 摘要：本教程将指导你使用 tonic_build::configure 自定义生成 gRPC 的 Rust 代码，并完成服务端和客户端的实现，探索如何灵活配置生成路径及相关功能。   技术背景与原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 Rust 中构建 gRPC 服务端与客户端">
+<meta property="og:url" content="https://abrance.github.io/2024/11/25/mdstorage/domain/rust/%E5%9C%A8%20Rust%20%E4%B8%AD%E6%9E%84%E5%BB%BA%20gRPC%20%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="文章概述  标题：在 Rust 中构建 gRPC 服务端与客户端（使用自定义 tonic_build 配置） 作者：Rust 技术教练 发布日期：2024 年 11 月 25 日 链接地址：待发布 摘要：本教程将指导你使用 tonic_build::configure 自定义生成 gRPC 的 Rust 代码，并完成服务端和客户端的实现，探索如何灵活配置生成路径及相关功能。   技术背景与原理">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-03T04:09:58.272Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="Rust">
+<meta property="article:tag" content="grpc">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>在 Rust 中构建 gRPC 服务端与客户端 - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="在 Rust 中构建 gRPC 服务端与客户端"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-25 00:00" pubdate>
+          November 25, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">在 Rust 中构建 gRPC 服务端与客户端</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <hr>
+<p><strong>文章概述</strong></p>
+<ul>
+<li><strong>标题</strong>：在 Rust 中构建 gRPC 服务端与客户端（使用自定义 <code>tonic_build</code> 配置）</li>
+<li><strong>作者</strong>：Rust 技术教练</li>
+<li><strong>发布日期</strong>：2024 年 11 月 25 日</li>
+<li><strong>链接地址</strong>：待发布</li>
+<li><strong>摘要</strong>：本教程将指导你使用 <code>tonic_build::configure</code> 自定义生成 gRPC 的 Rust 代码，并完成服务端和客户端的实现，探索如何灵活配置生成路径及相关功能。</li>
+</ul>
+<hr>
+<p><strong>技术背景与原理</strong></p>
+<ul>
+<li><p><strong>技术背景</strong>：</p>
+<ul>
+<li>gRPC 和 Protocol Buffers 是构建分布式系统的标准技术栈。</li>
+<li>Rust 的异步编程模型（基于 <code>tokio</code> 和 <code>async/await</code>）非常适合 gRPC 的非阻塞通信需求。</li>
+</ul>
+</li>
+<li><p><strong>关键技术或概念</strong>：</p>
+<ol>
+<li>**自定义 <code>tonic_build</code>**：通过 <code>tonic_build::configure</code>，可以指定生成代码的路径和是否生成服务端&#x2F;客户端代码。</li>
+<li><strong>自定义输出目录</strong>：可以将生成的 <code>.rs</code> 文件放在项目的特定目录中（如 <code>src/proto</code>），便于管理。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<p><strong>详细步骤</strong></p>
+<h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. <strong>环境准备</strong></h3><ul>
+<li>安装 <code>protoc</code><br><a target="_blank" rel="noopener" href="https://github.com/protocolbuffers/protobuf/releases">protoc release 页面</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><br>wget <span class="hljs-variable">$protoc_release_url</span> -o protoc_zip<br><span class="hljs-built_in">mkdir</span> -p /opt/software/protoc_dir <br><span class="hljs-built_in">cd</span> /opt/software/protoc_dir<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">ln</span> -s <span class="hljs-variable">$PWD</span>/bin/protoc /usr/local/bin/protoc<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">ln</span> -s <span class="hljs-variable">$PWD</span>/include/* /usr/local/include/<br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="2-创建-Rust-项目"><a href="#2-创建-Rust-项目" class="headerlink" title="2. 创建 Rust 项目"></a>2. <strong>创建 Rust 项目</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">cargo new dam --bin<br><span class="hljs-built_in">cd</span> dam<br></code></pre></td></tr></table></figure>
+
+<p>项目结构：</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs pf">grpc_demo/<br>├── Cargo.toml<br>├── build.rs<br>├── <span class="hljs-keyword">proto</span>/<br>│   └── message.<span class="hljs-keyword">proto</span><br>└── src/<br>    ├── main.rs<br>    ├── server.rs<br>    ├── client.rs<br>    └── <span class="hljs-keyword">proto</span>/          <span class="hljs-comment"># 将生成的 Rust 代码存放在此目录</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-添加依赖"><a href="#3-添加依赖" class="headerlink" title="3. 添加依赖"></a>3. <strong>添加依赖</strong></h3><p>在 <code>Cargo.toml</code> 中添加以下内容：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[package]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;dam&quot;</span><br><span class="hljs-attr">version</span> = <span class="hljs-string">&quot;0.1.0&quot;</span><br><span class="hljs-attr">edition</span> = <span class="hljs-string">&quot;2021&quot;</span><br><br><span class="hljs-section">[dependencies]</span><br><span class="hljs-attr">prost</span> = <span class="hljs-string">&quot;0.13.3&quot;</span><br><span class="hljs-attr">tokio</span> = &#123; version = <span class="hljs-string">&quot;1.41.1&quot;</span>, features = [<span class="hljs-string">&quot;rt-multi-thread&quot;</span>, <span class="hljs-string">&quot;macros&quot;</span>]&#125;<br><span class="hljs-attr">tonic</span> = &#123; version = <span class="hljs-string">&quot;0.12.3&quot;</span>, features = [<span class="hljs-string">&quot;server&quot;</span>, <span class="hljs-string">&quot;codegen&quot;</span>] &#125;<br><span class="hljs-attr">prost-types</span> = <span class="hljs-string">&quot;0.13.3&quot;</span><br><span class="hljs-attr">tonic-build</span> = <span class="hljs-string">&quot;0.12.3&quot;</span><br><br><span class="hljs-section">[build-dependencies]</span><br><span class="hljs-attr">tonic-build</span> = <span class="hljs-string">&quot;0.12.3&quot;</span><br><br><span class="hljs-section">[[bin]]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;server&quot;</span><br><span class="hljs-attr">path</span> = <span class="hljs-string">&quot;src/server.rs&quot;</span><br><br><span class="hljs-section">[[bin]]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;client&quot;</span><br><span class="hljs-attr">path</span> = <span class="hljs-string">&quot;src/client.rs&quot;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="4-定义-proto-文件"><a href="#4-定义-proto-文件" class="headerlink" title="4. 定义 .proto 文件"></a>4. <strong>定义 .proto 文件</strong></h3><p>在 <code>proto/message.proto</code> 中定义 gRPC 服务和消息：</p>
+<figure class="highlight proto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs proto">syntax = <span class="hljs-string">&quot;proto3&quot;</span>;<br><br><span class="hljs-keyword">package</span> message;<br><br><span class="hljs-keyword">service </span><span class="hljs-title class_">MessageService</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">rpc</span> SendMessage (MessageRequest) <span class="hljs-keyword">returns</span> (MessageResponse)</span>;<br>&#125;<br><br><span class="hljs-keyword">message </span><span class="hljs-title class_">MessageRequest</span> &#123;<br>    <span class="hljs-type">string</span> content = <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-keyword">message </span><span class="hljs-title class_">MessageResponse</span> &#123;<br>    <span class="hljs-type">string</span> content = <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="5-配置-build-rs"><a href="#5-配置-build-rs" class="headerlink" title="5. 配置 build.rs"></a>5. <strong>配置 <code>build.rs</code></strong></h3><p>在 <code>build.rs</code> 中自定义生成 <code>proto</code> 代码路径和服务端&#x2F;客户端代码生成选项：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;(), <span class="hljs-type">Box</span>&lt;<span class="hljs-keyword">dyn</span> std::error::Error&gt;&gt; &#123;<br>    tonic_build::<span class="hljs-title function_ invoke__">configure</span>()<br>        .<span class="hljs-title function_ invoke__">build_server</span>(<span class="hljs-literal">true</span>)  <span class="hljs-comment">// 生成服务端代码</span><br>        .<span class="hljs-title function_ invoke__">build_client</span>(<span class="hljs-literal">true</span>)  <span class="hljs-comment">// 生成客户端代码</span><br>        .<span class="hljs-title function_ invoke__">out_dir</span>(<span class="hljs-string">&quot;src/proto&quot;</span>)  <span class="hljs-comment">// 将生成的文件放到 src/proto</span><br>        .<span class="hljs-title function_ invoke__">compile_protos</span>(&amp;[<span class="hljs-string">&quot;proto/message.proto&quot;</span>], &amp;[<span class="hljs-string">&quot;proto&quot;</span>])?; <span class="hljs-comment">// 定义 proto 路径</span><br>    <span class="hljs-title function_ invoke__">Ok</span>(())<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行以下命令生成代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cargo build<br></code></pre></td></tr></table></figure>
+
+<p>生成的 <code>message.rs</code> 文件将放在 <code>src/proto/</code> 中。</p>
+<hr>
+<h3 id="6-实现服务端"><a href="#6-实现服务端" class="headerlink" title="6. 实现服务端"></a>6. <strong>实现服务端</strong></h3><p>在 <code>src/server.rs</code> 中实现服务端逻辑：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> tonic::&#123;transport::Server, IntoRequest, Request, Response, Status&#125;;<br><span class="hljs-keyword">use</span> message::&#123;MessageRequest, MessageResponse&#125;;<br><span class="hljs-keyword">use</span> message::message_service_server::&#123;MessageService, MessageServiceServer&#125;;<br><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> message &#123;<br>    include!(<span class="hljs-string">&quot;proto/message.rs&quot;</span>);<br>&#125;<br><br><span class="hljs-meta">#[derive(Debug, Default)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">MyMessageService</span>;<br><br><span class="hljs-meta">#[tonic::async_trait]</span><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">MessageService</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">MyMessageService</span> &#123;<br>    <span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">send_message</span>(<br>        &amp;<span class="hljs-keyword">self</span>,<br>        request: Request&lt;MessageRequest&gt;,<br>    ) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;Response&lt;MessageResponse&gt;, Status&gt; &#123;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Got a request: &#123;:?&#125;&quot;</span>, request);<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">reply</span> = MessageResponse &#123;<br>            content: <span class="hljs-built_in">format!</span>(<span class="hljs-string">&quot;Echo: &#123;&#125;&quot;</span>, request.<span class="hljs-title function_ invoke__">into_inner</span>().content),<br>        &#125;;<br>        <span class="hljs-title function_ invoke__">Ok</span>(Response::<span class="hljs-title function_ invoke__">new</span>(reply))<br>    &#125;<br>&#125;<br><br><span class="hljs-meta">#[tokio::main]</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;(), <span class="hljs-type">Box</span>&lt;<span class="hljs-keyword">dyn</span> std::error::Error&gt;&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">addr</span> = <span class="hljs-string">&quot;[::1]:50051&quot;</span>.<span class="hljs-title function_ invoke__">parse</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">service</span> = MyMessageService::<span class="hljs-title function_ invoke__">default</span>();<br><br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Server listening on &#123;&#125;&quot;</span>, addr);<br><br>    Server::<span class="hljs-title function_ invoke__">builder</span>()<br>        .<span class="hljs-title function_ invoke__">add_service</span>(MessageServiceServer::<span class="hljs-title function_ invoke__">new</span>(service))<br>        .<span class="hljs-title function_ invoke__">serve</span>(addr)<br>        .<span class="hljs-keyword">await</span>?;<br><br>    <span class="hljs-title function_ invoke__">Ok</span>(())<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="7-实现客户端"><a href="#7-实现客户端" class="headerlink" title="7. 实现客户端"></a>7. <strong>实现客户端</strong></h3><p>在 <code>src/client.rs</code> 中实现客户端逻辑：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> message::&#123;MessageRequest, MessageResponse&#125;;<br><span class="hljs-keyword">use</span> message::message_service_client::MessageServiceClient;<br><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> message &#123;<br>    <span class="hljs-comment">//tonic::include_proto!(&quot;message&quot;);</span><br>    include!(<span class="hljs-string">&quot;proto/message.rs&quot;</span>);<br>&#125;<br><br><span class="hljs-meta">#[tokio::main]</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;(), <span class="hljs-type">Box</span>&lt;<span class="hljs-keyword">dyn</span> std::error::Error&gt;&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">client</span> = MessageServiceClient::<span class="hljs-title function_ invoke__">connect</span>(<span class="hljs-string">&quot;http://[::1]:50051&quot;</span>).<span class="hljs-keyword">await</span>?;<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">request</span> = tonic::Request::<span class="hljs-title function_ invoke__">new</span>(MessageRequest &#123;<br>        content: <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;Hello, server!&quot;</span>),<br>    &#125;);<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">response</span> = client.<span class="hljs-title function_ invoke__">send_message</span>(request).<span class="hljs-keyword">await</span>?;<br><br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Response: &#123;:?&#125;&quot;</span>, response.<span class="hljs-title function_ invoke__">into_inner</span>());<br><br>    <span class="hljs-title function_ invoke__">Ok</span>(())<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="8-运行服务端和客户端"><a href="#8-运行服务端和客户端" class="headerlink" title="8. 运行服务端和客户端"></a>8. <strong>运行服务端和客户端</strong></h3><h4 id="启动服务端："><a href="#启动服务端：" class="headerlink" title="启动服务端："></a>启动服务端：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cargo run --bin server<br></code></pre></td></tr></table></figure>
+
+<h4 id="启动客户端："><a href="#启动客户端：" class="headerlink" title="启动客户端："></a>启动客户端：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cargo run --bin client<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>问题解决与常见问题</strong></p>
+<ol>
+<li><p><strong>生成代码路径未更新</strong>：</p>
+<ul>
+<li>确保 <code>build.rs</code> 中 <code>out_dir(&quot;src/proto&quot;)</code> 配置正确。</li>
+<li>确保运行 <code>cargo build</code> 以触发代码生成。</li>
+</ul>
+</li>
+<li><p>**找不到生成的 <code>message.rs</code>**：</p>
+<ul>
+<li>确保 <code>src/proto</code> 文件夹存在，或者在运行 <code>cargo build</code> 后检查是否生成代码。</li>
+</ul>
+</li>
+<li><p><strong><code>protoc</code> 未安装或路径错误</strong>：</p>
+<ul>
+<li>确保系统正确安装 <code>protoc</code>，并将其路径加入 <code>PATH</code>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>附加资源</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.rs/tonic/latest/tonic/">Tonic 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://grpc.io/">gRPC 官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/protocolbuffers/protobuf">Protocol Buffers GitHub</a></li>
+</ul>
+<hr>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><h4 id="1-tonic-include-proto-的默认行为"><a href="#1-tonic-include-proto-的默认行为" class="headerlink" title="1. tonic::include_proto! 的默认行为"></a>1. <strong><code>tonic::include_proto!</code> 的默认行为</strong></h4><ul>
+<li><p>默认情况下，<code>tonic_build</code> 在编译 <code>.proto</code> 文件后生成的 <code>.rs</code> 文件会保存在 <code>OUT_DIR</code> 环境变量指定的目录中。</p>
+</li>
+<li><p>如果没有显式设置 <code>OUT_DIR</code> 环境变量，则该目录通常位于 Cargo 的构建输出目录。例如：</p>
+  <figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pf"><span class="hljs-variable">&lt;target_dir&gt;</span>/<span class="hljs-keyword">debug</span>/build/<span class="hljs-variable">&lt;crate_name&gt;</span>-<span class="hljs-variable">&lt;hash&gt;</span>/<span class="hljs-keyword">out</span>/<span class="hljs-variable">&lt;proto_package_name&gt;</span>.rs<br></code></pre></td></tr></table></figure>
+<p>  示例路径：</p>
+  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">target<span class="hljs-regexp">/debug/</span>build<span class="hljs-regexp">/proto_usage-4e6f1dc6a899518f/</span>out/voting.rs<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在这种默认情况下，可以使用 <code>tonic::include_proto!</code> 宏直接导入生成的 <code>.rs</code> 文件。例如：</p>
+  <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> voting &#123;<br>    tonic::include_proto!(<span class="hljs-string">&quot;voting&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>  其中 <code>&quot;voting&quot;</code> 对应 <code>.proto</code> 文件中定义的 <code>package voting;</code>。</p>
+</li>
+</ul>
+<hr>
+<h4 id="2-修改-OUT-DIR-环境变量的影响"><a href="#2-修改-OUT-DIR-环境变量的影响" class="headerlink" title="2. 修改 OUT_DIR 环境变量的影响"></a>2. <strong>修改 <code>OUT_DIR</code> 环境变量的影响</strong></h4><ul>
+<li><p>如果修改了 <code>OUT_DIR</code> 环境变量的值，或在 <code>tonic_build</code> 配置中指定了输出路径，则不能再使用 <code>tonic::include_proto!</code> 导入 <code>.rs</code> 文件。</p>
+</li>
+<li><p>在这种情况下，需要使用 Rust 提供的 <code>include!</code> 宏明确指定 <code>.rs</code> 文件的路径。例如：</p>
+  <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> voting &#123;<br>    include!(<span class="hljs-string">&quot;../protos/voting.rs&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>  这里假设 <code>voting.rs</code> 被生成到了项目的 <code>protos/</code> 目录中。</p>
+</li>
+</ul>
+<hr>
+<h4 id="3-通过-tonic-build-自定义输出路径"><a href="#3-通过-tonic-build-自定义输出路径" class="headerlink" title="3. 通过 tonic_build 自定义输出路径"></a>3. <strong>通过 <code>tonic_build</code> 自定义输出路径</strong></h4><ul>
+<li><p><code>tonic_build</code> 提供了 <code>configure</code> 方法，用于修改 <code>.proto</code> 文件编译后的 <code>.rs</code> 文件保存路径。</p>
+</li>
+<li><p>配置输出路径时，需注意：</p>
+<ol>
+<li>使用 <code>.out_dir(&quot;&lt;path&gt;&quot;)</code> 指定保存路径。</li>
+<li>若使用非默认路径，则必须使用 <code>include!</code> 宏来导入生成的 <code>.rs</code> 文件。</li>
+</ol>
+</li>
+<li><p>示例代码：</p>
+  <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::io::<span class="hljs-type">Result</span>;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;()&gt; &#123;<br>    tonic_build::<span class="hljs-title function_ invoke__">configure</span>()<br>        .<span class="hljs-title function_ invoke__">build_server</span>(<span class="hljs-literal">true</span>) <span class="hljs-comment">// 生成服务端代码</span><br>        .<span class="hljs-title function_ invoke__">build_client</span>(<span class="hljs-literal">true</span>) <span class="hljs-comment">// 生成客户端代码</span><br>        .<span class="hljs-title function_ invoke__">out_dir</span>(<span class="hljs-string">&quot;protos&quot;</span>)  <span class="hljs-comment">// 将编译后的 .rs 文件保存到项目根目录的 protos/ 目录</span><br>        .<span class="hljs-title function_ invoke__">compile</span>(&amp;[<span class="hljs-string">&quot;protos/voting.proto&quot;</span>], &amp;[<span class="hljs-string">&quot;protos&quot;</span>])?; <span class="hljs-comment">// 编译 .proto 文件</span><br>    <span class="hljs-title function_ invoke__">Ok</span>(())<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h4 id="4-tonic-build-配置详解"><a href="#4-tonic-build-配置详解" class="headerlink" title="4. tonic_build 配置详解"></a>4. <strong><code>tonic_build</code> 配置详解</strong></h4><ul>
+<li><code>build_server(true)</code>：是否生成服务端的代码（实现服务端逻辑所需的接口）。</li>
+<li><code>build_client(true)</code>：是否生成客户端的代码（调用服务端所需的客户端接口）。</li>
+<li><code>.out_dir(&quot;&lt;path&gt;&quot;)</code>：自定义输出目录，生成的 <code>.rs</code> 文件会被存放在指定路径中。</li>
+<li><code>.compile(&lt;proto_files&gt;, &lt;proto_include_paths&gt;)</code>：<ul>
+<li><code>&lt;proto_files&gt;</code>：需要编译的 <code>.proto</code> 文件路径列表。</li>
+<li><code>&lt;proto_include_paths&gt;</code>：用于提供 Protobuf 的扩展功能路径列表。如果没有额外扩展，直接使用 <code>.proto</code> 文件所在目录即可。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="5-导入生成的-rs-文件"><a href="#5-导入生成的-rs-文件" class="headerlink" title="5. 导入生成的 .rs 文件"></a>5. <strong>导入生成的 <code>.rs</code> 文件</strong></h4><ul>
+<li><p><strong>默认路径（使用 <code>OUT_DIR</code>）：</strong></p>
+  <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> voting &#123;<br>    tonic::include_proto!(<span class="hljs-string">&quot;voting&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>自定义路径（使用 <code>include!</code>）：</strong></p>
+  <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> voting &#123;<br>    include!(<span class="hljs-string">&quot;../protos/voting.rs&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h4 id="6-参考文档"><a href="#6-参考文档" class="headerlink" title="6. 参考文档"></a>6. <strong>参考文档</strong></h4><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.rs/tonic/latest/tonic/macro.include_proto.html">Tonic 的 <code>tonic::include_proto!</code> 宏文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://protobuf.dev/">Protocol Buffers 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/cargo/reference/environment-variables.html">Cargo 环境变量</a></li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="定义-gRPC-服务的-proto-文件"><a href="#定义-gRPC-服务的-proto-文件" class="headerlink" title="定义 gRPC 服务的 .proto 文件"></a><strong>定义 gRPC 服务的 <code>.proto</code> 文件</strong></h3><p><code>.proto</code> 文件是 gRPC 的基础，包含以下关键部分：</p>
+<ol>
+<li><strong>文件的语法版本</strong>：声明使用的 Protobuf 版本。</li>
+<li><strong>命名空间（package）</strong>：定义服务和消息的命名空间。</li>
+<li><strong>服务定义</strong>：描述 gRPC 服务及其方法。</li>
+<li><strong>消息结构</strong>：定义请求和响应的数据格式。</li>
+</ol>
+<h4 id="示例-proto-文件："><a href="#示例-proto-文件：" class="headerlink" title="示例 .proto 文件："></a>示例 <code>.proto</code> 文件：</h4><figure class="highlight proto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs proto">syntax = <span class="hljs-string">&quot;proto3&quot;</span>;  <span class="hljs-comment">// 声明 Protobuf 使用的版本</span><br><br><span class="hljs-keyword">package</span> message;    <span class="hljs-comment">// 定义命名空间，用于生成代码时确定模块路径</span><br><br><span class="hljs-keyword">service </span><span class="hljs-title class_">MessageService</span> &#123;  <span class="hljs-comment">// 定义 gRPC 服务</span><br>    <span class="hljs-function"><span class="hljs-keyword">rpc</span> SendMessage (MessageRequest) <span class="hljs-keyword">returns</span> (MessageResponse)</span>; <span class="hljs-comment">// 定义方法</span><br>&#125;<br><br><span class="hljs-keyword">message </span><span class="hljs-title class_">MessageRequest</span> &#123;  <span class="hljs-comment">// 定义请求消息</span><br>    <span class="hljs-type">string</span> content = <span class="hljs-number">1</span>;   <span class="hljs-comment">// 消息字段，类型为 string，字段编号为 1</span><br>&#125;<br><br><span class="hljs-keyword">message </span><span class="hljs-title class_">MessageResponse</span> &#123; <span class="hljs-comment">// 定义响应消息</span><br>    <span class="hljs-type">string</span> content = <span class="hljs-number">1</span>;   <span class="hljs-comment">// 消息字段，类型为 string，字段编号为 1</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="定义-proto-文件的主要思路"><a href="#定义-proto-文件的主要思路" class="headerlink" title="定义 .proto 文件的主要思路"></a><strong>定义 <code>.proto</code> 文件的主要思路</strong></h3><h4 id="1-确定服务的职责"><a href="#1-确定服务的职责" class="headerlink" title="1. 确定服务的职责"></a>1. <strong>确定服务的职责</strong></h4><ul>
+<li><strong>思考</strong>：服务需要完成哪些功能？<ul>
+<li>每个功能都可以抽象为一个 <code>rpc</code> 方法。</li>
+<li>例如：<code>MessageService</code> 的职责是处理消息通信，其中一个方法是 <code>SendMessage</code>。</li>
+</ul>
+</li>
+<li><strong>实践</strong>：<ul>
+<li>为服务定义一个清晰的名称，如 <code>MessageService</code>。</li>
+<li>服务可以包含一个或多个方法，每个方法表示一项功能。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-设计消息传递的接口"><a href="#2-设计消息传递的接口" class="headerlink" title="2. 设计消息传递的接口"></a>2. <strong>设计消息传递的接口</strong></h4><ul>
+<li><strong>方法设计原则</strong>：<ul>
+<li><p>方法签名遵循以下格式：</p>
+  <figure class="highlight proto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs proto"><span class="hljs-function"><span class="hljs-keyword">rpc</span> MethodName (RequestType) <span class="hljs-keyword">returns</span> (ResponseType)</span>;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>每个方法包含：</p>
+<ul>
+<li><strong>方法名称</strong>：如 <code>SendMessage</code>。</li>
+<li><strong>请求消息类型</strong>：如 <code>MessageRequest</code>。</li>
+<li><strong>响应消息类型</strong>：如 <code>MessageResponse</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>实践</strong>：<ul>
+<li>确定方法的输入和输出类型。</li>
+<li>考虑是否需要扩展（如双向流式通信）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-定义消息结构"><a href="#3-定义消息结构" class="headerlink" title="3. 定义消息结构"></a>3. <strong>定义消息结构</strong></h4><ul>
+<li><strong>思考</strong>：通信双方需要交换哪些数据？<ul>
+<li>每条消息的数据结构应尽量简单、易扩展。</li>
+<li>使用明确的字段类型和编号。</li>
+</ul>
+</li>
+<li><strong>实践</strong>：<ul>
+<li>使用 <code>message</code> 关键字定义消息。</li>
+<li>每个字段需要：<ul>
+<li><strong>类型</strong>：如 <code>string</code>, <code>int32</code>, <code>bool</code>。</li>
+<li><strong>名称</strong>：如 <code>content</code>。</li>
+<li><strong>编号</strong>：字段编号在同一消息中必须唯一，通常从 1 开始。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-关注扩展性"><a href="#4-关注扩展性" class="headerlink" title="4. 关注扩展性"></a>4. <strong>关注扩展性</strong></h4><ul>
+<li><strong>思考</strong>：如何应对未来需求的变化？<ul>
+<li>为可能扩展的字段预留字段编号。</li>
+<li>使用枚举、嵌套消息等方式提高可扩展性。</li>
+</ul>
+</li>
+<li><strong>实践</strong>：<ul>
+<li><p>在定义中保留一定的编号间隔，以便未来添加字段。</p>
+</li>
+<li><p>使用 <code>reserved</code> 关键字标记废弃的字段编号或名称：</p>
+  <figure class="highlight proto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs proto"><span class="hljs-keyword">message </span><span class="hljs-title class_">Example</span> &#123;<br>    reserved <span class="hljs-number">3</span>, <span class="hljs-number">5</span> to <span class="hljs-number">7</span>;  <span class="hljs-comment">// 废弃编号 3 和 5 到 7</span><br>    reserved <span class="hljs-string">&quot;old_field&quot;</span>; <span class="hljs-comment">// 废弃字段名称</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h3><h4 id="1-字段编号的重要性"><a href="#1-字段编号的重要性" class="headerlink" title="1. 字段编号的重要性"></a>1. <strong>字段编号的重要性</strong></h4><ul>
+<li><p>字段编号是 Protobuf 的核心，用于序列化和反序列化。</p>
+</li>
+<li><p><strong>规则</strong>：</p>
+<ul>
+<li>编号在同一 <code>message</code> 中必须唯一。</li>
+<li>建议为关键字段使用连续编号，为可选字段预留编号。</li>
+</ul>
+</li>
+<li><p><strong>示例</strong>：</p>
+  <figure class="highlight proto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs proto"><span class="hljs-keyword">message </span><span class="hljs-title class_">MessageRequest</span> &#123;<br>    <span class="hljs-type">string</span> content = <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int32</span> priority = <span class="hljs-number">2</span>;<br>    <span class="hljs-type">bool</span> is_urgent = <span class="hljs-number">3</span>;  <span class="hljs-comment">// 为新字段预留编号</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-类型选择"><a href="#2-类型选择" class="headerlink" title="2. 类型选择"></a>2. <strong>类型选择</strong></h4><ul>
+<li><p>使用 Protobuf 提供的基本类型（如 <code>int32</code>, <code>string</code>, <code>bool</code>）。</p>
+</li>
+<li><p>如果字段可以为空，建议使用 <code>optional</code> 声明：</p>
+  <figure class="highlight proto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs proto"><span class="hljs-keyword">message </span><span class="hljs-title class_">Example</span> &#123;<br>    <span class="hljs-keyword">optional</span> <span class="hljs-type">string</span> description = <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="3-命名空间的作用"><a href="#3-命名空间的作用" class="headerlink" title="3. 命名空间的作用"></a>3. <strong>命名空间的作用</strong></h4><ul>
+<li><code>package</code> 定义模块路径，避免命名冲突。</li>
+<li>生成的代码中，<code>package</code> 会映射到 Rust 的模块路径。</li>
+<li><strong>示例</strong>：<ul>
+<li><p><code>.proto</code> 文件：</p>
+  <figure class="highlight proto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs proto"><span class="hljs-keyword">package</span> message;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Rust 模块路径：</p>
+  <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust">tonic::include_proto!(<span class="hljs-string">&quot;message&quot;</span>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h4 id="4-多文件组织"><a href="#4-多文件组织" class="headerlink" title="4. 多文件组织"></a>4. <strong>多文件组织</strong></h4><ul>
+<li>如果服务复杂，可以将 <code>.proto</code> 文件拆分为多个：<ul>
+<li>核心服务定义在主文件中。</li>
+<li>消息和共享类型放在独立文件中，使用 <code>import</code> 导入。</li>
+<li><strong>示例</strong>：<ul>
+<li><p>主文件：</p>
+  <figure class="highlight proto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs proto">syntax = <span class="hljs-string">&quot;proto3&quot;</span>;<br><span class="hljs-keyword">package</span> message;<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;common.proto&quot;</span>;<br><br><span class="hljs-keyword">service </span><span class="hljs-title class_">MessageService</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">rpc</span> SendMessage (MessageRequest) <span class="hljs-keyword">returns</span> (MessageResponse)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>消息文件（<code>common.proto</code>）：</p>
+  <figure class="highlight proto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs proto">syntax = <span class="hljs-string">&quot;proto3&quot;</span>;<br><br><span class="hljs-keyword">package</span> message;<br><br><span class="hljs-keyword">message </span><span class="hljs-title class_">MessageRequest</span> &#123;<br>    <span class="hljs-type">string</span> content = <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-keyword">message </span><span class="hljs-title class_">MessageResponse</span> &#123;<br>    <span class="hljs-type">string</span> content = <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-服务扩展与版本控制"><a href="#5-服务扩展与版本控制" class="headerlink" title="5. 服务扩展与版本控制"></a>5. <strong>服务扩展与版本控制</strong></h4><ul>
+<li>通过新增方法扩展服务。</li>
+<li>避免直接修改已有字段的类型或编号，确保兼容性。</li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>定义 <code>.proto</code> 文件时，需要明确以下结构：</p>
+<ol>
+<li><strong>服务接口</strong>：<ul>
+<li>每个服务的职责和方法。</li>
+<li>方法的输入&#x2F;输出类型。</li>
+</ul>
+</li>
+<li><strong>消息结构</strong>：<ul>
+<li>每条消息需要包含哪些字段。</li>
+<li>字段的类型和编号是否合理。</li>
+</ul>
+</li>
+<li><strong>命名空间</strong>：<ul>
+<li>使用 <code>package</code> 明确模块路径，避免冲突。</li>
+</ul>
+</li>
+<li><strong>扩展性</strong>：<ul>
+<li>为未来的扩展预留字段编号。</li>
+<li>使用 <code>import</code> 管理复杂的服务和消息。</li>
+</ul>
+</li>
+</ol>
+<p>通过合理设计 <code>.proto</code> 文件，可以确保 gRPC 服务的接口清晰、易于维护，同时为未来的扩展做好准备。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/rust/" class="category-chain-item">rust</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Rust/" class="print-no-link">#Rust</a>
+      
+        <a href="/tags/grpc/" class="print-no-link">#grpc</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>在 Rust 中构建 gRPC 服务端与客户端</div>
+      <div>https://abrance.github.io/2024/11/25/mdstorage/domain/rust/在 Rust 中构建 gRPC 服务端与客户端/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 25, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/25/mdstorage/domain/rust/cargo%20build%20%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA/" title="cargo build 默认行为">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">cargo build 默认行为</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/25/mdstorage/domain/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/%E7%BC%96%E8%AF%91%E6%B3%A8%E5%85%A5git%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF/" title="编译注入git版本信息">
+                        <span class="hidden-mobile">编译注入git版本信息</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

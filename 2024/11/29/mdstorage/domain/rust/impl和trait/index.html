@@ -1,0 +1,772 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/guguguji.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaoy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Q&amp;ARust 的 Trait 是什么？Trait 是 Rust 中的一种抽象机制，用于定义一组方法的签名，其他类型可以通过实现这些方法来遵循这个约定。它类似于其他编程语言中的接口（例如 Java、Go 中的接口），但与它们相比，Rust 的 Trait 更加强大和灵活。 在 Rust 中，Trait 用来实现不同类型的共享行为，而不是通过继承。Trait 使得不同类型之间可以共享功能而不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="impl和trait.md">
+<meta property="og:url" content="https://abrance.github.io/2024/11/29/mdstorage/domain/rust/impl%E5%92%8Ctrait/index.html">
+<meta property="og:site_name" content="Xiaoy">
+<meta property="og:description" content="Q&amp;ARust 的 Trait 是什么？Trait 是 Rust 中的一种抽象机制，用于定义一组方法的签名，其他类型可以通过实现这些方法来遵循这个约定。它类似于其他编程语言中的接口（例如 Java、Go 中的接口），但与它们相比，Rust 的 Trait 更加强大和灵活。 在 Rust 中，Trait 用来实现不同类型的共享行为，而不是通过继承。Trait 使得不同类型之间可以共享功能而不">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-03T04:09:58.272Z">
+<meta property="article:author" content="xiaoy">
+<meta property="article:tag" content="rust">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>impl和trait.md - Xiaoy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"abrance.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xiaoy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="impl和trait.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-29 00:00" pubdate>
+          November 29, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">impl和trait.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Q-A"><a href="#Q-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><h3 id="Rust-的-Trait-是什么？"><a href="#Rust-的-Trait-是什么？" class="headerlink" title="Rust 的 Trait 是什么？"></a><strong>Rust 的 Trait 是什么？</strong></h3><p><strong>Trait</strong> 是 Rust 中的一种抽象机制，用于定义一组方法的签名，其他类型可以通过实现这些方法来遵循这个约定。它类似于其他编程语言中的接口（例如 Java、Go 中的接口），但与它们相比，Rust 的 Trait 更加强大和灵活。</p>
+<p>在 Rust 中，Trait 用来实现不同类型的共享行为，而不是通过继承。Trait 使得不同类型之间可以共享功能而不需要依赖于类层次结构。</p>
+<h3 id="基本定义与用法"><a href="#基本定义与用法" class="headerlink" title="基本定义与用法"></a><strong>基本定义与用法</strong></h3><h4 id="1-定义-Trait"><a href="#1-定义-Trait" class="headerlink" title="1. 定义 Trait"></a>1. <strong>定义 Trait</strong></h4><p>你可以通过 <code>trait</code> 关键字定义一个 Trait，Trait 中可以包含方法的声明，也可以包含默认实现。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 定义一个 Trait</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">trait</span> <span class="hljs-title class_">Speak</span> &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">speak</span>(&amp;<span class="hljs-keyword">self</span>);  <span class="hljs-comment">// 方法签名</span><br><br>    <span class="hljs-comment">// 可以提供默认实现</span><br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">greet</span>(&amp;<span class="hljs-keyword">self</span>) &#123;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Hello!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在上面的例子中，<code>Speak</code> Trait 定义了一个方法 <code>speak</code> 和一个默认方法 <code>greet</code>，任何类型想要实现这个 Trait 都需要至少实现 <code>speak</code> 方法（除非 <code>speak</code> 也有默认实现）。</p>
+<h4 id="2-为类型实现-Trait"><a href="#2-为类型实现-Trait" class="headerlink" title="2. 为类型实现 Trait"></a>2. <strong>为类型实现 Trait</strong></h4><p>要为一个具体类型实现 Trait，使用 <code>impl</code> 关键字。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 定义一个结构体</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Dog</span>;<br><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Speak</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">Dog</span> &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">speak</span>(&amp;<span class="hljs-keyword">self</span>) &#123;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Woof!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在这里，<code>Dog</code> 结构体实现了 <code>Speak</code> Trait，提供了 <code>speak</code> 方法的具体实现。如果没有提供 <code>greet</code> 方法的实现，那么 Rust 会使用 Trait 中定义的默认实现。</p>
+<h4 id="3-使用-Trait"><a href="#3-使用-Trait" class="headerlink" title="3. 使用 Trait"></a>3. <strong>使用 Trait</strong></h4><p>你可以通过 <code>trait</code> 来操作遵循该 Trait 的类型。例如，你可以写一个函数，要求参数必须实现某个 Trait。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">make_speak</span>(speaker: &amp;<span class="hljs-keyword">impl</span> <span class="hljs-title class_">Speak</span>) &#123;<br>    speaker.<span class="hljs-title function_ invoke__">speak</span>();  <span class="hljs-comment">// 调用 `speak` 方法</span><br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">dog</span> = Dog;<br>    <span class="hljs-title function_ invoke__">make_speak</span>(&amp;dog);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里，<code>make_speak</code> 函数的参数 <code>speaker</code> 必须实现 <code>Speak</code> Trait。当我们传入 <code>dog</code> 时，<code>dog</code> 会使用其 <code>speak</code> 方法的实现。</p>
+<h3 id="Trait-的特性与应用"><a href="#Trait-的特性与应用" class="headerlink" title="Trait 的特性与应用"></a><strong>Trait 的特性与应用</strong></h3><h4 id="1-Trait-作为接口"><a href="#1-Trait-作为接口" class="headerlink" title="1. Trait 作为接口"></a>1. <strong>Trait 作为接口</strong></h4><p>Trait 定义了类型间共享行为的接口。它能够让不同的类型通过实现相同的 Trait，表现出相同的行为。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Cat</span>;<br><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Speak</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">Cat</span> &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">speak</span>(&amp;<span class="hljs-keyword">self</span>) &#123;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Meow!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们可以为多个不同的类型（如 <code>Dog</code>、<code>Cat</code>）实现相同的 Trait <code>Speak</code>，从而提供一致的接口方法。</p>
+<h4 id="2-Trait-的默认实现"><a href="#2-Trait-的默认实现" class="headerlink" title="2. Trait 的默认实现"></a>2. <strong>Trait 的默认实现</strong></h4><p>你可以为 Trait 中的方法提供默认实现，使得实现 Trait 的类型不必每次都实现这些方法，除非它们需要特别的行为。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">trait</span> <span class="hljs-title class_">Greet</span> &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">greet</span>(&amp;<span class="hljs-keyword">self</span>) &#123;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Hello from Greet trait!&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Person</span>;<br><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Greet</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-comment">// Person 使用默认的 greet 实现</span><br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">person</span> = Person;<br>    person.<span class="hljs-title function_ invoke__">greet</span>();  <span class="hljs-comment">// 输出: Hello from Greet trait!</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-多个-Trait-和-Trait-约束"><a href="#3-多个-Trait-和-Trait-约束" class="headerlink" title="3. 多个 Trait 和 Trait 约束"></a>3. <strong>多个 Trait 和 Trait 约束</strong></h4><p>Rust 支持通过 <code>+</code> 来指定多个 Trait 约束。例如，以下代码要求 <code>T</code> 必须实现 <code>Speak</code> 和 <code>Clone</code> Trait。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">speak_and_clone</span>&lt;T: Speak + <span class="hljs-built_in">Clone</span>&gt;(item: T) &#123;<br>    item.<span class="hljs-title function_ invoke__">speak</span>();<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">cloned_item</span> = item.<span class="hljs-title function_ invoke__">clone</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-Trait-的泛型约束"><a href="#4-Trait-的泛型约束" class="headerlink" title="4. Trait 的泛型约束"></a>4. <strong>Trait 的泛型约束</strong></h4><p>你还可以在泛型函数或结构体中使用 Trait 作为约束，以便类型可以动态地实现多个行为。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Animal</span>&lt;T: Speak&gt; &#123;<br>    animal: T,<br>&#125;<br><br><span class="hljs-keyword">impl</span>&lt;T: Speak&gt; Animal&lt;T&gt; &#123;<br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(animal: T) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span> &#123;<br>        Animal &#123; animal &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">make_speak</span>(&amp;<span class="hljs-keyword">self</span>) &#123;<br>        <span class="hljs-keyword">self</span>.animal.<span class="hljs-title function_ invoke__">speak</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里，<code>Animal</code> 结构体的泛型 <code>T</code> 限制为必须实现 <code>Speak</code> Trait，<code>make_speak</code> 方法可以使用 <code>T</code> 类型的 <code>speak</code> 方法。</p>
+<h4 id="5-Trait-作为类型的类型约束"><a href="#5-Trait-作为类型的类型约束" class="headerlink" title="5. Trait 作为类型的类型约束"></a>5. <strong>Trait 作为类型的类型约束</strong></h4><p>Trait 还可以用作函数的参数类型约束和返回值类型约束。Rust 中的 <code>impl Trait</code> 语法可以让函数的返回值或者参数更加灵活。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">returns_speakable</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">impl</span> <span class="hljs-title class_">Speak</span> &#123;<br>    Dog  <span class="hljs-comment">// 返回一个实现了 Speak Trait 的类型</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="6-静态分发与动态分发"><a href="#6-静态分发与动态分发" class="headerlink" title="6. 静态分发与动态分发"></a>6. <strong>静态分发与动态分发</strong></h4><p>Trait 可以通过 <strong>静态分发</strong> 和 <strong>动态分发</strong> 来实现。</p>
+<ul>
+<li><strong>静态分发</strong>：通过泛型类型（如 <code>impl Trait</code>）进行的分发，在编译时决定具体调用哪个方法。</li>
+<li><strong>动态分发</strong>：通过 <strong>Trait 对象</strong>（如 <code>&amp;dyn Speak</code>）进行的分发，在运行时决定调用哪个方法。</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">dynamic_speak</span>(speaker: &amp;<span class="hljs-keyword">dyn</span> Speak) &#123;<br>    speaker.<span class="hljs-title function_ invoke__">speak</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里，<code>&amp;dyn Speak</code> 是一个 <strong>Trait 对象</strong>，它在运行时决定调用哪种 <code>speak</code> 实现。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><ul>
+<li><strong>Trait</strong> 是 Rust 中的一种强大的抽象机制，允许不同类型实现共同的行为。</li>
+<li>通过 <code>impl Trait</code>，你可以为不同的类型实现相同的行为，而不需要继承类。</li>
+<li>Trait 支持默认实现、多个 Trait 的约束、以及泛型等特性，使其非常灵活。</li>
+<li>Trait 也可以用于实现动态分发，通过 <code>dyn</code> 关键字来在运行时选择方法。</li>
+</ul>
+<h3 id="Rust-中的结构体方法"><a href="#Rust-中的结构体方法" class="headerlink" title="Rust 中的结构体方法"></a><strong>Rust 中的结构体方法</strong></h3><p>是的，Rust 允许你为结构体定义方法。这些方法通常在结构体的 <code>impl</code>（实现）块中定义。方法可以与结构体的实例一起使用，也可以是关联函数（不依赖于结构体实例）。</p>
+<h4 id="1-结构体方法的定义"><a href="#1-结构体方法的定义" class="headerlink" title="1. 结构体方法的定义"></a><strong>1. 结构体方法的定义</strong></h4><p>结构体方法是与结构体实例关联的函数。你可以使用 <code>&amp;self</code>、<code>&amp;mut self</code> 或 <code>self</code> 来指定方法的接收者。方法可以访问结构体的字段，修改字段（如果使用 <code>&amp;mut self</code>），并返回值。</p>
+<h5 id="示例：基本的结构体方法"><a href="#示例：基本的结构体方法" class="headerlink" title="示例：基本的结构体方法"></a>示例：基本的结构体方法</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 定义一个结构体</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Rectangle</span> &#123;<br>    width: <span class="hljs-type">u32</span>,<br>    height: <span class="hljs-type">u32</span>,<br>&#125;<br><br><span class="hljs-comment">// 使用 impl 块定义结构体方法</span><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Rectangle</span> &#123;<br>    <span class="hljs-comment">// 一个常规方法，它借用 `self`</span><br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">area</span>(&amp;<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">u32</span> &#123;<br>        <span class="hljs-keyword">self</span>.width * <span class="hljs-keyword">self</span>.height<br>    &#125;<br><br>    <span class="hljs-comment">// 一个改变结构体状态的方法，需要可变借用 `self`</span><br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">set_width</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, width: <span class="hljs-type">u32</span>) &#123;<br>        <span class="hljs-keyword">self</span>.width = width;<br>    &#125;<br><br>    <span class="hljs-comment">// 一个关联函数，不需要结构体实例</span><br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(width: <span class="hljs-type">u32</span>, height: <span class="hljs-type">u32</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span> &#123;<br>        Rectangle &#123; width, height &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-comment">// 创建结构体实例</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">rect</span> = Rectangle::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>);<br><br>    <span class="hljs-comment">// 调用常规方法</span><br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Area: &#123;&#125;&quot;</span>, rect.<span class="hljs-title function_ invoke__">area</span>());<br><br>    <span class="hljs-comment">// 调用改变状态的方法</span><br>    rect.<span class="hljs-title function_ invoke__">set_width</span>(<span class="hljs-number">15</span>);<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Updated Area: &#123;&#125;&quot;</span>, rect.<span class="hljs-title function_ invoke__">area</span>());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-关联函数与方法"><a href="#2-关联函数与方法" class="headerlink" title="2. 关联函数与方法"></a><strong>2. 关联函数与方法</strong></h4><p>除了常规的方法外，Rust 还允许你为结构体定义 <strong>关联函数</strong>（associated functions）。这些函数不依赖于结构体的实例，它们通常通过 <code>Self</code> 类型返回结构体的新实例。关联函数通常用于构造器函数。</p>
+<ul>
+<li><strong>关联函数</strong> 是没有 <code>self</code> 参数的函数，通常用于实现一些与结构体实例无关的功能，如创建实例等。</li>
+</ul>
+<h5 id="示例：结构体的关联函数"><a href="#示例：结构体的关联函数" class="headerlink" title="示例：结构体的关联函数"></a>示例：结构体的关联函数</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Rectangle</span> &#123;<br>    <span class="hljs-comment">// 关联函数，常用于构造结构体实例</span><br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(width: <span class="hljs-type">u32</span>, height: <span class="hljs-type">u32</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span> &#123;<br>        Rectangle &#123; width, height &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在上面的代码中，<code>new</code> 是一个关联函数，因为它没有 <code>self</code> 参数，它是一个静态方法，用于创建 <code>Rectangle</code> 结构体的实例。</p>
+<h4 id="3-方法中的-self-参数"><a href="#3-方法中的-self-参数" class="headerlink" title="3. 方法中的 self 参数"></a><strong>3. 方法中的 <code>self</code> 参数</strong></h4><p>在 Rust 中，方法有三种类型的 <code>self</code> 参数，它们分别是：</p>
+<ul>
+<li>**<code>&amp;self</code>**：不可变借用，表示方法只会读取结构体的内容，而不会修改它。</li>
+<li>**<code>&amp;mut self</code>**：可变借用，表示方法会修改结构体的内容。</li>
+<li>**<code>self</code>**：值的所有权转移，通常用来消耗结构体，或者将其转移到方法中。</li>
+</ul>
+<h5 id="示例：方法的不同-self-参数"><a href="#示例：方法的不同-self-参数" class="headerlink" title="示例：方法的不同 self 参数"></a>示例：方法的不同 <code>self</code> 参数</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Rectangle</span> &#123;<br>    <span class="hljs-comment">// 不可变借用，方法只读取结构体</span><br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">area</span>(&amp;<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">u32</span> &#123;<br>        <span class="hljs-keyword">self</span>.width * <span class="hljs-keyword">self</span>.height<br>    &#125;<br><br>    <span class="hljs-comment">// 可变借用，方法可以修改结构体的字段</span><br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">set_width</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, width: <span class="hljs-type">u32</span>) &#123;<br>        <span class="hljs-keyword">self</span>.width = width;<br>    &#125;<br><br>    <span class="hljs-comment">// 转移所有权</span><br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">consume</span>(<span class="hljs-keyword">self</span>) &#123;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Rectangle consumed with width &#123;&#125; and height &#123;&#125;&quot;</span>, <span class="hljs-keyword">self</span>.width, <span class="hljs-keyword">self</span>.height);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-self-参数与所有权"><a href="#4-self-参数与所有权" class="headerlink" title="4. self 参数与所有权"></a><strong>4. <code>self</code> 参数与所有权</strong></h4><ul>
+<li>当方法的参数是 <code>self</code> 时，意味着它会 <strong>转移</strong> 结构体的所有权，调用该方法后，结构体实例将不再有效。你不能再访问它，除非再次获得它的所有权。</li>
+<li>使用 <code>&amp;self</code> 或 <code>&amp;mut self</code> 则不会转移所有权，而是借用结构体的引用。</li>
+</ul>
+<h5 id="示例：self-的所有权转移"><a href="#示例：self-的所有权转移" class="headerlink" title="示例：self 的所有权转移"></a>示例：<code>self</code> 的所有权转移</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Rectangle</span> &#123;<br>    <span class="hljs-comment">// 这里 `self` 表示转移所有权</span><br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">consume</span>(<span class="hljs-keyword">self</span>) &#123;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Rectangle consumed with width &#123;&#125; and height &#123;&#125;&quot;</span>, <span class="hljs-keyword">self</span>.width, <span class="hljs-keyword">self</span>.height);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">rect</span> = Rectangle::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>);<br><br>    rect.<span class="hljs-title function_ invoke__">consume</span>();  <span class="hljs-comment">// 这里消耗了 `rect` 的所有权</span><br><br>    <span class="hljs-comment">// println!(&quot;&#123;&#125;&quot;, rect.area());  // 错误：`rect` 的所有权已被转移</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="5-方法的调用"><a href="#5-方法的调用" class="headerlink" title="5. 方法的调用"></a><strong>5. 方法的调用</strong></h4><p>调用结构体的方法时，调用者会根据方法的接收者类型来决定是否需要使用 <code>&amp;self</code> 或 <code>&amp;mut self</code>，例如：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">rect</span> = Rectangle::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>);<br><br><span class="hljs-comment">// 调用不可变方法，使用不可变借用</span><br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Area: &#123;&#125;&quot;</span>, rect.<span class="hljs-title function_ invoke__">area</span>());<br><br><span class="hljs-comment">// 调用可变方法，使用可变借用</span><br>rect.<span class="hljs-title function_ invoke__">set_width</span>(<span class="hljs-number">30</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a><strong>总结</strong></h3><ul>
+<li><strong>结构体方法</strong> 是与结构体实例关联的函数，它们在 <code>impl</code> 块中定义，方法可以借用结构体的所有权，或修改结构体的内容，或者仅仅读取内容。</li>
+<li><strong>关联函数</strong> 是没有 <code>self</code> 参数的函数，通常用于创建结构体的新实例。</li>
+<li><strong><code>self</code> 参数</strong> 可以是不可变借用 <code>&amp;self</code>，可变借用 <code>&amp;mut self</code>，或者值的所有权 <code>self</code>，它们分别用于读取、修改或转移结构体的所有权。</li>
+</ul>
+<p>在 Rust 中，<code>impl</code> 块是可以分散在多个位置的，类似于 Go 中的结构体方法，可以在不同的位置定义 <code>impl</code> 块。Rust 的 <code>impl</code> 块定义了结构体、枚举、或其他类型的关联方法和方法，而这些 <code>impl</code> 块的分散（即在多个地方定义）是完全允许的。</p>
+<h3 id="Rust-impl-块的分散定义"><a href="#Rust-impl-块的分散定义" class="headerlink" title="Rust impl 块的分散定义"></a><strong>Rust <code>impl</code> 块的分散定义</strong></h3><p>你可以将 <code>impl</code> 块分散到多个位置，而不仅仅是在结构体定义后的紧接着位置。这为大型代码库或库设计提供了更好的模块化。</p>
+<h3 id="示例：分散定义-impl-块"><a href="#示例：分散定义-impl-块" class="headerlink" title="示例：分散定义 impl 块"></a><strong>示例：分散定义 <code>impl</code> 块</strong></h3><p>假设我们有一个结构体 <code>Rectangle</code>，它的定义在某个文件中，而它的实现可以分散在不同的地方。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// Rectangle 结构体的定义</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Rectangle</span> &#123;<br>    width: <span class="hljs-type">u32</span>,<br>    height: <span class="hljs-type">u32</span>,<br>&#125;<br><br><span class="hljs-comment">// 第一个 impl 块</span><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Rectangle</span> &#123;<br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(width: <span class="hljs-type">u32</span>, height: <span class="hljs-type">u32</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span> &#123;<br>        Rectangle &#123; width, height &#125;<br>    &#125;<br>&#125;<br>  <br><span class="hljs-comment">// 第二个 impl 块</span><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Rectangle</span> &#123;<br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">area</span>(&amp;<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">u32</span> &#123;<br>        <span class="hljs-keyword">self</span>.width * <span class="hljs-keyword">self</span>.height<br>    &#125;<br>&#125;<br>  <br><span class="hljs-comment">// 第三个 impl 块（你还可以添加更多的方法）</span><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Rectangle</span> &#123;<br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">is_square</span>(&amp;<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">bool</span> &#123;<br>        <span class="hljs-keyword">self</span>.width == <span class="hljs-keyword">self</span>.height<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">rect</span> = Rectangle::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>);<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Area: &#123;&#125;&quot;</span>, rect.<span class="hljs-title function_ invoke__">area</span>());<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Is square? &#123;&#125;&quot;</span>, rect.<span class="hljs-title function_ invoke__">is_square</span>());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="分散的-impl-块有什么意义"><a href="#分散的-impl-块有什么意义" class="headerlink" title="分散的 impl 块有什么意义"></a><strong>分散的 <code>impl</code> 块有什么意义</strong></h3><ol>
+<li><p><strong>模块化</strong>：当你的 <code>impl</code> 块包含很多方法时，分散它们到不同的位置可以使代码结构更清晰。例如，将方法按功能分类放在不同的 <code>impl</code> 块中。</p>
+</li>
+<li><p><strong>与 trait 的实现结合</strong>：Rust 允许你为结构体、枚举或其他类型实现多个 <code>trait</code>。这使得你可以为相同的类型提供不同的功能实现。分散 <code>impl</code> 块可以帮助你分别实现不同的 <code>trait</code>，使代码更简洁。</p>
+</li>
+<li><p><strong>避免重复</strong>：如果某些方法可以按功能分组，你可以选择将 <code>impl</code> 块分散到不同的地方，避免把所有代码都堆积到一个大块中。</p>
+</li>
+</ol>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h3><ul>
+<li><p><strong>相同类型的多个 <code>impl</code> 块</strong>：尽管 Rust 允许分散定义 <code>impl</code> 块，但它们必须属于同一个类型。你不能为同一个类型创建多个独立的 <code>impl</code> 块，并且这些 <code>impl</code> 块定义的内容会合并。比如，你不能在一个地方为一个结构体定义一些方法，在另一个地方再定义重复的类型。</p>
+</li>
+<li><p><strong>更好地组织代码</strong>：如果结构体方法非常多，分散 <code>impl</code> 块可以帮助代码更易于管理。</p>
+</li>
+</ul>
+<h3 id="与-Go-中的区别"><a href="#与-Go-中的区别" class="headerlink" title="与 Go 中的区别"></a><strong>与 Go 中的区别</strong></h3><ul>
+<li><p><strong>Go 的方法定义</strong>：在 Go 中，方法是通过将方法与类型关联来定义的。这种方式与 Rust 的 <code>impl</code> 块类似，Go 也允许你在不同的地方为同一个类型添加方法。</p>
+</li>
+<li><p><strong>Rust 的 <code>impl</code> 块</strong>：在 Rust 中，所有方法的定义都必须在 <code>impl</code> 块内进行，但可以分散在多个地方，而 Go 的方法定义可以通过函数直接分散在不同位置，无需像 Rust 那样必须放在 <code>impl</code> 块中。</p>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/rust/" class="category-chain-item">rust</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/rust/" class="print-no-link">#rust</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>impl和trait.md</div>
+      <div>https://abrance.github.io/2024/11/29/mdstorage/domain/rust/impl和trait/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xiaoy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 29, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/29/mdstorage/domain/rust/Crate/" title="Crate">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Crate</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/28/mdstorage/domain/network/SSH%E9%9A%A7%E9%81%93%E5%92%8CSOCKS%E4%BB%A3%E7%90%86/" title="SSH隧道和SOCKS代理.md">
+                        <span class="hidden-mobile">SSH隧道和SOCKS代理.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

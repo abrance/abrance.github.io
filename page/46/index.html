@@ -227,15 +227,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/11/30/project/sr/%E6%80%BB%E6%8E%A7%E5%BC%95%E6%93%8E%E6%8F%92%E4%BB%B6%E9%97%AE%E9%A2%98%E5%88%97%E4%B8%BE%E3%80%81%E5%88%86%E6%9E%90%E3%80%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
-          总控引擎插件问题列举、分析、解决方案.md
+        <a href="/2024/01/04/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E8%B5%84%E6%96%99/" target="_self">
+          grpc服务调用资料.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/30/project/sr/%E6%80%BB%E6%8E%A7%E5%BC%95%E6%93%8E%E6%8F%92%E4%BB%B6%E9%97%AE%E9%A2%98%E5%88%97%E4%B8%BE%E3%80%81%E5%88%86%E6%9E%90%E3%80%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/04/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/grpc%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E8%B5%84%E6%96%99/" target="_self">
         <div>
-          概念 总控、引擎、插件是 总控-引擎软件系统中的逻辑组件，引擎是一个流量代理功能的集群，主要完成 API网关职能，总控是用户操作入口， 部署于单独一台机器，总控集成多个、多种引擎的管理和控制逻辑，插件是完成一组独立功能的逻辑组件，工作于总控、引擎的节点。  文档组织思路 每个大目标下包括一些小事项，每个小事项可以有些已经做过，但有演进的方向，所以也列出 先列出目前想要完成的目标，其中确立每个目标需
+          Service 中 rpc 服务在grpc-go中，当客户端调用ChatService的Chat1或Chat2服务时，以下是连接建立的过程：  客户端初始化：客户端创建一个gRPC连接到服务器。这通常是在客户端应用的启动阶段完成的，例如通过grpc.Dial。  服务调用时机：客户端在需要时调用Chat1或Chat2服务。这是根据客户端应用的业务逻辑决定的，可能是用户发起的动作或其他触发条件。
         </div>
       </a>
 
@@ -243,74 +243,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-30 00:00" pubdate>
-              2023-11-30
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/30/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E5%BC%95%E6%93%8E%E6%8F%92%E4%BB%B6%E9%97%AE%E9%A2%98%E5%88%97%E4%B8%BE%E3%80%81%E5%88%86%E6%9E%90%E3%80%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
-          总控引擎插件问题列举、分析、解决方案.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/30/mdstorage/project/sr/%E6%80%BB%E6%8E%A7%E5%BC%95%E6%93%8E%E6%8F%92%E4%BB%B6%E9%97%AE%E9%A2%98%E5%88%97%E4%B8%BE%E3%80%81%E5%88%86%E6%9E%90%E3%80%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
-        <div>
-          概念 总控、引擎、插件是 总控-引擎软件系统中的逻辑组件，引擎是一个流量代理功能的集群，主要完成 API网关职能，总控是用户操作入口， 部署于单独一台机器，总控集成多个、多种引擎的管理和控制逻辑，插件是完成一组独立功能的逻辑组件，工作于总控、引擎的节点。  文档组织思路 每个大目标下包括一些小事项，每个小事项可以有些已经做过，但有演进的方向，所以也列出 先列出目前想要完成的目标，其中确立每个目标需
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-30 00:00" pubdate>
-              2023-11-30
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/30/mdstorage/domain/network/%E6%85%A2%E9%80%9F%E6%8B%92%E7%BB%9D%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
-          慢速拒绝和解决方案.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/30/mdstorage/domain/network/%E6%85%A2%E9%80%9F%E6%8B%92%E7%BB%9D%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
-        <div>
-          HTTP慢速拒绝服务防御方案 一、背景与问题描述慢速拒绝服务攻击（LDOS）区别于传统的DDOS或CC攻击。它通过以极低的速度发送数据，旨在耗尽服务器资源。现有的安全插件（如WAF、Anti-CC、流量限速等）主要针对高频次攻击，但对于低频次的慢速拒绝服务攻击防御能力不足。这些插件工作在应用层（L7），处理由envoy解析后的HTTP消息，因此缺少一些关键的“元数据”，如连接时间、请求发起时间等，
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-30 00:00" pubdate>
-              2023-11-30
+            <time datetime="2024-01-04 00:00" pubdate>
+              2024-01-04
             </time>
           </div>
         
@@ -333,6 +267,13 @@
   <a href="/categories/domain/network/" class="category-chain-item">network</a>
   
   
+    <span>></span>
+    
+  <a href="/categories/domain/network/%E5%8D%8F%E8%AE%AE/" class="category-chain-item">协议</a>
+  
+  
+
+  
 
   
 
@@ -347,7 +288,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">#网络安全</a>
+              <a href="/tags/grpc/">#grpc</a>
             
           </div>
         
@@ -361,15 +302,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/11/30/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E9%80%9A%E4%BF%A1%E3%80%81%E5%AD%98%E5%82%A8%E3%80%81%E5%A4%84%E7%90%86%E3%80%81%E5%B1%95%E7%A4%BA%E8%BD%AF%E4%BB%B6%E6%A6%82%E5%BF%B5/" target="_self">
-          通信、存储、处理、展示.md
+        <a href="/2023/12/28/domain/network/%E5%8D%8F%E8%AE%AE/MDNS/" target="_self">
+          MDNS.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/30/mdstorage/domain/%E6%9E%B6%E6%9E%84/%E9%80%9A%E4%BF%A1%E3%80%81%E5%AD%98%E5%82%A8%E3%80%81%E5%A4%84%E7%90%86%E3%80%81%E5%B1%95%E7%A4%BA%E8%BD%AF%E4%BB%B6%E6%A6%82%E5%BF%B5/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/28/domain/network/%E5%8D%8F%E8%AE%AE/MDNS/" target="_self">
         <div>
-          文章概述  文章标题: “软件系统的四大支柱：通信、存储、处理与展示” 文章主题简介: 本文探讨了软件系统设计中的四个核心概念：通信、存储、处理和展示，分析了它们的相互关系和在构建复杂系统中的重要性。  主要观点  观点一：软件系统的有效运作依赖于通信、存储、处理和展示这四个核心概念的协同工作。 观点二：这四个概念虽然在功能上不同，但在系统设计中是平等、互补的。  支持论据  观点一的支持论据：每
+          概述简短介绍本文将深入探讨MDNS（Multicast DNS）技术，它是一种在小型网络上实现设备名称解析到IP地址的机制。本文的目的是为读者提供一个全面的MDNS知识框架，包括其工作原理、实际应用和最佳实践。 主题和目的概述我们将首先概述MDNS的基本概念，然后详细讲解其背后的技术原理，以及如何在实际环境中应用MDNS。最后，本文将提供一些最佳实践和性能优化的建议。 算法原理相关技术的涉及的算法
         </div>
       </a>
 
@@ -377,8 +318,442 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-30 00:00" pubdate>
-              2023-11-30
+            <time datetime="2023-12-28 00:00" pubdate>
+              2023-12-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/" class="category-chain-item">network</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/%E5%8D%8F%E8%AE%AE/" class="category-chain-item">协议</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DNS-%E5%A4%9A%E6%92%AD/">#DNS 多播</a>
+            
+              <a href="/tags/%E8%AE%BE%E5%A4%87%E5%8F%91%E7%8E%B0/">#设备发现</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/28/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/MDNS/" target="_self">
+          MDNS.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/28/mdstorage/domain/network/%E5%8D%8F%E8%AE%AE/MDNS/" target="_self">
+        <div>
+          概述简短介绍本文将深入探讨MDNS（Multicast DNS）技术，它是一种在小型网络上实现设备名称解析到IP地址的机制。本文的目的是为读者提供一个全面的MDNS知识框架，包括其工作原理、实际应用和最佳实践。 主题和目的概述我们将首先概述MDNS的基本概念，然后详细讲解其背后的技术原理，以及如何在实际环境中应用MDNS。最后，本文将提供一些最佳实践和性能优化的建议。 算法原理相关技术的涉及的算法
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-28 00:00" pubdate>
+              2023-12-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/" class="category-chain-item">network</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/network/%E5%8D%8F%E8%AE%AE/" class="category-chain-item">协议</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DNS-%E5%A4%9A%E6%92%AD/">#DNS 多播</a>
+            
+              <a href="/tags/%E8%AE%BE%E5%A4%87%E5%8F%91%E7%8E%B0/">#设备发现</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/27/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" target="_self">
+          Makefile指定cpu架构选项.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" target="_self">
+        <div>
+          思路Makefile 构建，使用环境变量来控制编译选项 设置环境变量：在命令行上或在用户的环境配置文件中设置环境变量，如 ARCH=arm 或 ARCH=x86。 在 Makefile 中使用条件语句：Makefile 使用 ifeq、ifdef 等条件语句根据环境变量的值选择不同的编译器选项、链接器选项和其他设置。  ARCH 可选值 aarch64：代表 ARM 架构的 64 位版本（ARMv
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-27 00:00" pubdate>
+              2023-12-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/makefile/" class="category-chain-item">makefile</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/make/">#make</a>
+            
+              <a href="/tags/Makefile/">#Makefile</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/27/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" target="_self">
+          Makefile的函数使用.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          wildcard使通配符生效场景 在Makefile规则中，通配符会被自动展开。但在变量的定义和函数引用时，通配符将失效。 $(wildcard &lt;PATTERN…&gt;) patsubstpatsubst函数返回被替换过后的字符串。 $(patsubst  ,,) define1234567891011define fun1	@echo &quot;My name is $(0)&quo
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-27 00:00" pubdate>
+              2023-12-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/makefile/" class="category-chain-item">makefile</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/make/">#make</a>
+            
+              <a href="/tags/Makefile/">#Makefile</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" target="_self">
+          Makefile指定cpu架构选项.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/mdstorage/domain/makefile/Makefile%E6%8C%87%E5%AE%9Acpu%E6%9E%B6%E6%9E%84%E9%80%89%E9%A1%B9/" target="_self">
+        <div>
+          思路Makefile 构建，使用环境变量来控制编译选项 设置环境变量：在命令行上或在用户的环境配置文件中设置环境变量，如 ARCH=arm 或 ARCH=x86。 在 Makefile 中使用条件语句：Makefile 使用 ifeq、ifdef 等条件语句根据环境变量的值选择不同的编译器选项、链接器选项和其他设置。  ARCH 可选值 aarch64：代表 ARM 架构的 64 位版本（ARMv
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-27 00:00" pubdate>
+              2023-12-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/makefile/" class="category-chain-item">makefile</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/make/">#make</a>
+            
+              <a href="/tags/Makefile/">#Makefile</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/27/mdstorage/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" target="_self">
+          Makefile的函数使用.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/mdstorage/domain/makefile/Makefile%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          wildcard使通配符生效场景 在Makefile规则中，通配符会被自动展开。但在变量的定义和函数引用时，通配符将失效。 $(wildcard &lt;PATTERN…&gt;) patsubstpatsubst函数返回被替换过后的字符串。 $(patsubst  ,,) define1234567891011define fun1	@echo &quot;My name is $(0)&quo
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-27 00:00" pubdate>
+              2023-12-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/domain/" class="category-chain-item">domain</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/domain/makefile/" class="category-chain-item">makefile</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/make/">#make</a>
+            
+              <a href="/tags/Makefile/">#Makefile</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/26/domain/%E6%9E%B6%E6%9E%84/4+1%E6%9E%B6%E6%9E%84%E8%A7%86%E8%A7%92%E6%A8%A1%E5%9E%8B/" target="_self">
+          4+1架构视角模型.md
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/26/domain/%E6%9E%B6%E6%9E%84/4+1%E6%9E%B6%E6%9E%84%E8%A7%86%E8%A7%92%E6%A8%A1%E5%9E%8B/" target="_self">
+        <div>
+          概念“4+1”架构视角模型是一种框架，用于描述复杂软件系统的架构。由Philippe Kruchten在1995年提出，这个模型旨在满足不同利益相关者的需求，并提供全面的系统视图。下面详细介绍这个模型的五个部分： 1. 逻辑视图（Logical View） 目的：描述系统的功能性需求，即系统“做什么”。 内容：包括系统的关键功能模块、类或对象，以及它们之间的关系。 重点：系统的业务功能和对象模型。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-26 00:00" pubdate>
+              2023-12-26
             </time>
           </div>
         
@@ -412,6 +787,13 @@
           </div>
         
         
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
+            
+          </div>
+        
       </div>
     </article>
   </div>
@@ -422,15 +804,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/11/27/%E6%B8%85%E7%82%B9BUG%E6%8A%80%E5%B7%A7/" target="_self">
-          清点BUG技巧.md
+        <a href="/2023/12/26/project/sr/%E6%80%BB%E6%8E%A7%E3%80%81%E5%BC%95%E6%93%8E%E3%80%81%E6%8F%92%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%A2%B3%E7%90%86/" target="_self">
+          总控、引擎、插件软件架构梳理.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/27/%E6%B8%85%E7%82%B9BUG%E6%8A%80%E5%B7%A7/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/26/project/sr/%E6%80%BB%E6%8E%A7%E3%80%81%E5%BC%95%E6%93%8E%E3%80%81%E6%8F%92%E4%BB%B6%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%A2%B3%E7%90%86/" target="_self">
         <div>
-          每个人清点 BUG，汇报能解决的BUG多长时间解决掉 BUG分类 能解决 3 天以内能解决 3 天以外能解决   暂时解决不了 修改方案 机制存在问题 无法复现 技术难度大
+          现有架构梳理核心系统组件、应用、插件构想核心系统总控、流量引擎 核心组件核心系统中的核心应用 属性： 核心组件的启动、运行依赖关系、通信链路形成有向无环图结构，核心组件之间逻辑自洽，向上提供的接口已在内部达成逻辑自洽 依赖：操作系统底层资源、其他核心组件 系统核心组件依赖关系和通信链路示意图graph TB 	subgraph kernel[系统核心组件] 		comp2[Comp2] 		com
         </div>
       </a>
 
@@ -438,8 +820,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-27 00:00" pubdate>
-              2023-11-27
+            <time datetime="2023-12-26 00:00" pubdate>
+              2023-12-26
             </time>
           </div>
         
@@ -448,7 +830,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/pm/">#pm</a>
+              <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
             
           </div>
         
@@ -462,15 +844,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/11/27/mdstorage/%E6%B8%85%E7%82%B9BUG%E6%8A%80%E5%B7%A7/" target="_self">
-          清点BUG技巧.md
+        <a href="/2023/12/26/mdstorage/domain/%E6%9E%B6%E6%9E%84/4+1%E6%9E%B6%E6%9E%84%E8%A7%86%E8%A7%92%E6%A8%A1%E5%9E%8B/" target="_self">
+          4+1架构视角模型.md
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/27/mdstorage/%E6%B8%85%E7%82%B9BUG%E6%8A%80%E5%B7%A7/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/26/mdstorage/domain/%E6%9E%B6%E6%9E%84/4+1%E6%9E%B6%E6%9E%84%E8%A7%86%E8%A7%92%E6%A8%A1%E5%9E%8B/" target="_self">
         <div>
-          每个人清点 BUG，汇报能解决的BUG多长时间解决掉 BUG分类 能解决 3 天以内能解决 3 天以外能解决   暂时解决不了 修改方案 机制存在问题 无法复现 技术难度大
+          概念“4+1”架构视角模型是一种框架，用于描述复杂软件系统的架构。由Philippe Kruchten在1995年提出，这个模型旨在满足不同利益相关者的需求，并提供全面的系统视图。下面详细介绍这个模型的五个部分： 1. 逻辑视图（Logical View） 目的：描述系统的功能性需求，即系统“做什么”。 内容：包括系统的关键功能模块、类或对象，以及它们之间的关系。 重点：系统的业务功能和对象模型。
         </div>
       </a>
 
@@ -478,48 +860,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-27 00:00" pubdate>
-              2023-11-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/pm/">#pm</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/27/domain/%E6%9E%B6%E6%9E%84/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%BB%84%E6%A6%82%E8%BF%B0/" target="_self">
-          基础设施组概述.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/27/domain/%E6%9E%B6%E6%9E%84/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%BB%84%E6%A6%82%E8%BF%B0/" target="_self">
-        <div>
-          基础设施组职能开发维护总控平台的基础设施，兼顾公共库开发维护，为上层应用提供可靠可扩展的接口，脱离具体业务开发。 技能要求、技术栈、工具选型shell、python、golang、(Linux C) Linux：网络、文件系统、 敏捷开发工具链、系统监控 应急响应各种故障排查手段：临时扩容、上云、容量规划、安全、（虚拟网络）等临时需求 需求公共库开发维护、项目搭建规范保持动作一致性、敏捷开发工具链
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-27 00:00" pubdate>
-              2023-11-27
+            <time datetime="2023-12-26 00:00" pubdate>
+              2023-12-26
             </time>
           </div>
         
@@ -556,127 +898,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%A6%82%E8%BF%B0/">#概述</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/27/project/sr/1124%E4%B8%8E%E5%88%98%E6%80%BB%E7%9A%84%E8%B0%88%E8%AF%9D%E5%86%85%E5%AE%B9/" target="_self">
-          11/24与刘总的谈话内容.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/27/project/sr/1124%E4%B8%8E%E5%88%98%E6%80%BB%E7%9A%84%E8%B0%88%E8%AF%9D%E5%86%85%E5%AE%B9/" target="_self">
-        <div>
-          11&#x2F;24与老板谈话考虑思路 考虑对方角度关心的内容 未来的展望规划一并考虑 列出目录、重点内容 先将本质的问题考虑  工程思路不牺牲用户场景下，降低实时性需求 SV 职责本质 能存入 如何展示、展示什么、怎么展示  技巧行业经验 能阻断性的、实时的问题 要以聚焦型的思路做，而不是全量的 已知的问题后续能控制、异常的问题尽量实时阻断、常规的问题做到能追溯就行非实时 CPU 占机器成本 4
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-27 00:00" pubdate>
-              2023-11-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%B0%E5%BD%95/">#记录</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/27/project/sr/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3%E5%86%85%E5%AE%B9%E8%A6%81%E6%B1%82/" target="_self">
-          测试用例设计文档内容要求.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/27/project/sr/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3%E5%86%85%E5%AE%B9%E8%A6%81%E6%B1%82/" target="_self">
-        <div>
-          测试用例设计文档内容要求 测试用例概览：文档的概述，包括测试目的、范围、目标和测试环境。 测试策略和方法：测试将如何进行，采用哪些类型的测试（如功能测试、性能测试、安全测试等）。 测试用例： 测试条件：测试用例的前提条件。 测试步骤：执行测试所需的具体操作步骤。 期望结果：每个测试步骤应达到的预期结果。 实际结果：执行测试后的实际结果（在测试执行阶段填写）。 通过&#x2F;失败标记：测试是否通过
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-27 00:00" pubdate>
-              2023-11-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%B5%8B%E8%AF%95/">#测试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/27/project/sr/%E7%BB%84%E9%95%BF%E8%81%8C%E8%B4%A3/" target="_self">
-          组长职责.md
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/27/project/sr/%E7%BB%84%E9%95%BF%E8%81%8C%E8%B4%A3/" target="_self">
-        <div>
-          TODO 组长参与的项目的生命周期梳理 对每项（生命周期的一个节点）进行注意点梳理、情景梳理 归档  关于组长管理 BUG 中组员能自行解决的不要上升到组长级别，组长的事情很多 定期组织清点 BUG 定期组织文档维护  项目管理禅道维护 任务拆解 任务分配 组员信息同步 进度监控 技术攻坚技术难题攻坚 阻塞性问题、紧急问题处理 软件架构软件架构设计 系统问题分析 代码管理merge request
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-27 00:00" pubdate>
-              2023-11-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/pm/">#pm</a>
+              <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
             
           </div>
         
@@ -688,7 +910,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/45/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/#board">44</a><a class="page-number" href="/page/45/#board">45</a><span class="page-number current">46</span><a class="page-number" href="/page/47/#board">47</a><a class="page-number" href="/page/48/#board">48</a><span class="space">&hellip;</span><a class="page-number" href="/page/58/#board">58</a><a class="extend next" rel="next" href="/page/47/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/45/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/#board">44</a><a class="page-number" href="/page/45/#board">45</a><span class="page-number current">46</span><a class="page-number" href="/page/47/#board">47</a><a class="page-number" href="/page/48/#board">48</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/#board">62</a><a class="extend next" rel="next" href="/page/47/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
